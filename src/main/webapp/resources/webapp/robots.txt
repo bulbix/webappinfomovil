@@ -1,0 +1,15 @@
+User-agent: *
+Crawl-delay: 60
+Disallow: /css/
+Disallow: /js/
+# Permitir trabajar a los buscadores de 1:00 am a 5:00 am (hora México) (las horas son siempre en Greenwitch UTC/GMT.)
+Visit-time: 0500-1000 
+# Un documento cada 60 minutos 
+Request-rate: 1/60m 
+# Combinado: 1 doc cada 10 minutos y entre la 1 y las 5 de la tarde 
+Request-rate: 1/60m 0500-1000
+
+
+
+
+
