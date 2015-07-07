@@ -13,6 +13,8 @@ import org.junit.Test;
 public class ClientWsInfomovilTest {
 	
 	static ClientWsInfomovil clientWsInfomovil;
+	String correoPrueba = "paquito1@mail.com";
+	String nombrePrueba = "paquito1";
 
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {
@@ -31,52 +33,56 @@ public class ClientWsInfomovilTest {
 	public void tearDown() throws Exception {
 	}
 
+	
+	@Test
+	public void testCrearSitioRegistrar() {
+		RespuestaVO resp = clientWsInfomovil.crearSitioRegistrar(correoPrueba, "garbage1", nombrePrueba, "");
+		assertNotNull(resp);
+	}
+	
 	@Test
 	public void testCrearSitioLogin() {
-		RespuestaVO resp = clientWsInfomovil.crearSitioLogin("luis@mailcom", "garbage1");
+		RespuestaVO resp = clientWsInfomovil.crearSitioLogin(correoPrueba, "garbage1");
 		assertNotNull(resp);
 	}
 
-	@Test
-	public void testCrearSitioRegistrar() {
-		RespuestaVO resp = clientWsInfomovil.crearSitioRegistrar("paquito@mailcom", "garbage1", "Paquito", "");
-		assertNotNull(resp);
-	}
 
 	@Test
 	public void testCrearSitioGuardar() {
-		RespuestaVO resp = clientWsInfomovil.crearSitioGuardar("paquito@mailcom", "garbage1","xxxx","yyy","zzz","luis@mail.com","33333","divertido" );
+		RespuestaVO resp = clientWsInfomovil.crearSitioGuardar(correoPrueba, "garbage1","xxxx","yyy","zzz","luis@mail.com","33333","divertido" );
 		assertNotNull(resp);
 	}
 
 	@Test
 	public void testCrearSitioCargar() {
-		RespuestaVO resp = clientWsInfomovil.crearSitioCargar("paquito@mail.com", "garbage1");
+		RespuestaVO resp = clientWsInfomovil.crearSitioCargar(correoPrueba, "garbage1");
 		System.out.println(resp.dominioCreaSitio.nombreUsuario);
 		assertNotNull(resp);
 	}
 
 	@Test
 	public void testCrearSitioPublicarRecurso() {
-		RespuestaVO resp = clientWsInfomovil.crearSitioPublicar("paquito@mail.com", "garbage1", "Luis", "Vieyra", "paquito", "recurso", 1);
+		RespuestaVO resp = clientWsInfomovil.crearSitioPublicar(correoPrueba, "garbage1", "Luis", "Vieyra", nombrePrueba, "recurso", 1);
 		assertNotNull(resp);
 	}
 	
 	@Test
 	public void testCrearSitioPublicarTel() {
-		RespuestaVO resp = clientWsInfomovil.crearSitioPublicar("paquito@mail.com", "garbage1", "Luis", "Vieyra", "paquito", "tel", 1);
+		RespuestaVO resp = clientWsInfomovil.crearSitioPublicar(correoPrueba, "garbage1", "Luis", "Vieyra", nombrePrueba, "tel", 1);
 		assertNotNull(resp);
 	}
 
 	@Test
 	public void testCrearSitioExisteDominioExiste() {
 		RespuestaVO resp = clientWsInfomovil.crearSitioExisteDominio("luis", "recurso");
+		System.out.println(resp.resultado);
 		assertNotNull(resp);
 	}
 	
 	@Test
 	public void testCrearSitioExisteDominioNoExiste() {
 		RespuestaVO resp = clientWsInfomovil.crearSitioExisteDominio("dfdsf", "recurso");
+		System.out.println(resp.resultado);
 		assertNotNull(resp);
 	}
 
