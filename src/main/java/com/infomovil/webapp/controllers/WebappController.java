@@ -27,16 +27,31 @@ public class WebappController
 	
 	@RequestMapping(value = "/infomovil/guardarInformacion", method = RequestMethod.GET, produces = "application/json")
 	@ResponseBody
-	public Map<String, Object> guardarInformacion(@RequestParam String email, @RequestParam String password, @RequestParam String nombreUsuario, @RequestParam String nombreEmpresa, 
-			@RequestParam String descripcionCorta, @RequestParam String correoElectronico, @RequestParam String telefono, @RequestParam String template, Model model)
+	public Map<String, String> guardarInformacion(@RequestParam String nombreEmpresa, 
+			@RequestParam String descripcionCorta, @RequestParam String correoElectronico, 
+			@RequestParam String telefono)
 	{		
+		Map<String, String> resultMap = new HashMap<String, String>();
+		
 		try
 		{
-			wsRespuesta = wsCliente.crearSitioGuardar(email, password, nombreUsuario, nombreEmpresa, descripcionCorta, correoElectronico, telefono, template);
+			correo = Util.getUserLogged().getPrincipal().toString();
+			password = Util.getUserLogged().getCredentials().toString();
+			
+			String nombreUsuario = Util.getCurrentSession().getAttribute("nombreUsuario")!=null?
+					Util.getCurrentSession().getAttribute("nombreUsuario").toString():" ";
+			
+			wsRespuesta = wsCliente.crearSitioGuardar(correo, password, 
+					nombreUsuario, nombreEmpresa, descripcionCorta, 
+					correoElectronico, telefono, "Coverpage1azul");
+			
+			
+			resultMap.put("codeError", wsRespuesta.getCodeError());
 		}		
 		catch (Exception e) 
 		{
 			logger.error("guardarInformacion:::::", e);	
+			resultMap.put("codeError", "-100");
 		}	
 		
 		return resultMap;
@@ -127,6 +142,10 @@ public class WebappController
 			
 			if (wsRespuesta.getCodeError().equals("0"))
 			{
+				
+				Util.getCurrentSession().setAttribute("nombreUsuario", 
+				wsRespuesta.getDominioCreaSitio().getNombreUsuario());
+				
 				model.put("nombreUsuario", wsRespuesta.getDominioCreaSitio().getNombreUsuario().trim());
 				model.put("nombreEmpresa", wsRespuesta.getDominioCreaSitio().getNombreEmpresa().trim());
 				model.put("descripcionCorta", wsRespuesta.getDominioCreaSitio().getDescripcionCorta().trim());

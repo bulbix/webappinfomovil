@@ -13,6 +13,7 @@
 		<org.aspectj-version>1.6.10</org.aspectj-version>
 		<org.slf4j-version>1.6.6</org.slf4j-version>
 		<security.version>3.1.4.RELEASE</security.version>
+		<jackson.version>1.9.10</jackson.version>
 	</properties>
 	<dependencies>
 	
@@ -58,6 +59,12 @@
 			<groupId>org.springframework.security</groupId>
 			<artifactId>spring-security-config</artifactId>
 			<version>${security.version}</version>
+		</dependency>
+		
+		<dependency>
+			<groupId>org.codehaus.jackson</groupId>
+			<artifactId>jackson-mapper-asl</artifactId>
+			<version>${jackson.version}</version>
 		</dependency>
 		
 		
@@ -184,5 +191,43 @@
                 </configuration>
             </plugin>
         </plugins>
+        
+        <resources>
+			<resource>
+				<directory>src/main/resources</directory>
+				<filtering>true</filtering>
+			</resource>
+		</resources>
+        
     </build>
+    
+    
+    <profiles>
+		<profile>
+			<id>dev</id>
+			<activation>
+				<activeByDefault>true</activeByDefault>
+			</activation>
+			<properties>
+				<config.profile>DEV</config.profile>
+			</properties>
+
+		</profile>
+		<profile>
+			<id>qa</id>
+			
+			<properties>
+				<config.profile>QA</config.profile>
+			</properties>
+		</profile>
+		<profile> 
+			<id>prod</id> 
+			<properties>
+				<config.profile>PROD</config.profile>
+			</properties>
+		</profile>
+	</profiles>
+    
+    
+    
 </project>

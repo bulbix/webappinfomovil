@@ -1,20 +1,37 @@
 package com.infomovil.webapp.util;
 
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Properties;
 
 import javax.servlet.http.HttpSession;
-
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 
 public class Util {
+	
+	public static String getProfile() {
+		
+		String result = null;		
+		Properties prop = new Properties();
+		InputStream input = null;
+		input= Util.class.getClassLoader().getResourceAsStream("config.properties");
+		try {
+			prop.load(input);
+			result = prop.getProperty("profile");
+			
+		} catch (IOException e) {
+		}
+		
+		return result;
+	}
 	
 	/***
 	 * 
@@ -59,5 +76,10 @@ public class Util {
 		HttpSession session = attr.getRequest().getSession();
 		return session;
 	}	
+	
+	public static void main(String[] args) {
+		System.out.println("Perfil " + getProfile());
+	}
+	
 
 }

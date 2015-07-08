@@ -61,9 +61,18 @@
   ga('create', 'UA-53077061-1', 'auto');
  ga('send', 'pageview'); 
     </script>
+    
+    <script type="text/javascript">
+		var contextPath='<%=request.getContextPath()%>';
+		console.log("ContextPath: " + contextPath);
+	</script>
+    
+    <script src="<c:url value="/resources/js/webapp/validaciones.js"/>"></script>
+    
+    
     </head>
 
-    <body role="document" data-spy="scroll" data-target=".navbar" data-offset="75" id="page-top">
+    <body role="document" data-spy="scroll" data-target=".navbar" data-offset="75" id="page-top" onload="autosave()">
 
 <!-- Fixed navbar -->
 <nav class="navbar navbar-inverse navbar-static-top">
@@ -98,7 +107,7 @@
               <div class="control-group">
             <label class="control-label"></label>
             <div class="controls">
-                  <input type="text" class="form-control h1 text-center" placeholder="Pon tu nombre o negocio" required="required" <c:if test="${not empty nombreEmpresa}"> value = " ${ nombreEmpresa } " </c:if>/>
+                  <input type="text" class="form-control h1 text-center" placeholder="Pon tu nombre o negocio" required="required" <c:if test="${not empty nombreEmpresa}"> value = " ${ nombreEmpresa } " </c:if> id="txtNombreNegocio"/>
                   <p class="help-block"></p>
                 </div>
           </div>
@@ -111,7 +120,7 @@
            
             <div class="controls">
             
-                  <textarea id="description" class="form-control h2 text-center" placeholder="Agrega una descripción corta de tus servicios o productos" required="required" <c:if test="${not empty descripcionCorta}"> value = " ${ descripcionCorta } " </c:if>></textarea>
+                  <textarea class="form-control h2 text-center" placeholder="Agrega una descripción corta de tus servicios o productos" required="required" <c:if test="${not empty descripcionCorta}"> value = " ${ descripcionCorta } " </c:if> id="txtDescripcionCorta"></textarea>
                   <p class="help-block"></p>
                 </div>
           </div>
@@ -126,7 +135,7 @@
             <div class="text-left col-xs-3 col-sm-3 col-md-2 col-lg-2"> <a href="{referencia}" target="{target}" onclick="{evento}"><img src="<c:url value="/resources/webapp/images/mail_icn.png"/>" class="img mxw50miw43w100" alt="Contacto"/></a> </div>
             <div class="text-left col-xs-9 col-sm-9 col-md-10 col-lg-10 mar0auto"> <span class="dblw100 mxh70"> <!--input-->
               
-              <input type="text" class="form-control" placeholder="Correo" required="required" <c:if test="${not empty correoElectronico}"> value = "${ correoElectronico }" </c:if>/>
+              <input type="text" class="form-control" placeholder="Correo" required="required" <c:if test="${not empty correoElectronico}"> value = "${ correoElectronico }" </c:if> id="txtCorreo"/>
               <p class="help-block"></p>
               
               <!--/input--> 
@@ -138,7 +147,7 @@
               
               <!--input-->
               
-              <input type="text" class="form-control" placeholder="Teléfono o celular" required="required" <c:if test="${not empty telefonoUsuario}"> value = "${ telefonoUsuario }" </c:if>/>
+              <input type="text" class="form-control" placeholder="Teléfono o celular" required="required" <c:if test="${not empty telefonoUsuario}"> value = "${ telefonoUsuario }" </c:if> id="txtTelefono"/>
               <p class="help-block"></p>
               
               <!--/input--> 

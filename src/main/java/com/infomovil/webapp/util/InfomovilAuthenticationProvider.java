@@ -43,6 +43,7 @@ public class InfomovilAuthenticationProvider implements AuthenticationProvider {
 		}
 		else{
 			throw new BadCredentialsException("Credenciales Incorrectas");
+			//throw new BadCredentialsException(messageSource.getMessage("error.loginFailed",null,null));
 		}	
 		
 	}

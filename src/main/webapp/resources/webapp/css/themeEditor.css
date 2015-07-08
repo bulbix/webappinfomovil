@@ -143,7 +143,7 @@ textarea { padding: 10px; width: 300px; }
 
 #description::-webkit-input-placeholder::before {
     color:#fff;
-    content:"Bienvenido a mi sitio \A Pon una descripci\F3n aqu\ED ";
+    /*content:"Bienvenido a mi sitio \A Pon una descripci\F3n aqu\ED ";*/
 }
 #description::-webkit-input-placeholder{
     color:#fff;
