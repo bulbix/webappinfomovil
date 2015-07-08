@@ -1,0 +1,107 @@
+@import url(http://fonts.googleapis.com/css?family=Raleway:600);/* Sticky footer styles
+-------------------------------------------------- */
+html {
+	position: relative;
+	min-height: 100%;
+}
+body {
+	/* Margin bottom by footer height */
+	margin: 0 0 240px 0;
+	/*margin-bottom: 240px;*/
+	background: url(../images/backnames/3.jpg) repeat;
+	background-size: cover;
+	color: #fff;
+	font-family: 'Raleway', "Helvetica Neue", Helvetica, Arial, sans-serif;
+	letter-spacing: 1px;
+	text-shadow: 1px 1px 5px #999999;
+}
+.footer {
+	position: absolute;
+	bottom: 0;
+	width: 100%;
+	/* Set the fixed height of the footer here */
+	height: 240px;
+	background: url(../images/lineDark.png) repeat;
+}
+.bgDark {
+	background: #000
+}
+a {
+	color: #fff!important
+}
+p {
+	color: #fff
+}
+/* Custom page CSS
+-------------------------------------------------- */
+/* Not required for template or sticky footer method. */
+
+.container {
+	width: auto;
+	max-width: 680px;
+	padding: 0 15px;
+}
+.container .text-muted {
+	margin: 20px 0;
+}
+.text-muted {
+	padding: 10px 0;
+}
+.page-header {
+	margin: 20% 0px 20px !important
+}
+.img:hover {
+	margin-top: -4px;
+	-webkit-transition: all .3s ease;
+	transition: all .3s ease
+}
+.reset {
+	margin: 0;
+	padding: 0;
+}
+
+/* ----------- iPhone 4 and 4S ----------- */
+
+/* Portrait and Landscape */
+@media only screen and (min-device-width: 320px) and (max-device-width: 480px) and (-webkit-min-device-pixel-ratio: 2) {
+.page-header {
+	margin: 15px 0px 20px !important
+}
+}
+
+/* ----------- iPhone 5 and 5S ----------- */
+
+/* Portrait and Landscape */
+@media only screen and (min-device-width: 320px) and (max-device-width: 568px) and (-webkit-min-device-pixel-ratio: 2) {
+.page-header {
+	margin: 15px 0px 20px !important
+}
+}
+
+/* ----------- iPhone 6 ----------- */
+
+/* Portrait and Landscape */
+@media only screen and (min-device-width: 375px) and (max-device-width: 667px) and (-webkit-min-device-pixel-ratio: 2) {
+.page-header {
+	margin: 15px 0px 20px !important
+}
+}
+
+/* ----------- iPhone 6+ ----------- */
+
+/* Portrait and Landscape */
+@media only screen and (min-device-width: 414px) and (max-device-width: 736px) and (-webkit-min-device-pixel-ratio: 3) {
+.page-header {
+	margin: 15px 0px 20px !important
+}
+}
+.1em{font-size:1em;}
+.09em{font-size:.9em;}
+.mar15{margin:15px 0}
+.mxw50miw43w100{max-width:50px; min-width:43px; width:100%; }
+.mar0auto{margin:0 auto;}
+.dblw100{display:block; width:100%; overflow:hidden!important; margin:0 0px; padding:0;}
+.p20{padding:20px 0;}
+.ndis{display:none;}
+.w100h30{width:100%; height:30px; display:block}
+.mxh70{ max-height:43px;min-height:23px; height:auto; display:block; }

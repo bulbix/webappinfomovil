@@ -15,6 +15,13 @@
 		<security.version>3.1.4.RELEASE</security.version>
 	</properties>
 	<dependencies>
+	
+	<dependency>
+		<groupId>org.apache.commons</groupId>
+		<artifactId>commons-lang3</artifactId>
+		<version>3.0</version>
+	</dependency> 
+		
 		<!-- Spring -->
 		<dependency>
 			<groupId>org.springframework</groupId>

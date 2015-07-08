@@ -6,6 +6,7 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.apache.commons.lang3.StringUtils;
 import org.apache.log4j.Logger;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -18,12 +19,13 @@ import org.springframework.web.servlet.ModelAndView;
 import com.infomovil.webapp.clientWsInfomovil.Catalogo;
 import com.infomovil.webapp.clientWsInfomovil.ClientWsInfomovil;
 import com.infomovil.webapp.clientWsInfomovil.RespuestaVO;
+import com.infomovil.webapp.util.Util;
 
 @Controller
 public class WebappController 
 {
 	
-	@RequestMapping(value = "/guardarInformacion", method = RequestMethod.GET, produces = "application/json")
+	@RequestMapping(value = "/infomovil/guardarInformacion", method = RequestMethod.GET, produces = "application/json")
 	@ResponseBody
 	public Map<String, Object> guardarInformacion(@RequestParam String email, @RequestParam String password, @RequestParam String nombreUsuario, @RequestParam String nombreEmpresa, 
 			@RequestParam String descripcionCorta, @RequestParam String correoElectronico, @RequestParam String telefono, @RequestParam String template, Model model)
@@ -40,7 +42,7 @@ public class WebappController
 		return resultMap;
 	}
 
-	@RequestMapping(value = "/publicarSitio", method = RequestMethod.GET, produces = "application/json")
+	@RequestMapping(value = "/infomovil/publicarSitio", method = RequestMethod.GET, produces = "application/json")
 	@ResponseBody
 	public Map<String, Object> publicarSitio(@RequestParam String email, @RequestParam String password, @RequestParam String nombrePersona, @RequestParam String direccionPersona, 
 			@RequestParam String nombreDominio, @RequestParam String tipoDominio, @RequestParam int idCatTipoRecurso, @RequestParam String tipo, Model model)
@@ -58,24 +60,42 @@ public class WebappController
 	}
 
 	@RequestMapping(value = "/registrarUsuario", method = RequestMethod.GET)
-	public ModelAndView registrarUsuario(String nombre, String codigo, String email, HttpServletRequest request) 
+	public ModelAndView registrarUsuario(String nombre, String codigo, String correo, HttpServletRequest request) 
 	{
 		HashMap<String, Object> model = new HashMap<String, Object>();
+		ModelAndView modeloVista = null;
+		//Util.getCurrentSession().invalidate();
 		
-		if (nombre == null || email == null)
-		{
-			// validar url con vista 
-			return validaURL("");
-		}
+		vista = "Webapp/registrar";
+		
+		if (nombre == null || correo == null)
+			return validaURL("Webapp/validaUrl");
 		else
 		{
-			wsRespuesta = wsCliente.crearSitioRegistrar(email, passwordDefault, nombre, codigo);
-
+			wsRespuesta = wsCliente.crearSitioRegistrar(correo, passwordDefault, nombre, codigo);
+			codigoError = wsRespuesta.getCodeError();
+			descripcionError = wsRespuesta.getMsgError();
+			
 			model.put("nombre", nombre);
 			model.put("codigo", codigo);
-			model.put("email", email);
-
-			return new ModelAndView("Webapp/registrar", model);
+			model.put("correo", correo);
+			model.put("codigoError", codigoError);
+			model.put("descripcionError", descripcionError);
+			
+			if (codigoError.equals("0"))
+			{
+				Util.loginUsuario(correo, passwordDefault);
+				modeloVista = editarSitio();
+			}
+			else if (codigoError.equals("-1"))
+				vista = "Webapp/registrar";
+			else if (codigoError.equals("-3"))
+				vista = "Webapp/login";
+			
+			if (modeloVista != null)
+				return modeloVista;
+			
+			return new ModelAndView(vista, model);
 		}
 	}
 
@@ -92,71 +112,73 @@ public class WebappController
 
 		return new ModelAndView(vista, model);
 	}
-	
-	@RequestMapping(value = "/ingresar", method = RequestMethod.GET)
-	public ModelAndView ingresar() 
-	{
-		HashMap<String, Object> model = new HashMap<String, Object>();
-		model.put("name", "");
-		
-		return new ModelAndView("Webapp/ingresar", model);
-	}
 
-	@RequestMapping(value = "/password", method = RequestMethod.GET)
-	public ModelAndView password() 
-	{
-		HashMap<String, Object> model = new HashMap<String, Object>();
-		model.put("name", "");
-		
-		return new ModelAndView("Webapp/restablecerPass", model);
-	}
-	
-	@RequestMapping(value = "/registrarUsuario", method = RequestMethod.GET, produces = "application/json")
-	@ResponseBody
-	public Map<String, Object> registrarUsuario(@RequestParam String email, @RequestParam String password, @RequestParam String codigo, @RequestParam String nombreUsuario, Model model)
+	@RequestMapping(value = "/infomovil/editarSitio", method = RequestMethod.GET)
+	public ModelAndView editarSitio()
 	{		
+		HashMap<String, Object> model = new HashMap<String, Object>();
+		
 		try
 		{
-			wsRespuesta = wsCliente.crearSitioRegistrar(email, password, nombreUsuario, codigo);
-		}		
-		catch (Exception e) 
-		{
-			logger.error("registrarUsuario:::::", e);
-		}	
-		
-		return resultMap;
-	}
-
-	@RequestMapping(value = "/cargarInformacion", method = RequestMethod.GET, produces = "application/json")
-	@ResponseBody
-	public Map<String, Object> cargarInformacion(@RequestParam String email, @RequestParam String password, Model model)
-	{		
-		try
-		{
-			wsRespuesta = wsCliente.crearSitioCargar(email, password);
+			password = Util.getUserLogged().getCredentials().toString();
+			correo = Util.getUserLogged().getPrincipal().toString();
+			
+			wsRespuesta = wsCliente.crearSitioCargar(correo, password);
+			
+			if (wsRespuesta.getCodeError().equals("0"))
+			{
+				model.put("nombreUsuario", wsRespuesta.getDominioCreaSitio().getNombreUsuario().trim());
+				model.put("nombreEmpresa", wsRespuesta.getDominioCreaSitio().getNombreEmpresa().trim());
+				model.put("descripcionCorta", wsRespuesta.getDominioCreaSitio().getDescripcionCorta().trim());
+				model.put("correoElectronico", wsRespuesta.getDominioCreaSitio().getCorreoElectronico().trim());
+				model.put("telefonoUsuario", wsRespuesta.getDominioCreaSitio().getTelefono().trim());			
+				model.put("template", wsRespuesta.getDominioCreaSitio().getTemplate());
+				model.put("vistaPrevia", wsRespuesta.getDominioCreaSitio().getUrlVistaPrevia());
+				model.put("canalUsuario", wsRespuesta.getDominioCreaSitio().getCanal());
+				model.put("dominios", obtenerDominios());
+				
+				if (!StringUtils.isEmpty(wsRespuesta.getDominioCreaSitio().getSitioWeb()))
+					sitioWeb = wsRespuesta.getDominioCreaSitio().getSitioWeb();
+				
+				if (sitioWeb.indexOf("tel") != -1)
+				{
+					fechaIni = wsRespuesta.getFTelNamesIni();
+					fechaFin = wsRespuesta.getFTelNamesFin();
+				}
+					
+				model.put("sitioWeb", sitioWeb); 
+				model.put("fechaIniTel", fechaIni);
+				model.put("fechaFinTel", fechaFin);
+			}
+			
+			return new ModelAndView("Webapp/editorSitio", model);
 		}		
 		catch (Exception e) 
 		{
 			logger.error("cargarInformacion:::::", e);
+			return null;
 		}	
-		
-		return resultMap;
 	}
 	
-	@RequestMapping(value = "/obtenerDominios", method = RequestMethod.GET, produces = "application/json")
+	@RequestMapping(value = "/infomovil/obtenerDominios", method = RequestMethod.GET, produces = "application/json")
 	@ResponseBody
-	public Map<String, Object> obtenerDominios()
+	public HashMap<String, Object> obtenerDominios()
 	{		
 		try
 		{
 			wsCatalogo = wsCliente.catalogoDominios();
+			
+			for (Catalogo catalogo : wsCatalogo)
+			{
+				dominios.put(String.valueOf(catalogo.getId()), catalogo.getDescripcion()) ;
+			}
 		}		
 		catch (Exception e) 
 		{
 			logger.error("obtenerDominios:::::", e);
 		}	
 		
-		return resultMap;
+		return dominios;
 	}
 	
 	@RequestMapping(value = "/existeDominio", method = RequestMethod.GET, produces = "application/json")
@@ -176,7 +198,17 @@ public class WebappController
 	}
 	
 	private String passwordDefault = "banco1";
-	private Map<String, Object> resultMap = new HashMap<String, Object>();
+	private String codigoError;
+	private String descripcionError;
+	private String vista;
+	private String fechaIni = "SIN_FECHA";
+	private String fechaFin = "SIN_FECHA";
+	private String sitioWeb = "SIN_PUBLICAR";
+	private String password;
+	private String correo;
+	private Map<String, Object> resultMap;
+	private Map<String, Object> cargarInfo;
+	private HashMap<String, Object> dominios = new HashMap<String, Object>();
 	private static final Logger logger = Logger.getLogger(WebappController.class);
 	private ClientWsInfomovil wsCliente = new ClientWsInfomovil();
 	private RespuestaVO wsRespuesta = new RespuestaVO();

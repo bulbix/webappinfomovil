@@ -33,6 +33,7 @@
     <link rel="apple-touch-icon" sizes="152x152" href="resources/webapp/images/apple-touch-icon-152x152.png" />
     <link rel="shortcut icon" href="resources/webapp/images/favicon.ico" type="image/x-icon" />
     <link rel="image_src" href="resources/webapp/images/apple-touch-icon-57x57.png"/>
+    <link rel="stylesheet" href="fonts/font-awesome.min.css">
     <title itemprop="name">Infomovil</title>
     <link rel="canonical" href="http://www.infomovil.com" itemprop="url" />
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
@@ -111,7 +112,7 @@
               <div class="control-group">
             <label class="control-label"></label>
             <div class="controls">
-                  <input type="email" class="form-control" placeholder="Email" required="required" value = " ${ email } "/>
+                  <input type="email" class="form-control" placeholder="Email" required="required" value = " ${ correo } "/>
                   <p class="help-block"></p>
                 </div>
           </div>
@@ -153,6 +154,7 @@
             </div>
         <!--codigo--> 
         
+         <p class="help-block">${ descripcionError }</p>
         
         <div class="form-group col-xs-12 col-sm-12 col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3">
         <div class="divider"></div>

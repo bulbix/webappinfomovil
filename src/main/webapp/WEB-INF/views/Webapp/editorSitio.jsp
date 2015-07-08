@@ -1,7 +1,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
-<!doctype html>
+    <!doctype html>
 <html lang="es">
     <head itemscope="" itemtype="http://schema.org/WebSite">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
@@ -33,7 +33,6 @@
     <link rel="apple-touch-icon" sizes="152x152" href="resources/webapp/images/apple-touch-icon-152x152.png" />
     <link rel="shortcut icon" href="resources/webapp/images/favicon.ico" type="image/x-icon" />
     <link rel="image_src" href="resources/webapp/images/apple-touch-icon-57x57.png"/>
-    <link rel="stylesheet" href="fonts/font-awesome.min.css">
     <title itemprop="name">Infomovil</title>
     <link rel="canonical" href="http://www.infomovil.com" itemprop="url" />
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
@@ -46,11 +45,12 @@
     <!-- Bootstrap theme -->
     <link href="resources/webapp/css/bootstrap-theme.min.css" rel="stylesheet" />
     <!-- Custom styles for this template -->
-    <link href="resources/webapp/css/theme.css" rel="stylesheet" />
+    <link href="resources/webapp/css/themeEditor.css" rel="stylesheet" />
     <!-- Custom styles for this template -->
-    <link href="resources/webapp/css/sticky-footer-navbar.css" rel="stylesheet" />
+    <link href="resources/webapp/css/sticky-editor.css" rel="stylesheet" />
     <!-- bxSlider CSS file -->
     <link href="resources/webapp/css/jquery.bxslider.css" rel="stylesheet" />
+    <link rel="stylesheet" href="fonts/font-awesome.min.css">
     <script>
   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
   (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
@@ -68,12 +68,12 @@
       <div class="container">
     <div class="navbar-header">
           <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar"> <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
-          <a class="navbar-brand" href="http://infomovil.com"><span><img src="resources/webapp/images/apple-touch-icon-57x57.png" width="50" height="50" alt="Infomovil" /> </span><span class="marLeft">Infomovil</span></a> </div>
+          <a class="navbar-brand" href="http://infomovil.com"><span><img src="resources/webapp/images/apple-touch-icon-57x57.png" width="50" height="50" alt="Infomovil" /> </span><span class="marLeft">Editor de sitios <span class="hidden-xs">Infomovil</span></span></a> </div>
     <div id="navbar" class="navbar-collapse collapse text-right">
           <ul class="nav navbar-nav navbar-right">
-        <li><a href="http://infomovil.com" class="smoothScroll">Inicio</a></li>
-        <li class="active"><a href="#" class="smoothScroll">Iniciar sesión</a></li>
-        <li><a href="#" class="smoothScroll">Regístrate</a></li>
+        <li class="active"><a href="#" class="smoothScroll">Editar <i class="fa fa-pencil"></i> </a></li>
+        <li><a href="#" class="smoothScroll"> Visualizar <i class="fa fa-eye"></i></a></li>
+        <li><a href="#" class="smoothScroll"> Cerrar sesión <i class="fa fa-sign-in"></i></a></li>
       </ul>
         </div>
     <!--/.nav-collapse --> 
@@ -88,51 +88,72 @@
       <div class="container text-center">
     <div class="divider hidden-xs hidden-sm"></div>
     <h1 class="textBlack hidden">Edita tu sitio web</h1>
-    <h3 class="textBlack">Edita tu sitio web</h3>
     <div class="container">
-    
-    <c:if test="${not empty error}">
-			<div class="errorblock">
-				${sessionScope["SPRING_SECURITY_LAST_EXCEPTION"].message}</div>
-	</c:if>
-			
-      <form name='f' action="<c:url value='j_spring_security_check' />"
-		method='POST'>
+          <form>
         
         <!--email-->
         <div class="form-group col-xs-12 col-sm-12 col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3">
               <div class="control-group">
             <label class="control-label"></label>
             <div class="controls">
-                  <input type="email" class="form-control" placeholder="Email" required="required" name="j_username"/>
+                  <input type="text" class="form-control h1 text-center" placeholder="Pon tu nombre o negocio" required="required" <c:if test="${not empty nombreEmpresa}"> value = " ${ nombreEmpresa } " </c:if>/>
                   <p class="help-block"></p>
                 </div>
           </div>
             </div>
         <!--email--> 
         
-        <!--password-->
-        <div class="form-group col-xs-12 col-sm-12 col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3">
-              <div class="control-group">
-            <label class="control-label"></label>
+        <!--descripcion-->
+        <div class=" col-xs-12 col-sm-12 col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3">
+              <div class="">
+           
             <div class="controls">
-                  <input type="password" class="form-control" placeholder="Contraseña" required="required" name='j_password'/>
+            
+                  <text id="description" class="form-control h2 text-center" placeholder="Agrega una descripción corta de tus servicios o productos" required="required" value=" ${ descripcionCorta }"></text>
                   <p class="help-block"></p>
                 </div>
           </div>
+              <hr/>
             </div>
-        <!--password-->
+        <!--descripcion-->
         
-        <div class="form-group col-xs-12 col-sm-12 col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3"> <span><a href="#" class="linkWhite">Si olvidaste o no tienes contraseña, haz click aquí</a></span> </div>
         <div class="form-group col-xs-12 col-sm-12 col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3">
-              <input type="submit" value="Inicia sesi&oacute;n" class="btn btn-default btn-outlineGreen col-xs-12 text-center textWhite">
+             
+              <div class="mar15 col-xs-12 col-sm-12 col-md-6 col-lg-6" >
+            <div class="text-left col-xs-3 col-sm-3 col-md-2 col-lg-2"> <a href="{referencia}" target="{target}" onclick="{evento}"><img src="resources/webapp/images/mail_icn.png" class="img mxw50miw43w100" alt="Contacto" onerror="this.src= 'resources/webapp/images/trans.png';"/></a> </div>
+            <div class="text-left col-xs-9 col-sm-9 col-md-10 col-lg-10 mar0auto"> <span class="dblw100 mxh70"> <!--input-->
+              
+              <input type="text" class="form-control" placeholder="Correo" required="required" <c:if test="${not empty correoElectronico}"> value = " ${ correoElectronico } " </c:if>/>
+              <p class="help-block"></p>
+              
+              <!--/input--> 
+              </span><span class="dblw100"> <a href="{referencia}" target="{target}" onclick="{evento}"> <xsl:value-of select="contacto" /> </a> </span> </div>
+          </div>
+           <div class="mar15 col-xs-12 col-sm-12 col-md-6 col-lg-6" >
+            <div class="text-left col-xs-3 col-sm-3 col-md-2 col-lg-2"> <a href="{referencia}" target="{target}" onclick="{evento}"><img src="resources/webapp/images/tel_icn.png" class="img mxw50miw43w100" alt="Contacto" onerror="this.src='resources/webapp/images/trans.png';"/></a> </div>
+            <div class="text-left col-xs-9 col-sm-9 col-md-10 col-lg-10 mar0auto"> <span class="dblw100 mxh70"> 
+              
+              <!--input-->
+              
+              <input type="text" class="form-control" placeholder="Teléfono o celular" required="required" value = "${ telefonoUsuario }"/>
+              <p class="help-block"></p>
+              
+              <!--/input--> 
+              
+              </span><span class="dblw100"> <a href="{referencia}" target="{target}" onclick="{evento}"> <xsl:value-of select="contacto" /> </a> </span> </div>
+          </div>
             </div>
-        <div class="form-group col-xs-12 col-sm-12 col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3"> <span class="textWhite">¿Aún no tienes cuenta? </span><span><a href="#" class=""> Regístrate</a></span> </div>
+        <div class="clear"></div>
         <div class="divider"></div>
-        <div class="text-center"><img src="resources/webapp/images/line.png" width="740" alt=""/></div>
-        <div class="col-xs-12 col-sm-12"> <span class="textWhite text-center text-small">Si continúas, aceptas las</span><span> <a href="#" title="Condiciones del servicio" data-toggle="modal" data-target="#myModalTerminos">condiciones del servicio </a></span><span class="textWhite">y las </span><span><a href="#" data-toggle="modal" data-target="#myModalAviso">pol&iacute;ticas de privacidad</a></span><span class="textWhite"> de Infomovil.</span>
-              </p>
+       
+        <div class="col-xs-12 col-sm-12 col-md-6 col-md-offset-3 ">
+              <p class="reset text-center textSmall textWhite"> Diseño por <img src="resources/webapp/images/apple-touch-icon-57x57.png" alt="Infomovil"  style=";width: 20px;height: 20px"> Infomovil</p>
             </div>
+            
+            
+            
+            
+            
       </form>
         </div>
   </div>
@@ -141,31 +162,46 @@
 
 <!--Footer-->
 
-<footer class="footer">
+<footer class="footer ">
+<div class="bgDoble"></div>
       <section class="bgBlack">
     <div class="container">
-          <div class="row" >
-        <div class="col-xs-12 col-sm-12 col-md-6 col-md-offset-3 ">
-              <p class="helpMx txtWhite reset text-center"><em>Ayudando a construir una economía digital.</em></p>
+          <div class="row" > 
+          
+          
+       <div class="divider"></div>
+       
+        <h3 class="textWhite text-center">Selecciona un nombre para tu sitio</h3>
+      
+        <div class="form-group col-xs-12 col-sm-12 col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3">
+              <div class="col-xs-12 col-sm-6">
+            <select class="form-control" style="height:36px !important; display:block; padding:6px 12px;">
+                  <option>www.infomovil.com</option>
+                  <option>www.mobileinfo.io</option>
+                </select>
+                 <div class="divider hidden-sm hidden-md hidden-lg"></div>
+          </div>
+         
+          
+              <div class="col-xs-12 col-sm-6">
+            <input type="text" placeholder="Nombra tu sitio" value="" class="form-control">
+          </div>
+              <div class="form-group col-xs-12 col-sm-12 col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3">
+              <div class="divider"></div>
+               <div class="divider"></div>
+               <div class="divider"></div>
+            <input type="submit" value="Buscar nombre" class="btn btn-default btn-outline col-xs-12 text-center textWhite">
+            
+            <div class="clear"></div>
+            <div class="divider"></div>
+            <div class="divider"></div>
+          </div>
             </div>
-        <div class="col-xs-12 col-sm-12 col-md-4 col-md-offset-4"> <img src="resources/webapp/images/logo_infomovil.png" alt="Infomovil" onerror="this.src='  resources/webapp/images/trans.png';" class="img-responsive imgLog" />
-              <meta itemprop="name" content="Infomovil" />
-            </div>
-        <div  class="col-xs-12 resetAll">
-              <p class="text-center text-small reset">Descarga la app de Infomovil y crea una p&aacute;gina as&iacute; en 5 minutos. Es gratis.</p>
-            </div>
-        <div class="col-xs-12 col-sm-12 col-md-4 col-md-offset-4">
-              <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 mar10TB"> <a href="https://itunes.apple.com/mx/app/infomovil/id898313250?mt=8" target="blank"> <img src="resources/webapp/images/icn_appstore.png" class="img-responsive imgDes"  alt="app store" onerror="this.src='resources/webapp/images/trans.png';"/> </a> </div>
-              <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 mar10TB"> <a href="https://play.google.com/store/apps/details?id=com.infomovil.infomovil" target="blank"> <img src="resources/webapp/images/icn_gstore.png" class="img-responsive imgDes" alt="google store" onerror="this.src='resources/webapp/images/trans.png';"/> </a> </div>
-            </div>
-      </div>
-          <div class="dividerSmall"></div>
-          <div class="col-xs-12 col-sm-12">
-        <p  class="text-center text-small reset">Consulta las <a href="#" title="Condiciones del servicio" data-toggle="modal" data-target="#myModalTerminos">condiciones del servicio </a>y las <a href="#" data-toggle="modal" data-target="#myModalAviso">pol&iacute;ticas de privacidad</a> de Infomovil.</p>
-      </div>
-          <div class="dividerSmall"></div>
+            
+            
+            
+             </div>
         </div>
-    </div>
   </section>
     </footer>
 <!-- Scroll to Top Button (Only visible on small and extra-small screen sizes) -->
@@ -247,7 +283,7 @@ $(document).ready(function(){
 });
 </script> 
 <script>
-
+$('#description').elastic();
 // jQuery for page scrolling feature - requires jQuery Easing plugin
 
 // Highlight the top nav as scrolling occurs

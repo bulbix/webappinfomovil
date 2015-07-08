@@ -11,8 +11,8 @@
            http://www.springframework.org/schema/context/spring-context.xsd">
 
 	<http auto-config="true">
-		<intercept-url pattern="/home/*" access="ROLE_USER" />
-		<form-login login-page="/login" default-target-url="/home/client" 
+		<intercept-url pattern="/infomovil/*" access="ROLE_USER" />
+		<form-login login-page="/login" default-target-url="/infomovil/editarSitio" 
 		    authentication-failure-url="/loginfailed" /> 
 		<logout logout-success-url="/login" /> 
 	</http>
