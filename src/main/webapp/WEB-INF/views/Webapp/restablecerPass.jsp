@@ -89,14 +89,19 @@
     <h1 class="textBlack hidden">Restablecer tu contraseña</h1>
     <h3 class="textBlack">Restablecer tu contraseña</h3>
     <div class="container">
-          <form>
+    
+	<c:if test="${not empty mensaje}">
+			<div class="errorblock">
+				${mensaje}</div>
+	</c:if>
+          <form name='f' action="executeResetPassword" method='POST' >
         
         <!--email-->
         <div class="form-group col-xs-12 col-sm-12 col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3">
               <div class="control-group">
             <label class="control-label">Ingresa tu e-mail y te enviaremos una liga para restablecer tu contraseña</label>
             <div class="controls">
-                  <input type="email" class="form-control" placeholder="Email" required="required"/>
+                  <input type="email" class="form-control" placeholder="Email" required="required" name="email"/>
                   <p class="help-block"></p>
                 </div>
           </div>
