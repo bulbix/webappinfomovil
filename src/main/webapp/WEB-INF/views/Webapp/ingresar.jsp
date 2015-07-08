@@ -1,3 +1,6 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
 <!doctype html>
 <html lang="es">
     <head itemscope="" itemtype="http://schema.org/WebSite">
@@ -16,42 +19,37 @@
     <meta property="og:title" content="Infomovil" />
     <meta property="og:type" content="website"/>
     <meta property="og:description" content="Infomovil. Nunca antes ha sido tan f&aacute;cil crear un sitio web. Con Infomovil crea tu sitio f&aacute;cil, r&aacute;pido y gratuito en 5 minutos." />
-    <meta property="og:image" content="images/apple-touch-icon-57x57.png"/>
+    <meta property="og:image" content="resources/webapp/images/apple-touch-icon-57x57.png"/>
     <meta property="og:url" content="http://www.infomovil.com" />
     <meta itemprop="name" content="Infomovil"/>
     <meta itemprop="description" content="Infomovil. Nunca antes ha sido tan f&aacute;cil crear un sitio web. Con Infomovil crea tu sitio f&aacute;cil, r&aacute;pido y gratuito en 5 minutos. Sitio web creado con www.infomovil.com"/>
-    <link rel="apple-touch-icon" href="images/apple-touch-icon.png" />
-    <link rel="apple-touch-icon" sizes="57x57" href="images/apple-touch-icon-57x57.png" />
-    <link rel="apple-touch-icon" sizes="72x72" href="images/apple-touch-icon-72x72.png" />
-    <link rel="apple-touch-icon" sizes="76x76" href="images/apple-touch-icon-76x76.png" />
-    <link rel="apple-touch-icon" sizes="114x114" href="images/apple-touch-icon-114x114.png" />
-    <link rel="apple-touch-icon" sizes="120x120" href="images/apple-touch-icon-120x120.png" />
-    <link rel="apple-touch-icon" sizes="144x144" href="images/apple-touch-icon-144x144.png" />
-    <link rel="apple-touch-icon" sizes="152x152" href="images/apple-touch-icon-152x152.png" />
-    <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon" />
-    <link rel="image_src" href="images/apple-touch-icon-57x57.png"/>
+    <link rel="apple-touch-icon" href="resources/webapp/images/apple-touch-icon.png" />
+    <link rel="apple-touch-icon" sizes="57x57" href="resources/webapp/images/apple-touch-icon-57x57.png" />
+    <link rel="apple-touch-icon" sizes="72x72" href="resources/webapp/images/apple-touch-icon-72x72.png" />
+    <link rel="apple-touch-icon" sizes="76x76" href="resources/webapp/images/apple-touch-icon-76x76.png" />
+    <link rel="apple-touch-icon" sizes="114x114" href="resources/webapp/images/apple-touch-icon-114x114.png" />
+    <link rel="apple-touch-icon" sizes="120x120" href="resources/webapp/images/apple-touch-icon-120x120.png" />
+    <link rel="apple-touch-icon" sizes="144x144" href="resources/webapp/images/apple-touch-icon-144x144.png" />
+    <link rel="apple-touch-icon" sizes="152x152" href="resources/webapp/images/apple-touch-icon-152x152.png" />
+    <link rel="shortcut icon" href="resources/webapp/images/favicon.ico" type="image/x-icon" />
+    <link rel="image_src" href="resources/webapp/images/apple-touch-icon-57x57.png"/>
     <title itemprop="name">Infomovil</title>
     <link rel="canonical" href="http://www.infomovil.com" itemprop="url" />
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 8]>
-      <script src=" js/html5shiv.min.js"></script>
-      <script src=" js/respond.min.js"></script>
+      <script src=" resources/webapp/js/html5shiv.min.js"></script>
+      <script src=" resources/webapp/js/respond.min.js"></script>
     <![endif]-->
     <!-- Bootstrap core CSS -->
-    <link href="css/bootstrap.min.css" rel="stylesheet" />
+    <link href="resources/webapp/css/bootstrap.min.css" rel="stylesheet" />
     <!-- Bootstrap theme -->
-    <link href="css/bootstrap-theme.min.css" rel="stylesheet" />
+    <link href="resources/webapp/css/bootstrap-theme.min.css" rel="stylesheet" />
     <!-- Custom styles for this template -->
-    <link href="css/theme.css" rel="stylesheet" />
+    <link href="resources/webapp/css/theme.css" rel="stylesheet" />
     <!-- Custom styles for this template -->
-    <link href="css/sticky-footer-navbar.css" rel="stylesheet" />
+    <link href="resources/webapp/css/sticky-footer-navbar.css" rel="stylesheet" />
     <!-- bxSlider CSS file -->
-    <link href="css/jquery.bxslider.css" rel="stylesheet" />
-    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-    <!--[if lt IE 9]>
-      <script src="js/html5shiv.min.js"></script>
-      <script src="js/respond.min.js"></script>
-    <![endif]-->
+    <link href="resources/webapp/css/jquery.bxslider.css" rel="stylesheet" />
     <script>
   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
   (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
@@ -60,69 +58,16 @@
   ga('create', 'UA-53077061-1', 'auto');
  ga('send', 'pageview'); 
     </script>
-    <script>
-var map;
-var ubicacion = new google.maps.LatLng(19.412092, -99.180573);
-var MY_MAPTYPE_ID = 'custom_style';
-function initialize() {
-  var featureOpts = [
-    {
-      stylers: [
-        { hue: '#31a59a' },
-        { visibility: 'simplified' },
-        { gamma: 0.5 },
-        { weight: 0.5 }
-      ]
-    },
-    {
-      elementType: 'labels',
-      stylers: [
-        { visibility: 'on' }
-      ]
-    },
-    {
-      featureType: 'water',
-      stylers: [
-        { color: '#fff' }
-      ]
-    }
-  ];
-  var mapOptions = {
-    zoom: 18,
-    center: ubicacion,
-	scrollwheel: false,
-    mapTypeControlOptions: {
-      mapTypeIds: [google.maps.MapTypeId.ROADMAP, MY_MAPTYPE_ID]
-    },
-    mapTypeId: MY_MAPTYPE_ID
-  };
-  map = new google.maps.Map(document.getElementById('map-canvas'),
-      mapOptions);
-  var image = 'images/icn_marc.png';
-  var myLatLng = new google.maps.LatLng(19.412092, -99.180573);
-  var beachMarker = new google.maps.Marker({
-      position: myLatLng,
-      map: map,
-      icon: image
-  });
-  var styledMapOptions = {
-    name: 'Custom Style'
-  };
-  var customMapType = new google.maps.StyledMapType(featureOpts, styledMapOptions);
-  map.mapTypes.set(MY_MAPTYPE_ID, customMapType);
-}
-google.maps.event.addDomListener(window, 'load', initialize);
-    </script>
     </head>
 
-    <body role="document" data-spy="scroll" data-target=".navbar" data-offset="75" itemscope="" itemtype="http://schema.org/SoftwareApplication" id="page-top">
+    <body role="document" data-spy="scroll" data-target=".navbar" data-offset="75" id="page-top">
 
 <!-- Fixed navbar -->
 <nav class="navbar navbar-inverse navbar-static-top">
       <div class="container">
     <div class="navbar-header">
           <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar"> <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
-          <a class="navbar-brand" href="http://infomovil.com"><span><img itemprop="image" src="images/apple-touch-icon-57x57.png" width="50" height="50" alt="Infomovil" /> </span><span itemprop="name"  class="marLeft">Infomovil</span></a> </div>
+          <a class="navbar-brand" href="http://infomovil.com"><span><img src="resources/webapp/images/apple-touch-icon-57x57.png" width="50" height="50" alt="Infomovil" /> </span><span class="marLeft">Infomovil</span></a> </div>
     <div id="navbar" class="navbar-collapse collapse text-right">
           <ul class="nav navbar-nav navbar-right">
         <li><a href="http://infomovil.com" class="smoothScroll">Inicio</a></li>
@@ -144,24 +89,48 @@ google.maps.event.addDomListener(window, 'load', initialize);
     <h1 class="textBlack hidden">Edita tu sitio web</h1>
     <h3 class="textBlack">Edita tu sitio web</h3>
     <div class="container">
-          <form>
+    
+    <c:if test="${not empty error}">
+			<div class="errorblock">
+				${sessionScope["SPRING_SECURITY_LAST_EXCEPTION"].message}</div>
+	</c:if>
+			
+      <form name='f' action="<c:url value='j_spring_security_check' />"
+		method='POST'>
+        
+        <!--email-->
         <div class="form-group col-xs-12 col-sm-12 col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3">
-              <label for="exampleInputEmail1"></label>
-              <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Email">
+              <div class="control-group">
+            <label class="control-label"></label>
+            <div class="controls">
+                  <input type="email" class="form-control" placeholder="Email" required="required" name="j_username"/>
+                  <p class="help-block"></p>
+                </div>
+          </div>
             </div>
+        <!--email--> 
+        
+        <!--password-->
         <div class="form-group col-xs-12 col-sm-12 col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3">
-              <label for="exampleInputPassword1"> </label>
-              <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Contraseña">
+              <div class="control-group">
+            <label class="control-label"></label>
+            <div class="controls">
+                  <input type="password" class="form-control" placeholder="Contraseña" required="required" name='j_password'/>
+                  <p class="help-block"></p>
+                </div>
+          </div>
             </div>
-        <div class="form-group col-xs-12 col-sm-12 col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3"> <span><a href="#" class="linkWhite">¿Olvidaste tu contraseña?</a></span> </div>
+        <!--password-->
+        
+        <div class="form-group col-xs-12 col-sm-12 col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3"> <span><a href="#" class="linkWhite">Si olvidaste o no tienes contraseña, haz click aquí</a></span> </div>
         <div class="form-group col-xs-12 col-sm-12 col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3">
               <input type="submit" value="Inicia sesi&oacute;n" class="btn btn-default btn-outlineGreen col-xs-12 text-center textWhite">
             </div>
-        <div class="form-group col-xs-12 col-sm-12 col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3"> <span class="textWhite">¿Aún no tienes cuenta? <a href="#" class=""> Regístrate</a></span> </div>
+        <div class="form-group col-xs-12 col-sm-12 col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3"> <span class="textWhite">¿Aún no tienes cuenta? </span><span><a href="#" class=""> Regístrate</a></span> </div>
         <div class="divider"></div>
-        <div class="text-center"><img src="images/line.png" width="740" alt=""/></div>
-        <div class="col-xs-12 col-sm-12">
-              <p  class="textWhite text-center text-small">Si continúas, aceptas las <a href="#" title="Condiciones del servicio" data-toggle="modal" data-target="#myModalTerminos">condiciones del servicio </a>y las <a href="#" data-toggle="modal" data-target="#myModalAviso">pol&iacute;ticas de privacidad</a> de Infomovil.</p>
+        <div class="text-center"><img src="resources/webapp/images/line.png" width="740" alt=""/></div>
+        <div class="col-xs-12 col-sm-12"> <span class="textWhite text-center text-small">Si continúas, aceptas las</span><span> <a href="#" title="Condiciones del servicio" data-toggle="modal" data-target="#myModalTerminos">condiciones del servicio </a></span><span class="textWhite">y las </span><span><a href="#" data-toggle="modal" data-target="#myModalAviso">pol&iacute;ticas de privacidad</a></span><span class="textWhite"> de Infomovil.</span>
+              </p>
             </div>
       </form>
         </div>
@@ -171,42 +140,24 @@ google.maps.event.addDomListener(window, 'load', initialize);
 
 <!--Footer-->
 
-
-
 <footer class="footer">
       <section class="bgBlack">
     <div class="container">
           <div class="row" >
-       
-     <div class="col-xs-12 col-sm-12 col-md-6 col-md-offset-3 "><p class="helpMx txtWhite reset text-center"><em>Ayudando a construir una economía digital.</em></p></div>
-
-        <div class="col-xs-12 col-sm-12 col-md-4 col-md-offset-4"> <img src="images/logo_infomovil.png" alt="Infomovil" onerror="this.src='  images/trans.png';" class="img-responsive" style="min-width:210px; max-width:215px; text-align:center; margin:0 auto;"/> <span itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-          <meta itemprop="name" content="Infomovil" />
-          </span> </div>
-        <div itemprop="review" itemscope="" itemtype="http://schema.org/Review" class="col-xs-12 resetAll">
-              <p itemprop="reviewBody" class="text-center text-small reset">Descarga la app de Infomovil y crea una p&aacute;gina as&iacute; en 5 minutos. Es gratis.</p>
+        <div class="col-xs-12 col-sm-12 col-md-6 col-md-offset-3 ">
+              <p class="helpMx txtWhite reset text-center"><em>Ayudando a construir una economía digital.</em></p>
             </div>
-      
-      
-      
-      <div class="col-xs-12 col-sm-12 col-md-4 col-md-offset-4">
-      <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 mar10TB"> <a href="https://itunes.apple.com/mx/app/infomovil/id898313250?mt=8" target="blank"> <img src="images/icn_appstore.png" class="img-responsive" style="max-width:120px; min-width:100px; text-align:center; margin:0 auto; width:100%" alt="app store" onerror="this.src='{$pathStyle}images/trans.png';"/> </a> </div>
-      
-      
-      <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 mar10TB"> <a href="https://play.google.com/store/apps/details?id=com.infomovil.infomovil" target="blank"> <img src="images/icn_gstore.png" class="img-responsive" style="max-width:120px; min-width:100px; text-align:center; margin:0 auto; width:100%" alt="google store"   onerror="this.src='{$pathStyle}images/trans.png';"/> </a> </div>
+        <div class="col-xs-12 col-sm-12 col-md-4 col-md-offset-4"> <img src="resources/webapp/images/logo_infomovil.png" alt="Infomovil" onerror="this.src='  resources/webapp/images/trans.png';" class="img-responsive imgLog" />
+              <meta itemprop="name" content="Infomovil" />
+            </div>
+        <div  class="col-xs-12 resetAll">
+              <p class="text-center text-small reset">Descarga la app de Infomovil y crea una p&aacute;gina as&iacute; en 5 minutos. Es gratis.</p>
+            </div>
+        <div class="col-xs-12 col-sm-12 col-md-4 col-md-offset-4">
+              <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 mar10TB"> <a href="https://itunes.apple.com/mx/app/infomovil/id898313250?mt=8" target="blank"> <img src="resources/webapp/images/icn_appstore.png" class="img-responsive imgDes"  alt="app store" onerror="this.src='resources/webapp/images/trans.png';"/> </a> </div>
+              <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 mar10TB"> <a href="https://play.google.com/store/apps/details?id=com.infomovil.infomovil" target="blank"> <img src="resources/webapp/images/icn_gstore.png" class="img-responsive imgDes" alt="google store" onerror="this.src='resources/webapp/images/trans.png';"/> </a> </div>
+            </div>
       </div>
-      </div>
-         
-          
-          
-         
-         
-         
-         
-      
-      
-      
-      
           <div class="dividerSmall"></div>
           <div class="col-xs-12 col-sm-12">
         <p  class="text-center text-small reset">Consulta las <a href="#" title="Condiciones del servicio" data-toggle="modal" data-target="#myModalTerminos">condiciones del servicio </a>y las <a href="#" data-toggle="modal" data-target="#myModalAviso">pol&iacute;ticas de privacidad</a> de Infomovil.</p>
@@ -222,18 +173,6 @@ google.maps.event.addDomListener(window, 'load', initialize);
 <!--/Footer--> 
 <!-- /container -->
 
-<div id="myModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-      <div class="modal-dialog">
-    <div class="modal-content">
-          <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-      </div>
-          <div class="modal-body">
-        <iframe class="videoResponsive" src="https://www.youtube.com/embed/XyHTERaAlXg?html5=1" frameborder="0"></iframe>
-      </div>
-        </div>
-  </div>
-    </div>
 <div id="myModalTerminos" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
       <div class="modal-dialog modal-lg">
     <div class="modal-content">
@@ -269,14 +208,18 @@ google.maps.event.addDomListener(window, 'load', initialize);
 <!-- Bootstrap core JavaScript
     ================================================== --> 
 <!-- Placed at the end of the document so the pages load faster --> 
-<script src="js/jquery.min.js"></script> 
-<script src="js/bootstrap.min.js"></script> 
-<script src="js/docs.min.js"></script> 
-<script src="js/smoothscroll.js" type="text/javascript"></script> 
+<script src="resources/webapp/js/jquery.min.js"></script> 
+<script src="resources/webapp/js/bootstrap.min.js"></script> 
+<script src="resources/webapp/js/docs.min.js"></script> 
+<script src="resources/webapp/js/smoothscroll.js" type="text/javascript"></script> 
 <!-- IE10 viewport hack for Surface/desktop Windows 8 bug --> 
-<script src="js/ie10-viewport-bug-workaround.js"></script> 
+<script src="resources/webapp/js/ie10-viewport-bug-workaround.js"></script> 
 <!-- bxSlider Javascript file --> 
-<script src="js/jquery.bxslider.min.js"></script> 
+<script src="resources/webapp/js/jquery.bxslider.min.js"></script> 
+<script src="resources/webapp/js/jqBootstrapValidation.js"></script> 
+<script>
+  $(function () { $("input,select,textarea").not("[type=submit]").jqBootstrapValidation(); } );
+</script> 
 <script>
 $(document).ready(function(){
   $('.slider1').bxSlider({

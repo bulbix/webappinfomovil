@@ -28,7 +28,7 @@ public class WsInfomovilDomainService extends Service {
         URL url = null;//WsInfomovilDomainService.class.getResource("/var/folders/52/xttscp9j4n54ndmzy3sz_4rc0000gn/T/tempdir6239003104282830238.tmp/wsInfomovildomain_1.wsdl");
         if (url == null) {
             try {
-				url = new URL("http://qa.mobileinfo.io/WsInfomovil/wsInfomovildomain?wsdl");
+				url = new URL("http://172.17.4.214:8080/WsInfomovil/wsInfomovildomain?wsdl");
 			} catch (MalformedURLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();

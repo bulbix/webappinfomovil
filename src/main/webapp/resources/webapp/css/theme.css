@@ -10,7 +10,7 @@ p { font-size: 1.3em; line-height: 200%; }
 
 theme-showcaseApp > p > .btn { margin: 5px 0; }
 .theme-showcaseApp .navbar .container { width: auto; }
-.theme-showcaseApp { margin: -10px -5px 0 0;  padding: 2% 0 20% 0; }
+.theme-showcaseApp { /*margin: -10px -5px 0 0;*/  padding: 2% 0 20% 0; }
 
 
 .theme-showcaseError > p > .btn { margin: 5px 0; }
@@ -28,9 +28,9 @@ theme-showcaseApp > p > .btn { margin: 5px 0; }
 .text-small{ font-size:.9em !important; padding:20px 0;}
 .shadowSmooth { text-shadow: 1px 1px 5px rgba(150, 150, 150, 1); }
 .videoResponsive { display: block; width: 100%; height: auto; margin: 0 auto; min-height: 400px; max-height: 600px; }
-section.bgBlack { margin: 0 -5px 0 0; }
+section.bgBlack { /*margin: 0 -5px 0 0; */}
 #map-canvas { height: 400px; margin: 0px; padding: 0px }
-.bgBlack { background: #000; color: #fff; padding: 20px;  }
+.bgBlack { background: #000; color: #fff;  }
 .emptySection { background: #000; color: #fff; padding: 20px; text-shadow: 1px 1px 1px #000; }
 .bgPurpleSolid { background: #7c42bd; color: #fff; padding: 20px; margin: 0 -5px 0 0; }
 .bgPurple { margin: -10px -5px 0 0; background: url(../images/bgPurple.png) no-repeat center center fixed; -webkit-background-size: 100% auto; background-attachment: fixed; -moz-background-size: cover; -o-background-size: cover; background-size: cover; padding: 3% 0 4% 0; color: #fff; }
@@ -87,3 +87,6 @@ p { font-size: 110%; }
 }
 .mar10TB{ margin:10px 0;}
 .reset{ margin:0; padding:0;}
+.help-block{ color:#7c41bc !important; font-weight:700 !important; font-size:15px !important;}
+.imgLog{min-width:210px; max-width:215px; text-align:center; margin:0 auto;}
+.imgDes{max-width:120px; min-width:100px; text-align:center; margin:0 auto; width:100%}
