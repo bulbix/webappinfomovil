@@ -71,7 +71,7 @@
     <div id="navbar" class="navbar-collapse collapse text-right">
           <ul class="nav navbar-nav navbar-right">
         <li><a href="http://infomovil.com" class="smoothScroll">Inicio</a></li>
-        <li><a href="#" class="smoothScroll">Iniciar sesión</a></li>
+        <li><a href="<c:url value="/login"/>" class="smoothScroll">Iniciar sesión</a></li>
         <li><a href="#" class="smoothScroll">Regístrate</a></li>
       </ul>
         </div>
