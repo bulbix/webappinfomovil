@@ -111,7 +111,7 @@
            
             <div class="controls">
             
-                  <text id="description" class="form-control h2 text-center" placeholder="Agrega una descripción corta de tus servicios o productos" required="required" <c:if test="${not empty descripcionCorta}"> value = " ${ descripcionCorta } " </c:if>></text>
+                  <textarea id="description" class="form-control h2 text-center" placeholder="Agrega una descripción corta de tus servicios o productos" required="required" <c:if test="${not empty descripcionCorta}"> value = " ${ descripcionCorta } " </c:if>></textarea>
                   <p class="help-block"></p>
                 </div>
           </div>
