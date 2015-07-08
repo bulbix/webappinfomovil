@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans:beans xmlns="http://www.springframework.org/schema/security"
+ xmlns:context="http://www.springframework.org/schema/context" 
+ xmlns:beans="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+ xsi:schemaLocation="http://www.springframework.org/schema/beans
+           http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+           http://www.springframework.org/schema/security
+           http://www.springframework.org/schema/security/spring-security.xsd 
+           http://www.springframework.org/schema/context 
+           http://www.springframework.org/schema/context/spring-context.xsd">
+
+	<http auto-config="true">
+		<intercept-url pattern="/home/*" access="ROLE_USER" />
+		<form-login login-page="/login" default-target-url="/home/client" 
+		    authentication-failure-url="/loginfailed" /> 
+		<logout logout-success-url="/login" /> 
+	</http>
+
+
+	<authentication-manager>
+		<authentication-provider ref="infomovilAuthenticationProvider" />  
+	</authentication-manager>
+	
+	<context:component-scan base-package="com.infomovil.webapp" />
+  
+
+</beans:beans>
