@@ -122,11 +122,11 @@
             </div>
         <!--password-->
         
-        <div class="form-group col-xs-12 col-sm-12 col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3"> <span><a href="#" class="linkWhite">Si olvidaste o no tienes contraseña, haz click aquí</a></span> </div>
+        <div class="form-group col-xs-12 col-sm-12 col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3"> <span><a href="<c:url value="/resetpassword"/>" class="linkWhite">Si olvidaste o no tienes contraseña, haz click aquí</a></span> </div>
         <div class="form-group col-xs-12 col-sm-12 col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3">
               <input type="submit" value="Inicia sesi&oacute;n" class="btn btn-default btn-outlineGreen col-xs-12 text-center textWhite">
             </div>
-        <div class="form-group col-xs-12 col-sm-12 col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3"> <span class="textWhite">¿Aún no tienes cuenta? </span><span><a href="<c:url value="/registra"/>" >Regístrate</a></span> </div>
+        <div class="form-group col-xs-12 col-sm-12 col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3"> <span class="textWhite">¿Aún no tienes cuenta? </span><span><a href="<c:url value="/registra"/>">Regístrate</a></span> </div>
         <div class="divider"></div>
         <div class="text-center"><img src="resources/webapp/images/line.png" width="740" alt=""/></div>
         <div class="col-xs-12 col-sm-12"> <span class="textWhite text-center text-small">Si continúas, aceptas las</span><span> <a href="#" title="Condiciones del servicio" data-toggle="modal" data-target="#myModalTerminos">condiciones del servicio </a></span><span class="textWhite">y las </span><span><a href="#" data-toggle="modal" data-target="#myModalAviso">pol&iacute;ticas de privacidad</a></span><span class="textWhite"> de Infomovil.</span>
