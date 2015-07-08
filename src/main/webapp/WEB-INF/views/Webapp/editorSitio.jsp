@@ -98,7 +98,7 @@
               <div class="control-group">
             <label class="control-label"></label>
             <div class="controls">
-                  <input type="text" class="form-control h1 text-center" placeholder="Pon tu nombre o negocio" required="required" <c:if test="${not empty nombreEmpresa}"> value = " ${ correoElectronico } " </c:if>/>
+                  <input type="text" class="form-control h1 text-center" placeholder="Pon tu nombre o negocio" required="required" <c:if test="${not empty nombreEmpresa}"> value = " ${ nombreEmpresa } " </c:if>/>
                   <p class="help-block"></p>
                 </div>
           </div>
@@ -126,7 +126,7 @@
             <div class="text-left col-xs-3 col-sm-3 col-md-2 col-lg-2"> <a href="{referencia}" target="{target}" onclick="{evento}"><img src="<c:url value="/resources/webapp/images/mail_icn.png"/>" class="img mxw50miw43w100" alt="Contacto"/></a> </div>
             <div class="text-left col-xs-9 col-sm-9 col-md-10 col-lg-10 mar0auto"> <span class="dblw100 mxh70"> <!--input-->
               
-              <input type="text" class="form-control" placeholder="Correo" required="required" <c:if test="${not empty correoElectronico}"> value = " ${ correoElectronico } " </c:if>/>
+              <input type="text" class="form-control" placeholder="Correo" required="required" <c:if test="${not empty correoElectronico}"> value = "${ correoElectronico }" </c:if>/>
               <p class="help-block"></p>
               
               <!--/input--> 
@@ -138,7 +138,7 @@
               
               <!--input-->
               
-              <input type="text" class="form-control" placeholder="Teléfono o celular" required="required" value = "${ telefonoUsuario }"/>
+              <input type="text" class="form-control" placeholder="Teléfono o celular" required="required" <c:if test="${not empty telefonoUsuario}"> value = "${ telefonoUsuario }" </c:if>/>
               <p class="help-block"></p>
               
               <!--/input--> 
