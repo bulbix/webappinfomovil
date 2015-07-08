@@ -23,16 +23,17 @@
     <meta property="og:url" content="http://www.infomovil.com" />
     <meta itemprop="name" content="Infomovil"/>
     <meta itemprop="description" content="Infomovil. Nunca antes ha sido tan f&aacute;cil crear un sitio web. Con Infomovil crea tu sitio f&aacute;cil, r&aacute;pido y gratuito en 5 minutos. Sitio web creado con www.infomovil.com"/>
-    <link rel="apple-touch-icon" href="resources/webapp/images/apple-touch-icon.png" />
-    <link rel="apple-touch-icon" sizes="57x57" href="resources/webapp/images/apple-touch-icon-57x57.png" />
-    <link rel="apple-touch-icon" sizes="72x72" href="resources/webapp/images/apple-touch-icon-72x72.png" />
-    <link rel="apple-touch-icon" sizes="76x76" href="resources/webapp/images/apple-touch-icon-76x76.png" />
-    <link rel="apple-touch-icon" sizes="114x114" href="resources/webapp/images/apple-touch-icon-114x114.png" />
-    <link rel="apple-touch-icon" sizes="120x120" href="resources/webapp/images/apple-touch-icon-120x120.png" />
-    <link rel="apple-touch-icon" sizes="144x144" href="resources/webapp/images/apple-touch-icon-144x144.png" />
-    <link rel="apple-touch-icon" sizes="152x152" href="resources/webapp/images/apple-touch-icon-152x152.png" />
-    <link rel="shortcut icon" href="resources/webapp/images/favicon.ico" type="image/x-icon" />
-    <link rel="image_src" href="resources/webapp/images/apple-touch-icon-57x57.png"/>
+
+    <link rel="apple-touch-icon" href="<c:url value="/resources/webapp/images/apple-touch-icon.png"/>"/>
+    <link rel="apple-touch-icon" sizes="57x57" href="<c:url value="/resources/webapp/images/apple-touch-icon-57x57.png"/>"/>
+    <link rel="apple-touch-icon" sizes="72x72" href="<c:url value="/resources/webapp/images/apple-touch-icon-72x72.png"/>"/>
+    <link rel="apple-touch-icon" sizes="76x76" href="<c:url value="/resources/webapp/images/apple-touch-icon-76x76.png"/>"/>
+    <link rel="apple-touch-icon" sizes="114x114" href="<c:url value="/resources/webapp/images/apple-touch-icon-114x114.png"/>"/>
+    <link rel="apple-touch-icon" sizes="120x120" href="<c:url value="/resources/webapp/images/apple-touch-icon-120x120.png"/>"/>
+    <link rel="apple-touch-icon" sizes="144x144" href="<c:url value="/resources/webapp/images/apple-touch-icon-144x144.png"/>"/>
+    <link rel="apple-touch-icon" sizes="152x152" href="<c:url value="/resources/webapp/images/apple-touch-icon-152x152.png"/>"/>
+    <link rel="shortcut icon" href="<c:url value="/resources/webapp/images/favicon.ico" />" type="image/x-icon"/>
+    <link href="<c:url value="/resources/webapp/images/apple-touch-icon-57x57.png"/>"/>    
     <title itemprop="name">Infomovil</title>
     <link rel="canonical" href="http://www.infomovil.com" itemprop="url" />
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
@@ -41,16 +42,17 @@
       <script src=" resources/webapp/js/respond.min.js"></script>
     <![endif]-->
     <!-- Bootstrap core CSS -->
-    <link href="resources/webapp/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="<c:url value="/resources/webapp/css/bootstrap.min.css"/>" rel="stylesheet" />
     <!-- Bootstrap theme -->
-    <link href="resources/webapp/css/bootstrap-theme.min.css" rel="stylesheet" />
+    <link href="<c:url value="/resources/webapp/css/bootstrap-theme.min.css"/>" rel="stylesheet" />
     <!-- Custom styles for this template -->
-    <link href="resources/webapp/css/themeEditor.css" rel="stylesheet" />
+    <link href="<c:url value="/resources/webapp/css/themeEditor.css"/>" rel="stylesheet"/>
     <!-- Custom styles for this template -->
-    <link href="resources/webapp/css/sticky-editor.css" rel="stylesheet" />
+    <link href="<c:url value="/resources/webapp/css/sticky-editor.css"/>" rel="stylesheet" />
     <!-- bxSlider CSS file -->
-    <link href="resources/webapp/css/jquery.bxslider.css" rel="stylesheet" />
-    <link rel="stylesheet" href="fonts/font-awesome.min.css">
+    <link href="<c:url value="/resources/webapp/css/jquery.bxslider.css"/>" rel="stylesheet" />
+    
+    <link href="<c:url value="/resources/webapp/fonts/font-awesome.min.css"/>" rel="stylesheet" />
     <script>
   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
   (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
@@ -68,7 +70,7 @@
       <div class="container">
     <div class="navbar-header">
           <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar"> <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
-          <a class="navbar-brand" href="http://infomovil.com"><span><img src="resources/webapp/images/apple-touch-icon-57x57.png" width="50" height="50" alt="Infomovil" /> </span><span class="marLeft">Editor de sitios <span class="hidden-xs">Infomovil</span></span></a> </div>
+          <a class="navbar-brand" href="http://infomovil.com"><span><img src="<c:url value="/resources/webapp/images/apple-touch-icon-57x57.png"/>" width="50" height="50" alt="Infomovil" /> </span><span class="marLeft">Editor de sitios <span class="hidden-xs">Infomovil</span></span></a> </div>
     <div id="navbar" class="navbar-collapse collapse text-right">
           <ul class="nav navbar-nav navbar-right">
         <li class="active"><a href="#" class="smoothScroll">Editar <i class="fa fa-pencil"></i> </a></li>
@@ -109,7 +111,7 @@
            
             <div class="controls">
             
-                  <text id="description" class="form-control h2 text-center" placeholder="Agrega una descripción corta de tus servicios o productos" required="required" value=" ${ descripcionCorta }"></text>
+                  <textarea id="description" class="form-control h2 text-center" placeholder="Agrega una descripción corta de tus servicios o productos" required="required" <c:if test="${not empty descripcionCorta}"> value = " ${ descripcionCorta } " </c:if>></textarea>
                   <p class="help-block"></p>
                 </div>
           </div>
@@ -119,35 +121,36 @@
         
         <div class="form-group col-xs-12 col-sm-12 col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3">
              
-              <div class="mar15 col-xs-12 col-sm-12 col-md-6 col-lg-6" >
-            <div class="text-left col-xs-3 col-sm-3 col-md-2 col-lg-2"> <a href="{referencia}" target="{target}" onclick="{evento}"><img src="resources/webapp/images/mail_icn.png" class="img mxw50miw43w100" alt="Contacto" onerror="this.src= 'resources/webapp/images/trans.png';"/></a> </div>
+              <div class="mar15 col-xs-12 col-sm-12 col-md-6 col-lg-6" >																
+              																															
+            <div class="text-left col-xs-3 col-sm-3 col-md-2 col-lg-2"> <a href="{referencia}" target="{target}" onclick="{evento}"><img src="<c:url value="/resources/webapp/images/mail_icn.png"/>" class="img mxw50miw43w100" alt="Contacto"/></a> </div>
             <div class="text-left col-xs-9 col-sm-9 col-md-10 col-lg-10 mar0auto"> <span class="dblw100 mxh70"> <!--input-->
               
-              <input type="text" class="form-control" placeholder="Correo" required="required" <c:if test="${not empty correoElectronico}"> value = " ${ correoElectronico } " </c:if>/>
+              <input type="text" class="form-control" placeholder="Correo" required="required" <c:if test="${not empty correoElectronico}"> value = "${ correoElectronico }" </c:if>/>
               <p class="help-block"></p>
               
               <!--/input--> 
-              </span><span class="dblw100"> <a href="{referencia}" target="{target}" onclick="{evento}"> <xsl:value-of select="contacto" /> </a> </span> </div>
+              </span><span class="dblw100"> <a href="{referencia}" target="{target}" onclick="{evento}"></a> </span> </div>
           </div>
-           <div class="mar15 col-xs-12 col-sm-12 col-md-6 col-lg-6" >
-            <div class="text-left col-xs-3 col-sm-3 col-md-2 col-lg-2"> <a href="{referencia}" target="{target}" onclick="{evento}"><img src="resources/webapp/images/tel_icn.png" class="img mxw50miw43w100" alt="Contacto" onerror="this.src='resources/webapp/images/trans.png';"/></a> </div>
+           <div class="mar15 col-xs-12 col-sm-12 col-md-6 col-lg-6" >															         
+            <div class="text-left col-xs-3 col-sm-3 col-md-2 col-lg-2"> <a href="{referencia}" target="{target}" onclick="{evento}"><img src="<c:url value="/resources/webapp/images/tel_icn.png"/>" class="img mxw50miw43w100" alt="Contacto"/></a> </div>
             <div class="text-left col-xs-9 col-sm-9 col-md-10 col-lg-10 mar0auto"> <span class="dblw100 mxh70"> 
               
               <!--input-->
               
-              <input type="text" class="form-control" placeholder="Teléfono o celular" required="required" value = "${ telefonoUsuario }"/>
+              <input type="text" class="form-control" placeholder="Teléfono o celular" required="required" <c:if test="${not empty telefonoUsuario}"> value = "${ telefonoUsuario }" </c:if>/>
               <p class="help-block"></p>
               
               <!--/input--> 
               
-              </span><span class="dblw100"> <a href="{referencia}" target="{target}" onclick="{evento}"> <xsl:value-of select="contacto" /> </a> </span> </div>
+              </span><span class="dblw100"> <a href="{referencia}" target="{target}" onclick="{evento}"></a> </span> </div>
           </div>
             </div>
         <div class="clear"></div>
         <div class="divider"></div>
        
         <div class="col-xs-12 col-sm-12 col-md-6 col-md-offset-3 ">
-              <p class="reset text-center textSmall textWhite"> Diseño por <img src="resources/webapp/images/apple-touch-icon-57x57.png" alt="Infomovil"  style=";width: 20px;height: 20px"> Infomovil</p>
+              <p class="reset text-center textSmall textWhite"> Diseño por <img src="<c:url value="/resources/webapp/images/apple-touch-icon-57x57.png"/>" alt="Infomovil"  style=";width: 20px;height: 20px"> Infomovil</p>
             </div>
             
             
@@ -160,54 +163,83 @@
     </div>
 <!--/Theme showcase --> 
 
-<!--Footer-->
-
-<footer class="footer ">
-<div class="bgDoble"></div>
-      <section class="bgBlack">
-    <div class="container">
-          <div class="row" > 
-          
-          
-       <div class="divider"></div>
-       
-        <h3 class="textWhite text-center">Selecciona un nombre para tu sitio</h3>
-      
+<!--Publicar recurso-->
+<div id="publicarRecurso">
+  <div class="bgDobleBlack" ></div>
+  <section class="bgFondo publicar">
+    <div class="container whiteBg" >
+      <div class="row" >
+        <h3 class=" text-center">¡Ponle un nombre a tu sitio web!</h3>
         <div class="form-group col-xs-12 col-sm-12 col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3">
-              <div class="col-xs-12 col-sm-6">
-            <select class="form-control" style="height:36px !important; display:block; padding:6px 12px;">
-                  <option>www.infomovil.com</option>
-                  <option>www.mobileinfo.io</option>
-                </select>
-                 <div class="divider hidden-sm hidden-md hidden-lg"></div>
+          <div class="col-xs-12 col-sm-6">
+            <div class="divider"></div>
+            <select class="form-control" style="height:36px !important; display:block; padding:6px 12px; color:#000!important">
+              <option>www.infomovil.com</option>
+              <option>www.mobileinfo.io</option>
+            </select>
+            <div class="divider hidden-sm hidden-md hidden-lg"></div>
           </div>
-         
-          
-              <div class="col-xs-12 col-sm-6">
-            <input type="text" placeholder="Nombra tu sitio" value="" class="form-control">
+          <div class="col-xs-12 col-sm-6">
+            <div class="divider"></div>
+            <input type="text" placeholder="Nombra tu sitio" value="" class="form-control" id="nombraInput">
           </div>
-              <div class="form-group col-xs-12 col-sm-12 col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3">
-              <div class="divider"></div>
-               <div class="divider"></div>
-               <div class="divider"></div>
+          <div class="form-group col-xs-12 col-sm-12 col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3">
+            <div class="divider"></div>
             <input type="submit" value="Buscar nombre" class="btn btn-default btn-outline col-xs-12 text-center textWhite">
-            
+            <div class="clear"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+<!--/Publicar recurso--> 
+
+
+<!--Publicar TEL-->
+<div id="publicarTel">
+  <div class="bgDobleBlack" ></div>
+  <section class="bgFondo publicar" >
+    <div class="container whiteBg">
+      <div class="row" >
+        <h3 class=" text-center">¡Ponle un nombre a tu sitio web!</h3>
+        <div class="form-group col-xs-12 col-sm-12 col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3">
+          <div class="divider"></div>
+          <div class="form-group">
+            <label class="sr-only" for="exampleInputAmount">www.</label>
+            <div class="input-group">
+              <div class="input-group-addon">www.</div>
+              <input type="text" class="form-control black" id="nombraInput2" placeholder="Nombra tu sitio" >
+              <div class="input-group-addon">.tel</div>
+            </div>
+          </div>
+          <div class="col-xs-12 col-sm-6">
+            <div class="divider hidden-sm hidden-md hidden-lg"></div>
+          </div>
+          <div class="form-group col-xs-12 col-sm-12 col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3">
+            <div class="divider"></div>
+            <input type="submit" value="Buscar nombre" class="btn btn-default btn-outline col-xs-12 text-center textWhite">
             <div class="clear"></div>
             <div class="divider"></div>
             <div class="divider"></div>
+            <div class="divider"></div>
           </div>
-            </div>
-            
-            
-            
-             </div>
         </div>
+      </div>
+    </div>
+ 
   </section>
-    </footer>
+</div>
+<!--/Publicar TEL--> 
+
+<!--Footer-->
+
+<footer class="footer bgBlack"> </footer>
 <!-- Scroll to Top Button (Only visible on small and extra-small screen sizes) -->
 <div class="scroll-top page-scroll visible-xs visble-sm"> <a class="btn" href="#page-top"> <i class="fa fa-chevron-up"></i> Subir</a> </div>
 
 <!--/Footer--> 
+
 <!-- /container -->
 
 <div id="myModalTerminos" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -245,15 +277,15 @@
 <!-- Bootstrap core JavaScript
     ================================================== --> 
 <!-- Placed at the end of the document so the pages load faster --> 
-<script src="resources/webapp/js/jquery.min.js"></script> 
-<script src="resources/webapp/js/bootstrap.min.js"></script> 
-<script src="resources/webapp/js/docs.min.js"></script> 
-<script src="resources/webapp/js/smoothscroll.js" type="text/javascript"></script> 
+<script type="text/javascript" src="<c:url value="/resources/webapp/js/jquery.min.js"/>"></script>
+<script type="text/javascript" src="<c:url value="/resources/webapp/js/bootstrap.min.js"/>"></script>
+<script type="text/javascript" src="<c:url value="/resources/webapp/js/docs.min.js"/>"></script>
+<script type="text/javascript" src="<c:url value="/resources/webapp/js/smoothscroll.js"/>"> </script>
 <!-- IE10 viewport hack for Surface/desktop Windows 8 bug --> 
-<script src="resources/webapp/js/ie10-viewport-bug-workaround.js"></script> 
+<script type="text/javascript" src="<c:url value="/resources/webapp/js/ie10-viewport-bug-workaround.js"/>"></script>
 <!-- bxSlider Javascript file --> 
-<script src="resources/webapp/js/jquery.bxslider.min.js"></script> 
-<script src="resources/webapp/js/jqBootstrapValidation.js"></script> 
+<script type="text/javascript" src="<c:url value="/resources/webapp/js/jquery.bxslider.min.js"/>"></script>
+<script type="text/javascript" src="<c:url value="/resources/webapp/js/jqBootstrapValidation.js"/>"></script>
 <script>
   $(function () { $("input,select,textarea").not("[type=submit]").jqBootstrapValidation(); } );
 </script> 

@@ -20,7 +20,7 @@ theme-showcaseApp > p > .btn { margin: 5px 0; }
 .linkWhite:hover { text-decoration: none; }
 .linkBig { font-size: 1.3em; }
 .linkMedium { font-size: 1.1em; }
-.textWhite { color: #fff !important; text-shadow: 1px 1px 1px #000;}
+.textWhite { color: #fff !important; text-shadow: 1px 1px 1px #aeafaf;}
 .textBlack { color: #000 !important; }
 .text-small{ font-size:.9em !important; padding:20px 0;}
 .shadowSmooth { text-shadow: 1px 1px 5px rgba(150, 150, 150, 1); }
@@ -28,6 +28,9 @@ theme-showcaseApp > p > .btn { margin: 5px 0; }
 section.bgBlack { /*margin: 0 -5px 0 0; */}
 #map-canvas { height: 400px; margin: 0px; padding: 0px }
 .bgBlack { background: #000; color: #fff;  }
+
+.bgFondo { background:url(../images/bg.png) no-repeat center center; background-size:cover; }
+
 .emptySection { background: #000; color: #fff; padding: 20px; text-shadow: 1px 1px 1px #000; }
 .bgPurpleSolid { background: #7c42bd; color: #fff; padding: 20px; margin: 0 -5px 0 0; }
 .bgPurple { margin: -10px -5px 0 0; background: url(../images/bgPurple.png) no-repeat center center fixed; -webkit-background-size: 100% auto; background-attachment: fixed; -moz-background-size: cover; -o-background-size: cover; background-size: cover; padding: 3% 0 4% 0; color: #fff; }
@@ -82,6 +85,38 @@ p { font-size: 110%; }
 :-ms-input-placeholder {  
    color: #efefef !important;  
 }
+
+#nombraInput::-webkit-input-placeholder {
+   color: #000 !important;
+}
+
+#nombraInput:-moz-placeholder{ /* Firefox 18- */
+   color: #000 !important;
+}
+
+#nombraInput::-moz-placeholder{  /* Firefox 19+ */
+   color: #000 !important;  
+}
+
+#nombraInput:-ms-input-placeholder {  
+   color: #000 !important;  
+}
+
+#nombraInput2::-webkit-input-placeholder {
+   color: #000 !important;
+}
+
+#nombraInput2:-moz-placeholder{ /* Firefox 18- */
+   color: #000 !important;
+}
+
+#nombraInput2::-moz-placeholder{  /* Firefox 19+ */
+   color: #000 !important;  
+}
+
+#nombraInput2:-ms-input-placeholder {  
+   color: #000 !important;  
+}
 .mar10TB{ margin:10px 0;}
 .reset{ margin:0; padding:0;}
 .help-block{ color:#7c41bc !important; font-weight:700 !important; font-size:15px !important;}
@@ -99,3 +134,20 @@ p { font-size: 110%; }
 .h2{ font-size:21px!important; font-weight:300 !important; }
 textarea { padding: 10px; width: 300px; }
 .bgDoble{ background:url(../images/lineDoble.jpg) top center repeat-x !important; height:15px; width:100%;}
+.bgDobleBlack{ background:#000; height:15px; width:100%;}
+.publicar{ min-height:300px; padding:20px 0 0 0;}
+
+.bgDobleGreen { background:#2fa399; }
+.bgDobleCream { background:#ede5e2; }
+
+
+#description::-webkit-input-placeholder::before {
+    color:#fff;
+    content:"Bienvenido a mi sitio \A Pon una descripci\F3n aqu\ED ";
+}
+#description::-webkit-input-placeholder{
+    color:#fff;
+}
+#nombraInput{ color:#000 !important;}
+#nombraInput2{ color:#000 !important;}
+.whiteBg{padding:20px; background:url("/resources/webapp/images/lineWht2.png") repeat; border-radius:10px;}

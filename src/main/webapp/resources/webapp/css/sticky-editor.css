@@ -1,8 +1,8 @@
 /* Sticky footer styles
 -------------------------------------------------- */
 html { position: relative; min-height: 100%; }
-body { /* Margin bottom by footer height */ margin-bottom: 300px; }
-.footer { position: absolute; bottom: 0; width: 100%; /* Set the fixed height of the footer here */ max-height: 350px; height: 350px; padding:0 0 0 0; margin: 20px 0 0 0; }
+body { /* Margin bottom by footer height */ margin-bottom: 250px; }
+.footer { position: absolute; bottom: 0; width: 100%; /* Set the fixed height of the footer here */ max-height: 250px; height: 250px; padding:0 0 0 0; margin: 20px 0 0 0; }
 /* Custom page CSS
 -------------------------------------------------- */
 /* Not required for template or sticky footer method. */

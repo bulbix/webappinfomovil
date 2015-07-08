@@ -19,11 +19,11 @@ theme-showcaseApp > p > .btn { margin: 5px 0; }
 .navbar-brand { float: left; height: 60px !important; padding: 5px 15px !important; /*font-size: 18px;*/ font-size: 18px; line-height: 20px; }
 .divider { display: block; margin: 2% 0 5% 0; width: 100%; height: 1px; }
 .dividerSmall { display: block; margin: 1% 0 1% 0; width: 100%; height: 1px; }
-.linkWhite { text-decoration: none; color: #fff !important; text-shadow: 1px 1px 1px #000;}
+.linkWhite { text-decoration: none; color: #fff !important; text-shadow: 1px 1px 1px #aeafaf;}
 .linkWhite:hover { text-decoration: none; }
 .linkBig { font-size: 1.3em; }
 .linkMedium { font-size: 1.1em; }
-.textWhite { color: #fff !important; text-shadow: 1px 1px 1px #000;}
+.textWhite { color: #fff !important; text-shadow: 1px 1px 1px #aeafaf;}
 .textBlack { color: #000 !important; }
 .text-small{ font-size:.9em !important; padding:20px 0;}
 .shadowSmooth { text-shadow: 1px 1px 5px rgba(150, 150, 150, 1); }
@@ -90,3 +90,4 @@ p { font-size: 110%; }
 .help-block{ color:#7c41bc !important; font-weight:700 !important; font-size:15px !important;}
 .imgLog{min-width:210px; max-width:215px; text-align:center; margin:0 auto;}
 .imgDes{max-width:120px; min-width:100px; text-align:center; margin:0 auto; width:100%}
+ul{ list-style:none;}
