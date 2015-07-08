@@ -18,7 +18,7 @@
 	</http>
 
 
-	<authentication-manager>
+	<authentication-manager erase-credentials="false">
 		<authentication-provider ref="infomovilAuthenticationProvider" />  
 	</authentication-manager>
 	

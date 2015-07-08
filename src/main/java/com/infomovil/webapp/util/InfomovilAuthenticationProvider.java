@@ -31,25 +31,19 @@ public class InfomovilAuthenticationProvider implements AuthenticationProvider {
 		String email = authentication.getName();
 		String password = authentication.getCredentials().toString();
 		
-		try {
-			ClientWsInfomovil clientWsInfomovil = new ClientWsInfomovil();
-			int codeError  = Integer.parseInt(clientWsInfomovil.
-					crearSitioLogin(email, password).getCodeError());
-			
-			if(codeError == 0){//Exito
-				List<GrantedAuthority> grantedAuths = new ArrayList<GrantedAuthority>();
-				grantedAuths.add(new SimpleGrantedAuthority("ROLE_USER"));
-				log.info("Login correcto " + email);
-				return new UsernamePasswordAuthenticationToken(email, password, grantedAuths);
-			}
-			else{
-				throw new BadCredentialsException("Login Incorrecto");
-			}	
-			
-		} catch (Exception e) {
-			log.error("authenticate",e);
-			throw new BadCredentialsException("Hubo un problema en el servidor");
+		ClientWsInfomovil clientWsInfomovil = new ClientWsInfomovil();
+		int codeError  = Integer.parseInt(clientWsInfomovil.
+				crearSitioLogin(email, password).getCodeError());
+		
+		if(codeError == 0){//Exito
+			List<GrantedAuthority> grantedAuths = new ArrayList<GrantedAuthority>();
+			grantedAuths.add(new SimpleGrantedAuthority("ROLE_USER"));
+			log.info("Login correcto " + email);
+			return new UsernamePasswordAuthenticationToken(email, password, grantedAuths);
 		}
+		else{
+			throw new BadCredentialsException("Credenciales Incorrectas");
+		}	
 		
 	}
 
