@@ -15,6 +15,9 @@
 		<form-login login-page="/login" default-target-url="/infomovil/editarSitio" 
 		    authentication-failure-url="/loginfailed" /> 
 		<logout logout-success-url="/login" /> 
+		
+<!-- 		<remember-me key="myAppKey"/> -->
+		
 	</http>
 
 

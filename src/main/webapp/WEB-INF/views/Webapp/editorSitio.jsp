@@ -67,6 +67,7 @@
 		console.log("ContextPath: " + contextPath);
 	</script>
     
+   <script src="<c:url value="/resources/js/webapp/jquery.numeric.js"/>"></script>
     <script src="<c:url value="/resources/js/webapp/validaciones.js"/>"></script>
     
     
@@ -122,7 +123,11 @@
            
             <div class="controls">
             
+
                   <textarea class="form-control h2 text-center" maxlength="255" placeholder="Agrega una descripción corta de tus servicios o productos" required id="txtDescripcionCorta" rows="5"><c:if test="${not empty descripcionCorta}">${descripcionCorta}</c:if></textarea>
+
+             
+
                   <p class="help-block"></p>
                 </div>
           </div>
@@ -130,7 +135,7 @@
             </div>
         <!--descripcion-->
         
-        <div class="form-group col-xs-12 col-sm-12 col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3">
+ <div class="form-group col-xs-12 col-sm-12 col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3">
              
               <div class="mar15 col-xs-12 col-sm-12 col-md-6 col-lg-6 reset" >																
               																															
@@ -149,7 +154,7 @@
               
               <!--input-->
               
-              <input type="number" class="form-control" maxlength="10" placeholder="Celular" required="required" <c:if test="${not empty telefonoUsuario}"> value = "${ telefonoUsuario }" </c:if> id="txtTelefono"/>
+              <input type="text" class="form-control" maxlength="10" placeholder="Celular" required="required" <c:if test="${not empty telefonoUsuario}"> value = "${ telefonoUsuario }" </c:if> id="txtTelefono"/>
               <p class="help-block"></p>
               
               <!--/input--> 
@@ -219,6 +224,65 @@
 
 <!--/Publicar TEL--> 
 
+<!--MODAL EXITO-->
+<div id="myModalExito" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"> <span aria-hidden="true">&times;</span></button>
+        <p class="modal-title" ></p>
+      </div>
+      <div class="modal-body bgWhite">
+        <h2 class="textBlack col-xs-12 col-sm-12 col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3 text-center">&iexcl;Felicidades!</h2>
+        <h5 class="textBlack col-xs-12 col-sm-12 col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3 text-center"> Ya tomaste el primer paso y te pusiste en línea.<br/>
+          El proceso de publicación de tu sitio web puede tardar unos minutos. </h5>
+          <div class="clear"></div>
+        <p class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-center">Descarga nuestra app si deseas agregar más contenido.</p>
+        <div class="clear"></div>
+        
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 text-center">
+          <p class="text-center"><a href="https://itunes.apple.com/mx/app/infomovil/id898313250?mt=8" target="blank"> <img width="200" content="Apple Store" src="http://landing.infomovil.com/images/icn_appstore.png" style="margin:0 auto;" alt="Apple Store" class="img-responsive" border="0"></a></p>
+        </div>
+        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 text-center">
+          <p class="text-center"><a href="https://play.google.com/store/apps/details?id=com.infomovil.infomovil" target="blank"><img width="200" content="Google Play" src="http://landing.infomovil.com/images/icn_gstore.png" style="margin:0 auto;" alt="Google Play" class="img-responsive"></a></p>
+        </div>
+        </div>
+        
+        
+        <div class="clear divider"></div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-purple text-center col-xs-12 col-sm-12 col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3" data-dismiss="modal"><strong>Continuar editando</strong></button>
+      </div>
+    </div>
+  </div>
+</div>
+<!--/MODAL EXITO--> 
+
+<!--MODAL FAIL-->
+<div id="myModalFallo" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"> <span aria-hidden="true">&times;</span></button>
+        <p class="modal-title" ></p>
+      </div>
+      <div class="modal-body bgWhite">
+        <h2 class="textBlack col-xs-12 col-sm-12 col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3 text-center"></h2>
+        <h5 class="textBlack col-xs-12 col-sm-12 col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3 text-center">No se ha podido completar la publicación de tu sitio<br/>
+        </h5>
+        <div class="clear divider"></div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default text-center col-xs-12 col-sm-12 col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3" data-dismiss="modal"><strong>Intenta de nuevo</strong></button>
+      </div>
+    </div>
+  </div>
+</div>
+<!--/MODAL FAIL-->
+
+
 <!--Footer-->
 
 <footer class="footer bgBlack"> </footer>
@@ -228,7 +292,6 @@
 <!--/Footer--> 
 
 <!-- /container -->
-
 
 <form id="publicarDominio" action="<c:url value="/infomovil/publicarSitio"/>" method="post">
 	<div id="modalPublicacion"></div>
@@ -250,6 +313,34 @@
 <script type="text/javascript" src="<c:url value="/resources/webapp/js/jqBootstrapValidation.js"/>"></script>
 <script>
   $(function () { $("input,select,textarea").not("[type=submit]").jqBootstrapValidation(); } );
+
+</script> 
+ 
+<script>
+$(document).ready(function(){
+  $('.slider1').bxSlider({
+    slideWidth: 400,
+    minSlides: 1,
+    maxSlides: 3,
+	moveSlides: 1,
+    slideMargin: 0,
+	infiniteLoop: false,
+  hideControlOnEnd: true
+  });
+  $('.slider2').bxSlider({
+    slideWidth: 800,
+    minSlides: 1,
+    maxSlides: 1,
+	moveSlides: 1,
+    slideMargin: 0,
+	captions: true,
+	controls:true,
+	infiniteLoop: false,
+  hideControlOnEnd: true
+  });
+  
+});
+
 </script> 
 <script>
 
@@ -295,6 +386,14 @@ $('.navbar-collapse ul li a').click(function() {
 		
 		</c:otherwise>
 	</c:choose>	
+
+	<c:if test="${resultadoPublicacion =='SI'}">
+		$("#myModalExito").modal('show');
+	</c:if>
+
+	<c:if test="${resultadoPublicacion =='NO'}">
+		$("#myModalFallo").modal('show');
+	</c:if>
 
 </script>
 </body>

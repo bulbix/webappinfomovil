@@ -151,7 +151,7 @@ textarea:-ms-input-placeholder {
 textarea { padding: 10px; width: 300px; }
 .bgDoble{ background:url(../images/lineDoble.jpg) top center repeat-x !important; height:15px; width:100%;}
 .bgDobleBlack{ background:#000; height:15px; width:100%;}
-.publicar{ min-height:300px; padding:20px 0 0 0;}
+.publicar{ min-height:340px; padding:20px 0 0 0;}
 
 .bgDobleGreen { background:#2fa399; }
 .bgDobleCream { background:#ede5e2; }
@@ -170,5 +170,13 @@ textarea { padding: 10px; width: 300px; }
 .tooltip-inner {
     white-space:pre-wrap !important;
 }
-#myModalTerminos div div.modal-content{ background:#2fa399 !important;}
-.btn-purple{ background:#7c41bc !important; color:#fff;}
+#myModalPublicar div div.modal-content{ background:#f3f3f3 !important; color:#000 !important}
+#myModalPublicar button{ color:#fff !important;}
+#myModalExito button{ color:#fff !important;}
+#myModalFallo button{ color:#fff !important;}
+#myModalExito div div.modal-content{ background:#f3f3f3 !important; color:#000 !important}
+#myModalFallo div div.modal-content{ background:#f3f3f3 !important; color:#000 !important}
+#validacionNombre{ color:#000 !important}
+.btn-purple{ background:#7c41bc !important; color:#000 !important;}
+.btn-purple a{color:#fff !important;}
+.text-center{ text-align:center !important;}

@@ -5,8 +5,10 @@ import java.util.Map;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.apache.commons.lang3.StringUtils;
+import org.apache.commons.validator.routines.EmailValidator;
 import org.apache.log4j.Logger;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
@@ -44,7 +46,8 @@ public class WebappController
 			
 			wsRespuesta = wsCliente.crearSitioGuardar(correo, password, 
 					nombreUsuario, nombreEmpresa, descripcionCorta, 
-					correoElectronico, telefono, "Coverpage1azul");
+					EmailValidator.getInstance().isValid(correoElectronico)?correoElectronico:"",
+							telefono, "Coverpage1azul");
 			
 			
 			resultMap.put("codeError", wsRespuesta.getCodeError());
@@ -63,8 +66,11 @@ public class WebappController
 	public ModelAndView publicarSitio(@RequestParam String nombreDominio, @RequestParam String tipoDominio, 
 			@RequestParam int idCatTipoRecurso)
 	{		
+		String resultadoPublicacion = "-1";
+		String sePublico = "NO";
 		ModelAndView modeloVista = null;
 		Map<String, String> resultMap = new HashMap<String, String>();
+		
 		try
 		{
 			correo = Util.getUserLogged().getPrincipal().toString();
@@ -73,13 +79,20 @@ public class WebappController
 					Util.getCurrentSession().getAttribute("nombreUsuario").toString():" ";
 					
 			wsRespuesta = wsCliente.crearSitioPublicar(correo, password, nombrePersona, "Mexico", nombreDominio, tipoDominio, idCatTipoRecurso);
+			resultadoPublicacion = wsRespuesta.getCodeError();
 			resultMap.put("resultadoPub", wsRespuesta.getResultado());
 			
-			if (wsRespuesta.getCodeError().equals("0"))
-				modeloVista = editarSitio();
+			modeloVista = editarSitio();
 			
 			if (modeloVista != null)
+			{
+				if (resultadoPublicacion.equals("0"))
+					sePublico = "SI";
+				
+					modeloVista.getModel().put("resultadoPublicacion", sePublico);
+				
 				return modeloVista;
+			}
 		}		
 		catch (Exception e) 
 		{
@@ -118,7 +131,7 @@ public class WebappController
 				modeloVista = editarSitio();
 			}
 			else if (codigoError.equals("-1"))
-				vista = "Webapp/registrar";
+				vista = "login";
 			else if (codigoError.equals("-3"))
 				vista = "Webapp/login";
 			
@@ -164,7 +177,12 @@ public class WebappController
 				
 				model.put("usuarioLogueado", correo);
 				model.put("nombreUsuario", wsRespuesta.getDominioCreaSitio().getNombreUsuario().trim());
+				
 				model.put("nombreEmpresa", wsRespuesta.getDominioCreaSitio().getNombreEmpresa().trim());
+				
+				if (wsRespuesta.getDominioCreaSitio().getNombreEmpresa().trim().equals("TÃ­tulo"))
+					model.put("nombreEmpresa", "");
+				
 				model.put("descripcionCorta", wsRespuesta.getDominioCreaSitio().getDescripcionCorta().trim());
 				model.put("correoElectronico", wsRespuesta.getDominioCreaSitio().getCorreoElectronico().trim());
 				model.put("telefonoUsuario", wsRespuesta.getDominioCreaSitio().getTelefono().trim());			
@@ -248,6 +266,11 @@ public class WebappController
 		
 		return "redirect:/login";
 		
+	}
+	
+	@RequestMapping(value = "/", method = RequestMethod.GET)
+	public String index(){
+		return "redirect:/infomovil/editarSitio";
 	}
 	
 	private String passwordDefault = "banco1";

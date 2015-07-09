@@ -128,11 +128,18 @@
             </div>
         <!--password-->
         
+
         <div class="form-group col-xs-12 col-sm-12 col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3"> <span style="margin:10px 0; display:block; width:100%; min-height:23px; "><a href="<c:url value="/resetpassword"/>" class="linkWhite">Si olvidaste o no tienes contraseña, haz click aquí</a></span> </div>
+
+<!--         <input type="hidden" name="_spring_security_remember_me" value="true" /> -->
+
+
         <div class="form-group col-xs-12 col-sm-12 col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3">
               <input type="submit" value="Inicia sesi&oacute;n" class="btn btn-default btn-outlineGreen col-xs-12 text-center textWhite">
             </div>
+
 		<div class="form-group col-xs-12 col-sm-12 col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3"> <span class="textWhite"> <!-- ¿Aún no tienes cuenta? </span><span><a href="#" class=""> Regístrate</a></span> --> </div>
+
         <div class="divider"></div>
         <div class="text-center">
         
