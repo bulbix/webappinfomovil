@@ -139,6 +139,7 @@ public class WebappController
 	public ModelAndView editarSitio()
 	{		
 		HashMap<String, Object> model = new HashMap<String, Object>();
+		sitioWeb = "SIN_PUBLICAR";
 		
 		try
 		{
@@ -153,6 +154,7 @@ public class WebappController
 				Util.getCurrentSession().setAttribute("nombreUsuario", 
 				wsRespuesta.getDominioCreaSitio().getNombreUsuario());
 				
+				model.put("usuarioLogueado", correo);
 				model.put("nombreUsuario", wsRespuesta.getDominioCreaSitio().getNombreUsuario().trim());
 				model.put("nombreEmpresa", wsRespuesta.getDominioCreaSitio().getNombreEmpresa().trim());
 				model.put("descripcionCorta", wsRespuesta.getDominioCreaSitio().getDescripcionCorta().trim());
