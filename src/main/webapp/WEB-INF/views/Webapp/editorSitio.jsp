@@ -320,6 +320,11 @@ $('.navbar-collapse ul li a').click(function() {
 });
 
 </script>
+<<<<<<< HEAD
+=======
+<%-- <p>Canal Usuario: ${canalUsuario}</p> --%>
+<%-- <p>Sitio Web: ${sitioWeb}</p> --%>
+>>>>>>> branch 'master' of https://jluisbn89@bitbucket.org/bulbix/webappinfomovil.git
 <script>
 	
 	<c:choose>
