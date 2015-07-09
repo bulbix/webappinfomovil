@@ -182,6 +182,15 @@
     <div class="container whiteBg">
       <div class="row" >
         <h3 class=" text-center">Ponle un nombre a tu sitio web!</h3>
+        
+         <p class="text-center reset col-xs-12"> 
+         	<button type="button" class="btn btn-outline reset" data-toggle="popover" title="Ayuda" data-html="true" data-content="Debe ser mayor a 2 caracteres y menor a 64.
+	         	<br/>  Puede contener letras y números, guión bajo y medio. 
+	         	<br/>No debe contener la palabra Infomovil.">
+         	<img src="images/fa-help.png" width="30" height="30" alt="Ayuda"/>
+         	</button>
+         </p>
+        
         <div class="form-group col-xs-12 col-sm-12 col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3">
           <div class="divider"></div>
           <div class="form-group">
@@ -319,6 +328,10 @@ $('.navbar-collapse ul li a').click(function() {
     $('.navbar-toggle:visible').click();
 });
 
+$(function () {
+	  $('[data-toggle="popover"]').popover()
+	})
+	
 </script>
 
 <script>

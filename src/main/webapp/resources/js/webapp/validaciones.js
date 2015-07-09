@@ -8,7 +8,7 @@ function validaDominio()
 	var opcion = "NO_PUBLICAR"
 	var msjValidacion = "";
 	var funcion = "aceptar()";
-	var regAuxiliar = /( ?[0-9a-zA-Z-ñáéíóúÁÉÍÓÚüÜñÑ])$|\s/; //^[_a-z0-9-]+([a-z0-9])$
+	var regAuxiliar = /^[_a-z0-9-]+([a-z0-9])$/;
 	
 	if (nombreDominio == null || nombreDominio.trim().length == 0 || nombreDominio.trim().length < 3)
 	{
