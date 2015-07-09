@@ -5,8 +5,10 @@ import java.util.Map;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.apache.commons.lang3.StringUtils;
+import org.apache.commons.validator.routines.EmailValidator;
 import org.apache.log4j.Logger;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
@@ -44,7 +46,8 @@ public class WebappController
 			
 			wsRespuesta = wsCliente.crearSitioGuardar(correo, password, 
 					nombreUsuario, nombreEmpresa, descripcionCorta, 
-					correoElectronico, telefono, "Coverpage1azul");
+					EmailValidator.getInstance().isValid(correoElectronico)?correoElectronico:"",
+							telefono, "Coverpage1azul");
 			
 			
 			resultMap.put("codeError", wsRespuesta.getCodeError());
@@ -248,6 +251,11 @@ public class WebappController
 		
 		return "redirect:/login";
 		
+	}
+	
+	@RequestMapping(value = "/", method = RequestMethod.GET)
+	public String index(){
+		return "redirect:/infomovil/editarSitio";
 	}
 	
 	private String passwordDefault = "banco1";

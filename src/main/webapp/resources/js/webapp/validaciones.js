@@ -1,3 +1,7 @@
+$(document).ready(function() {
+	$("#txtTelefono").numeric({negative : false} );
+});
+
 function validaDominio()
 {
 	console.log("validaDominio::::::");

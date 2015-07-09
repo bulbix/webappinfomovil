@@ -68,7 +68,8 @@
 	</script>
     
    
-    <script src="<c:url value="/resources/js/webapp/validaciones.js"/>"></script>
+   
+    
     
     
     </head>
@@ -103,7 +104,7 @@
     <div class="divider hidden-xs hidden-sm"></div>
     <h5 class="textWhite text-center" id="urlSitio" style="display:none;">${sitioWeb}</h5>
     <div class="container">
-          <form>
+          <form id="formEditar">
         
         <!--email-->
         <div class="form-group col-xs-12 col-sm-12 col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3">
@@ -138,7 +139,7 @@
             <div class="text-left col-xs-3 col-sm-3 col-md-2 col-lg-2"> <a href="{referencia}" target="{target}" onclick="{evento}"><img src="<c:url value="/resources/webapp/images/mail_icn.png"/>" class="img mxw50miw43w100" alt="Contacto"/></a> </div>
             <div class="text-left col-xs-9 col-sm-9 col-md-10 col-lg-10 mar0auto"> <span class="dblw100 mxh70"> <!--input-->
               
-              <input type="text" class="form-control" maxlength="50" placeholder="Correo" required="required" <c:if test="${not empty correoElectronico}"> value = "${ correoElectronico }" </c:if> id="txtCorreo"/>
+              <input type="text" data-trigger="focus" class="form-control required email" maxlength="50" placeholder="Correo" required="required" <c:if test="${not empty correoElectronico}"> value = "${ correoElectronico }" </c:if> name="txtCorreo" id="txtCorreo"/>
               <p class="help-block"></p>
               
               <!--/input--> 
@@ -294,6 +295,8 @@
 <script>
   $(function () { $("input,select,textarea").not("[type=submit]").jqBootstrapValidation(); } );
 </script> 
+ <script src="<c:url value="/resources/js/webapp/jquery.numeric.js"/>"></script>
+ <script src="<c:url value="/resources/js/webapp/validaciones.js"/>"></script>
  
 <script>
 $(document).ready(function(){
