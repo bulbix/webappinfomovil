@@ -67,6 +67,7 @@
 		console.log("ContextPath: " + contextPath);
 	</script>
     
+   
     <script src="<c:url value="/resources/js/webapp/validaciones.js"/>"></script>
     
     
@@ -109,7 +110,7 @@
               <div class="control-group">
             <label class="control-label"></label>
             <div class="controls">
-                  <input type="text" class="form-control h1 text-center" placeholder="Pon tu nombre o negocio" required="required" <c:if test="${not empty nombreEmpresa}"> value = " ${ nombreEmpresa } " </c:if> id="txtNombreNegocio"/>
+                  <input type="text" class="form-control h1 text-center" maxlength="128" placeholder="Pon tu nombre o negocio" required="required" <c:if test="${not empty nombreEmpresa}"> value = " ${ nombreEmpresa } " </c:if> id="txtNombreNegocio"/>
                   <p class="help-block"></p>
                 </div>
           </div>
@@ -122,7 +123,7 @@
            
             <div class="controls">
             
-                  <textarea class="form-control h2 text-center" placeholder="Agrega una descripción corta de tus servicios o productos" required="required" id="txtDescripcionCorta"><c:if test="${not empty descripcionCorta}">${descripcionCorta}</c:if></textarea>
+                  <textarea class="form-control h2 text-center" maxlength="255" placeholder="Agrega una descripción corta de tus servicios o productos" required="required" id="txtDescripcionCorta"><c:if test="${not empty descripcionCorta}">${descripcionCorta}</c:if></textarea>
                   <p class="help-block"></p>
                 </div>
           </div>
@@ -137,19 +138,19 @@
             <div class="text-left col-xs-3 col-sm-3 col-md-2 col-lg-2"> <a href="{referencia}" target="{target}" onclick="{evento}"><img src="<c:url value="/resources/webapp/images/mail_icn.png"/>" class="img mxw50miw43w100" alt="Contacto"/></a> </div>
             <div class="text-left col-xs-9 col-sm-9 col-md-10 col-lg-10 mar0auto"> <span class="dblw100 mxh70"> <!--input-->
               
-              <input type="text" class="form-control" placeholder="Correo" required="required" <c:if test="${not empty correoElectronico}"> value = "${ correoElectronico }" </c:if> id="txtCorreo"/>
+              <input type="text" class="form-control" maxlength="50" placeholder="Correo" required="required" <c:if test="${not empty correoElectronico}"> value = "${ correoElectronico }" </c:if> id="txtCorreo"/>
               <p class="help-block"></p>
               
               <!--/input--> 
               </span><span class="dblw100"> <a href="{referencia}" target="{target}" onclick="{evento}"></a> </span> </div>
           </div>
            <div class="mar15 col-xs-12 col-sm-12 col-md-6 col-lg-6" >															         
-            <div class="text-left col-xs-3 col-sm-3 col-md-2 col-lg-2"> <a href="{referencia}" target="{target}" onclick="{evento}"><img src="<c:url value="/resources/webapp/images/tel_icn.png"/>" class="img mxw50miw43w100" alt="Contacto"/></a> </div>
+            <div class="text-left col-xs-3 col-sm-3 col-md-2 col-lg-2"> <a href="{referencia}" target="{target}" onclick="{evento}"><img src="<c:url value="/resources/webapp/images/cel_icn.png"/>" class="img mxw50miw43w100" alt="Contacto"/></a> </div>
             <div class="text-left col-xs-9 col-sm-9 col-md-10 col-lg-10 mar0auto"> <span class="dblw100 mxh70"> 
               
               <!--input-->
               
-              <input type="text" class="form-control" placeholder="Teléfono o celular" required="required" <c:if test="${not empty telefonoUsuario}"> value = "${ telefonoUsuario }" </c:if> id="txtTelefono"/>
+              <input type="text" class="form-control" maxlength="10" placeholder="Teléfono o celular" required="required" <c:if test="${not empty telefonoUsuario}"> value = "${ telefonoUsuario }" </c:if> id="txtTelefono"/>
               <p class="help-block"></p>
               
               <!--/input--> 
@@ -182,6 +183,15 @@
     <div class="container whiteBg">
       <div class="row" >
         <h3 class=" text-center">Ponle un nombre a tu sitio web!</h3>
+        
+         <p class="text-center reset col-xs-12"> 
+         	<button type="button" class="btn btn-outline reset" data-toggle="popover" title="Ayuda" data-html="true" data-content="Debe ser mayor a 2 caracteres y menor a 64.
+	         	<br/>  Puede contener letras y números, guión bajo y medio. 
+	         	<br/>No debe contener la palabra Infomovil.">
+         	<img src="<c:url value="/resources/webapp/images/fa-help.png" />" width="30" height="30" alt="Ayuda"/>
+         	</button>
+         </p>
+        
         <div class="form-group col-xs-12 col-sm-12 col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3">
           <div class="divider"></div>
           <div class="form-group">
@@ -197,9 +207,13 @@
           <div class="col-xs-12 col-sm-6">
             <div class="divider hidden-sm hidden-md hidden-lg"></div>
           </div>
+          <div class="col-xs-12 text-center textWhite" id="validacionNombre"></div>
+<!--           <div class="col-xs-12 text-center textWhite"> <span id="validacionNombre"></span> -->
+<%-- 				<img src="<c:url value="/resources/webapp/images/fa-warning.png"/>" width="20" height="20" alt="Alerta" /> --%>
+<!-- 		  </div> -->
+		  
           <div class="form-group col-xs-12 col-sm-12 col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3">
             <div class="divider"></div>
-            <div class="row" id="validaNombre" style="display:none;">Proporciona un nombre para tu dominio.</div>
             <input type="submit" value="Publicar" id="btnPublicarTel" class="btn btn-default btn-outline col-xs-12 text-center textWhite" style="display:none;">
             <input type="button" value="Buscar nombre" id="btnBuscarTel" class="btn btn-default btn-outline col-xs-12 text-center textWhite" onClick="validaDominio()">
             <div class="clear"></div>
@@ -280,6 +294,7 @@
 <script>
   $(function () { $("input,select,textarea").not("[type=submit]").jqBootstrapValidation(); } );
 </script> 
+ 
 <script>
 $(document).ready(function(){
   $('.slider1').bxSlider({
@@ -306,19 +321,24 @@ $(document).ready(function(){
 });
 </script> 
 <script>
+
+$(function () {
+	  $('[data-toggle="popover"]').popover()
+	});
+	
 $('#description').elastic();
 // jQuery for page scrolling feature - requires jQuery Easing plugin
 
 // Highlight the top nav as scrolling occurs
 $('body').scrollspy({
     target: '.navbar-fixed-top'
-})
+});
 
 // Closes the Responsive Menu on Menu Item Click
 $('.navbar-collapse ul li a').click(function() {
     $('.navbar-toggle:visible').click();
 });
-
+	
 </script>
 
 <script>

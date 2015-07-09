@@ -8,22 +8,27 @@ function validaDominio()
 	var opcion = "NO_PUBLICAR"
 	var msjValidacion = "";
 	var funcion = "aceptar()";
-	var regAuxiliar = /( ?[0-9a-zA-Z-ñáéíóúÁÉÍÓÚüÜñÑ])$|\s/; //^[_a-z0-9-]+([a-z0-9])$
+	var regAuxiliar = /^[_a-z0-9-]+([a-z0-9])$/;
 	
 	if (nombreDominio == null || nombreDominio.trim().length == 0 || nombreDominio.trim().length < 3)
 	{
-		$('#validaNombre').css("display", "block"); 
+		$("#validacionNombre").html("El nombre debe ser mayor a 2 caracteres y menor a 64");
+	//	alert("longitud de dominio");
 		return false;
 	}
 
 	if (nombreDominio.toLowerCase().indexOf("infomovil") != -1)
 	{
+		$("#validacionNombre").html("No debe contener la palabra Infomovil");
+	//	alert("contenido infomovil");
 		return false;
 	}
 
 	if (!regAuxiliar.test(nombreDominio)) 
 	{
-		$("#formatoServicios").css("display", "block");
+	//	alert("exp. regular");
+		$("#validacionNombre").html("Caracteres no validos");
+		//$("#formatoServicios").css("display", "block");
 		return false;
 	}
 	
