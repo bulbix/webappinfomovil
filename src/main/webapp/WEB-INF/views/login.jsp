@@ -203,7 +203,7 @@
           <div class="modal-body bgWhite">
           
          
-        <iframe class="legales" src="<c:url value="/pages/legal/terminos.html"/>" frameborder="0"></iframe>
+        <iframe class="legales" src="http://www.infomovil.com/pages/legal/terminos.html" frameborder="0"></iframe>
       </div>
           <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
@@ -219,7 +219,7 @@
         <p class="modal-title" >Pol&iacute;ticas de privacidad</p>
       </div>
           <div class="modal-body bgWhite">
-        <iframe class="legales" src="<c:url value="/pages/legal/aviso.html"/>" frameborder="0"></iframe>
+        <iframe class="legales" src="http://www.infomovil.com/pages/legal/aviso.html" frameborder="0"></iframe>
       </div>
           <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
