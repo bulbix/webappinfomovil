@@ -74,7 +74,7 @@
 
     <body role="document" data-spy="scroll" data-target=".navbar" data-offset="75" id="page-top" onload="autosave()">
 
-	<p>Usuario Logueado: ${usuarioLogueado}</p>
+
 
 
 <!-- Fixed navbar -->
@@ -85,8 +85,8 @@
           <a class="navbar-brand" href="http://infomovil.com"><span><img src="<c:url value="/resources/webapp/images/apple-touch-icon-57x57.png"/>" width="50" height="50" alt="Infomovil" /> </span><span class="marLeft">Editor de sitios <span class="hidden-xs">Infomovil</span></span></a> </div>
     <div id="navbar" class="navbar-collapse collapse text-right">
           <ul class="nav navbar-nav navbar-right">
-        <li class="active"><a href="#" class="smoothScroll">Editar <i class="fa fa-pencil"></i> </a></li>
-        <li><a href="#" class="smoothScroll"> Cerrar sesión <i class="fa fa-sign-in"></i></a></li>
+        <li class="active"><a href="#" class="smoothScroll">${usuarioLogueado} <i class="fa fa-user"></i> </a></li>
+        <li><a href="<c:url value="/infomovil/cerrarSesion"></c:url>" class="smoothScroll"> Cerrar sesión <i class="fa fa-sign-in"></i></a></li>
       </ul>
         </div>
     <!--/.nav-collapse --> 
@@ -382,8 +382,8 @@ $('.navbar-collapse ul li a').click(function() {
 });
 
 </script>
-<p>Canal Usuario: ${canalUsuario}</p>
-<p>Sitio Web: ${sitioWeb}</p>
+<%-- <p>Canal Usuario: ${canalUsuario}</p> --%>
+<%-- <p>Sitio Web: ${sitioWeb}</p> --%>
 <script>
 	
 	<c:choose>

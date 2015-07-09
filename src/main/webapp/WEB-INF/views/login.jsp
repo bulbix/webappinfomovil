@@ -23,33 +23,39 @@
     <meta property="og:url" content="http://www.infomovil.com" />
     <meta itemprop="name" content="Infomovil"/>
     <meta itemprop="description" content="Infomovil. Nunca antes ha sido tan f&aacute;cil crear un sitio web. Con Infomovil crea tu sitio f&aacute;cil, r&aacute;pido y gratuito en 5 minutos. Sitio web creado con www.infomovil.com"/>
-    <link rel="apple-touch-icon" href="resources/webapp/images/apple-touch-icon.png" />
-    <link rel="apple-touch-icon" sizes="57x57" href="resources/webapp/images/apple-touch-icon-57x57.png" />
-    <link rel="apple-touch-icon" sizes="72x72" href="resources/webapp/images/apple-touch-icon-72x72.png" />
-    <link rel="apple-touch-icon" sizes="76x76" href="resources/webapp/images/apple-touch-icon-76x76.png" />
-    <link rel="apple-touch-icon" sizes="114x114" href="resources/webapp/images/apple-touch-icon-114x114.png" />
-    <link rel="apple-touch-icon" sizes="120x120" href="resources/webapp/images/apple-touch-icon-120x120.png" />
-    <link rel="apple-touch-icon" sizes="144x144" href="resources/webapp/images/apple-touch-icon-144x144.png" />
-    <link rel="apple-touch-icon" sizes="152x152" href="resources/webapp/images/apple-touch-icon-152x152.png" />
-    <link rel="shortcut icon" href="resources/webapp/images/favicon.ico" type="image/x-icon" />
-    <link rel="image_src" href="resources/webapp/images/apple-touch-icon-57x57.png"/>
+    
+    
+    <link rel="apple-touch-icon" href="<c:url value="/resources/webapp/images/apple-touch-icon.png"/>"/>
+    <link rel="apple-touch-icon" sizes="57x57" href="<c:url value="/resources/webapp/images/apple-touch-icon-57x57.png"/>"/>
+    <link rel="apple-touch-icon" sizes="72x72" href="<c:url value="/resources/webapp/images/apple-touch-icon-72x72.png"/>"/>
+    <link rel="apple-touch-icon" sizes="76x76" href="<c:url value="/resources/webapp/images/apple-touch-icon-76x76.png"/>"/>
+    <link rel="apple-touch-icon" sizes="114x114" href="<c:url value="/resources/webapp/images/apple-touch-icon-114x114.png"/>"/>
+    <link rel="apple-touch-icon" sizes="120x120" href="<c:url value="/resources/webapp/images/apple-touch-icon-120x120.png"/>"/>
+    <link rel="apple-touch-icon" sizes="144x144" href="<c:url value="/resources/webapp/images/apple-touch-icon-144x144.png"/>"/>
+    <link rel="apple-touch-icon" sizes="152x152" href="<c:url value="/resources/webapp/images/apple-touch-icon-152x152.png"/>"/>
+    <link rel="shortcut icon" href="<c:url value="/resources/webapp/images/favicon.ico"/>" type="image/x-icon"/>
+    
+    <link rel="image_src" href="<c:url value="/resources/webapp/images/apple-touch-icon-57x57.png"/>"/>
+    <link rel="stylesheet" href="<c:url value="/fonts/font-awesome.min.css"/>"/>
     <title itemprop="name">Infomovil</title>
     <link rel="canonical" href="http://www.infomovil.com" itemprop="url" />
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 8]>
-      <script src=" resources/webapp/js/html5shiv.min.js"></script>
-      <script src=" resources/webapp/js/respond.min.js"></script>
+      <script src="<c:url value="/resources/webapp/js/html5shiv.min.js"/>"></script> 
+      <script src="<c:url value="/resources/webapp/js/respond.min.js"/>"></script> 
     <![endif]-->
     <!-- Bootstrap core CSS -->
-    <link href="resources/webapp/css/bootstrap.min.css" rel="stylesheet" />
+
+    
+    <link href="<c:url value="/resources/webapp/css/bootstrap.min.css" />" rel="stylesheet"/>
     <!-- Bootstrap theme -->
-    <link href="resources/webapp/css/bootstrap-theme.min.css" rel="stylesheet" />
+    <link href="<c:url value="/resources/webapp/css/bootstrap-theme.min.css" />" rel="stylesheet"/>
     <!-- Custom styles for this template -->
-    <link href="resources/webapp/css/theme.css" rel="stylesheet" />
+    <link href="<c:url value="/resources/webapp/css/theme.css" />" rel="stylesheet"/>
     <!-- Custom styles for this template -->
-    <link href="resources/webapp/css/sticky-footer-navbar.css" rel="stylesheet" />
+    <link href="<c:url value="/resources/webapp/css/sticky-footer-navbar.css" />" rel="stylesheet"/>
     <!-- bxSlider CSS file -->
-    <link href="resources/webapp/css/jquery.bxslider.css" rel="stylesheet" />
+    <link href="<c:url value="/resources/webapp/css/jquery.bxslider.css" />" rel="stylesheet"/>
     <script>
   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
   (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
@@ -67,12 +73,13 @@
       <div class="container">
     <div class="navbar-header">
           <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar"> <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
-          <a class="navbar-brand" href="http://infomovil.com"><span><img src="resources/webapp/images/apple-touch-icon-57x57.png" width="50" height="50" alt="Infomovil" /> </span><span class="marLeft">Infomovil</span></a> </div>
+          <a class="navbar-brand" href="http://infomovil.com"><span>
+          <img src="<c:url value="/resources/webapp/images/apple-touch-icon-57x57.png"/>" width="50" height="50" alt="Infomovil" /> </span><span class="marLeft">Infomovil</span></a> </div>
     <div id="navbar" class="navbar-collapse collapse text-right">
           <ul class="nav navbar-nav navbar-right">
         <li><a href="http://infomovil.com" class="smoothScroll">Inicio</a></li>
-        <!-- <li class="active"><a href="#" class="smoothScroll">Iniciar sesión</a></li>  -->
-        <!-- <li><a href="#" class="smoothScroll">Regístrate</a></li>  -->
+        <li class="active"><a href="#" class="smoothScroll">Iniciar sesión</a></li>
+        <li><a href="#" class="smoothScroll">Regístrate</a></li>
       </ul>
         </div>
     <!--/.nav-collapse --> 
@@ -91,8 +98,8 @@
     <div class="container">
     
     <c:if test="${not empty error}">
-			<div class="errorblock">
-				${sessionScope["SPRING_SECURITY_LAST_EXCEPTION"].message}</div>
+			<div class="errorblock col-xs-12 text-center textWhite">
+				<i class="fa fa-exclamation-triangle"></i> ${sessionScope["SPRING_SECURITY_LAST_EXCEPTION"].message}</div>
 	</c:if>
 			
       <form name='f' action="<c:url value='j_spring_security_check' />"
@@ -101,7 +108,7 @@
         <!--email-->
         <div class="form-group col-xs-12 col-sm-12 col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3">
               <div class="control-group">
-            <label class="control-label"></label>
+            <!--<label class="control-label"></label>-->
             <div class="controls">
                   <input type="email" class="form-control" placeholder="Email" required="required" name="j_username"/>
                   <p class="help-block"></p>
@@ -113,7 +120,7 @@
         <!--password-->
         <div class="form-group col-xs-12 col-sm-12 col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3">
               <div class="control-group">
-            <label class="control-label"></label>
+            <!--<label class="control-label"></label>-->
             <div class="controls">
                   <input type="password" class="form-control" placeholder="Contraseña" required="required" name='j_password'/>
                   <p class="help-block"></p>
@@ -126,10 +133,15 @@
         <div class="form-group col-xs-12 col-sm-12 col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3">
               <input type="submit" value="Inicia sesi&oacute;n" class="btn btn-default btn-outlineGreen col-xs-12 text-center textWhite">
             </div>
-        <div class="form-group col-xs-12 col-sm-12 col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3"> <span class="textWhite">¿Aún no tienes cuenta? </span><span><a href="<c:url value="/registra"/>">Regístrate</a></span> </div>
+        <div class="form-group col-xs-12 col-sm-12 col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3"> <span class="textWhite">¿Aún no tienes cuenta? </span><span><a href="#" class=""> Regístrate</a></span> </div>
         <div class="divider"></div>
-        <div class="text-center"><img src="resources/webapp/images/line.png" width="740" alt=""/></div>
-        <div class="col-xs-12 col-sm-12"> <span class="textWhite text-center text-small">Si continúas, aceptas las</span><span> <a href="#" title="Condiciones del servicio" data-toggle="modal" data-target="#myModalTerminos">condiciones del servicio </a></span><span class="textWhite">y las </span><span><a href="#" data-toggle="modal" data-target="#myModalAviso">pol&iacute;ticas de privacidad</a></span><span class="textWhite"> de Infomovil.</span>
+        <div class="text-center">
+        
+        
+        
+        <img src="<c:url value="/resources/webapp/images/line.png"/>" width="740" alt="Linea"/></div>
+    
+        <div class="col-xs-12 col-sm-12" style="padding: 10px 0;"> <span class="textWhite text-center text-small">Si continúas, aceptas las</span><span> <a href="#" title="Condiciones del servicio" data-toggle="modal" data-target="#myModalTerminos">condiciones del servicio </a></span><span class="textWhite">y las </span><span><a href="#" data-toggle="modal" data-target="#myModalAviso">pol&iacute;ticas de privacidad</a></span><span class="textWhite"> de Infomovil.</span>
               </p>
             </div>
       </form>
@@ -147,15 +159,24 @@
         <div class="col-xs-12 col-sm-12 col-md-6 col-md-offset-3 ">
               <p class="helpMx txtWhite reset text-center"><em>Ayudando a construir una economía digital.</em></p>
             </div>
-        <div class="col-xs-12 col-sm-12 col-md-4 col-md-offset-4"> <img src="resources/webapp/images/logo_infomovil.png" alt="Infomovil" onerror="this.src='  resources/webapp/images/trans.png';" class="img-responsive imgLog" />
-              <meta itemprop="name" content="Infomovil" />
+        <div class="col-xs-12 col-sm-12 col-md-4 col-md-offset-4"> 
+        
+        
+        <img src="<c:url value="/resources/webapp/images/logo_infomovil.png"/>" alt="Infomovil" class="img-responsive imgLog" />
+             
             </div>
         <div  class="col-xs-12 resetAll">
               <p class="text-center text-small reset">Descarga la app de Infomovil y crea una p&aacute;gina as&iacute; en 5 minutos. Es gratis.</p>
             </div>
         <div class="col-xs-12 col-sm-12 col-md-4 col-md-offset-4">
-              <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 mar10TB"> <a href="https://itunes.apple.com/mx/app/infomovil/id898313250?mt=8" target="blank"> <img src="resources/webapp/images/icn_appstore.png" class="img-responsive imgDes"  alt="app store" onerror="this.src='resources/webapp/images/trans.png';"/> </a> </div>
-              <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 mar10TB"> <a href="https://play.google.com/store/apps/details?id=com.infomovil.infomovil" target="blank"> <img src="resources/webapp/images/icn_gstore.png" class="img-responsive imgDes" alt="google store" onerror="this.src='resources/webapp/images/trans.png';"/> </a> </div>
+              <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 mar10TB"> <a href="https://itunes.apple.com/mx/app/infomovil/id898313250?mt=8" target="blank"> 
+               
+               
+              <img src="<c:url value="/resources/webapp/images/icn_appstore.png"/>" class="img-responsive imgDes"  alt="app store"/> </a> </div>
+              <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 mar10TB"> <a href="https://play.google.com/store/apps/details?id=com.infomovil.infomovil" target="blank"> 
+              
+              
+              <img src="<c:url value="/resources/webapp/images/icn_gstore.png"/>" class="img-responsive imgDes" alt="google store"/> </a> </div>
             </div>
       </div>
           <div class="dividerSmall"></div>
@@ -181,7 +202,9 @@
         <p class="modal-title" >Condiciones del servicio</p>
       </div>
           <div class="modal-body bgWhite">
-        <iframe class="legales" src="pages/legal/terminos.html" frameborder="0"></iframe>
+          
+         
+        <iframe class="legales" src="<c:url value="/pages/legal/terminos.html"/>" frameborder="0"></iframe>
       </div>
           <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
@@ -197,7 +220,7 @@
         <p class="modal-title" >Pol&iacute;ticas de privacidad</p>
       </div>
           <div class="modal-body bgWhite">
-        <iframe class="legales" src="pages/legal/aviso.html" frameborder="0"></iframe>
+        <iframe class="legales" src="<c:url value="/pages/legal/aviso.html"/>" frameborder="0"></iframe>
       </div>
           <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
@@ -205,18 +228,19 @@
         </div>
   </div>
     </div>
-<!-- Bootstrap core JavaScript
-    ================================================== --> 
+<!-- Bootstrap core JavaScript================================================== --> 
 <!-- Placed at the end of the document so the pages load faster --> 
-<script src="resources/webapp/js/jquery.min.js"></script> 
-<script src="resources/webapp/js/bootstrap.min.js"></script> 
-<script src="resources/webapp/js/docs.min.js"></script> 
-<script src="resources/webapp/js/smoothscroll.js" type="text/javascript"></script> 
+<script type="text/javascript" src="<c:url value="/resources/webapp/js/jquery.min.js"/>"></script> 
+
+<script src="<c:url value="/resources/webapp/js/jquery.min.js"/>"></script> 
+<script src="<c:url value="/resources/webapp/js/bootstrap.min.js"/>"></script> 
+<script src="<c:url value="/resources/webapp/js/docs.min.js"/>"></script> 
+<script type="text/javascript" src="<c:url value="/resources/webapp/js/smoothscroll.js"/>"></script> 
 <!-- IE10 viewport hack for Surface/desktop Windows 8 bug --> 
-<script src="resources/webapp/js/ie10-viewport-bug-workaround.js"></script> 
+<script src="<c:url value="/resources/webapp/js/ie10-viewport-bug-workaround.js"/>"></script> 
 <!-- bxSlider Javascript file --> 
-<script src="resources/webapp/js/jquery.bxslider.min.js"></script> 
-<script src="resources/webapp/js/jqBootstrapValidation.js"></script> 
+<script src="<c:url value="/resources/webapp/js/jquery.bxslider.min.js"/>"></script>
+<script src="<c:url value="/resources/webapp/js/jqBootstrapValidation.js"/>"></script>
 <script>
   $(function () { $("input,select,textarea").not("[type=submit]").jqBootstrapValidation(); } );
 </script> 

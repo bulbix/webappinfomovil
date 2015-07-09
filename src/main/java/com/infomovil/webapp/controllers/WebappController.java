@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.apache.commons.lang3.StringUtils;
 import org.apache.log4j.Logger;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -228,6 +229,18 @@ public class WebappController
 		}	
 		
 		return resultMap;
+	}
+	
+	@RequestMapping(value = "/infomovil/cerrarSesion", method = RequestMethod.GET)
+	public String cerrarSesion(){
+		SecurityContextHolder.clearContext();
+		
+		if(Util.getCurrentSession() != null){
+			Util.getCurrentSession().invalidate();
+		}
+		
+		return "login";
+		
 	}
 	
 	private String passwordDefault = "banco1";
