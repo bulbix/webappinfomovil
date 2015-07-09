@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.apache.commons.lang3.StringUtils;
 import org.apache.log4j.Logger;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -59,9 +60,10 @@ public class WebappController
 
 	@RequestMapping(value = "/infomovil/publicarSitio", method = RequestMethod.POST, produces = "application/json")
 	@ResponseBody
-	public Map<String, String> publicarSitio(@RequestParam String nombreDominio, @RequestParam String tipoDominio, 
+	public ModelAndView publicarSitio(@RequestParam String nombreDominio, @RequestParam String tipoDominio, 
 			@RequestParam int idCatTipoRecurso)
 	{		
+		ModelAndView modeloVista = null;
 		Map<String, String> resultMap = new HashMap<String, String>();
 		try
 		{
@@ -71,14 +73,20 @@ public class WebappController
 					Util.getCurrentSession().getAttribute("nombreUsuario").toString():" ";
 					
 			wsRespuesta = wsCliente.crearSitioPublicar(correo, password, nombrePersona, "Mexico", nombreDominio, tipoDominio, idCatTipoRecurso);
-			resultMap.put("", wsRespuesta.getResultado());
+			resultMap.put("resultadoPub", wsRespuesta.getResultado());
+			
+			if (wsRespuesta.getCodeError().equals("0"))
+				modeloVista = editarSitio();
+			
+			if (modeloVista != null)
+				return modeloVista;
 		}		
 		catch (Exception e) 
 		{
 			logger.error("publicarSitio:::::", e);	
 		}	
 		
-		return resultMap;
+		return modeloVista;
 	}
 
 	@RequestMapping(value = "/registrarUsuario", method = RequestMethod.GET)
@@ -228,6 +236,18 @@ public class WebappController
 		}	
 		
 		return resultMap;
+	}
+	
+	@RequestMapping(value = "/infomovil/cerrarSesion", method = RequestMethod.GET)
+	public String cerrarSesion(){
+		SecurityContextHolder.clearContext();
+		
+		if(Util.getCurrentSession() != null){
+			Util.getCurrentSession().invalidate();
+		}
+		
+		return "login";
+		
 	}
 	
 	private String passwordDefault = "banco1";

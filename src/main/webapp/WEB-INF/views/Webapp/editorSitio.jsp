@@ -38,8 +38,8 @@
     <link rel="canonical" href="http://www.infomovil.com" itemprop="url" />
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 8]>
-      <script src=" resources/webapp/js/html5shiv.min.js"></script>
-      <script src=" resources/webapp/js/respond.min.js"></script>
+      <script src="<c:url value="/resources/webapp/js/html5shiv.min.js"/>"></script>
+      <script src="<c:url value="/resources/webapp/js/respond.min.js"/>"></script>
     <![endif]-->
     <!-- Bootstrap core CSS -->
     <link href="<c:url value="/resources/webapp/css/bootstrap.min.css"/>" rel="stylesheet" />
@@ -74,7 +74,7 @@
 
     <body role="document" data-spy="scroll" data-target=".navbar" data-offset="75" id="page-top" onload="autosave()">
 
-	<p>Usuario Logueado: ${usuarioLogueado}</p>
+
 
 
 <!-- Fixed navbar -->
@@ -85,8 +85,8 @@
           <a class="navbar-brand" href="http://infomovil.com"><span><img src="<c:url value="/resources/webapp/images/apple-touch-icon-57x57.png"/>" width="50" height="50" alt="Infomovil" /> </span><span class="marLeft">Editor de sitios <span class="hidden-xs">Infomovil</span></span></a> </div>
     <div id="navbar" class="navbar-collapse collapse text-right">
           <ul class="nav navbar-nav navbar-right">
-        <li class="active"><a href="#" class="smoothScroll">Editar <i class="fa fa-pencil"></i> </a></li>
-        <li><a href="#" class="smoothScroll"> Cerrar sesión <i class="fa fa-sign-in"></i></a></li>
+        <li class="active"><a href="#" class="smoothScroll">${usuarioLogueado} <img width="20" height="20" alt="Infomovil" src="<c:url value="/resources/webapp/images/fa-user.png"/>"/> </a></li>
+        <li><a href="<c:url value="/infomovil/cerrarSesion"></c:url>" class="smoothScroll"> Cerrar sesión <img width="20" height="20" alt="Infomovil" src="<c:url value="/resources/webapp/images/fa-sign-out.png"/>"/></a></li>
       </ul>
         </div>
     <!--/.nav-collapse --> 
@@ -100,7 +100,7 @@
       <!-- Main jumbotron for a primary marketing message or call to action -->
       <div class="container text-center">
     <div class="divider hidden-xs hidden-sm"></div>
-    <h5 class="textWhite text-center" id="urlSitio" style="display:none;">www.sitiopublicado.com</h5>
+    <h5 class="textWhite text-center" id="urlSitio" style="display:none;">${sitioWeb}</h5>
     <div class="container">
           <form>
         
@@ -174,46 +174,6 @@
     </div>
 <!--/Theme showcase --> 
 
-
-<!--Publicar recurso-->
-<form id="publicaRecurso" action="<c:url value="/infomovil/publicarSitio"/>" method="post">
-	<div id="publicarRecurso">
-	  <div class="bgDobleBlack" ></div>
-	  <section class="bgFondo publicar">
-	    <div class="container whiteBg" >
-	      <div class="row" >
-	        <h3 class=" text-center">Ponle un nombre a tu sitio web!</h3>
-	        <div class="form-group col-xs-12 col-sm-12 col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3">
-	          <div class="col-xs-12 col-sm-6">
-	            <div class="divider"></div>
-	            <select id="idCatTipoRecurso" class="form-control" style="height:36px !important; display:block; padding:6px 12px; color:#000!important">
-				    <c:forEach items="${dominios}" var="entry">
-				        <option value="${entry.key}">${entry.value}</option>
-				    </c:forEach>
-	            </select>
-	            <div class="divider hidden-sm hidden-md hidden-lg"></div>
-	          </div>
-	          <div class="col-xs-12 col-sm-6">
-	            <div class="divider"></div>
-	            <input type="text" placeholder="Nombra tu sitio" value="" id="nombreDominio" name="nombreDominio" class="form-control" id="nombraInput">
-	            <input type="hidden" id="tipoDominio" name="tipoDominio" value="recurso"/>
-	          </div>
-	          <div class="form-group col-xs-12 col-sm-12 col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3">
-	            <div class="divider"></div>
-	            <input type="submit" value="Publicar" id="btnPublicarTel" class="btn btn-default btn-outline col-xs-12 text-center textWhite" style="display:none;">
-	            <input type="button" value="Buscar nombre" id="btnBuscarTel" class="btn btn-default btn-outline col-xs-12 text-center textWhite" onClick="validaDominio()">
-<!-- 	            <input type="submit" value="Publicar" id="btnPublicarRecurso" class="btn btn-default btn-outline col-xs-12 text-center textWhite" style="display:none;"> -->
-<!-- 	            <input type="button" value="Buscar nombre" id="btnBuscarRecurso" class="btn btn-default btn-outline col-xs-12 text-center textWhite" onClick="validaDominio()"> -->
-	            <div class="clear"></div>
-	          </div>
-	        </div>
-	      </div>
-	    </div>
-	  </section>
-	</div>
-</form>
-<!--/Publicar recurso--> 
-
 <!--Publicar TEL-->
 <form id="publicaTel" action="<c:url value="/infomovil/publicarSitio"/>" method="post">
 	<div id="publicarTel">
@@ -228,11 +188,11 @@
 	            <label class="sr-only" for="exampleInputAmount">www.</label>
 	            <div class="input-group">
 	              <div class="input-group-addon">www.</div>
-	              <input type="text" class="form-control black" id="nombreDominio" name="nombreDominio" placeholder="Nombra tu sitio" required="required">
+	              <input type="text" class="form-control black" id="nombreDominioBusqueda" name="nombreDominioBusqueda" placeholder="Nombra tu sitio" maxlength="63">
 	              <div class="input-group-addon">.tel</div>
 	            </div>
-	            <input type="hidden" id="tipoDominio" name="tipoDominio" value="tel"/>
-	            <input type="hidden" id="idCatTipoRecurso" name="idCatTipoRecurso" value="1"/>
+	            <input type="hidden" id="tipoDominioBusqueda" name="tipoDominioBusqueda" value="tel"/>
+	            <input type="hidden" id="idCatTipoRecursoBusqueda" name="idCatTipoRecursoBusqueda" value="1"/>
 	          </div>
 	          <div class="col-xs-12 col-sm-6">
 	            <div class="divider hidden-sm hidden-md hidden-lg"></div>
@@ -260,7 +220,7 @@
 
 <footer class="footer bgBlack"> </footer>
 <!-- Scroll to Top Button (Only visible on small and extra-small screen sizes) -->
-<div class="scroll-top page-scroll visible-xs visble-sm"> <a class="btn" href="#page-top"> <i class="fa fa-chevron-up"></i> Subir</a> </div>
+<div class="scroll-top page-scroll visible-xs visble-sm"> <a class="btn" href="#page-top"> <img width="20" height="20" alt="Infomovil" src="<c:url value="/resources/webapp/images/fa-chevron-up.png"/>"/> Subir</a> </div>
 
 <!--/Footer--> 
 
@@ -300,32 +260,10 @@
     </div>
 
 <form id="publicarDominio" action="<c:url value="/infomovil/publicarSitio"/>" method="post">
-	<div id="myModalPublicar" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-	  <div class="modal-dialog modal-lg">
-	    <div class="modal-content">
-	      <div class="modal-header">
-	        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-	        <p class="modal-title" ></p>
-	      </div>
-	      <div class="modal-body bgWhite">
-	        <h2 id="msjValidacion" class="textWhite col-xs-12 col-sm-12 col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3 text-center"><span id="msjValidacion"></span></h2>
-	        
-	        <h5 class="textWhite col-xs-12 col-sm-12 col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3 text-center">El nombre </h5>
-	        <h5 id="nombreSitio"></h5>  
-	        <h5>está disponible</h5>
-	        <div class="clear divider"></div>
-	       
-	       	<input type="hidden" id="tipoDominio" name="tipoDominio" value = "tel" />			
-	        <input type="hidden" id="idCatTipoRecurso" name="idCatTipoRecurso" value="1"/>
-	        
-	      </div>
-	      <div class="modal-footer">
-	      
-	        <button type="submit" class="btn btn-default text-center col-xs-12 col-sm-12 col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3" data-dismiss="modal"><strong>&iexcl;Lo quiero!</strong></button>
-	      </div>
-	    </div>
-	  </div>
-	</div>
+	<div id="modalPublicacion"></div>
+	<input type="hidden" id="nombreDominio" name="nombreDominio" >
+	<input type="hidden" id="tipoDominio" name="tipoDominio" >
+	<input type="hidden" id="idCatTipoRecurso" name="idCatTipoRecurso" value="1">
 </form>
 <!-- Bootstrap core JavaScript
     ================================================== --> 
@@ -382,8 +320,6 @@ $('.navbar-collapse ul li a').click(function() {
 });
 
 </script>
-<p>Canal Usuario: ${canalUsuario}</p>
-<p>Sitio Web: ${sitioWeb}</p>
 <script>
 	
 	<c:choose>
@@ -399,7 +335,7 @@ $('.navbar-collapse ul li a').click(function() {
 	
 	<c:choose>
 		<c:when test="${sitioWeb != 'SIN_PUBLICAR'}">
-			$("#urlSitio").val("${sitioWeb}");		
+			$("#urlSitio").css("display", "block");
 			$("#publicarTel").css("display", "none");
 			$("#publicarRecurso").css("display", "none");
 		</c:when>

@@ -1,13 +1,22 @@
 function validaDominio()
 {
 	console.log("validaDominio::::::");
-	var nombreDominio = $("#nombreDominio").val();
-	var tipoDominio = $("#tipoDominio").val();
+	var nombreDominio = $("#nombreDominioBusqueda").val();
+	var tipoDominio = $("#tipoDominioBusqueda").val();
 	var sitioDisponible = "";
+	var textoBoton = "Aceptar";
+	var opcion = "NO_PUBLICAR"
+	var msjValidacion = "";
+	var funcion = "aceptar()";
 	
-	if (nombreDominio == null || nombreDominio.trim().length == 0)
+	if (nombreDominio == null || nombreDominio.trim().length == 0 || nombreDominio.trim().length < 3)
 	{
 		$('#validaNombre').css("display", "block"); 
+		return false;
+	}
+
+	if (nombreDominio.toLowerCase().indexOf("infomovil") != -1)
+	{
 		return false;
 	}
 	
@@ -34,26 +43,49 @@ function validaDominio()
 			console.log("termino busqueda de dominio:::::: " + json.resultado);
 			if (json.resultado.indexOf("No existe") != -1)
 			{
-				$("#msjValidacion").val("¡Felicidades!");
-				sitioDisponible = "www." + nombreDominio + "." + tipoDominio;
+				funcion = "publicar()";
+				opcion = "PUBLICAR";
+				msjValidacion = "&iexcl;Felicidades!";
+				textoBoton = "&iexcl;Lo quiero!";
+				sitioDisponible = "www." + nombreDominio + "." + tipoDominio + " esta disponible";
 				
 				if (tipoDominio == "recurso")
-					sitioDisponible = $("#idCatTipoRecurso option:selected").html() + "/" + nombreDominio;
-
-				console.log("sitioDisponible:::::" + sitioDisponible);
-
-				alert("¡Felicidades! " + sitioDisponible);
-				//$("#nombreSitio").val(sitioDisponible);				
-			//	$("#myModalPublicar").html(sitioDisponible).modal('show');
-//				$("#btnBuscarTel").css("display", "none");
-//				$("#btnPublicarTel").css("display", "block");
-//				$('#validaNombre').val("El dominio: www." + nombreDominio + ".tel, esta disponible, publícalo"); 
-//				$('#validaNombre').css("display", "block");
+					sitioDisponible = $("#idCatTipoRecurso option:selected").html() + "/" + nombreDominio + " esta disponible";
 			}
+			else
+			{
+				funcion = "aceptar()"
+				msjValidacion = "";
+				textoBoton = "Aceptar"
+				sitioDisponible = "www." + nombreDominio + "." + tipoDominio + " no esta disponible";
+			}
+			
+			$('#modalPublicacion').html("<div id='myModalPublicar' class='modal fade' tabindex='-1' role='dialog' aria-labelledby='myModalLabel' aria-hidden='true'>"+
+					"<div class='modal-dialog modal-lg'><div class='modal-content'><div class='modal-header'><button type='button' class='close' data-dismiss='modal' aria-label='Close'>"+
+					"<span aria-hidden='true'>&times;</span></button><p class='modal-title' ></p></div><div class='modal-body bgWhite'>"+
+					"<h2 class='textWhite col-xs-12 col-sm-12 col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3 text-center'>"+ msjValidacion +"</h2><h5 class='textWhite col-xs-12 col-sm-12 col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3 text-center'>"+
+					"El dominio " + sitioDisponible + "</h5><div class='clear divider'></div></div><div class='modal-footer'>"+
+					"<button type='button' class='btn btn-default text-center col-xs-12 col-sm-12 col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3' data-dismiss='modal' onClick=" + funcion + "><strong>"+ textoBoton +"</strong>" + 
+					"</button><input type='hidden' id='opcion' value=" + opcion + "/></div></div></div></div>");
+			
+			$('#modalPublicacion > .alert-success').append($('#myModalPublicar').modal('show'));
+			
 	    }
 	 ).fail(function( jqXHR, textStatus ) {
 
 	 });
+}
+
+function aceptar()
+{
+	$('#modalPublicacion > .alert-success').append($('#myModalPublicar').modal('remove'));
+}
+
+function publicar()
+{
+	$("#nombreDominio").val($("#nombreDominioBusqueda").val());
+	$("#tipoDominio").val($("#tipoDominioBusqueda").val());
+	$("#publicarDominio").submit();
 }
 
 function autosave() {
@@ -84,7 +116,7 @@ function autosave() {
 //				
 //			} 
 			
-			console.log("El valor de n2 es: " + n2);
+//			console.log("El valor de n2 es: " + n2);
 			
 			if(contextPath == "/"){
 				contextPath = "";
@@ -102,9 +134,9 @@ function autosave() {
 						telefono : telefono
 					},
 					success : function(json) {
-						console.log('Guardado :)');
+					//	console.log('Guardado :)');
 						n1 = nombreNegocio + descripcionCorta + correo + telefono;
-						console.log('El valor de n1 es: ' + n1);
+					//	console.log('El valor de n1 es: ' + n1);
 						autosaveForm($form, seconds);
 					},
 					error : function(json) {
