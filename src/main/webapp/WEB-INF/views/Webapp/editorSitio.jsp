@@ -175,45 +175,45 @@
 <!--/Theme showcase --> 
 
 <!--Publicar TEL-->
-<form id="publicaTel" action="<c:url value="/infomovil/publicarSitio"/>" method="post">
-	<div id="publicarTel">
-	  <div class="bgDobleBlack" ></div>
-	  <section class="bgFondo publicar" >
-	    <div class="container whiteBg">
-	      <div class="row" >
-	        <h3 class=" text-center">Ponle un nombre a tu sitio web!</h3>
-	        <div class="form-group col-xs-12 col-sm-12 col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3">
-	          <div class="divider"></div>
-	          <div class="form-group">
-	            <label class="sr-only" for="exampleInputAmount">www.</label>
-	            <div class="input-group">
-	              <div class="input-group-addon">www.</div>
-	              <input type="text" class="form-control black" id="nombreDominioBusqueda" name="nombreDominioBusqueda" placeholder="Nombra tu sitio" maxlength="63">
-	              <div class="input-group-addon">.tel</div>
-	            </div>
-	            <input type="hidden" id="tipoDominioBusqueda" name="tipoDominioBusqueda" value="tel"/>
-	            <input type="hidden" id="idCatTipoRecursoBusqueda" name="idCatTipoRecursoBusqueda" value="1"/>
-	          </div>
-	          <div class="col-xs-12 col-sm-6">
-	            <div class="divider hidden-sm hidden-md hidden-lg"></div>
-	          </div>
-	          <div class="form-group col-xs-12 col-sm-12 col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3">
-	            <div class="divider"></div>
-	            <div class="row" id="validaNombre" style="display:none;">Proporciona un nombre para tu dominio.</div>
-	            <input type="submit" value="Publicar" id="btnPublicarTel" class="btn btn-default btn-outline col-xs-12 text-center textWhite" style="display:none;">
-	            <input type="button" value="Buscar nombre" id="btnBuscarTel" class="btn btn-default btn-outline col-xs-12 text-center textWhite" onClick="validaDominio()">
-	            <div class="clear"></div>
-	            <div class="divider"></div>
-	            <div class="divider"></div>
-	            <div class="divider"></div>
-	          </div>
-	        </div>
-	      </div>
-	    </div>
-	 
-	  </section>
-	</div>
-</form>
+
+<div id="publicarTel">
+  <div class="bgDobleBlack" ></div>
+  <section class="bgFondo publicar" >
+    <div class="container whiteBg">
+      <div class="row" >
+        <h3 class=" text-center">Ponle un nombre a tu sitio web!</h3>
+        <div class="form-group col-xs-12 col-sm-12 col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3">
+          <div class="divider"></div>
+          <div class="form-group">
+            <label class="sr-only" for="exampleInputAmount">www.</label>
+            <div class="input-group">
+              <div class="input-group-addon">www.</div>
+              <input type="text" class="form-control black" id="nombreDominioBusqueda" name="nombreDominioBusqueda" placeholder="Nombra tu sitio" maxlength="63">
+              <div class="input-group-addon">.tel</div>
+            </div>
+            <input type="hidden" id="tipoDominioBusqueda" name="tipoDominioBusqueda" value="tel"/>
+            <input type="hidden" id="idCatTipoRecursoBusqueda" name="idCatTipoRecursoBusqueda" value="1"/>
+          </div>
+          <div class="col-xs-12 col-sm-6">
+            <div class="divider hidden-sm hidden-md hidden-lg"></div>
+          </div>
+          <div class="form-group col-xs-12 col-sm-12 col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3">
+            <div class="divider"></div>
+            <div class="row" id="validaNombre" style="display:none;">Proporciona un nombre para tu dominio.</div>
+            <input type="submit" value="Publicar" id="btnPublicarTel" class="btn btn-default btn-outline col-xs-12 text-center textWhite" style="display:none;">
+            <input type="button" value="Buscar nombre" id="btnBuscarTel" class="btn btn-default btn-outline col-xs-12 text-center textWhite" onClick="validaDominio()">
+            <div class="clear"></div>
+            <div class="divider"></div>
+            <div class="divider"></div>
+            <div class="divider"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+ 
+  </section>
+</div>
+
 <!--/Publicar TEL--> 
 
 <!--Footer-->
@@ -320,11 +320,7 @@ $('.navbar-collapse ul li a').click(function() {
 });
 
 </script>
-<<<<<<< HEAD
-=======
-<%-- <p>Canal Usuario: ${canalUsuario}</p> --%>
-<%-- <p>Sitio Web: ${sitioWeb}</p> --%>
->>>>>>> branch 'master' of https://jluisbn89@bitbucket.org/bulbix/webappinfomovil.git
+
 <script>
 	
 	<c:choose>

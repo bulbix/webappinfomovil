@@ -102,8 +102,7 @@
 				<img src="<c:url value="/resources/webapp/images/fa-warning.png"/>" width="15" height="15" alt="Alerta" /> ${sessionScope["SPRING_SECURITY_LAST_EXCEPTION"].message}</div>
 	</c:if>
 			
-      <form name='f' action="<c:url value='j_spring_security_check' />"
-		method='POST'>
+      <form name='f' action="j_spring_security_check" method='POST'>
         
         <!--email-->
         <div class="form-group col-xs-12 col-sm-12 col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3">
