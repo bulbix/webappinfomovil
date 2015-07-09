@@ -99,7 +99,7 @@
     
     <c:if test="${not empty error}">
 			<div class="errorblock col-xs-12 text-center textWhite">
-				<i class="fa fa-exclamation-triangle"></i> ${sessionScope["SPRING_SECURITY_LAST_EXCEPTION"].message}</div>
+				<img src="<c:url value="/resources/webapp/images/fa-warning.png"/>" width="15" height="15" alt="Alerta" /> ${sessionScope["SPRING_SECURITY_LAST_EXCEPTION"].message}</div>
 	</c:if>
 			
       <form name='f' action="<c:url value='j_spring_security_check' />"
@@ -189,7 +189,7 @@
   </section>
     </footer>
 <!-- Scroll to Top Button (Only visible on small and extra-small screen sizes) -->
-<div class="scroll-top page-scroll visible-xs visble-sm"> <a class="btn" href="#page-top"> <i class="fa fa-chevron-up"></i> Subir</a> </div>
+<div class="scroll-top page-scroll visible-xs visble-sm"> <a class="btn" href="#page-top"> <img src="<c:url value="/resources/webapp/images/fa-chevron-up.png"/>" width="15" height="15" alt="Alerta" /> Subir</a> </div>
 
 <!--/Footer--> 
 <!-- /container -->
