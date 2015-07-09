@@ -57,14 +57,21 @@ public class WebappController
 		return resultMap;
 	}
 
-	@RequestMapping(value = "/infomovil/publicarSitio", method = RequestMethod.GET, produces = "application/json")
+	@RequestMapping(value = "/infomovil/publicarSitio", method = RequestMethod.POST, produces = "application/json")
 	@ResponseBody
-	public Map<String, Object> publicarSitio(@RequestParam String email, @RequestParam String password, @RequestParam String nombrePersona, @RequestParam String direccionPersona, 
-			@RequestParam String nombreDominio, @RequestParam String tipoDominio, @RequestParam int idCatTipoRecurso, @RequestParam String tipo, Model model)
+	public Map<String, String> publicarSitio(@RequestParam String nombreDominio, @RequestParam String tipoDominio, 
+			@RequestParam int idCatTipoRecurso)
 	{		
+		Map<String, String> resultMap = new HashMap<String, String>();
 		try
 		{
-			wsRespuesta = wsCliente.crearSitioPublicar(email, password, nombrePersona, direccionPersona, nombreDominio, tipoDominio, idCatTipoRecurso);
+			correo = Util.getUserLogged().getPrincipal().toString();
+			password = Util.getUserLogged().getCredentials().toString();	
+			nombrePersona = Util.getCurrentSession().getAttribute("nombreUsuario")!=null?
+					Util.getCurrentSession().getAttribute("nombreUsuario").toString():" ";
+					
+			wsRespuesta = wsCliente.crearSitioPublicar(correo, password, nombrePersona, "Mexico", nombreDominio, tipoDominio, idCatTipoRecurso);
+			resultMap.put("", wsRespuesta.getResultado());
 		}		
 		catch (Exception e) 
 		{
@@ -152,9 +159,11 @@ public class WebappController
 				model.put("correoElectronico", wsRespuesta.getDominioCreaSitio().getCorreoElectronico().trim());
 				model.put("telefonoUsuario", wsRespuesta.getDominioCreaSitio().getTelefono().trim());			
 				model.put("template", wsRespuesta.getDominioCreaSitio().getTemplate());
-				model.put("vistaPrevia", wsRespuesta.getDominioCreaSitio().getUrlVistaPrevia());
-				model.put("canalUsuario", wsRespuesta.getDominioCreaSitio().getCanal());
+				model.put("vistaPrevia", wsRespuesta.getDominioCreaSitio().getUrlVistaPrevia());				
 				model.put("dominios", obtenerDominios());
+				
+				if (wsRespuesta.getDominioCreaSitio().getCanal().equals("BAZ(1)"))
+					canal = "BAZ";
 				
 				if (!StringUtils.isEmpty(wsRespuesta.getDominioCreaSitio().getSitioWeb()))
 					sitioWeb = wsRespuesta.getDominioCreaSitio().getSitioWeb();
@@ -168,6 +177,7 @@ public class WebappController
 				model.put("sitioWeb", sitioWeb); 
 				model.put("fechaIniTel", fechaIni);
 				model.put("fechaFinTel", fechaFin);
+				model.put("canalUsuario", canal);
 			}
 			
 			return new ModelAndView("Webapp/editorSitio", model);
@@ -200,13 +210,15 @@ public class WebappController
 		return dominios;
 	}
 	
-	@RequestMapping(value = "/existeDominio", method = RequestMethod.GET, produces = "application/json")
+	@RequestMapping(value = "/infomovil/existeDominio", method = RequestMethod.GET, produces = "application/json")
 	@ResponseBody
-	public Map<String, Object> existeDominio(@RequestParam String nombreDominio, @RequestParam String tipoDominio)
+	public Map<String, String> existeDominio(@RequestParam String nombreDominio, @RequestParam String tipoDominio)
 	{		
+		Map<String, String> resultMap = new HashMap<String, String>();
 		try
 		{
 			wsRespuesta = wsCliente.crearSitioExisteDominio(nombreDominio, tipoDominio);
+			resultMap.put("resultado", wsRespuesta.getResultado());
 		}		
 		catch (Exception e) 
 		{
@@ -217,15 +229,16 @@ public class WebappController
 	}
 	
 	private String passwordDefault = "banco1";
+	private String nombrePersona;
 	private String codigoError;
 	private String descripcionError;
 	private String vista;
 	private String fechaIni = "SIN_FECHA";
 	private String fechaFin = "SIN_FECHA";
 	private String sitioWeb = "SIN_PUBLICAR";
+	private String canal = "NO_TIENE";
 	private String password;
 	private String correo;
-	private Map<String, Object> resultMap;
 	private Map<String, Object> cargarInfo;
 	private HashMap<String, Object> dominios = new HashMap<String, Object>();
 	private static final Logger logger = Logger.getLogger(WebappController.class);

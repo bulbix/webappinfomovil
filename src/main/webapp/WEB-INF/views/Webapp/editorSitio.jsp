@@ -83,7 +83,6 @@
     <div id="navbar" class="navbar-collapse collapse text-right">
           <ul class="nav navbar-nav navbar-right">
         <li class="active"><a href="#" class="smoothScroll">Editar <i class="fa fa-pencil"></i> </a></li>
-        <li><a href="#" class="smoothScroll"> Visualizar <i class="fa fa-eye"></i></a></li>
         <li><a href="#" class="smoothScroll"> Cerrar sesión <i class="fa fa-sign-in"></i></a></li>
       </ul>
         </div>
@@ -98,7 +97,7 @@
       <!-- Main jumbotron for a primary marketing message or call to action -->
       <div class="container text-center">
     <div class="divider hidden-xs hidden-sm"></div>
-    <h1 class="textBlack hidden">Edita tu sitio web</h1>
+    <h5 class="textWhite text-center" id="urlSitio" style="display:none;">www.sitiopublicado.com</h5>
     <div class="container">
           <form>
         
@@ -172,19 +171,21 @@
     </div>
 <!--/Theme showcase --> 
 
+
 <!--Publicar recurso-->
 <div id="publicarRecurso">
   <div class="bgDobleBlack" ></div>
   <section class="bgFondo publicar">
     <div class="container whiteBg" >
       <div class="row" >
-        <h3 class=" text-center">¡Ponle un nombre a tu sitio web!</h3>
+        <h3 class=" text-center">¬°Ponle un nombre a tu sitio web!</h3>
         <div class="form-group col-xs-12 col-sm-12 col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3">
           <div class="col-xs-12 col-sm-6">
             <div class="divider"></div>
             <select class="form-control" style="height:36px !important; display:block; padding:6px 12px; color:#000!important">
-              <option>www.infomovil.com</option>
-              <option>www.mobileinfo.io</option>
+			    <c:forEach items="${dominios}" var="entry">
+			        <option value="${entry.key}">${entry.value}</option>
+			    </c:forEach>
             </select>
             <div class="divider hidden-sm hidden-md hidden-lg"></div>
           </div>
@@ -194,7 +195,7 @@
           </div>
           <div class="form-group col-xs-12 col-sm-12 col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3">
             <div class="divider"></div>
-            <input type="submit" value="Buscar nombre" class="btn btn-default btn-outline col-xs-12 text-center textWhite">
+            <input type="button" value="Buscar nombre" class="btn btn-default btn-outline col-xs-12 text-center textWhite" onClick="publicarSitio()">
             <div class="clear"></div>
           </div>
         </div>
@@ -204,41 +205,46 @@
 </div>
 <!--/Publicar recurso--> 
 
-
 <!--Publicar TEL-->
-<div id="publicarTel">
-  <div class="bgDobleBlack" ></div>
-  <section class="bgFondo publicar" >
-    <div class="container whiteBg">
-      <div class="row" >
-        <h3 class=" text-center">¡Ponle un nombre a tu sitio web!</h3>
-        <div class="form-group col-xs-12 col-sm-12 col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3">
-          <div class="divider"></div>
-          <div class="form-group">
-            <label class="sr-only" for="exampleInputAmount">www.</label>
-            <div class="input-group">
-              <div class="input-group-addon">www.</div>
-              <input type="text" class="form-control black" id="nombraInput2" placeholder="Nombra tu sitio" >
-              <div class="input-group-addon">.tel</div>
-            </div>
-          </div>
-          <div class="col-xs-12 col-sm-6">
-            <div class="divider hidden-sm hidden-md hidden-lg"></div>
-          </div>
-          <div class="form-group col-xs-12 col-sm-12 col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3">
-            <div class="divider"></div>
-            <input type="submit" value="Buscar nombre" class="btn btn-default btn-outline col-xs-12 text-center textWhite">
-            <div class="clear"></div>
-            <div class="divider"></div>
-            <div class="divider"></div>
-            <div class="divider"></div>
-          </div>
-        </div>
-      </div>
-    </div>
- 
-  </section>
-</div>
+<form id="publicaTel" action="<c:url value="/infomovil/publicarSitio"/>" method="post">
+	<div id="publicarTel">
+	  <div class="bgDobleBlack" ></div>
+	  <section class="bgFondo publicar" >
+	    <div class="container whiteBg">
+	      <div class="row" >
+	        <h3 class=" text-center">Ponle un nombre a tu sitio web!</h3>
+	        <div class="form-group col-xs-12 col-sm-12 col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3">
+	          <div class="divider"></div>
+	          <div class="form-group">
+	            <label class="sr-only" for="exampleInputAmount">www.</label>
+	            <div class="input-group">
+	              <div class="input-group-addon">www.</div>
+	              <input type="text" class="form-control black" id="nombreDominio" name="nombreDominio" placeholder="Nombra tu sitio" required="required">
+	              <div class="input-group-addon">.tel</div>
+	            </div>
+	            <input type="hidden" id="tipoDominio" name="tipoDominio" value="tel"/>
+	            <input type="hidden" id="idCatTipoRecurso" name="idCatTipoRecurso" value="1"/>
+	          </div>
+	          <div class="col-xs-12 col-sm-6">
+	            <div class="divider hidden-sm hidden-md hidden-lg"></div>
+	          </div>
+	          <div class="form-group col-xs-12 col-sm-12 col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3">
+	            <div class="divider"></div>
+	            <div class="row" id="validaNombre" style="display:none;">Proporciona un nombre para tu dominio.</div>
+	            <input type="submit" value="Publicar" id="btnPublicarTel" class="btn btn-default btn-outline col-xs-12 text-center textWhite" style="display:none;">
+	            <input type="button" value="Buscar nombre" id="btnBuscarTel" class="btn btn-default btn-outline col-xs-12 text-center textWhite" onClick="validaDominio()">
+	            <div class="clear"></div>
+	            <div class="divider"></div>
+	            <div class="divider"></div>
+	            <div class="divider"></div>
+	          </div>
+	        </div>
+	      </div>
+	    </div>
+	 
+	  </section>
+	</div>
+</form>
 <!--/Publicar TEL--> 
 
 <!--Footer-->
@@ -259,7 +265,7 @@
         <p class="modal-title" >Condiciones del servicio</p>
       </div>
           <div class="modal-body bgWhite">
-        <iframe class="legales" src="pages/legal/terminos.html" frameborder="0"></iframe>
+<!--         <iframe class="legales" src="pages/legal/terminos.html" frameborder="0"></iframe> -->
       </div>
           <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
@@ -275,7 +281,7 @@
         <p class="modal-title" >Pol&iacute;ticas de privacidad</p>
       </div>
           <div class="modal-body bgWhite">
-        <iframe class="legales" src="pages/legal/aviso.html" frameborder="0"></iframe>
+<!--         <iframe class="legales" src="pages/legal/aviso.html" frameborder="0"></iframe> -->
       </div>
           <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
@@ -337,6 +343,30 @@ $('.navbar-collapse ul li a').click(function() {
     $('.navbar-toggle:visible').click();
 });
 
+</script>
+<script>
+	
+	<c:choose>
+		<c:when test="${canalUsuario == 'BAZ'}">
+			$("#publicarTel").css("display", "block");
+			$("#publicarRecurso").css("display", "none");
+		</c:when>
+		<c:otherwise>
+			$("#publicarRecurso").css("display", "block");
+			$("#publicarTel").css("display", "none");
+		</c:otherwise>
+	</c:choose>
+	
+	<c:choose>
+		<c:when test="${sitioWeb != 'SIN_PUBLICAR'}">
+			$("#urlSitio").val("${sitioWeb}");		
+			$("#publicarTel").css("display", "none");
+			$("#publicarRecurso").css("display", "none");
+		</c:when>
+		<c:otherwise>
+		
+		</c:otherwise>
+	</c:choose>	
 
 </script>
 </body>

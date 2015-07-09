@@ -1,5 +1,49 @@
-function cargarDatos() {
+function validaDominio()
+{
+	var nombreDominio = $("#nombreDominio").val();
+	var tipoDominio = $("#tipoDominio").val();
 
+	if (nombreDominio == null || nombreDominio.trim().length == 0)
+	{
+		$('#validaNombre').css("display", "block"); 
+		return false;
+	}
+	
+	$('#validaNombre').css("display", "none"); 
+	
+	console.log("nombreDominio: "+ nombreDominio + ", tipoDominio: " + tipoDominio);
+	
+	if(contextPath == "/"){
+		contextPath = "";
+	}
+	
+	$.ajax
+	({
+		type : "GET",
+		url : contextPath + "/infomovil/existeDominio",
+		dataType : "json",
+		data:
+		{
+			nombreDominio : nombreDominio,
+			tipoDominio : tipoDominio
+		}
+	})
+    .done
+    (
+		function(json)
+    	{
+			console.log("termino busqueda de dominio:::::: " + json.resultado);
+			if (json.resultado.indexOf("No existe") != -1)
+			{
+				$("#btnBuscarTel").css("display", "none");
+				$("#btnPublicarTel").css("display", "block");
+				$('#validaNombre').val("El dominio: www." + nombreDominio + ".tel, esta disponible, publícalo"); 
+				$('#validaNombre').css("display", "block");
+			}
+	    }
+	 ).fail(function( jqXHR, textStatus ) {
+
+	 });
 }
 
 function autosave() {
