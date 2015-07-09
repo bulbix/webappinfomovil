@@ -79,7 +79,7 @@
           <ul class="nav navbar-nav navbar-right">
         <li><a href="http://infomovil.com" class="smoothScroll">Inicio</a></li>
         <li class="active"><a href="#" class="smoothScroll">Iniciar sesión</a></li>
-        <li><a href="#" class="smoothScroll">Regístrate</a></li>
+        <!-- <li><a href="#" class="smoothScroll">Regístrate</a></li>  -->
       </ul>
         </div>
     <!--/.nav-collapse --> 
@@ -132,7 +132,7 @@
         <div class="form-group col-xs-12 col-sm-12 col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3">
               <input type="submit" value="Inicia sesi&oacute;n" class="btn btn-default btn-outlineGreen col-xs-12 text-center textWhite">
             </div>
-        <div class="form-group col-xs-12 col-sm-12 col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3"> <span class="textWhite">¿Aún no tienes cuenta? </span><span><a href="#" class=""> Regístrate</a></span> </div>
+        <div class="form-group col-xs-12 col-sm-12 col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3"> <span class="textWhite"> <!-- ¿Aún no tienes cuenta? </span><span><a href="#" class=""> Regístrate</a></span> --> </div>
         <div class="divider"></div>
         <div class="text-center">
         
