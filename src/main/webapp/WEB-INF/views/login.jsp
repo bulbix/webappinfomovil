@@ -79,7 +79,7 @@
           <ul class="nav navbar-nav navbar-right">
         <li><a href="http://infomovil.com" class="smoothScroll">Inicio</a></li>
         <li class="active"><a href="#" class="smoothScroll">Iniciar sesión</a></li>
-        <li><a href="#" class="smoothScroll">Regístrate</a></li>
+        <!-- <li><a href="#" class="smoothScroll">Regístrate</a></li>  -->
       </ul>
         </div>
     <!--/.nav-collapse --> 
@@ -128,11 +128,13 @@
             </div>
         <!--password-->
         
+<!--         <input type="hidden" name="_spring_security_remember_me" value="true" /> -->
+        
         <div class="form-group col-xs-12 col-sm-12 col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3"> <span><a href="<c:url value="/resetpassword"/>" class="linkWhite">Si olvidaste o no tienes contraseña, haz click aquí</a></span> </div>
         <div class="form-group col-xs-12 col-sm-12 col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3">
               <input type="submit" value="Inicia sesi&oacute;n" class="btn btn-default btn-outlineGreen col-xs-12 text-center textWhite">
             </div>
-        <div class="form-group col-xs-12 col-sm-12 col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3"> <span class="textWhite">¿Aún no tienes cuenta? </span><span><a href="#" class=""> Regístrate</a></span> </div>
+        <div class="form-group col-xs-12 col-sm-12 col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3"> <span class="textWhite"> <!-- ¿Aún no tienes cuenta? </span><span><a href="#" class=""> Regístrate</a></span> --> </div>
         <div class="divider"></div>
         <div class="text-center">
         
@@ -203,7 +205,7 @@
           <div class="modal-body bgWhite">
           
          
-        <iframe class="legales" src="<c:url value="/pages/legal/terminos.html"/>" frameborder="0"></iframe>
+        <iframe class="legales" src="http://www.infomovil.com/pages/legal/terminos.html" frameborder="0"></iframe>
       </div>
           <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
@@ -219,7 +221,7 @@
         <p class="modal-title" >Pol&iacute;ticas de privacidad</p>
       </div>
           <div class="modal-body bgWhite">
-        <iframe class="legales" src="<c:url value="/pages/legal/aviso.html"/>" frameborder="0"></iframe>
+        <iframe class="legales" src="http://www.infomovil.com/pages/legal/aviso.html" frameborder="0"></iframe>
       </div>
           <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
