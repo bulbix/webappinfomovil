@@ -5,6 +5,6 @@
             <title>Infomovil webapp</title>
     </head>
     <body>
-        <h3>Infomovil - nueva webapp estar√° disponible pronto</h3>
+        <h3>Infomovil - nueva webapp estar· disponible pronto</h3>
     </body>
 </html>

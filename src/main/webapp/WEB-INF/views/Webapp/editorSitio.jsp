@@ -74,6 +74,9 @@
 
     <body role="document" data-spy="scroll" data-target=".navbar" data-offset="75" id="page-top" onload="autosave()">
 
+	<p>Usuario Logueado: ${usuarioLogueado}</p>
+
+
 <!-- Fixed navbar -->
 <nav class="navbar navbar-inverse navbar-static-top">
       <div class="container">
@@ -119,7 +122,7 @@
            
             <div class="controls">
             
-                  <textarea class="form-control h2 text-center" placeholder="Agrega una descripción corta de tus servicios o productos" required="required" <c:if test="${not empty descripcionCorta}"> value = " ${ descripcionCorta } " </c:if> id="txtDescripcionCorta"></textarea>
+                  <textarea class="form-control h2 text-center" placeholder="Agrega una descripción corta de tus servicios o productos" required="required" id="txtDescripcionCorta"><c:if test="${not empty descripcionCorta}">${descripcionCorta}</c:if></textarea>
                   <p class="help-block"></p>
                 </div>
           </div>
@@ -344,6 +347,8 @@ $('.navbar-collapse ul li a').click(function() {
 });
 
 </script>
+<p>Canal Usuario: ${canalUsuario}</p>
+<p>Sitio Web: ${sitioWeb}</p>
 <script>
 	
 	<c:choose>
