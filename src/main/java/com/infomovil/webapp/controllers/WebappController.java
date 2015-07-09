@@ -246,7 +246,7 @@ public class WebappController
 			Util.getCurrentSession().invalidate();
 		}
 		
-		return "login";
+		return "redirect:/login";
 		
 	}
 	
