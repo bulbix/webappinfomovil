@@ -1,21 +1,20 @@
 function validaDominio()
 {
+	console.log("validaDominio::::::");
 	var nombreDominio = $("#nombreDominio").val();
 	var tipoDominio = $("#tipoDominio").val();
-
+	var sitioDisponible = "";
+	
 	if (nombreDominio == null || nombreDominio.trim().length == 0)
 	{
 		$('#validaNombre').css("display", "block"); 
 		return false;
 	}
 	
-	$('#validaNombre').css("display", "none"); 
-	
 	console.log("nombreDominio: "+ nombreDominio + ", tipoDominio: " + tipoDominio);
 	
-	if(contextPath == "/"){
+	if(contextPath == "/")
 		contextPath = "";
-	}
 	
 	$.ajax
 	({
@@ -35,10 +34,21 @@ function validaDominio()
 			console.log("termino busqueda de dominio:::::: " + json.resultado);
 			if (json.resultado.indexOf("No existe") != -1)
 			{
-				$("#btnBuscarTel").css("display", "none");
-				$("#btnPublicarTel").css("display", "block");
-				$('#validaNombre').val("El dominio: www." + nombreDominio + ".tel, esta disponible, publícalo"); 
-				$('#validaNombre').css("display", "block");
+				$("#msjValidacion").val("¡Felicidades!");
+				sitioDisponible = "www." + nombreDominio + "." + tipoDominio;
+				
+				if (tipoDominio == "recurso")
+					sitioDisponible = $("#idCatTipoRecurso option:selected").html() + "/" + nombreDominio;
+
+				console.log("sitioDisponible:::::" + sitioDisponible);
+
+				
+				//$("#nombreSitio").val(sitioDisponible);				
+				$("#myModalPublicar").html(sitioDisponible).modal('show');
+//				$("#btnBuscarTel").css("display", "none");
+//				$("#btnPublicarTel").css("display", "block");
+//				$('#validaNombre').val("El dominio: www." + nombreDominio + ".tel, esta disponible, publícalo"); 
+//				$('#validaNombre').css("display", "block");
 			}
 	    }
 	 ).fail(function( jqXHR, textStatus ) {

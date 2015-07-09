@@ -173,36 +173,42 @@
 
 
 <!--Publicar recurso-->
-<div id="publicarRecurso">
-  <div class="bgDobleBlack" ></div>
-  <section class="bgFondo publicar">
-    <div class="container whiteBg" >
-      <div class="row" >
-        <h3 class=" text-center">¬°Ponle un nombre a tu sitio web!</h3>
-        <div class="form-group col-xs-12 col-sm-12 col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3">
-          <div class="col-xs-12 col-sm-6">
-            <div class="divider"></div>
-            <select class="form-control" style="height:36px !important; display:block; padding:6px 12px; color:#000!important">
-			    <c:forEach items="${dominios}" var="entry">
-			        <option value="${entry.key}">${entry.value}</option>
-			    </c:forEach>
-            </select>
-            <div class="divider hidden-sm hidden-md hidden-lg"></div>
-          </div>
-          <div class="col-xs-12 col-sm-6">
-            <div class="divider"></div>
-            <input type="text" placeholder="Nombra tu sitio" value="" class="form-control" id="nombraInput">
-          </div>
-          <div class="form-group col-xs-12 col-sm-12 col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3">
-            <div class="divider"></div>
-            <input type="button" value="Buscar nombre" class="btn btn-default btn-outline col-xs-12 text-center textWhite" onClick="publicarSitio()">
-            <div class="clear"></div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-</div>
+<form id="publicaRecurso" action="<c:url value="/infomovil/publicarSitio"/>" method="post">
+	<div id="publicarRecurso">
+	  <div class="bgDobleBlack" ></div>
+	  <section class="bgFondo publicar">
+	    <div class="container whiteBg" >
+	      <div class="row" >
+	        <h3 class=" text-center">Ponle un nombre a tu sitio web!</h3>
+	        <div class="form-group col-xs-12 col-sm-12 col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3">
+	          <div class="col-xs-12 col-sm-6">
+	            <div class="divider"></div>
+	            <select id="idCatTipoRecurso" class="form-control" style="height:36px !important; display:block; padding:6px 12px; color:#000!important">
+				    <c:forEach items="${dominios}" var="entry">
+				        <option value="${entry.key}">${entry.value}</option>
+				    </c:forEach>
+	            </select>
+	            <div class="divider hidden-sm hidden-md hidden-lg"></div>
+	          </div>
+	          <div class="col-xs-12 col-sm-6">
+	            <div class="divider"></div>
+	            <input type="text" placeholder="Nombra tu sitio" value="" id="nombreDominio" name="nombreDominio" class="form-control" id="nombraInput">
+	            <input type="hidden" id="tipoDominio" name="tipoDominio" value="recurso"/>
+	          </div>
+	          <div class="form-group col-xs-12 col-sm-12 col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3">
+	            <div class="divider"></div>
+	            <input type="submit" value="Publicar" id="btnPublicarTel" class="btn btn-default btn-outline col-xs-12 text-center textWhite" style="display:none;">
+	            <input type="button" value="Buscar nombre" id="btnBuscarTel" class="btn btn-default btn-outline col-xs-12 text-center textWhite" onClick="validaDominio()">
+<!-- 	            <input type="submit" value="Publicar" id="btnPublicarRecurso" class="btn btn-default btn-outline col-xs-12 text-center textWhite" style="display:none;"> -->
+<!-- 	            <input type="button" value="Buscar nombre" id="btnBuscarRecurso" class="btn btn-default btn-outline col-xs-12 text-center textWhite" onClick="validaDominio()"> -->
+	            <div class="clear"></div>
+	          </div>
+	        </div>
+	      </div>
+	    </div>
+	  </section>
+	</div>
+</form>
 <!--/Publicar recurso--> 
 
 <!--Publicar TEL-->
@@ -289,6 +295,45 @@
         </div>
   </div>
     </div>
+
+<form id="publicarDominio" action="<c:url value="/infomovil/publicarSitio"/>" method="post">
+	<div id="myModalPublicar" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	  <div class="modal-dialog modal-lg">
+	    <div class="modal-content">
+	      <div class="modal-header">
+	        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+	        <p class="modal-title" ></p>
+	      </div>
+	      <div class="modal-body bgWhite">
+	        <h2 id="msjValidacion" class="textWhite col-xs-12 col-sm-12 col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3 text-center"><span id="msjValidacion"></span></h2>
+	        
+	        <h5 class="textWhite col-xs-12 col-sm-12 col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3 text-center">El nombre </h5>
+	        <h5 id="nombreSitio"></h5>  
+	        <h5>está disponible</h5>
+	        <div class="clear divider"></div>
+	       
+	       	<input type="hidden" id="tipoDominio" name="tipoDominio" 
+	       		<c:choose>
+					<c:when test="${canalUsuario == 'BAZ'}">
+						value="tel"
+					</c:when>
+					<c:otherwise>
+						value="recurso"
+					</c:otherwise>
+				</c:choose>
+			/>
+			
+	        <input type="hidden" id="idCatTipoRecurso" name="idCatTipoRecurso" value="1"/>
+	        
+	      </div>
+	      <div class="modal-footer">
+	      
+	        <button type="submit" class="btn btn-default text-center col-xs-12 col-sm-12 col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3" data-dismiss="modal"><strong>&iexcl;Lo quiero!</strong></button>
+	      </div>
+	    </div>
+	  </div>
+	</div>
+</form>
 <!-- Bootstrap core JavaScript
     ================================================== --> 
 <!-- Placed at the end of the document so the pages load faster --> 
