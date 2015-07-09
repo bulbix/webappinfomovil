@@ -79,7 +79,7 @@
           <ul class="nav navbar-nav navbar-right">
         <li><a href="http://infomovil.com" class="smoothScroll">Inicio</a></li>
         <li class="active"><a href="#" class="smoothScroll">Iniciar sesión</a></li>
-        <li><a href="#" class="smoothScroll">Regístrate</a></li>
+        <!-- <li><a href="#" class="smoothScroll">Regístrate</a></li>  -->
       </ul>
         </div>
     <!--/.nav-collapse --> 
@@ -128,11 +128,11 @@
             </div>
         <!--password-->
         
-        <div class="form-group col-xs-12 col-sm-12 col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3"> <span><a href="<c:url value="/resetpassword"/>" class="linkWhite">Si olvidaste o no tienes contraseña, haz click aquí</a></span> </div>
+        <div class="form-group col-xs-12 col-sm-12 col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3"> <span style="margin:10px 0; display:block; width:100%; min-height:23px; "><a href="<c:url value="/resetpassword"/>" class="linkWhite">Si olvidaste o no tienes contraseña, haz click aquí</a></span> </div>
         <div class="form-group col-xs-12 col-sm-12 col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3">
               <input type="submit" value="Inicia sesi&oacute;n" class="btn btn-default btn-outlineGreen col-xs-12 text-center textWhite">
             </div>
-        <div class="form-group col-xs-12 col-sm-12 col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3"> <span class="textWhite">¿Aún no tienes cuenta? </span><span><a href="#" class=""> Regístrate</a></span> </div>
+		<div class="form-group col-xs-12 col-sm-12 col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3"> <span class="textWhite"> <!-- ¿Aún no tienes cuenta? </span><span><a href="#" class=""> Regístrate</a></span> --> </div>
         <div class="divider"></div>
         <div class="text-center">
         
@@ -140,7 +140,7 @@
         
         <img src="<c:url value="/resources/webapp/images/line.png"/>" width="740" alt="Linea"/></div>
     
-        <div class="col-xs-12 col-sm-12" style="padding: 10px 0;"> <span class="textWhite text-center text-small">Si continúas, aceptas las</span><span> <a href="#" title="Condiciones del servicio" data-toggle="modal" data-target="#myModalTerminos">condiciones del servicio </a></span><span class="textWhite">y las </span><span><a href="#" data-toggle="modal" data-target="#myModalAviso">pol&iacute;ticas de privacidad</a></span><span class="textWhite"> de Infomovil.</span>
+        <div class="col-xs-12 col-sm-12" style="padding: 10px 0;"> <span class="textWhite text-center text-small" >Si continúas, aceptas las</span><span> <a href="#" title="Condiciones del servicio" data-toggle="modal" data-target="#myModalTerminos">condiciones del servicio </a></span><span class="textWhite">y las </span><span><a href="#" data-toggle="modal" data-target="#myModalAviso">pol&iacute;ticas de privacidad</a></span><span class="textWhite"> de Infomovil.</span>
               </p>
             </div>
       </form>
@@ -203,7 +203,7 @@
           <div class="modal-body bgWhite">
           
          
-        <iframe class="legales" src="<c:url value="/pages/legal/terminos.html"/>" frameborder="0"></iframe>
+        <iframe class="legales" src="http://www.infomovil.com/pages/legal/terminos.html" frameborder="0"></iframe>
       </div>
           <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
@@ -219,7 +219,7 @@
         <p class="modal-title" >Pol&iacute;ticas de privacidad</p>
       </div>
           <div class="modal-body bgWhite">
-        <iframe class="legales" src="<c:url value="/pages/legal/aviso.html"/>" frameborder="0"></iframe>
+        <iframe class="legales" src="http://www.infomovil.com/pages/legal/aviso.html" frameborder="0"></iframe>
       </div>
           <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
@@ -242,32 +242,7 @@
 <script src="<c:url value="/resources/webapp/js/jqBootstrapValidation.js"/>"></script>
 <script>
   $(function () { $("input,select,textarea").not("[type=submit]").jqBootstrapValidation(); } );
-</script> 
-<script>
-$(document).ready(function(){
-  $('.slider1').bxSlider({
-    slideWidth: 400,
-    minSlides: 1,
-    maxSlides: 3,
-	moveSlides: 1,
-    slideMargin: 0,
-	infiniteLoop: false,
-  hideControlOnEnd: true
-  });
-  $('.slider2').bxSlider({
-    slideWidth: 800,
-    minSlides: 1,
-    maxSlides: 1,
-	moveSlides: 1,
-    slideMargin: 0,
-	captions: true,
-	controls:true,
-	infiniteLoop: false,
-  hideControlOnEnd: true
-  });
-  
-});
-</script> 
+</script>  
 <script>
 
 // jQuery for page scrolling feature - requires jQuery Easing plugin

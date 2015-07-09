@@ -99,7 +99,7 @@ public class WebappController
 		vista = "Webapp/registrar";
 		
 		if (nombre == null || correo == null || codigo == null)
-			return validaURL("Webapp/validaUrl");
+			return validaURL("Webapp/validarURL");
 		else
 		{
 			wsRespuesta = wsCliente.crearSitioRegistrar(correo, passwordDefault, nombre, codigo);

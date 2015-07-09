@@ -68,7 +68,7 @@ p { font-size: 110%; }
 }
 .btn-outlineGreen{ background:#2fa399 !important; height:44px;}
 .btn-outlineGreen a{ color:#fff}
-.form-control{ background:url(../images/lineWht.png) repeat; border-bottom:2px solid #fff; border-left:none;border-right:none; border-top:none;border-radius:8px; font-size:16px !important; font-weight:400!important; color:#e6e6e6!important; height:auto!important;}
+.form-control{ background:url(../images/lineWht.png) repeat; border-bottom:2px solid #fff; border-left:none;border-right:none; border-top:none;border-radius:8px; font-size:16px !important; font-weight:400!important; color:#000!important; height:auto!important;}
 
 ::-webkit-input-placeholder {
    color: #efefef !important;
@@ -86,36 +86,52 @@ p { font-size: 110%; }
    color: #efefef !important;  
 }
 
-#nombraInput::-webkit-input-placeholder {
+.form-control::-webkit-input-placeholder {
    color: #000 !important;
 }
 
-#nombraInput:-moz-placeholder{ /* Firefox 18- */
+.form-control:-moz-placeholder{ /* Firefox 18- */
    color: #000 !important;
 }
 
-#nombraInput::-moz-placeholder{  /* Firefox 19+ */
+.form-control::-moz-placeholder{  /* Firefox 19+ */
    color: #000 !important;  
 }
 
-#nombraInput:-ms-input-placeholder {  
+.form-control:-ms-input-placeholder {  
    color: #000 !important;  
 }
 
-#nombraInput2::-webkit-input-placeholder {
+.form-control::-webkit-input-placeholder {
    color: #000 !important;
 }
 
-#nombraInput2:-moz-placeholder{ /* Firefox 18- */
+.form-control:-moz-placeholder{ /* Firefox 18- */
    color: #000 !important;
 }
 
-#nombraInput2::-moz-placeholder{  /* Firefox 19+ */
+.form-control::-moz-placeholder{  /* Firefox 19+ */
    color: #000 !important;  
 }
 
-#nombraInput2:-ms-input-placeholder {  
+.form-control:-ms-input-placeholder {  
    color: #000 !important;  
+}
+
+textarea::-webkit-input-placeholder {
+   color: #efefef !important;
+}
+
+textarea:-moz-placeholder { /* Firefox 18- */
+   color: #efefef !important;
+}
+
+textarea::-moz-placeholder {  /* Firefox 19+ */
+   color: #efefef !important;  
+}
+
+textarea:-ms-input-placeholder {  
+   color: #efefef !important;  
 }
 .mar10TB{ margin:10px 0;}
 .reset{ margin:0; padding:0;}
@@ -143,11 +159,16 @@ textarea { padding: 10px; width: 300px; }
 
 #description::-webkit-input-placeholder::before {
     color:#fff;
-    content:"Bienvenido a mi sitio \A Pon una descripci\F3n aqu\ED ";
+    /*content:"Bienvenido a mi sitio \A Pon una descripci\F3n aqu\ED ";*/
 }
 #description::-webkit-input-placeholder{
     color:#fff;
 }
 #nombraInput{ color:#000 !important;}
 #nombraInput2{ color:#000 !important;}
-.whiteBg{padding:20px; background:url("/resources/webapp/images/lineWht2.png") repeat; border-radius:10px;}
+.whiteBg{ background:url(../images/lineWht.png) repeat; border-radius:10px;}
+.tooltip-inner {
+    white-space:pre-wrap !important;
+}
+#myModalTerminos div div.modal-content{ background:#2fa399 !important;}
+.btn-purple{ background:#7c41bc !important; color:#fff;}
