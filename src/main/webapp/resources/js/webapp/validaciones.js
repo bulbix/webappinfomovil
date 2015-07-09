@@ -42,9 +42,9 @@ function validaDominio()
 
 				console.log("sitioDisponible:::::" + sitioDisponible);
 
-				
+				alert("¡Felicidades! " + sitioDisponible);
 				//$("#nombreSitio").val(sitioDisponible);				
-				$("#myModalPublicar").html(sitioDisponible).modal('show');
+			//	$("#myModalPublicar").html(sitioDisponible).modal('show');
 //				$("#btnBuscarTel").css("display", "none");
 //				$("#btnPublicarTel").css("display", "block");
 //				$('#validaNombre').val("El dominio: www." + nombreDominio + ".tel, esta disponible, publícalo"); 
@@ -61,15 +61,15 @@ function autosave() {
 	var n1 = $("#txtNombreNegocio").val() + $("#txtDescripcionCorta").val() +
 		$("#txtCorreo").val() + $("#txtTelefono").val();
 	
-	console.log('El valor de n1 es: ' + n1);
+	//console.log('El valor de n1 es: ' + n1);
 
 	var autosaveForm = function($form, seconds) {
 		setTimeout(function() {
-			console.log("NombreNegocio: " + $("#txtNombreNegocio").val());
+	/*		console.log("NombreNegocio: " + $("#txtNombreNegocio").val());
 			console.log("DescripcionCorta: " + $("#txtDescripcionCorta").val());
 			console.log("Correo: " + $("#txtCorreo").val());
 			console.log("Telefono: " + $("#txtTelefono").val());
-			
+	*/		
 			var n2 = "";
 			
 			var nombreNegocio = $("#txtNombreNegocio").val();
