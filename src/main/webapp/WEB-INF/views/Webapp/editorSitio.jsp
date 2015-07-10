@@ -1,12 +1,12 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
     <!doctype html>
 <html lang="es">
     <head itemscope="" itemtype="http://schema.org/WebSite">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
-    <meta charset="ISO-8859-1" />
+    <meta charset="UTF-8" />
     <meta name="title" content="Infomovil" />
     <meta name="author" content="Infomovil"/>
     <meta name="designer" content="Infomovil"/>
@@ -83,11 +83,11 @@
       <div class="container">
     <div class="navbar-header">
           <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar"> <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
-          <a class="navbar-brand" href="http://infomovil.com"><span><img src="<c:url value="/resources/webapp/images/apple-touch-icon-57x57.png"/>" width="50" height="50" alt="Infomovil" /> </span><span class="marLeft">Modo edición  <span class="hidden-xs">Infomovil</span></span></a> </div>
+          <a class="navbar-brand" href="http://infomovil.com"><span><img src="<c:url value="/resources/webapp/images/apple-touch-icon-57x57.png"/>" width="50" height="50" alt="Infomovil" /> </span><span class="marLeft">Modo ediciÃ³n  <span class="hidden-xs">Infomovil</span></span></a> </div>
     <div id="navbar" class="navbar-collapse collapse text-right">
           <ul class="nav navbar-nav navbar-right">
         <li class="active"><a href="#" class="smoothScroll">${usuarioLogueado} <img width="20" height="20" alt="Infomovil" src="<c:url value="/resources/webapp/images/fa-user.png"/>"/> </a></li>
-        <li><a href="<c:url value="/infomovil/cerrarSesion"></c:url>" class="smoothScroll"> Cerrar sesión <img width="20" height="20" alt="Infomovil" src="<c:url value="/resources/webapp/images/fa-sign-out.png"/>"/></a></li>
+        <li><a href="<c:url value="/infomovil/cerrarSesion"></c:url>" class="smoothScroll"> Cerrar sesiÃ³n <img width="20" height="20" alt="Infomovil" src="<c:url value="/resources/webapp/images/fa-sign-out.png"/>"/></a></li>
       </ul>
         </div>
     <!--/.nav-collapse --> 
@@ -129,7 +129,7 @@
             <div class="controls">
             
 
-                  <textarea class="form-control h2 text-center" maxlength="255" placeholder="Agrega una descripción corta de tus servicios o productos" required id="txtDescripcionCorta" rows="5"><c:if test="${not empty descripcionCorta}">${descripcionCorta}</c:if></textarea>
+                  <textarea class="form-control h2 text-center" maxlength="255" placeholder="Agrega una descripciÃ³n corta de tus servicios o productos" required id="txtDescripcionCorta" rows="5"><c:if test="${not empty descripcionCorta}">${descripcionCorta}</c:if></textarea>
 
              
 
@@ -243,10 +243,10 @@
       </div>
       <div class="modal-body bgWhite">
         <h2 class="textBlack col-xs-12 col-sm-12 col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3 text-center">&iexcl;Felicidades!</h2>
-        <h5 class="textBlack col-xs-12 col-sm-12 col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3 text-center"> Ya tomaste el primer paso y te pusiste en línea.<br/>
-          El proceso de publicación de tu sitio web puede tardar unos minutos. </h5>
+        <h5 class="textBlack col-xs-12 col-sm-12 col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3 text-center"> Ya tomaste el primer paso y te pusiste en lÃ­nea.<br/>
+          El proceso de publicaciÃ³n de tu sitio web puede tardar unos minutos. </h5>
           <div class="clear"></div>
-        <p class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-center">Descarga nuestra app si deseas agregar más contenido.</p>
+        <p class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-center">Descarga nuestra app si deseas agregar mÃ¡s contenido.</p>
         <div class="clear"></div>
         
         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
@@ -279,7 +279,7 @@
       </div>
       <div class="modal-body bgWhite">
         <h2 class="textBlack col-xs-12 col-sm-12 col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3 text-center"></h2>
-        <h5 class="textBlack col-xs-12 col-sm-12 col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3 text-center">No se ha podido completar la publicación de tu sitio<br/>
+        <h5 class="textBlack col-xs-12 col-sm-12 col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3 text-center">No se ha podido completar la publicaciÃ³n de tu sitio<br/>
         </h5>
         <div class="clear divider"></div>
       </div>

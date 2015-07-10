@@ -14,6 +14,8 @@ function validaDominio()
 	var funcion = "aceptar()";
 	var regAuxiliar = /^[_a-z0-9-]+([a-z0-9])$/;
 	
+	nombreDominio = nombreDominio.toLowerCase();
+	
 	if (nombreDominio == null || nombreDominio.trim().length == 0 || nombreDominio.trim().length < 3)
 	{
 		$("#validacionNombre").html("El nombre debe ser mayor a 2 caracteres y menor a 64");
@@ -145,6 +147,7 @@ function autosave() {
 					type : "GET",
 					url : contextPath + "/infomovil/guardarInformacion",
 					dataType : "json",
+					contentType: "charset=utf-8",
 					data : {
 						nombreEmpresa : nombreNegocio,
 						descripcionCorta : descripcionCorta,
