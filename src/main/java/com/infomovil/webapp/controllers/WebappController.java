@@ -1,5 +1,6 @@
 package com.infomovil.webapp.controllers;
 
+import java.io.UnsupportedEncodingException;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.List;
@@ -18,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.infomovil.webapp.clientWsInfomovil.Catalogo;
 import com.infomovil.webapp.clientWsInfomovil.ClientWsInfomovil;
@@ -32,9 +34,13 @@ public class WebappController
 	@ResponseBody
 	public Map<String, String> guardarInformacion(@RequestParam String nombreEmpresa, 
 			@RequestParam String descripcionCorta, @RequestParam String correoElectronico, 
-			@RequestParam String telefono)
+			@RequestParam String telefono) throws UnsupportedEncodingException
 	{		
 		Map<String, String> resultMap = new HashMap<String, String>();
+		
+		nombreEmpresa = new String(nombreEmpresa.getBytes("ISO-8859-1"), "UTF-8");
+		descripcionCorta = new String(descripcionCorta.getBytes("ISO-8859-1"), "UTF-8");
+		
 		
 		try
 		{
@@ -70,7 +76,7 @@ public class WebappController
 		String sePublico = "NO";
 		ModelAndView modeloVista = null;
 		Map<String, String> resultMap = new HashMap<String, String>();
-		
+		RedirectAttributes redirectAttributes = null;
 		try
 		{
 			correo = Util.getUserLogged().getPrincipal().toString();
@@ -82,7 +88,7 @@ public class WebappController
 			resultadoPublicacion = wsRespuesta.getCodeError();
 			resultMap.put("resultadoPub", wsRespuesta.getResultado());
 			
-			modeloVista = editarSitio();
+			modeloVista = editarSitio(redirectAttributes);
 			
 			if (modeloVista != null)
 			{
@@ -103,7 +109,7 @@ public class WebappController
 	}
 
 	@RequestMapping(value = "/registrarUsuario", method = RequestMethod.GET)
-	public ModelAndView registrarUsuario(String nombre, String codigo, String correo, HttpServletRequest request) 
+	public ModelAndView registrarUsuario(String nombre, String codigo, String correo, HttpServletRequest request, RedirectAttributes redirectAttributes) 
 	{
 		HashMap<String, Object> model = new HashMap<String, Object>();
 		vista = "Webapp/registrar";
@@ -122,12 +128,13 @@ public class WebappController
 				vista = "redirect:/infomovil/editarSitio";
 			}
 			else{
-				model.put("nombre", nombre);
-				model.put("codigo", codigo);
-				model.put("correo", correo);
-				model.put("codigoError", codigoError);
-				model.put("descripcionError", descripcionError);
-				vista = "login";
+				model.put("ctaCorreo", correo);
+				model.put("errorCta", descripcionError);
+				ModelAndView modelAndView =  new ModelAndView("redirect:/login");
+				redirectAttributes.addFlashAttribute("ctaCorreo", correo);
+				redirectAttributes.addFlashAttribute("errorCta", descripcionError);
+
+				return modelAndView;
 			}
 			
 			return new ModelAndView(vista, model);
@@ -149,7 +156,7 @@ public class WebappController
 	}
 
 	@RequestMapping(value = "/infomovil/editarSitio", method = RequestMethod.GET)
-	public ModelAndView editarSitio()
+	public ModelAndView editarSitio(RedirectAttributes redirectAttributes)
 	{		
 		HashMap<String, Object> model = new HashMap<String, Object>();
 		sitioWeb = "SIN_PUBLICAR";
@@ -198,6 +205,13 @@ public class WebappController
 				model.put("fechaIniTel", fechaIni);
 				model.put("fechaFinTel", fechaFin);
 				model.put("canalUsuario", canal);
+			}
+			else if (wsRespuesta.getCodeError().equals("-3"))
+			{
+				ModelAndView modelAndView =  new ModelAndView("redirect:/login");
+				redirectAttributes.addFlashAttribute("errorCta", "Tu Plan Pro ya está activo. Inicia sesión");
+				redirectAttributes.addFlashAttribute("ctaCorreo", correo);
+				return modelAndView;
 			}
 			
 			return new ModelAndView("Webapp/editorSitio", model);

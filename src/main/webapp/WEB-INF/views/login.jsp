@@ -89,7 +89,18 @@
 
 <!--Theme showcase -->
 <div class="theme-showcaseApp" role="main" id="intro"> 
-      
+ 
+<%--      <c:if test="${not empty errorCta}"> --%>
+<!-- 			<div class="errorblock col-xs-12 text-center textWhite"> -->
+<%-- 				<img src="<c:url value="/resources/webapp/images/fa-warning.png"/>" width="15" height="15" alt="Alerta" /> ${errorCta}</div> --%>
+<%-- 	</c:if> --%>
+
+	<c:if test="${not empty errorCta}">
+			<div class="errorblock col-xs-12 text-center textBlack">
+				<h4><img src="<c:url value="/resources/webapp/images/fa-informacion.png"/>" width="40" height="40" alt="${errorCta}" /> ${errorCta} </h4>
+                </div>
+	</c:if>
+		     
       <!-- Main jumbotron for a primary marketing message or call to action -->
       <div class="container text-center">
     <div class="divider hidden-xs hidden-sm"></div>
@@ -109,7 +120,7 @@
               <div class="control-group">
             <!--<label class="control-label"></label>-->
             <div class="controls">
-                  <input type="email" class="form-control" placeholder="Email" required="required" name="j_username"/>
+                  <input type="email" class="form-control" placeholder="Email" required="required" name="j_username" <c:if test="${not empty ctaCorreo}"> value = " ${ ctaCorreo } " </c:if>/>
                   <p class="help-block"></p>
                 </div>
           </div>
