@@ -106,9 +106,6 @@ public class WebappController
 	public ModelAndView registrarUsuario(String nombre, String codigo, String correo, HttpServletRequest request) 
 	{
 		HashMap<String, Object> model = new HashMap<String, Object>();
-		ModelAndView modeloVista = null;
-		//Util.getCurrentSession().invalidate();
-		
 		vista = "Webapp/registrar";
 		
 		if (nombre == null || correo == null || codigo == null)
@@ -119,24 +116,19 @@ public class WebappController
 			codigoError = wsRespuesta.getCodeError();
 			descripcionError = wsRespuesta.getMsgError();
 			
-			model.put("nombre", nombre);
-			model.put("codigo", codigo);
-			model.put("correo", correo);
-			model.put("codigoError", codigoError);
-			model.put("descripcionError", descripcionError);
-			
 			if (codigoError.equals("0"))
 			{
 				Util.loginUsuario(correo, passwordDefault);
-				modeloVista = editarSitio();
+				vista = "redirect:/infomovil/editarSitio";
 			}
-			else if (codigoError.equals("-1"))
+			else{
+				model.put("nombre", nombre);
+				model.put("codigo", codigo);
+				model.put("correo", correo);
+				model.put("codigoError", codigoError);
+				model.put("descripcionError", descripcionError);
 				vista = "login";
-			else if (codigoError.equals("-3"))
-				vista = "Webapp/login";
-			
-			if (modeloVista != null)
-				return modeloVista;
+			}
 			
 			return new ModelAndView(vista, model);
 		}
