@@ -42,6 +42,10 @@ public class WebappController
 		descripcionCorta = new String(descripcionCorta.getBytes("ISO-8859-1"), "UTF-8");
 		
 		
+		nombreEmpresa = new String(nombreEmpresa.getBytes("ISO-8859-1"), "UTF-8");
+		descripcionCorta = new String(descripcionCorta.getBytes("ISO-8859-1"), "UTF-8");
+		
+		
 		try
 		{
 			correo = Util.getUserLogged().getPrincipal().toString();
