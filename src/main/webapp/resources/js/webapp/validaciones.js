@@ -147,7 +147,6 @@ function autosave() {
 					type : "GET",
 					url : contextPath + "/infomovil/guardarInformacion",
 					dataType : "json",
-					contentType: "charset=utf-8",
 					data : {
 						nombreEmpresa : nombreNegocio,
 						descripcionCorta : descripcionCorta,

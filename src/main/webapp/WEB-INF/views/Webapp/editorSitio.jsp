@@ -67,10 +67,6 @@
 		console.log("ContextPath: " + contextPath);
 	</script>
     
-    <script src="<c:url value="/resources/js/webapp/jquery.numeric.js"/>"></script>
-    <script src="<c:url value="/resources/js/webapp/validaciones.js"/>"></script>
-    
-    
     </head>
 
     <body role="document" data-spy="scroll" data-target=".navbar" data-offset="75" id="page-top" onload="autosave()">
