@@ -1,5 +1,6 @@
 package com.infomovil.webapp.controllers;
 
+import java.io.UnsupportedEncodingException;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.List;
@@ -32,9 +33,13 @@ public class WebappController
 	@ResponseBody
 	public Map<String, String> guardarInformacion(@RequestParam String nombreEmpresa, 
 			@RequestParam String descripcionCorta, @RequestParam String correoElectronico, 
-			@RequestParam String telefono)
+			@RequestParam String telefono) throws UnsupportedEncodingException
 	{		
 		Map<String, String> resultMap = new HashMap<String, String>();
+		
+		nombreEmpresa = new String(nombreEmpresa.getBytes("ISO-8859-1"), "UTF-8");
+		descripcionCorta = new String(descripcionCorta.getBytes("ISO-8859-1"), "UTF-8");
+		
 		
 		try
 		{
