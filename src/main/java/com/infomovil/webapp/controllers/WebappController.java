@@ -43,8 +43,8 @@ public class WebappController
 		
 		try
 		{
-			correo = Util.getUserLogged().getPrincipal().toString();
-			password = Util.getUserLogged().getCredentials().toString();
+			correo = Util.getUserLogged().getUsername();
+			password = Util.getUserLogged().getPassword();
 			
 			String nombreUsuario = Util.getCurrentSession().getAttribute("nombreUsuario")!=null?
 					Util.getCurrentSession().getAttribute("nombreUsuario").toString():" ";
@@ -78,8 +78,8 @@ public class WebappController
 		RedirectAttributes redirectAttributes = null;
 		try
 		{
-			correo = Util.getUserLogged().getPrincipal().toString();
-			password = Util.getUserLogged().getCredentials().toString();	
+			correo = Util.getUserLogged().getUsername();
+			password = Util.getUserLogged().getPassword();	
 			nombrePersona = Util.getCurrentSession().getAttribute("nombreUsuario")!=null?
 					Util.getCurrentSession().getAttribute("nombreUsuario").toString():" ";
 					
@@ -158,18 +158,19 @@ public class WebappController
 	public ModelAndView editarSitio(RedirectAttributes redirectAttributes)
 	{		
 		HashMap<String, Object> model = new HashMap<String, Object>();
+		String template = "Coverpage1Azul";
 		sitioWeb = "SIN_PUBLICAR";
+		
 		
 		try
 		{
-			password = Util.getUserLogged().getCredentials().toString();
-			correo = Util.getUserLogged().getPrincipal().toString();
+			correo = Util.getUserLogged().getUsername();
+			password = Util.getUserLogged().getPassword();
 			
 			wsRespuesta = wsCliente.crearSitioCargar(correo, password);
 			
 			if (wsRespuesta.getCodeError().equals("0"))
 			{
-				
 				Util.getCurrentSession().setAttribute("nombreUsuario", 
 				wsRespuesta.getDominioCreaSitio().getNombreUsuario());
 				
@@ -178,7 +179,7 @@ public class WebappController
 				
 				model.put("nombreEmpresa", wsRespuesta.getDominioCreaSitio().getNombreEmpresa().trim());
 				
-				if (wsRespuesta.getDominioCreaSitio().getNombreEmpresa().trim().equals("TÃ­tulo"))
+				if (wsRespuesta.getDominioCreaSitio().getNombreEmpresa().trim().equals("TÃtulo"))
 					model.put("nombreEmpresa", "");
 				
 				model.put("descripcionCorta", wsRespuesta.getDominioCreaSitio().getDescripcionCorta().trim());
@@ -188,18 +189,22 @@ public class WebappController
 				model.put("vistaPrevia", wsRespuesta.getDominioCreaSitio().getUrlVistaPrevia());				
 				model.put("dominios", obtenerDominios());
 				
-				if (wsRespuesta.getDominioCreaSitio().getCanal().equals("BAZ(1)"))
+				if (wsRespuesta.getDominioCreaSitio().getCanal().startsWith("BAZ"))
 					canal = "BAZ";
 				
 				if (!StringUtils.isEmpty(wsRespuesta.getDominioCreaSitio().getSitioWeb()))
 					sitioWeb = wsRespuesta.getDominioCreaSitio().getSitioWeb();
+				
+				if (!StringUtils.isEmpty(wsRespuesta.getDominioCreaSitio().getTemplate()))
+					template = wsRespuesta.getDominioCreaSitio().getTemplate();
 				
 				if (sitioWeb.indexOf("tel") != -1)
 				{
 					fechaIni = wsRespuesta.getFTelNamesIni();
 					fechaFin = wsRespuesta.getFTelNamesFin();
 				}
-					
+				
+				model.put("template", template);
 				model.put("sitioWeb", sitioWeb); 
 				model.put("fechaIniTel", fechaIni);
 				model.put("fechaFinTel", fechaFin);
@@ -259,18 +264,6 @@ public class WebappController
 		}	
 		
 		return resultMap;
-	}
-	
-	@RequestMapping(value = "/infomovil/cerrarSesion", method = RequestMethod.GET)
-	public String cerrarSesion(){
-		SecurityContextHolder.clearContext();
-		
-		if(Util.getCurrentSession() != null){
-			Util.getCurrentSession().invalidate();
-		}
-		
-		return "redirect:/login";
-		
 	}
 	
 	@RequestMapping(value = "/", method = RequestMethod.GET)

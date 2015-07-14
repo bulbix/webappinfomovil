@@ -83,7 +83,7 @@
     <div id="navbar" class="navbar-collapse collapse text-right">
           <ul class="nav navbar-nav navbar-right">
         <li class="active"><a href="#" class="smoothScroll">${usuarioLogueado} <img width="20" height="20" alt="Infomovil" src="<c:url value="/resources/webapp/images/fa-user.png"/>"/> </a></li>
-        <li><a href="<c:url value="/infomovil/cerrarSesion"></c:url>" class="smoothScroll"> Cerrar sesión <img width="20" height="20" alt="Infomovil" src="<c:url value="/resources/webapp/images/fa-sign-out.png"/>"/></a></li>
+        <li><a href="<c:url value="/logout"></c:url>" class="smoothScroll"> Cerrar sesión <img width="20" height="20" alt="Infomovil" src="<c:url value="/resources/webapp/images/fa-sign-out.png"/>"/></a></li>
       </ul>
         </div>
     <!--/.nav-collapse --> 

@@ -13,6 +13,7 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.User;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -40,13 +41,13 @@ public class HomeController {
 		
 		String formattedDate = dateFormat.format(date);
 		
-		Authentication auth = Util.getUserLogged();
+		User user = Util.getUserLogged();
 		
-		logger.info("usuario " +  auth.getName().toString());
-		logger.info("password " + auth.getCredentials().toString());
+		logger.info("usuario " +  user.getUsername());
+		logger.info("password " + user.getPassword());
 		
-		model.addAttribute("usuario", auth.getName().toString());
-		model.addAttribute("password", auth.getCredentials().toString());
+		model.addAttribute("usuario", user.getUsername());
+		model.addAttribute("password", user.getPassword());
 		model.addAttribute("serverTime", formattedDate );
 		
 		return "home";
@@ -56,9 +57,9 @@ public class HomeController {
 	
 	public String luis(Model model) {
 		Util.loginUsuario("luis@mail.com", "garbage1");
-		Authentication auth = Util.getUserLogged();
-		model.addAttribute("usuario", auth.getName().toString());
-		model.addAttribute("password", auth.getCredentials().toString());
+		User user = Util.getUserLogged();
+		model.addAttribute("usuario", user.getUsername());
+		model.addAttribute("password", user.getPassword());
 		return "home";
 	}
 	
