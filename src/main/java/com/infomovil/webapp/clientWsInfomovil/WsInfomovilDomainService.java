@@ -31,7 +31,7 @@ public class WsInfomovilDomainService extends Service {
         if (url == null) {
             try {
             	if(Util.getProfile().equals("DEV")){
-            		url = new URL("http://172.17.4.214:8080/WsInfomovil/wsInfomovildomain?wsdl");
+            		url = new URL("http://172.16.51.30:8080/WsInfomovil/wsInfomovildomain?wsdl");
             	}
             	else if(Util.getProfile().equals("QA")){
             		url = new URL("http://qa.mobileinfo.io/WsInfomovil/wsInfomovildomain?wsdl");

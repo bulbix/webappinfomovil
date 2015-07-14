@@ -169,7 +169,6 @@ public class WebappController
 			
 			if (wsRespuesta.getCodeError().equals("0"))
 			{
-				
 				Util.getCurrentSession().setAttribute("nombreUsuario", 
 				wsRespuesta.getDominioCreaSitio().getNombreUsuario());
 				
@@ -188,7 +187,7 @@ public class WebappController
 				model.put("vistaPrevia", wsRespuesta.getDominioCreaSitio().getUrlVistaPrevia());				
 				model.put("dominios", obtenerDominios());
 				
-				if (wsRespuesta.getDominioCreaSitio().getCanal().equals("BAZ(1)"))
+				if (wsRespuesta.getDominioCreaSitio().getCanal().startsWith("BAZ"))
 					canal = "BAZ";
 				
 				if (!StringUtils.isEmpty(wsRespuesta.getDominioCreaSitio().getSitioWeb()))
