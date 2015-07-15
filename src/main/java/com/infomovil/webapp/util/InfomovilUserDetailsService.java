@@ -22,8 +22,14 @@ public class InfomovilUserDetailsService implements UserDetailsService {
 		RespuestaVO respGetWebHash = clientWsInfomovil.crearSitioGetWebHash(email);
 		List<GrantedAuthority> grantedAuths = new ArrayList<GrantedAuthority>();
 		grantedAuths.add(new SimpleGrantedAuthority("ROLE_USER"));
-		User user = new User(email,respGetWebHash.getResultado(),grantedAuths);
-		return user;
+
+		if(respGetWebHash.getCodeError().equals("0")){
+			User user = new User(email,respGetWebHash.getResultado(),grantedAuths);
+			return user;
+		}
+		else{
+			throw new UsernameNotFoundException(email);
+		}
 	}
 
 }

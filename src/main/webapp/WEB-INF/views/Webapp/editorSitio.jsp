@@ -79,11 +79,12 @@
       <div class="container">
     <div class="navbar-header">
           <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar"> <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
-          <a class="navbar-brand" href="http://infomovil.com"><span><img src="<c:url value="/resources/webapp/images/apple-touch-icon-57x57.png"/>" width="50" height="50" alt="Infomovil" /> </span><span class="marLeft">Modo edición  <span class="hidden-xs">Infomovil</span></span></a> </div>
+          <a class="navbar-brand" href="http://infomovil.com"><span><img src="<c:url value="/resources/webapp/images/logo_baz.png"/>" width="103" height="47" alt="Banco Azteca" /> </span><span class="marLeft">Editor de sitios <span class="hidden-xs">Infomovil</span></span></a> </div>
     <div id="navbar" class="navbar-collapse collapse text-right">
           <ul class="nav navbar-nav navbar-right">
         <li class="active"><a href="#" class="smoothScroll">${usuarioLogueado} <img width="20" height="20" alt="Infomovil" src="<c:url value="/resources/webapp/images/fa-user.png"/>"/> </a></li>
         <li><a href="<c:url value="/logout"></c:url>" class="smoothScroll"> Cerrar sesión <img width="20" height="20" alt="Infomovil" src="<c:url value="/resources/webapp/images/fa-sign-out.png"/>"/></a></li>
+        <li><a href="#" class="smoothScroll"> <img width="30" height="30" alt="Infomovil" src="<c:url value="/resources/webapp/images/apple-touch-icon-57x57.png"/>"/></a></li>
       </ul>
         </div>
     <!--/.nav-collapse --> 
