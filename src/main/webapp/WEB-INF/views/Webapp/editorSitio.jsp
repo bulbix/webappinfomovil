@@ -19,21 +19,22 @@
     <meta property="og:title" content="Infomovil" />
     <meta property="og:type" content="website"/>
     <meta property="og:description" content="Infomovil. Nunca antes ha sido tan f&aacute;cil crear un sitio web. Con Infomovil crea tu sitio f&aacute;cil, r&aacute;pido y gratuito en 5 minutos." />
-    <meta property="og:image" content="resources/webapp/images/apple-touch-icon-57x57.png"/>
+    <meta property="og:image" content="http://landing.infomovil.com/webapp/templates/${ template }/images/apple-touch-icon-57x57.png"/>
     <meta property="og:url" content="http://www.infomovil.com" />
     <meta itemprop="name" content="Infomovil"/>
     <meta itemprop="description" content="Infomovil. Nunca antes ha sido tan f&aacute;cil crear un sitio web. Con Infomovil crea tu sitio f&aacute;cil, r&aacute;pido y gratuito en 5 minutos. Sitio web creado con www.infomovil.com"/>
-
-    <link rel="apple-touch-icon" href="<c:url value="/resources/webapp/images/apple-touch-icon.png"/>"/>
-    <link rel="apple-touch-icon" sizes="57x57" href="<c:url value="/resources/webapp/images/apple-touch-icon-57x57.png"/>"/>
-    <link rel="apple-touch-icon" sizes="72x72" href="<c:url value="/resources/webapp/images/apple-touch-icon-72x72.png"/>"/>
-    <link rel="apple-touch-icon" sizes="76x76" href="<c:url value="/resources/webapp/images/apple-touch-icon-76x76.png"/>"/>
-    <link rel="apple-touch-icon" sizes="114x114" href="<c:url value="/resources/webapp/images/apple-touch-icon-114x114.png"/>"/>
-    <link rel="apple-touch-icon" sizes="120x120" href="<c:url value="/resources/webapp/images/apple-touch-icon-120x120.png"/>"/>
-    <link rel="apple-touch-icon" sizes="144x144" href="<c:url value="/resources/webapp/images/apple-touch-icon-144x144.png"/>"/>
-    <link rel="apple-touch-icon" sizes="152x152" href="<c:url value="/resources/webapp/images/apple-touch-icon-152x152.png"/>"/>
-    <link rel="shortcut icon" href="<c:url value="/resources/webapp/images/favicon.ico" />" type="image/x-icon"/>
-    <link href="<c:url value="/resources/webapp/images/apple-touch-icon-57x57.png"/>"/>    
+ 
+    <link rel="apple-touch-icon" href="http://landing.infomovil.com/webapp/templates/${ template }/images/apple-touch-icon.png"/>
+    <link rel="apple-touch-icon" sizes="57x57" href="http://landing.infomovil.com/webapp/templates/${ template }/images/apple-touch-icon-57x57.png"/>
+    <link rel="apple-touch-icon" sizes="72x72" href="http://landing.infomovil.com/webapp/templates/${ template }/images/apple-touch-icon-72x72.png"/>
+    <link rel="apple-touch-icon" sizes="76x76" href="http://landing.infomovil.com/webapp/templates/${ template }/images/apple-touch-icon-76x76.png"/>
+    <link rel="apple-touch-icon" sizes="114x114" href="http://landing.infomovil.com/webapp/templates/${ template }/images/apple-touch-icon-114x114.png"/>
+    <link rel="apple-touch-icon" sizes="120x120" href="http://landing.infomovil.com/webapp/templates/${ template }/images/images/apple-touch-icon-120x120.png"/>
+    <link rel="apple-touch-icon" sizes="144x144" href="http://landing.infomovil.com/webapp/templates/${ template }/images/apple-touch-icon-144x144.png"/>
+    <link rel="apple-touch-icon" sizes="152x152" href="http://landing.infomovil.com/webapp/templates/${ template }/images/apple-touch-icon-152x152.png"/>
+    <link rel="shortcut icon" href="http://landing.infomovil.com/webapp/templates/${ template }/images/favicon.ico" type="image/x-icon"/>
+    <link href="http://landing.infomovil.com/webapp/templates/${ template }/images/apple-touch-icon-57x57.png"/> 
+       
     <title itemprop="name">Infomovil</title>
     <link rel="canonical" href="http://www.infomovil.com" itemprop="url" />
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
@@ -42,17 +43,18 @@
       <script src="<c:url value="/resources/webapp/js/respond.min.js"/>"></script>
     <![endif]-->
     <!-- Bootstrap core CSS -->
-    <link href="<c:url value="/resources/webapp/css/bootstrap.min.css"/>" rel="stylesheet" />
+
+    <link href="http://landing.infomovil.com/webapp/templates/${ template }/css/bootstrap.min.css" rel="stylesheet" />
     <!-- Bootstrap theme -->
-    <link href="<c:url value="/resources/webapp/css/bootstrap-theme.min.css"/>" rel="stylesheet" />
+    <link href="http://landing.infomovil.com/webapp/templates/${ template }/css/bootstrap-theme.min.css" rel="stylesheet" />
     <!-- Custom styles for this template -->
-    <link href="<c:url value="/resources/webapp/css/themeEditor.css"/>" rel="stylesheet"/>
+    <link href="http://landing.infomovil.com/webapp/templates/${ template }/css/themeEditor.css" rel="stylesheet" />
     <!-- Custom styles for this template -->
-    <link href="<c:url value="/resources/webapp/css/sticky-editor.css"/>" rel="stylesheet" />
+    <link href="http://landing.infomovil.com/webapp/templates/${ template }/css/sticky-editor.css" rel="stylesheet" />
     <!-- bxSlider CSS file -->
-    <link href="<c:url value="/resources/webapp/css/jquery.bxslider.css"/>" rel="stylesheet" />
-    
-    <link href="<c:url value="/resources/webapp/fonts/font-awesome.min.css"/>" rel="stylesheet" />
+    <link href="http://landing.infomovil.com/webapp/templates/${ template }/css/jquery.bxslider.css" rel="stylesheet" />
+
+    <link href="http://landing.infomovil.com/webapp/templates/${ template }/fonts/font-awesome.min.css" rel="stylesheet" />
     <script>
   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
   (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
@@ -61,12 +63,12 @@
   ga('create', 'UA-53077061-1', 'auto');
  ga('send', 'pageview'); 
     </script>
-    
+ 
     <script type="text/javascript">
 		var contextPath='<%=request.getContextPath()%>';
 		console.log("ContextPath: " + contextPath);
 	</script>
-    
+
     </head>
 
     <body role="document" data-spy="scroll" data-target=".navbar" data-offset="75" id="page-top" onload="autosave()">
@@ -79,11 +81,12 @@
       <div class="container">
     <div class="navbar-header">
           <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar"> <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
-          <a class="navbar-brand" href="http://infomovil.com"><span><img src="<c:url value="/resources/webapp/images/apple-touch-icon-57x57.png"/>" width="50" height="50" alt="Infomovil" /> </span><span class="marLeft">Modo edición  <span class="hidden-xs">Infomovil</span></span></a> </div>
+          <a class="navbar-brand" href="http://infomovil.com"><span><img src="http://landing.infomovil.com/webapp/templates/${ template }/images/apple-touch-icon-57x57.png" width="50" height="50" alt="Infomovil" /> </span><span class="marLeft">Modo edición  <span class="hidden-xs">Infomovil</span></span></a> </div>
     <div id="navbar" class="navbar-collapse collapse text-right">
           <ul class="nav navbar-nav navbar-right">
-        <li class="active"><a href="#" class="smoothScroll">${usuarioLogueado} <img width="20" height="20" alt="Infomovil" src="<c:url value="/resources/webapp/images/fa-user.png"/>"/> </a></li>
-        <li><a href="<c:url value="/infomovil/cerrarSesion"></c:url>" class="smoothScroll"> Cerrar sesión <img width="20" height="20" alt="Infomovil" src="<c:url value="/resources/webapp/images/fa-sign-out.png"/>"/></a></li>
+        <li class="active"><a href="#" class="smoothScroll">${usuarioLogueado} <img width="20" height="20" alt="Infomovil" src="http://landing.infomovil.com/webapp/templates/${ template }/images/fa-user.png"/> </a></li>
+        <li><a href="#" onClick="generarSlider()" class="smoothScroll"> Actualizar plantilla <img width="20" height="20" alt="Infomovil" src="http://landing.infomovil.com/webapp/templates/${ template }/images/fa-sign-out.png"/></a></li>    
+        <li><a href="<c:url value="/infomovil/cerrarSesion"></c:url>" class="smoothScroll"> Cerrar sesión <img width="20" height="20" alt="Infomovil" src="http://landing.infomovil.com/webapp/templates/${ template }/images/fa-sign-out.png"/></a></li>
       </ul>
         </div>
     <!--/.nav-collapse --> 
@@ -140,10 +143,9 @@
              
               <div class="mar15 col-xs-12 col-sm-12 col-md-6 col-lg-6 reset" >																
               																															
-            <div class="text-left col-xs-3 col-sm-3 col-md-2 col-lg-2"> <a href="{referencia}" target="{target}" onclick="{evento}"><img src="<c:url value="/resources/webapp/images/mail_icn.png"/>" class="img mxw50miw43w100" alt="Contacto"/></a> </div>
-            <div class="text-left col-xs-9 col-sm-9 col-md-10 col-lg-10 mar0auto"> <span class="dblw100 mxh70"> <!--input-->
+            <div class="text-left col-xs-3 col-sm-3 col-md-2 col-lg-2"> <a href="{referencia}" target="{target}" onclick="{evento}"><img src="http://landing.infomovil.com/webapp/templates/${ template }/images/mail_icn.png" class="img mxw50miw43w100" alt="Contacto"/></a> </div>
+            <div class="text-left col-xs-9 col-sm-9 col-md-10 col-lg-10 mar0auto"> <span class="dblw100 mxh70"> <!--input-->             
               
-
               <input type="text" class="form-control" maxlength="100"  placeholder="Correo" required="required" <c:if test="${not empty correoElectronico}"> value = "${ correoElectronico }" </c:if> id="txtCorreo"/>
 
               
@@ -154,8 +156,8 @@
               </span><span class="dblw100"> <a href="{referencia}" target="{target}" onclick="{evento}"></a> </span> </div>
           </div>
            <div class="mar15 col-xs-12 col-sm-12 col-md-6 col-lg-6 reset" >															         
-            <div class="text-left col-xs-3 col-sm-3 col-md-2 col-lg-2"> <a href="{referencia}" target="{target}" onclick="{evento}"><img src="<c:url value="/resources/webapp/images/cel_icn.png"/>" class="img mxw50miw43w100" alt="Contacto"/></a> </div>
-            <div class="text-left col-xs-9 col-sm-9 col-md-10 col-lg-10 mar0auto"> <span class="dblw100 mxh70"> 
+            <div class="text-left col-xs-3 col-sm-3 col-md-2 col-lg-2"> <a href="{referencia}" target="{target}" onclick="{evento}"><img src="http://landing.infomovil.com/webapp/templates/${ template }/images/cel_icn.png" class="img mxw50miw43w100" alt="Contacto"/></a> </div>
+            <div class="text-left col-xs-9 col-sm-9 col-md-10 col-lg-10 mar0auto"> <span class="dblw100 mxh70">                           
               
               <!--input-->
               
@@ -184,7 +186,7 @@
 
 <!--Publicar TEL-->
 
-<div id="publicarTel">
+<div id="publicarTel" style="display:none">
   <div class="bgDobleBlack" ></div>
   <section class="bgFondo publicar" >
     <div class="container whiteBg">
@@ -287,13 +289,14 @@
 </div>
 <!--/MODAL FAIL-->
 
-
+<div id="modalTemplates">
+</div>
 <!--Footer-->
 
 <footer class="footer bgBlack"> </footer>
 <!-- Scroll to Top Button (Only visible on small and extra-small screen sizes) -->
-<div class="scroll-top page-scroll visible-xs visble-sm"> <a class="btn" href="#page-top"> <img width="20" height="20" alt="Infomovil" src="<c:url value="/resources/webapp/images/fa-chevron-up.png"/>"/> Subir</a> </div>
-
+<div class="scroll-top page-scroll visible-xs visble-sm"> <a class="btn" href="#page-top"> <img width="20" height="20" alt="Infomovil" src="http://landing.infomovil.com/webapp/templates/${ template }/images/fa-chevron-up.png"/> Subir</a> </div>
+																																	   
 <!--/Footer--> 
 
 <!-- /container -->
@@ -304,49 +307,42 @@
 	<input type="hidden" id="tipoDominio" name="tipoDominio" >
 	<input type="hidden" id="idCatTipoRecurso" name="idCatTipoRecurso" value="1">
 </form>
+<h1>${ template }</h1>
+<h1>${ sitioWeb }</h1>
+<h1>${ canalUsuario }</h1>
+
+<input type="hidden" id="plantilla" name="plantilla" <c:if test="${not empty template}"> value = "${ template }" </c:if> >
 <!-- Bootstrap core JavaScript
     ================================================== --> 
 <!-- Placed at the end of the document so the pages load faster --> 
-<script type="text/javascript" src="<c:url value="/resources/webapp/js/jquery.min.js"/>"></script>
-<script type="text/javascript" src="<c:url value="/resources/webapp/js/bootstrap.min.js"/>"></script>
-<script type="text/javascript" src="<c:url value="/resources/webapp/js/docs.min.js"/>"></script>
-<script type="text/javascript" src="<c:url value="/resources/webapp/js/smoothscroll.js"/>"> </script>
+
+<script type="text/javascript" src="http://landing.infomovil.com/webapp/templates/${ template }/js/jquery.min.js"></script>
+<script type="text/javascript" src="http://landing.infomovil.com/webapp/templates/${ template }/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="http://landing.infomovil.com/webapp/templates/${ template }/js/docs.min.js"></script>
+<script type="text/javascript" src="http://landing.infomovil.com/webapp/templates/${ template }/js/smoothscroll.js"></script>
+
 <!-- IE10 viewport hack for Surface/desktop Windows 8 bug --> 
-<script type="text/javascript" src="<c:url value="/resources/webapp/js/ie10-viewport-bug-workaround.js"/>"></script>
+<%-- <script type="text/javascript" src="<c:url value="/resources/webapp/js/ie10-viewport-bug-workaround.js"/>"></script> --%>
+
 <!-- bxSlider Javascript file --> 
-<script type="text/javascript" src="<c:url value="/resources/webapp/js/jquery.bxslider.min.js"/>"></script>
-<script type="text/javascript" src="<c:url value="/resources/webapp/js/jqBootstrapValidation.js"/>"></script>
+<script type="text/javascript" src="http://landing.infomovil.com/webapp/templates/${ template }/js/jquery.bxslider.min.js"></script>
+<script type="text/javascript" src="http://landing.infomovil.com/webapp/templates/${ template }/js/jqBootstrapValidation.js"></script>
+
 <script>
   $(function () { $("input,select,textarea").not("[type=submit]").jqBootstrapValidation(); } );
 
 </script> 
- <script src="<c:url value="/resources/js/webapp/jquery.numeric.js"/>"></script>
- <script src="<c:url value="/resources/js/webapp/validaciones.js"/>"></script>
- 
+
+<script src="<c:url value="/resources/js/webapp/jquery.numeric.js"/>"></script> 
+<script src="<c:url value="/resources/js/webapp/jquery.blockUI.js"/>"></script> 
+<script src="<c:url value="/resources/js/webapp/validaciones.js"/>"></script>
 <script>
-$(document).ready(function(){
-  $('.slider1').bxSlider({
-    slideWidth: 400,
-    minSlides: 1,
-    maxSlides: 3,
-	moveSlides: 1,
-    slideMargin: 0,
-	infiniteLoop: false,
-  hideControlOnEnd: true
-  });
-  $('.slider2').bxSlider({
-    slideWidth: 800,
-    minSlides: 1,
-    maxSlides: 1,
-	moveSlides: 1,
-    slideMargin: 0,
-	captions: true,
-	controls:true,
-	infiniteLoop: false,
-  hideControlOnEnd: true
-  });
-  
+
+$('.bxslider').bxSlider({
+  mode: 'fade',
+  captions: true
 });
+
 
 </script> 
 <script>
@@ -355,7 +351,6 @@ $(function () {
 	  $('[data-toggle="popover"]').popover()
 	});
 	
-$('#description').elastic();
 // jQuery for page scrolling feature - requires jQuery Easing plugin
 
 // Highlight the top nav as scrolling occurs
@@ -371,23 +366,17 @@ $('.navbar-collapse ul li a').click(function() {
 </script>
 
 <script>
-	
+
 	<c:choose>
 		<c:when test="${canalUsuario == 'BAZ'}">
 			$("#publicarTel").css("display", "block");
-			$("#publicarRecurso").css("display", "none");
 		</c:when>
-		<c:otherwise>
-			$("#publicarRecurso").css("display", "block");
-			$("#publicarTel").css("display", "none");
-		</c:otherwise>
 	</c:choose>
-	
+
 	<c:choose>
 		<c:when test="${sitioWeb != 'SIN_PUBLICAR'}">
 			$("#urlSitio").css("display", "block");
 			$("#publicarTel").css("display", "none");
-			$("#publicarRecurso").css("display", "none");
 		</c:when>
 		<c:otherwise>
 		

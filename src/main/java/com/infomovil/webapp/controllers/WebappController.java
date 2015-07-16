@@ -34,7 +34,7 @@ public class WebappController
 	@ResponseBody
 	public Map<String, String> guardarInformacion(@RequestParam String nombreEmpresa, 
 			@RequestParam String descripcionCorta, @RequestParam String correoElectronico, 
-			@RequestParam String telefono) throws UnsupportedEncodingException
+			@RequestParam String telefono, @RequestParam String plantilla) throws UnsupportedEncodingException
 	{		
 		Map<String, String> resultMap = new HashMap<String, String>();
 		
@@ -52,8 +52,7 @@ public class WebappController
 			wsRespuesta = wsCliente.crearSitioGuardar(correo, password, 
 					nombreUsuario, nombreEmpresa, descripcionCorta, 
 					EmailValidator.getInstance().isValid(correoElectronico)?correoElectronico:"",
-							telefono, "Coverpage1azul");
-			
+							telefono, plantilla);
 			
 			resultMap.put("codeError", wsRespuesta.getCodeError());
 		}		
@@ -66,6 +65,40 @@ public class WebappController
 		return resultMap;
 	}
 
+	@RequestMapping(value = "/infomovil/actualizaPlantilla", method = RequestMethod.GET, produces = "application/json")
+	@ResponseBody
+	public Map<String, String> actualizaPlantilla(@RequestParam String nombreEmpresa, 
+			@RequestParam String descripcionCorta, @RequestParam String correoElectronico, 
+			@RequestParam String telefono, @RequestParam String plantilla) throws UnsupportedEncodingException
+	{		
+		Map<String, String> resultMap = new HashMap<String, String>();
+		nombreEmpresa = new String(nombreEmpresa.getBytes("ISO-8859-1"), "UTF-8");
+		descripcionCorta = new String(descripcionCorta.getBytes("ISO-8859-1"), "UTF-8");
+		
+		try
+		{
+			correo = Util.getUserLogged().getPrincipal().toString();
+			password = Util.getUserLogged().getCredentials().toString();
+			
+			String nombreUsuario = Util.getCurrentSession().getAttribute("nombreUsuario")!=null?
+					Util.getCurrentSession().getAttribute("nombreUsuario").toString():" ";
+			
+			wsRespuesta = wsCliente.crearSitioGuardar(correo, password, 
+					nombreUsuario, nombreEmpresa, descripcionCorta, 
+					EmailValidator.getInstance().isValid(correoElectronico)?correoElectronico:"",
+							telefono, plantilla);
+		}		
+		catch (Exception e) 
+		{
+			logger.error("guardarInformacion:::::", e);	
+			resultMap.put("codeError", "-100");
+		}	
+		
+		resultMap.put("actualizaTemplate", wsRespuesta.getCodeError());
+		
+		return resultMap;
+	}
+	
 	@RequestMapping(value = "/infomovil/publicarSitio", method = RequestMethod.POST, produces = "application/json")
 	@ResponseBody
 	public ModelAndView publicarSitio(@RequestParam String nombreDominio, @RequestParam String tipoDominio, 
@@ -153,12 +186,14 @@ public class WebappController
 
 		return new ModelAndView(vista, model);
 	}
-
+	
 	@RequestMapping(value = "/infomovil/editarSitio", method = RequestMethod.GET)
 	public ModelAndView editarSitio(RedirectAttributes redirectAttributes)
 	{		
 		HashMap<String, Object> model = new HashMap<String, Object>();
+		String template = "Coverpage1Azul";
 		sitioWeb = "SIN_PUBLICAR";
+		canal = "NO_TIENE";
 		
 		try
 		{
@@ -183,15 +218,17 @@ public class WebappController
 				model.put("descripcionCorta", wsRespuesta.getDominioCreaSitio().getDescripcionCorta().trim());
 				model.put("correoElectronico", wsRespuesta.getDominioCreaSitio().getCorreoElectronico().trim());
 				model.put("telefonoUsuario", wsRespuesta.getDominioCreaSitio().getTelefono().trim());			
-				model.put("template", wsRespuesta.getDominioCreaSitio().getTemplate());
 				model.put("vistaPrevia", wsRespuesta.getDominioCreaSitio().getUrlVistaPrevia());				
-				model.put("dominios", obtenerDominios());
+			//	model.put("dominios", obtenerDominios());
 				
 				if (wsRespuesta.getDominioCreaSitio().getCanal().startsWith("BAZ"))
 					canal = "BAZ";
 				
 				if (!StringUtils.isEmpty(wsRespuesta.getDominioCreaSitio().getSitioWeb()))
 					sitioWeb = wsRespuesta.getDominioCreaSitio().getSitioWeb();
+
+				if (!StringUtils.isEmpty(wsRespuesta.getDominioCreaSitio().getTemplate()))
+					template = wsRespuesta.getDominioCreaSitio().getTemplate();
 				
 				if (sitioWeb.indexOf("tel") != -1)
 				{
@@ -199,6 +236,7 @@ public class WebappController
 					fechaFin = wsRespuesta.getFTelNamesFin();
 				}
 					
+				model.put("template", template);
 				model.put("sitioWeb", sitioWeb); 
 				model.put("fechaIniTel", fechaIni);
 				model.put("fechaFinTel", fechaFin);
