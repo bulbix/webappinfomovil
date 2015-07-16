@@ -141,7 +141,7 @@
              
               <div class="mar15 col-xs-12 col-sm-12 col-md-6 col-lg-6 reset" >																
               																															
-            <div class="text-left col-xs-3 col-sm-3 col-md-2 col-lg-2"> <a href="{referencia}" target="{target}" onclick="{evento}"><img src="<c:url value="/resources/webapp/images/mail_icn.png"/>" class="img mxw50miw43w100" alt="Contacto"/></a> </div>
+            <div class="text-left col-xs-3 col-sm-3 col-md-2 col-lg-2"> <img src="<c:url value="/resources/webapp/images/mail_icn.png"/>" class="img mxw50miw43w100" alt="Contacto"/> </div>
             <div class="text-left col-xs-9 col-sm-9 col-md-10 col-lg-10 mar0auto"> <span class="dblw100 mxh70"> <!--input-->
               
 
@@ -155,7 +155,7 @@
               </span><span class="dblw100"> <a href="{referencia}" target="{target}" onclick="{evento}"></a> </span> </div>
           </div>
            <div class="mar15 col-xs-12 col-sm-12 col-md-6 col-lg-6 reset" >															         
-            <div class="text-left col-xs-3 col-sm-3 col-md-2 col-lg-2"> <a href="{referencia}" target="{target}" onclick="{evento}"><img src="<c:url value="/resources/webapp/images/cel_icn.png"/>" class="img mxw50miw43w100" alt="Contacto"/></a> </div>
+            <div class="text-left col-xs-3 col-sm-3 col-md-2 col-lg-2"> <img src="<c:url value="/resources/webapp/images/cel_icn.png"/>" class="img mxw50miw43w100" alt="Contacto"/> </div>
             <div class="text-left col-xs-9 col-sm-9 col-md-10 col-lg-10 mar0auto"> <span class="dblw100 mxh70"> 
               
               <!--input-->
@@ -185,7 +185,7 @@
 
 <!--Publicar TEL-->
 
-<div id="publicarTel">
+<div id="publicarTel" style="display:none">
   <div class="bgDobleBlack" ></div>
   <section class="bgFondo publicar" >
     <div class="container whiteBg">
@@ -276,7 +276,7 @@
       </div>
       <div class="modal-body bgWhite">
         <h2 class="textBlack col-xs-12 col-sm-12 col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3 text-center"></h2>
-        <h5 class="textBlack col-xs-12 col-sm-12 col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3 text-center">No se ha podido completar la publicación de tu sitio<br/>
+        <h5 class="textBlack col-xs-12 col-sm-12 col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3 text-center">${msgPublicacion}<br/>
         </h5>
         <div class="clear divider"></div>
       </div>
@@ -305,6 +305,7 @@
 	<input type="hidden" id="tipoDominio" name="tipoDominio" >
 	<input type="hidden" id="idCatTipoRecurso" name="idCatTipoRecurso" value="1">
 </form>
+
 <!-- Bootstrap core JavaScript
     ================================================== --> 
 <!-- Placed at the end of the document so the pages load faster --> 
@@ -371,34 +372,31 @@ $('.navbar-collapse ul li a').click(function() {
 	
 </script>
 
+<%-- <p>${canalUsuario }</p> --%>
+<%-- <p>${sitioWeb }</p> --%>
+
 <script>
-	
+
 	<c:choose>
 		<c:when test="${canalUsuario == 'BAZ'}">
 			$("#publicarTel").css("display", "block");
-			$("#publicarRecurso").css("display", "none");
 		</c:when>
-		<c:otherwise>
-			$("#publicarRecurso").css("display", "block");
-			$("#publicarTel").css("display", "none");
-		</c:otherwise>
 	</c:choose>
-	
+
 	<c:choose>
 		<c:when test="${sitioWeb != 'SIN_PUBLICAR'}">
 			$("#urlSitio").css("display", "block");
 			$("#publicarTel").css("display", "none");
-			$("#publicarRecurso").css("display", "none");
 		</c:when>
-		<c:otherwise>
-		
-		</c:otherwise>
+	<c:otherwise>
+	
+	</c:otherwise>
 	</c:choose>	
-
+	
 	<c:if test="${resultadoPublicacion =='SI'}">
 		$("#myModalExito").modal('show');
 	</c:if>
-
+	
 	<c:if test="${resultadoPublicacion =='NO'}">
 		$("#myModalFallo").modal('show');
 	</c:if>

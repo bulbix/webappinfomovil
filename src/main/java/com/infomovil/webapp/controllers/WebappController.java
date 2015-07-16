@@ -82,22 +82,55 @@ public class WebappController
 			password = Util.getUserLogged().getPassword();	
 			nombrePersona = Util.getCurrentSession().getAttribute("nombreUsuario")!=null?
 					Util.getCurrentSession().getAttribute("nombreUsuario").toString():" ";
+		
+			RespuestaVO respCargarSitio = wsCliente.crearSitioCargar(correo, password);
+			
+			boolean isBAZ = false, tieneTel = false;
+			
+			if(respCargarSitio.getCodeError().equals("0")){
+				isBAZ = respCargarSitio.getDominioCreaSitio().getCanal().startsWith("BAZ");
+				if (!StringUtils.isEmpty(respCargarSitio.getDominioCreaSitio().getSitioWeb())){
+					tieneTel = respCargarSitio.getDominioCreaSitio().getSitioWeb().indexOf(".tel") > 0;
+				}
+			}
+			
+			
+			if(isBAZ && !tieneTel){
+				wsRespuesta = wsCliente.crearSitioPublicar(correo, password, nombrePersona, "Mexico", nombreDominio, tipoDominio, idCatTipoRecurso);
+				resultadoPublicacion = wsRespuesta.getCodeError();
+				resultMap.put("resultadoPub", wsRespuesta.getResultado());
+				modeloVista = editarSitio(redirectAttributes);
+				
+				if (modeloVista != null)
+				{
+					if (resultadoPublicacion.equals("0")){
+						modeloVista.getModel().put("resultadoPublicacion", "SI");
+					}
+					else{
+						modeloVista.getModel().put("msgPublicacion", "No se ha podido completar la publicación de tu sitio");
+						modeloVista.getModel().put("resultadoPublicacion", "NO");
+					}
 					
-			wsRespuesta = wsCliente.crearSitioPublicar(correo, password, nombrePersona, "Mexico", nombreDominio, tipoDominio, idCatTipoRecurso);
-			resultadoPublicacion = wsRespuesta.getCodeError();
-			resultMap.put("resultadoPub", wsRespuesta.getResultado());
-			
+					
+					return modeloVista;
+				}
+			}
+		
 			modeloVista = editarSitio(redirectAttributes);
-			
-			if (modeloVista != null)
-			{
-				if (resultadoPublicacion.equals("0"))
-					sePublico = "SI";
-				
-					modeloVista.getModel().put("resultadoPublicacion", sePublico);
-				
+		
+			if(!isBAZ){
+				modeloVista.getModel().put("msgPublicacion", "No eres usuario de BAZ, no puedes publicar .tel");
+				modeloVista.getModel().put("resultadoPublicacion", "NO");
 				return modeloVista;
 			}
+			
+			if(tieneTel){
+				modeloVista.getModel().put("msgPublicacion", "Tu ya tienes asignado un dominio .tel");
+				modeloVista.getModel().put("resultadoPublicacion", "NO");
+				return modeloVista;
+			}
+			
+			
 		}		
 		catch (Exception e) 
 		{
@@ -160,7 +193,7 @@ public class WebappController
 		HashMap<String, Object> model = new HashMap<String, Object>();
 		String template = "Coverpage1Azul";
 		sitioWeb = "SIN_PUBLICAR";
-		
+		canal = "NO_TIENE";
 		
 		try
 		{
