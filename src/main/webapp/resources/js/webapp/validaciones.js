@@ -122,8 +122,8 @@ function actualizaPlantilla(plantillaElegida)
 	var aux;
 	
 	console.log("plantillaNueva: " + plantillaNueva + ", plantilla: " + plantilla);
-	if (plantillaNueva == plantilla)
-		return;
+//	if (plantillaNueva == plantilla)
+//		return;
 
 	$("#modalTemplates").css("display", "none");
 	$.blockUI({ message: '<h1><img src="/WebAppInfomovil/resources/webapp/images/busy.gif" />Actualizando...</h1>' }); 
@@ -187,8 +187,8 @@ function generarSlider()
 			imgActivo = "temp_act.png";
 		
 		urlRecurso = "https://s3.amazonaws.com/landing.infomovil.com/webapp/templates/" + templates[i] + "/" + templates[i] + ".png";
-		li = "<li onClick='actualizaPlantilla(this.id)' id='" + templates[i] +"' class='text-center'><img src='" + urlRecurso + "' title='" + nombres[i] + "' style='min-width:230px !important;max-width: 100%;'/></li>";
-		span = span + "<img src='https://s3.amazonaws.com/landing.infomovil.com/webapp/images/" + imgActivo + "' width='30'/> Estilo " + nombres[i]; 
+		li = "<li onClick='actualizaPlantilla(this.id)' id='" + templates[i] +"' class='text-center'><img src='" + urlRecurso + "' title='" + nombres[i] + "''/></li>";
+		span = span + "<img src='https://s3.amazonaws.com/landing.infomovil.com/webapp/images/" + imgActivo + "' /> Estilo " + nombres[i]; 
 		slider = slider + li;
 		urlRecurso = "";
 	}
@@ -204,16 +204,27 @@ function generarSlider()
 	/*********************************************************************************************
 	** 	Colocar la imagen oculta del template activo, y actualizarlo.....
 	/*********************************************************************************************/
+//	$('#modalTemplates').html("<div id='myModalTemplates' class='modal fade' tabindex='-1' role='dialog' aria-labelledby='myModalLabel' aria-hidden='true'>" +
+//			"<div class='modal-dialog modal-lg'><div class='modal-content'><div class='modal-header'>" +
+//			 	"<button type='button' class='close textBlack' data-dismiss='modal' aria-label='Close'><span aria-hidden='true'>&times;</span></button>" +
+//			        "<p class='modal-title textBlack'>Elije tu estilo</p></div>" + 
+//			        "<div class='modal-body bgWhite'>" + slider + "</div><div class='modal-footer'>" + //<span class='text-left'>" + span + "</span>" +
+////			        "<span class='text-left'><img src='https://s3.amazonaws.com/landing.infomovil.com/webapp/images/temp_act.png' width='30'/> Estilo " + nombres[i] + "</span>" +
+//			        "<button type='button' class='btn btn-purple pull-right' onClick='actualizaEstilo()'>Aplicar estilo</button></div></div></div></div>");
+	
+	
 	$('#modalTemplates').html("<div id='myModalTemplates' class='modal fade' tabindex='-1' role='dialog' aria-labelledby='myModalLabel' aria-hidden='true'>" +
-			"<div class='modal-dialog modal-lg'><div class='modal-content'><div class='modal-header'>" +
+			"<div class='modal-dialog modal-lg'><div class='modal-content'>" +
+			"<!--<div class='modal-header'>" +
 			 	"<button type='button' class='close textBlack' data-dismiss='modal' aria-label='Close'><span aria-hidden='true'>&times;</span></button>" +
-			        "<p class='modal-title textBlack'>Elije tu estilo</p></div>" + 
+			        "<p class='modal-title textBlack'>Elije tu estilo</p></div>-->" + 
 			        "<div class='modal-body bgWhite'>" + slider + "</div><div class='modal-footer'>" + //<span class='text-left'>" + span + "</span>" +
 //			        "<span class='text-left'><img src='https://s3.amazonaws.com/landing.infomovil.com/webapp/images/temp_act.png' width='30'/> Estilo " + nombres[i] + "</span>" +
-			        "<button type='button' class='btn btn-purple pull-right' onClick='actualizaEstilo()'>Aplicar estilo</button></div></div></div></div>");
+			        "<button type='button' class='btn btn-purple ' data-dismiss='modal' aria-label='Close'>Cerrar</button> <button type='button' class='btn btn-purple pull-right' onClick='actualizaEstilo()'>Aplicar estilo</button> </div></div></div></div>");
 	
 	$('.bxslider').bxSlider({
-		  mode: 'fade',
+		adaptiveHeight: true,
+		mode: 'fade',
 		  captions: true,
 		  onSliderLoad: function(){
 			  if ($("#plantilla").val() == templates[0])
@@ -223,20 +234,22 @@ function generarSlider()
 			  
 			  indice = indice + 1;
 			  if (indice > templates.length)
-				  indice = 1;
+				  indice = 0;
 			  if ($("#plantilla").val() == templates[indice])
 				  console.log("plantilla elegida:: " + templates[indice]);
-			  //console.log("indice: " + indice);
+			  console.log("indice: " + indice);
 		  },
 		  onSlidePrev: function(){
-			  
+			  console.log("indice antes: " + indice);
 			  indice = indice - 1;
-			  if (indice <= 0)
+			  console.log("indice despues resta: " + indice);
+			  if (indice < 0){
 				  indice = indice + templates.length;
-			  
+				  console.log("indice cuando es negativo: " + indice);
+			  }
 			  if ($("#plantilla").val() == templates[indice])
 				  console.log("plantilla elegida:: " + templates[indice]);
-			  //console.log("indice: " + indice);
+			  console.log("indice: " + indice);
 		  }
 		  
 		});

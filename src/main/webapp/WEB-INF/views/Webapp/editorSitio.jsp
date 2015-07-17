@@ -53,7 +53,10 @@
 <%--     <link href="http://landing.infomovil.com/webapp/templates/${ template }/css/themeEditor.css" rel="stylesheet" /> --%>
     <link href="<c:url value="/resources/webapp/css/themeEditor.css"/>" rel="stylesheet"/>
     <!-- Custom styles for this template -->
-    <link href="http://landing.infomovil.com/webapp/templates/${ template }/css/info.css" rel="stylesheet" />
+<%--     <link href="http://landing.infomovil.com/webapp/templates/${ template }/css/info.css" rel="stylesheet" /> --%>
+    <link href="https://s3.amazonaws.com/landing.infomovil.com/webapp/templates/${ template }/css/info.css" rel="stylesheet" />
+
+    
 <%--     <link href="<c:url value="/resources/webapp/css/info.css"/>" rel="stylesheet" /> --%>
     <!-- bxSlider CSS file -->
 <%--     <link href="http://landing.infomovil.com/webapp/templates/${ template }/css/jquery.bxslider.css" rel="stylesheet" /> --%>
@@ -110,8 +113,8 @@
       
       <!-- page header -->
       <div class="page-header text-center">
-      <div class="divider hidden-xs hidden-sm"></div>
-    <h5 class="colorA text-center" id="urlSitio" style="display:none;">${sitioWeb}</h5>
+      
+    <h5 class=" text-center" id="urlSitio" style="display:none;"><a href="http://${sitioWeb}" target="_blank" class="textBlack">${sitioWeb}</a></h5>
       
       
        <div class="">
