@@ -1,3 +1,7 @@
+var templates = new Array("Coverpage1azul", "Coverpage2", "Coverpage3", "Coverpage4", "Coverpage5", "Coverpage6");
+var nombres = new Array("Coverpage1azul", "Coverpage2", "Coverpage3", "Coverpage4", "Coverpage5", "Coverpage6"); /*Cambiar nombres*/
+var indice = 0;
+	
 $(document).ready(function() {
 	$("#txtTelefono").numeric({negative : false} );
 });
@@ -166,14 +170,13 @@ function actualizaPlantilla(plantillaElegida)
 
 function generarSlider()
 {
-	var templates = new Array("Coverpage1azul", "Coverpage2", "Coverpage3", "Coverpage4", "Coverpage5", "Coverpage6");
-	var nombres = new Array("Coverpage1azul", "Coverpage2", "Coverpage3", "Coverpage4", "Coverpage5", "Coverpage6"); /*Cambiar nombres*/
 	var urlRecurso = "";
 	var imgActivo = "";
 	var slider = "";
 	var span = "";
 	var li = "";
-
+	var bandera = 0;
+	
 	slider = "<ul class='bxslider'>";
 	
 	for (i = 0; i < templates.length; i = i + 1) 
@@ -189,23 +192,60 @@ function generarSlider()
 		slider = slider + li;
 		urlRecurso = "";
 	}
+	
+//	$('#modalTemplates').html("<div id='myModalTemplates' class='modal fade' tabindex='-1' role='dialog' aria-labelledby='myModalLabel' aria-hidden='true'>" +
+//			"<div class='modal-dialog modal-lg'><div class='modal-content'><div class='modal-header'>" +
+//			 	"<button type='button' class='close textBlack' data-dismiss='modal' aria-label='Close'><span aria-hidden='true'>&times;</span></button>" +
+//			        "<p class='modal-title textBlack'>Elije tu estilo</p></div>" + 
+//			        "<div class='modal-body bgWhite'>" + slider + "</div><div class='modal-footer'>" + //<span class='text-left'>" + span + "</span>" +
+//			        "<span class='text-left'><img src='https://s3.amazonaws.com/landing.infomovil.com/webapp/images/temp_act.png' width='30'/> Estilo " + nombres[i] + "</span>" +
+//			        "<button type='button' class='btn btn-purple pull-right' data-dismiss='modal'>Cerrar</button></div></div></div></div>");
 
-
+	/*********************************************************************************************
+	** 	Colocar la imagen oculta del template activo, y actualizarlo.....
+	/*********************************************************************************************/
 	$('#modalTemplates').html("<div id='myModalTemplates' class='modal fade' tabindex='-1' role='dialog' aria-labelledby='myModalLabel' aria-hidden='true'>" +
 			"<div class='modal-dialog modal-lg'><div class='modal-content'><div class='modal-header'>" +
 			 	"<button type='button' class='close textBlack' data-dismiss='modal' aria-label='Close'><span aria-hidden='true'>&times;</span></button>" +
 			        "<p class='modal-title textBlack'>Elije tu estilo</p></div>" + 
 			        "<div class='modal-body bgWhite'>" + slider + "</div><div class='modal-footer'>" + //<span class='text-left'>" + span + "</span>" +
 //			        "<span class='text-left'><img src='https://s3.amazonaws.com/landing.infomovil.com/webapp/images/temp_act.png' width='30'/> Estilo " + nombres[i] + "</span>" +
-			        "<button type='button' class='btn btn-purple pull-right' data-dismiss='modal'>Cerrar</button></div></div></div></div>");
+			        "<button type='button' class='btn btn-purple pull-right' onClick='actualizaEstilo()'>Aplicar estilo</button></div></div></div></div>");
 	
 	$('.bxslider').bxSlider({
 		  mode: 'fade',
 		  captions: true,
-		  onSlideBefore: function($slideElement){
-		//	  alert($("#plantilla").val());
-			}
+		  onSliderLoad: function(){
+			  if ($("#plantilla").val() == templates[0])
+				  bandera = 1;
+		  },
+		  onSlideNext: function(){
+			  
+			  indice = indice + 1;
+			  if (indice > templates.length)
+				  indice = 1;
+			  if ($("#plantilla").val() == templates[indice])
+				  console.log("plantilla elegida:: " + templates[indice]);
+			  //console.log("indice: " + indice);
+		  },
+		  onSlidePrev: function(){
+			  
+			  indice = indice - 1;
+			  if (indice <= 0)
+				  indice = indice + templates.length;
+			  
+			  if ($("#plantilla").val() == templates[indice])
+				  console.log("plantilla elegida:: " + templates[indice]);
+			  //console.log("indice: " + indice);
+		  }
+		  
 		});
+}
+
+function actualizaEstilo()
+{
+	//alert("template a actualizar: " + templates[indice]);
+	actualizaPlantilla(templates[indice]);
 }
 
 function autosave() {
