@@ -126,7 +126,7 @@ function actualizaPlantilla(plantillaElegida)
 //		return;
 
 	$("#modalTemplates").css("display", "none");
-	$.blockUI({ message: '<h1><img src="/WebAppInfomovil/resources/webapp/images/busy.gif" />Actualizando...</h1>' }); 
+	$.blockUI({ message: '<span><img src="/WebAppInfomovil/resources/webapp/css/images/bx_loader.gif" width="30"/> Actualizando...</span>' }); 
 	
 	$.ajax({
 		type : "GET",
@@ -181,7 +181,8 @@ function generarSlider()
 	for (i = 0; i < templates.length; i = i + 1) 
 	{	
 		urlRecurso = "https://s3.amazonaws.com/landing.infomovil.com/webapp/templates/" + templates[i] + "/" + templates[i] + ".png";
-		li = "<li onClick='actualizaPlantilla(this.id)' id='" + templates[i] +"' class='text-center'><img src='" + urlRecurso + "' title='" + nombres[i] + "''/></li>";
+		li = "<li onClick='actualizaPlantilla(this.id)' id='" + templates[i] +"' class='text-center'><img style='width:100%; height:auto; min-width:280px!important; max-width:600px !important; max-height:568px!important;min-height:265px!important; display:block;' src='" + urlRecurso + "' title='" + nombres[i] + "'' /></li>";
+		span = span + "<img src='https://s3.amazonaws.com/landing.infomovil.com/webapp/images/" + imgActivo + "'  /> Estilo " + nombres[i]; 
 		slider = slider + li;
 		urlRecurso = "";
 	}
@@ -201,21 +202,26 @@ function generarSlider()
 //			"<div class='modal-dialog modal-lg'><div class='modal-content'><div class='modal-header'>" +
 //			 	"<button type='button' class='close textBlack' data-dismiss='modal' aria-label='Close'><span aria-hidden='true'>&times;</span></button>" +
 //			        "<p class='modal-title textBlack'>Elije tu estilo</p></div>" + 
-//			        "<div class='modal-body bgWhite'>" + slider + "</div><div class='modal-footer'>" + //<span class='text-left'>" + span + "</span>" +
+//			        "<div class='modal-body bgWhite'><div class="slide-contain">" + slider + "</div></div><div class='modal-footer'>" + //<span class='text-left'>" + span + "</span>" +
 ////			        "<span class='text-left'><img src='https://s3.amazonaws.com/landing.infomovil.com/webapp/images/temp_act.png' width='30'/> Estilo " + nombres[i] + "</span>" +
 //			        "<button type='button' class='btn btn-purple pull-right' onClick='actualizaEstilo()'>Aplicar estilo</button></div></div></div></div>");
 	
 	
 	$('#modalTemplates').html("<div id='myModalTemplates' class='modal fade' tabindex='-1' role='dialog' aria-labelledby='myModalLabel' aria-hidden='true'>" +
 			"<div class='modal-dialog modal-lg'><div class='modal-content'>" +
-			"<!--<div class='modal-header'>" +
-			 	"<button type='button' class='close textBlack' data-dismiss='modal' aria-label='Close'><span aria-hidden='true'>&times;</span></button>" +
-			        "<p class='modal-title textBlack'>Elije tu estilo</p></div>-->" + 
-			        "<div class='modal-body bgWhite'>" + slider + "</div><div class='modal-footer'>" + 
-			        "<span class='text-left' id='imgActivo'></span>" +
-			        "<button type='button' class='btn btn-purple ' data-dismiss='modal' aria-label='Close'>Cerrar</button> <button type='button' class='btn btn-purple pull-right' onClick='actualizaEstilo()'>Aplicar estilo</button> </div></div></div></div>");
+
+			"<div class='modal-header'>" +
+			 	"<button type='button' class='close textBlack pull-left' data-dismiss='modal' aria-label='Close'><span aria-hidden='true'>&times;</span></button> <button type='button' class='btn btn-purple pull-right' onClick='actualizaEstilo()'>Aplicar estilo</button>" +
+			        "</div>" + 
+			        "<div class='modal-body bgWhite'>" + slider + "</div><div class='modal-footer'>" + //<span class='text-left'>" + span + "</span>" +
+//			        "<span class='text-left'><img src='https://s3.amazonaws.com/landing.infomovil.com/webapp/images/temp_act.png' width='30'/> Estilo " + nombres[i] + "</span>" +
+			        " </div></div></div></div>");
 	
-	var slider = $('.bxslider').bxSlider({
+	$('.bxslider').bxSlider({
+		 moveSlides: 1,
+		    displaySlideQty: 2,
+		    responsive: false,
+		    infiniteLoop: true,
 		adaptiveHeight: true,
 		mode: 'fade',
 		  captions: true,
