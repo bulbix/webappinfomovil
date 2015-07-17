@@ -171,7 +171,6 @@ function actualizaPlantilla(plantillaElegida)
 function generarSlider()
 {
 	var urlRecurso = "";
-	var imgActivo = "";
 	var slider = "";
 	var span = "";
 	var li = "";
@@ -181,14 +180,8 @@ function generarSlider()
 	
 	for (i = 0; i < templates.length; i = i + 1) 
 	{	
-		imgActivo = "temp_inact.png";
-		
-		if ($("#plantilla").val() == templates[i])
-			imgActivo = "temp_act.png";
-		
 		urlRecurso = "https://s3.amazonaws.com/landing.infomovil.com/webapp/templates/" + templates[i] + "/" + templates[i] + ".png";
 		li = "<li onClick='actualizaPlantilla(this.id)' id='" + templates[i] +"' class='text-center'><img src='" + urlRecurso + "' title='" + nombres[i] + "''/></li>";
-		span = span + "<img src='https://s3.amazonaws.com/landing.infomovil.com/webapp/images/" + imgActivo + "' /> Estilo " + nombres[i]; 
 		slider = slider + li;
 		urlRecurso = "";
 	}
@@ -218,41 +211,47 @@ function generarSlider()
 			"<!--<div class='modal-header'>" +
 			 	"<button type='button' class='close textBlack' data-dismiss='modal' aria-label='Close'><span aria-hidden='true'>&times;</span></button>" +
 			        "<p class='modal-title textBlack'>Elije tu estilo</p></div>-->" + 
-			        "<div class='modal-body bgWhite'>" + slider + "</div><div class='modal-footer'>" + //<span class='text-left'>" + span + "</span>" +
-//			        "<span class='text-left'><img src='https://s3.amazonaws.com/landing.infomovil.com/webapp/images/temp_act.png' width='30'/> Estilo " + nombres[i] + "</span>" +
+			        "<div class='modal-body bgWhite'>" + slider + "</div><div class='modal-footer'>" + 
+			        "<span class='text-left' id='imgActivo'></span>" +
 			        "<button type='button' class='btn btn-purple ' data-dismiss='modal' aria-label='Close'>Cerrar</button> <button type='button' class='btn btn-purple pull-right' onClick='actualizaEstilo()'>Aplicar estilo</button> </div></div></div></div>");
 	
-	$('.bxslider').bxSlider({
+	var slider = $('.bxslider').bxSlider({
 		adaptiveHeight: true,
 		mode: 'fade',
 		  captions: true,
+		  pager: true,
 		  onSliderLoad: function(){
 			  if ($("#plantilla").val() == templates[0])
-				  bandera = 1;
-		  },
-		  onSlideNext: function(){
-			  
-			  indice = indice + 1;
-			  if (indice > templates.length)
-				  indice = 0;
-			  if ($("#plantilla").val() == templates[indice])
-				  console.log("plantilla elegida:: " + templates[indice]);
-			  console.log("indice: " + indice);
-		  },
-		  onSlidePrev: function(){
-			  console.log("indice antes: " + indice);
-			  indice = indice - 1;
-			  console.log("indice despues resta: " + indice);
-			  if (indice < 0){
-				  indice = indice + templates.length;
-				  console.log("indice cuando es negativo: " + indice);
+				  span = "<img src='https://s3.amazonaws.com/landing.infomovil.com/webapp/images/temp_act.png' width='30'/>";
 			  }
-			  if ($("#plantilla").val() == templates[indice])
-				  console.log("plantilla elegida:: " + templates[indice]);
-			  console.log("indice: " + indice);
-		  }
-		  
 		});
+	
+	$(document).on('click','.bx-next', function() {
+		indice = slider.getCurrentSlide();
+//		plantillaElegida(indice);
+		});
+	
+	$(document).on('click','.bx-prev', function() {
+		indice = slider.getCurrentSlide();
+//		plantillaElegida(indice);
+		});
+
+	$(document).on('click','.bx-pager-link', function() {
+		indice = slider.getCurrentSlide();
+//		plantillaElegida(indice);
+		});
+	
+}
+
+function plantillaElegida(indicador)
+{
+	var span = "<img src='https://s3.amazonaws.com/landing.infomovil.com/webapp/images/temp_inact.png' width='30'/>";
+	
+	if ($("#plantilla").val() == templates[indicador])
+		span = "<img src='https://s3.amazonaws.com/landing.infomovil.com/webapp/images/temp_act.png' width='30'/>";
+
+	$("#imgActivo").val(span);
+	console.log(":::::: " + $("#imgActivo").val());
 }
 
 function actualizaEstilo()
