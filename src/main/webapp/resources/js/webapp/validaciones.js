@@ -19,22 +19,18 @@ function validaDominio()
 	if (nombreDominio == null || nombreDominio.trim().length == 0 || nombreDominio.trim().length < 3)
 	{
 		$("#validacionNombre").html("El nombre debe ser mayor a 2 caracteres y menor a 64");
-	//	alert("longitud de dominio");
 		return false;
 	}
 
 	if (nombreDominio.toLowerCase().indexOf("infomovil") != -1)
 	{
 		$("#validacionNombre").html("No debe contener la palabra Infomovil");
-	//	alert("contenido infomovil");
 		return false;
 	}
 
 	if (!regAuxiliar.test(nombreDominio)) 
 	{
-	//	alert("exp. regular");
-		$("#validacionNombre").html("Caracteres no validos");
-		//$("#formatoServicios").css("display", "block");
+		$("#validacionNombre").html("Caracteres no v&aacutelidos");
 		return false;
 	}
 	
@@ -64,7 +60,6 @@ function validaDominio()
 			{
 				funcion = "publicar()";
 				opcion = "PUBLICAR";
-				//msjValidacion = "&iexcl;Felicidades!";
 				msjValidacion = "";
 				textoBoton = "&iexcl;Lo quiero!";
 				sitioDisponible = "www." + nombreDominio + "." + tipoDominio + " est&aacute; disponible";
@@ -111,10 +106,10 @@ function publicar()
 	$("#publicarDominio").submit();
 }
 
-function actualizaPlantilla()
+function actualizaPlantilla(plantillaElegida)
 {	
 	console.log("actualizaPlantilla");
-	var plantillaNueva = "Coverpage1azul"; // Obtener del modal
+	var plantillaNueva = plantillaElegida; // Obtener del modal
 	var nombreNegocio = $("#txtNombreNegocio").val();
 	var descripcionCorta = $("#txtDescripcionCorta").val() ;
 	var correo = $("#txtCorreo").val();
@@ -123,9 +118,12 @@ function actualizaPlantilla()
 	var aux;
 	
 	console.log("plantillaNueva: " + plantillaNueva + ", plantilla: " + plantilla);
-//	if (plantillaNueva == plantilla)
-//		return;
+	if (plantillaNueva == plantilla)
+		return;
+
+	$("#modalTemplates").css("display", "none");
 	$.blockUI({ message: '<h1><img src="/WebAppInfomovil/resources/webapp/images/busy.gif" />Actualizando...</h1>' }); 
+	
 	$.ajax({
 		type : "GET",
 		url : contextPath + "/infomovil/actualizaPlantilla",
@@ -142,12 +140,13 @@ function actualizaPlantilla()
 			
 			console.log("json.actualizaTemplate:::" + json.actualizaTemplate);
 			$("#plantilla").val(plantillaNueva);			
-			alert("Plantilla actualizada correctamente");
 			
 			if(json.actualizaTemplate == "0")
 			{
 				if(contextPath == "/")
 					contextPath = "";
+				
+				console.log("Plantilla actualizada correctamente");
 				$.unblockUI();
 				window.location = contextPath + '/infomovil/editarSitio';
 			}
@@ -167,31 +166,46 @@ function actualizaPlantilla()
 
 function generarSlider()
 {
-	//actualizaPlantilla();
-	var templates = new Array("Coverpage1azul", "Coverpage2azul");
+	var templates = new Array("Coverpage1azul", "Coverpage2", "Coverpage3", "Coverpage4", "Coverpage5", "Coverpage6");
+	var nombres = new Array("Coverpage1azul", "Coverpage2", "Coverpage3", "Coverpage4", "Coverpage5", "Coverpage6"); /*Cambiar nombres*/
 	var urlRecurso = "";
+	var imgActivo = "";
 	var slider = "";
+	var span = "";
 	var li = "";
 
 	slider = "<ul class='bxslider'>";
 	
 	for (i = 0; i < templates.length; i = i + 1) 
-	{
-		urlRecurso = "http://landing.infomovil.com/webapp/templates/" + templates[i] + "/templateVacio.png";
-		li = "<li><img src='" + urlRecurso + "' title='Funky roots'/></li>";
+	{	
+		imgActivo = "temp_inact.png";
+		
+		if ($("#plantilla").val() == templates[i])
+			imgActivo = "temp_act.png";
+		
+		urlRecurso = "https://s3.amazonaws.com/landing.infomovil.com/webapp/templates/" + templates[i] + "/" + templates[i] + ".png";
+		li = "<li onClick='actualizaPlantilla(this.id)' id='" + templates[i] +"' class='text-center'><img src='" + urlRecurso + "' title='" + nombres[i] + "' style='min-width:230px !important;max-width: 100%;'/></li>";
+		span = span + "<img src='https://s3.amazonaws.com/landing.infomovil.com/webapp/images/" + imgActivo + "' width='30'/> Estilo " + nombres[i]; 
 		slider = slider + li;
 		urlRecurso = "";
 	}
 
-	slider = slider + "</ul></div><div class='modal-footer'><button type='button' class='btn btn-default' data-dismiss='modal'>Cerrar</button></div></div></div></div>";
-	
-	$("#modalTemplates").html("<div id='myModalTemplate' class='modal fade' tabindex='-1' role='dialog' aria-labelledby='myModalLabel' aria-hidden='true'>" +
-			"<div class='modal-dialog modal-lg'><div class='modal-content'><div class='modal-header'><button type='button' class='close' data-dismiss='modal'" + 
-			"aria-label='Close'><span aria-hidden='true'>&times;</span></button><p class='modal-title'>Elige tu estilo</p></div><div class='modal-body bgWhite'>" + slider);
 
-	console.log($("#modalTemplates").html());
-	$('#modalTemplates > .alert-success').append($('#myModalTemplates').modal('show'));
-	//console.log("slider::::: " + slider);
+	$('#modalTemplates').html("<div id='myModalTemplates' class='modal fade' tabindex='-1' role='dialog' aria-labelledby='myModalLabel' aria-hidden='true'>" +
+			"<div class='modal-dialog modal-lg'><div class='modal-content'><div class='modal-header'>" +
+			 	"<button type='button' class='close textBlack' data-dismiss='modal' aria-label='Close'><span aria-hidden='true'>&times;</span></button>" +
+			        "<p class='modal-title textBlack'>Elije tu estilo</p></div>" + 
+			        "<div class='modal-body bgWhite'>" + slider + "</div><div class='modal-footer'>" + //<span class='text-left'>" + span + "</span>" +
+//			        "<span class='text-left'><img src='https://s3.amazonaws.com/landing.infomovil.com/webapp/images/temp_act.png' width='30'/> Estilo " + nombres[i] + "</span>" +
+			        "<button type='button' class='btn btn-purple pull-right' data-dismiss='modal'>Cerrar</button></div></div></div></div>");
+	
+	$('.bxslider').bxSlider({
+		  mode: 'fade',
+		  captions: true,
+		  onSlideBefore: function($slideElement){
+		//	  alert($("#plantilla").val());
+			}
+		});
 }
 
 function autosave() {
@@ -261,3 +275,10 @@ function autosave() {
 
 	autosaveForm($('form'), 5000);
 }
+			
+			
+			
+			
+			
+			
+			
