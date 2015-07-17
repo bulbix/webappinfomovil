@@ -97,5 +97,13 @@ public class ClientWsInfomovilTest {
 		List<Catalogo> dominios = clientWsInfomovil.catalogoDominios();
 		assertEquals(2, dominios.size());
 	}
+	
+	@Test
+	public void testCrearSitioGetWebHash() {
+		RespuestaVO resp = clientWsInfomovil.crearSitioGetWebHash("wallie6@mail.com");
+		System.out.println(resp.resultado);
+		System.out.println(resp.scriptMovilizaSitio);
+		assertNotNull(resp);
+	}
 
 }

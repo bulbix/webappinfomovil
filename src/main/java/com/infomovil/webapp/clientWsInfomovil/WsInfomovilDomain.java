@@ -551,4 +551,16 @@ public interface WsInfomovilDomain {
         @WebParam(partName = "parameters", name = "crearSitio_cargar", targetNamespace = "http://ws.webservice.infomovil.org/")
         CrearSitioCargar parameters
     );
+    
+    @SOAPBinding(parameterStyle = SOAPBinding.ParameterStyle.BARE)
+    @WebResult(name = "crearSitio_getWebHashResponse", targetNamespace = "http://ws.webservice.infomovil.org/", partName = "parameters")
+    @Action(input = "http://ws.webservice.infomovil.org/WsInfomovilDomain/crearSitio_getWebHashRequest", output = "http://ws.webservice.infomovil.org/WsInfomovilDomain/crearSitio_getWebHashResponse")
+    @WebMethod(operationName = "crearSitio_getWebHash")
+    public CrearSitioGetWebHashResponse crearSitioGetWebHash(
+        @WebParam(partName = "parameters", name = "crearSitio_getWebHash", targetNamespace = "http://ws.webservice.infomovil.org/")
+        CrearSitioGetWebHash parameters
+    );
+
+    
+    
 }

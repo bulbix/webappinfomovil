@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.infomovil.webapp.clientWsInfomovil.ClientWsInfomovil;
+import com.infomovil.webapp.clientWsInfomovil.RespuestaVO;
 
 @Controller
 public class LoginController {
@@ -34,8 +35,22 @@ public class LoginController {
 				
 		if (!email.isEmpty()) {
 			ClientWsInfomovil ws = new ClientWsInfomovil();
-			ws.crearSitioResetPassword(email);			
-			model.addAttribute("mensaje", "Se envió un correo para restablecer tu contraseña");
+			RespuestaVO resp = ws.crearSitioResetPassword(email);		
+			String mensaje;
+			
+			if(resp.getCodeError().equals("0")){
+				mensaje = "Se envió un correo para restablecer tu contraseña.";
+			}
+			else if(resp.getCodeError().equals("-1000")){
+				mensaje = "El correo no existe en Infomovil.";
+			}
+			else{
+				mensaje = "Ocurrio un error al enviar el correo, Intente más tarde.";
+			}
+			
+			model.addAttribute("mensaje", mensaje);
+			
+			
 		}
 			
 		return "Webapp/restablecerPass"; 

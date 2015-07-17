@@ -96,8 +96,7 @@
         <li class="active"><a href="#" class="smoothScroll">${usuarioLogueado} <img width="20" height="20" alt="Infomovil" src="http://landing.infomovil.com/webapp/templates/${ template }/images/fa-user.png"/> </a></li>
     
         <li><a href="#" data-toggle="modal" data-target="#myModalTemplates" class="smoothScroll">Elegir estilo <img width="20" height="20" alt="Infomovil" src="<c:url value="/resources/webapp/images/fa-templates.png"/>"/></a>
-        <li><a href="<c:url value="/infomovil/cerrarSesion"></c:url>" class="smoothScroll"> Cerrar sesión <img width="20" height="20" alt="Infomovil" src="http://landing.infomovil.com/webapp/templates/${ template }/images/fa-sign-out.png"/></a></li>
-
+        <li><a href="<c:url value="/logout"></c:url>" class="smoothScroll"> Cerrar sesión <img width="20" height="20" alt="Infomovil" src="http://landing.infomovil.com/webapp/templates/${ template }/images/fa-sign-out.png"/></a></li>
       </ul>
         </div>
     <!--/.nav-collapse --> 
@@ -183,6 +182,7 @@
               
 <!--               ---														 -->
               																															
+
 <%--             <div class="text-left col-xs-3 col-sm-3 col-md-2 col-lg-2"> <img src="http://landing.infomovil.com/webapp/templates/${ template }/images/mail_icn.png" class="img mxw50miw43w100" alt="Contacto"/></div> --%>
 <!--             <div class="text-left col-xs-9 col-sm-9 col-md-10 col-lg-10 mar0auto"> <span class="dblw100 mxh70"> input              -->
               
@@ -195,12 +195,14 @@
 <!--               /input  -->
 <!--               </span><span class="dblw100"> <a href="{referencia}" target="{target}" onclick="{evento}"></a> </span> </div> -->
           </div>
+
           
           
 <!--           -- -->
 <!--            <div class="mar15 col-xs-12 col-sm-12 col-md-6 col-lg-6 reset" >															          -->
 <%--             <div class="text-left col-xs-3 col-sm-3 col-md-2 col-lg-2"> <img src="http://landing.infomovil.com/webapp/templates/${ template }/images/cel_icn.png" class="img mxw50miw43w100" alt="Contacto"/></div> --%>
 <!--             <div class="text-left col-xs-9 col-sm-9 col-md-10 col-lg-10 mar0auto"> <span class="dblw100 mxh70">                            -->
+
               
 <!--               input -->
               
@@ -218,7 +220,7 @@
         
             
             
-            
+         
             
             
       </form>
@@ -228,7 +230,7 @@
       
       
       
-    
+  <div id="LoadingImageFace" style="display:none" class="col-lg-12 text-center"> <img src="<c:url value="/resources/webapp/images/project-loader.gif"/>"> </div>     
 
    
     </div>
@@ -327,7 +329,7 @@
       </div>
       <div class="modal-body bgWhite">
         <h2 class="textBlack col-xs-12 col-sm-12 col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3 text-center"></h2>
-        <h5 class="textBlack col-xs-12 col-sm-12 col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3 text-center">No se ha podido completar la publicación de tu sitio<br/>
+        <h5 class="textBlack col-xs-12 col-sm-12 col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3 text-center">${msgPublicacion}<br/>
         </h5>
         <div class="clear divider"></div>
       </div>
@@ -362,11 +364,14 @@
 	<input type="hidden" id="tipoDominio" name="tipoDominio" >
 	<input type="hidden" id="idCatTipoRecurso" name="idCatTipoRecurso" value="1">
 </form>
+
 <%-- <h1>${ template }</h1> --%>
 <%-- <h1>${ sitioWeb }</h1> --%>
 <%-- <h1>${ canalUsuario }</h1> --%>
 
 <input type="hidden" id="plantilla" name="plantilla" <c:if test="${not empty template}"> value = "${ template }" </c:if> >
+
+
 <!-- Bootstrap core JavaScript
     ================================================== --> 
 <!-- Placed at the end of the document so the pages load faster --> 
@@ -416,6 +421,9 @@ $('.navbar-collapse ul li a').click(function() {
 	
 </script>
 
+<%-- <p>${canalUsuario }</p> --%>
+<%-- <p>${sitioWeb }</p> --%>
+
 <script>
 
 	<c:choose>
@@ -429,15 +437,15 @@ $('.navbar-collapse ul li a').click(function() {
 			$("#urlSitio").css("display", "block");
 			$("#publicarTel").css("display", "none");
 		</c:when>
-		<c:otherwise>
-		
-		</c:otherwise>
+	<c:otherwise>
+	
+	</c:otherwise>
 	</c:choose>	
-
+	
 	<c:if test="${resultadoPublicacion =='SI'}">
 		$("#myModalExito").modal('show');
 	</c:if>
-
+	
 	<c:if test="${resultadoPublicacion =='NO'}">
 		$("#myModalFallo").modal('show');
 	</c:if>

@@ -4,6 +4,9 @@ var indice = 0;
 	
 $(document).ready(function() {
 	$("#txtTelefono").numeric({negative : false} );
+	if(contextPath == "/")
+		contextPath = "";
+	
 });
 
 function validaDominio()
@@ -40,9 +43,6 @@ function validaDominio()
 	
 	$("#validacionNombre").css("display", "none");
 	console.log("nombreDominio: "+ nombreDominio + ", tipoDominio: " + tipoDominio);
-	
-	if(contextPath == "/")
-		contextPath = "";
 	
 	$.ajax
 	({
@@ -102,7 +102,8 @@ function aceptar()
 
 function publicar()
 {
-	$.blockUI({ message: '<h1><img src="/WebAppInfomovil/resources/webapp/images/busy.gif" />Nombrando...</h1>' }); 
+	$.blockUI({ message: "<h1><img src='" + contextPath + "/resources/webapp/images/project-loader.gif' /></h1>" }); 
+//	$("#LoadingImageFace").show();
 	var dominio = $("#nombreDominioBusqueda").val().toLowerCase();
 	console.log("dominio::::: " + dominio);
 	$("#nombreDominio").val(dominio);
@@ -126,7 +127,8 @@ function actualizaPlantilla(plantillaElegida)
 //		return;
 
 	$("#modalTemplates").css("display", "none");
-	$.blockUI({ message: '<h1><img src="/WebAppInfomovil/resources/webapp/images/busy.gif" />Actualizando...</h1>' }); 
+//	$("#LoadingImageFace").show();
+	$.blockUI({ message: "<img src='" + contextPath + "/resources/webapp/images/project-loader.gif' />" }); 
 	
 	$.ajax({
 		type : "GET",
@@ -147,9 +149,6 @@ function actualizaPlantilla(plantillaElegida)
 			
 			if(json.actualizaTemplate == "0")
 			{
-				if(contextPath == "/")
-					contextPath = "";
-				
 				console.log("Plantilla actualizada correctamente");
 				$.unblockUI();
 				window.location = contextPath + '/infomovil/editarSitio';
@@ -157,7 +156,8 @@ function actualizaPlantilla(plantillaElegida)
 
 		},
 		error : function(json) {
-			alert("Error");
+			console.log("Error");
+			//$("#LoadingImageFace").hide();
 			$.unblockUI();
 		//	aux = JSON.parse(json);
 		//	console.log(JSON.stringify(aux));
@@ -166,6 +166,7 @@ function actualizaPlantilla(plantillaElegida)
 		}
 
 	});		
+//	$("#LoadingImageFace").hide();
 }
 
 function generarSlider()
@@ -282,17 +283,6 @@ function autosave() {
 			var telefono = $("#txtTelefono").val();
 			
 			n2 = nombreNegocio + descripcionCorta + correo + telefono;
-			
-//			if ($("#txtNombreNegocio").val().length > 0 && $("#txtDescripcionCorta").val().length > 0
-//					&& $("#txtCorreo").val().length > 0 && $("#txtTelefono").val().length > 0) {
-//				
-//			} 
-			
-//			console.log("El valor de n2 es: " + n2);
-			
-			if(contextPath == "/"){
-				contextPath = "";
-			}
 
 			if (/*n2.length > 0 &&*/ n2 != n1) {
 				$.ajax({

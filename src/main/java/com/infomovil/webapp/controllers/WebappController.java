@@ -43,8 +43,8 @@ public class WebappController
 		
 		try
 		{
-			correo = Util.getUserLogged().getPrincipal().toString();
-			password = Util.getUserLogged().getCredentials().toString();
+			correo = Util.getUserLogged().getUsername();
+			password = Util.getUserLogged().getPassword();
 			
 			String nombreUsuario = Util.getCurrentSession().getAttribute("nombreUsuario")!=null?
 					Util.getCurrentSession().getAttribute("nombreUsuario").toString():" ";
@@ -77,8 +77,8 @@ public class WebappController
 		
 		try
 		{
-			correo = Util.getUserLogged().getPrincipal().toString();
-			password = Util.getUserLogged().getCredentials().toString();
+			correo = Util.getUserLogged().getUsername();
+			password = Util.getUserLogged().getPassword();
 			
 			String nombreUsuario = Util.getCurrentSession().getAttribute("nombreUsuario")!=null?
 					Util.getCurrentSession().getAttribute("nombreUsuario").toString():" ";
@@ -111,26 +111,59 @@ public class WebappController
 		RedirectAttributes redirectAttributes = null;
 		try
 		{
-			correo = Util.getUserLogged().getPrincipal().toString();
-			password = Util.getUserLogged().getCredentials().toString();	
+			correo = Util.getUserLogged().getUsername();
+			password = Util.getUserLogged().getPassword();	
 			nombrePersona = Util.getCurrentSession().getAttribute("nombreUsuario")!=null?
 					Util.getCurrentSession().getAttribute("nombreUsuario").toString():" ";
+		
+			RespuestaVO respCargarSitio = wsCliente.crearSitioCargar(correo, password);
+			
+			boolean isBAZ = false, tieneTel = false;
+			
+			if(respCargarSitio.getCodeError().equals("0")){
+				isBAZ = respCargarSitio.getDominioCreaSitio().getCanal().startsWith("BAZ");
+				if (!StringUtils.isEmpty(respCargarSitio.getDominioCreaSitio().getSitioWeb())){
+					tieneTel = respCargarSitio.getDominioCreaSitio().getSitioWeb().indexOf(".tel") > 0;
+				}
+			}
+			
+			
+			if(isBAZ && !tieneTel){
+				wsRespuesta = wsCliente.crearSitioPublicar(correo, password, nombrePersona, "Mexico", nombreDominio, tipoDominio, idCatTipoRecurso);
+				resultadoPublicacion = wsRespuesta.getCodeError();
+				resultMap.put("resultadoPub", wsRespuesta.getResultado());
+				modeloVista = editarSitio(redirectAttributes);
+				
+				if (modeloVista != null)
+				{
+					if (resultadoPublicacion.equals("0")){
+						modeloVista.getModel().put("resultadoPublicacion", "SI");
+					}
+					else{
+						modeloVista.getModel().put("msgPublicacion", "No se ha podido completar la publicación de tu sitio");
+						modeloVista.getModel().put("resultadoPublicacion", "NO");
+					}
 					
-			wsRespuesta = wsCliente.crearSitioPublicar(correo, password, nombrePersona, "Mexico", nombreDominio, tipoDominio, idCatTipoRecurso);
-			resultadoPublicacion = wsRespuesta.getCodeError();
-			resultMap.put("resultadoPub", wsRespuesta.getResultado());
-			
+					
+					return modeloVista;
+				}
+			}
+		
 			modeloVista = editarSitio(redirectAttributes);
-			
-			if (modeloVista != null)
-			{
-				if (resultadoPublicacion.equals("0"))
-					sePublico = "SI";
-				
-					modeloVista.getModel().put("resultadoPublicacion", sePublico);
-				
+		
+			if(!isBAZ){
+				modeloVista.getModel().put("msgPublicacion", "No eres usuario de BAZ, no puedes publicar .tel");
+				modeloVista.getModel().put("resultadoPublicacion", "NO");
 				return modeloVista;
 			}
+			
+			if(tieneTel){
+				modeloVista.getModel().put("msgPublicacion", "Tu ya tienes asignado un dominio .tel");
+				modeloVista.getModel().put("resultadoPublicacion", "NO");
+				return modeloVista;
+			}
+			
+			
 		}		
 		catch (Exception e) 
 		{
@@ -197,8 +230,8 @@ public class WebappController
 		
 		try
 		{
-			password = Util.getUserLogged().getCredentials().toString();
-			correo = Util.getUserLogged().getPrincipal().toString();
+			correo = Util.getUserLogged().getUsername();
+			password = Util.getUserLogged().getPassword();
 			
 			wsRespuesta = wsCliente.crearSitioCargar(correo, password);
 			
@@ -212,7 +245,7 @@ public class WebappController
 				
 				model.put("nombreEmpresa", wsRespuesta.getDominioCreaSitio().getNombreEmpresa().trim());
 				
-				if (wsRespuesta.getDominioCreaSitio().getNombreEmpresa().trim().equals("TÃ­tulo"))
+				if (wsRespuesta.getDominioCreaSitio().getNombreEmpresa().trim().equals("TÃtulo"))
 					model.put("nombreEmpresa", "");
 				
 				model.put("descripcionCorta", wsRespuesta.getDominioCreaSitio().getDescripcionCorta().trim());
@@ -230,12 +263,15 @@ public class WebappController
 				if (!StringUtils.isEmpty(wsRespuesta.getDominioCreaSitio().getTemplate()))
 					template = wsRespuesta.getDominioCreaSitio().getTemplate();
 				
+				if (!StringUtils.isEmpty(wsRespuesta.getDominioCreaSitio().getTemplate()))
+					template = wsRespuesta.getDominioCreaSitio().getTemplate();
+				
 				if (sitioWeb.indexOf("tel") != -1)
 				{
 					fechaIni = wsRespuesta.getFTelNamesIni();
 					fechaFin = wsRespuesta.getFTelNamesFin();
 				}
-					
+				
 				model.put("template", template);
 				model.put("sitioWeb", sitioWeb); 
 				model.put("fechaIniTel", fechaIni);
@@ -296,18 +332,6 @@ public class WebappController
 		}	
 		
 		return resultMap;
-	}
-	
-	@RequestMapping(value = "/infomovil/cerrarSesion", method = RequestMethod.GET)
-	public String cerrarSesion(){
-		SecurityContextHolder.clearContext();
-		
-		if(Util.getCurrentSession() != null){
-			Util.getCurrentSession().invalidate();
-		}
-		
-		return "redirect:/login";
-		
 	}
 	
 	@RequestMapping(value = "/", method = RequestMethod.GET)
