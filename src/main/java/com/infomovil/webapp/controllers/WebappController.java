@@ -1,3 +1,4 @@
+
 package com.infomovil.webapp.controllers;
 
 import java.io.UnsupportedEncodingException;
@@ -191,7 +192,7 @@ public class WebappController
 	public ModelAndView editarSitio(RedirectAttributes redirectAttributes)
 	{		
 		HashMap<String, Object> model = new HashMap<String, Object>();
-		String template = "Coverpage1Azul";
+		String template = "Coverpage1azul";
 		sitioWeb = "SIN_PUBLICAR";
 		canal = "NO_TIENE";
 		
@@ -229,6 +230,10 @@ public class WebappController
 
 				if (!StringUtils.isEmpty(wsRespuesta.getDominioCreaSitio().getTemplate()))
 					template = wsRespuesta.getDominioCreaSitio().getTemplate();
+				
+				if (template.equals("Moderno") || template.equals("Creativo") || template.equals("Clasico") 
+						|| template.equals("Divertido") || template.equals("Estandar1"))
+					template = "Coverpage1azul";
 				
 				if (sitioWeb.indexOf("tel") != -1)
 				{

@@ -126,7 +126,21 @@ function actualizaPlantilla(plantillaElegida)
 //		return;
 
 	$("#modalTemplates").css("display", "none");
-	$.blockUI({ message: '<h1><img src="/WebAppInfomovil/resources/webapp/images/busy.gif" />Actualizando...</h1>' }); 
+	
+	$(document).ready(function() { 
+	        $.blockUI({ 
+	            message: "Actualizando estilo...", 
+	            css: { 
+	                top:  ($(window).height() - 400) /2 + 'px', 
+	                left: ($(window).width() - 400) /2 + 'px', 
+	                width: '400px' 
+	            } 
+	        }); 
+	 
+	        setTimeout($.unblockUI, 2000); 
+ 
+	}); 
+//	$.blockUI({ message: '<h1><img src="/WebAppInfomovil/resources/webapp/images/busy.gif" />Actualizando...</h1>' }); 
 	
 	$.ajax({
 		type : "GET",
@@ -218,9 +232,10 @@ function generarSlider()
 	var slider = $('.bxslider').bxSlider({
 		adaptiveHeight: true,
 		mode: 'fade',
-		  captions: true,
-		  pager: true,
-		  onSliderLoad: function(){
+		captions: true,
+		pager: true,
+		touchEnabled : false,
+		onSliderLoad: function(){
 			  if ($("#plantilla").val() == templates[0])
 				  span = "<img src='https://s3.amazonaws.com/landing.infomovil.com/webapp/images/temp_act.png' width='30'/>";
 			  }
