@@ -139,6 +139,8 @@
             </div>
         <!--password-->
         
+        <input type='checkbox' style="display:none" name='_spring_security_remember_me' checked/>
+        
 
         <div class="form-group col-xs-12 col-sm-12 col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3"> <span style="margin:10px 0; display:block; width:100%; min-height:23px; "><a href="<c:url value="/resetpassword"/>" class="linkWhite">Si olvidaste o no tienes contraseña, haz click aquí</a></span> </div>
 

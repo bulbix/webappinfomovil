@@ -854,5 +854,23 @@ public class WsInfomovilDomainImpl implements WsInfomovilDomain {
             throw new RuntimeException(ex);
         }
     }
+    
+    
+    /* (non-Javadoc)
+     * @see com.infomovil.webapp.clientWsInfomovil.WsInfomovilDomain#crearSitioGetWebHash(com.infomovil.webapp.clientWsInfomovil.CrearSitioGetWebHash  parameters )*
+     */
+    public com.infomovil.webapp.clientWsInfomovil.CrearSitioGetWebHashResponse crearSitioGetWebHash(CrearSitioGetWebHash parameters) { 
+        LOG.info("Executing operation crearSitioGetWebHash");
+        System.out.println(parameters);
+        try {
+            com.infomovil.webapp.clientWsInfomovil.CrearSitioGetWebHashResponse _return = null;
+            return _return;
+        } catch (java.lang.Exception ex) {
+            ex.printStackTrace();
+            throw new RuntimeException(ex);
+        }
+    }
+
+    
 
 }

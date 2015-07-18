@@ -7,11 +7,13 @@ import java.util.List;
 import java.util.Properties;
 
 import javax.servlet.http.HttpSession;
+
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.User;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 
@@ -38,17 +40,23 @@ public class Util {
 	 * @return usuario logueado con spring security
 	 *
 	 */
-	public static Authentication getUserLogged() {
-		
-		Object principal = SecurityContextHolder.getContext().getAuthentication();
+	public static User getUserLogged() {
+		Authentication authenticate = SecurityContextHolder.getContext().getAuthentication();
 
-		if (principal instanceof Authentication) {
-			return ((Authentication) principal);
-		} else {
+		if(authenticate.getPrincipal() instanceof User){
+			User user = (User)authenticate.getPrincipal();
+			return user;
+		}
+		else if(authenticate.getPrincipal() instanceof String) {
+			List<GrantedAuthority> grantedAuths = new ArrayList<GrantedAuthority>();
+			grantedAuths.add(new SimpleGrantedAuthority("ROLE_USER"));
+			return new User(authenticate.getPrincipal().toString(), authenticate.getCredentials().toString(), grantedAuths);
+		}
+		else{
 			return null;
 		}
 		
-	}	
+	}
 	
 	/**
 	 * Loguea el usuario en spring security

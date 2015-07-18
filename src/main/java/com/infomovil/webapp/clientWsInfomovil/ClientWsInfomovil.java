@@ -116,6 +116,17 @@ public class ClientWsInfomovil {
 		return _catalogoDominios__return;
 
 	}
+	
+	public RespuestaVO crearSitioGetWebHash(String email){
+		log.info("Invoking crearSitioGetWebHash...");
+		com.infomovil.webapp.clientWsInfomovil.CrearSitioGetWebHash _crearSitioGetWebHash_parameters = new CrearSitioGetWebHash();
+		_crearSitioGetWebHash_parameters.email = email;
+		com.infomovil.webapp.clientWsInfomovil.CrearSitioGetWebHashResponse _crearSitioGetWebHash__return = 
+				port.crearSitioGetWebHash(_crearSitioGetWebHash_parameters);
+		log.info("crearSitioGetWebHash.result=" + _crearSitioGetWebHash__return.respuestaVO.codeError);
+		return _crearSitioGetWebHash__return.respuestaVO;
+		
+	}
 
 
 
