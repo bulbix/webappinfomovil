@@ -3,6 +3,7 @@ package com.infomovil.webapp.util;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.User;
@@ -23,7 +24,7 @@ public class InfomovilUserDetailsService implements UserDetailsService {
 		List<GrantedAuthority> grantedAuths = new ArrayList<GrantedAuthority>();
 		grantedAuths.add(new SimpleGrantedAuthority("ROLE_USER"));
 
-		if(respGetWebHash.getCodeError().equals("0")){
+		if(!StringUtils.isEmpty(respGetWebHash.getResultado())){
 			User user = new User(email,respGetWebHash.getResultado(),grantedAuths);
 			return user;
 		}
