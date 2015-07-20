@@ -196,27 +196,7 @@ function generarSlider()
 		li = "<li onClick='actualizaPlantilla(this.id)' id='" + templates[i] +"' class='text-center'><img style='width:100%; height:auto; min-width:280px!important; max-width:600px !important; max-height:568px!important;min-height:265px!important; display:block;' src='" + urlRecurso + "' title='" + nombres[i] + "'' /></li>";
 		slider = slider + li;
 		urlRecurso = "";
-	}
-	
-//	$('#modalTemplates').html("<div id='myModalTemplates' class='modal fade' tabindex='-1' role='dialog' aria-labelledby='myModalLabel' aria-hidden='true'>" +
-//			"<div class='modal-dialog modal-lg'><div class='modal-content'><div class='modal-header'>" +
-//			 	"<button type='button' class='close textBlack' data-dismiss='modal' aria-label='Close'><span aria-hidden='true'>&times;</span></button>" +
-//			        "<p class='modal-title textBlack'>Elije tu estilo</p></div>" + 
-//			        "<div class='modal-body bgWhite'>" + slider + "</div><div class='modal-footer'>" + //<span class='text-left'>" + span + "</span>" +
-//			        "<span class='text-left'><img src='https://s3.amazonaws.com/landing.infomovil.com/webapp/images/temp_act.png' width='30'/> Estilo " + nombres[i] + "</span>" +
-//			        "<button type='button' class='btn btn-purple pull-right' data-dismiss='modal'>Cerrar</button></div></div></div></div>");
-
-	/*********************************************************************************************
-	** 	Colocar la imagen oculta del template activo, y actualizarlo.....
-	/*********************************************************************************************/
-//	$('#modalTemplates').html("<div id='myModalTemplates' class='modal fade' tabindex='-1' role='dialog' aria-labelledby='myModalLabel' aria-hidden='true'>" +
-//			"<div class='modal-dialog modal-lg'><div class='modal-content'><div class='modal-header'>" +
-//			 	"<button type='button' class='close textBlack' data-dismiss='modal' aria-label='Close'><span aria-hidden='true'>&times;</span></button>" +
-//			        "<p class='modal-title textBlack'>Elije tu estilo</p></div>" + 
-//			        "<div class='modal-body bgWhite'><div class="slide-contain">" + slider + "</div></div><div class='modal-footer'>" + //<span class='text-left'>" + span + "</span>" +
-////			        "<span class='text-left'><img src='https://s3.amazonaws.com/landing.infomovil.com/webapp/images/temp_act.png' width='30'/> Estilo " + nombres[i] + "</span>" +
-//			        "<button type='button' class='btn btn-purple pull-right' onClick='actualizaEstilo()'>Aplicar estilo</button></div></div></div></div>");
-	
+	}	
 	
 	$('#modalTemplates').html("<div id='myModalTemplates' class='modal fade' tabindex='-1' role='dialog' aria-labelledby='myModalLabel' aria-hidden='true'>" +
 			"<div class='modal-dialog modal-lg'><div class='modal-content'>" +
@@ -232,7 +212,6 @@ function generarSlider()
 		 moveSlides: 1,
 		    displaySlideQty: 2,
 		    responsive: false,
-		    infiniteLoop: true,
 		adaptiveHeight: true,
 		mode: 'fade',
 		captions: true,
@@ -338,10 +317,3 @@ function autosave() {
 
 	autosaveForm($('form'), 5000);
 }
-			
-			
-			
-			
-			
-			
-			

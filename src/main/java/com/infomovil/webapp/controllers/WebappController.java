@@ -106,7 +106,6 @@ public class WebappController
 			@RequestParam int idCatTipoRecurso)
 	{		
 		String resultadoPublicacion = "-1";
-		String sePublico = "NO";
 		ModelAndView modeloVista = null;
 		Map<String, String> resultMap = new HashMap<String, String>();
 		RedirectAttributes redirectAttributes = null;
@@ -180,7 +179,7 @@ public class WebappController
 		HashMap<String, Object> model = new HashMap<String, Object>();
 		vista = "Webapp/registrar";
 		
-		if (nombre == null || correo == null || codigo == null)
+		if (nombre == null || correo == null)
 			return validaURL("Webapp/validarURL");
 		else
 		{
@@ -207,7 +206,7 @@ public class WebappController
 		}
 	}
 
-	@RequestMapping(value = "/registra", method = RequestMethod.GET)
+	@RequestMapping(value = "/registrar", method = RequestMethod.GET)
 	public String registra() 
 	{
 		return "Webapp/registrar";
