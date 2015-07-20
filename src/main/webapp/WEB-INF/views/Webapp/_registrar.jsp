@@ -33,6 +33,7 @@
     <link rel="apple-touch-icon" sizes="152x152" href="resources/webapp/images/apple-touch-icon-152x152.png" />
     <link rel="shortcut icon" href="resources/webapp/images/favicon.ico" type="image/x-icon" />
     <link rel="image_src" href="resources/webapp/images/apple-touch-icon-57x57.png"/>
+    <link rel="stylesheet" href="fonts/font-awesome.min.css">
     <title itemprop="name">Infomovil</title>
     <link rel="canonical" href="http://www.infomovil.com" itemprop="url" />
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
@@ -50,7 +51,9 @@
     <link href="resources/webapp/css/sticky-footer-navbar.css" rel="stylesheet" />
     <!-- bxSlider CSS file -->
     <link href="resources/webapp/css/jquery.bxslider.css" rel="stylesheet" />
-    <link rel="stylesheet" href="resources/webapp/fonts/font-awesome.min.css">
+    
+    <script src="resources/js/webapp/validaciones.js"> </script>
+                
     <script>
   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
   (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
@@ -72,8 +75,8 @@
     <div id="navbar" class="navbar-collapse collapse text-right">
           <ul class="nav navbar-nav navbar-right">
         <li><a href="http://infomovil.com" class="smoothScroll">Inicio</a></li>
-        <li><a href="#" class="smoothScroll">Iniciar sesión</a></li>
-        <li class="active"><a href="#" class="smoothScroll">Regístrate</a></li>
+        <li><a href="#" class="smoothScroll">Iniciar sesi&oacute;n</a></li>
+        <li class="active"><a href="#" class="smoothScroll">Reg&iacute;strate</a></li>
       </ul>
         </div>
     <!--/.nav-collapse --> 
@@ -87,17 +90,17 @@
       <!-- Main jumbotron for a primary marketing message or call to action -->
       <div class="container text-center">
     <div class="divider hidden-xs hidden-sm"></div>
-    <h1 class="textBlack hidden">Registra tu cuenta</h1>
-    <h4 class="textBlack">Registra tu cuenta</h4>
+    <h1 class="textBlack hidden">Crea tu sitio web</h1>
+    <h3 class="textBlack">Crea tu sitio web</h3>
     <div class="container">
-          <form id="formRegistro" action="registrar" method="post">
+          <form>
         
         <!--nombre-->
         <div class="form-group col-xs-12 col-sm-12 col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3">
               <div class="control-group">
             <label class="control-label"></label>
             <div class="controls">
-                  <input type="text" class="form-control" placeholder="Nombre" id="nombre" name="nombre" required="required"/>
+                  <input type="text" class="form-control" placeholder="Nombre" required="required" value = " ${ nombre } "/>
                   <p class="help-block"></p>
                 </div>
           </div>
@@ -109,7 +112,7 @@
               <div class="control-group">
             <label class="control-label"></label>
             <div class="controls">
-                  <input type="email" class="form-control" placeholder="Correo" id="correo" name="correo"/>
+                  <input type="email" class="form-control" placeholder="Email" required="required" value = " ${ correo } "/>
                   <p class="help-block"></p>
                 </div>
           </div>
@@ -121,7 +124,7 @@
               <div class="control-group">
             <label class="control-label"></label>
             <div class="controls">
-                  <input type="password" class="form-control" placeholder="Contraseña" id="contrasenia" name="contrasenia"/>
+                  <input type="password" class="form-control" placeholder="Contrase&ntilde;a" required="required" name="passField" />
                   <p class="help-block"></p>
                 </div>
           </div>
@@ -133,7 +136,7 @@
               <div class="control-group">
             <label class="control-label"></label>
             <div class="controls">
-                  <input type="password" class="form-control" placeholder="Confirmar contraseña" data-validation-match-match="contrasenia" />
+                  <input type="password" class="form-control" placeholder="Contrase&ntilde;a" required="required" data-validation-match-match="passField" />
                   <p class="help-block"></p>
                 </div>
           </div>
@@ -144,13 +147,14 @@
               <div class="control-group">
             <label class="control-label"></label>
             <div class="controls">
-                  <input type="text" class="form-control" placeholder="Código de promoción"/>
+                  <input type="text" class="form-control" placeholder="C&oacute;digo de promoci&oacute;n" required="required" value = "${ codigo }"/>
                   <p class="help-block"></p>
                 </div>
           </div>
             </div>
         <!--codigo--> 
         
+         <p class="help-block">${ descripcionError }</p>
         
         <div class="form-group col-xs-12 col-sm-12 col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3">
         <div class="divider"></div>
@@ -159,8 +163,7 @@
         
         <div class="divider"></div>
         <div class="text-center"><img src="resources/webapp/images/line.png" width="740" alt=""/></div>
-        <div class="col-xs-12 col-sm-12"> <span class="textWhite text-center text-small">Si continúas, aceptas las</span><span> <a href="#" title="Condiciones del servicio" data-toggle="modal" data-target="#myModalTerminos">condiciones del servicio </a></span><span class="textWhite">y las </span><span><a href="#" data-toggle="modal" data-target="#myModalAviso">pol&iacute;ticas de privacidad</a></span><span class="textWhite"> de Infomovil.</span>
-              
+        <div class="col-xs-12 col-sm-12"> <span class="textWhite text-center text-small">Si contin&uacute;as, aceptas las</span><span> <a href="#" title="Condiciones del servicio" data-toggle="modal" data-target="#myModalTerminos">condiciones del servicio </a></span><span class="textWhite">y las </span><span><a href="#" data-toggle="modal" data-target="#myModalAviso">pol&iacute;ticas de privacidad</a></span><span class="textWhite"> de Infomovil.</span>
             </div>
       </form>
         </div>
@@ -175,13 +178,13 @@
     <div class="container">
           <div class="row" >
         <div class="col-xs-12 col-sm-12 col-md-6 col-md-offset-3 ">
-              <p class="helpMx txtWhite reset text-center"><em>Ayudando a construir una economía digital.</em></p>
+              <p class="helpMx txtWhite reset text-center"><em>Ayudando a construir una econom&iacute;Œa digital</em></p>
             </div>
         <div class="col-xs-12 col-sm-12 col-md-4 col-md-offset-4"> <img src="resources/webapp/images/logo_infomovil.png" alt="Infomovil" onerror="this.src='  resources/webapp/images/trans.png';" class="img-responsive imgLog" />
               <meta itemprop="name" content="Infomovil" />
             </div>
         <div  class="col-xs-12 resetAll">
-              <p class="text-center text-small reset">Descarga la app y crea tu página web en 5 minutos.</p>
+              <p class="text-center text-small reset">Descarga la app de Infomovil y crea una p&aacute;gina as&iacute; en 5 minutos. Es gratis.</p>
             </div>
         <div class="col-xs-12 col-sm-12 col-md-4 col-md-offset-4">
               <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 mar10TB"> <a href="https://itunes.apple.com/mx/app/infomovil/id898313250?mt=8" target="blank"> <img src="resources/webapp/images/icn_appstore.png" class="img-responsive imgDes"  alt="app store" onerror="this.src='resources/webapp/images/trans.png';"/> </a> </div>
@@ -211,7 +214,7 @@
         <p class="modal-title" >Condiciones del servicio</p>
       </div>
           <div class="modal-body bgWhite">
-        <iframe class="legales" src="pages/legal/terminos.html" frameborder="0"></iframe>
+        <iframe class="legales" src="http://www.infomovil.com/pages/legal/terminos.html" frameborder="0"></iframe>
       </div>
           <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
@@ -227,7 +230,7 @@
         <p class="modal-title" >Pol&iacute;ticas de privacidad</p>
       </div>
           <div class="modal-body bgWhite">
-        <iframe class="legales" src="pages/legal/aviso.html" frameborder="0"></iframe>
+        <iframe class="legales" src="http://www.infomovil.com/pages/legal/aviso.html" frameborder="0"></iframe>
       </div>
           <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>

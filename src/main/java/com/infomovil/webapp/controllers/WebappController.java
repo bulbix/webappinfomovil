@@ -206,6 +206,34 @@ public class WebappController
 		}
 	}
 
+	@RequestMapping(value = "/registrar", method = RequestMethod.POST)
+	public ModelAndView registrar(String nombre, String codigo, String correo, String contrasenia, HttpServletRequest request, RedirectAttributes redirectAttributes) 
+	{
+		HashMap<String, Object> model = new HashMap<String, Object>();
+
+		wsRespuesta = wsCliente.crearSitioRegistrar(correo, contrasenia, nombre, codigo);
+		codigoError = wsRespuesta.getCodeError();
+		descripcionError = wsRespuesta.getMsgError();
+		
+		if (codigoError.equals("0"))
+		{
+			Util.loginUsuario(correo, contrasenia);
+			vista = "redirect:/infomovil/editarSitio";
+		}
+		else
+		{
+			model.put("ctaCorreo", correo);
+			model.put("errorCta", descripcionError);
+			ModelAndView modelAndView =  new ModelAndView("redirect:/login");
+			redirectAttributes.addFlashAttribute("ctaCorreo", correo);
+			redirectAttributes.addFlashAttribute("errorCta", descripcionError);
+
+			return modelAndView;
+		}
+		
+		return new ModelAndView(vista, model);
+	}
+	
 	@RequestMapping(value = "/registrar", method = RequestMethod.GET)
 	public String registra() 
 	{

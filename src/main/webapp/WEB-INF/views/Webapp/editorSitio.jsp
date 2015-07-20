@@ -271,6 +271,45 @@
 			</section>
 		</div>
 		<!--/Publicar TEL-->
+		
+<!--Publicar recurso-->
+<form id="publicaRecurso" action="<c:url value="/infomovil/publicarSitio"/>" method="post">
+	<div id="publicarRecurso">
+	  <div class="bgDobleBlack" ></div>
+	  <section class="bgFondo publicar">
+	    <div class="container whiteBg" >
+	      <div class="row" >
+	        <h3 class=" text-center">Ponle un nombre a tu sitio web!</h3>
+	        <div class="form-group col-xs-12 col-sm-12 col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3">
+	          <div class="col-xs-12 col-sm-6">
+	            <div class="divider"></div>
+	            <select id="idCatTipoRecurso" class="form-control" style="height:36px !important; display:block; padding:6px 12px; color:#000!important">
+				    <c:forEach items="${dominios}" var="entry">
+				        <option value="${entry.key}">${entry.value}</option>
+				    </c:forEach>
+	            </select>
+	            <div class="divider hidden-sm hidden-md hidden-lg"></div>
+	          </div>
+	          <div class="col-xs-12 col-sm-6">
+	            <div class="divider"></div>
+	            <input type="text" placeholder="Nombra tu sitio" value="" id="nombreDominio" name="nombreDominio" class="form-control" id="nombraInput">
+	            <input type="hidden" id="tipoDominio" name="tipoDominio" value="recurso"/>
+	          </div>
+	          <div class="form-group col-xs-12 col-sm-12 col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3">
+	            <div class="divider"></div>
+	            <input type="submit" value="Publicar" id="btnPublicarTel" class="btn btn-default btn-outline col-xs-12 text-center textWhite" style="display:none;">
+	            <input type="button" value="Buscar nombre" id="btnBuscarTel" class="btn btn-default btn-outline col-xs-12 text-center textWhite" onClick="validaDominio()">
+<!-- 	            <input type="submit" value="Publicar" id="btnPublicarRecurso" class="btn btn-default btn-outline col-xs-12 text-center textWhite" style="display:none;"> -->
+<!-- 	            <input type="button" value="Buscar nombre" id="btnBuscarRecurso" class="btn btn-default btn-outline col-xs-12 text-center textWhite" onClick="validaDominio()"> -->
+	            <div class="clear"></div>
+	          </div>
+	        </div>
+	      </div>
+	    </div>
+	  </section>
+	</div>
+</form>
+
 		<!--MODAL EXITO-->
 		<div id="myModalExito" class="modal fade" tabindex="-1" role="dialog"
 			aria-labelledby="myModalLabel" aria-hidden="true">
@@ -386,9 +425,9 @@
 				type="hidden" id="idCatTipoRecurso" name="idCatTipoRecurso"
 				value="1">
 		</form>
-		<%-- <h1>${ template }</h1> --%>
-		<%-- <h1>${ sitioWeb }</h1> --%>
-		<%-- <h1>${ canalUsuario }</h1> --%>
+		<h1>${ template }</h1>
+		<h1>${ sitioWeb }</h1>
+		<h1>${ canalUsuario }</h1>
 		<input type="hidden" id="plantilla" name="plantilla"
 			<c:if test="${not empty template}"> value = "${ template }" </c:if>>
 		<!-- Bootstrap core JavaScript
@@ -434,13 +473,19 @@ $('.navbar-collapse ul li a').click(function() {
 	<c:choose>
 		<c:when test="${canalUsuario == 'BAZ'}">
 			$("#publicarTel").css("display", "block");
+			$("#publicarRecurso").css("display", "none");	
 		</c:when>
+		<c:otherwise>
+		$("#publicarRecurso").css("display", "block");	
+		$("#publicarTel").css("display", "none");
+		</c:otherwise>
 	</c:choose>
 
 	<c:choose>
 		<c:when test="${sitioWeb != 'SIN_PUBLICAR'}">
 			$("#urlSitio").css("display", "block");
 			$("#publicarTel").css("display", "none");
+			$("#publicarRecurso").css("display", "none");
 		</c:when>
 		<c:otherwise>
 		
