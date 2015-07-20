@@ -193,7 +193,7 @@ function generarSlider()
 	for (i = 0; i < templates.length; i = i + 1) 
 	{	
 		urlRecurso = "https://s3.amazonaws.com/landing.infomovil.com/webapp/templates/" + templates[i] + "/" + templates[i] + ".png";
-		li = "<li onClick='actualizaPlantilla(this.id)' id='" + templates[i] +"' class='text-center'><img style='width:100%; height:auto; min-width:280px!important; max-width:600px !important; max-height:568px!important;min-height:265px!important; display:block;' src='" + urlRecurso + "' title='" + nombres[i] + "'' /></li>";
+		li = "<li class='text-center'><img onClick='actualizaPlantilla(this.id)' id='" + templates[i] + "' style='cursor:pointer;width:100%; height:auto; min-width:280px!important; max-width:600px !important; max-height:568px!important;min-height:265px!important; display:block;' src='" + urlRecurso + "' title='" + nombres[i] + "'' /></li>";
 		slider = slider + li;
 		urlRecurso = "";
 	}
