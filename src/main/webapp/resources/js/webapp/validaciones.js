@@ -238,6 +238,7 @@ function generarSlider()
 		captions: true,
 		pager: true,
 		touchEnabled : false,
+		useCSS:false,
 		onSliderLoad: function(){
 			  if ($("#plantilla").val() == templates[0])
 				  span = "<img src='https://s3.amazonaws.com/landing.infomovil.com/webapp/images/temp_act.png' width='30'/>";
