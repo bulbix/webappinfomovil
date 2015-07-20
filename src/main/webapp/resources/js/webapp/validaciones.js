@@ -228,7 +228,7 @@ function generarSlider()
 //			        "<span class='text-left'><img src='https://s3.amazonaws.com/landing.infomovil.com/webapp/images/temp_act.png' width='30'/> Estilo " + nombres[i] + "</span>" +
 			        " </div></div></div></div>");
 	
-	$('.bxslider').bxSlider({
+	var slider = $('.bxslider').bxSlider({
 		 moveSlides: 1,
 		    displaySlideQty: 2,
 		    responsive: false,
