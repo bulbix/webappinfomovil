@@ -127,7 +127,7 @@
 							estilo <img width="20" height="20" alt="Infomovil"
 							src="<c:url value="/resources/webapp/images/fa-templates.png"/>" />
 					</a>
-					<li><a href="<c:url value="/infomovil/cerrarSesion"></c:url>"
+					<li><a href="<c:url value="/logout"></c:url>"
 						class="smoothScroll"> Cerrar sesión <img width="20"
 							height="20" alt="Infomovil"
 							src="http://landing.infomovil.com/webapp/templates/${ template }/images/fa-sign-out.png" /></a></li>

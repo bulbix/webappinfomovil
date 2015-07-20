@@ -246,16 +246,19 @@ function generarSlider()
 	
 	$(document).on('click','.bx-next', function() {
 		indice = slider.getCurrentSlide();
+		console.log("indice next: " + indice);
 //		plantillaElegida(indice);
 		});
 	
 	$(document).on('click','.bx-prev', function() {
 		indice = slider.getCurrentSlide();
+		console.log("indice prev: " + indice);
 //		plantillaElegida(indice);
 		});
 
 	$(document).on('click','.bx-pager-link', function() {
 		indice = slider.getCurrentSlide();
+		console.log("indice pager: " + indice);
 //		plantillaElegida(indice);
 		});
 	
@@ -274,7 +277,8 @@ function plantillaElegida(indicador)
 
 function actualizaEstilo()
 {
-	//alert("template a actualizar: " + templates[indice]);
+	console.log("indice actual: " + indice);
+//	alert("template a actualizar: " + templates[indice]);
 	actualizaPlantilla(templates[indice]);
 }
 
