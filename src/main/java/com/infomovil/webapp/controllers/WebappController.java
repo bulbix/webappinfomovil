@@ -109,6 +109,7 @@ public class WebappController
 		ModelAndView modeloVista = null;
 		Map<String, String> resultMap = new HashMap<String, String>();
 		RedirectAttributes redirectAttributes = null;
+		
 		try
 		{
 			correo = Util.getUserLogged().getUsername();
@@ -126,45 +127,43 @@ public class WebappController
 					tieneTel = respCargarSitio.getDominioCreaSitio().getSitioWeb().indexOf(".tel") > 0;
 				}
 			}
-			
-			
-			if(isBAZ && !tieneTel){
-				wsRespuesta = wsCliente.crearSitioPublicar(correo, password, nombrePersona, "Mexico", nombreDominio, tipoDominio, idCatTipoRecurso);
-				resultadoPublicacion = wsRespuesta.getCodeError();
-				resultMap.put("resultadoPub", wsRespuesta.getResultado());
-				modeloVista = editarSitio(redirectAttributes);
-				
-				if (modeloVista != null)
-				{
-					if (resultadoPublicacion.equals("0")){
-						modeloVista.getModel().put("resultadoPublicacion", "SI");
-					}
-					else{
-						modeloVista.getModel().put("msgPublicacion", "No se ha podido completar la publicación de tu sitio");
-						modeloVista.getModel().put("resultadoPublicacion", "NO");
-					}
-					
-					
-					return modeloVista;
-				}
-			}
-		
+
 			modeloVista = editarSitio(redirectAttributes);
-		
-			if(!isBAZ){
+			
+			if(!isBAZ && tipoDominio.equals("tel"))
+			{
 				modeloVista.getModel().put("msgPublicacion", "No eres usuario de BAZ, no puedes publicar .tel");
 				modeloVista.getModel().put("resultadoPublicacion", "NO");
 				return modeloVista;
 			}
 			
-			if(tieneTel){
+			if(tieneTel)
+			{
 				modeloVista.getModel().put("msgPublicacion", "Tu ya tienes asignado un dominio .tel");
 				modeloVista.getModel().put("resultadoPublicacion", "NO");
 				return modeloVista;
 			}
 			
+			wsRespuesta = wsCliente.crearSitioPublicar(correo, password, nombrePersona, "Mexico", nombreDominio, tipoDominio, idCatTipoRecurso);
+			resultadoPublicacion = wsRespuesta.getCodeError();
+			resultMap.put("resultadoPub", wsRespuesta.getResultado());
+			modeloVista = editarSitio(redirectAttributes);
 			
-		}		
+			if (modeloVista != null)
+			{
+				if (resultadoPublicacion.equals("0"))
+				{
+					modeloVista.getModel().put("resultadoPublicacion", "SI");
+				}
+				else
+				{
+					modeloVista.getModel().put("msgPublicacion", "No se ha podido completar la publicación de tu sitio");
+					modeloVista.getModel().put("resultadoPublicacion", "NO");
+				}				
+				
+				return modeloVista;
+			}			
+		}	
 		catch (Exception e) 
 		{
 			logger.error("publicarSitio:::::", e);	
@@ -269,8 +268,7 @@ public class WebappController
 				wsRespuesta.getDominioCreaSitio().getNombreUsuario());
 				
 				model.put("usuarioLogueado", correo);
-				model.put("nombreUsuario", wsRespuesta.getDominioCreaSitio().getNombreUsuario().trim());
-				
+				model.put("nombreUsuario", wsRespuesta.getDominioCreaSitio().getNombreUsuario().trim());				
 				model.put("nombreEmpresa", wsRespuesta.getDominioCreaSitio().getNombreEmpresa().trim());
 				
 				if (wsRespuesta.getDominioCreaSitio().getNombreEmpresa().trim().equals("TÃtulo"))
@@ -280,7 +278,7 @@ public class WebappController
 				model.put("correoElectronico", wsRespuesta.getDominioCreaSitio().getCorreoElectronico().trim());
 				model.put("telefonoUsuario", wsRespuesta.getDominioCreaSitio().getTelefono().trim());			
 				model.put("vistaPrevia", wsRespuesta.getDominioCreaSitio().getUrlVistaPrevia());				
-			//	model.put("dominios", obtenerDominios());
+				model.put("dominios", obtenerDominios());
 				
 				if (wsRespuesta.getDominioCreaSitio().getCanal().startsWith("BAZ"))
 					canal = "BAZ";

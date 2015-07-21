@@ -47,6 +47,7 @@
     	-ms-transform: translatez(0);
     	-o-transform: translatez(0);
     	transform: translatez(0);
+    	height:auto;max-height:568px!important;min-height:265px!important;
 }
 
 .bx-wrapper .bx-pager,

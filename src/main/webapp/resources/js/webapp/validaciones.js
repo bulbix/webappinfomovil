@@ -1,5 +1,7 @@
 var templates = new Array("Coverpage1azul", "Coverpage2", "Coverpage3", "Coverpage4", "Coverpage5", "Coverpage6");
 var nombres = new Array("Coverpage1azul", "Coverpage2", "Coverpage3", "Coverpage4", "Coverpage5", "Coverpage6"); /*Cambiar nombres*/
+var nombreDominio = "";
+var tipoDominio = "";
 var indice = 0;
 	
 $(document).ready(function() {
@@ -9,19 +11,30 @@ $(document).ready(function() {
 	
 });
 
-function validaDominio()
+function validaDominio(tipo)
 {
 	console.log("validaDominio::::::");
-	var nombreDominio = $("#nombreDominioBusqueda").val();
-	var tipoDominio = $("#tipoDominioBusqueda").val();
 	var sitioDisponible = "";
 	var textoBoton = "Aceptar";
 	var opcion = "NO_PUBLICAR"
 	var msjValidacion = "";
 	var funcion = "aceptar()";
 	var regAuxiliar = /^[_a-z0-9-]+([a-z0-9])$/;
+
+	if (tipo == 'recurso')
+	{
+		nombreDominio = $("#nombreDominioRec").val();
+		tipoDominio = $("#tipoDominioRec").val();
+	}
+	else
+	{
+		nombreDominio = $("#nombreDominioBusqueda").val();
+		tipoDominio = $("#tipoDominioBusqueda").val();
+	}
 	
 	nombreDominio = nombreDominio.toLowerCase();
+
+	console.log("nombreDominio::: " + nombreDominio + ", tipoDominio:::: " + tipoDominio + ", tipo: " + tipo);
 	
 	if (nombreDominio == null || nombreDominio.trim().length == 0 || nombreDominio.trim().length < 3)
 	{
@@ -67,9 +80,9 @@ function validaDominio()
 				msjValidacion = "";
 				textoBoton = "&iexcl;Lo quiero!";
 				sitioDisponible = "www." + nombreDominio + "." + tipoDominio + " est&aacute; disponible";
-				
+
 				if (tipoDominio == "recurso")
-					sitioDisponible = $("#idCatTipoRecurso option:selected").html() + "/" + nombreDominio + " est&aacute; disponible";
+					sitioDisponible = $("#idCatTipoRec option:selected").html() + "/" + nombreDominio + " est&aacute; disponible";
 			}
 			else
 			{
@@ -77,21 +90,24 @@ function validaDominio()
 				msjValidacion = "";
 				textoBoton = "Aceptar"
 				sitioDisponible = "www." + nombreDominio + "." + tipoDominio + " no est&aacute; disponible";
+				
+				if (tipoDominio == "recurso")
+					sitioDisponible = $("#idCatTipoRec option:selected").html() + "/" + nombreDominio + " no est&aacute; disponible";
 			}
 			
 			$('#modalPublicacion').html("<div id='myModalPublicar' class='modal fade' tabindex='-1' role='dialog' aria-labelledby='myModalLabel' aria-hidden='true'>"+
-					"<div class='modal-dialog modal-lg'><div class='modal-content'><div class='modal-header'><button type='button' class='close' data-dismiss='modal' aria-label='Close'>"+
+					"<div class='modal-dialog modal-lg'><div class='modal-content'><div class='modal-header'><button type='button' class='close textBlack' data-dismiss='modal' aria-label='Close'>"+
 					"<span aria-hidden='true'>&times;</span></button><p class='modal-title' ></p></div><div class='modal-body bgWhite'>"+
 					"<h2 class='textBlack col-xs-12 col-sm-12 col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3 text-center'>"+ msjValidacion +"</h2><h5 class='textBlack col-xs-12 col-sm-12 col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3 text-center'>"+
 					"El dominio " + sitioDisponible + "</h5><div class='clear divider'></div></div><div class='modal-footer'>"+
 					"<button type='button' class='btn btn-purple text-center col-xs-12 col-sm-12 col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3' data-dismiss='modal' onClick=" + funcion + "><strong>"+ textoBoton +"</strong>" + 
 					"</button><input type='hidden' id='opcion' value=" + opcion + "/></div></div></div></div>");
-			
+
 			$('#modalPublicacion > .alert-success').append($('#myModalPublicar').modal('show'));
 			
 	    }
 	 ).fail(function( jqXHR, textStatus ) {
-		 
+		 console.log("fail:::::");
 	 });
 }
 
@@ -102,12 +118,15 @@ function aceptar()
 
 function publicar()
 {
-	$.blockUI({ message: "<h1><img src='" + contextPath + "/resources/webapp/images/project-loader.gif' /></h1>" }); 
-//	$("#LoadingImageFace").show();
-	var dominio = $("#nombreDominioBusqueda").val().toLowerCase();
-	console.log("dominio::::: " + dominio);
-	$("#nombreDominio").val(dominio);
-	$("#tipoDominio").val($("#tipoDominioBusqueda").val());
+	console.log("publicar::: " + nombreDominio + ", " + tipoDominio);
+	$("#idCatTipoRecurso").val("1"); /*tel*/	
+	
+	if (tipoDominio == "recurso")
+		$("#idCatTipoRecurso").val($("#idCatTipoRec").val());
+	
+	console.log("publicar::::: " + nombreDominio + ", tipoDominio: " + tipoDominio + ", tipo: " + $("#idCatTipoRecurso").val());
+	$("#nombreDominio").val(nombreDominio.toLowerCase());
+	$("#tipoDominio").val(tipoDominio.toLowerCase());
 	$("#publicarDominio").submit();
 }
 
@@ -193,7 +212,7 @@ function generarSlider()
 	for (i = 0; i < templates.length; i = i + 1) 
 	{	
 		urlRecurso = "https://s3.amazonaws.com/landing.infomovil.com/webapp/templates/" + templates[i] + "/" + templates[i] + ".png";
-		li = "<li onClick='actualizaPlantilla(this.id)' id='" + templates[i] +"' class='text-center'><img style='width:100%; height:auto; min-width:280px!important; max-width:600px !important; max-height:568px!important;min-height:265px!important; display:block;' src='" + urlRecurso + "' title='" + nombres[i] + "'' /></li>";
+		li = "<li class='text-center'><img onClick='actualizaPlantilla(this.id)' id='" + templates[i] + "' style='cursor:pointer; width:100%; height:auto; min-width:280px!important; max-width:600px !important; max-height:568px!important;min-height:265px!important; display:block;' src='" + urlRecurso + "' title='" + nombres[i] + "'' /></li>";
 		slider = slider + li;
 		urlRecurso = "";
 	}	

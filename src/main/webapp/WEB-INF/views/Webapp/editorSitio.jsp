@@ -220,7 +220,7 @@
 		</div>
 		<!--/Theme showcase -->
 		<!--Publicar TEL-->
-		<div id="publicarTel" style="display: none">
+		<div id="publicarTel" >
 			<div class="bgDobleBlack"></div>
 			<section class="bgFondo publicar">
 				<div class="container whiteBg">
@@ -259,7 +259,7 @@
 									style="display: none;"> <input type="button"
 									value="Buscar nombre" id="btnBuscarTel"
 									class="btn btn-default btn-outline col-xs-12 text-center textBlack"
-									onClick="validaDominio()">
+									onClick="validaDominio('tel')">
 								<div class="clear"></div>
 								<div class="divider"></div>
 								<div class="divider"></div>
@@ -273,7 +273,7 @@
 		<!--/Publicar TEL-->
 		
 <!--Publicar recurso-->
-<form id="publicaRecurso" action="<c:url value="/infomovil/publicarSitio"/>" method="post">
+<form id="publicaRecurso">
 	<div id="publicarRecurso">
 	  <div class="bgDobleBlack" ></div>
 	  <section class="bgFondo publicar">
@@ -283,7 +283,7 @@
 	        <div class="form-group col-xs-12 col-sm-12 col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3">
 	          <div class="col-xs-12 col-sm-6">
 	            <div class="divider"></div>
-	            <select id="idCatTipoRecurso" class="form-control" style="height:36px !important; display:block; padding:6px 12px; color:#000!important">
+	            <select id="idCatTipoRec" class="form-control" style="height:36px !important; display:block; padding:6px 12px; color:#000!important">
 				    <c:forEach items="${dominios}" var="entry">
 				        <option value="${entry.key}">${entry.value}</option>
 				    </c:forEach>
@@ -292,13 +292,13 @@
 	          </div>
 	          <div class="col-xs-12 col-sm-6">
 	            <div class="divider"></div>
-	            <input type="text" placeholder="Nombra tu sitio" value="" id="nombreDominio" name="nombreDominio" class="form-control" id="nombraInput">
-	            <input type="hidden" id="tipoDominio" name="tipoDominio" value="recurso"/>
+	            <input type="text" placeholder="Nombra tu sitio" value="" id="nombreDominioRec" name="nombreDominioRec" class="form-control" id="nombraInput">
+	            <input type="hidden" id="tipoDominioRec" name="tipoDominioRec" value="recurso"/>
 	          </div>
 	          <div class="form-group col-xs-12 col-sm-12 col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3">
 	            <div class="divider"></div>
 	            <input type="submit" value="Publicar" id="btnPublicarTel" class="btn btn-default btn-outline col-xs-12 text-center textWhite" style="display:none;">
-	            <input type="button" value="Buscar nombre" id="btnBuscarTel" class="btn btn-default btn-outline col-xs-12 text-center textWhite" onClick="validaDominio()">
+	            <input type="button" value="Buscar nombre" id="btnBuscarTel" class="btn btn-default btn-outline col-xs-12 text-center textWhite" onClick="validaDominio('recurso')">
 <!-- 	            <input type="submit" value="Publicar" id="btnPublicarRecurso" class="btn btn-default btn-outline col-xs-12 text-center textWhite" style="display:none;"> -->
 <!-- 	            <input type="button" value="Buscar nombre" id="btnBuscarRecurso" class="btn btn-default btn-outline col-xs-12 text-center textWhite" onClick="validaDominio()"> -->
 	            <div class="clear"></div>
@@ -331,7 +331,7 @@
 							de publicación de tu sitio web puede tardar unos minutos.
 						</h5>
 						<div class="clear"></div>
-						<p class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-center">Descarga
+						<p class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-center textBlack">Descarga
 							nuestra app si deseas agregar más contenido.</p>
 						<div class="clear"></div>
 						<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
@@ -421,13 +421,12 @@
 			action="<c:url value="/infomovil/publicarSitio"/>" method="post">
 			<div id="modalPublicacion"></div>
 			<input type="hidden" id="nombreDominio" name="nombreDominio">
-			<input type="hidden" id="tipoDominio" name="tipoDominio"> <input
-				type="hidden" id="idCatTipoRecurso" name="idCatTipoRecurso"
-				value="1">
+			<input type="hidden" id="tipoDominio" name="tipoDominio"> 
+			<input type="hidden" id="idCatTipoRecurso" name="idCatTipoRecurso">
 		</form>
-		<h1>${ template }</h1>
-		<h1>${ sitioWeb }</h1>
-		<h1>${ canalUsuario }</h1>
+<%-- 		<h1>${ template }</h1> --%>
+<%-- 		<h1>${ sitioWeb }</h1> --%>
+<%-- 		<h1>${ canalUsuario }</h1> --%>
 		<input type="hidden" id="plantilla" name="plantilla"
 			<c:if test="${not empty template}"> value = "${ template }" </c:if>>
 		<!-- Bootstrap core JavaScript
@@ -454,7 +453,6 @@
 		<script>
 $(document).ready(function(){
 	generarSlider();
-	console.log("generarSlider:::::");
 	});
 </script>
 		<script>
@@ -476,8 +474,8 @@ $('.navbar-collapse ul li a').click(function() {
 			$("#publicarRecurso").css("display", "none");	
 		</c:when>
 		<c:otherwise>
-		$("#publicarRecurso").css("display", "block");	
-		$("#publicarTel").css("display", "none");
+			$("#publicarRecurso").css("display", "block");	
+			$("#publicarTel").css("display", "none");
 		</c:otherwise>
 	</c:choose>
 
