@@ -13,8 +13,8 @@ import org.junit.Test;
 public class ClientWsInfomovilTest {
 	
 	static ClientWsInfomovil clientWsInfomovil;
-	String correoPrueba = "paquito1@mail.com";
-	String nombrePrueba = "paquito1";
+	String correoPrueba = "wallie6@mail.com";
+	String nombrePrueba = "garbage1";
 
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {
@@ -44,6 +44,7 @@ public class ClientWsInfomovilTest {
 	public void testCrearSitioLogin() {
 		RespuestaVO resp = clientWsInfomovil.crearSitioLogin(correoPrueba, "garbage1");
 		assertNotNull(resp);
+		System.out.println(resp);
 	}
 
 
@@ -56,7 +57,7 @@ public class ClientWsInfomovilTest {
 	@Test
 	public void testCrearSitioCargar() {
 		RespuestaVO resp = clientWsInfomovil.crearSitioCargar(correoPrueba, "garbage1");
-		System.out.println(resp.dominioCreaSitio.nombreUsuario);
+		System.out.println(resp.dominioCreaSitio);
 		assertNotNull(resp);
 	}
 

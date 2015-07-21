@@ -42,6 +42,7 @@ import javax.xml.bind.annotation.XmlType;
     "telefono",
     "sitioWeb",
     "canal",
+    "campania",
     "template",
     "urlVistaPrevia"
 })
@@ -54,6 +55,7 @@ public class DominioCreaSitio {
     protected String telefono;
     protected String sitioWeb;
     protected String canal;
+    protected String campania;
     protected String template;
     protected String urlVistaPrevia;
 
@@ -272,5 +274,25 @@ public class DominioCreaSitio {
     public void setUrlVistaPrevia(String value) {
         this.urlVistaPrevia = value;
     }
+
+	public String getCampania() {
+		return campania;
+	}
+
+	public void setCampania(String campania) {
+		this.campania = campania;
+	}
+
+	@Override
+	public String toString() {
+		return "DominioCreaSitio [nombreUsuario=" + nombreUsuario
+				+ ", nombreEmpresa=" + nombreEmpresa + ", descripcionCorta="
+				+ descripcionCorta + ", correoElectronico=" + correoElectronico
+				+ ", telefono=" + telefono + ", sitioWeb=" + sitioWeb
+				+ ", canal=" + canal + ", campania=" + campania + ", template="
+				+ template + ", urlVistaPrevia=" + urlVistaPrevia + "]";
+	}
+	
+	
 
 }

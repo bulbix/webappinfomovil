@@ -57,6 +57,7 @@ import javax.xml.bind.annotation.XmlType;
     "urlImagen",
     "scriptMovilizaSitio",
     "canal",
+    "campania",
     "listStatusDomainVO",
     "listUsuarioDominiosVO",
     "dominioCreaSitio"
@@ -76,6 +77,7 @@ public class RespuestaVO {
     protected String urlImagen;
     protected String scriptMovilizaSitio;
     protected String canal;
+    protected String campania;
     protected List<StatusDomainVO> listStatusDomainVO;
     protected List<UsuarioDominiosVO> listUsuarioDominiosVO;
     protected DominioCreaSitio dominioCreaSitio;
@@ -473,5 +475,28 @@ public class RespuestaVO {
     public void setDominioCreaSitio(DominioCreaSitio value) {
         this.dominioCreaSitio = value;
     }
+
+	public String getCampania() {
+		return campania;
+	}
+
+	public void setCampania(String campania) {
+		this.campania = campania;
+	}
+
+	@Override
+	public String toString() {
+		return "RespuestaVO [resultado=" + resultado + ", token=" + token
+				+ ", fechaIni=" + fechaIni + ", fechaFin=" + fechaFin
+				+ ", fTelNamesIni=" + fTelNamesIni + ", fTelNamesFin="
+				+ fTelNamesFin + ", codeError=" + codeError + ", msgError="
+				+ msgError + ", statusDominio=" + statusDominio + ", codeCamp="
+				+ codeCamp + ", urlImagen=" + urlImagen
+				+ ", scriptMovilizaSitio=" + scriptMovilizaSitio + ", canal="
+				+ canal + ", campania=" + campania + ", dominioCreaSitio="
+				+ dominioCreaSitio + "]";
+	}
+	
+	
 
 }
