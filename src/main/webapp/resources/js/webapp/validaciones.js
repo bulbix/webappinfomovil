@@ -1,5 +1,5 @@
 var templates = new Array("Coverpage1azul", "Coverpage2", "Coverpage3", "Coverpage4", "Coverpage5", "Coverpage6");
-var nombres = new Array("Coverpage1azul", "Coverpage2", "Coverpage3", "Coverpage4", "Coverpage5", "Coverpage6"); /*Cambiar nombres*/
+var nombres = new Array("Portada azul", "Restaurantes", "Belleza", "Reposter&iacute;as", "Automotriz", "Taxistas"); /*Cambiar nombres*/
 var nombreDominio = "";
 var tipoDominio = "";
 var indice = 0;
@@ -118,6 +118,7 @@ function aceptar()
 
 function publicar()
 {
+
 	console.log("publicar::: " + nombreDominio + ", " + tipoDominio);
 	$("#idCatTipoRecurso").val("1"); /*tel*/	
 	
@@ -127,6 +128,18 @@ function publicar()
 	console.log("publicar::::: " + nombreDominio + ", tipoDominio: " + tipoDominio + ", tipo: " + $("#idCatTipoRecurso").val());
 	$("#nombreDominio").val(nombreDominio.toLowerCase());
 	$("#tipoDominio").val(tipoDominio.toLowerCase());
+
+	$.blockUI({ 
+		message: "Publicando sitio...", 
+		css: { 
+			top:  ($(window).height() - 400) /2 + 'px', 
+			left: ($(window).width() - 400) /2 + 'px', 
+			width: '400px' 
+		} 
+	}); 
+
+	setTimeout($.unblockUI, 2000);
+	
 	$("#publicarDominio").submit();
 }
 
@@ -212,7 +225,7 @@ function generarSlider()
 	for (i = 0; i < templates.length; i = i + 1) 
 	{	
 		urlRecurso = "https://s3.amazonaws.com/landing.infomovil.com/webapp/templates/" + templates[i] + "/" + templates[i] + ".png";
-		li = "<li class='text-center'><img onClick='actualizaPlantilla(this.id)' id='" + templates[i] + "' style='cursor:pointer; width:100%; height:auto; min-width:280px!important; max-width:600px !important; max-height:568px!important;min-height:265px!important; display:block;' src='" + urlRecurso + "' title='" + nombres[i] + "'' /></li>";
+		li = "<li class='text-center'><img style='width:100%; height:auto; min-width:280px!important; max-width:600px !important; max-height:568px!important;min-height:265px!important; display:block;' src='" + urlRecurso + "' title='" + nombres[i] + "'' /></li>";
 		slider = slider + li;
 		urlRecurso = "";
 	}	
@@ -221,7 +234,7 @@ function generarSlider()
 			"<div class='modal-dialog modal-lg'><div class='modal-content'>" +
 
 			"<div class='modal-header'>" +
-			 	"<button type='button' class='close textBlack pull-left' data-dismiss='modal' aria-label='Close'><span aria-hidden='true'>&times;</span></button> <button type='button' class='btn btn-purple pull-right' onClick='actualizaEstilo()'>Aplicar estilo</button>" +
+			 	"<button type='button' class='close textBlack pull-left' data-dismiss='modal' aria-label='Close'><span aria-hidden='true'>&times;</span></button> <button type='button' class='btn btn-purple pull-right ' onClick='actualizaEstilo()'>Aplicar estilo</button>" +
 			        "</div>" + 
 			        "<div class='modal-body bgWhite'>" + slider + "</div><div class='modal-footer'>" + //<span class='text-left'>" + span + "</span>" +
 //			        "<span class='text-left'><img src='https://s3.amazonaws.com/landing.infomovil.com/webapp/images/temp_act.png' width='30'/> Estilo " + nombres[i] + "</span>" +
@@ -236,6 +249,7 @@ function generarSlider()
 		captions: true,
 		pager: true,
 		touchEnabled : false,
+		useCSS:false,
 		onSliderLoad: function(){
 			  if ($("#plantilla").val() == templates[0])
 				  span = "<img src='https://s3.amazonaws.com/landing.infomovil.com/webapp/images/temp_act.png' width='30'/>";

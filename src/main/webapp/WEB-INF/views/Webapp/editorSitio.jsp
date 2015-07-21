@@ -137,6 +137,13 @@
 		</div>
 	</nav>
 	<!-- / Fixed navbar -->
+	<!-- Botón Nuevo Estilo -->
+	<div class="seccTop bgBlack"><div class="container" ><a href="#" data-toggle="modal"
+						data-target="#myModalTemplates" class="col-xs-12 btn btn-default btn-outline navEditor"><strong>¡Nuevo!</strong> Elige estilo <img width="20" height="20" alt="Infomovil"
+							src="<c:url value="/resources/webapp/images/fa-templates.png"/>" /></a></div></div>
+							<!-- /Botón Nuevo Estilo -->
+	
+	
 	<!--Theme showcase -->
 	<div class="theme-showcaseApp" role="main" id="intro">
 		<!-- Main jumbotron for a primary marketing message or call to action -->
@@ -219,13 +226,17 @@
 			<!-- /page header -->
 		</div>
 		<!--/Theme showcase -->
+
+		<!--Footer-->
+		<footer class="footer bgBlack"> 
+		
 		<!--Publicar TEL-->
 		<div id="publicarTel" >
 			<div class="bgDobleBlack"></div>
 			<section class="bgFondo publicar">
 				<div class="container whiteBg">
 					<div class="row">
-						<h3 class=" text-center">Ponle un nombre a tu sitio web!</h3>
+						<h3 class=" text-center textBlack">Ponle un nombre a tu sitio web!</h3>
 						<div
 							class="form-group col-xs-12 col-sm-12 col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3">
 							<div class="divider"></div>
@@ -310,13 +321,18 @@
 	</div>
 </form>
 
+
+		</footer>
+		
+				
+
 		<!--MODAL EXITO-->
 		<div id="myModalExito" class="modal fade" tabindex="-1" role="dialog"
 			aria-labelledby="myModalLabel" aria-hidden="true">
 			<div class="modal-dialog modal-lg">
 				<div class="modal-content">
 					<div class="modal-header">
-						<button type="button" class="close" data-dismiss="modal"
+						<button type="button" class="close textBlack" data-dismiss="modal"
 							aria-label="Close">
 							<span aria-hidden="true">&times;</span>
 						</button>
@@ -405,8 +421,6 @@
 		<div id="modalTemplates"></div>
 		<!-- <div id="myModalTemplates" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"><div class="modal-dialog modal-lg"><div class="modal-content"><div class="modal-header"><button type="button" class="close textBlack" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button><p class="modal-title textBlack">Elije tu estilo</p></div><div class="modal-body bgWhite"><ul class="bxslider"><li><img src="https://s3.amazonaws.com/landing.infomovil.com/webapp/templates/Coverpage1azul/templateVacio.png" title="Funky roots"></li><li><img src="https://s3.amazonaws.com/landing.infomovil.com/webapp/templates/Coverpage2/templateVacio.png" title="Funky roots"></li></ul></div><div class="modal-footer"><button type="button" class="btn btn-purple" data-dismiss="modal">Cerrar</button></div></div></div></div> -->
 		<!--/MODAL TEMPLATES-->
-		<!--Footer-->
-		<footer class="footer bgBlack"> </footer>
 		<!-- Scroll to Top Button (Only visible on small and extra-small screen sizes) -->
 		<div class="scroll-top page-scroll visible-xs visble-sm">
 			<a class="btn" href="#page-top"> <img width="20" height="20"
