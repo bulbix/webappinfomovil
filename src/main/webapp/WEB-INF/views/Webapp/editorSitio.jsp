@@ -137,6 +137,13 @@
 		</div>
 	</nav>
 	<!-- / Fixed navbar -->
+	<!-- Botón Nuevo Estilo -->
+	<div class="seccTop bgBlack"><div class="container" ><a href="#" data-toggle="modal"
+						data-target="#myModalTemplates" class="col-xs-12 btn btn-default btn-outline navEditor"><strong>¡Nuevo!</strong> Elige estilo <img width="20" height="20" alt="Infomovil"
+							src="<c:url value="/resources/webapp/images/fa-templates.png"/>" /></a></div></div>
+							<!-- /Botón Nuevo Estilo -->
+	
+	
 	<!--Theme showcase -->
 	<div class="theme-showcaseApp" role="main" id="intro">
 		<!-- Main jumbotron for a primary marketing message or call to action -->

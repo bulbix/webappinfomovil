@@ -185,3 +185,12 @@ textarea { padding: 10px; width: 300px; }
 .btn-purple:hover{color:#fff!important;}
 
 textarea{resize: none;}
+.seccTop{
+	   position: relative;
+  top: -20px;
+  width: 100%;
+  
+  background: url(../images/lineDark.png) repeat;
+  padding: 15px 0 ;
+	
+}
