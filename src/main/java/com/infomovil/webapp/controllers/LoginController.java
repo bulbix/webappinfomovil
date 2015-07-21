@@ -5,6 +5,7 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.infomovil.webapp.clientWsInfomovil.ClientWsInfomovil;
 import com.infomovil.webapp.clientWsInfomovil.RespuestaVO;
@@ -31,29 +32,37 @@ public class LoginController {
 
 	
 	@RequestMapping(value="/executeResetPassword", method = RequestMethod.POST)
-	public String resetPasswordSubmit(@RequestParam String email, ModelMap model) {	
-				
+	public String resetPasswordSubmit(@RequestParam String email, ModelMap model, RedirectAttributes redirectAttributes) {	
+		
+		String mensaje;
+		
 		if (!email.isEmpty()) {
 			ClientWsInfomovil ws = new ClientWsInfomovil();
-			RespuestaVO resp = ws.crearSitioResetPassword(email);		
-			String mensaje;
+			RespuestaVO resp = ws.crearSitioResetPassword(email);	
 			
 			if(resp.getCodeError().equals("0")){
-				mensaje = "Se envió un correo para restablecer tu contraseña.";
+				mensaje = "Se envió un correo a %s para restablecer tu contraseña.";
+				redirectAttributes.addFlashAttribute("ctaCorreo", email);
+				redirectAttributes.addFlashAttribute("errorCta", String.format(mensaje,email));
+				return "redirect:/login"; 
 			}
 			else if(resp.getCodeError().equals("-1000")){
-				mensaje = "El correo no existe en Infomovil.";
+				mensaje = "El correo %s no existe en Infomovil.";
+				redirectAttributes.addFlashAttribute("mensaje", String.format(mensaje,email));
+				return "redirect:/resetpassword"; 
 			}
 			else{
 				mensaje = "Ocurrio un error al enviar el correo, Intente más tarde.";
+				redirectAttributes.addFlashAttribute("mensaje", mensaje);
+				return "redirect:/resetpassword"; 
 			}
-			
-			model.addAttribute("mensaje", mensaje);
-			
-			
 		}
-			
-		return "Webapp/restablecerPass"; 
+		else{
+			mensaje = "El correo esta vacio";
+			redirectAttributes.addFlashAttribute("mensaje", mensaje);
+			return "redirect:/resetpassword"; 
+		}
+		
 	}
 
 }
