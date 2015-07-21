@@ -233,7 +233,7 @@ function generarSlider()
 			"<div class='modal-dialog modal-lg'><div class='modal-content'>" +
 
 			"<div class='modal-header'>" +
-			 	"<button type='button' class='close textBlack pull-left' data-dismiss='modal' aria-label='Close'><span aria-hidden='true'>&times;</span></button> <button type='button' class='btn btn-purple pull-right' onClick='actualizaEstilo()'>Aplicar estilo</button>" +
+			 	"<button type='button' class='close textBlack pull-left' data-dismiss='modal' aria-label='Close'><span aria-hidden='true'>&times;</span></button> <button type='button' class='btn btn-purple pull-right ' onClick='actualizaEstilo()'>Aplicar estilo</button>" +
 			        "</div>" + 
 			        "<div class='modal-body bgWhite'>" + slider + "</div><div class='modal-footer'>" + //<span class='text-left'>" + span + "</span>" +
 //			        "<span class='text-left'><img src='https://s3.amazonaws.com/landing.infomovil.com/webapp/images/temp_act.png' width='30'/> Estilo " + nombres[i] + "</span>" +
