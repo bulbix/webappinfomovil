@@ -1,5 +1,5 @@
 var templates = new Array("Coverpage1azul", "Coverpage2", "Coverpage3", "Coverpage4", "Coverpage5", "Coverpage6");
-var nombres = new Array("Coverpage1azul", "Coverpage2", "Coverpage3", "Coverpage4", "Coverpage5", "Coverpage6"); /*Cambiar nombres*/
+var nombres = new Array("Portada azul", "Restaurantes", "Belleza", "Reposter&iacute;as", "Automotriz", "Taxistas"); /*Cambiar nombres*/
 var indice = 0;
 	
 $(document).ready(function() {
