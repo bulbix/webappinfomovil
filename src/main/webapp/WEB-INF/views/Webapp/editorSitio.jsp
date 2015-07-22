@@ -236,7 +236,7 @@
 			<section class="bgFondo publicar">
 				<div class="container whiteBg">
 					<div class="row">
-						<h3 class=" text-center textBlack">Ponle un nombre a tu sitio web!</h3>
+						<h3 class=" text-center textBlack">&iexcl;Ponle un nombre a tu sitio web!</h3>
 						<div
 							class="form-group col-xs-12 col-sm-12 col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3">
 							<div class="divider"></div>
@@ -244,9 +244,9 @@
 								<label class="sr-only" for="exampleInputAmount">www.</label>
 								<div class="input-group">
 									<div class="input-group-addon">www.</div>
-									<input type="text" class="form-control black"
+									<input type="text" class="form-control textBlack text-center"
 										id="nombreDominioBusqueda" name="nombreDominioBusqueda"
-										placeholder="Nombra tu sitio" maxlength="63">
+										placeholder="Nombra tu sitio" maxlength="63" style="text-transform:lowercase;"/>
 									<div class="input-group-addon">.tel</div>
 								</div>
 								<input type="hidden" id="tipoDominioBusqueda"
@@ -257,11 +257,9 @@
 							<div class="col-xs-12 col-sm-6">
 								<div class="divider hidden-sm hidden-md hidden-lg"></div>
 							</div>
-							<div class="col-xs-12 text-center textWhite"
-								id="validacionNombre"></div>
-							<!--           <div class="col-xs-12 text-center textWhite"> <span id="validacionNombre"></span> -->
-							<%-- 				<img src="<c:url value="/resources/webapp/images/fa-warning.png"/>" width="20" height="20" alt="Alerta" /> --%>
-							<!-- 		  </div> -->
+						          <div class="col-xs-12 text-center textWhite" style="display:none" id="validacionNombre">
+										<img src="<c:url value="/resources/webapp/images/fa-warning.png"/>" width="20" height="20" alt="Alerta" />
+								  </div>
 							<div
 								class="form-group col-xs-12 col-sm-12 col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3">
 								<div class="divider"></div>
@@ -284,45 +282,73 @@
 		<!--/Publicar TEL-->
 		
 <!--Publicar recurso-->
-<form id="publicaRecurso">
+<!-- 	<div id="publicarRecurso">  Respaldo para cuando se habilite lo  de la lista de dominios-->
+<!-- 	  <div class="bgDobleBlack" ></div> -->
+<!-- 	  <section class="bgFondo publicar"> -->
+<!-- 	    <div class="container whiteBg" > -->
+<!-- 	      <div class="row" > -->
+<!-- 	        <h3 class=" text-center">Ponle un nombre a tu sitio web!</h3> -->
+<!-- 	        <div class="form-group col-xs-12 col-sm-12 col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3"> -->
+<!-- 	          <div class="col-xs-12 col-sm-6"> -->
+<!-- 	            <div class="divider"></div> -->
+<!-- 	            <select id="idCatTipoRec" class="form-control" style="height:36px !important; display:block; padding:6px 12px; color:#000!important"> -->
+<%-- 				    <c:forEach items="${dominios}" var="entry"> --%>
+<%-- 				        <option value="${entry.key}">${entry.value}</option> --%>
+<%-- 				    </c:forEach> --%>
+<!-- 	            </select> -->
+<!-- 	            <div class="divider hidden-sm hidden-md hidden-lg"></div> -->
+<!-- 	          </div> -->
+<!-- 	          <div class="col-xs-12 col-sm-6"> -->
+<!-- 	            <div class="divider"></div> -->
+<!-- 	            <input type="text" placeholder="Nombra tu sitio" value="" id="nombreDominioRec" name="nombreDominioRec" class="form-control" id="nombraInput"> -->
+<!-- 	            <input type="hidden" id="tipoDominioRec" name="tipoDominioRec" value="recurso"/> -->
+<!-- 	          </div> -->
+<!-- 	          <div class="form-group col-xs-12 col-sm-12 col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3"> -->
+<!-- 	            <div class="divider"></div> -->
+<!-- 	            <input type="submit" value="Publicar" id="btnPublicarTel" class="btn btn-default btn-outline col-xs-12 text-center textWhite" style="display:none;"> -->
+<!-- 	            <input type="button" value="Buscar nombre" id="btnBuscarTel" class="btn btn-default btn-outline col-xs-12 text-center textWhite" onClick="validaDominio('recurso')"> -->
+<!-- 	            <div class="clear"></div> -->
+<!-- 	          </div> -->
+<!-- 	        </div> -->
+<!-- 	      </div> -->
+<!-- 	    </div> -->
+<!-- 	  </section> -->
+<!-- 	</div> -->
+	
 	<div id="publicarRecurso">
 	  <div class="bgDobleBlack" ></div>
 	  <section class="bgFondo publicar">
 	    <div class="container whiteBg" >
 	      <div class="row" >
-	        <h3 class=" text-center">Ponle un nombre a tu sitio web!</h3>
-	        <div class="form-group col-xs-12 col-sm-12 col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3">
+	        <h3 class=" text-center textBlack">&iexcl;Ponle un nombre a tu sitio web!</h3>
+	        <div class="form-group col-xs-12 col-sm-12 col-md-12 col-lg-12">
 	          <div class="col-xs-12 col-sm-6">
 	            <div class="divider"></div>
-	            <select id="idCatTipoRec" class="form-control" style="height:36px !important; display:block; padding:6px 12px; color:#000!important">
-				    <c:forEach items="${dominios}" var="entry">
-				        <option value="${entry.key}">${entry.value}</option>
-				    </c:forEach>
-	            </select>
+	            	<input id="idCatTipoRec" class="form-control text-center" style="height:36px !important; display:block; padding:6px 12px; color:#000!important;cursor:not-allowed" value="www.infomovil.com/" readonly="readonly"/>
 	            <div class="divider hidden-sm hidden-md hidden-lg"></div>
 	          </div>
 	          <div class="col-xs-12 col-sm-6">
-	            <div class="divider"></div>
-	            <input type="text" placeholder="Nombra tu sitio" value="" id="nombreDominioRec" name="nombreDominioRec" class="form-control" id="nombraInput">
+	            <div class="divider hidden-xs"></div>
+	            <input type="text" placeholder="Nombra tu sitio" value="" id="nombreDominioRec" name="nombreDominioRec" class="form-control text-center" style="text-transform:lowercase;">
 	            <input type="hidden" id="tipoDominioRec" name="tipoDominioRec" value="recurso"/>
 	          </div>
 	          <div class="form-group col-xs-12 col-sm-12 col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3">
+	            <div class="col-xs-12 text-center textBlack" style="display:none" id="validacionNombreRec">
+					<img src="<c:url value="/resources/webapp/images/fa-warning.png"/>" width="20" height="20" alt="Alerta" />
+				</div>
 	            <div class="divider"></div>
-	            <input type="submit" value="Publicar" id="btnPublicarTel" class="btn btn-default btn-outline col-xs-12 text-center textWhite" style="display:none;">
-	            <input type="button" value="Buscar nombre" id="btnBuscarTel" class="btn btn-default btn-outline col-xs-12 text-center textWhite" onClick="validaDominio('recurso')">
-<!-- 	            <input type="submit" value="Publicar" id="btnPublicarRecurso" class="btn btn-default btn-outline col-xs-12 text-center textWhite" style="display:none;"> -->
-<!-- 	            <input type="button" value="Buscar nombre" id="btnBuscarRecurso" class="btn btn-default btn-outline col-xs-12 text-center textWhite" onClick="validaDominio()"> -->
+	            <input type="button" value="Buscar nombre" id="btnBuscarTel" class="btn btn-default btn-outline col-xs-12 text-center textBlack" onClick="validaDominio('recurso')">
 	            <div class="clear"></div>
+	            <div class="divider"></div>
 	          </div>
 	        </div>
 	      </div>
 	    </div>
 	  </section>
 	</div>
-</form>
+<!--Publicar recurso-->
 
-
-		</footer>
+</footer>
 		
 				
 
@@ -375,7 +401,7 @@
 						<div class="clear divider"></div>
 					</div>
 					<div class="modal-footer">
-						<button type="button"
+						<button type="button" onClick="cargarSitio()"
 							class="btn btn-purple text-center col-xs-12 col-sm-12 col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3"
 							data-dismiss="modal">
 							<strong>Continuar editando</strong>
@@ -408,9 +434,9 @@
 					</div>
 					<div class="modal-footer">
 						<button type="button"
-							class="btn btn-default text-center col-xs-12 col-sm-12 col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3"
+							class="btn btn-purple text-center col-xs-12 col-sm-12 col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3"
 							data-dismiss="modal">
-							<strong>Intenta de nuevo</strong>
+							<strong>Aceptar</strong>
 						</button>
 					</div>
 				</div>
@@ -485,7 +511,7 @@ $('.navbar-collapse ul li a').click(function() {
 	<c:choose>
 		<c:when test="${canalUsuario == 'BAZ'}">
 			$("#publicarTel").css("display", "block");
-			$("#publicarRecurso").css("display", "none");	
+			$("#publicarRecurso").css("display", "none");
 		</c:when>
 		<c:otherwise>
 			$("#publicarRecurso").css("display", "block");	

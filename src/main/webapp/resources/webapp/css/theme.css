@@ -87,7 +87,7 @@ p { font-size: 110%; }
 }
 .mar10TB{ margin:10px 0;}
 .reset{ margin:0; padding:0;}
-.help-block{ color:#7c41bc !important; font-weight:700 !important; font-size:15px !important;}
+.help-block{ color:#000 !important; font-weight:700 !important; font-size:15px !important;}
 .imgLog{min-width:210px; max-width:215px; text-align:center; margin:0 auto;}
 .imgDes{max-width:120px; min-width:100px; text-align:center; margin:0 auto; width:100%}
 ul{ list-style:none;}

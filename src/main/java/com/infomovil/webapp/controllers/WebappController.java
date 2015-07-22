@@ -100,10 +100,10 @@ public class WebappController
 		return resultMap;
 	}
 	
-	@RequestMapping(value = "/infomovil/publicarSitio", method = RequestMethod.POST, produces = "application/json")
+	@RequestMapping(value = "/infomovil/publicarSitio", method = RequestMethod.POST)
 	@ResponseBody
 	public ModelAndView publicarSitio(@RequestParam String nombreDominio, @RequestParam String tipoDominio, 
-			@RequestParam int idCatTipoRecurso)
+			@RequestParam int idCatTipoRecurso, RedirectAttributes redirectAtt)
 	{		
 		String resultadoPublicacion = "-1";
 		ModelAndView modeloVista = null;
@@ -128,20 +128,31 @@ public class WebappController
 				}
 			}
 
-			modeloVista = editarSitio(redirectAttributes);
+			modeloVista = editarSitio(redirectAtt);
+			modeloVista.setViewName("redirect:/infomovil/editarSitio");
+			
+			if (!StringUtils.isEmpty(respCargarSitio.getDominioCreaSitio().getSitioWeb()))
+			{			
+				ModelAndView modelAndView =  new ModelAndView("redirect:/infomovil/editarSitio");
+				redirectAtt.addFlashAttribute("msgPublicacion", "Ya tienes publicado un dominio");
+				redirectAtt.addFlashAttribute("resultadoPublicacion", "NO");
+				return modelAndView;
+			}
 			
 			if(!isBAZ && tipoDominio.equals("tel"))
-			{
-				modeloVista.getModel().put("msgPublicacion", "No eres usuario de BAZ, no puedes publicar .tel");
-				modeloVista.getModel().put("resultadoPublicacion", "NO");
-				return modeloVista;
+			{			
+				ModelAndView modelAndView =  new ModelAndView("redirect:/infomovil/editarSitio");
+				redirectAtt.addFlashAttribute("msgPublicacion", "No eres usuario de BAZ, no puedes publicar .tel");
+				redirectAtt.addFlashAttribute("resultadoPublicacion", "NO");
+				return modelAndView;
 			}
 			
 			if(tieneTel)
-			{
-				modeloVista.getModel().put("msgPublicacion", "Tu ya tienes asignado un dominio .tel");
-				modeloVista.getModel().put("resultadoPublicacion", "NO");
-				return modeloVista;
+			{				
+				ModelAndView modelAndView =  new ModelAndView("redirect:/infomovil/editarSitio");
+				redirectAtt.addFlashAttribute("msgPublicacion", "Tu ya tienes asignado un dominio .tel");
+				redirectAtt.addFlashAttribute("resultadoPublicacion", "NO");
+				return modelAndView;
 			}
 			
 			wsRespuesta = wsCliente.crearSitioPublicar(correo, password, nombrePersona, "Mexico", nombreDominio, tipoDominio, idCatTipoRecurso);
@@ -153,15 +164,18 @@ public class WebappController
 			{
 				if (resultadoPublicacion.equals("0"))
 				{
-					modeloVista.getModel().put("resultadoPublicacion", "SI");
+					ModelAndView modelAndView =  new ModelAndView("redirect:/infomovil/editarSitio");
+					redirectAtt.addFlashAttribute("resultadoPublicacion", "SI");
+					return modelAndView;
 				}
 				else
-				{
-					modeloVista.getModel().put("msgPublicacion", "No se ha podido completar la publicación de tu sitio");
-					modeloVista.getModel().put("resultadoPublicacion", "NO");
+				{				
+					ModelAndView modelAndView =  new ModelAndView("redirect:/infomovil/editarSitio");
+					redirectAtt.addFlashAttribute("msgPublicacion", "No se ha podido completar la publicación de tu sitio");
+					redirectAtt.addFlashAttribute("resultadoPublicacion", "NO");
+					return modelAndView;
 				}				
 				
-				return modeloVista;
 			}			
 		}	
 		catch (Exception e) 
@@ -182,7 +196,7 @@ public class WebappController
 			return validaURL("Webapp/validarURL");
 		else
 		{
-			wsRespuesta = wsCliente.crearSitioRegistrar(correo, passwordDefault, nombre, codigo);
+			wsRespuesta = wsCliente.crearSitioRegistrar(correo, passwordDefault, nombre, codigo.toLowerCase());
 			codigoError = wsRespuesta.getCodeError();
 			descripcionError = wsRespuesta.getMsgError();
 			
@@ -206,11 +220,11 @@ public class WebappController
 	}
 
 	@RequestMapping(value = "/registrar", method = RequestMethod.POST)
-	public ModelAndView registrar(String nombre, String codigo, String correo, String contrasenia, HttpServletRequest request, RedirectAttributes redirectAttributes) 
+	public ModelAndView registrar(String codigo, String correo, String contrasenia, HttpServletRequest request, RedirectAttributes redirectAttributes) 
 	{
 		HashMap<String, Object> model = new HashMap<String, Object>();
 
-		wsRespuesta = wsCliente.crearSitioRegistrar(correo, contrasenia, nombre, codigo);
+		wsRespuesta = wsCliente.crearSitioRegistrar(correo, contrasenia, correo, codigo.toLowerCase());
 		codigoError = wsRespuesta.getCodeError();
 		descripcionError = wsRespuesta.getMsgError();
 		
@@ -251,7 +265,8 @@ public class WebappController
 	public ModelAndView editarSitio(RedirectAttributes redirectAttributes)
 	{		
 		HashMap<String, Object> model = new HashMap<String, Object>();
-		String template = "Coverpage1azul";
+	    template = "Coverpage1azul";
+	    tipoUsuario = "canal";
 		sitioWeb = "SIN_PUBLICAR";
 		canal = "NO_TIENE";
 		
@@ -265,43 +280,48 @@ public class WebappController
 			if (wsRespuesta.getCodeError().equals("0"))
 			{
 				Util.getCurrentSession().setAttribute("nombreUsuario", 
-				wsRespuesta.getDominioCreaSitio().getNombreUsuario());
-				
-				model.put("usuarioLogueado", correo);
-				model.put("nombreUsuario", wsRespuesta.getDominioCreaSitio().getNombreUsuario().trim());				
-				model.put("nombreEmpresa", wsRespuesta.getDominioCreaSitio().getNombreEmpresa().trim());
+				wsRespuesta.getDominioCreaSitio().getNombreUsuario());				
+				campania = wsRespuesta.getDominioCreaSitio().getCampania().toLowerCase();
 				
 				if (wsRespuesta.getDominioCreaSitio().getNombreEmpresa().trim().equals("TÃtulo"))
 					model.put("nombreEmpresa", "");
 				
-				model.put("descripcionCorta", wsRespuesta.getDominioCreaSitio().getDescripcionCorta().trim());
-				model.put("correoElectronico", wsRespuesta.getDominioCreaSitio().getCorreoElectronico().trim());
-				model.put("telefonoUsuario", wsRespuesta.getDominioCreaSitio().getTelefono().trim());			
-				model.put("vistaPrevia", wsRespuesta.getDominioCreaSitio().getUrlVistaPrevia());				
-				model.put("dominios", obtenerDominios());
-				
-				if (wsRespuesta.getDominioCreaSitio().getCanal().startsWith("BAZ"))
-					canal = "BAZ";
-				
 				if (!StringUtils.isEmpty(wsRespuesta.getDominioCreaSitio().getSitioWeb()))
 					sitioWeb = wsRespuesta.getDominioCreaSitio().getSitioWeb();
 
+				if (wsRespuesta.getDominioCreaSitio().getSitioWeb().indexOf("@") != -1)
+					sitioWeb = "SIN_PUBLICAR";
+				
 				if (!StringUtils.isEmpty(wsRespuesta.getDominioCreaSitio().getTemplate()))
 					template = wsRespuesta.getDominioCreaSitio().getTemplate();
 
 				if (template.equals("Moderno") || template.equals("Creativo") || template.equals("Clasico") 
 						|| template.equals("Divertido") || template.equals("Estandar1"))
 					template = "Coverpage1azul";
-
-				if (!StringUtils.isEmpty(wsRespuesta.getDominioCreaSitio().getTemplate()))
-					template = wsRespuesta.getDominioCreaSitio().getTemplate();
 				
 				if (sitioWeb.indexOf("tel") != -1)
 				{
 					fechaIni = wsRespuesta.getFTelNamesIni();
 					fechaFin = wsRespuesta.getFTelNamesFin();
 				}
+
+				if (wsRespuesta.getDominioCreaSitio().getCanal().startsWith("BAZ") && 
+						!(campania.contains("basica") || campania.contains("basico")))
+				{
+					canal = "BAZ";
+				}
+				else
+				{
+					model.put("dominios", obtenerDominios());
+				}
 				
+				model.put("usuarioLogueado", correo);
+				model.put("nombreUsuario", wsRespuesta.getDominioCreaSitio().getNombreUsuario().trim());				
+				model.put("nombreEmpresa", wsRespuesta.getDominioCreaSitio().getNombreEmpresa().trim());
+				model.put("descripcionCorta", wsRespuesta.getDominioCreaSitio().getDescripcionCorta().trim());
+				model.put("correoElectronico", wsRespuesta.getDominioCreaSitio().getCorreoElectronico().trim());
+				model.put("telefonoUsuario", wsRespuesta.getDominioCreaSitio().getTelefono().trim());			
+				model.put("vistaPrevia", wsRespuesta.getDominioCreaSitio().getUrlVistaPrevia());				
 				model.put("template", template);
 				model.put("sitioWeb", sitioWeb); 
 				model.put("fechaIniTel", fechaIni);
@@ -315,7 +335,8 @@ public class WebappController
 				redirectAttributes.addFlashAttribute("ctaCorreo", correo);
 				return modelAndView;
 			}
-			
+
+		//	return new ModelAndView("redirect:/infomovil/editarSitio", model);
 			return new ModelAndView("Webapp/editorSitio", model);
 		}		
 		catch (Exception e) 
@@ -378,9 +399,11 @@ public class WebappController
 	private String fechaFin = "SIN_FECHA";
 	private String sitioWeb = "SIN_PUBLICAR";
 	private String canal = "NO_TIENE";
+	private String tipoUsuario = "normal";
+	private String campania = "basica";
+	private String template ;
 	private String password;
 	private String correo;
-	private Map<String, Object> cargarInfo;
 	private HashMap<String, Object> dominios = new HashMap<String, Object>();
 	private static final Logger logger = Logger.getLogger(WebappController.class);
 	private ClientWsInfomovil wsCliente = new ClientWsInfomovil();
