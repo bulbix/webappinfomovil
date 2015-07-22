@@ -15,6 +15,7 @@ function validaDominio(tipo)
 {
 	console.log("validaDominio::::::");
 	var sitioDisponible = "";
+	var infomovil = "infomovil";
 	var textoBoton = "Aceptar";
 	var opcion = "NO_PUBLICAR"
 	var msjValidacion = "";
@@ -39,23 +40,41 @@ function validaDominio(tipo)
 	if (nombreDominio == null || nombreDominio.trim().length == 0 || nombreDominio.trim().length < 3)
 	{
 		$("#validacionNombre").html("El nombre debe ser mayor a 2 caracteres y menor a 64");
+		$("#validacionNombreRec").html("El nombre debe ser mayor a 2 caracteres y menor a 64");
+		$("#validacionNombre").css("display", "block");
+		$("#validacionNombreRec").css("display", "block");
 		return false;
 	}
 
-	if (nombreDominio.toLowerCase().indexOf("infomovil") != -1)
+	if (infomovil.indexOf(nombreDominio.toLowerCase()) != -1 || nombreDominio.toLowerCase().indexOf("infomovil") != -1)
 	{
 		$("#validacionNombre").html("No debe contener la palabra Infomovil");
+		$("#validacionNombreRec").html("No debe contener la palabra Infomovil");
+		$("#validacionNombre").css("display", "block");
+		$("#validacionNombreRec").css("display", "block");
 		return false;
 	}
 
 	if (!regAuxiliar.test(nombreDominio)) 
 	{
 		$("#validacionNombre").html("Caracteres no v&aacutelidos");
+		$("#validacionNombreRec").html("Caracteres no v&aacutelidos");
+		$("#validacionNombreRec").css("display", "block");
+		$("#validacionNombre").css("display", "block");
 		return false;
 	}
 	
 	$("#validacionNombre").css("display", "none");
-	console.log("nombreDominio: "+ nombreDominio + ", tipoDominio: " + tipoDominio);
+	$("#validacionNombreRec").css("display", "none");
+
+    $.blockUI({ 
+        message: "Buscando disponibilidad...", 
+        css: { 
+            top:  ($(window).height() - 400) /2 + 'px', 
+            left: ($(window).width() - 400) /2 + 'px', 
+            width: '400px' 
+        } 
+    }); 
 	
 	$.ajax
 	({
@@ -74,7 +93,7 @@ function validaDominio(tipo)
     	{
 			console.log("termino busqueda de dominio:::::: " + json.resultado);
 			if (json.resultado.indexOf("No existe") != -1)
-			{
+			{				
 				funcion = "publicar()";
 				opcion = "PUBLICAR";
 				msjValidacion = "";
@@ -82,7 +101,7 @@ function validaDominio(tipo)
 				sitioDisponible = "www." + nombreDominio + "." + tipoDominio + " est&aacute; disponible";
 
 				if (tipoDominio == "recurso")
-					sitioDisponible = $("#idCatTipoRec option:selected").html() + "/" + nombreDominio + " est&aacute; disponible";
+					sitioDisponible = "www.infomovil.com/" + nombreDominio + " est&aacute; disponible"; //sitioDisponible = $("#idCatTipoRec option:selected").html() + "/" + nombreDominio + " est&aacute; disponible";
 			}
 			else
 			{
@@ -92,7 +111,7 @@ function validaDominio(tipo)
 				sitioDisponible = "www." + nombreDominio + "." + tipoDominio + " no est&aacute; disponible";
 				
 				if (tipoDominio == "recurso")
-					sitioDisponible = $("#idCatTipoRec option:selected").html() + "/" + nombreDominio + " no est&aacute; disponible";
+					sitioDisponible = "www.infomovil.com/" + nombreDominio + " no est&aacute; disponible"; //sitioDisponible = $("#idCatTipoRec option:selected").html() + "/" + nombreDominio + " no est&aacute; disponible";
 			}
 			
 			$('#modalPublicacion').html("<div id='myModalPublicar' class='modal fade' tabindex='-1' role='dialog' aria-labelledby='myModalLabel' aria-hidden='true'>"+
@@ -104,10 +123,11 @@ function validaDominio(tipo)
 					"</button><input type='hidden' id='opcion' value=" + opcion + "/></div></div></div></div>");
 
 			$('#modalPublicacion > .alert-success').append($('#myModalPublicar').modal('show'));
-			
+			$.unblockUI();
 	    }
 	 ).fail(function( jqXHR, textStatus ) {
 		 console.log("fail:::::");
+		 $.unblockUI();
 	 });
 }
 
@@ -122,8 +142,8 @@ function publicar()
 	console.log("publicar::: " + nombreDominio + ", " + tipoDominio);
 	$("#idCatTipoRecurso").val("1"); /*tel*/	
 	
-	if (tipoDominio == "recurso")
-		$("#idCatTipoRecurso").val($("#idCatTipoRec").val());
+//	if (tipoDominio == "recurso")
+//		$("#idCatTipoRecurso").val($("#idCatTipoRec").val());
 	
 	console.log("publicar::::: " + nombreDominio + ", tipoDominio: " + tipoDominio + ", tipo: " + $("#idCatTipoRecurso").val());
 	$("#nombreDominio").val(nombreDominio.toLowerCase());
@@ -137,8 +157,6 @@ function publicar()
 			width: '400px' 
 		} 
 	}); 
-
-	setTimeout($.unblockUI, 2000);
 	
 	$("#publicarDominio").submit();
 }
@@ -159,20 +177,15 @@ function actualizaPlantilla(plantillaElegida)
 //		return;
 
 	$("#modalTemplates").css("display", "none");
-	$(document).ready(function() { 
-	        $.blockUI({ 
-	            message: "Actualizando estilo...", 
-	            css: { 
-	                top:  ($(window).height() - 400) /2 + 'px', 
-	                left: ($(window).width() - 400) /2 + 'px', 
-	                width: '400px' 
-	            } 
-	        }); 
-	 
-	        setTimeout($.unblockUI, 2000); 
- 
-	});
-	
+    $.blockUI({ 
+        message: "Actualizando estilo...", 
+        css: { 
+            top:  ($(window).height() - 400) /2 + 'px', 
+            left: ($(window).width() - 400) /2 + 'px', 
+            width: '400px' 
+        } 
+    }); 
+    
 	$.ajax({
 		type : "GET",
 		url : contextPath + "/infomovil/actualizaPlantilla",
@@ -200,16 +213,10 @@ function actualizaPlantilla(plantillaElegida)
 		},
 		error : function(json) {
 			console.log("Error");
-			//$("#LoadingImageFace").hide();
 			$.unblockUI();
-		//	aux = JSON.parse(json);
-		//	console.log(JSON.stringify(aux));
-
-	//		console.log('Algo salio mal! ' + JSON.parse(json));
 		}
 
 	});		
-//	$("#LoadingImageFace").hide();
 }
 
 function generarSlider()
@@ -235,10 +242,7 @@ function generarSlider()
 
 			"<div class='modal-header'>" +
 			 	"<button type='button' class='close textBlack pull-left' data-dismiss='modal' aria-label='Close'><span aria-hidden='true'>&times;</span></button> <button type='button' class='btn btn-purple pull-right ' onClick='actualizaEstilo()'>Aplicar estilo</button>" +
-			        "</div>" + 
-			        "<div class='modal-body bgWhite'>" + slider + "</div><div class='modal-footer'>" + //<span class='text-left'>" + span + "</span>" +
-//			        "<span class='text-left'><img src='https://s3.amazonaws.com/landing.infomovil.com/webapp/images/temp_act.png' width='30'/> Estilo " + nombres[i] + "</span>" +
-			        " </div></div></div></div>");
+			        "</div><div class='modal-body bgWhite'>" + slider + "</div><div class='modal-footer'></div></div></div></div>");
 	
 	var slider = $('.bxslider').bxSlider({
 		 moveSlides: 1,
@@ -257,21 +261,15 @@ function generarSlider()
 		});
 	
 	$(document).on('click','.bx-next', function() {
-		indice = slider.getCurrentSlide();
-		console.log("indice next: " + indice);
-//		plantillaElegida(indice);
+		indice = slider.getCurrentSlide();		
 		});
 	
 	$(document).on('click','.bx-prev', function() {
 		indice = slider.getCurrentSlide();
-		console.log("indice prev: " + indice);
-//		plantillaElegida(indice);
 		});
 
 	$(document).on('click','.bx-pager-link', function() {
 		indice = slider.getCurrentSlide();
-		console.log("indice pager: " + indice);
-//		plantillaElegida(indice);
 		});
 	
 }
@@ -289,25 +287,22 @@ function plantillaElegida(indicador)
 
 function actualizaEstilo()
 {
-	console.log("indice actual: " + indice);
-//	alert("template a actualizar: " + templates[indice]);
 	actualizaPlantilla(templates[indice]);
+}
+
+function cargarSitio()
+{
+	
 }
 
 function autosave() {
 	
 	var n1 = $("#txtNombreNegocio").val() + $("#txtDescripcionCorta").val() +
 		$("#txtCorreo").val() + $("#txtTelefono").val();
-	
-	//console.log('El valor de n1 es: ' + n1);
 
 	var autosaveForm = function($form, seconds) {
 		setTimeout(function() {
-	/*		console.log("NombreNegocio: " + $("#txtNombreNegocio").val());
-			console.log("DescripcionCorta: " + $("#txtDescripcionCorta").val());
-			console.log("Correo: " + $("#txtCorreo").val());
-			console.log("Telefono: " + $("#txtTelefono").val());
-	*/		
+	
 			var n2 = "";
 			
 			var nombreNegocio = $("#txtNombreNegocio").val();
@@ -317,7 +312,7 @@ function autosave() {
 			
 			n2 = nombreNegocio + descripcionCorta + correo + telefono;
 
-			if (/*n2.length > 0 &&*/ n2 != n1) {
+			if (n2 != n1) {
 				$.ajax({
 					type : "GET",
 					url : contextPath + "/infomovil/guardarInformacion",
@@ -331,9 +326,7 @@ function autosave() {
 						plantilla : $("#plantilla").val()
 					},
 					success : function(json) {
-					//	console.log('Guardado :)');
 						n1 = nombreNegocio + descripcionCorta + correo + telefono;
-					//	console.log('El valor de n1 es: ' + n1);
 						autosaveForm($form, seconds);
 					},
 					error : function(json) {

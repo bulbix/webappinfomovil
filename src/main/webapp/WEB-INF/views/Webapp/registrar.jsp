@@ -72,8 +72,8 @@
     <div id="navbar" class="navbar-collapse collapse text-right">
           <ul class="nav navbar-nav navbar-right">
         <li><a href="http://infomovil.com" class="smoothScroll">Inicio</a></li>
-        <li><a href="#" class="smoothScroll">Iniciar sesión</a></li>
         <li class="active"><a href="#" class="smoothScroll">Regístrate</a></li>
+        <li><a href="<c:url value="/login"/>" class="smoothScroll">Iniciar sesión</a></li>
       </ul>
         </div>
     <!--/.nav-collapse --> 
@@ -88,29 +88,28 @@
       <div class="container text-center">
     <div class="divider hidden-xs hidden-sm"></div>
     <h1 class="textBlack hidden">Registra tu cuenta</h1>
-    <h4 class="textBlack">Registra tu cuenta</h4>
+    <h3 class="textBlack">Registra tu cuenta</h3>
     <div class="container">
           <form id="formRegistro" action="registrar" method="post">
-        
-        <!--nombre-->
-        <div class="form-group col-xs-12 col-sm-12 col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3">
-              <div class="control-group">
-            <label class="control-label"></label>
-            <div class="controls">
-                  <input type="text" class="form-control" placeholder="Nombre" id="nombre" name="nombre" required="required"/>
-                  <p class="help-block"></p>
-                </div>
-          </div>
-            </div>
-        <!--nombre--> 
+<!--         nombre -->
+<!--         <div class="form-group col-xs-12 col-sm-12 col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3"> -->
+<!--               <div class="control-group"> -->
+<!--             <label class="control-label hidden-xs"></label> -->
+<!--             <div class="controls"> -->
+<!--                   <input type="text" class="form-control" placeholder="Nombre" id="nombre" name="nombre" required="required"/> -->
+<!--                   <p class="help-block"></p> -->
+<!--                 </div> -->
+<!--           </div> -->
+<!--             </div> -->
+<!--         nombre  -->
         
         <!--email-->
         <div class="form-group col-xs-12 col-sm-12 col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3">
               <div class="control-group">
-            <label class="control-label"></label>
+            <label class="control-label hidden-xs"></label>
             <div class="controls">
                   <input type="email" class="form-control" placeholder="Correo" id="correo" name="correo"/>
-                  <p class="help-block"></p>
+                  <p class="help-block textBlack"></p>
                 </div>
           </div>
             </div>
@@ -119,10 +118,10 @@
         <!--password-->
         <div class="form-group col-xs-12 col-sm-12 col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3">
               <div class="control-group">
-            <label class="control-label"></label>
+            <label class="control-label hidden-xs"></label>
             <div class="controls">
                   <input type="password" class="form-control" placeholder="Contraseña" id="contrasenia" name="contrasenia"/>
-                  <p class="help-block"></p>
+                  <p class="help-block textBlack"></p>
                 </div>
           </div>
             </div>
@@ -131,9 +130,10 @@
          <!--confirm password-->
         <div class="form-group col-xs-12 col-sm-12 col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3">
               <div class="control-group">
-            <label class="control-label"></label>
+            <label class="control-label hidden-xs"></label>
             <div class="controls">
-                  <input type="password" class="form-control" placeholder="Confirmar contraseña" data-validation-match-match="contrasenia" />
+                  <input type="password" class="form-control" placeholder="Confirmar contraseña" data-validation-matches-match="contrasenia" data-validation-matches-message=
+    "Las contraseñas no coinciden"/>
                   <p class="help-block"></p>
                 </div>
           </div>
@@ -142,9 +142,9 @@
          <!--codigo-->
         <div class="form-group col-xs-12 col-sm-12 col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3">
               <div class="control-group">
-            <label class="control-label"></label>
+            <label class="control-label hidden-xs"></label>
             <div class="controls">
-                  <input type="text" class="form-control" placeholder="Código de promoción"/>
+                  <input type="text" class="form-control" placeholder="Código de promoción" id="codigo" name="codigo"/>
                   <p class="help-block"></p>
                 </div>
           </div>
