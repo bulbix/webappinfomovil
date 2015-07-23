@@ -109,11 +109,20 @@
 						class="icon-bar"></span> <span class="icon-bar"></span> <span
 						class="icon-bar"></span>
 				</button>
+				<!-- LOGO BANCO AZTECA - BAZ-->
+				<span class="navbar-brand "><img
+					src="http://landing.infomovil.com/webapp/templates/${ template }/images/logo_baz.png"
+					width="103" height="47" alt="Infomovil" /> </span><span
+					class="marLeft navEditor textWhite">Modo edición 
+				</span>
+				<!-- /LOGO BANCO AZTECA - BAZ-->
+				<!-- LOGO INFOMOVIL - REGISTRO GENERAL-->
 				<span class="navbar-brand "><img
 					src="http://landing.infomovil.com/webapp/templates/${ template }/images/apple-touch-icon-57x57.png"
 					width="50" height="50" alt="Infomovil" /> </span><span
 					class="marLeft navEditor textWhite">Modo edición 
 				</span>
+				<!-- /LOGO INFOMOVIL - REGISTRO GENERAL-->
 			</div>
 			<div id="navbar" class="navbar-collapse collapse text-right">
 				<ul class="nav navbar-nav navbar-right">
@@ -131,6 +140,12 @@
 						class="smoothScroll"> Cerrar sesión <img width="20"
 							height="20" alt="Infomovil"
 							src="http://landing.infomovil.com/webapp/templates/${ template }/images/fa-sign-out.png" /></a></li>
+							<!-- OCULTAR CUÁNDO SEA - REGISTRO GENERAL-->
+				
+				<li><a href="#" class="smoothScroll"><img width="30" height="30" alt="Infomovil"
+							src="<c:url value="/resources/webapp/images/apple-touch-icon-57x57.png"/>" />
+				
+				<!--/ OCULTAR CUÁNDO SEA - REGISTRO GENERAL-->
 				</ul>
 			</div>
 			<!--/.nav-collapse -->
@@ -443,6 +458,60 @@
 			</div>
 		</div>
 		<!--/MODAL FAIL-->
+		
+		
+		<!-- MODAL WELCOME -->
+		<div id="myModalRegistro" class="modal fade" tabindex="-1" role="dialog"
+			aria-labelledby="myModalLabel" aria-hidden="true">
+			<div class="modal-dialog modal-lg">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close textBlack" data-dismiss="modal"
+							aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+						<p class="modal-title">
+						
+						</p>
+					</div>
+					<div class="modal-body bgWhite">
+					<h1
+							class="textBlack col-xs-12 col-sm-12 text-center" style="font-weight:700; ">&iexcl;Registro exitoso!</h1>
+					<h2
+							class="textBlack col-xs-12 col-sm-12 text-center" style="color:#7c41bc !important;" >
+							Bienvenido a Infomovil
+						</h2>
+						
+						<div class="clear"></div>
+						<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-center textBlack">
+						</div>
+						<div class="clear"></div>
+						<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+							
+								<p class="text-center">
+									<ol class="text-center col-xs-12 col-sm-12 col-md-8 col-md-offset-5 col-lg-8 col-lg-offset-5" style="font-weight:700;">
+<li>Selecciona un estilo</li>
+<li>Llena tus datos</li>
+<li>Pública tu página</li>
+</ol>
+								</p>
+							
+							
+						</div>
+						<div class="clear divider"></div>
+					</div>
+					<div class="modal-footer">
+						<button type="button"
+							class="btn btn-purple text-center col-xs-12 col-sm-12 col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3"
+							data-dismiss="modal">
+							<strong>Continuar</strong>
+						</button>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		<!-- /MODAL WELCOME -->
 		<!--MODAL TEMPLATES-->
 		<div id="modalTemplates"></div>
 		<!-- <div id="myModalTemplates" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"><div class="modal-dialog modal-lg"><div class="modal-content"><div class="modal-header"><button type="button" class="close textBlack" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button><p class="modal-title textBlack">Elije tu estilo</p></div><div class="modal-body bgWhite"><ul class="bxslider"><li><img src="https://s3.amazonaws.com/landing.infomovil.com/webapp/templates/Coverpage1azul/templateVacio.png" title="Funky roots"></li><li><img src="https://s3.amazonaws.com/landing.infomovil.com/webapp/templates/Coverpage2/templateVacio.png" title="Funky roots"></li></ul></div><div class="modal-footer"><button type="button" class="btn btn-purple" data-dismiss="modal">Cerrar</button></div></div></div></div> -->
@@ -494,6 +563,7 @@
 $(document).ready(function(){
 	generarSlider();
 	});
+
 </script>
 		<script>
 // jQuery for page scrolling feature - requires jQuery Easing plugin
@@ -529,7 +599,11 @@ $('.navbar-collapse ul li a').click(function() {
 		
 		</c:otherwise>
 	</c:choose>	
-
+	
+	<c:if test="${registroExitoso =='SI'}">
+		$("#myModalRegistro").modal('show');
+	</c:if>
+	
 	<c:if test="${resultadoPublicacion =='SI'}">
 		$("#myModalExito").modal('show');
 	</c:if>
