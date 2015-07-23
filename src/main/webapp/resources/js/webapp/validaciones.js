@@ -149,6 +149,7 @@ function publicar()
 	$("#nombreDominio").val(nombreDominio.toLowerCase());
 	$("#tipoDominio").val(tipoDominio.toLowerCase());
 
+	$("#modalPublicacion").css("display", "none");
 	$.blockUI({ 
 		message: "Publicando sitio...", 
 		css: { 
@@ -205,11 +206,11 @@ function actualizaPlantilla(plantillaElegida)
 			
 			if(json.actualizaTemplate == "0")
 			{
-				console.log("Plantilla actualizada correctamente");
-				$.unblockUI();
+				console.log("Plantilla actualizada correctamente");				
 				window.location = contextPath + '/infomovil/editarSitio';
 			}
 
+			$.unblockUI();
 		},
 		error : function(json) {
 			console.log("Error");
@@ -288,11 +289,6 @@ function plantillaElegida(indicador)
 function actualizaEstilo()
 {
 	actualizaPlantilla(templates[indice]);
-}
-
-function cargarSitio()
-{
-	
 }
 
 function autosave() {

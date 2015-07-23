@@ -109,20 +109,22 @@
 						class="icon-bar"></span> <span class="icon-bar"></span> <span
 						class="icon-bar"></span>
 				</button>
+				
 				<!-- LOGO BANCO AZTECA - BAZ-->
-				<span class="navbar-brand "><img
+				<span class="navbar-brand" id="logoBaz" style="display:none"><img
 					src="http://landing.infomovil.com/webapp/templates/${ template }/images/logo_baz.png"
-					width="103" height="47" alt="Infomovil" /> </span><span
-					class="marLeft navEditor textWhite">Modo edición 
+					width="103" height="47" alt="Infomovil" /> 
 				</span>
 				<!-- /LOGO BANCO AZTECA - BAZ-->
+				
 				<!-- LOGO INFOMOVIL - REGISTRO GENERAL-->
-				<span class="navbar-brand "><img
+				<span class="navbar-brand" id="logoGral" style="display:none"><img
 					src="http://landing.infomovil.com/webapp/templates/${ template }/images/apple-touch-icon-57x57.png"
-					width="50" height="50" alt="Infomovil" /> </span><span
-					class="marLeft navEditor textWhite">Modo edición 
-				</span>
+					width="50" height="50" alt="Infomovil" /> 
+				</span>					
 				<!-- /LOGO INFOMOVIL - REGISTRO GENERAL-->
+				
+				<span class="marLeft navEditor textWhite">Modo edición</span>
 			</div>
 			<div id="navbar" class="navbar-collapse collapse text-right">
 				<ul class="nav navbar-nav navbar-right">
@@ -140,12 +142,12 @@
 						class="smoothScroll"> Cerrar sesión <img width="20"
 							height="20" alt="Infomovil"
 							src="http://landing.infomovil.com/webapp/templates/${ template }/images/fa-sign-out.png" /></a></li>
-							<!-- OCULTAR CUÁNDO SEA - REGISTRO GENERAL-->
+				<!-- OCULTAR CUÁNDO SEA - REGISTRO GENERAL-->
 				
-				<li><a href="#" class="smoothScroll"><img width="30" height="30" alt="Infomovil"
-							src="<c:url value="/resources/webapp/images/apple-touch-icon-57x57.png"/>" />
-				
+				<li id="idRegGral" style="display:none" class="hidden-xs"><a href="#" class="smoothScroll"><img width="30" height="30" alt="Infomovil"
+							src="<c:url value="/resources/webapp/images/apple-touch-icon-57x57.png"/>" /></a></li>				
 				<!--/ OCULTAR CUÁNDO SEA - REGISTRO GENERAL-->
+				
 				</ul>
 			</div>
 			<!--/.nav-collapse -->
@@ -416,7 +418,7 @@
 						<div class="clear divider"></div>
 					</div>
 					<div class="modal-footer">
-						<button type="button" onClick="cargarSitio()"
+						<button type="button" 
 							class="btn btn-purple text-center col-xs-12 col-sm-12 col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3"
 							data-dismiss="modal">
 							<strong>Continuar editando</strong>
@@ -587,10 +589,15 @@ $('.navbar-collapse ul li a').click(function() {
 		<c:when test="${canalUsuario == 'BAZ'}">
 			$("#publicarTel").css("display", "block");
 			$("#publicarRecurso").css("display", "none");
+			$("#logoBaz").css("display", "block");
+			$("#logoGral").css("display", "none");	
+			$("#idRegGral").css("display", "block");			
 		</c:when>
 		<c:otherwise>
 			$("#publicarRecurso").css("display", "block");	
 			$("#publicarTel").css("display", "none");
+			$("#logoBaz").css("display", "none");
+			$("#logoGral").css("display", "block");		
 		</c:otherwise>
 	</c:choose>
 
