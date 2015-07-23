@@ -98,9 +98,9 @@
 </head>
 <body role="document" data-spy="scroll" data-target=".navbar"
 	data-offset="75" id="page-top" onload="autosave()">
-	<!-- Fixed navbar -->
-	<nav class="navbar navbar-inverse navbar-static-top">
-<!-- PLECA BLANCA	<nav class="navbar navbar-default navbar-static-top"> -->
+	<!-- Fixed navbar --> 
+	<nav class="navbar navbar-${ claseCss } navbar-static-top">
+
 		<div class="container-fluid">
 			<div class="navbar-header">
 				<button type="button" class="navbar-toggle collapsed"
@@ -113,7 +113,7 @@
 				
 				<!-- LOGO BANCO AZTECA - BAZ-->
 
-				<span class="navbar-brand "><img
+				<span class="navbar-brand" id="logoBAZ" style="display:none;"><img
 					src="<c:url value="/resources/webapp/images/logo_baz.png"/>"
 					width="103" height="47" alt="Infomovil" /> </span>
 
@@ -121,53 +121,38 @@
 				
 				<!-- LOGO INFOMOVIL - REGISTRO GENERAL-->
 
-				<span class="navbar-brand "><img
+				<span class="navbar-brand" id="logoGral" style="display:none;"><img
 					src="<c:url value="/resources/webapp/images/apple-touch-icon-57x57.png"/>"
 					width="50" height="50" alt="Infomovil" /> </span>
-<!-- 					<span -->
-<!-- 					class="marLeft navEditor textBlack">Modo edición  -->
-<!-- 				</span> -->
-<span
-					class="marLeft navEditor textWhite">Modo edición 
+ 					
+				<span
+					class="marLeft navEditor ${colorTexto}">Modo edición 
 				</span>
 
 				<!-- /LOGO INFOMOVIL - REGISTRO GENERAL-->
 				
-				<span class="marLeft navEditor textWhite">Modo edición</span>
 			</div>
 			<div id="navbar" class="navbar-collapse collapse text-right">
 				<ul class="nav navbar-nav navbar-right">
-					<li><a href="#" class="smoothScroll textWhite">${usuarioLogueado}
-<!-- 							<img width="20" height="20" alt="Infomovil" -->
-<%-- 							src="<c:url value="/resources/webapp/images/fa-user-bk.png"/>" /> --%>
-<img width="20" height="20" alt="Infomovil"
-							src="<c:url value="/resources/webapp/images/fa-user.png"/>" />
-					</a></li>
+					<li>
+						<a href="#" class="smoothScroll ${colorTexto}">${usuarioLogueado}
+						<img width="20" height="20" alt="Infomovil"	src="<c:url value="/resources/webapp/images/fa-user${ extensionImg }.png"/>" /></a>
+					</li>
 
-					<li><a href="#" data-toggle="modal"
-						data-target="#myModalTemplates" class="smoothScroll textWhite">Elegir
-							estilo 
-<!-- 							<img width="20" height="20" alt="Infomovil" -->
-<%-- 							src="<c:url value="/resources/webapp/images/fa-templates-bk.png"/>" /> --%>
-<img width="20" height="20" alt="Infomovil"
-							src="<c:url value="/resources/webapp/images/fa-templates.png"/>" />
-					</a>
-					<li><a href="<c:url value="/logout"></c:url>"
-						class="smoothScroll textWhite"> Cerrar sesión 
-						
-<!-- 						<img width="20" -->
-<!-- 							height="20" alt="Infomovil" -->
-<%-- 							src="<c:url value="/resources/webapp/images/fa-sign-out-bk.png"/>" /> --%>
-<img width="20"
-							height="20" alt="Infomovil"
-
-							src="<c:url value="/resources/webapp/images/fa-sign-out.png"/>" />
-							</a></li>
+					<li>
+						<a href="#" data-toggle="modal" data-target="#myModalTemplates" class="smoothScroll ${colorTexto}">Elegir estilo 
+							<img width="20" height="20" alt="Infomovil"	src="<c:url value="/resources/webapp/images/fa-templates${ extensionImg }.png"/>" />
+						</a>
+					<li>
+						<a href="<c:url value="/logout"></c:url>" class="smoothScroll ${colorTexto}"> Cerrar sesión					
+							<img width="20"	height="20" alt="Infomovil" src="<c:url value="/resources/webapp/images/fa-sign-out${ extensionImg }.png"/>" />
+						</a>
+					</li>
 							<!-- OCULTAR CUÁNDO SEA - REGISTRO GENERAL-->
-				
-				<li class="hidden-xs"><a href="#" class="smoothScroll"><img width="30" height="30" alt="Infomovil"
+				<!--  Mostrar para BAZ -->
+				<li class="hidden-xs" id="idRegBAZ" style="display: none;"><a href="#" class="smoothScroll"><img width="30" height="30" alt="Infomovil"
 							src="<c:url value="/resources/webapp/images/apple-touch-icon-57x57.png"/>" /></a></li>
-
+				<!--  /Mostrar para BAZ -->
 				
 				<li id="idRegGral" style="display:none" class="hidden-xs"><a href="#" class="smoothScroll"><img width="30" height="30" alt="Infomovil"
 							src="<c:url value="/resources/webapp/images/apple-touch-icon-57x57.png"/>" /></a></li>				
@@ -238,7 +223,7 @@
 										class="form-control colorA text-center col-xs-11"
 										maxlength="100" placeholder="Correo" required="required"
 										<c:if test="${not empty correoElectronico}"> value = "${ correoElectronico }" </c:if>
-										id="txtCorreo" />
+										id="txtCorreo" style="text-transform:lowercase;"/>
 									</span>
 									<p class="help-block"></p>
 								</div>
@@ -288,7 +273,7 @@
 									<div class="input-group-addon">www.</div>
 									<input type="text" class="form-control textBlack text-center"
 										id="nombreDominioBusqueda" name="nombreDominioBusqueda"
-										placeholder="Nombra tu sitio" maxlength="63" style="text-transform:lowercase;"/>
+										placeholder="Nombra tu sitio" maxlength="63" style="text-transform:lowercase;" autocomplete="off"/>
 									<div class="input-group-addon">.tel</div>
 								</div>
 								<input type="hidden" id="tipoDominioBusqueda"
@@ -371,7 +356,7 @@
 	          </div>
 	          <div class="col-xs-12 col-sm-6">
 	            <div class="divider hidden-xs"></div>
-	            <input type="text" placeholder="Nombra tu sitio" value="" id="nombreDominioRec" name="nombreDominioRec" class="form-control text-center" style="text-transform:lowercase;">
+	            <input type="text" placeholder="Nombra tu sitio" value="" id="nombreDominioRec" name="nombreDominioRec" class="form-control text-center" autocomplete="off" style="text-transform:lowercase;">
 	            <input type="hidden" id="tipoDominioRec" name="tipoDominioRec" value="recurso"/>
 	          </div>
 	          <div class="form-group col-xs-12 col-sm-12 col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3">
@@ -590,6 +575,7 @@
 <%-- 		<h1>${ template }</h1> --%>
 <%-- 		<h1>${ sitioWeb }</h1> --%>
 <%-- 		<h1>${ canalUsuario }</h1> --%>
+<%-- <h1>${ claseCss }</h1> --%>
 		<input type="hidden" id="plantilla" name="plantilla"
 			<c:if test="${not empty template}"> value = "${ template }" </c:if>>
 		<!-- Bootstrap core JavaScript
@@ -637,15 +623,16 @@ $('.navbar-collapse ul li a').click(function() {
 		<c:when test="${canalUsuario == 'BAZ'}">
 			$("#publicarTel").css("display", "block");
 			$("#publicarRecurso").css("display", "none");
-			$("#logoBaz").css("display", "block");
-			$("#logoGral").css("display", "none");	
-			$("#idRegGral").css("display", "block");			
+			$("#logoBAZ").css("display", "block");
+			$("#idRegBAZ").css("display", "block");			
+			$("#logoGral").css("display", "none");				
 		</c:when>
 		<c:otherwise>
 			$("#publicarRecurso").css("display", "block");	
 			$("#publicarTel").css("display", "none");
-			$("#logoBaz").css("display", "none");
-			$("#logoGral").css("display", "block");		
+			$("#logoBAZ").css("display", "none");
+			$("#idRegBAZ").css("display", "none");	
+			$("#logoGral").css("display", "block");	
 		</c:otherwise>
 	</c:choose>
 

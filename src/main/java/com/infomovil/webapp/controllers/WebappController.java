@@ -271,9 +271,9 @@ public class WebappController
 	{		
 		HashMap<String, Object> model = new HashMap<String, Object>();
 	    template = "Coverpage1azul";
-	    tipoUsuario = "canal";
 		sitioWeb = "SIN_PUBLICAR";
 		canal = "NO_TIENE";
+		claseCss = "default";
 		
 		try
 		{
@@ -314,10 +314,16 @@ public class WebappController
 						!(campania.contains("basica") || campania.contains("basico")))
 				{
 					canal = "BAZ";
+					claseCss = "default";
+					colorTexto = "textBlack";
+					extensionImg = "-bk";
 				}
 				else
 				{
 					model.put("dominios", obtenerDominios());
+					claseCss = "inverse";
+					colorTexto = "textWhite";
+					extensionImg = "";
 				}
 				
 				model.put("usuarioLogueado", correo);
@@ -332,6 +338,9 @@ public class WebappController
 				model.put("fechaIniTel", fechaIni);
 				model.put("fechaFinTel", fechaFin);
 				model.put("canalUsuario", canal);
+				model.put("claseCss", claseCss);
+				model.put("colorTexto", colorTexto);
+				model.put("extensionImg", extensionImg);
 			}
 			else if (wsRespuesta.getCodeError().equals("-3"))
 			{
@@ -404,8 +413,11 @@ public class WebappController
 	private String fechaFin = "SIN_FECHA";
 	private String sitioWeb = "SIN_PUBLICAR";
 	private String canal = "NO_TIENE";
-	private String tipoUsuario = "normal";
+//	private String tipoUsuario = "normal";
 	private String campania = "basica";
+	private String claseCss = "default";
+	private String colorTexto = "textWhite";
+	private String extensionImg;
 	private String template ;
 	private String password;
 	private String correo;

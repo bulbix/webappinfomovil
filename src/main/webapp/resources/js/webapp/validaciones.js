@@ -317,7 +317,7 @@ function autosave() {
 					data : {
 						nombreEmpresa : nombreNegocio,
 						descripcionCorta : descripcionCorta,
-						correoElectronico : correo,
+						correoElectronico : correo.toLowerCase(),
 						telefono : telefono, 
 						plantilla : $("#plantilla").val()
 					},
