@@ -91,10 +91,13 @@
     <div class="container">
     
 	<c:if test="${not empty mensaje}">
-			<div class="errorblock">
-				${mensaje}</div>
+				<div class="errorblock col-xs-12 text-center textBlack">
+				<h5><img src="<c:url value="/resources/webapp/images/fa-informacion.png"/>" width="40" height="40" alt="${mensaje}" /> ${mensaje} </h4>
+                </div>
+<!-- 			<div class="errorblock"> -->
+<%-- 				${mensaje}</div> --%>
 	</c:if>
-          <form name='f' action="executeResetPassword" method='POST' >
+          <form name='f' action="<c:url value="/executeResetPassword"/>" method='POST' >
         
         <!--email-->
         <div class="form-group col-xs-12 col-sm-12 col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3">

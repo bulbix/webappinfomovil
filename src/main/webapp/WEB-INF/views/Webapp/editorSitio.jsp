@@ -459,13 +459,14 @@
 		</div>
 		<!--/MODAL FAIL-->
 		
-		
-		<!-- MODAL WELCOME -->
+
+		<!--MODAL Registro-->
 		<div id="myModalRegistro" class="modal fade" tabindex="-1" role="dialog"
 			aria-labelledby="myModalLabel" aria-hidden="true">
 			<div class="modal-dialog modal-lg">
 				<div class="modal-content">
 					<div class="modal-header">
+
 						<button type="button" class="close textBlack" data-dismiss="modal"
 							aria-label="Close">
 							<span aria-hidden="true">&times;</span>
@@ -498,20 +499,24 @@
 							
 							
 						</div>
+
+						
 						<div class="clear divider"></div>
 					</div>
 					<div class="modal-footer">
 						<button type="button"
 							class="btn btn-purple text-center col-xs-12 col-sm-12 col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3"
 							data-dismiss="modal">
+
 							<strong>Continuar</strong>
+
 						</button>
 					</div>
 				</div>
 			</div>
 		</div>
-		
-		<!-- /MODAL WELCOME -->
+		<!--/MODAL Registro-->
+
 		<!--MODAL TEMPLATES-->
 		<div id="modalTemplates"></div>
 		<!-- <div id="myModalTemplates" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"><div class="modal-dialog modal-lg"><div class="modal-content"><div class="modal-header"><button type="button" class="close textBlack" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button><p class="modal-title textBlack">Elije tu estilo</p></div><div class="modal-body bgWhite"><ul class="bxslider"><li><img src="https://s3.amazonaws.com/landing.infomovil.com/webapp/templates/Coverpage1azul/templateVacio.png" title="Funky roots"></li><li><img src="https://s3.amazonaws.com/landing.infomovil.com/webapp/templates/Coverpage2/templateVacio.png" title="Funky roots"></li></ul></div><div class="modal-footer"><button type="button" class="btn btn-purple" data-dismiss="modal">Cerrar</button></div></div></div></div> -->
@@ -599,7 +604,7 @@ $('.navbar-collapse ul li a').click(function() {
 		
 		</c:otherwise>
 	</c:choose>	
-	
+
 	<c:if test="${registroExitoso =='SI'}">
 		$("#myModalRegistro").modal('show');
 	</c:if>
