@@ -192,7 +192,7 @@ public class WebappController
 		HashMap<String, Object> model = new HashMap<String, Object>();
 		vista = "Webapp/registrar";
 		
-		if (nombre == null || correo == null)
+		if (nombre == null || correo == null || codigo == null)
 			return validaURL("Webapp/validarURL");
 		else
 		{
