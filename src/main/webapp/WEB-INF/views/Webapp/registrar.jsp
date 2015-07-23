@@ -120,7 +120,8 @@
               <div class="control-group">
             <label class="control-label hidden-xs"></label>
             <div class="controls">
-                  <input type="password" class="form-control" placeholder="Contraseña" id="contrasenia" name="contrasenia"/>
+                  <input type="password" class="form-control" placeholder="Contraseña" id="contrasenia" name="contrasenia" data-validation-regex-regex="(?!^[0-9]*$)(?!^[a-zA-Z]*$)^([a-zA-Z0-9]{8,15})$" 
+        				data-validation-regex-message="Contraseña debe ser de 8 a 15 caracteres (letras y números)"/>
                   <p class="help-block textBlack"></p>
                 </div>
           </div>

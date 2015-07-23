@@ -204,14 +204,17 @@ public class WebappController
 			{
 				Util.loginUsuario(correo, passwordDefault);
 				vista = "redirect:/infomovil/editarSitio";
+				redirectAttributes.addFlashAttribute("registroExitoso", "SI");
 			}
-			else{
+			else
+			{
 				model.put("ctaCorreo", correo);
 				model.put("errorCta", descripcionError);
 				ModelAndView modelAndView =  new ModelAndView("redirect:/login");
 				redirectAttributes.addFlashAttribute("ctaCorreo", correo);
 				redirectAttributes.addFlashAttribute("errorCta", descripcionError);
-
+				redirectAttributes.addFlashAttribute("registroExitoso", "NO");
+				
 				return modelAndView;
 			}
 			
@@ -232,6 +235,7 @@ public class WebappController
 		{
 			Util.loginUsuario(correo, contrasenia);
 			vista = "redirect:/infomovil/editarSitio";
+			redirectAttributes.addFlashAttribute("registroExitoso", "SI");
 		}
 		else
 		{
@@ -240,7 +244,8 @@ public class WebappController
 			ModelAndView modelAndView =  new ModelAndView("redirect:/login");
 			redirectAttributes.addFlashAttribute("ctaCorreo", correo);
 			redirectAttributes.addFlashAttribute("errorCta", descripcionError);
-
+			redirectAttributes.addFlashAttribute("registroExitoso", "NO");
+			
 			return modelAndView;
 		}
 		
