@@ -100,6 +100,7 @@
 	data-offset="75" id="page-top" onload="autosave()">
 	<!-- Fixed navbar -->
 	<nav class="navbar navbar-inverse navbar-static-top">
+<!-- PLECA BLANCA	<nav class="navbar navbar-default navbar-static-top"> -->
 		<div class="container-fluid">
 			<div class="navbar-header">
 				<button type="button" class="navbar-toggle collapsed"
@@ -111,39 +112,52 @@
 				</button>
 				<!-- LOGO BANCO AZTECA - BAZ-->
 				<span class="navbar-brand "><img
-					src="http://landing.infomovil.com/webapp/templates/${ template }/images/logo_baz.png"
-					width="103" height="47" alt="Infomovil" /> </span><span
-					class="marLeft navEditor textWhite">Modo edición 
-				</span>
+					src="<c:url value="/resources/webapp/images/logo_baz.png"/>"
+					width="103" height="47" alt="Infomovil" /> </span>
 				<!-- /LOGO BANCO AZTECA - BAZ-->
 				<!-- LOGO INFOMOVIL - REGISTRO GENERAL-->
 				<span class="navbar-brand "><img
-					src="http://landing.infomovil.com/webapp/templates/${ template }/images/apple-touch-icon-57x57.png"
-					width="50" height="50" alt="Infomovil" /> </span><span
+					src="<c:url value="/resources/webapp/images/apple-touch-icon-57x57.png"/>"
+					width="50" height="50" alt="Infomovil" /> </span>
+<!-- 					<span -->
+<!-- 					class="marLeft navEditor textBlack">Modo edición  -->
+<!-- 				</span> -->
+<span
 					class="marLeft navEditor textWhite">Modo edición 
 				</span>
 				<!-- /LOGO INFOMOVIL - REGISTRO GENERAL-->
 			</div>
 			<div id="navbar" class="navbar-collapse collapse text-right">
 				<ul class="nav navbar-nav navbar-right">
-					<li class="active"><a href="#" class="smoothScroll">${usuarioLogueado}
-							<img width="20" height="20" alt="Infomovil"
-							src="http://landing.infomovil.com/webapp/templates/${ template }/images/fa-user.png" />
+					<li><a href="#" class="smoothScroll textWhite">${usuarioLogueado}
+<!-- 							<img width="20" height="20" alt="Infomovil" -->
+<%-- 							src="<c:url value="/resources/webapp/images/fa-user-bk.png"/>" /> --%>
+<img width="20" height="20" alt="Infomovil"
+							src="<c:url value="/resources/webapp/images/fa-user.png"/>" />
 					</a></li>
 
 					<li><a href="#" data-toggle="modal"
-						data-target="#myModalTemplates" class="smoothScroll">Elegir
-							estilo <img width="20" height="20" alt="Infomovil"
+						data-target="#myModalTemplates" class="smoothScroll textWhite">Elegir
+							estilo 
+<!-- 							<img width="20" height="20" alt="Infomovil" -->
+<%-- 							src="<c:url value="/resources/webapp/images/fa-templates-bk.png"/>" /> --%>
+<img width="20" height="20" alt="Infomovil"
 							src="<c:url value="/resources/webapp/images/fa-templates.png"/>" />
 					</a>
 					<li><a href="<c:url value="/logout"></c:url>"
-						class="smoothScroll"> Cerrar sesión <img width="20"
+						class="smoothScroll textWhite"> Cerrar sesión 
+						
+<!-- 						<img width="20" -->
+<!-- 							height="20" alt="Infomovil" -->
+<%-- 							src="<c:url value="/resources/webapp/images/fa-sign-out-bk.png"/>" /> --%>
+<img width="20"
 							height="20" alt="Infomovil"
-							src="http://landing.infomovil.com/webapp/templates/${ template }/images/fa-sign-out.png" /></a></li>
+							src="<c:url value="/resources/webapp/images/fa-sign-out.png"/>" />
+							</a></li>
 							<!-- OCULTAR CUÁNDO SEA - REGISTRO GENERAL-->
 				
-				<li><a href="#" class="smoothScroll"><img width="30" height="30" alt="Infomovil"
-							src="<c:url value="/resources/webapp/images/apple-touch-icon-57x57.png"/>" />
+				<li class="hidden-xs"><a href="#" class="smoothScroll"><img width="30" height="30" alt="Infomovil"
+							src="<c:url value="/resources/webapp/images/apple-touch-icon-57x57.png"/>" /></a></li>
 				
 				<!--/ OCULTAR CUÁNDO SEA - REGISTRO GENERAL-->
 				</ul>
@@ -476,12 +490,12 @@
 						</p>
 					</div>
 					<div class="modal-body bgWhite">
-					<h1
-							class="textBlack col-xs-12 col-sm-12 text-center" style="font-weight:700; ">&iexcl;Registro exitoso!</h1>
 					<h2
+							class="textBlack text-center col-xs-12 col-sm-12 text-center" style="font-weight:700; ">&iexcl;Registro exitoso!</h2>
+					<h3
 							class="textBlack col-xs-12 col-sm-12 text-center" style="color:#7c41bc !important;" >
 							Bienvenido a Infomovil
-						</h2>
+						</h3>
 						
 						<div class="clear"></div>
 						<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-center textBlack">
@@ -489,12 +503,34 @@
 						<div class="clear"></div>
 						<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
 							
-								<p class="text-center">
-									<ol class="text-center col-xs-12 col-sm-12 col-md-8 col-md-offset-5 col-lg-8 col-lg-offset-5" style="font-weight:700;">
-<li>Selecciona un estilo</li>
-<li>Llena tus datos</li>
-<li>Pública tu página</li>
-</ol>
+								<p class="text-left">
+								<table width="80%" border="0" class="text-left col-xs-12 col-sm-12 col-md-4 col-md-offset-4 col-lg-4 col-lg-offset-4" style="font-weight:700;">
+  <tbody>
+    <tr>
+      <td><img width="20" height="20" alt="Infomovil"
+							src="<c:url value="/resources/webapp/images/paso1.png"/>" /></td>
+      <td>Selecciona un estilo </td>
+      <td><img width="20" height="20" alt="Infomovil"
+							src="<c:url value="/resources/webapp/images/imgPaso1.png"/>" /></td>
+    </tr>
+    <tr>
+      <td><img width="20" height="20" alt="Infomovil"
+							src="<c:url value="/resources/webapp/images/paso2.png"/>" /></td>
+      <td>Llena tus datos</td>
+      <td><img width="20" height="20" alt="Infomovil"
+							src="<c:url value="/resources/webapp/images/imgPaso2.png"/>" /></td>
+    </tr>
+    <tr>
+      <td><img width="20" height="20" alt="Infomovil"
+							src="<c:url value="/resources/webapp/images/paso3.png"/>" /></td>
+      <td>Pública tu página</td>
+      <td><img width="20" height="20" alt="Infomovil"
+							src="<c:url value="/resources/webapp/images/imgPaso3.png"/>" /></td>
+    </tr>
+  </tbody>
+</table>
+
+									
 								</p>
 							
 							
@@ -580,6 +616,7 @@ $('body').scrollspy({
 $('.navbar-collapse ul li a').click(function() {
     $('.navbar-toggle:visible').click();
 });
+
 </script>
 
 <script>
