@@ -44,8 +44,8 @@ public class WebappController
 		
 		try
 		{
-			correo = Util.getUserLogged().getUsername();
-			password = Util.getUserLogged().getPassword();
+			String correo = Util.getUserLogged().getUsername();
+			String password = Util.getUserLogged().getPassword();
 			
 			String nombreUsuario = Util.getCurrentSession().getAttribute("nombreUsuario")!=null?
 					Util.getCurrentSession().getAttribute("nombreUsuario").toString():" ";
@@ -78,8 +78,8 @@ public class WebappController
 		
 		try
 		{
-			correo = Util.getUserLogged().getUsername();
-			password = Util.getUserLogged().getPassword();
+			String correo = Util.getUserLogged().getUsername();
+			String password = Util.getUserLogged().getPassword();
 			
 			String nombreUsuario = Util.getCurrentSession().getAttribute("nombreUsuario")!=null?
 					Util.getCurrentSession().getAttribute("nombreUsuario").toString():" ";
@@ -112,8 +112,8 @@ public class WebappController
 		
 		try
 		{
-			correo = Util.getUserLogged().getUsername();
-			password = Util.getUserLogged().getPassword();	
+			String correo = Util.getUserLogged().getUsername();
+			String password = Util.getUserLogged().getPassword();	
 			nombrePersona = Util.getCurrentSession().getAttribute("nombreUsuario")!=null?
 					Util.getCurrentSession().getAttribute("nombreUsuario").toString():" ";
 		
@@ -277,9 +277,10 @@ public class WebappController
 		
 		try
 		{
-			correo = Util.getUserLogged().getUsername();
-			password = Util.getUserLogged().getPassword();
+			String correo = Util.getUserLogged().getUsername();
+			String password = Util.getUserLogged().getPassword();
 			
+			logger.info("editarSitio------> correo::::: " + correo + ", password:::: " + password);
 			wsRespuesta = wsCliente.crearSitioCargar(correo, password);
 			
 			if (wsRespuesta.getCodeError().equals("0"))
@@ -419,8 +420,6 @@ public class WebappController
 	private String colorTexto = "textWhite";
 	private String extensionImg;
 	private String template ;
-	private String password;
-	private String correo;
 	private HashMap<String, Object> dominios = new HashMap<String, Object>();
 	private static final Logger logger = Logger.getLogger(WebappController.class);
 	private ClientWsInfomovil wsCliente = new ClientWsInfomovil();
