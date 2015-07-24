@@ -108,7 +108,7 @@
               <div class="control-group">
             <label class="control-label hidden-xs"></label>
             <div class="controls">
-                  <input type="email" class="form-control" placeholder="Correo" id="correo" name="correo"/>
+                  <input type="email" class="form-control" placeholder="Correo" id="correo" name="correo" required="required"/>
                   <p class="help-block textBlack"></p>
                 </div>
           </div>
@@ -120,7 +120,7 @@
               <div class="control-group">
             <label class="control-label hidden-xs"></label>
             <div class="controls">
-                  <input type="password" class="form-control" placeholder="Contraseña" id="contrasenia" name="contrasenia" data-validation-regex-regex="(?!^[0-9]*$)(?!^[a-zA-Z]*$)^([a-zA-Z0-9]{8,15})$" 
+                  <input type="password" class="form-control" placeholder="Contraseña" id="contrasenia" name="contrasenia" required="required" data-validation-regex-regex="(?!^[0-9]*$)(?!^[a-zA-Z]*$)^([a-zA-Z0-9]{8,15})$" 
         				data-validation-regex-message="Contraseña debe ser de 8 a 15 caracteres (letras y números)"/>
                   <p class="help-block textBlack"></p>
                 </div>
@@ -249,32 +249,7 @@
 <script src="resources/webapp/js/jquery.bxslider.min.js"></script> 
 <script src="resources/webapp/js/jqBootstrapValidation.js"></script> 
 <script>
-  $(function () { $("input,select,textarea").not("[type=submit]").jqBootstrapValidation(); } );
-</script> 
-<script>
-$(document).ready(function(){
-  $('.slider1').bxSlider({
-    slideWidth: 400,
-    minSlides: 1,
-    maxSlides: 3,
-	moveSlides: 1,
-    slideMargin: 0,
-	infiniteLoop: false,
-  hideControlOnEnd: true
-  });
-  $('.slider2').bxSlider({
-    slideWidth: 800,
-    minSlides: 1,
-    maxSlides: 1,
-	moveSlides: 1,
-    slideMargin: 0,
-	captions: true,
-	controls:true,
-	infiniteLoop: false,
-  hideControlOnEnd: true
-  });
-  
-});
+  $(function () { $("input,select,textarea,password").not("[type=submit]").jqBootstrapValidation(); } );
 </script> 
 <script>
 
