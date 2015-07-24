@@ -252,31 +252,6 @@
   $(function () { $("input,select,textarea").not("[type=submit]").jqBootstrapValidation(); } );
 </script> 
 <script>
-$(document).ready(function(){
-  $('.slider1').bxSlider({
-    slideWidth: 400,
-    minSlides: 1,
-    maxSlides: 3,
-	moveSlides: 1,
-    slideMargin: 0,
-	infiniteLoop: false,
-  hideControlOnEnd: true
-  });
-  $('.slider2').bxSlider({
-    slideWidth: 800,
-    minSlides: 1,
-    maxSlides: 1,
-	moveSlides: 1,
-    slideMargin: 0,
-	captions: true,
-	controls:true,
-	infiniteLoop: false,
-  hideControlOnEnd: true
-  });
-  
-});
-</script> 
-<script>
 
 // jQuery for page scrolling feature - requires jQuery Easing plugin
 
