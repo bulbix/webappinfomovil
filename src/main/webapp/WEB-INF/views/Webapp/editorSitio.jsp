@@ -167,7 +167,7 @@
 	<!-- Botón Nuevo Estilo -->
 	<div class="seccTop bgBlack"><div class="container" ><a href="#" data-toggle="modal"
 						data-target="#myModalTemplates" class="col-xs-12 btn btn-default btn-outline navEditor"><strong>¡Nuevo!</strong> Elige estilo <img width="20" height="20" alt="Infomovil"
-							src="<c:url value="/resources/webapp/images/fa-templates.png"/>" /></a></div></div>
+							src="<c:url value="/resources/webapp/images/fa-templates.png"/>" /><br />¡Lo puedes cambiar las veces que quieras!</a></div></div>
 							<!-- /Botón Nuevo Estilo -->
 	
 	
@@ -258,12 +258,12 @@
 		<footer class="footer bgBlack"> 
 		
 		<!--Publicar TEL-->
-		<div id="publicarTel" >
+		<div id="publicarTel" style="display:none;" >
 			<div class="bgDobleBlack"></div>
 			<section class="bgFondo publicar">
 				<div class="container whiteBg">
 					<div class="row">
-						<h3 class=" text-center textBlack">&iexcl;Ponle un nombre a tu sitio web!</h3>
+						<h3 class=" text-center textBlack">&iexcl;Ponle un nombre a tu p&aacute;gina web!</h3>
 						<div
 							class="form-group col-xs-12 col-sm-12 col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3">
 							<div class="divider"></div>
@@ -342,12 +342,12 @@
 <!-- 	  </section> -->
 <!-- 	</div> -->
 	
-	<div id="publicarRecurso">
+	<div id="publicarRecurso" style="display:none;">
 	  <div class="bgDobleBlack" ></div>
 	  <section class="bgFondo publicar">
 	    <div class="container whiteBg" >
 	      <div class="row" >
-	        <h3 class=" text-center textBlack">&iexcl;Ponle un nombre a tu sitio web!</h3>
+	        <h3 class=" text-center textBlack">&iexcl;Ponle un nombre a tu p&aacute;gina web!</h3>
 	        <div class="form-group col-xs-12 col-sm-12 col-md-12 col-lg-12">
 	          <div class="col-xs-12 col-sm-6">
 	            <div class="divider"></div>
@@ -397,10 +397,10 @@
 						<h5
 							class="textBlack col-xs-12 col-sm-12 col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3 text-center">
 							Ya tomaste el primer paso y te pusiste en línea.<br /> El proceso
-							de publicación de tu sitio web puede tardar unos minutos.
+							de publicación de tu p&aacute;gina web puede tardar unos minutos.
 						</h5>
 						<div class="clear"></div>
-						<p class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-center textBlack">Descarga
+						<p class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-center textBlack textPurple">Descarga
 							nuestra app si deseas agregar más contenido.</p>
 						<div class="clear"></div>
 						<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
@@ -521,7 +521,7 @@
     <tr>
       <td><img width="20" height="20" alt="Infomovil"
 							src="<c:url value="/resources/webapp/images/paso3.png"/>" /></td>
-      <td>Pública tu página</td>
+      <td>Pública tu p&aacute;gina web</td>
       <td><img width="20" height="20" alt="Infomovil"
 							src="<c:url value="/resources/webapp/images/imgPaso3.png"/>" /></td>
     </tr>

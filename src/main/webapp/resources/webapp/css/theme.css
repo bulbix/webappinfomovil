@@ -1,6 +1,6 @@
 @import url(http://fonts.googleapis.com/css?family=Lato:300,400,700,900);
 body { /*padding-bottom: 30px;*/ overflow-x: hidden; font-family: 'Lato', Arial, sans-serif; font-weight: 300; background: url(../images/bg.png) no-repeat center center fixed; -webkit-background-size: 100% auto; background-attachment: fixed; -moz-background-size: cover; -o-background-size: cover; background-size: cover; }
-.bodyError { background: url(../images/bg.png) no-repeat center top; background-size: cover; margin: 0; padding: 0; }
+/*.bodyError { background: url(../images/bg.png) no-repeat center top; background-size: cover; margin: 0; padding: 0; }*/
 p { font-size: 1.3em; line-height: 200%; }
 .clear { clear: both; }
 .theme-dropdown .dropdown-menu { position: static; display: block; margin-bottom: 20px; }
