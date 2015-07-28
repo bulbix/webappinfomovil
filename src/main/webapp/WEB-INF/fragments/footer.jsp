@@ -1,0 +1,1 @@
+<p>Yo soy el footer ${varfooter}</p>

@@ -16,6 +16,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -54,13 +55,19 @@ public class HomeController {
 	}
 	
 	@RequestMapping(value = "/home/luis", method = RequestMethod.GET)
-	
 	public String luis(Model model) {
 		Util.loginUsuario("luis@mail.com", "garbage1");
 		User user = Util.getUserLogged();
 		model.addAttribute("usuario", user.getUsername());
 		model.addAttribute("password", user.getPassword());
 		return "home";
+	}
+	
+	@RequestMapping(value = "/testTiles", method = RequestMethod.GET)
+	public String testTiles(ModelMap model) {
+		model.addAttribute("varheader", "Var Header");
+		model.addAttribute("varfooter", "Var Footer");
+		return "/testTiles";
 	}
 	
 }
