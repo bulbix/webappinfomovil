@@ -258,7 +258,7 @@
 		<footer class="footer bgBlack"> 
 		
 		<!--Publicar TEL-->
-		<div id="publicarTel" >
+		<div id="publicarTel" style="display:none;">
 			<div class="bgDobleBlack"></div>
 			<section class="bgFondo publicar">
 				<div class="container whiteBg">
@@ -342,7 +342,7 @@
 <!-- 	  </section> -->
 <!-- 	</div> -->
 	
-	<div id="publicarRecurso">
+	<div id="publicarRecurso" style="display:none;">
 	  <div class="bgDobleBlack" ></div>
 	  <section class="bgFondo publicar">
 	    <div class="container whiteBg" >
