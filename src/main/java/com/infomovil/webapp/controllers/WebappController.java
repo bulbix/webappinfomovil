@@ -11,6 +11,14 @@ import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.validator.routines.EmailValidator;
 import org.apache.log4j.Logger;
 import org.springframework.stereotype.Controller;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler;
+import org.springframework.security.web.authentication.rememberme.TokenBasedRememberMeServices;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.CookieValue;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -24,7 +32,10 @@ import com.infomovil.webapp.util.Util;
 
 @Controller
 public class WebappController 
-{	
+{
+	@Autowired
+	TokenBasedRememberMeServices remember;
+
 	@RequestMapping(value = "/infomovil/guardarInformacion", method = RequestMethod.GET, produces = "application/json")
 	@ResponseBody
 	public Map<String, String> guardarInformacion(@RequestParam String nombreEmpresa, 
@@ -185,7 +196,8 @@ public class WebappController
 	}
 
 	@RequestMapping(value = "/registrarUsuario", method = RequestMethod.GET)
-	public ModelAndView registrarUsuario(String nombre, String codigo, String correo, HttpServletRequest request, RedirectAttributes redirectAttributes) 
+	public ModelAndView registrarUsuario(String nombre, String codigo, String correo, HttpServletRequest request,
+			HttpServletResponse response, RedirectAttributes redirectAttributes) 
 	{
 		HashMap<String, Object> model = new HashMap<String, Object>();
 		RespuestaVO wsRespuesta = new RespuestaVO();
@@ -196,6 +208,8 @@ public class WebappController
 			return validaURL("Webapp/validarURL");
 		else
 		{
+			logoutInfomovil(request, response);
+			
 			wsRespuesta = wsCliente.crearSitioRegistrar(correo, passwordDefault, nombre, codigo.toLowerCase());
 			codigoError = wsRespuesta.getCodeError();
 			descripcionError = wsRespuesta.getMsgError();
@@ -203,11 +217,15 @@ public class WebappController
 			if (codigoError.equals("0"))
 			{
 				Util.loginUsuario(correo, passwordDefault);
+				remember.onLoginSuccess(request, response, SecurityContextHolder.getContext().getAuthentication());
+				
 				vista = "redirect:/infomovil/editarSitio";
 				redirectAttributes.addFlashAttribute("registroExitoso", "SI");
 			}
 			else
 			{
+				logoutInfomovil(request, response);
+				
 				model.put("ctaCorreo", correo);
 				model.put("errorCta", descripcionError);
 				ModelAndView modelAndView =  new ModelAndView("redirect:/login");
@@ -221,9 +239,19 @@ public class WebappController
 			return new ModelAndView(vista, model);
 		}
 	}
+	
+	private void logoutInfomovil(HttpServletRequest request, HttpServletResponse response){
+		//logout
+		Authentication authenticate = SecurityContextHolder.getContext().getAuthentication();
+		if (authenticate != null){    
+		    new SecurityContextLogoutHandler().logout(request, response, authenticate);
+		    remember.logout(request, response, authenticate);
+		}
+	}
 
 	@RequestMapping(value = "/registrar", method = RequestMethod.POST)
-	public ModelAndView registrar(String codigo, String correo, String contrasenia, HttpServletRequest request, RedirectAttributes redirectAttributes) 
+	public ModelAndView registrar(String codigo, String correo, String contrasenia, HttpServletRequest request, 
+			HttpServletResponse response, RedirectAttributes redirectAttributes) 
 	{
 		HashMap<String, Object> model = new HashMap<String, Object>();
 		RespuestaVO wsRespuesta = new RespuestaVO();
@@ -236,6 +264,7 @@ public class WebappController
 		if (codigoError.equals("0"))
 		{
 			Util.loginUsuario(correo, contrasenia);
+			remember.onLoginSuccess(request, response, SecurityContextHolder.getContext().getAuthentication());
 			vista = "redirect:/infomovil/editarSitio";
 			redirectAttributes.addFlashAttribute("registroExitoso", "SI");
 		}
@@ -255,9 +284,15 @@ public class WebappController
 	}
 	
 	@RequestMapping(value = "/registrar", method = RequestMethod.GET)
-	public String registra() 
+	public String registra(@CookieValue(value = "editarSitioInfomovil", defaultValue = "") String editarSitioInfomovil) 
 	{
-		return "Webapp/registrar";
+		if(StringUtils.isEmpty(editarSitioInfomovil)){
+			return "Webapp/registrar";
+		}
+		else{
+			return "redirect:/infomovil/editarSitio";
+		}
+		
 	}
 	
 	private ModelAndView validaURL(String vista)

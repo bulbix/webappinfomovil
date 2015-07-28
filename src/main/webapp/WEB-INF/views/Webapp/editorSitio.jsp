@@ -154,7 +154,8 @@
 							src="<c:url value="/resources/webapp/images/apple-touch-icon-57x57.png"/>" /></a></li>
 				<!--  /Mostrar para BAZ -->
 				
-				<li id="idRegGral" style="display:none" class="hidden-xs"><a href="#" class="smoothScroll"><img width="30" height="30" alt="Infomovil"
+				<li id="idRegGral" style="display:none" class="hidden-xs"><a href="#" class="smoothScroll">
+				<img width="30" height="30" alt="Infomovil"
 							src="<c:url value="/resources/webapp/images/apple-touch-icon-57x57.png"/>" /></a></li>				
 				<!--/ OCULTAR CUÁNDO SEA - REGISTRO GENERAL-->
 				
@@ -165,9 +166,10 @@
 	</nav>
 	<!-- / Fixed navbar -->
 	<!-- Botón Nuevo Estilo -->
-	<div class="seccTop bgBlack"><div class="container" ><a href="#" data-toggle="modal"
-						data-target="#myModalTemplates" class="col-xs-12 btn btn-default btn-outline navEditor"><strong>¡Nuevo!</strong> Elige estilo <img width="20" height="20" alt="Infomovil"
-							src="<c:url value="/resources/webapp/images/fa-templates.png"/>" /></a></div></div>
+	<div class="seccTop bgBlack">
+	<div class="" >
+	<a href="#" data-toggle="modal" data-target="#myModalTemplates" class="col-xs-12 col-sm-6 col-sm-offset-3 col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3 btn btn-default btn-outline navEditor"><strong>¡Nuevo!</strong> Elige estilo <img width="20" height="20" alt="Infomovil"
+							src="<c:url value="/resources/webapp/images/fa-templates.png"/>" /><br /><span class="text-center _90em">¡Lo puedes cambiar las veces que quieras!</span></a></div></div>
 							<!-- /Botón Nuevo Estilo -->
 	
 	
@@ -256,14 +258,37 @@
 
 		<!--Footer-->
 		<footer class="footer bgBlack"> 
+		<div class="dividerSmall"></div>
+		<p class="text-center"><strong>Descarga la app de Infomovil <span class="hidden-xs">y mejora tu página web:</span></strong><br/></p>
+		<div class="col-xs-12">
+		
+              <ul class="txtWhite text-left _09em col-xs-12 col-sm-8 col-sm-offset-3 col-md-8 col-md-offset-3" style="list-style:none;">
+                
+                <li><img width="30" height="30" alt="Infomovil"
+							src="<c:url value="/resources/webapp/images/ico_pp_youtube.png"/>" /> Agrega imágenes y video</li>
+                <li><img width="30" height="30" alt="Infomovil"
+							src="<c:url value="/resources/webapp/images/ico_prom_icn.png"/>" /> Arma tu promoción <span class="hidden-xs">y compártela por Facebook</span></li>
+                <li><img width="30" height="30" alt="Infomovil"
+							src="<c:url value="/resources/webapp/images/icn_marc_maps.png"/>" /> Coloca tu ubicación <span class="hidden-xs">con google maps</span></li>
+              </ul>
+             
+             <div class="clearfix"></div>
+              <div class="col-xs-12 col-sm-4 col-sm-offset-2 col-md-2 col-md-offset-4">
+                <a target="blank" href="https://itunes.apple.com/mx/app/infomovil/id898313250?mt=8"><img onerror="this.src='http://www.infomovil.com/img/Templates/Clasico/images/trans.png';" alt="app store"  class="img-responsive" src="http://www.infomovil.com/img/Templates/Clasico/images/appstore_icn.png" style=" min-width:80px; max-width:120px; margin: 0 auto; width:100%;"></a>
+              </div>
+              <div class="col-xs-12 col-sm-4 col-md-2 ">
+                <a target="blank" href="https://play.google.com/store/apps/details?id=com.infomovil.infomovil"><img onerror="this.src='http://www.infomovil.com/img/Templates/Clasico/images/trans.png';" alt="google store"  class="img-responsive" src="http://www.infomovil.com/img/Templates/Clasico/images/gstore_icn.png" style=" min-width:80px; max-width:120px; margin: 0 auto; width:100%;"></a>
+              </div>
+            </div>
 		
 		<!--Publicar TEL-->
+
 		<div id="publicarTel" style="display:none;">
 			<div class="bgDobleBlack"></div>
 			<section class="bgFondo publicar">
 				<div class="container whiteBg">
 					<div class="row">
-						<h3 class=" text-center textBlack">&iexcl;Ponle un nombre a tu sitio web!</h3>
+						<h3 class=" text-center textBlack">&iexcl;Ponle un nombre a tu p&aacute;gina web!</h3>
 						<div
 							class="form-group col-xs-12 col-sm-12 col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3">
 							<div class="divider"></div>
@@ -347,7 +372,7 @@
 	  <section class="bgFondo publicar">
 	    <div class="container whiteBg" >
 	      <div class="row" >
-	        <h3 class=" text-center textBlack">&iexcl;Ponle un nombre a tu sitio web!</h3>
+	        <h3 class=" text-center textBlack">&iexcl;Ponle un nombre a tu p&aacute;gina web!</h3>
 	        <div class="form-group col-xs-12 col-sm-12 col-md-12 col-lg-12">
 	          <div class="col-xs-12 col-sm-6">
 	            <div class="divider"></div>
@@ -397,10 +422,10 @@
 						<h5
 							class="textBlack col-xs-12 col-sm-12 col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3 text-center">
 							Ya tomaste el primer paso y te pusiste en línea.<br /> El proceso
-							de publicación de tu sitio web puede tardar unos minutos.
+							de publicación de tu p&aacute;gina web puede tardar unos minutos.
 						</h5>
 						<div class="clear"></div>
-						<p class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-center textBlack">Descarga
+						<p class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-center textBlack textPurple">Descarga
 							nuestra app si deseas agregar más contenido.</p>
 						<div class="clear"></div>
 						<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
@@ -521,7 +546,7 @@
     <tr>
       <td><img width="20" height="20" alt="Infomovil"
 							src="<c:url value="/resources/webapp/images/paso3.png"/>" /></td>
-      <td>Pública tu página</td>
+      <td>Pública tu p&aacute;gina web</td>
       <td><img width="20" height="20" alt="Infomovil"
 							src="<c:url value="/resources/webapp/images/imgPaso3.png"/>" /></td>
     </tr>

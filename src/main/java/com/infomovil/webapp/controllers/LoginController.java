@@ -1,7 +1,9 @@
 package com.infomovil.webapp.controllers;
 
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.CookieValue;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -14,9 +16,14 @@ import com.infomovil.webapp.clientWsInfomovil.RespuestaVO;
 public class LoginController {
 
 	@RequestMapping(value="/login", method = RequestMethod.GET)
-	public String login(ModelMap model) 
+	public String login(@CookieValue(value = "editarSitioInfomovil", defaultValue = "") String editarSitioInfomovil) 
 	{
-		return "login";
+		if(StringUtils.isEmpty(editarSitioInfomovil)){
+			return "login";
+		}
+		else{
+			return "redirect:/infomovil/editarSitio";
+		}
 	}
 	
 	@RequestMapping(value="/loginfailed", method = RequestMethod.GET)
