@@ -167,7 +167,7 @@
 	<!-- Botón Nuevo Estilo -->
 	<div class="seccTop bgBlack">
 	<div class="" >
-	<a href="#" data-toggle="modal" data-target="#myModalTemplates" class="col-xs-12 btn btn-default btn-outline navEditor"><strong>¡Nuevo!</strong> Elige estilo <img width="20" height="20" alt="Infomovil"
+	<a href="#" data-toggle="modal" data-target="#myModalTemplates" class="col-xs-12 col-sm-6 col-sm-offset-3 col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3 btn btn-default btn-outline navEditor"><strong>¡Nuevo!</strong> Elige estilo <img width="20" height="20" alt="Infomovil"
 							src="<c:url value="/resources/webapp/images/fa-templates.png"/>" /><br /><span class="text-center _90em">¡Lo puedes cambiar las veces que quieras!</span></a></div></div>
 							<!-- /Botón Nuevo Estilo -->
 	
