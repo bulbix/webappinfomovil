@@ -44,7 +44,13 @@ import javax.xml.bind.annotation.XmlType;
     "canal",
     "campania",
     "template",
-    "urlVistaPrevia"
+    "urlVistaPrevia",
+    "latitudeMap",
+    "longitudeMap",
+    "direccionMap",
+    "videoUrl",
+    "estatusCuenta",
+    "tipoCuenta"
 })
 public class DominioCreaSitio {
 
@@ -58,6 +64,12 @@ public class DominioCreaSitio {
     protected String campania;
     protected String template;
     protected String urlVistaPrevia;
+    protected String latitudeMap;
+    protected String longitudeMap;
+	protected String direccionMap;
+	protected String videoUrl;
+	protected String estatusCuenta;
+	protected String tipoCuenta;
 
     /**
      * Obtiene el valor de la propiedad nombreUsuario.
@@ -283,6 +295,54 @@ public class DominioCreaSitio {
 		this.campania = campania;
 	}
 
+	public String getLatitudeMap() {
+		return latitudeMap;
+	}
+
+	public void setLatitudeMap(String latitudeMap) {
+		this.latitudeMap = latitudeMap;
+	}
+
+	public String getLongitudeMap() {
+		return longitudeMap;
+	}
+
+	public void setLongitudeMap(String longitudeMap) {
+		this.longitudeMap = longitudeMap;
+	}
+
+	public String getDireccionMap() {
+		return direccionMap;
+	}
+
+	public void setDireccionMap(String direccionMap) {
+		this.direccionMap = direccionMap;
+	}
+
+	public String getVideoUrl() {
+		return videoUrl;
+	}
+
+	public void setVideoUrl(String videoUrl) {
+		this.videoUrl = videoUrl;
+	}
+
+	public String getEstatusCuenta() {
+		return estatusCuenta;
+	}
+
+	public void setEstatusCuenta(String estatusCuenta) {
+		this.estatusCuenta = estatusCuenta;
+	}
+
+	public String getTipoCuenta() {
+		return tipoCuenta;
+	}
+
+	public void setTipoCuenta(String tipoCuenta) {
+		this.tipoCuenta = tipoCuenta;
+	}
+
 	@Override
 	public String toString() {
 		return "DominioCreaSitio [nombreUsuario=" + nombreUsuario
@@ -290,9 +350,10 @@ public class DominioCreaSitio {
 				+ descripcionCorta + ", correoElectronico=" + correoElectronico
 				+ ", telefono=" + telefono + ", sitioWeb=" + sitioWeb
 				+ ", canal=" + canal + ", campania=" + campania + ", template="
-				+ template + ", urlVistaPrevia=" + urlVistaPrevia + "]";
+				+ template + ", urlVistaPrevia=" + urlVistaPrevia
+				+ ", latitudeMap=" + latitudeMap + ", longitudeMap="
+				+ longitudeMap + ", direccionMap=" + direccionMap
+				+ ", videoUrl=" + videoUrl + ", estatusCuenta=" + estatusCuenta
+				+ ", tipoCuenta=" + tipoCuenta + "]";
 	}
-	
-	
-
 }

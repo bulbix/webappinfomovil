@@ -13,7 +13,7 @@ import org.junit.Test;
 public class ClientWsInfomovilTest {
 	
 	static ClientWsInfomovil clientWsInfomovil;
-	String correoPrueba = "wallie6@mail.com";
+	String correoPrueba = "marte@mail.com";
 	String nombrePrueba = "garbage1";
 
 	@BeforeClass
@@ -51,6 +51,18 @@ public class ClientWsInfomovilTest {
 	@Test
 	public void testCrearSitioGuardar() {
 		RespuestaVO resp = clientWsInfomovil.crearSitioGuardar(correoPrueba, "garbage1","xxxx","yyy","zzz","luis@mail.com","33333","divertido" );
+		assertNotNull(resp);
+	}
+	
+	@Test
+	public void testCrearSitioGuardarUbicacion() {
+		RespuestaVO resp = clientWsInfomovil.crearSitioGuardarUbicacion(correoPrueba, "garbage1","6.7","8.9","aza");
+		assertNotNull(resp);
+	}
+	
+	@Test
+	public void testCrearSitioGuardarVideo() {
+		RespuestaVO resp = clientWsInfomovil.crearSitioGuardarVideo(correoPrueba, "garbage1","zoso");
 		assertNotNull(resp);
 	}
 

@@ -59,6 +59,30 @@ public class ClientWsInfomovil {
 		//log.info("crearSitioGuardar.result=" + _crearSitioGuardar__return.respuestaVO.codeError);
 		return _crearSitioGuardar__return.respuestaVO;
 	}
+	
+	public RespuestaVO crearSitioGuardarUbicacion(String email, String password, String latitudeMap, String longitudeMap, String direccionMap){
+		log.info("Invoking crearSitioGuardarUbicacion...");
+		com.infomovil.webapp.clientWsInfomovil.CrearSitioGuardarUbicacion _crearSitioGuardarUbicacion_parameters = new CrearSitioGuardarUbicacion();
+		_crearSitioGuardarUbicacion_parameters.email = email;
+		_crearSitioGuardarUbicacion_parameters.password = password;
+		_crearSitioGuardarUbicacion_parameters.latitudeMap = latitudeMap;
+		_crearSitioGuardarUbicacion_parameters.longitudeMap = longitudeMap;
+		_crearSitioGuardarUbicacion_parameters.direccionMap = direccionMap;
+		com.infomovil.webapp.clientWsInfomovil.CrearSitioGuardarUbicacionResponse _crearSitioGuardarUbicacion__return = port.crearSitioGuardarUbicacion(_crearSitioGuardarUbicacion_parameters);
+		log.info("crearSitioGuardarUbicacion.result=" + _crearSitioGuardarUbicacion__return.respuestaVO.codeError);
+		return _crearSitioGuardarUbicacion__return.respuestaVO;
+	}
+
+	public RespuestaVO crearSitioGuardarVideo(String email, String password, String urlVideo){
+		log.info("Invoking crearSitioGuardarVideo...");
+		com.infomovil.webapp.clientWsInfomovil.CrearSitioGuardarVideo _crearSitioGuardarVideo_parameters = new CrearSitioGuardarVideo();
+		_crearSitioGuardarVideo_parameters.email = email;
+		_crearSitioGuardarVideo_parameters.password = password;
+		_crearSitioGuardarVideo_parameters.urlVideo = urlVideo;
+		com.infomovil.webapp.clientWsInfomovil.CrearSitioGuardarVideoResponse _crearSitioGuardarVideo__return = port.crearSitioGuardarVideo(_crearSitioGuardarVideo_parameters);
+		log.info("crearSitioGuardarVideo.result=" + _crearSitioGuardarVideo__return.respuestaVO.codeError);
+		return _crearSitioGuardarVideo__return.respuestaVO;
+	}
 
 	public RespuestaVO crearSitioCargar(String email, String password){
 		//log.info("Invoking crearSitioCargar...");
