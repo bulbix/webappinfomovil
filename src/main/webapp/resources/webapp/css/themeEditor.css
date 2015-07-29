@@ -41,7 +41,7 @@ section.bgBlack { /*margin: 0 -5px 0 0; */}
 .normal { font-weight: 400; }
 .ultrabold { font-weight: 700; }
 .scroll-top a{color:#ededed}
-.scroll-top { z-index: 1049; position: fixed; right: 10%; bottom: 2%; width: 40px; height: 40px; font-size: .9em; }
+.scroll-top { z-index: 1049; position: fixed; right: 15%; bottom: 2%; width: 40px; height: 40px; font-size: .9em; }
 .scroll-top .btn { /*width: 40px;*/ height: 40px; border-radius: 100%; /*font-size: 20px;*/ line-height: 28px; }
 .scroll-top .btn:focus { outline: 0; color:#ededed;}
 .scroll-top .btn:hover { outline: 0; color:#ededed;}

@@ -7,6 +7,8 @@ import java.util.Map;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.validator.routines.EmailValidator;
 import org.apache.log4j.Logger;
@@ -25,6 +27,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+
 import com.infomovil.webapp.clientWsInfomovil.Catalogo;
 import com.infomovil.webapp.clientWsInfomovil.ClientWsInfomovil;
 import com.infomovil.webapp.clientWsInfomovil.RespuestaVO;

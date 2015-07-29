@@ -151,6 +151,7 @@
         <div class="form-group col-xs-12 col-sm-12 col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3">
               <input type="submit" value="Inicia sesi&oacute;n" class="btn btn-default btn-outlineGreen col-xs-12 text-center textWhite">
             </div>
+<div class="clear dividerSmall"></div>
 
 		<div class="form-group col-xs-12 col-sm-12 col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3"> <span class="textWhite"> ¿Aún no tienes cuenta? </span><span><a href="<c:url value="/registrar"/>">Regístrate</a></span> </div>
 

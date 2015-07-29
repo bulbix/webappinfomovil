@@ -258,29 +258,63 @@
 
 		<!--Footer-->
 		<footer class="footer bgBlack"> 
+		<!-- Descarga la app -->
+		<div id="descargaApp" style="display:none;">
 		<div class="dividerSmall"></div>
 		<p class="text-center"><strong>Descarga la app de Infomovil <span class="hidden-xs">y mejora tu página web:</span></strong><br/></p>
-		<div class="col-xs-12">
 		
-              <ul class="txtWhite text-left _09em col-xs-12 col-sm-8 col-sm-offset-3 col-md-8 col-md-offset-3" style="list-style:none;">
-                
-                <li><img width="30" height="30" alt="Infomovil"
-							src="<c:url value="/resources/webapp/images/ico_pp_youtube.png"/>" /> Agrega imágenes y video</li>
-                <li><img width="30" height="30" alt="Infomovil"
-							src="<c:url value="/resources/webapp/images/ico_prom_icn.png"/>" /> Arma tu promoción <span class="hidden-xs">y compártela por Facebook</span></li>
-                <li><img width="30" height="30" alt="Infomovil"
-							src="<c:url value="/resources/webapp/images/icn_marc_maps.png"/>" /> Coloca tu ubicación <span class="hidden-xs">con google maps</span></li>
-              </ul>
-             
+		
+		<div class="text-left col-xs-9 col-xs-offset-2 col-sm-6 col-sm-offset-3 col-md-4 col-md-offset-4 col-lg-4 col-lg-offset-4 _09em">
+							
+								
+								<table width="80%" border="0" class="text-left col-xs-12 " style="font-weight:700;">
+  <tbody>
+    <tr id="imgPlanPro" style="display:none;">
+      <td><img width="25" height="25" alt="Infomovil" src="<c:url value="/resources/webapp/images/ico_pp_youtube.png"/>" /> </td>
+      <td> &nbsp;</td>
+      <td>Agrega imágenes y video</td>
+    </tr>
+    
+     <tr id="imgPlanBasico" style="display:none;">
+      <td><img width="25" height="25" alt="Infomovil" src="<c:url value="/resources/webapp/images/ico_pp_img.png"/>" /> </td>
+      <td> &nbsp;</td>
+      <td>Agrega imágenes</td>
+    </tr>
+    
+    <tr>
+      <td><img width="25" height="25" alt="Infomovil" src="<c:url value="/resources/webapp/images/ico_prom_icn.png"/>" /></td>
+      <td>&nbsp;</span></td>
+      <td> Arma tu promoción <span class="hidden-xs">y compártela por Facebook</span></td>
+    </tr>
+    <tr>
+      <td><img width="25" height="25" alt="Infomovil"
+							src="<c:url value="/resources/webapp/images/icn_marc_maps.png"/>" /></td>
+      <td>&nbsp;</td>
+      <td> Coloca tu ubicación <span class="hidden-xs">con Google Maps</span>	</td>
+    </tr>
+    <tr>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+    </tr>
+  </tbody>
+</table>
+		</div>
+		
+		
+		<div class="col-xs-12">
              <div class="clearfix"></div>
               <div class="col-xs-12 col-sm-4 col-sm-offset-2 col-md-2 col-md-offset-4">
-                <a target="blank" href="https://itunes.apple.com/mx/app/infomovil/id898313250?mt=8"><img onerror="this.src='http://www.infomovil.com/img/Templates/Clasico/images/trans.png';" alt="app store"  class="img-responsive" src="http://www.infomovil.com/img/Templates/Clasico/images/appstore_icn.png" style=" min-width:80px; max-width:120px; margin: 0 auto; width:100%;"></a>
+                <a target="blank" href="https://itunes.apple.com/mx/app/infomovil/id898313250?mt=8"><img onerror="this.src='http://www.infomovil.com/img/Templates/Clasico/images/trans.png';" alt="app store"  class="img-responsive" src="http://www.infomovil.com/img/Templates/Clasico/images/appstore_icn.png" style=" min-width:80px; max-width:120px; margin: 0 auto; "></a>
               </div>
+              
+              
               <div class="col-xs-12 col-sm-4 col-md-2 ">
                 <a target="blank" href="https://play.google.com/store/apps/details?id=com.infomovil.infomovil"><img onerror="this.src='http://www.infomovil.com/img/Templates/Clasico/images/trans.png';" alt="google store"  class="img-responsive" src="http://www.infomovil.com/img/Templates/Clasico/images/gstore_icn.png" style=" min-width:80px; max-width:120px; margin: 0 auto; width:100%;"></a>
               </div>
             </div>
-		
+		</div>
+		<!-- /Descarga la app -->
 		<!--Publicar TEL-->
 
 		<div id="publicarTel" style="display:none;">
@@ -650,7 +684,8 @@ $('.navbar-collapse ul li a').click(function() {
 			$("#publicarRecurso").css("display", "none");
 			$("#logoBAZ").css("display", "block");
 			$("#idRegBAZ").css("display", "block");			
-			$("#logoGral").css("display", "none");				
+			$("#logoGral").css("display", "none");	
+			$("#imgPlanPro").css("display", "table-row");				
 		</c:when>
 		<c:otherwise>
 			$("#publicarRecurso").css("display", "block");	
@@ -658,12 +693,14 @@ $('.navbar-collapse ul li a').click(function() {
 			$("#logoBAZ").css("display", "none");
 			$("#idRegBAZ").css("display", "none");	
 			$("#logoGral").css("display", "block");	
+			$("#imgPlanBasico").css("display", "table-row");
 		</c:otherwise>
 	</c:choose>
 
 	<c:choose>
 		<c:when test="${sitioWeb != 'SIN_PUBLICAR'}">
 			$("#urlSitio").css("display", "block");
+			$("#descargaApp").css("display", "block");
 			$("#publicarTel").css("display", "none");
 			$("#publicarRecurso").css("display", "none");
 		</c:when>
