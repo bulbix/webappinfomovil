@@ -83,6 +83,7 @@
 <link
 	href="<c:url value="/resources/webapp/fonts/font-awesome.min.css"/>"
 	rel="stylesheet" />
+<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&signed_in=true&libraries=places"></script>
 <script>
   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
   (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
@@ -249,11 +250,30 @@
 						</div>
 						<div class="clear"></div>
 						<div class="divider"></div>
+
+							<div class="mar15 col-xs-12 col-sm-12 col-md-6 col-lg-6 reset">
+								<div
+									class=" col-xs-12 col-sm-12 col-md-12 col-lg-12 mar0auto reset">
+									<img
+										src="http://landing.infomovil.com/webapp/templates/${ template }/images/cel_icn.png"
+										class="img mxw50miw43w100" alt="Contacto" /> <span
+										class="dblw100 mxh70 08em"> </span> <span
+										class="col-xs-12 08em mar0auto"> <input type="text"
+										class="form-control text-center col-xs-11" 
+										placeholder="Enter a location" id="pac-input" />
+									</span>
+									<p class="help-block"></p>
+								</div>
+							</div>						
+
+						<div id="map-canvas"></div>
+						   
 					</form>
 				</div>
 			</div>
 			<!-- /page header -->
 		</div>
+		
 		<!--/Theme showcase -->
 
 		<!--Footer-->
@@ -624,9 +644,11 @@
 		<script src="<c:url value="/resources/webapp/js/jquery.numeric.js"/>"></script>
 		<script src="<c:url value="/resources/webapp/js/jquery.blockUI.js"/>"></script>
 		<script src="<c:url value="/resources/js/webapp/validaciones.js"/>"></script>
+		<script src="<c:url value="/resources/js/webapp/mapas.js"/>"></script>
 		<script>
 $(document).ready(function(){
 	generarSlider();
+	google.maps.event.addDomListener(window, 'load', initialize);
 	});
 
 </script>
