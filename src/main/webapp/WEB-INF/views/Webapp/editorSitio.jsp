@@ -4,97 +4,98 @@
 <!doctype html>
 <html lang="es">
 <head itemscope="" itemtype="http://schema.org/WebSite">
-<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<meta charset="UTF-8" />
-<meta name="title" content="Infomovil" />
-<meta name="author" content="Infomovil" />
-<meta name="designer" content="Infomovil" />
-<meta name="description"
-	content="Infomovil. Nunca antes ha sido tan f&aacute;cil crear un sitio web. Con Infomovil crea tu sitio f&aacute;cil, r&aacute;pido y gratuito en 5 minutos." />
-<meta name="keywords"
-	content="emprendedor, PyMEs, negocios PyMEs, sitio web, p&aacute;gina web, productividad, utilidades, web, m&oacute;vil, infomovil, micronegocio, crea tu sitio, mobile friendly, personal, gratis" />
-<meta name="revisit-after" content="1 days" />
-<meta name="rating" content="general" />
-<meta name="copyright" content="Infomovil" />
-<meta name="name" content="Infomovil" />
-<meta property="og:title" content="Infomovil" />
-<meta property="og:type" content="website" />
-<meta property="og:description"
-	content="Infomovil. Nunca antes ha sido tan f&aacute;cil crear un sitio web. Con Infomovil crea tu sitio f&aacute;cil, r&aacute;pido y gratuito en 5 minutos." />
-<meta property="og:image"
-	content="http://landing.infomovil.com/webapp/templates/${ template }/images/apple-touch-icon-57x57.png" />
-<meta property="og:url" content="http://www.infomovil.com" />
-<meta itemprop="name" content="Infomovil" />
-<meta itemprop="description"
-	content="Infomovil. Nunca antes ha sido tan f&aacute;cil crear un sitio web. Con Infomovil crea tu sitio f&aacute;cil, r&aacute;pido y gratuito en 5 minutos. Sitio web creado con www.infomovil.com" />
-<link rel="apple-touch-icon"
-	href="http://landing.infomovil.com/webapp/templates/${ template }/images/apple-touch-icon.png" />
-<link rel="apple-touch-icon" sizes="57x57"
-	href="http://landing.infomovil.com/webapp/templates/${ template }/images/apple-touch-icon-57x57.png" />
-<link rel="apple-touch-icon" sizes="72x72"
-	href="http://landing.infomovil.com/webapp/templates/${ template }/images/apple-touch-icon-72x72.png" />
-<link rel="apple-touch-icon" sizes="76x76"
-	href="http://landing.infomovil.com/webapp/templates/${ template }/images/apple-touch-icon-76x76.png" />
-<link rel="apple-touch-icon" sizes="114x114"
-	href="http://landing.infomovil.com/webapp/templates/${ template }/images/apple-touch-icon-114x114.png" />
-<link rel="apple-touch-icon" sizes="120x120"
-	href="http://landing.infomovil.com/webapp/templates/${ template }/images/images/apple-touch-icon-120x120.png" />
-<link rel="apple-touch-icon" sizes="144x144"
-	href="http://landing.infomovil.com/webapp/templates/${ template }/images/apple-touch-icon-144x144.png" />
-<link rel="apple-touch-icon" sizes="152x152"
-	href="http://landing.infomovil.com/webapp/templates/${ template }/images/apple-touch-icon-152x152.png" />
-<link rel="shortcut icon"
-	href="http://landing.infomovil.com/webapp/templates/${ template }/images/favicon.ico"
-	type="image/x-icon" />
-<link
-	href="http://landing.infomovil.com/webapp/templates/${ template }/images/apple-touch-icon-57x57.png" />
-<title itemprop="name">Infomovil</title>
-<link rel="canonical" href="http://www.infomovil.com" itemprop="url" />
-<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-<!--[if lt IE 8]>
-      <script src="<c:url value="/resources/webapp/js/html5shiv.min.js"/>"></script>
-      <script src="<c:url value="/resources/webapp/js/respond.min.js"/>"></script>
-    <![endif]-->
-<!-- Bootstrap core CSS -->
-<%--     <link href="http://landing.infomovil.com/webapp/templates/${ template }/css/bootstrap.min.css" rel="stylesheet" /> --%>
-<link href="<c:url value="/resources/webapp/css/bootstrap.min.css"/>"
-	rel="stylesheet" />
-<!-- Bootstrap theme -->
-<%--     <link href="http://landing.infomovil.com/webapp/templates/${ template }/css/bootstrap-theme.min.css" rel="stylesheet" /> global --%>
-<link
-	href="<c:url value="/resources/webapp/css/bootstrap-theme.min.css"/>"
-	rel="stylesheet" />
-<!-- Custom styles for this template -->
-<%--     <link href="http://landing.infomovil.com/webapp/templates/${ template }/css/themeEditor.css" rel="stylesheet" /> --%>
-<link href="<c:url value="/resources/webapp/css/themeEditor.css"/>"
-	rel="stylesheet" />
-<!-- Custom styles for this template -->
-<%--     <link href="http://landing.infomovil.com/webapp/templates/${ template }/css/info.css" rel="stylesheet" /> --%>
-<link
-	href="https://s3.amazonaws.com/landing.infomovil.com/webapp/templates/${ template }/css/info.css"
-	rel="stylesheet" />
-<%--     <link href="<c:url value="/resources/webapp/css/info.css"/>" rel="stylesheet" /> --%>
-<!-- bxSlider CSS file -->
-<%--     <link href="http://landing.infomovil.com/webapp/templates/${ template }/css/jquery.bxslider.css" rel="stylesheet" /> --%>
-<link href="<c:url value="/resources/webapp/css/jquery.bxslider.css"/>"
-	rel="stylesheet" />
-<%--     <link href="http://landing.infomovil.com/webapp/templates/${ template }/fonts/font-awesome.min.css" rel="stylesheet" /> --%>
-<link
-	href="<c:url value="/resources/webapp/fonts/font-awesome.min.css"/>"
-	rel="stylesheet" />
-<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&signed_in=true&libraries=places"></script>
-<script>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-  ga('create', 'UA-53077061-1', 'auto');
- ga('send', 'pageview'); 
-    </script>
-<script type="text/javascript">
-		var contextPath='<%=request.getContextPath()%>';
-		console.log("ContextPath: " + contextPath);
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<meta charset="UTF-8" />
+	<meta name="title" content="Infomovil" />
+	<meta name="author" content="Infomovil" />
+	<meta name="designer" content="Infomovil" />
+	<meta name="description"
+		content="Infomovil. Nunca antes ha sido tan f&aacute;cil crear un sitio web. Con Infomovil crea tu sitio f&aacute;cil, r&aacute;pido y gratuito en 5 minutos." />
+	<meta name="keywords"
+		content="emprendedor, PyMEs, negocios PyMEs, sitio web, p&aacute;gina web, productividad, utilidades, web, m&oacute;vil, infomovil, micronegocio, crea tu sitio, mobile friendly, personal, gratis" />
+	<meta name="revisit-after" content="1 days" />
+	<meta name="rating" content="general" />
+	<meta name="copyright" content="Infomovil" />
+	<meta name="name" content="Infomovil" />
+	<meta property="og:title" content="Infomovil" />
+	<meta property="og:type" content="website" />
+	<meta property="og:description"
+		content="Infomovil. Nunca antes ha sido tan f&aacute;cil crear un sitio web. Con Infomovil crea tu sitio f&aacute;cil, r&aacute;pido y gratuito en 5 minutos." />
+	<meta property="og:image"
+		content="http://landing.infomovil.com/webapp/templates/${ template }/images/apple-touch-icon-57x57.png" />
+	<meta property="og:url" content="http://www.infomovil.com" />
+	<meta itemprop="name" content="Infomovil" />
+	<meta itemprop="description"
+		content="Infomovil. Nunca antes ha sido tan f&aacute;cil crear un sitio web. Con Infomovil crea tu sitio f&aacute;cil, r&aacute;pido y gratuito en 5 minutos. Sitio web creado con www.infomovil.com" />
+	
+	<link rel="apple-touch-icon"
+		href="http://landing.infomovil.com/webapp/templates/${ template }/images/apple-touch-icon.png" />
+	<link rel="apple-touch-icon" sizes="57x57"
+		href="http://landing.infomovil.com/webapp/templates/${ template }/images/apple-touch-icon-57x57.png" />
+	<link rel="apple-touch-icon" sizes="72x72"
+		href="http://landing.infomovil.com/webapp/templates/${ template }/images/apple-touch-icon-72x72.png" />
+	<link rel="apple-touch-icon" sizes="76x76"
+		href="http://landing.infomovil.com/webapp/templates/${ template }/images/apple-touch-icon-76x76.png" />
+	<link rel="apple-touch-icon" sizes="114x114"
+		href="http://landing.infomovil.com/webapp/templates/${ template }/images/apple-touch-icon-114x114.png" />
+	<link rel="apple-touch-icon" sizes="120x120"
+		href="http://landing.infomovil.com/webapp/templates/${ template }/images/images/apple-touch-icon-120x120.png" />
+	<link rel="apple-touch-icon" sizes="144x144"
+		href="http://landing.infomovil.com/webapp/templates/${ template }/images/apple-touch-icon-144x144.png" />
+	<link rel="apple-touch-icon" sizes="152x152"
+		href="http://landing.infomovil.com/webapp/templates/${ template }/images/apple-touch-icon-152x152.png" />
+	<link rel="shortcut icon"
+		href="http://landing.infomovil.com/webapp/templates/${ template }/images/favicon.ico"
+		type="image/x-icon" />
+	<link href="http://landing.infomovil.com/webapp/templates/${ template }/images/apple-touch-icon-57x57.png" />
+	<title itemprop="name">Infomovil</title>
+	<link rel="canonical" href="http://www.infomovil.com" itemprop="url" />
+	<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+	<!--[if lt IE 8]>
+	      <script src="<c:url value="/resources/webapp/js/html5shiv.min.js"/>"></script>
+	      <script src="<c:url value="/resources/webapp/js/respond.min.js"/>"></script>
+	    <![endif]-->
+	<!-- Bootstrap core CSS -->
+	<link href="<c:url value="/resources/webapp/css/bootstrap.min.css"/>" rel="stylesheet" />
+	<!-- Bootstrap theme -->
+	<link href="<c:url value="/resources/webapp/css/bootstrap-theme.min.css"/>"	rel="stylesheet" />
+	<!-- Custom styles for this template -->
+	<link href="<c:url value="/resources/webapp/css/themeEditor.css"/>"	rel="stylesheet" />
+	<!-- Custom styles for this template -->
+	<link href="https://s3.amazonaws.com/landing.infomovil.com/webapp/templates/${ template }/css/info.css" rel="stylesheet" />
+	<!-- bxSlider CSS file -->
+	<link href="<c:url value="/resources/webapp/css/jquery.bxslider.css"/>" rel="stylesheet" /> 
+	<link href="<c:url value="/resources/webapp/fonts/font-awesome.min.css"/>" rel="stylesheet" />
+	
+<!-- 	<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&signed_in=true&libraries=places"></script> -->
+	<script src="//maps.googleapis.com/maps/api/js?sensor=false"></script>
+	<script src="<c:url value="/resources/webapp/js/angular.min.js"/>"></script>
+	<script src="<c:url value="/resources/webapp/js/angular-route.min.js"/>"></script>
+	<script src="<c:url value="/resources/webapp/js/lodash.min.js"/>"></script>
+	
+<!-- 	<script type="text/javascript" charset="UTF-8" src="http://maps.gstatic.com/maps-api-v3/api/js/21/8/common.js"></script> -->
+<!-- 	<script type="text/javascript" charset="UTF-8" src="http://maps.gstatic.com/maps-api-v3/api/js/21/8/map.js"></script> -->
+<!-- 	<script type="text/javascript" charset="UTF-8" src="http://maps.gstatic.com/maps-api-v3/api/js/21/8/util.js"></script> -->
+<!-- 	<script type="text/javascript" charset="UTF-8" src="http://maps.gstatic.com/maps-api-v3/api/js/21/8/onion.js"></script> -->
+<!-- 	<script type="text/javascript" charset="UTF-8" src="http://maps.gstatic.com/maps-api-v3/api/js/21/8/stats.js"></script> -->
+<!-- 	<script type="text/javascript" charset="UTF-8" src="http://maps.gstatic.com/maps-api-v3/api/js/21/8/controls.js"></script> -->
+<!-- 	<script type="text/javascript" charset="UTF-8" src="http://maps.gstatic.com/maps-api-v3/api/js/21/8/marker.js"></script> -->
+	
+<%--     <script src="<c:url value="/resources/webapp/js/angular-google-maps.min.js"/>"></script> --%>
+    <script src="<c:url value="/resources/js/webapp/app.js"/>"></script>
+    
+	<script>
+	  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+	  ga('create', 'UA-53077061-1', 'auto');
+	 ga('send', 'pageview'); 
+	</script>
+	<script type="text/javascript">
+			var contextPath='<%=request.getContextPath()%>';
+			console.log("ContextPath: " + contextPath);
 	</script>
 </head>
 <body role="document" data-spy="scroll" data-target=".navbar"
@@ -250,24 +251,7 @@
 						</div>
 						<div class="clear"></div>
 						<div class="divider"></div>
-
-							<div class="mar15 col-xs-12 col-sm-12 col-md-6 col-lg-6 reset">
-								<div
-									class=" col-xs-12 col-sm-12 col-md-12 col-lg-12 mar0auto reset">
-									<img
-										src="http://landing.infomovil.com/webapp/templates/${ template }/images/cel_icn.png"
-										class="img mxw50miw43w100" alt="Contacto" /> <span
-										class="dblw100 mxh70 08em"> </span> <span
-										class="col-xs-12 08em mar0auto"> <input type="text"
-										class="form-control text-center col-xs-11" 
-										placeholder="Enter a location" id="pac-input" />
-									</span>
-									<p class="help-block"></p>
-								</div>
-							</div>						
-
-						<div id="map-canvas"></div>
-						   
+						<a id="agregarUbicacion" href="#" data-toggle="modal" data-target="#myModalMaps">Agregar Ubicación</a>
 					</form>
 				</div>
 			</div>
@@ -630,6 +614,21 @@
 		</div>
 		<!--/MODAL Registro-->
 
+<!--MODAL MAPS-->
+<div id="myModalMaps" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close textBlack pull-left" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <button type="button" class="btn btn-purple pull-right">Guardar</button>
+      </div>
+      <div class="modal-body bgWhite">maps</div>
+      <div class="modal-footer"></div>
+    </div>
+  </div>
+</div>
+<!--MODAL MAPS-->
+
 		<!--MODAL TEMPLATES-->
 		<div id="modalTemplates"></div>
 		<!-- <div id="myModalTemplates" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"><div class="modal-dialog modal-lg"><div class="modal-content"><div class="modal-header"><button type="button" class="close textBlack" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button><p class="modal-title textBlack">Elije tu estilo</p></div><div class="modal-body bgWhite"><ul class="bxslider"><li><img src="https://s3.amazonaws.com/landing.infomovil.com/webapp/templates/Coverpage1azul/templateVacio.png" title="Funky roots"></li><li><img src="https://s3.amazonaws.com/landing.infomovil.com/webapp/templates/Coverpage2/templateVacio.png" title="Funky roots"></li></ul></div><div class="modal-footer"><button type="button" class="btn btn-purple" data-dismiss="modal">Cerrar</button></div></div></div></div> -->
@@ -678,11 +677,10 @@
 		<script src="<c:url value="/resources/webapp/js/jquery.numeric.js"/>"></script>
 		<script src="<c:url value="/resources/webapp/js/jquery.blockUI.js"/>"></script>
 		<script src="<c:url value="/resources/js/webapp/validaciones.js"/>"></script>
-		<script src="<c:url value="/resources/js/webapp/mapas.js"/>"></script>
 		<script>
 $(document).ready(function(){
 	generarSlider();
-	google.maps.event.addDomListener(window, 'load', initialize);
+// 	google.maps.event.addDomListener(window, 'load', initialize);
 	});
 
 </script>

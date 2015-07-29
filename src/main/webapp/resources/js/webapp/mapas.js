@@ -1,51 +1,84 @@
-function initialize() {
-  var mapOptions = {
-    center: {lat: -33.8688, lng: 151.2195},
-    zoom: 13
-  };
-  var map = new google.maps.Map(document.getElementById('map-canvas'),
-    mapOptions);
+var myApp = angular.module('myApp', ['uiGmapgoogle-maps']);
+var myGlobalVariables = { };
+var myControllers = { };
 
-  var input = /** @type {HTMLInputElement} */(
-      document.getElementById('pac-input'));
+myGlobalVariables.latitude = 0;
+myGlobalVariables.longitud = 0;
+myGlobalVariables.zoom = 15;
+myGlobalVariables.tieneMapa = false;
+myGlobalVariables.geolocalizacion = false;
+myGlobalVariables.mostrarMapa = false;
 
-  var autocomplete = new google.maps.places.Autocomplete(input);
-  autocomplete.bindTo('bounds', map);
+myControllers.mapController = function($scope) {
 
-  map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
-
-  var infowindow = new google.maps.InfoWindow();
-  var marker = new google.maps.Marker({
-    map: map
-  });
-  google.maps.event.addListener(marker, 'click', function() {
-    infowindow.open(map, marker);
-  });
-
-  google.maps.event.addListener(autocomplete, 'place_changed', function() {
-    infowindow.close();
-    var place = autocomplete.getPlace();
-    if (!place.geometry) {
-      return;
+    myGlobalVariables.geolocalizacion = false;
+    
+    if (!myGlobalVariables.tieneMapa)
+    {
+        myGlobalVariables.geolocalizacion = navigator.geolocation ? true : false;
+        
+        if (myGlobalVariables.geolocalizacion) /*Soporta la geolocalizacion*/
+        {
+            console.log("si soporta la geolocalizacion");
+            myGlobalVariables.mostrarMapa = true;
+            navigator.geolocation.getCurrentPosition(function (position) {
+                
+                myGlobalVariables.latitude = position.coords.latitude;
+                myGlobalVariables.longitud = position.coords.longitude;
+                console.log("latitude: " + myGlobalVariables.latitude + 
+                            ", longitude: " + myGlobalVariables.longitud);                     
+            }, function(error){
+                errorGeolocalizacion(error);
+            });
+        }
+        else
+        {
+           console.log("Este browser no soporta la geolocalizacion");                                          
+        }
     }
 
-    if (place.geometry.viewport) {
-        map.fitBounds(place.geometry.viewport);
-      } else {
-        map.setCenter(place.geometry.location);
-        map.setZoom(17);
-      }
+    console.log("geolocationAvailable: " + myGlobalVariables.geolocalizacion + ", myGlobalVariables.mostrarMapa: " + myGlobalVariables.mostrarMapa);
+    if (myGlobalVariables.mostrarMapa)
+    {
+        console.log("latitude: " + myGlobalVariables.latitude + ", longitude: " + myGlobalVariables.longitud);
+        
+        $scope.map = {
+            center: { 
+                latitude: myGlobalVariables.latitude, 
+                longitude: myGlobalVariables.longitud 
+                }, 
+            zoom: myGlobalVariables.zoom
+        }
 
-      // Set the position of the marker using the place ID and location
-      marker.setPlace(/** @type {!google.maps.Place} */ ({
-        placeId: place.place_id,
-        location: place.geometry.location
-      }));
-      marker.setVisible(true);
+        $scope.marker = {
+            coords: {
+                latitude: myGlobalVariables.latitude, 
+                longitude: myGlobalVariables.longitud 
+            }
+        }
+    }
+} /*Contoller*/
 
-      infowindow.setContent('<div><strong>' + place.name + '</strong><br>' +
-          'Place ID: ' + place.place_id + '<br>' +
-          place.formatted_address);
-      infowindow.open(map, marker);
-    });
-  }
+function errorGeolocalizacion(error) {
+
+    myGlobalVariables.mostrarMapa = false;
+    
+    switch(error.code)
+    {
+        case error.PERMISSION_DENIED:
+            console.log("User denied the request for Geolocation.");
+            break;
+        case error.POSITION_UNAVAILABLE:
+            console.log("Location information is unavailable.");
+            break;
+        case error.TIMEOUT:
+            console.log("The request to get user location timed out.");
+            break;
+        case error.UNKNOWN_ERROR:
+            console.log("An unknown error occurred.");
+            break;
+    }
+    
+}
+
+myApp.controller(myControllers);
