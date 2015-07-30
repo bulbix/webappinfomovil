@@ -49,6 +49,15 @@
 		href="http://landing.infomovil.com/webapp/templates/${ template }/images/favicon.ico"
 		type="image/x-icon" />
 	<link href="http://landing.infomovil.com/webapp/templates/${ template }/images/apple-touch-icon-57x57.png" />
+	<style>
+	
+	.pac-container {
+	
+	z-index:10500!important;
+/* 	display: block!important; */
+
+}
+	</style>
 	<title itemprop="name">Infomovil</title>
 	<link rel="canonical" href="http://www.infomovil.com" itemprop="url" />
 	<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
@@ -68,22 +77,7 @@
 	<link href="<c:url value="/resources/webapp/css/jquery.bxslider.css"/>" rel="stylesheet" /> 
 	<link href="<c:url value="/resources/webapp/fonts/font-awesome.min.css"/>" rel="stylesheet" />
 	
-<!-- 	<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&signed_in=true&libraries=places"></script> -->
-	<script src="//maps.googleapis.com/maps/api/js?sensor=false"></script>
-	<script src="<c:url value="/resources/webapp/js/angular.min.js"/>"></script>
-	<script src="<c:url value="/resources/webapp/js/angular-route.min.js"/>"></script>
-	<script src="<c:url value="/resources/webapp/js/lodash.min.js"/>"></script>
-	
-<!-- 	<script type="text/javascript" charset="UTF-8" src="http://maps.gstatic.com/maps-api-v3/api/js/21/8/common.js"></script> -->
-<!-- 	<script type="text/javascript" charset="UTF-8" src="http://maps.gstatic.com/maps-api-v3/api/js/21/8/map.js"></script> -->
-<!-- 	<script type="text/javascript" charset="UTF-8" src="http://maps.gstatic.com/maps-api-v3/api/js/21/8/util.js"></script> -->
-<!-- 	<script type="text/javascript" charset="UTF-8" src="http://maps.gstatic.com/maps-api-v3/api/js/21/8/onion.js"></script> -->
-<!-- 	<script type="text/javascript" charset="UTF-8" src="http://maps.gstatic.com/maps-api-v3/api/js/21/8/stats.js"></script> -->
-<!-- 	<script type="text/javascript" charset="UTF-8" src="http://maps.gstatic.com/maps-api-v3/api/js/21/8/controls.js"></script> -->
-<!-- 	<script type="text/javascript" charset="UTF-8" src="http://maps.gstatic.com/maps-api-v3/api/js/21/8/marker.js"></script> -->
-	
-<%--     <script src="<c:url value="/resources/webapp/js/angular-google-maps.min.js"/>"></script> --%>
-    <script src="<c:url value="/resources/js/webapp/app.js"/>"></script>
+	<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=places&signed_in=false"></script>
     
 	<script>
 	  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
@@ -370,40 +364,6 @@
 			</section>
 		</div>
 		<!--/Publicar TEL-->
-		
-<!--Publicar recurso-->
-<!-- 	<div id="publicarRecurso">  Respaldo para cuando se habilite lo  de la lista de dominios-->
-<!-- 	  <div class="bgDobleBlack" ></div> -->
-<!-- 	  <section class="bgFondo publicar"> -->
-<!-- 	    <div class="container whiteBg" > -->
-<!-- 	      <div class="row" > -->
-<!-- 	        <h3 class=" text-center">Ponle un nombre a tu sitio web!</h3> -->
-<!-- 	        <div class="form-group col-xs-12 col-sm-12 col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3"> -->
-<!-- 	          <div class="col-xs-12 col-sm-6"> -->
-<!-- 	            <div class="divider"></div> -->
-<!-- 	            <select id="idCatTipoRec" class="form-control" style="height:36px !important; display:block; padding:6px 12px; color:#000!important"> -->
-<%-- 				    <c:forEach items="${dominios}" var="entry"> --%>
-<%-- 				        <option value="${entry.key}">${entry.value}</option> --%>
-<%-- 				    </c:forEach> --%>
-<!-- 	            </select> -->
-<!-- 	            <div class="divider hidden-sm hidden-md hidden-lg"></div> -->
-<!-- 	          </div> -->
-<!-- 	          <div class="col-xs-12 col-sm-6"> -->
-<!-- 	            <div class="divider"></div> -->
-<!-- 	            <input type="text" placeholder="Nombra tu sitio" value="" id="nombreDominioRec" name="nombreDominioRec" class="form-control" id="nombraInput"> -->
-<!-- 	            <input type="hidden" id="tipoDominioRec" name="tipoDominioRec" value="recurso"/> -->
-<!-- 	          </div> -->
-<!-- 	          <div class="form-group col-xs-12 col-sm-12 col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3"> -->
-<!-- 	            <div class="divider"></div> -->
-<!-- 	            <input type="submit" value="Publicar" id="btnPublicarTel" class="btn btn-default btn-outline col-xs-12 text-center textWhite" style="display:none;"> -->
-<!-- 	            <input type="button" value="Buscar nombre" id="btnBuscarTel" class="btn btn-default btn-outline col-xs-12 text-center textWhite" onClick="validaDominio('recurso')"> -->
-<!-- 	            <div class="clear"></div> -->
-<!-- 	          </div> -->
-<!-- 	        </div> -->
-<!-- 	      </div> -->
-<!-- 	    </div> -->
-<!-- 	  </section> -->
-<!-- 	</div> -->
 	
 	<div id="publicarRecurso" style="display:none;">
 	  <div class="bgDobleBlack" ></div>
@@ -501,6 +461,7 @@
 			</div>
 		</div>
 		<!--/MODAL EXITO-->
+		
 		<!--MODAL FAIL-->
 		<div id="myModalFallo" class="modal fade" tabindex="-1" role="dialog"
 			aria-labelledby="myModalLabel" aria-hidden="true">
@@ -534,105 +495,80 @@
 		</div>
 		<!--/MODAL FAIL-->
 		
-
 		<!--MODAL Registro-->
-		<div id="myModalRegistro" class="modal fade" tabindex="-1" role="dialog"
-			aria-labelledby="myModalLabel" aria-hidden="true">
+		<div id="myModalRegistro" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 			<div class="modal-dialog modal-lg">
 				<div class="modal-content">
 					<div class="modal-header">
-
-						<button type="button" class="close textBlack" data-dismiss="modal"
-							aria-label="Close">
+						<button type="button" class="close textBlack" data-dismiss="modal" aria-label="Close">
 							<span aria-hidden="true">&times;</span>
 						</button>
-						<p class="modal-title">
-						
-						</p>
+						<p class="modal-title"></p>
 					</div>
 					<div class="modal-body bgWhite">
-					<h2
-							class="textBlack text-center col-xs-12 col-sm-12 text-center" style="font-weight:700; ">&iexcl;Registro exitoso!</h2>
-					<h3
-							class="textBlack col-xs-12 col-sm-12 text-center" style="color:#7c41bc !important;" >
-							Bienvenido a Infomovil
-						</h3>
-						
-						<div class="clear"></div>
-						<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-center textBlack">
-						</div>
-						<div class="clear"></div>
-						<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-							
-								<p class="text-left">
-								<table width="80%" border="0" class="text-left col-xs-12 col-sm-12 col-md-4 col-md-offset-4 col-lg-4 col-lg-offset-4" style="font-weight:700;">
-  <tbody>
-    <tr>
-      <td><img width="20" height="20" alt="Infomovil"
-							src="<c:url value="/resources/webapp/images/paso1.png"/>" /></td>
-      <td>Selecciona un estilo </td>
-      <td><img width="20" height="20" alt="Infomovil"
-							src="<c:url value="/resources/webapp/images/imgPaso1.png"/>" /></td>
-    </tr>
-    <tr>
-      <td><img width="20" height="20" alt="Infomovil"
-							src="<c:url value="/resources/webapp/images/paso2.png"/>" /></td>
-      <td>Llena tus datos</td>
-      <td><img width="20" height="20" alt="Infomovil"
-							src="<c:url value="/resources/webapp/images/imgPaso2.png"/>" /></td>
-    </tr>
-    <tr>
-      <td><img width="20" height="20" alt="Infomovil"
-							src="<c:url value="/resources/webapp/images/paso3.png"/>" /></td>
-      <td>Pública tu p&aacute;gina web</td>
-      <td><img width="20" height="20" alt="Infomovil"
-							src="<c:url value="/resources/webapp/images/imgPaso3.png"/>" /></td>
-    </tr>
-  </tbody>
-</table>
-
-									
-								</p>
-							
-							
-						</div>
-
-						
-						<div class="clear divider"></div>
+					<h2	class="textBlack text-center col-xs-12 col-sm-12 text-center" style="font-weight:700; ">&iexcl;Registro exitoso!</h2>
+					<h3 class="textBlack col-xs-12 col-sm-12 text-center" style="color:#7c41bc !important;" >Bienvenido a Infomovil</h3>
+					<div class="clear"></div>
+					<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-center textBlack"></div>
+					<div class="clear"></div>
+					<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">		
+						<p class="text-left">
+							<table width="80%" border="0" class="text-left col-xs-12 col-sm-12 col-md-4 col-md-offset-4 col-lg-4 col-lg-offset-4" style="font-weight:700;">
+  								<tbody>
+  									<tr>
+      									<td><img width="20" height="20" alt="Infomovil"	src="<c:url value="/resources/webapp/images/paso1.png"/>" /></td>
+      									<td>Selecciona un estilo </td>
+      									<td><img width="20" height="20" alt="Infomovil"	src="<c:url value="/resources/webapp/images/imgPaso1.png"/>" /></td>
+    								</tr>
+    								<tr>
+      									<td><img width="20" height="20" alt="Infomovil"	src="<c:url value="/resources/webapp/images/paso2.png"/>" /></td>
+      									<td>Llena tus datos</td>
+      									<td><img width="20" height="20" alt="Infomovil"	src="<c:url value="/resources/webapp/images/imgPaso2.png"/>" /></td>
+    								</tr>
+    								<tr>
+      									<td><img width="20" height="20" alt="Infomovil" src="<c:url value="/resources/webapp/images/paso3.png"/>" /></td>
+      									<td>Pública tu p&aacute;gina web</td>
+      									<td><img width="20" height="20" alt="Infomovil" src="<c:url value="/resources/webapp/images/imgPaso3.png"/>" /></td>
+    								</tr>
+  								</tbody>
+							</table>
+						</p>
 					</div>
+					<div class="clear divider"></div>
+				</div>
 					<div class="modal-footer">
-						<button type="button"
-							class="btn btn-purple text-center col-xs-12 col-sm-12 col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3"
-							data-dismiss="modal">
-
-							<strong>Continuar</strong>
-
-						</button>
+					<button type="button" class="btn btn-purple text-center col-xs-12 col-sm-12 col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3" data-dismiss="modal">
+						<strong>Continuar</strong>
+					</button>
 					</div>
 				</div>
 			</div>
 		</div>
 		<!--/MODAL Registro-->
 
-<!--MODAL MAPS-->
-<div id="myModalMaps" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-lg">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close textBlack pull-left" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <button type="button" class="btn btn-purple pull-right">Guardar</button>
-      </div>
-      <div class="modal-body bgWhite">maps</div>
-      <div class="modal-footer"></div>
-    </div>
-  </div>
-</div>
-<!--MODAL MAPS-->
+	<!--MODAL MAPS-->
+	<div id="myModalMaps" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	  <div class="modal-dialog modal-lg">         
+	    <div class="modal-content">
+	      <div class="modal-header">
+	        <button type="button" class="close textBlack pull-left" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button> 
+	        <input id="pac-input" class="controls" type="text" placeholder="Enter a location" style="height: 32px; width: 400px;"/>
+	        <button type="button" class="btn btn-purple pull-right">Guardar</button>
+	      </div>
+	      <div class="modal-body bgWhite">
+	      	
+	   		<div id="map-canvas"></div>
+	      </div>
+	      <div class="modal-footer"></div>
+	    </div>
+	  </div>
+	</div>
+	<!--MODAL MAPS-->
 
-		<!--MODAL TEMPLATES-->
-		<div id="modalTemplates"></div>
-		<!-- <div id="myModalTemplates" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"><div class="modal-dialog modal-lg"><div class="modal-content"><div class="modal-header"><button type="button" class="close textBlack" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button><p class="modal-title textBlack">Elije tu estilo</p></div><div class="modal-body bgWhite"><ul class="bxslider"><li><img src="https://s3.amazonaws.com/landing.infomovil.com/webapp/templates/Coverpage1azul/templateVacio.png" title="Funky roots"></li><li><img src="https://s3.amazonaws.com/landing.infomovil.com/webapp/templates/Coverpage2/templateVacio.png" title="Funky roots"></li></ul></div><div class="modal-footer"><button type="button" class="btn btn-purple" data-dismiss="modal">Cerrar</button></div></div></div></div> -->
-		<!--/MODAL TEMPLATES-->
+	<!--MODAL TEMPLATES-->
+	<div id="modalTemplates"></div>
+	<!--/MODAL TEMPLATES-->
+		
 		<!-- Scroll to Top Button (Only visible on small and extra-small screen sizes) -->
 		<div class="scroll-top page-scroll visible-xs visble-sm">
 			<a class="btn" href="#page-top"> <img width="20" height="20"
@@ -673,14 +609,15 @@
 			src="<c:url value="/resources/webapp/js/jqBootstrapValidation.js"/>"></script>
 		<script>
   $(function () { $("input,select,textarea").not("[type=submit]").jqBootstrapValidation(); } );
-</script>
+		</script>
 		<script src="<c:url value="/resources/webapp/js/jquery.numeric.js"/>"></script>
 		<script src="<c:url value="/resources/webapp/js/jquery.blockUI.js"/>"></script>
 		<script src="<c:url value="/resources/js/webapp/validaciones.js"/>"></script>
+		<script src="<c:url value="/resources/js/webapp/mapa.js"/>"></script>
 		<script>
 $(document).ready(function(){
 	generarSlider();
-// 	google.maps.event.addDomListener(window, 'load', initialize);
+	google.maps.event.addDomListener(window, 'load', initialize);
 	});
 
 </script>
@@ -696,6 +633,8 @@ $('.navbar-collapse ul li a').click(function() {
 });
 
 </script>
+
+
 
 <script>
 	<c:choose>
