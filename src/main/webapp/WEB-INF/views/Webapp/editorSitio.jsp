@@ -50,13 +50,10 @@
 		type="image/x-icon" />
 	<link href="http://landing.infomovil.com/webapp/templates/${ template }/images/apple-touch-icon-57x57.png" />
 	<style>
-	
-	.pac-container {
-	
-	z-index:10500!important;
-/* 	display: block!important; */
-
-}
+		.pac-container
+		{
+			z-index:10500!important;
+		}
 	</style>
 	<title itemprop="name">Infomovil</title>
 	<link rel="canonical" href="http://www.infomovil.com" itemprop="url" />
@@ -245,7 +242,17 @@
 						</div>
 						<div class="clear"></div>
 						<div class="divider"></div>
-						<a id="agregarUbicacion" href="#" data-toggle="modal" data-target="#myModalMaps">Agregar Ubicación</a>
+						<!-- /Botón MAPS --> 
+						<a href="#" data-toggle="modal" data-target="#myModalMaps" class="col-xs-12 col-sm-6 col-sm-offset-3 col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3 btn btn-default btn-outline navEditor"> 
+							<img width="20" height="20" alt="Infomovil" src="<c:url value="/resources/webapp/images/fa-templates.png"/>" />Coloca tu ubicación </a> 
+						<!-- /Botón MAPS --> 
+						<label id="direccionMap" for="direccionMap"></label>		
+						
+						<!-- /Botón AGREGAR VIDEO --> 
+						<a href="#" data-toggle="modal" data-target="#myModalVideo" class="col-xs-12 col-sm-6 col-sm-offset-3 col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3 btn btn-default btn-outline navEditor"> 
+						<img width="20" height="20" alt="Infomovil" src="<c:url value="/resources/webapp/images/fa-templates.png"/>" />Agregar Video</a> 
+						<!-- /Botón AGREGAR VIDEO -->
+
 					</form>
 				</div>
 			</div>
@@ -553,10 +560,11 @@
 	      <div class="modal-header">
 	        <button type="button" class="close textBlack pull-left" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button> 
 	        <input id="pac-input" class="controls" type="text" placeholder="Enter a location" style="height: 32px; width: 400px;"/>
-	        <button type="button" class="btn btn-purple pull-right">Guardar</button>
+	        <button type="button" class="btn btn-purple pull-right" id="borrarUbicacion">Borrar</button>
+	        <button type="button" class="btn btn-purple pull-right" id="guardarUbicacion">Guardar</button>
 	      </div>
 	      <div class="modal-body bgWhite">
-	      	
+	      	<div style="background:url(<c:url value="/resources/webapp/images/ubicacion.png"/>) center center no-repeat; position:absolute; top: 42%; left:47%; width:50px; height:50px; z-index: 999"></div>
 	   		<div id="map-canvas"></div>
 	      </div>
 	      <div class="modal-footer"></div>
@@ -565,6 +573,42 @@
 	</div>
 	<!--MODAL MAPS-->
 
+<!-- Modal VIDEO-->
+      <div class="modal fade" id="myModalVideo" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+                    <div class="modal-header">
+                      <button type="button" class="close textBlack" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                      <h4 class="modal-title" id="myModalLabel"></h4>
+                    </div>
+            <div class="modal-body"> 
+                            <div id= "primero">
+                                  Buscar Video: <input type="text" name="fname" id="algo"><br><br><br>
+                                  <input type="button" value="Enviar" id="button">
+                             </div><!--Fin del div primero -->
+
+                            <div id="segundo">
+                                   <button type="button" id="idRegresar">Regresar!</button>
+                                   <br><br>
+                                    <ul id="lista" ></ul>
+                            </div><!--Fin del div segundo -->
+
+                            <div id="tercero">
+                                <div id="playerVideo">
+                                   <iframe src="" width="540" height="320" id="playerVideoFrame" style="border:0"></iframe>
+                                </div>
+                            </div><!--Fin del div tercero -->   
+
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-default" data-dismiss="modal" id="idClose">Close</button>
+                      <button type="button" class="btn btn-primary" onClick="guardarUrlVideo()">Save changes</button>
+                    </div>
+          </div>
+        </div>
+      </div>
+     </div>
+<!-- Modal VIDEO-->
+      
 	<!--MODAL TEMPLATES-->
 	<div id="modalTemplates"></div>
 	<!--/MODAL TEMPLATES-->
@@ -589,9 +633,15 @@
 <%-- 		<h1>${ template }</h1> --%>
 <%-- 		<h1>${ sitioWeb }</h1> --%>
 <%-- 		<h1>${ canalUsuario }</h1> --%>
+<%-- 		<h1>${ latitud }</h1> --%>
+<%-- 		<h1>${ longitud }</h1> --%>
+
 <%-- <h1>${ claseCss }</h1> --%>
-		<input type="hidden" id="plantilla" name="plantilla"
-			<c:if test="${not empty template}"> value = "${ template }" </c:if>>
+		<input type="hidden" id="plantilla" name="plantilla" <c:if test="${not empty template}"> value = "${ template }" </c:if>>
+		<input type="hidden" id="latitud" name="latitud" value = "${ latitud }">
+		<input type="hidden" id="longitud" name="longitud" value = "${ longitud }">
+		<input type="hidden" id="direccionMap" name="direccionMap" value = "${ direccionMap }">
+		<input type="hidden" id="urlVideo" name="urlVideo" value = "${ urlVideo }">
 		<!-- Bootstrap core JavaScript
     ================================================== -->
 		<!-- Placed at the end of the document so the pages load faster -->
@@ -614,12 +664,12 @@
 		<script src="<c:url value="/resources/webapp/js/jquery.blockUI.js"/>"></script>
 		<script src="<c:url value="/resources/js/webapp/validaciones.js"/>"></script>
 		<script src="<c:url value="/resources/js/webapp/mapa.js"/>"></script>
+		<script src="<c:url value="/resources/js/webapp/videoYoutube.js"/>"></script>
 		<script>
 $(document).ready(function(){
 	generarSlider();
 	google.maps.event.addDomListener(window, 'load', initialize);
 	});
-
 </script>
 		<script>
 // jQuery for page scrolling feature - requires jQuery Easing plugin

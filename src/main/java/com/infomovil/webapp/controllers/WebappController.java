@@ -108,6 +108,57 @@ public class WebappController
 		
 		return resultMap;
 	}
+
+	@RequestMapping(value = "/infomovil/actualizaMapa", method = RequestMethod.GET, produces = "application/json")
+	@ResponseBody
+	public Map<String, String> actualizaMapa(@RequestParam String longitud, @RequestParam String latitud, @RequestParam String direccion) 
+			throws UnsupportedEncodingException
+	{		
+		Map<String, String> resultMap = new HashMap<String, String>();
+		RespuestaVO wsRespuesta = new RespuestaVO();
+		direccion = new String(direccion.getBytes("ISO-8859-1"), "UTF-8");
+		
+		try
+		{
+			String correo = Util.getUserLogged().getUsername();
+			String password = Util.getUserLogged().getPassword();			
+			wsRespuesta = wsCliente.crearSitioGuardarUbicacion(correo, password, latitud, longitud, direccion);
+		}		
+		catch (Exception e) 
+		{
+			logger.error("actualizaMapa:::::", e);	
+			resultMap.put("codeError", "-100");
+		}	
+		
+		resultMap.put("actualizaMapa", wsRespuesta.getCodeError());
+		
+		return resultMap;
+	}
+	
+	@RequestMapping(value = "/infomovil/actualizaVideo", method = RequestMethod.GET, produces = "application/json")
+	@ResponseBody
+	public Map<String, String> actualizaVideo(@RequestParam String urlVideo) 
+			throws UnsupportedEncodingException
+	{		
+		Map<String, String> resultMap = new HashMap<String, String>();
+		RespuestaVO wsRespuesta = new RespuestaVO();
+		
+		try
+		{
+			String correo = Util.getUserLogged().getUsername();
+			String password = Util.getUserLogged().getPassword();			
+			wsRespuesta = wsCliente.crearSitioGuardarVideo(correo, password, urlVideo);
+		}		
+		catch (Exception e) 
+		{
+			logger.error("actualizaVideo:::::", e);	
+			resultMap.put("codeError", "-100");
+		}	
+		
+		resultMap.put("actualizaVideo", wsRespuesta.getCodeError());
+		
+		return resultMap;
+	}
 	
 	@RequestMapping(value = "/infomovil/publicarSitio", method = RequestMethod.POST)
 	@ResponseBody
@@ -325,8 +376,7 @@ public class WebappController
 		{
 			String correo = Util.getUserLogged().getUsername();
 			String password = Util.getUserLogged().getPassword();
-			
-			logger.info("editarSitio------> correo::::: " + correo + ", password:::: " + password);
+
 		    wsRespuesta = wsCliente.crearSitioCargar(correo, password);
 			
 			if (wsRespuesta.getCodeError().equals("0"))
@@ -383,7 +433,11 @@ public class WebappController
 				model.put("descripcionCorta", wsRespuesta.getDominioCreaSitio().getDescripcionCorta().trim());
 				model.put("correoElectronico", wsRespuesta.getDominioCreaSitio().getCorreoElectronico().trim());
 				model.put("telefonoUsuario", wsRespuesta.getDominioCreaSitio().getTelefono().trim());			
-				model.put("vistaPrevia", wsRespuesta.getDominioCreaSitio().getUrlVistaPrevia());				
+				model.put("vistaPrevia", wsRespuesta.getDominioCreaSitio().getUrlVistaPrevia());	
+				model.put("urlVideo", wsRespuesta.getDominioCreaSitio().getVideoUrl());
+				model.put("latitud", wsRespuesta.getDominioCreaSitio().getLatitudeMap());
+				model.put("longitud", wsRespuesta.getDominioCreaSitio().getLongitudeMap());
+				model.put("direccionMap", wsRespuesta.getDominioCreaSitio().getDireccionMap());
 				model.put("template", template);
 				model.put("sitioWeb", sitioWeb); 
 				model.put("fechaIniTel", fechaIni);
