@@ -18,8 +18,6 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler;
 import org.springframework.security.web.authentication.rememberme.TokenBasedRememberMeServices;
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.CookieValue;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -449,11 +447,10 @@ public class WebappController
 			}
 			else 
 			{
-				Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-				remember.logout(request, response, authentication);
+				logoutInfomovil(request, response);
 				
 				if (wsRespuesta.getCodeError().equals("-3")){
-					redirectAttributes.addFlashAttribute("errorCta", "Tu Plan Pro ya está activo. Inicia sesión");
+					redirectAttributes.addFlashAttribute("errorCta", "Si ya tienes Plan Pro. Inicia sesión");
 					redirectAttributes.addFlashAttribute("ctaCorreo", correo);
 				}
 				
