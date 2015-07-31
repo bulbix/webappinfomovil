@@ -13,6 +13,8 @@ myApp.geolocalizacion = false;
 myApp.bandera = false;
 myApp.tieneMapa = false;
 myApp.direccion = "";
+myApp.latPermiso = 0;
+myApp.lonPermiso = 0;
 
 function initialize() 
 {
@@ -20,38 +22,30 @@ function initialize()
 	myApp.latitud =  parseFloat($("#latitud").val());
 	myApp.tieneMapa = (myApp.longitud != 0 && myApp.latitud != 0);
 	var myLatlng = null;
+	var map = null;
+	var marker = null;
 	
 	if (!myApp.tieneMapa)
 	{
 		myApp.obtenerDireccion = false
-//		myApp.latitud = 21.06086980676483; //Default mexico
-//		myApp.longitud = -98.86579389431152;
+		myApp.latitud = 21.06086980676483; /*Default mexico*/
+		myApp.longitud = -98.86579389431152;
 		myApp.zoom = 3;
 		myApp.geolocalizacion = navigator.geolocation ? true : false;
 		myLatlng = new google.maps.LatLng(myApp.latitud, myApp.longitud);
 		
 		if (myApp.geolocalizacion)
 		{
-	//		navigator.geolocation.getCurrentPosition(function (position) {
-	//			getPosicionActual(position, setCoordenadas);
-	//		}
+            navigator.geolocation.getCurrentPosition(function (position) {
             	
-      //      	myApp.latitud = position.coords.latitude;
-       //     	myApp.longitud = position.coords.longitude;
-         //   	console.log("permitir.... latitud: " + position.coords.latitude + ", longitud: " + position.coords.longitude);
-
-//            , function(error) {
- //               errorGeolocalizacion(error);
-  //          });
-    /*        navigator.geolocation.getCurrentPosition(function (position) {
-            	
-            	myApp.latitud = position.coords.latitude;
-            	myApp.longitud = position.coords.longitude;
-            	console.log("permitir.... latitud: " + position.coords.latitude + ", longitud: " + position.coords.longitude);
+            	myApp.latPermiso = position.coords.latitude;
+            	myApp.lonPermiso = position.coords.longitude;
+//            	console.log("permitir.... latitud: " + myApp.latPermiso + ", longitud: " + myApp.lonPermiso);
+            	/*Aqui buscar la posicion del usuario y redireccionar*/
 
             }, function(error) {
                 errorGeolocalizacion(error);
-            });*/
+            });
 		}
 	}
 	else
@@ -66,8 +60,8 @@ function initialize()
 		center: new google.maps.LatLng(myApp.latitud, myApp.longitud), 
 		zoom: myApp.zoom
 	};
-	console.log("flujo myApp.latitud: " + myApp.latitud + ", myApp.longitud: " + myApp.longitud);
-	var map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
+	console.log("myApp.latitud: " + myApp.latitud + ", myApp.longitud: " + myApp.longitud);
+	map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
 	myApp.mapAuxiliar = map;
 	var input = (document.getElementById('pac-input'));
 	var autocomplete = new google.maps.places.Autocomplete(input);
@@ -76,7 +70,7 @@ function initialize()
 	map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
 	
 	var infowindow = new google.maps.InfoWindow();
-	var marker = new google.maps.Marker({ map : map, position: myLatlng });
+	marker = new google.maps.Marker({ map : map, position: myLatlng });
 	marker.setVisible(true);
 	
 	if (myApp.obtenerDireccion)
@@ -122,8 +116,19 @@ function initialize()
 
 	/**/
 	$("#myModalMaps").on('shown.bs.modal', function() { 
-		google.maps.event.trigger(map, "resize");
-		map.panTo(marker.getPosition());
+		
+/*		console.log("permitir.... latitud: " + myApp.latPermiso + ", longitud: " + myApp.lonPermiso);
+		if (!myApp.tieneMapa)
+		{
+			marker.setPosition(new google.maps.LatLng(myApp.latPermiso, myApp.lonPermiso));//refresh marker
+            map.setCenter(new google.maps.LatLng(myApp.latPermiso, myApp.lonPermiso));//resfresh center of the map
+            google.maps.event.trigger(map, "resize");
+		}
+		else
+		{*/
+			google.maps.event.trigger(map, "resize");
+			map.panTo(marker.getPosition());
+//		}
 	});
 	
 	$("#myModalMaps").on('hidden.bs.modal', function (e) {
@@ -140,44 +145,23 @@ function initialize()
 	/**/
 }
 
-function getPosicionActual(position, callback) {
-
-	console.log("getPosicionActual");
-	setCoordenadas(position, setCoordenadas);
-	//callback();
-}
-
-function getCoordenadas(position, setCoordenadas) {
-	
-    myApp.latitud = position.coords.latitude;
-    myApp.longitud = position.coords.longitude;
-    console.log("getCoordenadas");
-    setCoordenadas(myApp.latitud, myApp.longitud);
-}
-
-function setCoordenadas(position) {
-    myApp.latitud = position.coords.latitude;
-    myApp.longitud = position.coords.longitude;
-//	myApp.latitud = lat;
-//	myApp.longitud = lon;
-	console.log("setCoordenadas -> myApp.latitud: " + myApp.latitud + ", myApp.longitud: " + myApp.longitud);
-}
-
 function getLocationData(latLng, guardarDatos) {
 	
-	var geocoder = new google.maps.Geocoder();
+	  var geocoder = new google.maps.Geocoder();
 
-	geocoder.geocode({ "location" : latLng }, function(results, status) {
-		if (status == google.maps.GeocoderStatus.OK)
-		{
-			guardarDatos(results[0].formatted_address);
-		}
+	  geocoder.geocode({ "location" : latLng }, function(results, status) {
+		    if (status == google.maps.GeocoderStatus.OK)
+		    {
+		    	myApp.direccion = "";
+		    	myApp.direccion = results[0].formatted_address;
+		    	guardarDatos(results[0].formatted_address);
+		    }
 	});
 }
 
-function guardarDatos(direccion)
+function guardarDatos(dir)
 {
-	actualizarUbicacion(myApp.latitud, myApp.longitud, direccion);
+	actualizarUbicacion(myApp.latitud, myApp.longitud, dir);
 }
 
 function guardarUbicacion(map) {
