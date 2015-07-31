@@ -72,7 +72,7 @@ function guardarUrlVideo()
     var urlVideo = $("#playerVideoFrame").attr("src");
     console.log(urlVideo);
 
-	$("#myModalMaps").css("display", "none");
+	$("#myModalVideo").css("display", "none");
     $.blockUI({ 
         message: "Actualizando video...", 
         css: { 

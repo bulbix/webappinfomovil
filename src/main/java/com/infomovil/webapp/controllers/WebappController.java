@@ -117,7 +117,7 @@ public class WebappController
 		Map<String, String> resultMap = new HashMap<String, String>();
 		RespuestaVO wsRespuesta = new RespuestaVO();
 		direccion = new String(direccion.getBytes("ISO-8859-1"), "UTF-8");
-		
+		logger.info("longitud: " + longitud + ", latitud: " + latitud + ", direccion: " + direccion);
 		try
 		{
 			String correo = Util.getUserLogged().getUsername();

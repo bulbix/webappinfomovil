@@ -244,13 +244,14 @@
 						<div class="divider"></div>
 						<!-- /Botón MAPS --> 
 						<a href="#" data-toggle="modal" data-target="#myModalMaps" class="col-xs-12 col-sm-6 col-sm-offset-3 col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3 btn btn-default btn-outline navEditor"> 
-							<img width="20" height="20" alt="Infomovil" src="<c:url value="/resources/webapp/images/fa-templates.png"/>" />Coloca tu ubicación </a> 
+							<img width="20" height="20" alt="Infomovil" src="<c:url value="/resources/webapp/images/fa-templates.png"/>" /><span id="idOpcionUbicacion">Coloca tu ubicación</span> <br/> 
+							<label id="direccionMap" for="direccionMap"></label></a>
 						<!-- /Botón MAPS --> 
-						<label id="direccionMap" for="direccionMap"></label>		
+								
 						
 						<!-- /Botón AGREGAR VIDEO --> 
 						<a href="#" data-toggle="modal" data-target="#myModalVideo" class="col-xs-12 col-sm-6 col-sm-offset-3 col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3 btn btn-default btn-outline navEditor"> 
-						<img width="20" height="20" alt="Infomovil" src="<c:url value="/resources/webapp/images/fa-templates.png"/>" />Agregar Video</a> 
+						<img width="20" height="20" alt="Infomovil" src="<c:url value="/resources/webapp/images/fa-templates.png"/>" /><span id="idOpcionUbicacion">Agrega un video</span></a> 
 						<!-- /Botón AGREGAR VIDEO -->
 
 					</form>
@@ -640,7 +641,7 @@
 		<input type="hidden" id="plantilla" name="plantilla" <c:if test="${not empty template}"> value = "${ template }" </c:if>>
 		<input type="hidden" id="latitud" name="latitud" value = "${ latitud }">
 		<input type="hidden" id="longitud" name="longitud" value = "${ longitud }">
-		<input type="hidden" id="direccionMap" name="direccionMap" value = "${ direccionMap }">
+		<input type="hidden" id="direccionMapAux" name="direccionMapAux">
 		<input type="hidden" id="urlVideo" name="urlVideo" value = "${ urlVideo }">
 		<!-- Bootstrap core JavaScript
     ================================================== -->

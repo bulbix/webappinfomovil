@@ -24,22 +24,34 @@ function initialize()
 	if (!myApp.tieneMapa)
 	{
 		myApp.obtenerDireccion = false
-		myApp.latitud = 21.06086980676483;
-		myApp.longitud = -98.86579389431152;
+//		myApp.latitud = 21.06086980676483; //Default mexico
+//		myApp.longitud = -98.86579389431152;
 		myApp.zoom = 3;
 		myApp.geolocalizacion = navigator.geolocation ? true : false;
 		myLatlng = new google.maps.LatLng(myApp.latitud, myApp.longitud);
 		
 		if (myApp.geolocalizacion)
 		{
-            navigator.geolocation.getCurrentPosition(function (position) {
+	//		navigator.geolocation.getCurrentPosition(function (position) {
+	//			getPosicionActual(position, setCoordenadas);
+	//		}
+            	
+      //      	myApp.latitud = position.coords.latitude;
+       //     	myApp.longitud = position.coords.longitude;
+         //   	console.log("permitir.... latitud: " + position.coords.latitude + ", longitud: " + position.coords.longitude);
+
+//            , function(error) {
+ //               errorGeolocalizacion(error);
+  //          });
+    /*        navigator.geolocation.getCurrentPosition(function (position) {
             	
             	myApp.latitud = position.coords.latitude;
             	myApp.longitud = position.coords.longitude;
+            	console.log("permitir.... latitud: " + position.coords.latitude + ", longitud: " + position.coords.longitude);
 
             }, function(error) {
                 errorGeolocalizacion(error);
-            });
+            });*/
 		}
 	}
 	else
@@ -54,7 +66,7 @@ function initialize()
 		center: new google.maps.LatLng(myApp.latitud, myApp.longitud), 
 		zoom: myApp.zoom
 	};
-  
+	console.log("flujo myApp.latitud: " + myApp.latitud + ", myApp.longitud: " + myApp.longitud);
 	var map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
 	myApp.mapAuxiliar = map;
 	var input = (document.getElementById('pac-input'));
@@ -69,11 +81,6 @@ function initialize()
 	
 	if (myApp.obtenerDireccion)
 		obtenerDireccion(myLatlng);
-	
-	/*google.maps.event.addListener(marker, 'click', function() {
-		infowindow.open(map, marker);
-		console.log("click:::");
-	});*/
 
 	google.maps.event.addListener(autocomplete, 'place_changed', function() {
 	  
@@ -106,13 +113,7 @@ function initialize()
 	});
   
 	google.maps.event.addListener(map, 'dragend', function() {
-		
 		myApp.mapAuxiliar = map;
-		myApp.mapCenter = myApp.mapAuxiliar.getCenter(); //map.getCenter();
-		var latitud = myApp.mapCenter.lat();   
-		var longitud = myApp.mapCenter.lng(); 
-		var latLng = new google.maps.LatLng(latitud, longitud);
-		myApp.bandera = true;
 	});
 
 	google.maps.event.addListener(map, 'center_changed', function() {
@@ -139,49 +140,64 @@ function initialize()
 	/**/
 }
 
+function getPosicionActual(position, callback) {
+
+	console.log("getPosicionActual");
+	setCoordenadas(position, setCoordenadas);
+	//callback();
+}
+
+function getCoordenadas(position, setCoordenadas) {
+	
+    myApp.latitud = position.coords.latitude;
+    myApp.longitud = position.coords.longitude;
+    console.log("getCoordenadas");
+    setCoordenadas(myApp.latitud, myApp.longitud);
+}
+
+function setCoordenadas(position) {
+    myApp.latitud = position.coords.latitude;
+    myApp.longitud = position.coords.longitude;
+//	myApp.latitud = lat;
+//	myApp.longitud = lon;
+	console.log("setCoordenadas -> myApp.latitud: " + myApp.latitud + ", myApp.longitud: " + myApp.longitud);
+}
+
+function getLocationData(latLng, guardarDatos) {
+	
+	var geocoder = new google.maps.Geocoder();
+
+	geocoder.geocode({ "location" : latLng }, function(results, status) {
+		if (status == google.maps.GeocoderStatus.OK)
+		{
+			guardarDatos(results[0].formatted_address);
+		}
+	});
+}
+
+function guardarDatos(direccion)
+{
+	actualizarUbicacion(myApp.latitud, myApp.longitud, direccion);
+}
+
 function guardarUbicacion(map) {
 	
-	var direccion = "";
+	var latLng = null;
 	myApp.mapCenter = map.getCenter();
 	myApp.latitud = myApp.mapCenter.lat();   
 	myApp.longitud = myApp.mapCenter.lng(); 
-
-	if (myApp.place == null)
-	{
-		var latLng = new google.maps.LatLng(myApp.latitud, myApp.longitud);
-		obtenerDireccion(latLng);
-		direccion = $("#direccionMap").val();
-	}
-	else
-		direccion = myApp.place.formatted_address;
-	
-	console.log("obtener ubicacion: " + direccion + ", latitude: " + myApp.latitud + ", longitude: " + myApp.longitud);
-	actualizarUbicacion(myApp.latitud, myApp.longitud, direccion);
+	latLng = new google.maps.LatLng(myApp.mapCenter.lat(), myApp.mapCenter.lng());	
+	getLocationData(latLng, guardarDatos);	
 }
 
 function obtenerDireccion(latLng) 
 {
-	var dir = "";
 	var geocoder = new google.maps.Geocoder();
 	
 	geocoder.geocode({ "location" : latLng }, function(results, status) {
 	    if (status == google.maps.GeocoderStatus.OK)
-	    {
-	    	$("#direccionMap").val(results[0].formatted_address);
-	    	if (myApp.obtenerDireccion)
-	    		$("#direccionMap").html(results[0].formatted_address);
-	    }
+	    	$("#direccionMap").html(results[0].formatted_address);
 	  });
-}
-
-function centerChanged(map, marker) {
-	
-	myApp.bandera = true;
-	
-	if (myApp.bandera) {
-		myApp.bandera = false;
-		map.panTo(marker.getPosition());
-	}	
 }
 
 function actualizarUbicacion(latitud, longitud, direccion) {
@@ -195,7 +211,7 @@ function actualizarUbicacion(latitud, longitud, direccion) {
             width: '400px' 
         } 
     }); 
-    
+
 	$.ajax({
 		type : "GET",
 		url : contextPath + "/infomovil/actualizaMapa",
@@ -226,8 +242,8 @@ function actualizarUbicacion(latitud, longitud, direccion) {
 
 function errorGeolocalizacion(error) {
 
-	myApp.mostrarMapa = false;
-    
+	myApp.obtenerDireccion = false;
+	
     switch(error.code)
     {
         case error.PERMISSION_DENIED:
