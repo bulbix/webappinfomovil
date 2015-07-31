@@ -18,8 +18,6 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler;
 import org.springframework.security.web.authentication.rememberme.TokenBasedRememberMeServices;
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.CookieValue;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -163,7 +161,7 @@ public class WebappController
 	@RequestMapping(value = "/infomovil/publicarSitio", method = RequestMethod.POST)
 	@ResponseBody
 	public ModelAndView publicarSitio(@RequestParam String nombreDominio, @RequestParam String tipoDominio, 
-			@RequestParam int idCatTipoRecurso, RedirectAttributes redirectAtt)
+			@RequestParam int idCatTipoRecurso, HttpServletRequest request, HttpServletResponse response, RedirectAttributes redirectAtt)
 	{		
 		String resultadoPublicacion = "-1";
 		
@@ -190,7 +188,7 @@ public class WebappController
 				}
 			}
 
-			modeloVista = editarSitio(redirectAtt);
+			modeloVista = editarSitio(request, response, redirectAtt);
 			modeloVista.setViewName("redirect:/infomovil/editarSitio");
 			
 			if (!StringUtils.isEmpty(wsRespuesta.getDominioCreaSitio().getSitioWeb()))
@@ -221,7 +219,7 @@ public class WebappController
 			wsRespuesta = wsCliente.crearSitioPublicar(correo, password, nombrePersona, "Mexico", nombreDominio, tipoDominio, idCatTipoRecurso);
 			resultadoPublicacion = wsRespuesta.getCodeError();
 			resultMap.put("resultadoPub", wsRespuesta.getResultado());
-			modeloVista = editarSitio(redirectAttributes);
+			modeloVista = editarSitio(request,response, redirectAttributes);
 			
 			if (modeloVista != null)
 			{
@@ -358,7 +356,7 @@ public class WebappController
 	}
 	
 	@RequestMapping(value = "/infomovil/editarSitio", method = RequestMethod.GET)
-	public ModelAndView editarSitio(RedirectAttributes redirectAttributes)
+	public ModelAndView editarSitio(HttpServletRequest request, HttpServletResponse response, RedirectAttributes redirectAttributes)
 	{		
 		HashMap<String, Object> model = new HashMap<String, Object>();
 		RespuestaVO wsRespuesta = new RespuestaVO();
@@ -447,11 +445,16 @@ public class WebappController
 				model.put("colorTexto", colorTexto);
 				model.put("extensionImg", extensionImg);
 			}
-			else if (wsRespuesta.getCodeError().equals("-3"))
+			else 
 			{
+				logoutInfomovil(request, response);
+				
+				if (wsRespuesta.getCodeError().equals("-3")){
+					redirectAttributes.addFlashAttribute("errorCta", "Si ya tienes Plan Pro. Inicia sesión");
+					redirectAttributes.addFlashAttribute("ctaCorreo", correo);
+				}
+				
 				ModelAndView modelAndView =  new ModelAndView("redirect:/login");
-				redirectAttributes.addFlashAttribute("errorCta", "Tu Plan Pro ya está activo. Inicia sesión");
-				redirectAttributes.addFlashAttribute("ctaCorreo", correo);
 				return modelAndView;
 			}
 
