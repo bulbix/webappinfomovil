@@ -35,7 +35,7 @@ $(document).ready(function(){
                               var videoId = items[i].id.videoId;
                               var imgSrc = items[i].snippet.thumbnails.default.url;
                               var videoUrl = 'https://www.youtube.com/embed/' + videoId;
-                              var $li = $('<li data-video="'+videoUrl+'" class="dinamico" style="margin:0 0 10px 0; background:#e2e2e2; cursor:pointer"/>');
+                              var $li = $('<li data-video="'+videoUrl+'" class="dinamico" style="margin:0 0 10px 0; background:#e2e2e2; cursor:pointer!important;"/>');
 
                               
                               $li.append('<span class="thumb" style="display:block; float:left; width:50%;"><img src="' + imgSrc + '" /></span>');

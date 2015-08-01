@@ -133,19 +133,19 @@
 					</li>
 
 					<li>
-						<a href="#" data-toggle="modal" data-target="#myModalTemplates" class="smoothScroll ${colorTexto}">Elegir estilo 
+						<a href="#" data-toggle="modal" data-target="#myModalTemplates" class="smoothScroll ${colorTexto}">Estilo 
 							<img width="20" height="20" alt="Infomovil"	src="<c:url value="/resources/webapp/images/fa-templates${ extensionImg }.png"/>" />
 						</a>
 					<li>
 					
-					<li class="hidden-sm hidden-md hidden-lg">
-						<a href="#" data-toggle="modal" data-target="#myModalMaps" class="smoothScroll ${colorTexto}">Colocar Ubicación
+					<li >
+						<a href="#" data-toggle="modal" data-target="#myModalMaps" class="smoothScroll ${colorTexto}">Ubicación
 							<img width="20" height="20" alt="Infomovil"	src="<c:url value="/resources/webapp/images/icn_marc_maps${ extensionImg }.png"/>" />
 						</a>
 					<li>
 					
-					<li class="hidden-sm hidden-md hidden-lg">
-						<a href="#" data-toggle="modal" data-target="#myModalVideo" class="smoothScroll ${colorTexto}">Agregar video 
+					<li class="idBtnVideo" >
+						<a href="#" data-toggle="modal" data-target="#myModalVideo" class="smoothScroll ${colorTexto}">Video 
 							<img width="20" height="20" alt="Infomovil"	src="<c:url value="/resources/webapp/images/ico_ppp_youtube${ extensionImg }.png"/>" />
 						</a>
 					<li>
@@ -174,7 +174,7 @@
 	<!-- Botón Nuevo Estilo -->
 	<div class="seccTop bgBlack">
 	<div class="" >
-	<a href="#" data-toggle="modal" data-target="#myModalTemplates" class="col-xs-12 col-sm-6 col-sm-offset-3 col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3 btn btn-default btn-outline navEditor"><strong>¡Nuevo!</strong> Elige estilo <img width="20" height="20" alt="Infomovil"
+	<a href="#" data-toggle="modal" data-target="#myModalTemplates" class="col-xs-12 col-sm-6 col-sm-offset-3 col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3 btn btn-default btn-outline navEditor"> Elige estilo <img width="20" height="20" alt="Infomovil"
 							src="<c:url value="/resources/webapp/images/fa-templates.png"/>" /><br /><span class="text-center _90em">¡Lo puedes cambiar las veces que quieras!</span></a></div></div>
 							<!-- /Botón Nuevo Estilo -->
 	
@@ -259,6 +259,10 @@
 				</div>
 			</div>
 			<!-- /page header -->
+			<br/>
+			<br/>
+			<span class="col-xs-12 textBlack" style="font-size:1.4em; text-align:center;"><strong>¡Nuevo!</strong> Agrega más contenido</span>
+		
 		</div>
 		
 		<!--/Theme showcase -->
@@ -273,7 +277,7 @@
 	<a href="#" data-toggle="modal" data-target="#myModalMaps" class="col-xs-12 col-sm-6 col-sm-offset-3 col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3 btn btn-default btn-outline navEditor">
  <img width="30" height="30" alt="Infomovil" src="<c:url value="/resources/webapp/images/icn_marc_maps.png"/>" /> 
  <span id="idOpcionUbicacion">Coloca tu ubicación</span>
- <br /><span id="direccionMap" for="direccionMap" style="font-size:.85em;"></span>
+ <br /><span id="direccionMap" for="direccionMap" style="font-size:.85em; display:block; width:90%; overflow:hidden; margin:0 auto"></span>
  </a>
  </div>
 							<!-- /Botón Nuevo Estilo -->
@@ -281,7 +285,7 @@
 								<div class="clearfix"></div>
 						<div class="dividerSmall"></div>
 						<!-- /Botón AGREGAR VIDEO --> 
-						<div id="idBtnVideo">
+						<div class="idBtnVideo">
 						<a href="#" data-toggle="modal" data-target="#myModalVideo" class="col-xs-12 col-sm-6 col-sm-offset-3 col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3 btn btn-default btn-outline navEditor"> 
 						<img width="30" height="30" alt="Infomovil" src="<c:url value="/resources/webapp/images/ico_ppp_youtube.png"/>" /> <span id="idOpcionUbicacion">Agrega un video</span></a> 
 						</div>
@@ -533,7 +537,7 @@
 	        
 	      </div>
 	      <div class="modal-body bgWhite">
-	      	<div style="background:url(<c:url value="/resources/webapp/images/ubicacion.png"/>) center center no-repeat; position:absolute; top: 42%; left:47%; width:50px; height:50px; z-index: 999"></div>
+	      	<div class="hidden-xs" style="background:url(<c:url value="/resources/webapp/images/ubicacion.png"/>) center center no-repeat; position:absolute; top: 42%; left:47%; width:50px; height:50px; z-index: 999"></div>
 	   		<div id="map-canvas"></div>
 	      </div>
 	      <div class="modal-footer"></div>
@@ -561,15 +565,15 @@
                       <button type="button" class="btn btn-purple pull-right" >Save changes</button> -->
                     </div>
             <div class="modal-body"> 
-            <div style="width:90%; margin:0 auto; display:block; height:auto;">
+            <div >
                             <div id= "primero" style=" display:block; height:100px;">
                             <div style="display:block; height:30px; width:100%;"></div>
-                                  Buscar Video: <input type="text" name="fname" id="algo">
-                                  <input type="button" value="Enviar" id="button" class="btn btn-purple">
+                            <div style="display:block; margin:0 auto; width:80%;">
+                                  Busca tu video: <input type="text" name="fname" id="algo">
+                                  <input type="button" value="Buscar" id="button" class="btn btn-purple">
                                   
-                                  
+                                  </div>
                                   <div>
-                                  <iframe src=""  id="playerVideoGuardado" style="width:100%; height:auto; min-height:320px; display:block; min-width:320px; margin: 0 auto; border:0"></iframe>
                                   </div>
                              </div><!--Fin del div primero -->
 
@@ -583,7 +587,7 @@
 
                             <div id="tercero">
                                 <div id="playerVideo">
-                                   <iframe src=""  id="playerVideoFrame" style="width:100%; height:auto; min-height:320px; display:block; min-width:320px; margin: 0 auto; border:0"></iframe>
+                                   <iframe src=""  id="playerVideoFrame" style="width:80% !important; height:auto; min-height:200px; display:block; min-width:200px; margin: 0 auto; border:0"></iframe>
                                 </div>
                             </div><!--Fin del div tercero -->   
 </div>
@@ -622,7 +626,7 @@
 <%-- 		<h1>${ sitioWeb }</h1> --%>
 <%-- 		<h1>${ canalUsuario }</h1> --%>
 <%-- 		<h1>${ latitud }</h1> --%>
-		<h1>${ statusCuenta }</h1>
+		<!-- <h1>${ statusCuenta }</h1> -->
 
 <%-- <h1>${ claseCss }</h1> --%>
 		<input type="hidden" id="plantilla" name="plantilla" <c:if test="${not empty template}"> value = "${ template }" </c:if>>
