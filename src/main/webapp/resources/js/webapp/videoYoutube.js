@@ -35,10 +35,11 @@ $(document).ready(function(){
                               var videoId = items[i].id.videoId;
                               var imgSrc = items[i].snippet.thumbnails.default.url;
                               var videoUrl = 'https://www.youtube.com/embed/' + videoId;
-                              var $li = $('<li data-video="'+videoUrl+'" class="dinamico"/>');
+                              var $li = $('<li data-video="'+videoUrl+'" class="dinamico" style="margin:0 0 10px 0; background:#e2e2e2; cursor:pointer"/>');
 
-                              $li.append('<div class="title">'+ title + '</div>');
-                              $li.append('<div class="thumb"><img src="' + imgSrc + '" /></div>');
+                              
+                              $li.append('<span class="thumb" style="display:block; float:left; width:50%;"><img src="' + imgSrc + '" /></span>');
+                              $li.append('<span class="title" style="display:block; float:left;width:50%">'+ title + '</span><div class="clear"></div>');
                               $li.click(function() {
                                   $videoFrame.attr('src', $(this).attr('data-video') );
                                   $("#primero").hide();

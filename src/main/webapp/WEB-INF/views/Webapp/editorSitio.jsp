@@ -137,6 +137,19 @@
 							<img width="20" height="20" alt="Infomovil"	src="<c:url value="/resources/webapp/images/fa-templates${ extensionImg }.png"/>" />
 						</a>
 					<li>
+					
+					<li class="hidden-sm hidden-md hidden-lg">
+						<a href="#" data-toggle="modal" data-target="#myModalMaps" class="smoothScroll ${colorTexto}">Colocar Ubicación
+							<img width="20" height="20" alt="Infomovil"	src="<c:url value="/resources/webapp/images/icn_marc_maps${ extensionImg }.png"/>" />
+						</a>
+					<li>
+					
+					<li class="hidden-sm hidden-md hidden-lg">
+						<a href="#" data-toggle="modal" data-target="#myModalVideo" class="smoothScroll ${colorTexto}">Agregar video 
+							<img width="20" height="20" alt="Infomovil"	src="<c:url value="/resources/webapp/images/ico_ppp_youtube${ extensionImg }.png"/>" />
+						</a>
+					<li>
+					
 						<a href="<c:url value="/logout"></c:url>" class="smoothScroll ${colorTexto}"> Cerrar sesión					
 							<img width="20"	height="20" alt="Infomovil" src="<c:url value="/resources/webapp/images/fa-sign-out${ extensionImg }.png"/>" />
 						</a>
@@ -242,20 +255,6 @@
 						</div>
 						<div class="clear"></div>
 						<div class="divider"></div>
-						<!-- /Botón MAPS --> 
-						<a href="#" data-toggle="modal" data-target="#myModalMaps" class="col-xs-12 col-sm-6 col-sm-offset-3 col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3 btn btn-default btn-outline navEditor"> 
-							<img width="20" height="20" alt="Infomovil" src="<c:url value="/resources/webapp/images/fa-templates.png"/>" /><span id="idOpcionUbicacion">Coloca tu ubicación</span> <br/> 
-							<label id="direccionMap" for="direccionMap"></label></a>
-						<!-- /Botón MAPS --> 
-								
-						
-						<!-- /Botón AGREGAR VIDEO --> 
-						<div id="idBtnVideo" style="display:none;">
-						<a href="#" data-toggle="modal" data-target="#myModalVideo" class="col-xs-12 col-sm-6 col-sm-offset-3 col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3 btn btn-default btn-outline navEditor"> 
-						<img width="20" height="20" alt="Infomovil" src="<c:url value="/resources/webapp/images/fa-templates.png"/>" /><span id="idOpcionVideo">Agrega un video</span></a> 
-						</div>
-						<!-- /Botón AGREGAR VIDEO -->
-
 					</form>
 				</div>
 			</div>
@@ -266,63 +265,27 @@
 
 		<!--Footer-->
 		<footer class="footer bgBlack"> 
-		<!-- Descarga la app -->
-		<div id="descargaApp" style="display:none;">
 		<div class="dividerSmall"></div>
-		<p class="text-center"><strong>Descarga la app de Infomovil <span class="hidden-xs">y mejora tu página web:</span></strong><br/></p>
+		<div class="clearfix"></div>
+		<!-- /Botón MAPS --> 
 		
-		
-		<div class="text-left col-xs-9 col-xs-offset-2 col-sm-6 col-sm-offset-3 col-md-4 col-md-offset-4 col-lg-4 col-lg-offset-4 _09em">
-							
+		<div class="" >
+	<a href="#" data-toggle="modal" data-target="#myModalMaps" class="col-xs-12 col-sm-6 col-sm-offset-3 col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3 btn btn-default btn-outline navEditor">
+ <img width="30" height="30" alt="Infomovil" src="<c:url value="/resources/webapp/images/icn_marc_maps.png"/>" /> 
+ <span id="idOpcionUbicacion">Coloca tu ubicación</span>
+ <br /><span id="direccionMap" for="direccionMap" style="font-size:.85em;"></span>
+ </a>
+ </div>
+							<!-- /Botón Nuevo Estilo -->
 								
-								<table width="80%" border="0" class="text-left col-xs-12 " style="font-weight:700;">
-  <tbody>
-    <tr id="imgPlanPro" style="display:none;">
-      <td><img width="25" height="25" alt="Infomovil" src="<c:url value="/resources/webapp/images/ico_pp_youtube.png"/>" /> </td>
-      <td> &nbsp;</td>
-      <td>Agrega imágenes y video</td>
-    </tr>
-    
-     <tr id="imgPlanBasico" style="display:none;">
-      <td><img width="25" height="25" alt="Infomovil" src="<c:url value="/resources/webapp/images/ico_pp_img.png"/>" /> </td>
-      <td> &nbsp;</td>
-      <td>Agrega imágenes</td>
-    </tr>
-    
-    <tr>
-      <td><img width="25" height="25" alt="Infomovil" src="<c:url value="/resources/webapp/images/ico_prom_icn.png"/>" /></td>
-      <td>&nbsp;</span></td>
-      <td> Arma tu promoción <span class="hidden-xs">y compártela por Facebook</span></td>
-    </tr>
-    <tr>
-      <td><img width="25" height="25" alt="Infomovil"
-							src="<c:url value="/resources/webapp/images/icn_marc_maps.png"/>" /></td>
-      <td>&nbsp;</td>
-      <td> Coloca tu ubicación <span class="hidden-xs">con Google Maps</span>	</td>
-    </tr>
-    <tr>
-      <td>&nbsp;</td>
-      <td>&nbsp;</td>
-      <td>&nbsp;</td>
-    </tr>
-  </tbody>
-</table>
-		</div>
-		
-		
-		<div class="col-xs-12">
-             <div class="clearfix"></div>
-              <div class="col-xs-12 col-sm-4 col-sm-offset-2 col-md-2 col-md-offset-4">
-                <a target="blank" href="https://itunes.apple.com/mx/app/infomovil/id898313250?mt=8"><img onerror="this.src='http://www.infomovil.com/img/Templates/Clasico/images/trans.png';" alt="app store"  class="img-responsive" src="http://www.infomovil.com/img/Templates/Clasico/images/appstore_icn.png" style=" min-width:80px; max-width:120px; margin: 0 auto; "></a>
-              </div>
-              
-              
-              <div class="col-xs-12 col-sm-4 col-md-2 ">
-                <a target="blank" href="https://play.google.com/store/apps/details?id=com.infomovil.infomovil"><img onerror="this.src='http://www.infomovil.com/img/Templates/Clasico/images/trans.png';" alt="google store"  class="img-responsive" src="http://www.infomovil.com/img/Templates/Clasico/images/gstore_icn.png" style=" min-width:80px; max-width:120px; margin: 0 auto; width:100%;"></a>
-              </div>
-            </div>
-		</div>
-		<!-- /Descarga la app -->
+								<div class="clearfix"></div>
+						<div class="dividerSmall"></div>
+						<!-- /Botón AGREGAR VIDEO --> 
+						<div id="idBtnVideo">
+						<a href="#" data-toggle="modal" data-target="#myModalVideo" class="col-xs-12 col-sm-6 col-sm-offset-3 col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3 btn btn-default btn-outline navEditor"> 
+						<img width="30" height="30" alt="Infomovil" src="<c:url value="/resources/webapp/images/ico_ppp_youtube.png"/>" /> <span id="idOpcionUbicacion">Agrega un video</span></a> 
+						</div>
+						<!-- /Botón AGREGAR VIDEO -->
 		<!--Publicar TEL-->
 
 		<div id="publicarTel" style="display:none;">
@@ -516,7 +479,7 @@
 						<p class="modal-title"></p>
 					</div>
 					<div class="modal-body bgWhite">
-					<h2	class="textBlack text-center col-xs-12 col-sm-12 text-center" style="font-weight:700; ">&iexcl;Registro exitoso!</h2>
+					<h2	class="textBlack text-center col-xs-12 col-sm-12 text-center" style="font-weight:700; "> </h2>
 					<h3 class="textBlack col-xs-12 col-sm-12 text-center" style="color:#7c41bc !important;" >Bienvenido a Infomovil</h3>
 					<div class="clear"></div>
 					<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-center textBlack"></div>
@@ -563,8 +526,11 @@
 	      <div class="modal-header">
 	        <button type="button" class="close textBlack pull-left" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button> 
 	        <input id="pac-input" class="controls" type="text" placeholder="Enter a location" style="height: 32px; width: 400px;"/>
-	        <button type="button" class="btn btn-purple pull-right" id="borrarUbicacion">Borrar</button>
-	        <button type="button" class="btn btn-purple pull-right" id="guardarUbicacion">Guardar</button>
+	        <button type="button" class="btn btn-purple pull-right" id="guardarUbicacion"><img width="20" height="20" alt="Infomovil" src="<c:url value="/resources/webapp/images/successWhite.png"/>" /> <span class="hidden-xs">Guardar</span></button>
+	        
+	        <div class="pull-right" style="display:inline-block; width:10px; height:20px;"></div>
+	        <button type="button" class="btn btn-purple pull-right" id="borrarUbicacion"><img width="20" height="20" alt="Infomovil" src="<c:url value="/resources/webapp/images/trash.png"/>" /></button>
+	        
 	      </div>
 	      <div class="modal-body bgWhite">
 	      	<div style="background:url(<c:url value="/resources/webapp/images/ubicacion.png"/>) center center no-repeat; position:absolute; top: 42%; left:47%; width:50px; height:50px; z-index: 999"></div>
@@ -581,30 +547,49 @@
         <div class="modal-dialog" role="document">
           <div class="modal-content">
                     <div class="modal-header">
-                      <button type="button" class="close textBlack" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                      <h4 class="modal-title" id="myModalLabel"></h4>
+                      <button type="button" class="close textBlack pull-left" data-dismiss="modal" aria-label="Close" id="idClose"><span aria-hidden="true">&times;</span></button> 
+                      <button type="button" class="btn btn-purple pull-right" onClick="guardarUrlVideo()"><img width="20" height="20" alt="Infomovil" src="<c:url value="/resources/webapp/images/successWhite.png"/>" /> <span class="hidden-xs">Guardar</span></button>
+	        
+	        <div class="pull-right" style="display:inline-block; width:10px; height:20px;"></div>
+	        <button type="button" class="btn btn-purple pull-right" id="borrarVideo"><img width="20" height="20" alt="Infomovil" src="<c:url value="/resources/webapp/images/trash.png"/>" /></button>
+                      
+                      
+                      
+                      
+                      
+                      <!-- <h4 class="modal-title" id="myModalLabel"></h4>
+                      <button type="button" class="btn btn-purple pull-right" >Save changes</button> -->
                     </div>
             <div class="modal-body"> 
-                            <div id= "primero">
-                                  Buscar Video: <input type="text" name="fname" id="algo"><br><br><br>
-                                  <input type="button" value="Enviar" id="button">
+            <div style="width:90%; margin:0 auto; display:block; height:auto;">
+                            <div id= "primero" style=" display:block; height:100px;">
+                            <div style="display:block; height:30px; width:100%;"></div>
+                                  Buscar Video: <input type="text" name="fname" id="algo">
+                                  <input type="button" value="Enviar" id="button" class="btn btn-purple">
+                                  
+                                  
+                                  <div>
+                                  <iframe src=""  id="playerVideoGuardado" style="width:100%; height:auto; min-height:320px; display:block; min-width:320px; margin: 0 auto; border:0"></iframe>
+                                  </div>
                              </div><!--Fin del div primero -->
 
                             <div id="segundo">
-                                   <button type="button" id="idRegresar">Regresar!</button>
-                                   <br><br>
-                                    <ul id="lista" ></ul>
+                                   <button type="button" id="idRegresar" class="btn btn-purple pull-left">Regresar</button>
+                                   <div class="clear"></div>
+                                   <div style="width:100%; height:10px; display:block"></div>
+                                   
+                                    <ul id="lista" style="list-style:none; margin:0 0 0 -30px;"></ul>
                             </div><!--Fin del div segundo -->
 
                             <div id="tercero">
                                 <div id="playerVideo">
-                                   <iframe src="" width="540" height="320" id="playerVideoFrame" style="border:0"></iframe>
+                                   <iframe src=""  id="playerVideoFrame" style="width:100%; height:auto; min-height:320px; display:block; min-width:320px; margin: 0 auto; border:0"></iframe>
                                 </div>
                             </div><!--Fin del div tercero -->   
-
+</div>
                     <div class="modal-footer">
-                      <button type="button" class="btn btn-default" data-dismiss="modal" id="idClose">Close</button>
-                      <button type="button" class="btn btn-primary" onClick="guardarUrlVideo()">Save changes</button>
+                      <!-- <button type="button" class="btn btn-default" data-dismiss="modal" >Close</button> -->
+                      
                     </div>
           </div>
         </div>
