@@ -1,4 +1,23 @@
+$("#myModalVideo").on('shown.bs.modal', function() { 
+	
+	if ($("#urlVideo").val().trim().length > 0) {
+		
+		console.log("con video");
+		$("#playerVideoFrame").attr('src', $("#urlVideo").val());
+        $("#primero").hide();
+        $("#segundo").hide();
+        $("#tercero").show();
+	}
 
+});
+
+$("#myModalVideo").on('hidden.bs.modal',function() {
+    $("#playerVideoFrame").attr('src', ""); 
+	$("#tercero").hide();
+    $(".dinamico").remove();
+    $("#primero").show();
+    $("#segundo").hide();	
+});
 
 $(document).ready(function(){
     $("#tercero").hide();

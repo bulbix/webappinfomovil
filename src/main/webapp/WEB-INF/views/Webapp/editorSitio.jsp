@@ -283,7 +283,7 @@
 						<!-- /Botón AGREGAR VIDEO --> 
 						<div id="idBtnVideo">
 						<a href="#" data-toggle="modal" data-target="#myModalVideo" class="col-xs-12 col-sm-6 col-sm-offset-3 col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3 btn btn-default btn-outline navEditor"> 
-						<img width="30" height="30" alt="Infomovil" src="<c:url value="/resources/webapp/images/ico_ppp_youtube.png"/>" /> <span id="idOpcionUbicacion">Agrega un video</span></a> 
+						<img width="30" height="30" alt="Infomovil" src="<c:url value="/resources/webapp/images/ico_ppp_youtube.png"/>" /> <span id="idOpcionVideo">Agrega un video</span></a> 
 						</div>
 						<!-- /Botón AGREGAR VIDEO -->
 		<!--Publicar TEL-->
@@ -551,26 +551,16 @@
                       <button type="button" class="btn btn-purple pull-right" onClick="guardarUrlVideo()"><img width="20" height="20" alt="Infomovil" src="<c:url value="/resources/webapp/images/successWhite.png"/>" /> <span class="hidden-xs">Guardar</span></button>
 	        
 	        <div class="pull-right" style="display:inline-block; width:10px; height:20px;"></div>
-	        <button type="button" class="btn btn-purple pull-right" id="borrarVideo"><img width="20" height="20" alt="Infomovil" src="<c:url value="/resources/webapp/images/trash.png"/>" /></button>
-                      
-                      
-                      
-                      
-                      
-                      <!-- <h4 class="modal-title" id="myModalLabel"></h4>
-                      <button type="button" class="btn btn-purple pull-right" >Save changes</button> -->
+	        <button type="button" class="btn btn-purple pull-right" id="borrarVideo" onClick="borrarVideo()"><img width="20" height="20" alt="Infomovil" src="<c:url value="/resources/webapp/images/trash.png"/>" /></button>
+
                     </div>
             <div class="modal-body"> 
             <div style="width:90%; margin:0 auto; display:block; height:auto;">
                             <div id= "primero" style=" display:block; height:100px;">
                             <div style="display:block; height:30px; width:100%;"></div>
                                   Buscar Video: <input type="text" name="fname" id="algo">
-                                  <input type="button" value="Enviar" id="button" class="btn btn-purple">
-                                  
-                                  
-                                  <div>
-                                  <iframe src=""  id="playerVideoGuardado" style="width:100%; height:auto; min-height:320px; display:block; min-width:320px; margin: 0 auto; border:0"></iframe>
-                                  </div>
+                                  <input type="button" value="Buscar" id="button" class="btn btn-purple">
+
                              </div><!--Fin del div primero -->
 
                             <div id="segundo">
@@ -623,6 +613,7 @@
 <%-- 		<h1>${ canalUsuario }</h1> --%>
 <%-- 		<h1>${ latitud }</h1> --%>
 		<h1>${ statusCuenta }</h1>
+		<h1>${ urlVideo }</h1>
 
 <%-- <h1>${ claseCss }</h1> --%>
 		<input type="hidden" id="plantilla" name="plantilla" <c:if test="${not empty template}"> value = "${ template }" </c:if>>
@@ -682,7 +673,7 @@ $('.navbar-collapse ul li a').click(function() {
 			$("#logoBAZ").css("display", "block");
 			$("#idRegBAZ").css("display", "block");			
 			$("#logoGral").css("display", "none");	
-			$("#imgPlanPro").css("display", "table-row");				
+// 			$("#imgPlanPro").css("display", "table-row");				
 		</c:when>
 		<c:otherwise>
 			$("#publicarRecurso").css("display", "block");	
@@ -690,7 +681,7 @@ $('.navbar-collapse ul li a').click(function() {
 			$("#logoBAZ").css("display", "none");
 			$("#idRegBAZ").css("display", "none");	
 			$("#logoGral").css("display", "block");	
-			$("#imgPlanBasico").css("display", "table-row");
+// 			$("#imgPlanBasico").css("display", "table-row");
 		</c:otherwise>
 	</c:choose>
 
@@ -708,6 +699,10 @@ $('.navbar-collapse ul li a').click(function() {
 
 	<c:if test="${statusCuenta == 'pago' && statusCuenta == 'anual pro'}">
 		$("#idBtnVideo").css("display", "block");
+	</c:if>
+
+	<c:if test="${urlVideo != ''}">
+		$("#idOpcionVideo").html("Edita tu video");
 	</c:if>
 	
 	<c:if test="${registroExitoso =='SI'}">
