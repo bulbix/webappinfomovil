@@ -174,7 +174,7 @@
 	<!-- Botón Nuevo Estilo -->
 	<div class="seccTop bgBlack">
 	<div class="" >
-	<a href="#" data-toggle="modal" data-target="#myModalTemplates" class="col-xs-12 col-sm-6 col-sm-offset-3 col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3 btn btn-default btn-outline navEditor"> Elige estilo <img width="20" height="20" alt="Infomovil"
+	<a href="#" data-toggle="modal" data-target="#myModalTemplates" class="col-xs-12 col-sm-6 col-sm-offset-3 col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3 btn btn-default btn-outline navEditor"> <strong>¡Nuevo! </strong> Elige estilo <img width="20" height="20" alt="Infomovil"
 							src="<c:url value="/resources/webapp/images/fa-templates.png"/>" /><br /><span class="text-center _90em">¡Lo puedes cambiar las veces que quieras!</span></a></div></div>
 							<!-- /Botón Nuevo Estilo -->
 	
@@ -261,7 +261,7 @@
 			<!-- /page header -->
 			<br/>
 			<br/>
-			<span class="col-xs-12 textBlack" style="font-size:1.4em; text-align:center;"><strong>¡Nuevo!</strong> Agrega más contenido</span>
+			<span id="masContenido" class="col-xs-12 textWhite" style="font-size:1.4em; text-align:center; display:none;"><strong>¡Nuevo!</strong> Agrega más contenido</span>
 		
 		</div>
 		
@@ -273,7 +273,7 @@
 		<div class="clearfix"></div>
 		<!-- /Botón MAPS --> 
 		
-		<div class="" >
+		<div class="botonDesPublicar" style="display:none;">
 	<a href="#" data-toggle="modal" data-target="#myModalMaps" class="col-xs-12 col-sm-6 col-sm-offset-3 col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3 btn btn-default btn-outline navEditor">
  <img width="30" height="30" alt="Infomovil" src="<c:url value="/resources/webapp/images/icn_marc_maps.png"/>" /> 
  <span id="idOpcionUbicacion">Coloca tu ubicación</span>
@@ -285,7 +285,7 @@
 								<div class="clearfix"></div>
 						<div class="dividerSmall"></div>
 						<!-- /Botón AGREGAR VIDEO --> 
-						<div class="idBtnVideo">
+						<div id="idBtnVideo" class="botonDesPublicar" style="display:none;">
 						<a href="#" data-toggle="modal" data-target="#myModalVideo" class="col-xs-12 col-sm-6 col-sm-offset-3 col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3 btn btn-default btn-outline navEditor"> 
 						<img width="30" height="30" alt="Infomovil" src="<c:url value="/resources/webapp/images/ico_ppp_youtube.png"/>" /> <span id="idOpcionVideo">Agrega un video</span></a> 
 						</div>
@@ -620,8 +620,8 @@
 <%-- 		<h1>${ sitioWeb }</h1> --%>
 <%-- 		<h1>${ canalUsuario }</h1> --%>
 <%-- 		<h1>${ latitud }</h1> --%>
-		<h1>${ statusCuenta }</h1>
-		<h1>${ urlVideo }</h1>
+<%-- 		<h1>${ statusCuenta }</h1> --%>
+<%-- 		<h1>${ urlVideo }</h1> --%>
 
 		<!-- <h1>${ statusCuenta }</h1> -->
 
@@ -701,6 +701,8 @@ $('.navbar-collapse ul li a').click(function() {
 			$("#descargaApp").css("display", "block");
 			$("#publicarTel").css("display", "none");
 			$("#publicarRecurso").css("display", "none");
+			$(".botonDesPublicar").css("display", "block");		
+			$("#masContenido").css("display", "block");			
 		</c:when>
 		<c:otherwise>
 		
