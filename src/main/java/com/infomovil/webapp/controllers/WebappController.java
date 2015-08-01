@@ -369,6 +369,7 @@ public class WebappController
 		String extensionImg = "";
 		String fechaIni = "";
 		String fechaFin = "";
+		String status = "";
 		
 		try
 		{
@@ -436,6 +437,7 @@ public class WebappController
 				model.put("latitud", wsRespuesta.getDominioCreaSitio().getLatitudeMap());
 				model.put("longitud", wsRespuesta.getDominioCreaSitio().getLongitudeMap());
 				model.put("direccionMap", wsRespuesta.getDominioCreaSitio().getDireccionMap());
+				model.put("statusCuenta", wsRespuesta.getDominioCreaSitio().getTipoCuenta().toLowerCase());
 				model.put("template", template);
 				model.put("sitioWeb", sitioWeb); 
 				model.put("fechaIniTel", fechaIni);

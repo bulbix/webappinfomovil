@@ -67,10 +67,16 @@ $(document).ready(function(){
   });
 });
 
+function borrarVideo() {
+	actualizaVideo("");
+}
+
 function guardarUrlVideo()
 {
-    var urlVideo = $("#playerVideoFrame").attr("src");
-    console.log(urlVideo);
+    actualizaVideo($("#playerVideoFrame").attr("src"));
+}
+
+function actualizaVideo(url) {
 
 	$("#myModalVideo").css("display", "none");
     $.blockUI({ 
@@ -88,7 +94,7 @@ function guardarUrlVideo()
 		dataType : "json",
 		contentType: "text/plain",
 		data : {
-			urlVideo: urlVideo,
+			urlVideo: url,
 		},
 		success : function(json) {		
 			

@@ -36,6 +36,7 @@ function initialize()
 		
 		if (myApp.geolocalizacion)
 		{
+
             navigator.geolocation.getCurrentPosition(function (position) {
             	
             	myApp.latPermiso = position.coords.latitude;
@@ -43,9 +44,13 @@ function initialize()
 //            	console.log("permitir.... latitud: " + myApp.latPermiso + ", longitud: " + myApp.lonPermiso);
             	/*Aqui buscar la posicion del usuario y redireccionar*/
 
-            }, function(error) {
+           }, function(error) {
                 errorGeolocalizacion(error);
-            });
+           });
+		}
+		else
+		{
+			console.log("Este buscador, no soporta la geolocalización");
 		}
 	}
 	else
@@ -54,13 +59,13 @@ function initialize()
 		myApp.obtenerDireccion = true;
 		myApp.zoom = 15;
 	}
-	
+
 	var mapOptions =
 	{
 		center: new google.maps.LatLng(myApp.latitud, myApp.longitud), 
 		zoom: myApp.zoom
 	};
-	console.log("myApp.latitud: " + myApp.latitud + ", myApp.longitud: " + myApp.longitud);
+//	console.log("myApp.latitud: " + myApp.latitud + ", myApp.longitud: " + myApp.longitud);
 	map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
 	myApp.mapAuxiliar = map;
 	var input = (document.getElementById('pac-input'));
@@ -117,18 +122,22 @@ function initialize()
 	/**/
 	$("#myModalMaps").on('shown.bs.modal', function() { 
 		
-/*		console.log("permitir.... latitud: " + myApp.latPermiso + ", longitud: " + myApp.lonPermiso);
-		if (!myApp.tieneMapa)
+		google.maps.event.trigger(map, "resize");
+		map.panTo(marker.getPosition());
+	//	console.log("permitir.... latitud: " + myApp.latPermiso + ", longitud: " + myApp.lonPermiso);
+/*		if (!myApp.tieneMapa)
 		{
-			marker.setPosition(new google.maps.LatLng(myApp.latPermiso, myApp.lonPermiso));//refresh marker
-            map.setCenter(new google.maps.LatLng(myApp.latPermiso, myApp.lonPermiso));//resfresh center of the map
+			var newMarker = new google.maps.LatLng(myApp.latPermiso, myApp.lonPermiso);
+			marker.setPosition(newMarker);//refresh marker
+            map.setCenter(newMarker);//resfresh center of the map
+            map.panTo(marker.getPosition());
             google.maps.event.trigger(map, "resize");
 		}
 		else
-		{*/
+		{
 			google.maps.event.trigger(map, "resize");
 			map.panTo(marker.getPosition());
-//		}
+		}*/
 	});
 	
 	$("#myModalMaps").on('hidden.bs.modal', function (e) {
@@ -143,6 +152,29 @@ function initialize()
 		actualizarUbicacion("", "", "");
 	});
 	/**/
+}
+
+
+function getGeolocalizacion(setParametros) {
+
+	navigator.geolocation.getCurrentPosition(function (position) {
+		
+        	myApp.latPermiso = position.coords.latitude;
+        	myApp.lonPermiso = position.coords.longitude;
+        	guardarDatos("adjidfalkadfknldfs");
+        	
+        }, function(error) {
+        		errorGeolocalizacion(error);
+    });
+}
+
+function setParametros(lat, lon) {
+	console.log("lat: " + lat + ", lon: " + lon);
+}
+
+function getDatosGeolocalizacion() { 
+	
+	getGeolocalizacion(setParametros);
 }
 
 function getLocationData(latLng, guardarDatos) {
@@ -180,7 +212,10 @@ function obtenerDireccion(latLng)
 	
 	geocoder.geocode({ "location" : latLng }, function(results, status) {
 	    if (status == google.maps.GeocoderStatus.OK)
+	    {
 	    	$("#direccionMap").html(results[0].formatted_address);
+			$("#idOpcionUbicacion").html("Editar ubicación actual:");
+	    }
 	  });
 }
 

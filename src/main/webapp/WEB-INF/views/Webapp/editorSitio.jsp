@@ -250,8 +250,10 @@
 								
 						
 						<!-- /Botón AGREGAR VIDEO --> 
+						<div id="idBtnVideo" style="display:none;">
 						<a href="#" data-toggle="modal" data-target="#myModalVideo" class="col-xs-12 col-sm-6 col-sm-offset-3 col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3 btn btn-default btn-outline navEditor"> 
-						<img width="20" height="20" alt="Infomovil" src="<c:url value="/resources/webapp/images/fa-templates.png"/>" /><span id="idOpcionUbicacion">Agrega un video</span></a> 
+						<img width="20" height="20" alt="Infomovil" src="<c:url value="/resources/webapp/images/fa-templates.png"/>" /><span id="idOpcionVideo">Agrega un video</span></a> 
+						</div>
 						<!-- /Botón AGREGAR VIDEO -->
 
 					</form>
@@ -635,7 +637,7 @@
 <%-- 		<h1>${ sitioWeb }</h1> --%>
 <%-- 		<h1>${ canalUsuario }</h1> --%>
 <%-- 		<h1>${ latitud }</h1> --%>
-<%-- 		<h1>${ longitud }</h1> --%>
+		<h1>${ statusCuenta }</h1>
 
 <%-- <h1>${ claseCss }</h1> --%>
 		<input type="hidden" id="plantilla" name="plantilla" <c:if test="${not empty template}"> value = "${ template }" </c:if>>
@@ -719,6 +721,10 @@ $('.navbar-collapse ul li a').click(function() {
 		</c:otherwise>
 	</c:choose>	
 
+	<c:if test="${statusCuenta == 'pago' && statusCuenta == 'anual pro'}">
+		$("#idBtnVideo").css("display", "block");
+	</c:if>
+	
 	<c:if test="${registroExitoso =='SI'}">
 		$("#myModalRegistro").modal('show');
 	</c:if>
