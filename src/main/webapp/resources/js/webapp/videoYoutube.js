@@ -87,12 +87,19 @@ $(document).ready(function(){
   });
 });
 
-function borrarVideo() {
+function borrarVideo() 
+{	
+	if ($("#playerVideoFrame").attr("src").trim().length == 0)
+		return;
+	
 	actualizaVideo("");
 }
 
 function guardarUrlVideo()
 {
+	if ($("#playerVideoFrame").attr("src").trim().length == 0)
+		return;
+	
     actualizaVideo($("#playerVideoFrame").attr("src"));
 }
 

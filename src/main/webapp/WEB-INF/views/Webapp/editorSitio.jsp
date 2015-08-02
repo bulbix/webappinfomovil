@@ -138,13 +138,13 @@
 						</a>
 					<li>
 					
-					<li >
+					<li class="botonDesPublicar" style="display:none;">
 						<a href="#" data-toggle="modal" data-target="#myModalMaps" class="smoothScroll ${colorTexto}">Ubicación
 							<img width="20" height="20" alt="Infomovil"	src="<c:url value="/resources/webapp/images/icn_marc_maps${ extensionImg }.png"/>" />
 						</a>
 					<li>
 					
-					<li class="idBtnVideo" >
+					<li class="botonDesPublicar" id="btnVideoLi" style="display:none;">
 						<a href="#" data-toggle="modal" data-target="#myModalVideo" class="smoothScroll ${colorTexto}">Video 
 							<img width="20" height="20" alt="Infomovil"	src="<c:url value="/resources/webapp/images/ico_ppp_youtube${ extensionImg }.png"/>" />
 						</a>
@@ -702,16 +702,18 @@ $('.navbar-collapse ul li a').click(function() {
 			$("#publicarTel").css("display", "none");
 			$("#publicarRecurso").css("display", "none");
 			$(".botonDesPublicar").css("display", "block");		
-			$("#masContenido").css("display", "block");			
+			$("#masContenido").css("display", "block");
+			
+			<c:if test="${statusCuenta == 'gratuito'}">
+				$("#idBtnVideo").css("display", "none");
+				$("#btnVideoLi").css("display", "none");
+			</c:if>
+		
 		</c:when>
 		<c:otherwise>
 		
 		</c:otherwise>
 	</c:choose>	
-
-	<c:if test="${statusCuenta == 'pago' && statusCuenta == 'anual pro'}">
-		$("#idBtnVideo").css("display", "block");
-	</c:if>
 
 	<c:if test="${urlVideo != ''}">
 		$("#idOpcionVideo").html("Edita tu video");

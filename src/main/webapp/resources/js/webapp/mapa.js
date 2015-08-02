@@ -149,6 +149,10 @@ function initialize()
 	});
 	
 	$("#borrarUbicacion").on("click", function() {
+		
+		if(!myApp.tieneMapa)
+			return;
+		
 		actualizarUbicacion("", "", "");
 	});
 	/**/
