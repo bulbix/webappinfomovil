@@ -105,10 +105,6 @@ function initialize()
 		google.maps.event.trigger(map, "resize");
 		map.panTo(marker.getPosition());
 	});
-	
-	$("#myModalMaps").on('hidden.bs.modal', function (e) {
-		console.log("myApp.bandera: " + myApp.bandera);
-	})
 		
 	$("#guardarUbicacion").on("click", function() {
 		guardarUbicacion(myApp.mapAuxiliar);
@@ -143,40 +139,14 @@ function initialize()
         	marker.setPosition(myLatlng);
     		map.panTo(myLatlng);
     		map.setZoom(15);
-    		//myApp.mapAuxiliar = map;
-    		
-    		setTimeout(function(){
-        		guardarUbicacion(map);
-    			}, 2000);
+    		myApp.mapAuxiliar = map;
+
        }, function(error) {
             errorGeolocalizacion(error);
        });
 
 	});
 	/**/
-}
-
-
-function getGeolocalizacion(setParametros) {
-
-	navigator.geolocation.getCurrentPosition(function (position) {
-		
-        	myApp.latPermiso = position.coords.latitude;
-        	myApp.lonPermiso = position.coords.longitude;
-        	guardarDatos("adjidfalkadfknldfs");
-        	
-        }, function(error) {
-        		errorGeolocalizacion(error);
-    });
-}
-
-function setParametros(lat, lon) {
-	console.log("lat: " + lat + ", lon: " + lon);
-}
-
-function getDatosGeolocalizacion() { 
-	
-	getGeolocalizacion(setParametros);
 }
 
 function getLocationData(latLng, guardarDatos) {
