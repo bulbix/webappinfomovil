@@ -539,14 +539,13 @@
 	        <div class="pull-right" style="display:inline-block; width:10px; height:20px;"></div>
 	        <button type="button" class="btn btn-purple pull-right btnsEditor" id="ubicame"><img width="20" height="20" alt="Infomovil" src="<c:url value="/resources/webapp/images/btn_ubicame.png"/>" /> <span class="hidden-xs">¡Ubícame!</span></button>
 	        <div class="pull-right" style="display:inline-block; width:10px; height:20px;"></div>
-	         <div class="pull-right" style="display:inline-block; width:10px; height:20px;"></div>
 	         <button type="button" class="btn btn-purple pull-right btnsEditor" id="borrarUbicacion"><img width="20" height="20" alt="Infomovil" src="<c:url value="/resources/webapp/images/trash.png"/>" /></button>
 	      </div>
 	      <div class="modal-body bgWhite">
 	      	<div style="background:url(<c:url value="/resources/webapp/images/ubicacion.png"/>) center center no-repeat; position:absolute; top: 42%; left:47%; width:50px; height:50px; z-index: 999"></div>
 	   		<div id="map-canvas"></div>
 	      </div>
-	      <div class="modal-footer"><input type="checkbox" id="ubicame"/> Ubícame</div>
+	      <div class="modal-footer"></div>
 	    </div>
 	  </div>
 	</div>
