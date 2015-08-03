@@ -185,9 +185,9 @@
 		<div class="container">
 			<!-- page header -->
 			<div class="page-header text-center">
-				<h5 class=" text-center" id="urlSitio" style="display: none;">
+				<strong><span class=" text-center btnsEditor" id="urlSitio" style="display: none;">
 					<a href="http://${sitioWeb}" target="_blank" class="textBlack">${sitioWeb}</a>
-				</h5>
+				</span></strong>
 				<div>
 					<form id="formEditar">
 						<!--email-->
@@ -261,7 +261,7 @@
 			<!-- /page header -->
 			<br/>
 			<br/>
-			<span id="masContenido" class="col-xs-12 textBlack" style="font-size:1.4em; text-align:center; display:none;"><strong>¡Nuevo!</strong> Agrega más contenido</span>
+			<span id="masContenido" class="col-xs-12 textBlack btnsEditor" style="font-size:1.4em; text-align:center; display:none;"><strong>¡Nuevo!</strong> Agrega más contenido</span>
 		
 		</div>
 		
@@ -273,7 +273,7 @@
 		<div class="clearfix"></div>
 		<!-- /Botón MAPS --> 
 		
-		<div class="botonDesPublicar" style="display:none;">
+		<div class="botonDesPublicar " style="display:none;">
 	<a href="#" data-toggle="modal" data-target="#myModalMaps" class="col-xs-12 col-sm-6 col-sm-offset-3 col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3 btn btn-default btn-outline navEditor">
  <img width="30" height="30" alt="Infomovil" src="<c:url value="/resources/webapp/images/icn_marc_maps.png"/>" /> 
  <span id="idOpcionUbicacion">Coloca tu ubicación</span>
@@ -293,11 +293,11 @@
 		<!--Publicar TEL-->
 
 		<div id="publicarTel" style="display:none;">
-			<div class="bgDobleBlack"></div>
+			<div class="bgDobleBlack btnsEditor"></div>
 			<section class="bgFondo publicar">
 				<div class="container whiteBg">
 					<div class="row">
-						<h3 class=" text-center textBlack">&iexcl;Ponle un nombre a tu p&aacute;gina web!</h3>
+						<h3 class=" text-center textBlack ">&iexcl;Ponle un nombre a tu p&aacute;gina web!</h3>
 						<div
 							class="form-group col-xs-12 col-sm-12 col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3">
 							<div class="divider"></div>
@@ -343,7 +343,7 @@
 		<!--/Publicar TEL-->
 	
 	<div id="publicarRecurso" style="display:none;">
-	  <div class="bgDobleBlack" ></div>
+	  <div class="bgDobleBlack btnsEditor" ></div>
 	  <section class="bgFondo publicar">
 	    <div class="container whiteBg" >
 	      <div class="row" >
@@ -383,7 +383,7 @@
 		<div id="myModalExito" class="modal fade" tabindex="-1" role="dialog"
 			aria-labelledby="myModalLabel" aria-hidden="true">
 			<div class="modal-dialog modal-lg">
-				<div class="modal-content">
+				<div class="modal-content btnsEditor">
 					<div class="modal-header">
 						<button type="button" class="close textBlack" data-dismiss="modal"
 							aria-label="Close">
@@ -393,17 +393,38 @@
 					</div>
 					<div class="modal-body bgWhite">
 						<h2
-							class="textBlack col-xs-12 col-sm-12 col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3 text-center">&iexcl;Felicidades!</h2>
-						<h5
-							class="textBlack col-xs-12 col-sm-12 col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3 text-center">
-							Ya tomaste el primer paso y te pusiste en línea.<br /> El proceso
-							de publicación de tu p&aacute;gina web puede tardar unos minutos.
-						</h5>
+							class="textPurple col-xs-12 col-sm-12 col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3 text-center">&iexcl;Felicidades!</h2>
+						
+						<p class="textBlack text-left col-xs-12 col-sm-12 col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3" style="line-height:1.3em;">El proceso de publicaci&oacute;n tarda unos minutos.</p>
+						<p
+							class="textBlack col-xs-12 col-sm-12 col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3 text-left">
+							Ya tomaste el primer paso. 
+							
+						</p>
 						<div class="clear"></div>
-						<p class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-center textBlack textPurple"><strong>¡Nuevo!</strong>
-							Ahora podrás agrega más contenido.</p>
-							<p>Agrega video</p>
-							<p>Agrega tu ubicación</p>
+						<p class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-left textBlack" style="line-height:1.3em;">
+							Ahora, haz tu página más llamativa:</p>
+							
+<table width="70%" border="0" class="text-left col-xs-12 col-sm-12 col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3 textPurple" >
+<tbody> 
+ 
+  <tr> 
+       <td class="text-right"><img width="25" height="25" alt="Infomovil" src="<c:url value="/resources/webapp/images/icn_marc_maps-pp.png"/>"></td> 
+       <td>&nbsp;</td> 
+       <td> Coloca tu ubicación <span class="">con Google Maps</span>	</td> 
+     </tr> 
+ <tr id="imgPlanPro" style="display:none;"> 
+       <td><img width="25" height="25" alt="Infomovil" src="<c:url value="/resources/webapp/images/ico_pp_youtube-pp.png"/>"> </td> 
+      <td> &nbsp;</td>
+    <td>Agrega video <span class="">de Youtube</span></td>
+    </tr> 
+     <tr> 
+       <td>&nbsp;</td> 
+       <td>&nbsp;</td> 
+       <td>&nbsp;</td> 
+     </tr> 
+   </tbody> 
+ </table> 
 						<!--<p class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-center textBlack textPurple">Descarga
 							nuestra app si deseas agregar más contenido.</p>
 						<div class="clear"></div>
@@ -430,6 +451,62 @@
 							</div>
 						</div>
 						-->
+						<!-- Añade más contenido -->
+<!-- 						<div id="descargaApp" style="display: block;"> -->
+<!-- 		<div class="dividerSmall"></div> -->
+<!-- 		<p class="text-center"><strong>Descarga la app de Infomovil <span class="hidden-xs">y mejora tu página web:</span></strong><br></p> -->
+		
+		
+<!-- 		<div class="text-left col-xs-9 col-xs-offset-2 col-sm-6 col-sm-offset-3 col-md-4 col-md-offset-4 col-lg-4 col-lg-offset-4 _09em"> -->
+							
+								
+<!-- 								<table width="80%" border="0" class="text-left col-xs-12 " style="font-weight:700;"> -->
+<!--   <tbody> -->
+<!--     <tr id="imgPlanPro" style="display:none;"> -->
+<!--       <td><img width="25" height="25" alt="Infomovil" src="/resources/webapp/images/ico_pp_youtube.png"> </td> -->
+<!--       <td> &nbsp;</td> -->
+<!--       <td>Agrega imágenes y video</td> -->
+<!--     </tr> -->
+    
+<!--      <tr id="imgPlanBasico" style="display: table-row;"> -->
+<!--       <td><img width="25" height="25" alt="Infomovil" src="/resources/webapp/images/ico_pp_img.png"> </td> -->
+<!--       <td> &nbsp;</td> -->
+<!--       <td>Agrega imágenes</td> -->
+<!--     </tr> -->
+    
+<!--     <tr> -->
+<!--       <td><img width="25" height="25" alt="Infomovil" src="/resources/webapp/images/ico_prom_icn.png"></td> -->
+<!--       <td>&nbsp;</td> -->
+<!--       <td> Arma tu promoción <span class="hidden-xs">y compártela por Facebook</span></td> -->
+<!--     </tr> -->
+<!--     <tr> -->
+<!--       <td><img width="25" height="25" alt="Infomovil" src="/resources/webapp/images/icn_marc_maps.png"></td> -->
+<!--       <td>&nbsp;</td> -->
+<!--       <td> Coloca tu ubicación <span class="hidden-xs">con Google Maps</span>	</td> -->
+<!--     </tr> -->
+<!--     <tr> -->
+<!--       <td>&nbsp;</td> -->
+<!--       <td>&nbsp;</td> -->
+<!--       <td>&nbsp;</td> -->
+<!--     </tr> -->
+<!--   </tbody> -->
+<!-- </table> -->
+<!-- 		</div> -->
+		
+		
+<!-- 		<div class="col-xs-12"> -->
+<!--              <div class="clearfix"></div> -->
+<!--               <div class="col-xs-12 col-sm-4 col-sm-offset-2 col-md-2 col-md-offset-4"> -->
+<!--                 <a target="blank" href="https://itunes.apple.com/mx/app/infomovil/id898313250?mt=8"><img onerror="this.src='http://www.infomovil.com/img/Templates/Clasico/images/trans.png';" alt="app store" class="img-responsive" src="http://www.infomovil.com/img/Templates/Clasico/images/appstore_icn.png" style=" min-width:80px; max-width:120px; margin: 0 auto; "></a> -->
+<!--               </div> -->
+              
+              
+<!--               <div class="col-xs-12 col-sm-4 col-md-2 "> -->
+<!--                 <a target="blank" href="https://play.google.com/store/apps/details?id=com.infomovil.infomovil"><img onerror="this.src='http://www.infomovil.com/img/Templates/Clasico/images/trans.png';" alt="google store" class="img-responsive" src="http://www.infomovil.com/img/Templates/Clasico/images/gstore_icn.png" style=" min-width:80px; max-width:120px; margin: 0 auto; width:100%;"></a> -->
+<!--               </div> -->
+<!--             </div> -->
+<!-- 		</div> -->
+						<!-- /Añade más contenido -->
 						<div class="clear divider"></div>
 					</div>
 					<div class="modal-footer">
@@ -448,7 +525,7 @@
 		<div id="myModalFallo" class="modal fade" tabindex="-1" role="dialog"
 			aria-labelledby="myModalLabel" aria-hidden="true">
 			<div class="modal-dialog modal-lg">
-				<div class="modal-content">
+				<div class="modal-content btnsEditor">
 					<div class="modal-header">
 						<button type="button" class="close" data-dismiss="modal"
 							aria-label="Close">
@@ -480,7 +557,7 @@
 		<!--MODAL Registro-->
 		<div id="myModalRegistro" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 			<div class="modal-dialog modal-lg">
-				<div class="modal-content">
+				<div class="modal-content btnsEditor">
 					<div class="modal-header">
 						<button type="button" class="close textBlack" data-dismiss="modal" aria-label="Close">
 							<span aria-hidden="true">&times;</span>
@@ -542,7 +619,8 @@
 	         <button type="button" class="btn btn-purple pull-right btnsEditor" id="borrarUbicacion"><img width="20" height="20" alt="Infomovil" src="<c:url value="/resources/webapp/images/trash.png"/>" /></button>
 	      </div>
 	      <div class="modal-body bgWhite">
-	      	<div style="background:url(<c:url value="/resources/webapp/images/ubicacion.png"/>) center center no-repeat; position:absolute; top: 42%; left:47%; width:50px; height:50px; z-index: 999"></div>
+	      	
+	      	<div style="background:url(<c:url value="/resources/webapp/images/ubicacion.png"/>) center center no-repeat; position:absolute; top: 42%; left:47%; width:50px; height:50px; z-index: 999" class="hidden-xs"></div>
 	   		<div id="map-canvas"></div>
 	      </div>
 	      <div class="modal-footer"></div>
