@@ -73,18 +73,21 @@ $(document).ready(function(){
                          }
                   });         
     });
+    
   $("#idClose").click(function(){
     $(".dinamico").remove();
     $("#tercero").hide();
     $("#segundo").hide();
     $("#primero").show();
   });
+  
   $("#idRegresar").click(function(){
     $(".dinamico").remove();
     $("#tercero").hide();
     $("#segundo").hide();
     $("#primero").show();
   });
+  
 });
 
 function borrarVideo() 
@@ -92,7 +95,7 @@ function borrarVideo()
 	if ($("#playerVideoFrame").attr("src").trim().length == 0)
 		return;
 	
-	actualizaVideo("");
+	actualizaVideo("", "0");
 }
 
 function guardarUrlVideo()
@@ -100,12 +103,14 @@ function guardarUrlVideo()
 	if ($("#playerVideoFrame").attr("src").trim().length == 0)
 		return;
 	
-    actualizaVideo($("#playerVideoFrame").attr("src"));
+    actualizaVideo($("#playerVideoFrame").attr("src"), "1");
 }
 
-function actualizaVideo(url) {
+function actualizaVideo(url, accion) {
 
-	$("#myModalVideo").css("display", "none");
+	if (accion == "1")
+		$("#myModalVideo").css("display", "none");
+	
     $.blockUI({ 
         message: "Actualizando video...", 
         css: { 
@@ -127,8 +132,19 @@ function actualizaVideo(url) {
 			
 			if(json.actualizaVideo == "0")
 			{
-				console.log("Video actualizado correctamente");		
-				window.location = contextPath + '/infomovil/editarSitio';
+				console.log("Video actualizado correctamente");	
+				if (accion == "1") /*Guarda*/
+					window.location = contextPath + '/infomovil/editarSitio';
+				else
+				{
+					$("#tercero").hide();
+				    $(".dinamico").remove();
+				    $("#primero").show();
+				    $("#segundo").hide();	
+					$("#playerVideoFrame").attr('src', ""); 	
+					$("#urlVideo").val("");
+					$("#idOpcionVideo").html("Agrega un video");
+				}
 			}
 
 			$.unblockUI();

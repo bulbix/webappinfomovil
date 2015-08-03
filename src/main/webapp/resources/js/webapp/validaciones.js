@@ -20,6 +20,7 @@ function validaDominio(tipo)
 	var opcion = "NO_PUBLICAR"
 	var msjValidacion = "";
 	var funcion = "aceptar()";
+	var nombreSitio = "";
 	var regAuxiliar = /^[_a-z0-9-]+([a-z0-9])$/;
 
 	if (tipo == 'recurso')
@@ -91,27 +92,32 @@ function validaDominio(tipo)
     (
 		function(json)
     	{
+			if (tipoDominio == "recurso")
+				sitioDisponible = "www.infomovil.com/" + nombreDominio;
+			else
+				sitioDisponible = "www." + nombreDominio + "." + tipoDominio;
+			
+			nombreSitio = sitioDisponible.length;
+			console.log("nombreSitio: " + nombreSitio + ", longitud tel: " + nombreSitio);
+			
+			if (nombreSitio > 25)
+				sitioDisponible = sitioDisponible.substring(4, nombreSitio);
+			
 			console.log("termino busqueda de dominio:::::: " + json.resultado);
 			if (json.resultado.indexOf("No existe") != -1)
 			{				
 				funcion = "publicar()";
 				opcion = "PUBLICAR";
 				msjValidacion = "";
-				textoBoton = "&iexcl;Lo quiero!";
-				sitioDisponible = "www." + nombreDominio + "." + tipoDominio + " est&aacute; disponible";
-
-				if (tipoDominio == "recurso")
-					sitioDisponible = "www.infomovil.com/" + nombreDominio + " est&aacute; disponible"; //sitioDisponible = $("#idCatTipoRec option:selected").html() + "/" + nombreDominio + " est&aacute; disponible";
+				textoBoton = "&iexcl;Lo quiero!";				
+				sitioDisponible =  sitioDisponible + " est&aacute; disponible";
 			}
 			else
 			{
 				funcion = "aceptar()"
 				msjValidacion = "";
-				textoBoton = "Aceptar"
-				sitioDisponible = "www." + nombreDominio + "." + tipoDominio + " no est&aacute; disponible";
-				
-				if (tipoDominio == "recurso")
-					sitioDisponible = "www.infomovil.com/" + nombreDominio + " no est&aacute; disponible"; //sitioDisponible = $("#idCatTipoRec option:selected").html() + "/" + nombreDominio + " no est&aacute; disponible";
+				textoBoton = "Aceptar";
+				sitioDisponible =  sitioDisponible + " no est&aacute; disponible";
 			}
 			
 			$('#modalPublicacion').html("<div id='myModalPublicar' class='modal fade' tabindex='-1' role='dialog' aria-labelledby='myModalLabel' aria-hidden='true'>"+

@@ -15,15 +15,16 @@ myApp.tieneMapa = false;
 myApp.direccion = "";
 myApp.latPermiso = 0;
 myApp.lonPermiso = 0;
+var marker = null;
+var myLatlng = null;
+var map = null;
 
 function initialize() 
 {
 	myApp.longitud = parseFloat($("#longitud").val());
 	myApp.latitud =  parseFloat($("#latitud").val());
 	myApp.tieneMapa = (myApp.longitud != 0 && myApp.latitud != 0);
-	var myLatlng = null;
-	var map = null;
-	var marker = null;
+
 	
 	if (!myApp.tieneMapa)
 	{
@@ -115,7 +116,7 @@ function initialize()
 		if(!myApp.tieneMapa)
 			return;
 		
-		actualizarUbicacion("", "", "");
+		actualizarUbicacion("", "", "", "0");
 	});
 	
 	$("#ubicame").on("click", function() {
@@ -177,7 +178,7 @@ function getLocationData(latLng, guardarDatos) {
 
 function guardarDatos(dir)
 {
-	actualizarUbicacion(myApp.latitud, myApp.longitud, dir);
+	actualizarUbicacion(myApp.latitud, myApp.longitud, dir, "1");
 }
 
 function guardarUbicacion(map) {
@@ -203,9 +204,11 @@ function obtenerDireccion(latLng)
 	  });
 }
 
-function actualizarUbicacion(latitud, longitud, direccion) {
+function actualizarUbicacion(latitud, longitud, direccion, accion) {
 
-	$("#myModalMaps").css("display", "none");
+	if (accion == "1")
+		$("#myModalMaps").css("display", "none");
+	
     $.blockUI({ 
         message: "Actualizando ubicación...", 
         css: { 
@@ -229,8 +232,23 @@ function actualizarUbicacion(latitud, longitud, direccion) {
 			
 			if(json.actualizaMapa == "0")
 			{
-				console.log("Ubicacion actualizada correctamente");		
-				window.location = contextPath + '/infomovil/editarSitio';
+				if (accion == "1") /*Guardar mapa*/
+				{
+					console.log("Ubicacion actualizada correctamente");		
+					window.location = contextPath + '/infomovil/editarSitio';
+				}
+				else /*Borrar mapa, no cerrar el modal y quitar el marker*/
+				{
+					myApp.latitud = 21.06086980676483; /*Default mexico*/
+					myApp.longitud = -98.86579389431152;
+					myApp.zoom = 3;
+					myLatlng = new google.maps.LatLng(myApp.latitud, myApp.longitud);
+		        	marker.setPosition(myLatlng);
+		    		map.panTo(myLatlng);
+		    		map.setZoom(3);
+			    	$("#direccionMap").html("");
+					$("#idOpcionUbicacion").html("Coloca tu ubicación");
+				}
 			}
 
 			$.unblockUI();
@@ -277,8 +295,8 @@ function mostrarError(descripcionMsj) {
     $.blockUI({ 
     	message: descripcionMsj,
         css: { 
-            top:  ($(window).height() - 400) /2 + 'px', 
-            left: ($(window).width() - 400) /2 + 'px', 
+            top:  ($(window).height() - 400) / 2 + 'px', 
+            left: ($(window).width() - 400) / 2 + 'px', 
             width: '400px' 
         } 
     	}); 
