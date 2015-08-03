@@ -400,7 +400,11 @@
 							de publicación de tu p&aacute;gina web puede tardar unos minutos.
 						</h5>
 						<div class="clear"></div>
-						<p class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-center textBlack textPurple">Descarga
+						<p class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-center textBlack textPurple"><strong>¡Nuevo!</strong>
+							Ahora podrás agrega más contenido.</p>
+							<p>Agrega video</p>
+							<p>Agrega tu ubicación</p>
+						<!--<p class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-center textBlack textPurple">Descarga
 							nuestra app si deseas agregar más contenido.</p>
 						<div class="clear"></div>
 						<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
@@ -425,6 +429,7 @@
 								</p>
 							</div>
 						</div>
+						-->
 						<div class="clear divider"></div>
 					</div>
 					<div class="modal-footer">
@@ -530,14 +535,23 @@
 	      <div class="modal-header">
 	        <button type="button" class="close textBlack pull-left" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button> 
 	        <input id="pac-input" class="controls" type="text" placeholder="Enter a location" style="height: 32px; width: 400px;"/>
-	        <button type="button" class="btn btn-purple pull-right" id="guardarUbicacion"><img width="20" height="20" alt="Infomovil" src="<c:url value="/resources/webapp/images/successWhite.png"/>" /> <span class="hidden-xs">Guardar</span></button>
 	        
+	        <button type="button" class="btn btn-purple pull-right" id="guardarUbicacion"><img width="20" height="20" alt="Infomovil" src="<c:url value="/resources/webapp/images/successWhite.png"/>" /> <span class="hidden-xs">Guardar</span></button>
+	         <div class="pull-right" style="display:inline-block; width:10px; height:20px;"></div>
+	       
+	       
+	        <button type="button" class="btn btn-purple pull-right" id="ubicame"><img width="20" height="20" alt="Infomovil" src="<c:url value="/resources/webapp/images/btn_ubicame.png"/>" /> <span class="hidden-xs">¡Ubícame!</span></button>
 	        <div class="pull-right" style="display:inline-block; width:10px; height:20px;"></div>
-	        <button type="button" class="btn btn-purple pull-right" id="borrarUbicacion"><img width="20" height="20" alt="Infomovil" src="<c:url value="/resources/webapp/images/trash.png"/>" /></button>
+	        
+	        
+	         <div class="pull-right" style="display:inline-block; width:10px; height:20px;"></div>
+	       
+	         <button type="button" class="btn btn-purple pull-right" id="borrarUbicacion"><img width="20" height="20" alt="Infomovil" src="<c:url value="/resources/webapp/images/trash.png"/>" /></button>
+	       
 	        
 	      </div>
 	      <div class="modal-body bgWhite">
-	      	<div class="hidden-xs" style="background:url(<c:url value="/resources/webapp/images/ubicacion.png"/>) center center no-repeat; position:absolute; top: 42%; left:47%; width:50px; height:50px; z-index: 999"></div>
+	      	<div style="background:url(<c:url value="/resources/webapp/images/ubicacion.png"/>) center center no-repeat; position:absolute; top: 42%; left:47%; width:50px; height:50px; z-index: 999"></div>
 	   		<div id="map-canvas"></div>
 	      </div>
 	      <div class="modal-footer"></div>
