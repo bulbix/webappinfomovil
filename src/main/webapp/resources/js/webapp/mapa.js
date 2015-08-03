@@ -238,7 +238,7 @@ function errorGeolocalizacion(error) {
     switch(error.code)
     {
         case error.PERMISSION_DENIED:
-        	myApp.msjValidacion = "Permiso denegado para obtener tu Geolocalización, favor de buscar manualmente tu ubicación."
+        	myApp.msjValidacion = "No has dado autorización para obtener tu Geolocalización, favor de buscar manualmente tu ubicación."
             console.log("User denied the request for Geolocation.");
             break;
         case error.POSITION_UNAVAILABLE:
@@ -254,4 +254,15 @@ function errorGeolocalizacion(error) {
             console.log("An unknown error occurred.");
             break;
     }   
+    
+    $.blockUI.defaults.baseZ = 9000;
+    $.blockUI({ 
+    	message: myApp.msjValidacion,
+        css: { 
+            top:  ($(window).height() - 400) /2 + 'px', 
+            left: ($(window).width() - 400) /2 + 'px', 
+            width: '400px' 
+        } 
+    	}); 
+    setTimeout($.unblockUI, 2000);          
 }
