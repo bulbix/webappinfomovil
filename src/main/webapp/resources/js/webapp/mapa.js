@@ -43,7 +43,8 @@ function initialize()
 	var mapOptions =
 	{
 		center: myLatlng, 
-		zoom: myApp.zoom
+		zoom: myApp.zoom,
+		mapTypeControl: false,
 	};
 //	console.log("myApp.latitud: " + myApp.latitud + ", myApp.longitud: " + myApp.longitud);
 	map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
@@ -133,10 +134,18 @@ function initialize()
 	   	 $.blockUI.defaults.baseZ = 9000;
 		    $.blockUI({ 
 		    	message: "Obteniendo tu ubicación actual...",
-		        css: { 
-		            top:  ($(window).height() - 400) /2 + 'px', 
-		            left: ($(window).width() - 400) /2 + 'px', 
-		            width: '400px' 
+		        css: {
+		        	padding:        '10px', 
+		        	textAlign:      'center', 
+		            color:          '#000', 
+		            border:         '3px solid #aaa', 
+		            backgroundColor:'#fff', 
+		            cursor:         'wait' ,
+		            margin:			'0 auto',
+		            top:  ($(window).height() - 200) /2 + 'px', 
+		            left: ($(window).width() - 200) /2 + 'px', 
+		            width: '200px',
+		           
 		        } 
 		    	}); 
 	    
@@ -209,6 +218,7 @@ function actualizarUbicacion(latitud, longitud, direccion) {
     $.blockUI({ 
         message: "Actualizando ubicación...", 
         css: { 
+        	class:"alertaUI",
             top:  ($(window).height() - 400) /2 + 'px', 
             left: ($(window).width() - 400) /2 + 'px', 
             width: '400px' 
@@ -277,6 +287,7 @@ function mostrarError(descripcionMsj) {
     $.blockUI({ 
     	message: descripcionMsj,
         css: { 
+        	class:"alertaUI",
             top:  ($(window).height() - 400) /2 + 'px', 
             left: ($(window).width() - 400) /2 + 'px', 
             width: '400px' 
