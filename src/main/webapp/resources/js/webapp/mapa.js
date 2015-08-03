@@ -125,12 +125,23 @@ function initialize()
 		
 		if (!myApp.geolocalizacion)
 		{
+			mostrarError("Este buscador, no soporta la geolocalización");
 			console.log("Este buscador, no soporta la geolocalización");
 			return;
 		}
 		
+	   	 $.blockUI.defaults.baseZ = 9000;
+		    $.blockUI({ 
+		    	message: "Obteniendo tu ubicación actual...",
+		        css: { 
+		            top:  ($(window).height() - 400) /2 + 'px', 
+		            left: ($(window).width() - 400) /2 + 'px', 
+		            width: '400px' 
+		        } 
+		    	}); 
+	    
         navigator.geolocation.getCurrentPosition(function (position) {
-        	
+        	 
         	myApp.latPermiso = position.coords.latitude;
         	myApp.lonPermiso = position.coords.longitude;
         	console.log("latitud: " + myApp.latPermiso + ", longitud: " + myApp.lonPermiso);            
@@ -140,6 +151,7 @@ function initialize()
     		map.panTo(myLatlng);
     		map.setZoom(15);
     		myApp.mapAuxiliar = map;
+    		$.unblockUI();
 
        }, function(error) {
             errorGeolocalizacion(error);
@@ -233,6 +245,7 @@ function actualizarUbicacion(latitud, longitud, direccion) {
 
 function errorGeolocalizacion(error) {
 
+	$.unblockUI();
 	myApp.obtenerDireccion = false;
 	
     switch(error.code)
@@ -253,16 +266,22 @@ function errorGeolocalizacion(error) {
         	myApp.msjValidacion = "Error al intentar obtener tu Geolocalización";
             console.log("An unknown error occurred.");
             break;
-    }   
+    }        
     
+    mostrarError(myApp.msjValidacion);
+}
+
+function mostrarError(descripcionMsj) {
+	
     $.blockUI.defaults.baseZ = 9000;
     $.blockUI({ 
-    	message: myApp.msjValidacion,
+    	message: descripcionMsj,
         css: { 
             top:  ($(window).height() - 400) /2 + 'px', 
             left: ($(window).width() - 400) /2 + 'px', 
             width: '400px' 
         } 
     	}); 
-    setTimeout($.unblockUI, 2000);          
+    
+    setTimeout($.unblockUI, 2000);   
 }
