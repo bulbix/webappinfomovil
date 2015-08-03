@@ -75,7 +75,7 @@
 	<link href="<c:url value="/resources/webapp/fonts/font-awesome.min.css"/>" rel="stylesheet" />
 	
 	<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=places&signed_in=false"></script>
-    
+<!--  <script src="http://www.google.com/jsapi?"></script>    -->
 	<script>
 	  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
 	  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
@@ -178,7 +178,7 @@
 							src="<c:url value="/resources/webapp/images/fa-templates.png"/>" /><br /><span class="text-center _90em">¡Lo puedes cambiar las veces que quieras!</span></a></div></div>
 							<!-- /Botón Nuevo Estilo -->
 	
-	
+	<div id="map"></div>
 	<!--Theme showcase -->
 	<div class="theme-showcaseApp" role="main" id="intro">
 		<!-- Main jumbotron for a primary marketing message or call to action -->
@@ -554,7 +554,7 @@
 	      	<div style="background:url(<c:url value="/resources/webapp/images/ubicacion.png"/>) center center no-repeat; position:absolute; top: 42%; left:47%; width:50px; height:50px; z-index: 999"></div>
 	   		<div id="map-canvas"></div>
 	      </div>
-	      <div class="modal-footer"></div>
+	      <div class="modal-footer"><input type="checkbox" id="ubicame"/> Ubícame</div>
 	    </div>
 	  </div>
 	</div>
@@ -746,5 +746,6 @@ $('.navbar-collapse ul li a').click(function() {
 	</c:if>
 
 </script>
+
 </body>
 </html>
