@@ -185,7 +185,7 @@
 		<div class="container">
 			<!-- page header -->
 			<div class="page-header text-center">
-				<strong><span class=" text-center btnsEditor" id="urlSitio" style="display: none;">
+				<strong><span class="text-center btnsEditor _1_1em" id="urlSitio" style="display: none;">
 					<a href="http://${sitioWeb}" target="_blank" class="textBlack">${sitioWeb}</a>
 				</span></strong>
 				<div>
@@ -416,7 +416,7 @@
  <tr id="imgPlanPro" style="display:none;"> 
        <td><img width="25" height="25" alt="Infomovil" src="<c:url value="/resources/webapp/images/ico_pp_youtube-pp.png"/>"> </td> 
       <td> &nbsp;</td>
-    <td>Agrega video <span class="">de Youtube</span></td>
+    <td class="text-right">Agrega video <span class="">de Youtube</span></td>
     </tr> 
      <tr> 
        <td>&nbsp;</td> 
