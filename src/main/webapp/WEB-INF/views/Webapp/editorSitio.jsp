@@ -5,7 +5,7 @@
 <html lang="es">
 <head itemscope="" itemtype="http://schema.org/WebSite">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 	<meta charset="UTF-8" />
 	<meta name="title" content="Infomovil" />
 	<meta name="author" content="Infomovil" />
@@ -402,7 +402,7 @@
 							
 						</p>
 						<div class="clear"></div>
-						<p class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-left textBlack" style="line-height:1.3em;">
+						<p class="col-xs-12 col-sm-12 col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3 text-left textBlack" style="line-height:1.3em;">
 							Ahora, haz tu página más llamativa:</p>
 							
 <table width="70%" border="0" class="text-left col-xs-12 col-sm-12 col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3 textPurple" >
@@ -620,7 +620,7 @@
 	      </div>
 	      <div class="modal-body bgWhite">
 	      	
-	      	<div style="background:url(<c:url value="/resources/webapp/images/ubicacion.png"/>) center center no-repeat; position:absolute; top: 42%; left:47%; width:50px; height:50px; z-index: 999" class="hidden-xs"></div>
+	      	<div style="background:url(<c:url value="/resources/webapp/images/ubicacion.png"/>) center center no-repeat; position:absolute; top: 42%; left:47%; width:50px; height:50px; z-index: 999" class="hidden-xs hidden-sm"></div>
 	   		<div id="map-canvas"></div>
 	      </div>
 	      <div class="modal-footer"></div>

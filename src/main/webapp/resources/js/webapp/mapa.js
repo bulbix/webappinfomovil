@@ -146,10 +146,16 @@ function initialize()
 		    $.blockUI({ 
 		    	message: "Obteniendo tu ubicación actual...",
 		        css: {
-		        	class:"alertaUI",
-		            top:  ($(window).height() - 400) /2 + 'px', 
-		            left: ($(window).width() - 400) /2 + 'px', 
-		            width: '400px' 
+		        	padding:        '10px', 
+		        	textAlign:      'center', 
+		        	color:          '#000', 
+		        	border:         '3px solid #aaa', 
+		        	backgroundColor:'#fff', 
+		        	cursor:         'wait' ,
+		        	margin:			'0 auto',
+		        	top:  ($(window).height() - 200) /2 + 'px', 
+		        	left: ($(window).width() - 200) /2 + 'px', 
+		        	width: '200px' 
 		           
 		        } 
 		    	}); 
@@ -246,10 +252,16 @@ function actualizarUbicacion(latitud, longitud, direccion, accion) {
     $.blockUI({ 
         message: "Actualizando ubicación...", 
         css: { 
-        	class:"alertaUI",
-            top:  ($(window).height() - 400) /2 + 'px', 
-            left: ($(window).width() - 400) /2 + 'px', 
-            width: '400px' 
+        	padding:        '10px', 
+        	textAlign:      'center', 
+        	color:          '#000', 
+        	border:         '3px solid #aaa', 
+        	backgroundColor:'#fff', 
+        	cursor:         'wait' ,
+        	margin:			'0 auto',
+        	top:  ($(window).height() - 200) /2 + 'px', 
+        	left: ($(window).width() - 200) /2 + 'px', 
+        	width: '200px' 
         } 
     }); 
 
@@ -330,10 +342,16 @@ function mostrarError(descripcionMsj) {
     $.blockUI({ 
     	message: descripcionMsj,
         css: { 
-        	class:"alertaUI",
-            top:  ($(window).height() - 400) /2 + 'px', 
-            left: ($(window).width() - 400) /2 + 'px', 
-            width: '400px' 
+        	padding:        '10px', 
+        	textAlign:      'center', 
+        	color:          '#000', 
+        	border:         '3px solid #aaa', 
+        	backgroundColor:'#fff', 
+        	cursor:         'wait' ,
+        	margin:			'0 auto',
+        	top:  ($(window).height() - 200) /2 + 'px', 
+        	left: ($(window).width() - 200) /2 + 'px', 
+        	width: '200px'
         } 
     	}); 
     
