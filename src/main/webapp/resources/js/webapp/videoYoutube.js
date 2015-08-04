@@ -11,7 +11,7 @@ $("#myModalVideo").on('shown.bs.modal', function() {
 
 });
 
-$("#myModalVideo").on('hidden.bs.modal',function() {
+$("#myModalVideo").on('hidden.bs.modal', function() {
     $("#playerVideoFrame").attr('src', ""); 
 	$("#tercero").hide();
     $(".dinamico").remove();
