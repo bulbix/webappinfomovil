@@ -110,9 +110,10 @@ function initialize()
 	/**/
 	$("#myModalMaps").on('shown.bs.modal', function() { 
 		
-		var markerAux = myApp.marker.getPosition(); /*El marker actual, evento changed o coordenadas guardadas*/
-		console.log("marker_lat: " + markerAux.lat() + ", marker_lon: " + markerAux.lng() + ", global lon-> " + myApp.longitud + ", global lat-> " + myApp.latitud);
+	//	var markerAux = myApp.marker.getPosition(); /*El marker actual, evento changed o coordenadas guardadas*/
+	//	console.log("marker_lat: " + markerAux.lat() + ", marker_lon: " + markerAux.lng() + ", global lon-> " + myApp.longitud + ", global lat-> " + myApp.latitud);
 		//if ()
+		$("#pac-input").val("");
 		google.maps.event.trigger(map, "resize");
 		map.panTo(myApp.marker.getPosition());
 	});
@@ -158,7 +159,6 @@ function initialize()
         	myApp.latPermiso = position.coords.latitude;
         	myApp.lonPermiso = position.coords.longitude;  
        
-        	$("#pac-input").val("");
         	myLatlng = null;
         	myLatlng = new google.maps.LatLng(myApp.latPermiso, myApp.lonPermiso);    
         	myApp.marker.setMap(null);
@@ -169,6 +169,10 @@ function initialize()
     		map.setZoom(15);
     		myApp.mapAuxiliar = map;
     		myApp.guardaPorEvento = false;
+    		myApp.tieneMapa = false;
+    		$("#pac-input").val("");
+    		$("#longitud").val("0");
+    		$("#latitud").val("0");
     		$.unblockUI();
 
        }, function(error) {
@@ -200,7 +204,7 @@ function guardarDatos(dir)
 
 function guardarUbicacion(map) {
 	
-	console.log("myApp.guardaPorEvento: " + myApp.guardaPorEvento);
+//	console.log("myApp.guardaPorEvento: " + myApp.guardaPorEvento);
 	var latLng = null;
 	
 	if (myApp.guardaPorEvento) 
@@ -215,7 +219,7 @@ function guardarUbicacion(map) {
 		myApp.longitud = myApp.mapCenter.lng(); 	
 	}
 	
-	console.log("ultimas a guardar: lat-> " + myApp.latitud + ", lon-> " +  myApp.longitud);
+//	console.log("ultimas a guardar: lat-> " + myApp.latitud + ", lon-> " +  myApp.longitud);
 	latLng = new google.maps.LatLng(myApp.latitud, myApp.longitud);	
 	getLocationData(latLng, guardarDatos);	
 }
