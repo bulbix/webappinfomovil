@@ -57,8 +57,8 @@ $(document).ready(function(){
                               var $li = $('<li data-video="'+videoUrl+'" class="dinamico btnsEditor" style="margin:0 0 10px 0; background:#e2e2e2; cursor:pointer!important;"/>');
 
                               
-                              $li.append('<span class="thumb" style="display:block; float:left; width:50%;"><img src="' + imgSrc + '" /></span>');
-                              $li.append('<span class="title" style="display:block; float:left;width:50%">'+ title + '</span><div class="clear"></div>');
+                              $li.append('<span class="thumb" style="display:block; float:left; width:20%; min-width:60px;"><img src="' + imgSrc + '" width="60" /></span>');
+                              $li.append('<span class="title" style="display:block; float:left;width:80%">'+ title + '</span><div class="clear"></div>');
                               $li.click(function() {
                                   $videoFrame.attr('src', $(this).attr('data-video') );
                                   $("#primero").hide();
