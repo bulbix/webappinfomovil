@@ -19,6 +19,7 @@ myApp.guardaPorEvento = false;
 myApp.marker = null;
 myApp.latAux = null;
 myApp.lngAux = null;
+myApp.width = '200px';
 var myLatlng = null;
 var map = null;
 
@@ -155,7 +156,7 @@ function initialize()
 		        	margin:			'0 auto',
 		        	top:  ($(window).height() - 200) /2 + 'px', 
 		        	left: ($(window).width() - 200) /2 + 'px', 
-		        	width: '200px' 
+		        	width: myApp.width 
 		           
 		        } 
 		    	}); 
@@ -261,7 +262,7 @@ function actualizarUbicacion(latitud, longitud, direccion, accion) {
         	margin:			'0 auto',
         	top:  ($(window).height() - 200) /2 + 'px', 
         	left: ($(window).width() - 200) /2 + 'px', 
-        	width: '200px' 
+        	width: myApp.width 
         } 
     }); 
 
@@ -351,7 +352,7 @@ function mostrarError(descripcionMsj) {
         	margin:			'0 auto',
         	top:  ($(window).height() - 200) /2 + 'px', 
         	left: ($(window).width() - 200) /2 + 'px', 
-        	width: '200px'
+        	width: myApp.width
         } 
     	}); 
     

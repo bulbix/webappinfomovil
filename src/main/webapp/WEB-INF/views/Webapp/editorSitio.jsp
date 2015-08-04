@@ -307,7 +307,7 @@
 									<div class="input-group-addon">www.</div>
 									<input type="text" class="form-control textBlack text-center"
 										id="nombreDominioBusqueda" name="nombreDominioBusqueda"
-										placeholder="Nombra tu sitio" maxlength="63" style="text-transform:lowercase;" autocomplete="off"/>
+										placeholder="Nombra tu sitio" maxlength="30" style="text-transform:lowercase;" autocomplete="off"/>
 									<div class="input-group-addon">.tel</div>
 								</div>
 								<input type="hidden" id="tipoDominioBusqueda"
@@ -356,7 +356,7 @@
 	          </div>
 	          <div class="col-xs-12 col-sm-6">
 	            <div class="divider hidden-xs"></div>
-	            <input type="text" placeholder="Nombra tu sitio" value="" id="nombreDominioRec" name="nombreDominioRec" class="form-control text-center" autocomplete="off" style="text-transform:lowercase;">
+	            <input type="text" placeholder="Nombra tu sitio" maxlength="30" id="nombreDominioRec" name="nombreDominioRec" class="form-control text-center" autocomplete="off" style="text-transform:lowercase;">
 	            <input type="hidden" id="tipoDominioRec" name="tipoDominioRec" value="recurso"/>
 	          </div>
 	          <div class="form-group col-xs-12 col-sm-12 col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3">

@@ -38,10 +38,10 @@ function validaDominio(tipo)
 
 	console.log("nombreDominio::: " + nombreDominio + ", tipoDominio:::: " + tipoDominio + ", tipo: " + tipo);
 	
-	if (nombreDominio == null || nombreDominio.trim().length == 0 || nombreDominio.trim().length < 3)
+	if (nombreDominio == null || nombreDominio.trim().length == 0 || nombreDominio.trim().length < 3 || nombreDominio.trim().length > 30)
 	{
-		$("#validacionNombre").html("El nombre debe ser mayor a 2 caracteres y menor a 64");
-		$("#validacionNombreRec").html("El nombre debe ser mayor a 2 caracteres y menor a 64");
+		$("#validacionNombre").html("El nombre debe ser de una longitud mínimo de 2 y máximo 30 caracteres");
+		$("#validacionNombreRec").html("El nombre debe ser de una longitud mínimo de 2 y máximo 30 caracteres");
 		$("#validacionNombre").css("display", "block");
 		$("#validacionNombreRec").css("display", "block");
 		return false;
