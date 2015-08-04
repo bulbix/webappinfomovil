@@ -178,8 +178,6 @@ function initialize()
     		myApp.guardaPorEvento = false;
     		myApp.tieneMapa = false;
     		$("#pac-input").val("");
-    		$("#longitud").val("0");
-    		$("#latitud").val("0");
     		$.unblockUI();
 
        }, function(error) {
