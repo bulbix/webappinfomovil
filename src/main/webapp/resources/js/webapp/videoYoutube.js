@@ -35,7 +35,7 @@ $(document).ready(function(){
         var inputsinespacios = str.split(' ').join('%20');
         var str1 = "https://www.googleapis.com/youtube/v3/search?part=snippet&type=video&q=";
         var str2 = inputsinespacios;
-        var str3 = "&maxResults=10&key=AIzaSyBfyUsYuAxuiHu1IeOW-L6dbfkNfEIEIEU";
+        var str3 = "&maxResults=20&key=AIzaSyBfyUsYuAxuiHu1IeOW-L6dbfkNfEIEIEU";
         var peticion = str1.concat(str2,str3);
         var $lista = $('#lista');
         var $videoFrame = $('#playerVideoFrame');
@@ -110,10 +110,12 @@ function actualizaVideo(url, accion) {
 
 	if (accion == "1")
 		$("#myModalVideo").css("display", "none");
-	
+
+    $.blockUI.defaults.baseZ = 9000;   
     $.blockUI({ 
         message: "Actualizando video...", 
         css: { 
+        	class:"alertaUI",
             top:  ($(window).height() - 400) /2 + 'px', 
             left: ($(window).width() - 400) /2 + 'px', 
             width: '400px' 

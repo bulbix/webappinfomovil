@@ -15,7 +15,7 @@ myApp.tieneMapa = false;
 myApp.direccion = "";
 myApp.latPermiso = 0;
 myApp.lonPermiso = 0;
-var marker = null;
+myApp.marker = null;
 var myLatlng = null;
 var map = null;
 
@@ -57,19 +57,20 @@ function initialize()
 	map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
 	
 	var infowindow = new google.maps.InfoWindow();
-	marker = new google.maps.Marker({ map : map, position: myLatlng });
-	marker.setVisible(true);
+	myApp.marker = new google.maps.Marker({ map : map, position: myLatlng });
+	myApp.marker.setVisible(true);
 	
 	if (myApp.obtenerDireccion)
 		obtenerDireccion(myLatlng);
 
 	google.maps.event.addListener(autocomplete, 'place_changed', function() {
-	  
+  
 	    infowindow.close();
 	    myApp.place = autocomplete.getPlace();
 	    
 	    if (!myApp.place.geometry) {
-	      return;
+	    	$.unblockUI();
+	    	return;
 	    }
 	
 	    if (myApp.place.geometry.viewport) {
@@ -79,18 +80,18 @@ function initialize()
 	    	map.setZoom(15);
 	    }
 	
-	    marker.setPlace(({
+	    myApp.marker.setPlace(({
 	      placeId: myApp.place.place_id,
 	      location: myApp.place.geometry.location
 	    }));
 	    
-	    marker.setVisible(true);
+	    myApp.marker.setVisible(true);
 	
 	    infowindow.setContent('<div><strong>' + myApp.place.name + '</strong><br>' +
 	        myApp.place.formatted_address);
 	    myApp.mapAuxiliar = map;
-	    infowindow.open(map, marker);
-    
+	    infowindow.open(map, myApp.marker);
+
 	});
   
 	google.maps.event.addListener(map, 'dragend', function() {
@@ -104,8 +105,11 @@ function initialize()
 	/**/
 	$("#myModalMaps").on('shown.bs.modal', function() { 
 		
+		var markerAux = myApp.marker.getPosition(); /*El marker actual, evento changed o coordenadas guardadas*/
+		console.log("marker_lat: " + markerAux.lat() + ", marker_lon: " + markerAux.lng() + ", global lon-> " + myApp.longitud + ", global lat-> " + myApp.latitud);
+		//if ()
 		google.maps.event.trigger(map, "resize");
-		map.panTo(marker.getPosition());
+		map.panTo(myApp.marker.getPosition());
 	});
 		
 	$("#guardarUbicacion").on("click", function() {
@@ -136,16 +140,10 @@ function initialize()
 		    $.blockUI({ 
 		    	message: "Obteniendo tu ubicación actual...",
 		        css: {
-		        	padding:        '10px', 
-		        	textAlign:      'center', 
-		            color:          '#000', 
-		            border:         '3px solid #aaa', 
-		            backgroundColor:'#fff', 
-		            cursor:         'wait' ,
-		            margin:			'0 auto',
-		            top:  ($(window).height() - 200) /2 + 'px', 
-		            left: ($(window).width() - 200) /2 + 'px', 
-		            width: '200px',
+		        	class:"alertaUI",
+		            top:  ($(window).height() - 400) /2 + 'px', 
+		            left: ($(window).width() - 400) /2 + 'px', 
+		            width: '400px' 
 		           
 		        } 
 		    	}); 
@@ -153,11 +151,15 @@ function initialize()
         navigator.geolocation.getCurrentPosition(function (position) {
         	 
         	myApp.latPermiso = position.coords.latitude;
-        	myApp.lonPermiso = position.coords.longitude;
-        	console.log("latitud: " + myApp.latPermiso + ", longitud: " + myApp.lonPermiso);            
+        	myApp.lonPermiso = position.coords.longitude;  
+       
+        	$("#pac-input").val("");
         	myLatlng = null;
-        	myLatlng = new google.maps.LatLng(myApp.latPermiso, myApp.lonPermiso);
-        	marker.setPosition(myLatlng);
+        	myLatlng = new google.maps.LatLng(myApp.latPermiso, myApp.lonPermiso);    
+        	myApp.marker.setMap(null);
+        	myApp.marker = new google.maps.Marker({ map : map, position: myLatlng });        	
+        	myApp.marker.setPosition(myLatlng);
+    		myApp.marker.setVisible(true);
     		map.panTo(myLatlng);
     		map.setZoom(15);
     		myApp.mapAuxiliar = map;
@@ -218,6 +220,7 @@ function actualizarUbicacion(latitud, longitud, direccion, accion) {
 	if (accion == "1")
 		$("#myModalMaps").css("display", "none");
 	
+	$.blockUI.defaults.baseZ = 9000;
     $.blockUI({ 
         message: "Actualizando ubicación...", 
         css: { 
@@ -253,7 +256,7 @@ function actualizarUbicacion(latitud, longitud, direccion, accion) {
 					myApp.longitud = -98.86579389431152;
 					myApp.zoom = 3;
 					myLatlng = new google.maps.LatLng(myApp.latitud, myApp.longitud);
-		        	marker.setPosition(myLatlng);
+		        	myApp.marker.setPosition(myLatlng);
 		    		map.panTo(myLatlng);
 		    		map.setZoom(3);
 			    	$("#direccionMap").html("");
