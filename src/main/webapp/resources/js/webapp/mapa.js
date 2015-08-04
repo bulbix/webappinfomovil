@@ -15,7 +15,10 @@ myApp.tieneMapa = false;
 myApp.direccion = "";
 myApp.latPermiso = 0;
 myApp.lonPermiso = 0;
+myApp.guardaPorEvento = false;
 myApp.marker = null;
+myApp.latAux = null;
+myApp.lngAux = null;
 var myLatlng = null;
 var map = null;
 
@@ -24,7 +27,6 @@ function initialize()
 	myApp.longitud = parseFloat($("#longitud").val());
 	myApp.latitud =  parseFloat($("#latitud").val());
 	myApp.tieneMapa = (myApp.longitud != 0 && myApp.latitud != 0);
-
 	
 	if (!myApp.tieneMapa)
 	{
@@ -47,7 +49,7 @@ function initialize()
 		zoom: myApp.zoom,
 		mapTypeControl: false,
 	};
-//	console.log("myApp.latitud: " + myApp.latitud + ", myApp.longitud: " + myApp.longitud);
+
 	map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
 	myApp.mapAuxiliar = map;
 	var input = (document.getElementById('pac-input'));
@@ -67,9 +69,10 @@ function initialize()
   
 	    infowindow.close();
 	    myApp.place = autocomplete.getPlace();
-	    
+
 	    if (!myApp.place.geometry) {
 	    	$.unblockUI();
+	    	myApp.guardaPorEvento = false;
 	    	return;
 	    }
 	
@@ -86,21 +89,23 @@ function initialize()
 	    }));
 	    
 	    myApp.marker.setVisible(true);
-	
+	    
 	    infowindow.setContent('<div><strong>' + myApp.place.name + '</strong><br>' +
 	        myApp.place.formatted_address);
 	    myApp.mapAuxiliar = map;
 	    infowindow.open(map, myApp.marker);
-
+	    console.log("evento changed: " + myApp.place.formatted_address + ", coordenadas: " + myApp.place.geometry.location);
+	    myApp.guardaPorEvento = true;
+	    myApp.latAux = myApp.place.geometry.location.lat();
+	    myApp.lngAux = myApp.place.geometry.location.lng();
+	    console.log("coordenadas finales: lat: " + myApp.latAux + ", lon: "  + myApp.lngAux);
 	});
   
 	google.maps.event.addListener(map, 'dragend', function() {
 		myApp.mapAuxiliar = map;
+		myApp.guardaPorEvento = false;
+		console.log("dragend");
 	});
-
-	google.maps.event.addListener(map, 'center_changed', function() {
-		myApp.mapAuxiliar = map;
-	});	
 
 	/**/
 	$("#myModalMaps").on('shown.bs.modal', function() { 
@@ -163,6 +168,7 @@ function initialize()
     		map.panTo(myLatlng);
     		map.setZoom(15);
     		myApp.mapAuxiliar = map;
+    		myApp.guardaPorEvento = false;
     		$.unblockUI();
 
        }, function(error) {
@@ -194,11 +200,23 @@ function guardarDatos(dir)
 
 function guardarUbicacion(map) {
 	
+	console.log("myApp.guardaPorEvento: " + myApp.guardaPorEvento);
 	var latLng = null;
-	myApp.mapCenter = map.getCenter();
-	myApp.latitud = myApp.mapCenter.lat();   
-	myApp.longitud = myApp.mapCenter.lng(); 
-	latLng = new google.maps.LatLng(myApp.mapCenter.lat(), myApp.mapCenter.lng());	
+	
+	if (myApp.guardaPorEvento) 
+	{	
+		myApp.latitud = myApp.latAux;
+		myApp.longitud = myApp.lngAux;	
+	}
+	else
+	{
+		myApp.mapCenter = map.getCenter();
+		myApp.latitud = myApp.mapCenter.lat();   
+		myApp.longitud = myApp.mapCenter.lng(); 	
+	}
+	
+	console.log("ultimas a guardar: lat-> " + myApp.latitud + ", lon-> " +  myApp.longitud);
+	latLng = new google.maps.LatLng(myApp.latitud, myApp.longitud);	
 	getLocationData(latLng, guardarDatos);	
 }
 
