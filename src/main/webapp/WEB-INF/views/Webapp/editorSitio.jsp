@@ -293,11 +293,12 @@
 		<!--Publicar TEL-->
 
 		<div id="publicarTel" style="display:none;">
-			<div class="bgDobleBlack btnsEditor"></div>
-			<section class="bgFondo publicar">
+			<div class="bgDobleBlack "></div>
+			<section class="bgFondo publicar btnsEditor">
 				<div class="container whiteBg">
 					<div class="row">
 						<h3 class=" text-center textBlack ">&iexcl;Ponle un nombre a tu p&aacute;gina web!</h3>
+						<span class="col-xs-12 text-center  textBlack">Ej. www.misitio.tel</span>
 						<div
 							class="form-group col-xs-12 col-sm-12 col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3">
 							<div class="divider"></div>
@@ -332,24 +333,31 @@
 									onClick="validaDominio('tel')">
 								<div class="clear"></div>
 								<div class="divider"></div>
-								<div class="divider"></div>
-								<div class="divider"></div>
+								
 							</div>
 						</div>
+						 <span class="col-xs-12 text-center _09em textBlack">Se recomienda usar <strong>nombres cortos</strong> y <strong>fáciles de recordar</strong></span>
+	      <div class="clear"></div>
+	      <div class="divider"></div>
 					</div>
 				</div>
 			</section>
 		</div>
 		<!--/Publicar TEL-->
 	
+	<!--/Publicar Recurso-->
 	<div id="publicarRecurso" style="display:none;">
-	  <div class="bgDobleBlack btnsEditor" ></div>
-	  <section class="bgFondo publicar">
+	  <div class="bgDobleBlack" ></div>
+	  <section class="bgFondo publicar btnsEditor">
 	    <div class="container whiteBg" >
 	      <div class="row" >
-	        <h3 class=" text-center textBlack">&iexcl;Ponle un nombre a tu p&aacute;gina web!</h3>
+	        <h3 class="text-center textBlack">&iexcl;Ponle un nombre a tu p&aacute;gina web!</h3>
+	        <span class="col-xs-12 text-center  textBlack">Ej. www.infomovil.com/misitio</span>
+	        
 	        <div class="form-group col-xs-12 col-sm-12 col-md-12 col-lg-12">
+	        
 	          <div class="col-xs-12 col-sm-6">
+	          
 	            <div class="divider"></div>
 	            	<input id="idCatTipoRec" class="form-control text-center" style="height:36px !important; display:block; padding:6px 12px; color:#000!important;cursor:not-allowed" value="www.infomovil.com/" readonly="readonly"/>
 	            <div class="divider hidden-sm hidden-md hidden-lg"></div>
@@ -367,8 +375,13 @@
 	            <input type="button" value="Buscar nombre" id="btnBuscarTel" class="btn btn-default btn-outline col-xs-12 text-center textBlack" onClick="validaDominio('recurso')">
 	            <div class="clear"></div>
 	            <div class="divider"></div>
+	            
 	          </div>
+	          
 	        </div>
+	        <span class="col-xs-12 text-center _09em textBlack">Se recomienda usar <strong>nombres cortos</strong> y <strong>fáciles de recordar</strong></span>
+	      <div class="clear"></div>
+	      <div class="divider"></div>
 	      </div>
 	    </div>
 	  </section>
