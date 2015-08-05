@@ -315,19 +315,19 @@ function errorGeolocalizacion(error) {
     switch(error.code)
     {
         case error.PERMISSION_DENIED:
-        	myApp.msjValidacion = "No has dado autorización para obtener tu Geolocalización, favor de buscar manualmente tu ubicación."
+        	myApp.msjValidacion = "Necesitas habilitar la función de geolocalización. Favor de cambiar tu configuración o de buscar manualmente tu ubicación."
             console.log("User denied the request for Geolocation.");
             break;
         case error.POSITION_UNAVAILABLE:
-        	myApp.msjValidacion = "La información de Geolocalización no está disponible";
+        	myApp.msjValidacion = "La información de geolocalización no está disponible.";
             console.log("Location information is unavailable.");
             break;
         case error.TIMEOUT:
-        	myApp.msjValidacion = "Tiempo de espera agotado para obtener tu Geolocalización";
+        	myApp.msjValidacion = "Tiempo de espera agotado para obtener tu geolocalización. Intenta de nuevo.";
             console.log("The request to get user location timed out.");
             break;
         case error.UNKNOWN_ERROR:
-        	myApp.msjValidacion = "Error al intentar obtener tu Geolocalización";
+        	myApp.msjValidacion = "Error al intentar obtener tu geolocalización. Intenta de nuevo.";
             console.log("An unknown error occurred.");
             break;
     }        

@@ -261,8 +261,7 @@
 			<!-- /page header -->
 			<br/>
 			<br/>
-			<span id="masContenido" class="col-xs-12 textBlack btnsEditor" style="font-size:1.4em; text-align:center; display:none;"><strong>¡Nuevo!</strong> Agrega más contenido</span>
-		
+<!-- 			<span id="masContenido" class="col-xs-12 textBlack btnsEditor" style="font-size:1.4em; text-align:center; display:none;"><strong>¡Nuevo!</strong> Agrega más contenido</span> -->
 		</div>
 		
 		<!--/Theme showcase -->
@@ -283,7 +282,7 @@
 							<!-- /Botón Nuevo Estilo -->
 								
 								<div class="clearfix"></div>
-						<div class="dividerSmall"></div>
+						<div class="divider"></div>
 						<!-- /Botón AGREGAR VIDEO --> 
 						<div id="idBtnVideo" class="botonDesPublicar" style="display:none;">
 						<a href="#" data-toggle="modal" data-target="#myModalVideo" class="col-xs-12 col-sm-6 col-sm-offset-3 col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3 btn btn-default btn-outline navEditor"> 
@@ -298,7 +297,7 @@
 				<div class="container whiteBg">
 					<div class="row">
 						<h3 class=" text-center textBlack ">&iexcl;Ponle un nombre a tu p&aacute;gina web!</h3>
-						<span class="col-xs-12 text-center  textBlack">Ej. www.misitio.tel</span>
+						<span class="col-xs-12 text-center textBlack"><strong>Ej. www.misitio.tel</strong></span>
 						<div
 							class="form-group col-xs-12 col-sm-12 col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3">
 							<div class="divider"></div>
@@ -336,7 +335,7 @@
 								
 							</div>
 						</div>
-						 <span class="col-xs-12 text-center _09em textBlack">Se recomienda usar <strong>nombres cortos</strong> y <strong>fáciles de recordar</strong></span>
+						 <span class="col-xs-12 text-center textBlack"><strong>Se recomienda usar nombres cortos y fáciles de recordar</strong></span>
 	      <div class="clear"></div>
 	      <div class="divider"></div>
 					</div>
@@ -352,7 +351,7 @@
 	    <div class="container whiteBg" >
 	      <div class="row" >
 	        <h3 class="text-center textBlack">&iexcl;Ponle un nombre a tu p&aacute;gina web!</h3>
-	        <span class="col-xs-12 text-center  textBlack">Ej. www.infomovil.com/misitio</span>
+	        <span class="col-xs-12 text-center textBlack"><strong>Ej. www.infomovil.com/misitio</strong></span>
 	        
 	        <div class="form-group col-xs-12 col-sm-12 col-md-12 col-lg-12">
 	        
@@ -379,7 +378,7 @@
 	          </div>
 	          
 	        </div>
-	        <span class="col-xs-12 text-center _09em textBlack">Se recomienda usar <strong>nombres cortos</strong> y <strong>fáciles de recordar</strong></span>
+	        <span class="col-xs-12 text-center textBlack"><strong>Se recomienda usar nombres cortos y fáciles de recordar</strong></span>
 	      <div class="clear"></div>
 	      <div class="divider"></div>
 	      </div>
@@ -424,12 +423,12 @@
   <tr> 
        <td class="text-right"><img width="25" height="25" alt="Infomovil" src="<c:url value="/resources/webapp/images/icn_marc_maps-pp.png"/>"></td> 
        <td>&nbsp;</td> 
-       <td> Coloca tu ubicación <span class="">con Google Maps</span>	</td> 
+       <td><strong> Coloca tu ubicación <span class="">con Google Maps</span></strong>	</td> 
      </tr> 
  <tr id="imgPlanPro" style="display:none;"> 
        <td class="text-right"><img width="25" height="25" alt="Infomovil" src="<c:url value="/resources/webapp/images/ico_ppp_youtube-pp.png"/>"> </td> 
       <td> &nbsp;</td>
-    <td>Agrega video <span class="">de Youtube</span></td>
+    <td><strong>Agrega video <span class="">de YouTube</span></strong></td>
     </tr> 
      <tr> 
        <td>&nbsp;</td> 
@@ -497,7 +496,7 @@
 						<p class="modal-title"></p>
 					</div>
 					<div class="modal-body bgWhite">
-					<h2	class="textBlack text-center col-xs-12 col-sm-12 text-center" style="font-weight:700; "> </h2>
+<!-- 					<h2	class="textBlack text-center col-xs-12 col-sm-12 text-center" style="font-weight:700; "> </h2> -->
 					<h3 class="textBlack col-xs-12 col-sm-12 text-center" style="color:#7c41bc !important;" >Bienvenido a Infomovil</h3>
 					<div class="clear"></div>
 					<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-center textBlack"></div>
@@ -543,7 +542,7 @@
 	    <div class="modal-content">
 	      <div class="modal-header">
 	        <button type="button" class="close textBlack pull-left btnsEditor " data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button> 
-	        <input id="pac-input" class="controls textBlack btnsEditor" type="text" placeholder="Enter a location" style="height: 32px; width: 400px;"/>
+	        <input id="pac-input" class="controls textBlack btnsEditor" type="text" placeholder="Enter a location" style="height: 32px; min-width:280px; max-width:400px; width:100%; color:#000!important;"/>
 	        <button type="button" class="btn btn-purple pull-right btnsEditor" id="guardarUbicacion"><img width="20" height="20" alt="Infomovil" src="<c:url value="/resources/webapp/images/successWhite.png"/>" /> <span class="hidden-xs">Guardar</span></button>
 	        <div class="pull-right" style="display:inline-block; width:10px; height:20px;"></div>
 	        <button type="button" class="btn btn-purple pull-right btnsEditor" id="ubicame"><img width="20" height="20" alt="Infomovil" src="<c:url value="/resources/webapp/images/btn_ubicame.png"/>" /> <span class="hidden-xs">¡Ubícame!</span></button>
@@ -579,8 +578,8 @@
                             <div style="display:block; height:30px; width:100%;"></div>
                             <div style="display:block; margin:0 auto; width:80%;">
                                   Busca tu video: <input type="text" name="fname" id="algo">
+                                  <div class="divider hidden-sm hidden-md hidden-lg"></div>
                                   <input type="button" value="Buscar" id="button" class="btn btn-purple">
-                                  
                                   </div>
                                   <div>
                                   </div>
