@@ -282,7 +282,7 @@
 							<!-- /Botón Nuevo Estilo -->
 								
 								<div class="clearfix"></div>
-						<div class="divider"></div>
+						<div class="dividerSmall"></div>
 						<!-- /Botón AGREGAR VIDEO --> 
 						<div id="idBtnVideo" class="botonDesPublicar" style="display:none;">
 						<a href="#" data-toggle="modal" data-target="#myModalVideo" class="col-xs-12 col-sm-6 col-sm-offset-3 col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3 btn btn-default btn-outline navEditor"> 
@@ -580,6 +580,7 @@
                                   Busca tu video: <input type="text" name="fname" id="algo">
                                   <div class="divider hidden-sm hidden-md hidden-lg"></div>
                                   <input type="button" value="Buscar" id="button" class="btn btn-purple">
+                                  
                                   </div>
                                   <div>
                                   </div>
@@ -601,7 +602,7 @@
 </div>
                     <div class="modal-footer">
                       <!-- <button type="button" class="btn btn-default" data-dismiss="modal" >Close</button> -->
-                      
+                      <div class="divider"></div>
                     </div>
           </div>
         </div>
