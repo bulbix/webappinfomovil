@@ -58,7 +58,7 @@ $(document).ready(function(){
 
                               
                               $li.append('<span class="thumb" style="display:block; float:left; width:20%; min-width:60px;"><img src="' + imgSrc + '" width="60" /></span>');
-                              $li.append('<span class="title" style="display:block; float:left;width:80%">'+ title + '</span><div class="clear"></div>');
+                              $li.append('<span class="title" style="display:block; float:left;width:75%;padding:0 0 0 4px;">'+ title + '</span><div class="clear"></div>');
                               $li.click(function() {
                                   $videoFrame.attr('src', $(this).attr('data-video') );
                                   $("#primero").hide();

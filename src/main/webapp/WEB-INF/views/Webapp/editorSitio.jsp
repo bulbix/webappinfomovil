@@ -580,6 +580,7 @@
                                   Busca tu video: <input type="text" name="fname" id="algo">
                                   <div class="divider hidden-sm hidden-md hidden-lg"></div>
                                   <input type="button" value="Buscar" id="button" class="btn btn-purple">
+                                  
                                   </div>
                                   <div>
                                   </div>
@@ -601,7 +602,7 @@
 </div>
                     <div class="modal-footer">
                       <!-- <button type="button" class="btn btn-default" data-dismiss="modal" >Close</button> -->
-                      
+                      <div class="divider"></div>
                     </div>
           </div>
         </div>
