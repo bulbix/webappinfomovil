@@ -182,7 +182,7 @@ function initialize()
 
        }, function(error) {
             errorGeolocalizacion(error);
-       });
+       }, {enableHighAccuracy: true, timeout: 15000});
 
 	});
 	/**/
@@ -354,5 +354,5 @@ function mostrarError(descripcionMsj) {
         } 
     	}); 
     
-    setTimeout($.unblockUI, 2000);   
+    setTimeout($.unblockUI, 3000);   
 }

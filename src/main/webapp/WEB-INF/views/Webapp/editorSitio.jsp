@@ -276,13 +276,13 @@
 	<a href="#" data-toggle="modal" data-target="#myModalMaps" class="col-xs-12 col-sm-6 col-sm-offset-3 col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3 btn btn-default btn-outline navEditor">
  <img width="30" height="30" alt="Infomovil" src="<c:url value="/resources/webapp/images/icn_marc_maps.png"/>" /> 
  <span id="idOpcionUbicacion">Coloca tu ubicación</span>
- <br /><span id="direccionMap" for="direccionMap" style="font-size:.85em; display:block; width:90%; overflow:hidden; margin:0 auto"></span>
+ <br /><span id="direccionMap" style="font-size:.85em; display:block; width:90%; overflow:hidden; margin:0 auto"></span>
  </a>
  </div>
 							<!-- /Botón Nuevo Estilo -->
 								
 								<div class="clearfix"></div>
-						<div class="divider"></div>
+						<div class="dividerSmall"></div>
 						<!-- /Botón AGREGAR VIDEO --> 
 						<div id="idBtnVideo" class="botonDesPublicar" style="display:none;">
 						<a href="#" data-toggle="modal" data-target="#myModalVideo" class="col-xs-12 col-sm-6 col-sm-offset-3 col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3 btn btn-default btn-outline navEditor"> 
