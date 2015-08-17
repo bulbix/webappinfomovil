@@ -174,7 +174,7 @@ public class WebappController
 		{
 			String correo = Util.getUserLogged().getUsername();
 			String password = Util.getUserLogged().getPassword();	
-			nombrePersona = Util.getCurrentSession().getAttribute("nombreUsuario")!=null?
+			String nombrePersona = Util.getCurrentSession().getAttribute("nombreUsuario")!=null?
 					Util.getCurrentSession().getAttribute("nombreUsuario").toString():" ";
 		
 			wsRespuesta = wsCliente.crearSitioCargar(correo, password);
@@ -307,7 +307,7 @@ public class WebappController
 	{
 		HashMap<String, Object> model = new HashMap<String, Object>();
 		RespuestaVO wsRespuesta = new RespuestaVO();
-		String codigoError = "", descripcionError = "";
+		String codigoError = "", descripcionError = "", vista="";
 		
 		wsRespuesta = wsCliente.crearSitioRegistrar(correo, contrasenia, correo, codigo.toLowerCase());
 		codigoError = wsRespuesta.getCodeError();
@@ -542,9 +542,7 @@ public class WebappController
 		return "redirect:/infomovil/editarSitio";
 	}
 	
-	private String passwordDefault = "banco1";
-	private String nombrePersona;
-	private String vista;
+	final private String passwordDefault = "banco1";
 	private static final Logger logger = Logger.getLogger(WebappController.class);
 	private ClientWsInfomovil wsCliente = new ClientWsInfomovil();
 	private List<Catalogo> wsCatalogo;
