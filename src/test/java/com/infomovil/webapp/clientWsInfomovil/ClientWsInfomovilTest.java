@@ -70,8 +70,10 @@ public class ClientWsInfomovilTest {
 
 	@Test
 	public void testCrearSitioCargar() {
-		RespuestaVO resp = clientWsInfomovil.crearSitioCargar(correoPrueba, "garbage1");
+		RespuestaVO resp = clientWsInfomovil.crearSitioCargar("luisproducto@mail.com", "garbage1");
 		System.out.println(resp.dominioCreaSitio);
+		System.out.println(resp.getEsquemaProducto());
+		System.out.println(resp.getListProductoUsuarioVO());
 		assertNotNull(resp);
 	}
 
