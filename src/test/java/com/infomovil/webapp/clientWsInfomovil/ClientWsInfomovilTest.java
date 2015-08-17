@@ -42,9 +42,11 @@ public class ClientWsInfomovilTest {
 	
 	@Test
 	public void testCrearSitioLogin() {
-		RespuestaVO resp = clientWsInfomovil.crearSitioLogin(correoPrueba, "garbage1");
+		RespuestaVO resp = clientWsInfomovil.crearSitioLogin("luisproducto@mail.com", "garbage1");
 		assertNotNull(resp);
-		System.out.println(resp);
+		System.out.println(resp.getListProductoUsuarioVO().size());
+		//assertEquals(2, resp.getListProductoUsuarioVO().size());
+		System.out.println(resp.getListProductoUsuarioVO());
 	}
 
 

@@ -31,6 +31,9 @@ import javax.xml.bind.annotation.XmlType;
  *         &lt;element name="urlImagen" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="scriptMovilizaSitio" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="canal" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *         &lt;element name="campania" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *         &lt;element name="esquemaProducto" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *         &lt;element name="listProductoUsuarioVO" type="{http://ws.webservice.infomovil.org/}productoUsuarioVO" maxOccurs="unbounded" minOccurs="0"/>
  *         &lt;element name="listStatusDomainVO" type="{http://ws.webservice.infomovil.org/}statusDomainVO" maxOccurs="unbounded" minOccurs="0"/>
  *         &lt;element name="listUsuarioDominiosVO" type="{http://ws.webservice.infomovil.org/}usuarioDominiosVO" maxOccurs="unbounded" minOccurs="0"/>
  *         &lt;element name="dominioCreaSitio" type="{http://ws.webservice.infomovil.org/}dominioCreaSitio" minOccurs="0"/>
@@ -58,6 +61,8 @@ import javax.xml.bind.annotation.XmlType;
     "scriptMovilizaSitio",
     "canal",
     "campania",
+    "esquemaProducto",
+    "listProductoUsuarioVO",
     "listStatusDomainVO",
     "listUsuarioDominiosVO",
     "dominioCreaSitio"
@@ -78,6 +83,8 @@ public class RespuestaVO {
     protected String scriptMovilizaSitio;
     protected String canal;
     protected String campania;
+    protected String esquemaProducto;
+    protected List<ProductoUsuarioVO> listProductoUsuarioVO;
     protected List<StatusDomainVO> listStatusDomainVO;
     protected List<UsuarioDominiosVO> listUsuarioDominiosVO;
     protected DominioCreaSitio dominioCreaSitio;
@@ -395,6 +402,83 @@ public class RespuestaVO {
     }
 
     /**
+     * Obtiene el valor de la propiedad campania.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getCampania() {
+        return campania;
+    }
+
+    /**
+     * Define el valor de la propiedad campania.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setCampania(String value) {
+        this.campania = value;
+    }
+
+    /**
+     * Obtiene el valor de la propiedad esquemaProducto.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getEsquemaProducto() {
+        return esquemaProducto;
+    }
+
+    /**
+     * Define el valor de la propiedad esquemaProducto.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setEsquemaProducto(String value) {
+        this.esquemaProducto = value;
+    }
+
+    /**
+     * Gets the value of the listProductoUsuarioVO property.
+     * 
+     * <p>
+     * This accessor method returns a reference to the live list,
+     * not a snapshot. Therefore any modification you make to the
+     * returned list will be present inside the JAXB object.
+     * This is why there is not a <CODE>set</CODE> method for the listProductoUsuarioVO property.
+     * 
+     * <p>
+     * For example, to add a new item, do as follows:
+     * <pre>
+     *    getListProductoUsuarioVO().add(newItem);
+     * </pre>
+     * 
+     * 
+     * <p>
+     * Objects of the following type(s) are allowed in the list
+     * {@link ProductoUsuarioVO }
+     * 
+     * 
+     */
+    public List<ProductoUsuarioVO> getListProductoUsuarioVO() {
+        if (listProductoUsuarioVO == null) {
+            listProductoUsuarioVO = new ArrayList<ProductoUsuarioVO>();
+        }
+        return this.listProductoUsuarioVO;
+    }
+
+    /**
      * Gets the value of the listStatusDomainVO property.
      * 
      * <p>
@@ -475,28 +559,5 @@ public class RespuestaVO {
     public void setDominioCreaSitio(DominioCreaSitio value) {
         this.dominioCreaSitio = value;
     }
-
-	public String getCampania() {
-		return campania;
-	}
-
-	public void setCampania(String campania) {
-		this.campania = campania;
-	}
-
-	@Override
-	public String toString() {
-		return "RespuestaVO [resultado=" + resultado + ", token=" + token
-				+ ", fechaIni=" + fechaIni + ", fechaFin=" + fechaFin
-				+ ", fTelNamesIni=" + fTelNamesIni + ", fTelNamesFin="
-				+ fTelNamesFin + ", codeError=" + codeError + ", msgError="
-				+ msgError + ", statusDominio=" + statusDominio + ", codeCamp="
-				+ codeCamp + ", urlImagen=" + urlImagen
-				+ ", scriptMovilizaSitio=" + scriptMovilizaSitio + ", canal="
-				+ canal + ", campania=" + campania + ", dominioCreaSitio="
-				+ dominioCreaSitio + "]";
-	}
-	
-	
 
 }
