@@ -165,6 +165,13 @@
 			<artifactId>commons-validator</artifactId>
 			<version>1.4.1</version>
 		</dependency>   
+		
+		<dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-collections4</artifactId>
+			<version>4.0</version>
+		</dependency>
+		
 	</dependencies>
     <build>
     	<finalName>WebAppInfomovil</finalName>
@@ -232,15 +239,14 @@
     <profiles>
 		<profile>
 			<id>dev</id>
-						<activation>
-				<activeByDefault>true</activeByDefault>
-			</activation>
 			<properties>
 				<config.profile>DEV</config.profile>
 			</properties>
 		</profile>
 		<profile>
-
+			<activation>
+				<activeByDefault>true</activeByDefault>
+			</activation>
 			<id>qa</id>
 			<properties>
 				<config.profile>QA</config.profile>
