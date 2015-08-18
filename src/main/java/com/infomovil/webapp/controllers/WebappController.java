@@ -9,6 +9,8 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.commons.collections4.CollectionUtils;
+import org.apache.commons.collections4.Predicate;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.validator.routines.EmailValidator;
 import org.apache.log4j.Logger;
@@ -28,7 +30,9 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.infomovil.webapp.clientWsInfomovil.Catalogo;
 import com.infomovil.webapp.clientWsInfomovil.ClientWsInfomovil;
+import com.infomovil.webapp.clientWsInfomovil.ProductoUsuarioVO;
 import com.infomovil.webapp.clientWsInfomovil.RespuestaVO;
+import com.infomovil.webapp.model.ModeloWebApp;
 import com.infomovil.webapp.util.Util;
 
 @Controller
@@ -36,7 +40,9 @@ public class WebappController
 {
 	@Autowired
 	TokenBasedRememberMeServices remember;
-
+	@Autowired
+	ModeloWebApp modeloWebApp;
+	
 	@RequestMapping(value = "/infomovil/guardarInformacion", method = RequestMethod.GET, produces = "application/json")
 	@ResponseBody
 	public Map<String, String> guardarInformacion(@RequestParam String nombreEmpresa, 
@@ -370,6 +376,9 @@ public class WebappController
 		String fechaIni = "";
 		String fechaFin = "";
 		String status = "";
+		String esquemaProducto = "";
+		String tipoPublica = "";
+		String planPro = "";
 		
 		try
 		{
@@ -406,25 +415,50 @@ public class WebappController
 					fechaFin = wsRespuesta.getFTelNamesFin();
 				}
 
-				if (wsRespuesta.getDominioCreaSitio().getCanal().startsWith("BAZ") && 
-						!(campania.contains("basica") || campania.contains("basico")))
+				/*Ajuste para trabajar con la lista de productos*/
+
+				if (wsRespuesta.getDominioCreaSitio().getCanal().startsWith("BAZ"))
 				{
-					canal = "NO_TIENE";
+					canal = "BAZ";
 					claseCss = "default";
 					colorTexto = "textBlack";
 					extensionImg = "-bk";
-					
-					if (!(campania.contains("basica") || campania.contains("basico")))
-						canal = "BAZ";
+					tipoPublica = "tel";
+					planPro = "SI";
 				}
 				else
 				{
 					model.put("dominios", obtenerDominios());
-					canal = "NO_TIENE";
+					canal = wsRespuesta.getDominioCreaSitio().getCanal();
 					claseCss = "inverse";
 					colorTexto = "textWhite";
 					extensionImg = "";
+					tipoPublica = "recurso";
+					planPro = "NO";
 				}
+				
+				esquemaProducto = wsRespuesta.getEsquemaProducto();
+				modeloWebApp.setListaProductos(wsRespuesta.getListProductoUsuarioVO());
+				
+				if (esquemaProducto.equals("NEW"))
+				{
+					tipoPublica = "recurso";
+					
+					ProductoUsuarioVO productoVO = null;
+					productoVO = modeloWebApp.getProducto("tel");
+					
+					if (productoVO != null) /*Tipo de dominio a publicar*/
+						tipoPublica = "tel";
+					
+					planPro = "NO";
+					productoVO = null;
+					productoVO = modeloWebApp.getProducto("pp", "pi");
+					
+					if (productoVO != null) /*Busca si en los productos tiene un plan pro*/
+						planPro = "SI";
+				}
+
+				/*End ajuste para trabajar con la lista de productos*/
 				
 				model.put("usuarioLogueado", correo);
 				model.put("nombreUsuario", wsRespuesta.getDominioCreaSitio().getNombreUsuario().trim());				
@@ -445,7 +479,9 @@ public class WebappController
 				model.put("canalUsuario", canal);
 				model.put("claseCss", claseCss);
 				model.put("colorTexto", colorTexto);
-				model.put("extensionImg", extensionImg);
+				model.put("extensionImg", extensionImg);		
+				model.put("tipoPublica", tipoPublica);
+				model.put("planPro", planPro);
 			}
 			else 
 			{

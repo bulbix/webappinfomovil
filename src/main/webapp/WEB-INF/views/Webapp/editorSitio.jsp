@@ -144,7 +144,7 @@
 						</a>
 					<li>
 					
-					<li class="botonDesPublicar" id="btnVideoLi" style="display:none;">
+					<li class="botonDesPublicarVid" id="btnVideoLi" style="display:none;">
 						<a href="#" data-toggle="modal" data-target="#myModalVideo" class="smoothScroll ${colorTexto}">Video 
 							<img width="20" height="20" alt="Infomovil"	src="<c:url value="/resources/webapp/images/ico_ppp_youtube${ extensionImg }.png"/>" />
 						</a>
@@ -284,7 +284,7 @@
 								<div class="clearfix"></div>
 						<div class="dividerSmall"></div>
 						<!-- /Botón AGREGAR VIDEO --> 
-						<div id="idBtnVideo" class="botonDesPublicar" style="display:none;">
+						<div id="idBtnVideo" class="botonDesPublicarVid" style="display:none;">
 						<a href="#" data-toggle="modal" data-target="#myModalVideo" class="col-xs-12 col-sm-6 col-sm-offset-3 col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3 btn btn-default btn-outline navEditor"> 
 						<img width="30" height="30" alt="Infomovil" src="<c:url value="/resources/webapp/images/ico_ppp_youtube.png"/>" /> <span id="idOpcionVideo">Agrega un video</span></a> 
 						</div>
@@ -638,8 +638,8 @@
 <%-- 		<h1>${ statusCuenta }</h1> --%>
 <%-- 		<h1>${ urlVideo }</h1> --%>
 
-		<!-- <h1>${ statusCuenta }</h1> -->
-
+		<h1>${ tipoPublica }</h1>
+<h1>${ planPro }</h1>
 <%-- <h1>${ claseCss }</h1> --%>
 		<input type="hidden" id="plantilla" name="plantilla" <c:if test="${not empty template}"> value = "${ template }" </c:if>>
 		<input type="hidden" id="latitud" name="latitud" value = "${ latitud }">
@@ -691,18 +691,23 @@ $('.navbar-collapse ul li a').click(function() {
 
 
 <script>
-	<c:choose>
-		<c:when test="${canalUsuario == 'BAZ'}">
-			$("#publicarTel").css("display", "block");
-			$("#publicarRecurso").css("display", "none");
-			$("#logoBAZ").css("display", "block");
-			$("#idRegBAZ").css("display", "block");			
-			$("#logoGral").css("display", "none");	
- 			$("#imgPlanPro").css("display", "table-row");				
+
+	<c:choose> 
+		<c:when test="${tipoPublica == 'tel'}">
+			$("#publicarTel").css("display", "block");					
 		</c:when>
 		<c:otherwise>
-			$("#publicarRecurso").css("display", "block");	
-			$("#publicarTel").css("display", "none");
+				$("#publicarRecurso").css("display", "block");			
+		</c:otherwise>
+	</c:choose>
+
+	<c:choose> 
+		<c:when test="${canalUsuario == 'BAZ'}">
+			$("#logoBAZ").css("display", "block");
+			$("#idRegBAZ").css("display", "block");			
+			$("#logoGral").css("display", "none");					
+		</c:when>
+		<c:otherwise>
 			$("#logoBAZ").css("display", "none");
 			$("#idRegBAZ").css("display", "none");	
 			$("#logoGral").css("display", "block");	
@@ -718,9 +723,11 @@ $('.navbar-collapse ul li a').click(function() {
 			$(".botonDesPublicar").css("display", "block");		
 			$("#masContenido").css("display", "block");
 			
-			<c:if test="${statusCuenta == 'gratuito'}">
-				$("#idBtnVideo").css("display", "none");
-				$("#btnVideoLi").css("display", "none");
+			<c:if test="${planPro == 'SI'}">
+				$("#idBtnVideo").css("display", "block");
+				$("#btnVideoLi").css("display", "block");
+				$(".botonDesPublicarVid").css("display", "block");
+				$("#imgPlanPro").css("display", "table-row");
 			</c:if>
 		
 		</c:when>

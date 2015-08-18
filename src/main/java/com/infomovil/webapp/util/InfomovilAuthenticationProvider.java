@@ -16,14 +16,13 @@ import org.springframework.security.core.authority.SimpleGrantedAuthority;
 
 import com.infomovil.webapp.clientWsInfomovil.ClientWsInfomovil;
 
-
 public class InfomovilAuthenticationProvider implements AuthenticationProvider {	
 	
 	private static final Logger log = Logger .getLogger(InfomovilAuthenticationProvider.class);
 	
 	@Autowired
-	private MessageSource messageSource;
-
+	private MessageSource messageSource;	
+	
 	@Override
 	public Authentication authenticate(Authentication authentication)
 			throws AuthenticationException {	
@@ -36,6 +35,7 @@ public class InfomovilAuthenticationProvider implements AuthenticationProvider {
 				crearSitioLogin(email, password).getCodeError());
 		
 		if(codeError == 0){//Exito
+
 			List<GrantedAuthority> grantedAuths = new ArrayList<GrantedAuthority>();
 			grantedAuths.add(new SimpleGrantedAuthority("ROLE_USER"));
 			log.info("Login correcto " + email);
