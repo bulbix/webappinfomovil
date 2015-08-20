@@ -9,16 +9,17 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.commons.collections4.CollectionUtils;
+import org.apache.commons.collections4.Predicate;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.validator.routines.EmailValidator;
 import org.apache.log4j.Logger;
+import org.springframework.stereotype.Controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler;
 import org.springframework.security.web.authentication.rememberme.TokenBasedRememberMeServices;
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.CookieValue;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -29,7 +30,9 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.infomovil.webapp.clientWsInfomovil.Catalogo;
 import com.infomovil.webapp.clientWsInfomovil.ClientWsInfomovil;
+import com.infomovil.webapp.clientWsInfomovil.ProductoUsuarioVO;
 import com.infomovil.webapp.clientWsInfomovil.RespuestaVO;
+import com.infomovil.webapp.model.ModeloWebApp;
 import com.infomovil.webapp.util.Util;
 
 @Controller
@@ -37,6 +40,8 @@ public class WebappController
 {
 	@Autowired
 	TokenBasedRememberMeServices remember;
+	@Autowired
+	ModeloWebApp modeloWebApp;
 	
 	@RequestMapping(value = "/infomovil/guardarInformacion", method = RequestMethod.GET, produces = "application/json")
 	@ResponseBody
@@ -57,7 +62,7 @@ public class WebappController
 			String nombreUsuario = Util.getCurrentSession().getAttribute("nombreUsuario")!=null?
 					Util.getCurrentSession().getAttribute("nombreUsuario").toString():" ";
 			
-			wsRespuesta = wsCliente.crearSitioGuardar(correo, password, 
+			RespuestaVO wsRespuesta = wsCliente.crearSitioGuardar(correo, password, 
 					nombreUsuario, nombreEmpresa, descripcionCorta, 
 					EmailValidator.getInstance().isValid(correoElectronico)?correoElectronico:"",
 							telefono, plantilla);
@@ -80,6 +85,7 @@ public class WebappController
 			@RequestParam String telefono, @RequestParam String plantilla) throws UnsupportedEncodingException
 	{		
 		Map<String, String> resultMap = new HashMap<String, String>();
+		RespuestaVO wsRespuesta = new RespuestaVO();
 		nombreEmpresa = new String(nombreEmpresa.getBytes("ISO-8859-1"), "UTF-8");
 		descripcionCorta = new String(descripcionCorta.getBytes("ISO-8859-1"), "UTF-8");
 		
@@ -106,39 +112,94 @@ public class WebappController
 		
 		return resultMap;
 	}
+
+	@RequestMapping(value = "/infomovil/actualizaMapa", method = RequestMethod.GET, produces = "application/json")
+	@ResponseBody
+	public Map<String, String> actualizaMapa(@RequestParam String longitud, @RequestParam String latitud, @RequestParam String direccion) 
+			throws UnsupportedEncodingException
+	{		
+		Map<String, String> resultMap = new HashMap<String, String>();
+		RespuestaVO wsRespuesta = new RespuestaVO();
+		direccion = new String(direccion.getBytes("ISO-8859-1"), "UTF-8");
+		logger.info("longitud: " + longitud + ", latitud: " + latitud + ", direccion: " + direccion);
+		try
+		{
+			String correo = Util.getUserLogged().getUsername();
+			String password = Util.getUserLogged().getPassword();			
+			wsRespuesta = wsCliente.crearSitioGuardarUbicacion(correo, password, latitud, longitud, direccion);
+		}		
+		catch (Exception e) 
+		{
+			logger.error("actualizaMapa:::::", e);	
+			resultMap.put("codeError", "-100");
+		}	
+		
+		resultMap.put("actualizaMapa", wsRespuesta.getCodeError());
+		
+		return resultMap;
+	}
+	
+	@RequestMapping(value = "/infomovil/actualizaVideo", method = RequestMethod.GET, produces = "application/json")
+	@ResponseBody
+	public Map<String, String> actualizaVideo(@RequestParam String urlVideo) 
+			throws UnsupportedEncodingException
+	{		
+		Map<String, String> resultMap = new HashMap<String, String>();
+		RespuestaVO wsRespuesta = new RespuestaVO();
+		
+		try
+		{
+			String correo = Util.getUserLogged().getUsername();
+			String password = Util.getUserLogged().getPassword();			
+			wsRespuesta = wsCliente.crearSitioGuardarVideo(correo, password, urlVideo);
+		}		
+		catch (Exception e) 
+		{
+			logger.error("actualizaVideo:::::", e);	
+			resultMap.put("codeError", "-100");
+		}	
+		
+		resultMap.put("actualizaVideo", wsRespuesta.getCodeError());
+		
+		return resultMap;
+	}
 	
 	@RequestMapping(value = "/infomovil/publicarSitio", method = RequestMethod.POST)
 	@ResponseBody
 	public ModelAndView publicarSitio(@RequestParam String nombreDominio, @RequestParam String tipoDominio, 
-			@RequestParam int idCatTipoRecurso, RedirectAttributes redirectAtt)
+			@RequestParam int idCatTipoRecurso, HttpServletRequest request, HttpServletResponse response, RedirectAttributes redirectAtt)
 	{		
 		String resultadoPublicacion = "-1";
+		
 		ModelAndView modeloVista = null;
 		Map<String, String> resultMap = new HashMap<String, String>();
+		RespuestaVO wsRespuesta = new RespuestaVO();
 		RedirectAttributes redirectAttributes = null;
 		
 		try
 		{
 			String correo = Util.getUserLogged().getUsername();
 			String password = Util.getUserLogged().getPassword();	
-			nombrePersona = Util.getCurrentSession().getAttribute("nombreUsuario")!=null?
+			String nombrePersona = Util.getCurrentSession().getAttribute("nombreUsuario")!=null?
 					Util.getCurrentSession().getAttribute("nombreUsuario").toString():" ";
 		
-			RespuestaVO respCargarSitio = wsCliente.crearSitioCargar(correo, password);
+			wsRespuesta = wsCliente.crearSitioCargar(correo, password);
 			
 			boolean isBAZ = false, tieneTel = false;
 			
-			if(respCargarSitio.getCodeError().equals("0")){
-				isBAZ = respCargarSitio.getDominioCreaSitio().getCanal().startsWith("BAZ");
-				if (!StringUtils.isEmpty(respCargarSitio.getDominioCreaSitio().getSitioWeb())){
-					tieneTel = respCargarSitio.getDominioCreaSitio().getSitioWeb().indexOf(".tel") > 0;
+			if(wsRespuesta.getCodeError().equals("0"))
+			{
+			//	isBAZ = wsRespuesta.getDominioCreaSitio().getCanal().startsWith("BAZ");
+				if (!StringUtils.isEmpty(wsRespuesta.getDominioCreaSitio().getSitioWeb()))
+				{
+					tieneTel = wsRespuesta.getDominioCreaSitio().getSitioWeb().indexOf(".tel") > 0;
 				}
 			}
 
-			modeloVista = editarSitio(redirectAtt);
+			modeloVista = editarSitio(request, response, redirectAtt);
 			modeloVista.setViewName("redirect:/infomovil/editarSitio");
 			
-			if (!StringUtils.isEmpty(respCargarSitio.getDominioCreaSitio().getSitioWeb()))
+			if (!StringUtils.isEmpty(wsRespuesta.getDominioCreaSitio().getSitioWeb()))
 			{			
 				ModelAndView modelAndView =  new ModelAndView("redirect:/infomovil/editarSitio");
 				redirectAtt.addFlashAttribute("msgPublicacion", "Ya tienes publicado un dominio");
@@ -162,10 +223,11 @@ public class WebappController
 				return modelAndView;
 			}
 			
+			wsRespuesta = null;
 			wsRespuesta = wsCliente.crearSitioPublicar(correo, password, nombrePersona, "Mexico", nombreDominio, tipoDominio, idCatTipoRecurso);
 			resultadoPublicacion = wsRespuesta.getCodeError();
 			resultMap.put("resultadoPub", wsRespuesta.getResultado());
-			modeloVista = editarSitio(redirectAttributes);
+			modeloVista = editarSitio(request,response, redirectAttributes);
 			
 			if (modeloVista != null)
 			{
@@ -198,7 +260,9 @@ public class WebappController
 			HttpServletResponse response, RedirectAttributes redirectAttributes) 
 	{
 		HashMap<String, Object> model = new HashMap<String, Object>();
-		vista = "Webapp/registrar";
+		RespuestaVO wsRespuesta = new RespuestaVO();
+		String codigoError = "", descripcionError = "";
+		String vista = "Webapp/registrar";
 		
 		if (nombre == null || correo == null || codigo == null)
 			return validaURL("Webapp/validarURL");
@@ -250,7 +314,9 @@ public class WebappController
 			HttpServletResponse response, RedirectAttributes redirectAttributes) 
 	{
 		HashMap<String, Object> model = new HashMap<String, Object>();
-
+		RespuestaVO wsRespuesta = new RespuestaVO();
+		String codigoError = "", descripcionError = "", vista="";
+		
 		wsRespuesta = wsCliente.crearSitioRegistrar(correo, contrasenia, correo, codigo.toLowerCase());
 		codigoError = wsRespuesta.getCodeError();
 		descripcionError = wsRespuesta.getMsgError();
@@ -298,21 +364,30 @@ public class WebappController
 	}
 	
 	@RequestMapping(value = "/infomovil/editarSitio", method = RequestMethod.GET)
-	public ModelAndView editarSitio(RedirectAttributes redirectAttributes)
+	public ModelAndView editarSitio(HttpServletRequest request, HttpServletResponse response, RedirectAttributes redirectAttributes)
 	{		
 		HashMap<String, Object> model = new HashMap<String, Object>();
-	    template = "Coverpage1azul";
-		sitioWeb = "SIN_PUBLICAR";
-		canal = "NO_TIENE";
-		claseCss = "default";
+		RespuestaVO wsRespuesta = new RespuestaVO();
+	    String template = "Coverpage1azul";
+		String sitioWeb = "SIN_PUBLICAR";
+		String canal = "NO_TIENE";
+		String claseCss = "default";
+		String campania = "basica";
+		String colorTexto = "textWhite";
+		String extensionImg = "";
+		String fechaIni = "";
+		String fechaFin = "";
+		String status = "";
+		String esquemaProducto = "";
+		String tipoPublica = "";
+		String planPro = "";
 		
 		try
 		{
 			String correo = Util.getUserLogged().getUsername();
 			String password = Util.getUserLogged().getPassword();
-			
-			logger.info("editarSitio------> correo::::: " + correo + ", password:::: " + password);
-			wsRespuesta = wsCliente.crearSitioCargar(correo, password);
+
+		    wsRespuesta = wsCliente.crearSitioCargar(correo, password);
 			
 			if (wsRespuesta.getCodeError().equals("0"))
 			{
@@ -342,21 +417,50 @@ public class WebappController
 					fechaFin = wsRespuesta.getFTelNamesFin();
 				}
 
-				if (wsRespuesta.getDominioCreaSitio().getCanal().startsWith("BAZ") && 
-						!(campania.contains("basica") || campania.contains("basico")))
+				/*Ajuste para trabajar con la lista de productos*/
+
+				if (wsRespuesta.getDominioCreaSitio().getCanal().startsWith("BAZ"))
 				{
 					canal = "BAZ";
 					claseCss = "default";
 					colorTexto = "textBlack";
 					extensionImg = "-bk";
+					tipoPublica = "tel";
+					planPro = "SI";
 				}
 				else
 				{
 					model.put("dominios", obtenerDominios());
+					canal = wsRespuesta.getDominioCreaSitio().getCanal();
 					claseCss = "inverse";
 					colorTexto = "textWhite";
 					extensionImg = "";
+					tipoPublica = "recurso";
+					planPro = "NO";
 				}
+				
+				esquemaProducto = wsRespuesta.getEsquemaProducto();
+				modeloWebApp.setListaProductos(wsRespuesta.getListProductoUsuarioVO());
+				
+				if (esquemaProducto.equals("NEW"))
+				{
+					tipoPublica = "recurso";
+					
+					ProductoUsuarioVO productoVO = null;
+					productoVO = modeloWebApp.getProducto("tel");
+					
+					if (productoVO != null) /*Tipo de dominio a publicar*/
+						tipoPublica = "tel";
+					
+					planPro = "NO";
+					productoVO = null;
+					productoVO = modeloWebApp.getProducto("pp", "pi");
+					
+					if (productoVO != null) /*Busca si en los productos tiene un plan pro*/
+						planPro = "SI";
+				}
+
+				/*End ajuste para trabajar con la lista de productos*/
 				
 				model.put("usuarioLogueado", correo);
 				model.put("nombreUsuario", wsRespuesta.getDominioCreaSitio().getNombreUsuario().trim());				
@@ -364,7 +468,12 @@ public class WebappController
 				model.put("descripcionCorta", wsRespuesta.getDominioCreaSitio().getDescripcionCorta().trim());
 				model.put("correoElectronico", wsRespuesta.getDominioCreaSitio().getCorreoElectronico().trim());
 				model.put("telefonoUsuario", wsRespuesta.getDominioCreaSitio().getTelefono().trim());			
-				model.put("vistaPrevia", wsRespuesta.getDominioCreaSitio().getUrlVistaPrevia());				
+				model.put("vistaPrevia", wsRespuesta.getDominioCreaSitio().getUrlVistaPrevia());	
+				model.put("urlVideo", wsRespuesta.getDominioCreaSitio().getVideoUrl());
+				model.put("latitud", wsRespuesta.getDominioCreaSitio().getLatitudeMap());
+				model.put("longitud", wsRespuesta.getDominioCreaSitio().getLongitudeMap());
+				model.put("direccionMap", wsRespuesta.getDominioCreaSitio().getDireccionMap());
+				model.put("statusCuenta", wsRespuesta.getDominioCreaSitio().getTipoCuenta().toLowerCase());
 				model.put("template", template);
 				model.put("sitioWeb", sitioWeb); 
 				model.put("fechaIniTel", fechaIni);
@@ -372,13 +481,20 @@ public class WebappController
 				model.put("canalUsuario", canal);
 				model.put("claseCss", claseCss);
 				model.put("colorTexto", colorTexto);
-				model.put("extensionImg", extensionImg);
+				model.put("extensionImg", extensionImg);		
+				model.put("tipoPublica", tipoPublica);
+				model.put("planPro", planPro);
 			}
-			else if (wsRespuesta.getCodeError().equals("-3"))
+			else 
 			{
+				logoutInfomovil(request, response);
+				
+				if (wsRespuesta.getCodeError().equals("-3")){
+					redirectAttributes.addFlashAttribute("errorCta", "Si ya tienes Plan Pro. Inicia sesión");
+					redirectAttributes.addFlashAttribute("ctaCorreo", correo);
+				}
+				
 				ModelAndView modelAndView =  new ModelAndView("redirect:/login");
-				redirectAttributes.addFlashAttribute("errorCta", "Tu Plan Pro ya está activo. Inicia sesión");
-				redirectAttributes.addFlashAttribute("ctaCorreo", correo);
 				return modelAndView;
 			}
 
@@ -395,7 +511,32 @@ public class WebappController
 	@RequestMapping(value = "/infomovil/obtenerDominios", method = RequestMethod.GET, produces = "application/json")
 	@ResponseBody
 	public HashMap<String, Object> obtenerDominios()
-	{		
+	{	
+		HashMap<String, Object> dominios = new HashMap<String, Object>();
+		
+		try
+		{
+			wsCatalogo = wsCliente.catalogoDominios();
+			
+			for (Catalogo catalogo : wsCatalogo)
+			{
+				dominios.put(String.valueOf(catalogo.getId()), catalogo.getDescripcion()) ;
+			}
+		}		
+		catch (Exception e) 
+		{
+			logger.error("obtenerDominios:::::", e);
+		}	
+		
+		return dominios;
+	}
+
+	@RequestMapping(value = "/getDominios", method = RequestMethod.GET, produces = "application/json")
+	@ResponseBody
+	public HashMap<String, Object> getDominios()
+	{	
+		HashMap<String, Object> dominios = new HashMap<String, Object>();
+		
 		try
 		{
 			wsCatalogo = wsCliente.catalogoDominios();
@@ -418,6 +559,8 @@ public class WebappController
 	public Map<String, String> existeDominio(@RequestParam String nombreDominio, @RequestParam String tipoDominio)
 	{		
 		Map<String, String> resultMap = new HashMap<String, String>();
+		RespuestaVO wsRespuesta = new RespuestaVO();
+		
 		try
 		{
 			wsRespuesta = wsCliente.crearSitioExisteDominio(nombreDominio, tipoDominio);
@@ -433,27 +576,12 @@ public class WebappController
 	
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String index(){
+		logger.info("redirect:/infomovil/editarSitio");
 		return "redirect:/infomovil/editarSitio";
 	}
 	
-	private String passwordDefault = "banco1";
-	private String nombrePersona;
-	private String codigoError;
-	private String descripcionError;
-	private String vista;
-	private String fechaIni = "SIN_FECHA";
-	private String fechaFin = "SIN_FECHA";
-	private String sitioWeb = "SIN_PUBLICAR";
-	private String canal = "NO_TIENE";
-//	private String tipoUsuario = "normal";
-	private String campania = "basica";
-	private String claseCss = "default";
-	private String colorTexto = "textWhite";
-	private String extensionImg;
-	private String template ;
-	private HashMap<String, Object> dominios = new HashMap<String, Object>();
+	final private String passwordDefault = "banco1";
 	private static final Logger logger = Logger.getLogger(WebappController.class);
 	private ClientWsInfomovil wsCliente = new ClientWsInfomovil();
-	private RespuestaVO wsRespuesta = new RespuestaVO();
 	private List<Catalogo> wsCatalogo;
 }

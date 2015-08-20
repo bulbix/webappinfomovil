@@ -23,8 +23,15 @@ import javax.xml.bind.annotation.XmlType;
  *         &lt;element name="telefono" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="sitioWeb" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="canal" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *         &lt;element name="campania" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="template" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="urlVistaPrevia" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *         &lt;element name="latitudeMap" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *         &lt;element name="longitudeMap" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *         &lt;element name="direccionMap" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *         &lt;element name="videoUrl" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *         &lt;element name="estatusCuenta" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *         &lt;element name="tipoCuenta" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -44,7 +51,13 @@ import javax.xml.bind.annotation.XmlType;
     "canal",
     "campania",
     "template",
-    "urlVistaPrevia"
+    "urlVistaPrevia",
+    "latitudeMap",
+    "longitudeMap",
+    "direccionMap",
+    "videoUrl",
+    "estatusCuenta",
+    "tipoCuenta"
 })
 public class DominioCreaSitio {
 
@@ -58,6 +71,12 @@ public class DominioCreaSitio {
     protected String campania;
     protected String template;
     protected String urlVistaPrevia;
+    protected String latitudeMap;
+    protected String longitudeMap;
+    protected String direccionMap;
+    protected String videoUrl;
+    protected String estatusCuenta;
+    protected String tipoCuenta;
 
     /**
      * Obtiene el valor de la propiedad nombreUsuario.
@@ -228,6 +247,30 @@ public class DominioCreaSitio {
     }
 
     /**
+     * Obtiene el valor de la propiedad campania.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getCampania() {
+        return campania;
+    }
+
+    /**
+     * Define el valor de la propiedad campania.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setCampania(String value) {
+        this.campania = value;
+    }
+
+    /**
      * Obtiene el valor de la propiedad template.
      * 
      * @return
@@ -275,24 +318,148 @@ public class DominioCreaSitio {
         this.urlVistaPrevia = value;
     }
 
-	public String getCampania() {
-		return campania;
-	}
+    /**
+     * Obtiene el valor de la propiedad latitudeMap.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getLatitudeMap() {
+        return latitudeMap;
+    }
 
-	public void setCampania(String campania) {
-		this.campania = campania;
-	}
+    /**
+     * Define el valor de la propiedad latitudeMap.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setLatitudeMap(String value) {
+        this.latitudeMap = value;
+    }
 
-	@Override
-	public String toString() {
-		return "DominioCreaSitio [nombreUsuario=" + nombreUsuario
-				+ ", nombreEmpresa=" + nombreEmpresa + ", descripcionCorta="
-				+ descripcionCorta + ", correoElectronico=" + correoElectronico
-				+ ", telefono=" + telefono + ", sitioWeb=" + sitioWeb
-				+ ", canal=" + canal + ", campania=" + campania + ", template="
-				+ template + ", urlVistaPrevia=" + urlVistaPrevia + "]";
-	}
-	
-	
+    /**
+     * Obtiene el valor de la propiedad longitudeMap.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getLongitudeMap() {
+        return longitudeMap;
+    }
+
+    /**
+     * Define el valor de la propiedad longitudeMap.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setLongitudeMap(String value) {
+        this.longitudeMap = value;
+    }
+
+    /**
+     * Obtiene el valor de la propiedad direccionMap.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getDireccionMap() {
+        return direccionMap;
+    }
+
+    /**
+     * Define el valor de la propiedad direccionMap.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setDireccionMap(String value) {
+        this.direccionMap = value;
+    }
+
+    /**
+     * Obtiene el valor de la propiedad videoUrl.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getVideoUrl() {
+        return videoUrl;
+    }
+
+    /**
+     * Define el valor de la propiedad videoUrl.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setVideoUrl(String value) {
+        this.videoUrl = value;
+    }
+
+    /**
+     * Obtiene el valor de la propiedad estatusCuenta.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getEstatusCuenta() {
+        return estatusCuenta;
+    }
+
+    /**
+     * Define el valor de la propiedad estatusCuenta.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setEstatusCuenta(String value) {
+        this.estatusCuenta = value;
+    }
+
+    /**
+     * Obtiene el valor de la propiedad tipoCuenta.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getTipoCuenta() {
+        return tipoCuenta;
+    }
+
+    /**
+     * Define el valor de la propiedad tipoCuenta.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setTipoCuenta(String value) {
+        this.tipoCuenta = value;
+    }
 
 }

@@ -20,6 +20,7 @@ function validaDominio(tipo)
 	var opcion = "NO_PUBLICAR"
 	var msjValidacion = "";
 	var funcion = "aceptar()";
+	var nombreSitio = "";
 	var regAuxiliar = /^[_a-z0-9-]+([a-z0-9])$/;
 
 	if (tipo == 'recurso')
@@ -37,10 +38,10 @@ function validaDominio(tipo)
 
 	console.log("nombreDominio::: " + nombreDominio + ", tipoDominio:::: " + tipoDominio + ", tipo: " + tipo);
 	
-	if (nombreDominio == null || nombreDominio.trim().length == 0 || nombreDominio.trim().length < 3)
+	if (nombreDominio == null || nombreDominio.trim().length == 0 || nombreDominio.trim().length < 3 || nombreDominio.trim().length > 30)
 	{
-		$("#validacionNombre").html("El nombre debe ser mayor a 2 caracteres y menor a 64");
-		$("#validacionNombreRec").html("El nombre debe ser mayor a 2 caracteres y menor a 64");
+		$("#validacionNombre").html("El nombre debe ser de una longitud mínimo de 2 y máximo 30 caracteres");
+		$("#validacionNombreRec").html("El nombre debe ser de una longitud mínimo de 2 y máximo 30 caracteres");
 		$("#validacionNombre").css("display", "block");
 		$("#validacionNombreRec").css("display", "block");
 		return false;
@@ -91,34 +92,39 @@ function validaDominio(tipo)
     (
 		function(json)
     	{
+			if (tipoDominio == "recurso")
+				sitioDisponible = "www.infomovil.com/" + nombreDominio;
+			else
+				sitioDisponible = "www." + nombreDominio + "." + tipoDominio;
+			
+			nombreSitio = sitioDisponible.length;
+			console.log("nombreSitio: " + nombreSitio + ", longitud tel: " + nombreSitio);
+			
+			if (nombreSitio > 25)
+				sitioDisponible = sitioDisponible.substring(4, nombreSitio);
+			
 			console.log("termino busqueda de dominio:::::: " + json.resultado);
 			if (json.resultado.indexOf("No existe") != -1)
 			{				
 				funcion = "publicar()";
 				opcion = "PUBLICAR";
 				msjValidacion = "";
-				textoBoton = "&iexcl;Lo quiero!";
-				sitioDisponible = "www." + nombreDominio + "." + tipoDominio + " est&aacute; disponible";
-
-				if (tipoDominio == "recurso")
-					sitioDisponible = "www.infomovil.com/" + nombreDominio + " est&aacute; disponible"; //sitioDisponible = $("#idCatTipoRec option:selected").html() + "/" + nombreDominio + " est&aacute; disponible";
+				textoBoton = "&iexcl;Lo quiero!";				
+				sitioDisponible =  sitioDisponible + " est&aacute; disponible";
 			}
 			else
 			{
 				funcion = "aceptar()"
 				msjValidacion = "";
-				textoBoton = "Aceptar"
-				sitioDisponible = "www." + nombreDominio + "." + tipoDominio + " no est&aacute; disponible";
-				
-				if (tipoDominio == "recurso")
-					sitioDisponible = "www.infomovil.com/" + nombreDominio + " no est&aacute; disponible"; //sitioDisponible = $("#idCatTipoRec option:selected").html() + "/" + nombreDominio + " no est&aacute; disponible";
+				textoBoton = "Aceptar";
+				sitioDisponible =  sitioDisponible + " no est&aacute; disponible";
 			}
 			
 			$('#modalPublicacion').html("<div id='myModalPublicar' class='modal fade' tabindex='-1' role='dialog' aria-labelledby='myModalLabel' aria-hidden='true'>"+
 					"<div class='modal-dialog modal-lg'><div class='modal-content'><div class='modal-header'><button type='button' class='close textBlack' data-dismiss='modal' aria-label='Close'>"+
 					"<span aria-hidden='true'>&times;</span></button><p class='modal-title' ></p></div><div class='modal-body bgWhite'>"+
-					"<h2 class='textBlack col-xs-12 col-sm-12 col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3 text-center'>"+ msjValidacion +"</h2><h5 class='textBlack col-xs-12 col-sm-12 col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3 text-center'>"+
-					"El dominio " + sitioDisponible + "</h5><div class='clear divider'></div></div><div class='modal-footer'>"+
+					"<h2 class='textBlack col-xs-12 col-sm-12 col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3 text-center'>"+ msjValidacion +"</h2><span class='textBlack col-xs-12 col-sm-12 col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3 text-center'>"+
+					"<strong>El dominio " + sitioDisponible + "</strong></span><div class='clear divider'></div></div><div class='modal-footer'>"+
 					"<button type='button' class='btn btn-purple text-center col-xs-12 col-sm-12 col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3' data-dismiss='modal' onClick=" + funcion + "><strong>"+ textoBoton +"</strong>" + 
 					"</button><input type='hidden' id='opcion' value=" + opcion + "/></div></div></div></div>");
 

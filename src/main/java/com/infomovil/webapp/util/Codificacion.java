@@ -39,11 +39,11 @@ public class Codificacion {
 	}
 
 	public static void main(String[] args) throws Exception {//jdbc:oracle:thin:@10.203.24.203:1521:telhosting 
-		String password ="jdbc:oracle:thin:@172.17.7.31:1521:telhosting";
-		String passwordEnc = Codificacion.encrypt(password);  
-		System.out.println("passwordEnc:::" + passwordEnc);
+//		String password ="jdbc:oracle:thin:@172.17.7.31:1521:telhosting";
+//		String passwordEnc = Codificacion.encrypt(password);  
+//		System.out.println("passwordEnc:::" + passwordEnc);
 		//      System.out.println("Plain Text : " + password);
-		System.out.println("Conn: " + Codificacion.decrypt(passwordEnc));
+		System.out.println("Conn: " + Codificacion.decrypt("cwhSALfHB1AYgqBfFwW5dA=="));
 		//        System.out.println("Perfil QA");
 		//        System.out.println("Conn QA:"+ Codificacion.encrypt("jdbc:oracle:thin:@172.24.20.104:1521:IFBDQA")); 
 		//       System.out.println("Pass: "+Codificacion.encrypt("jdbc:oracle:thin:@172.17.3.196:1521:telhosting"));

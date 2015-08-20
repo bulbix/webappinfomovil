@@ -13,7 +13,7 @@ import org.junit.Test;
 public class ClientWsInfomovilTest {
 	
 	static ClientWsInfomovil clientWsInfomovil;
-	String correoPrueba = "wallie6@mail.com";
+	String correoPrueba = "marte@mail.com";
 	String nombrePrueba = "garbage1";
 
 	@BeforeClass
@@ -42,9 +42,11 @@ public class ClientWsInfomovilTest {
 	
 	@Test
 	public void testCrearSitioLogin() {
-		RespuestaVO resp = clientWsInfomovil.crearSitioLogin(correoPrueba, "garbage1");
+		RespuestaVO resp = clientWsInfomovil.crearSitioLogin("luisproducto@mail.com", "garbage1");
 		assertNotNull(resp);
-		System.out.println(resp);
+		System.out.println(resp.getListProductoUsuarioVO().size());
+		//assertEquals(2, resp.getListProductoUsuarioVO().size());
+		System.out.println(resp.getListProductoUsuarioVO());
 	}
 
 
@@ -53,11 +55,25 @@ public class ClientWsInfomovilTest {
 		RespuestaVO resp = clientWsInfomovil.crearSitioGuardar(correoPrueba, "garbage1","xxxx","yyy","zzz","luis@mail.com","33333","divertido" );
 		assertNotNull(resp);
 	}
+	
+	@Test
+	public void testCrearSitioGuardarUbicacion() {
+		RespuestaVO resp = clientWsInfomovil.crearSitioGuardarUbicacion(correoPrueba, "garbage1","6.7","8.9","aza");
+		assertNotNull(resp);
+	}
+	
+	@Test
+	public void testCrearSitioGuardarVideo() {
+		RespuestaVO resp = clientWsInfomovil.crearSitioGuardarVideo(correoPrueba, "garbage1","zoso");
+		assertNotNull(resp);
+	}
 
 	@Test
 	public void testCrearSitioCargar() {
-		RespuestaVO resp = clientWsInfomovil.crearSitioCargar(correoPrueba, "garbage1");
+		RespuestaVO resp = clientWsInfomovil.crearSitioCargar("luisproducto@mail.com", "garbage1");
 		System.out.println(resp.dominioCreaSitio);
+		System.out.println(resp.getEsquemaProducto());
+		System.out.println(resp.getListProductoUsuarioVO());
 		assertNotNull(resp);
 	}
 
