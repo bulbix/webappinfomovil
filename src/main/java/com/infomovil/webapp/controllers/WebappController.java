@@ -20,6 +20,7 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler;
 import org.springframework.security.web.authentication.rememberme.TokenBasedRememberMeServices;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.CookieValue;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -323,6 +324,7 @@ public class WebappController
 		
 		if (codigoError.equals("0"))
 		{
+			
 			Util.loginUsuario(correo, contrasenia);
 			remember.onLoginSuccess(request, response, SecurityContextHolder.getContext().getAuthentication());
 			vista = "redirect:/infomovil/editarSitio";
@@ -344,9 +346,11 @@ public class WebappController
 	}
 	
 	@RequestMapping(value = "/registrar", method = RequestMethod.GET)
-	public String registra(@CookieValue(value = "editarSitioInfomovil", defaultValue = "") String editarSitioInfomovil) 
+	public String registra(@CookieValue(value = "editarSitioInfomovil", defaultValue = "") 
+		String editarSitioInfomovil, Model model) 
 	{
 		if(StringUtils.isEmpty(editarSitioInfomovil)){
+			model.addAttribute("tituloCont","tituloCOntroller");
 			return "Webapp/registrar";
 		}
 		else{

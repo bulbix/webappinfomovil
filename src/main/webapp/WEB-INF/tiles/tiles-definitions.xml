@@ -4,8 +4,9 @@
        "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
 <tiles-definitions>
 
-	<definition name="headerFragment" template="/WEB-INF/fragments/header.jsp" />
-	<definition name="footerFragment" template="/WEB-INF/fragments/footer.jsp" />
+	<definition name="head" template="/WEB-INF/fragments/head.jsp" />
+	<definition name="navGen" template="/WEB-INF/fragments/navGen.jsp" />
+	<definition name="footer" template="/WEB-INF/fragments/footer.jsp" />
 
 
 	<definition name="infomovilTemplate" template="/WEB-INF/templates/infomovilTemplate.jsp">

@@ -1,85 +1,14 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib uri="http://tiles.apache.org/tags-tiles" prefix="tiles"%>
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
-<!doctype html>
-<html lang="es">
-    <head itemscope="" itemtype="http://schema.org/WebSite">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1"/>
-    <meta charset="ISO-8859-1" />
-    <meta name="title" content="Infomovil" />
-    <meta name="author" content="Infomovil"/>
-    <meta name="designer" content="Infomovil"/>
-    <meta name="description" content="Infomovil. Nunca antes ha sido tan f&aacute;cil crear un sitio web. Con Infomovil crea tu sitio f&aacute;cil, r&aacute;pido y gratuito en 5 minutos."/>
-    <meta name="keywords" content="emprendedor, PyMEs, negocios PyMEs, sitio web, p&aacute;gina web, productividad, utilidades, web, m&oacute;vil, infomovil, micronegocio, crea tu sitio, mobile friendly, personal, gratis"/>
-    <meta name="revisit-after" content="1 days"/>
-    <meta name="rating" content="general"/>
-    <meta name="copyright" content="Infomovil" />
-    <meta name="name" content="Infomovil"/>
-    <meta property="og:title" content="Infomovil" />
-    <meta property="og:type" content="website"/>
-    <meta property="og:description" content="Infomovil. Nunca antes ha sido tan f&aacute;cil crear un sitio web. Con Infomovil crea tu sitio f&aacute;cil, r&aacute;pido y gratuito en 5 minutos." />
-    <meta property="og:image" content="resources/webapp/images/apple-touch-icon-57x57.png"/>
-    <meta property="og:url" content="http://www.infomovil.com" />
-    <meta itemprop="name" content="Infomovil"/>
-    <meta itemprop="description" content="Infomovil. Nunca antes ha sido tan f&aacute;cil crear un sitio web. Con Infomovil crea tu sitio f&aacute;cil, r&aacute;pido y gratuito en 5 minutos. Sitio web creado con www.infomovil.com"/>
-    <link rel="apple-touch-icon" href="resources/webapp/images/apple-touch-icon.png" />
-    <link rel="apple-touch-icon" sizes="57x57" href="resources/webapp/images/apple-touch-icon-57x57.png" />
-    <link rel="apple-touch-icon" sizes="72x72" href="resources/webapp/images/apple-touch-icon-72x72.png" />
-    <link rel="apple-touch-icon" sizes="76x76" href="resources/webapp/images/apple-touch-icon-76x76.png" />
-    <link rel="apple-touch-icon" sizes="114x114" href="resources/webapp/images/apple-touch-icon-114x114.png" />
-    <link rel="apple-touch-icon" sizes="120x120" href="resources/webapp/images/apple-touch-icon-120x120.png" />
-    <link rel="apple-touch-icon" sizes="144x144" href="resources/webapp/images/apple-touch-icon-144x144.png" />
-    <link rel="apple-touch-icon" sizes="152x152" href="resources/webapp/images/apple-touch-icon-152x152.png" />
-    <link rel="shortcut icon" href="resources/webapp/images/favicon.ico" type="image/x-icon" />
-    <link rel="image_src" href="resources/webapp/images/apple-touch-icon-57x57.png"/>
-    <title itemprop="name">Infomovil</title>
-    <link rel="canonical" href="http://www.infomovil.com" itemprop="url" />
-    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-    <!--[if lt IE 8]>
-      <script src=" resources/webapp/js/html5shiv.min.js"></script>
-      <script src=" resources/webapp/js/respond.min.js"></script>
-    <![endif]-->
-    <!-- Bootstrap core CSS -->
-    <link href="resources/webapp/css/bootstrap.min.css" rel="stylesheet" />
-    <!-- Bootstrap theme -->
-    <link href="resources/webapp/css/bootstrap-theme.min.css" rel="stylesheet" />
-    <!-- Custom styles for this template -->
-    <link href="resources/webapp/css/theme.css" rel="stylesheet" />
-    <!-- Custom styles for this template -->
-    <link href="resources/webapp/css/sticky-footer-navbar.css" rel="stylesheet" />
-    <!-- bxSlider CSS file -->
-    <link href="resources/webapp/css/jquery.bxslider.css" rel="stylesheet" />
-    <link rel="stylesheet" href="resources/webapp/fonts/font-awesome.min.css">
-    <script>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-  ga('create', 'UA-53077061-1', 'auto');
- ga('send', 'pageview'); 
-    </script>
-    </head>
 
-    <body role="document" data-spy="scroll" data-target=".navbar" data-offset="75" id="page-top">
+<tiles:insertDefinition name="head">
+	<tiles:putAttribute name="titulo" value="${tituloCont}"/>
+</tiles:insertDefinition>
+
+<body role="document" data-spy="scroll" data-target=".navbar" data-offset="75" id="page-top">
 
 <!-- Fixed navbar -->
-<nav class="navbar navbar-inverse navbar-static-top">
-      <div class="container">
-    <div class="navbar-header">
-          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar"> <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
-          <a class="navbar-brand" href="http://infomovil.com"><span><img src="resources/webapp/images/apple-touch-icon-57x57.png" width="50" height="50" alt="Infomovil" /> </span><span class="marLeft">Infomovil</span></a> </div>
-    <div id="navbar" class="navbar-collapse collapse text-right">
-          <ul class="nav navbar-nav navbar-right">
-        <li><a href="http://infomovil.com" class="smoothScroll">Inicio</a></li>
-        <li class="active"><a href="#" class="smoothScroll">Regístrate</a></li>
-        <li><a href="<c:url value="/login"/>" class="smoothScroll">Iniciar sesión</a></li>
-      </ul>
-        </div>
-    <!--/.nav-collapse --> 
-  </div>
-    </nav>
+<tiles:insertDefinition name="navGen"></tiles:insertDefinition>
 <!-- / Fixed navbar --> 
 
 <!--Theme showcase -->
@@ -171,39 +100,44 @@
 <!--/Theme showcase --> 
 
 <!--Footer-->
-
-<footer class="footer">
-      <section class="bgBlack">
-    <div class="container">
-          <div class="row" >
-        <div class="col-xs-12 col-sm-12 col-md-6 col-md-offset-3 ">
-              <p class="helpMx txtWhite reset text-center"><em>Ayudando a construir una economía digital.</em></p>
-            </div>
-        <div class="col-xs-12 col-sm-12 col-md-4 col-md-offset-4"> <img src="resources/webapp/images/logo_infomovil.png" alt="Infomovil" onerror="this.src='  resources/webapp/images/trans.png';" class="img-responsive imgLog" />
-              <meta itemprop="name" content="Infomovil" />
-            </div>
-        <div  class="col-xs-12 resetAll">
-              <p class="text-center text-small reset">Descarga la app y crea tu página web en 5 minutos.</p>
-            </div>
-        <div class="col-xs-12 col-sm-12 col-md-4 col-md-offset-4">
-              <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 mar10TB"> <a href="https://itunes.apple.com/mx/app/infomovil/id898313250?mt=8" target="blank"> <img src="resources/webapp/images/icn_appstore.png" class="img-responsive imgDes"  alt="app store" onerror="this.src='resources/webapp/images/trans.png';"/> </a> </div>
-              <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 mar10TB"> <a href="https://play.google.com/store/apps/details?id=com.infomovil.infomovil" target="blank"> <img src="resources/webapp/images/icn_gstore.png" class="img-responsive imgDes" alt="google store" onerror="this.src='resources/webapp/images/trans.png';"/> </a> </div>
-            </div>
-      </div>
-          <div class="dividerSmall"></div>
-          <div class="col-xs-12 col-sm-12">
-        <p  class="text-center text-small reset">Consulta las <a href="#" title="Condiciones del servicio" data-toggle="modal" data-target="#myModalTerminos">condiciones del servicio </a>y las <a href="#" data-toggle="modal" data-target="#myModalAviso">pol&iacute;ticas de privacidad</a> de Infomovil.</p>
-      </div>
-          <div class="dividerSmall"></div>
-        </div>
-    </div>
-  </section>
-    </footer>
+<tiles:insertDefinition name="footer"></tiles:insertDefinition>
 <!-- Scroll to Top Button (Only visible on small and extra-small screen sizes) -->
 <div class="scroll-top page-scroll visible-xs visble-sm"> <a class="btn" href="#page-top"> <i class="fa fa-chevron-up"></i> Subir</a> </div>
 
 
-<tiles:insertDefinition name="footerFragment"/>
+<div id="myModalTerminos" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+          <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <p class="modal-title" >Condiciones del servicio</p>
+      </div>
+          <div class="modal-body bgWhite">
+        <iframe class="legales" src="http://www.infomovil.com/pages/legal/terminos.html" frameborder="0"></iframe>
+      </div>
+          <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+      </div>
+        </div>
+  </div>
+    </div>
+<div id="myModalAviso" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+          <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <p class="modal-title" >Pol&iacute;ticas de privacidad</p>
+      </div>
+          <div class="modal-body bgWhite">
+        <iframe class="legales" src="http://www.infomovil.com/pages/legal/terminos.html" frameborder="0"></iframe>
+      </div>
+          <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+      </div>
+        </div>
+  </div>
+    </div></p>
+    
 
 <!-- Bootstrap core JavaScript
     ================================================== --> 

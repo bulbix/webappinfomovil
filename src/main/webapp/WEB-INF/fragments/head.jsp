@@ -1,3 +1,6 @@
+<%@ taglib uri="http://tiles.apache.org/tags-tiles" prefix="tiles"%>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
 <!-- HEAD HTML 5 -->
 <!doctype html>
 <html lang="es">
@@ -39,7 +42,7 @@
     <!-- / ICONOS -->
     
     <!-- TITULO - URL (VARIA EN CADA PÁGINA)-->
-	<title itemprop="name">Infomovil</title>
+	<title itemprop="name"><tiles:getAsString name="titulo"/></title>
 	<link rel="canonical" href="http://www.infomovil.com" itemprop="url" />
 	<!-- /TITULO- URL -->
 	
@@ -80,3 +83,6 @@
     </script>
      <!-- / CODIGO SEGUIMIENTO ANALYTICS -->
 <!--  /HEAD HTML 5 -->
+ </head>
+ 
+<!-- <h1> estoy en el fragment</h1> -->
