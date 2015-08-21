@@ -189,7 +189,7 @@ public class WebappController
 			
 			if(wsRespuesta.getCodeError().equals("0"))
 			{
-			//	isBAZ = wsRespuesta.getDominioCreaSitio().getCanal().startsWith("BAZ");
+				isBAZ = wsRespuesta.getDominioCreaSitio().getCanal().startsWith("BAZ");
 				if (!StringUtils.isEmpty(wsRespuesta.getDominioCreaSitio().getSitioWeb()))
 				{
 					tieneTel = wsRespuesta.getDominioCreaSitio().getSitioWeb().indexOf(".tel") > 0;

@@ -638,8 +638,8 @@
 <%-- 		<h1>${ statusCuenta }</h1> --%>
 <%-- 		<h1>${ urlVideo }</h1> --%>
 
-		<h1>${ tipoPublica }</h1>
-<h1>${ planPro }</h1>
+<%-- 		<h1>${ tipoPublica }</h1> --%>
+<%-- <h1>${ planPro }</h1> --%>
 <%-- <h1>${ claseCss }</h1> --%>
 		<input type="hidden" id="plantilla" name="plantilla" <c:if test="${not empty template}"> value = "${ template }" </c:if>>
 		<input type="hidden" id="latitud" name="latitud" value = "${ latitud }">
