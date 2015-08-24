@@ -266,15 +266,15 @@
 			</properties>
 		</profile>
 		<profile>
+			<activation>
+				<activeByDefault>true</activeByDefault>
+			</activation>
 			<id>qa</id>
 			<properties>
 				<config.profile>QA</config.profile>
 			</properties>
 		</profile>
 		<profile>
-			<activation>
-				<activeByDefault>true</activeByDefault>
-			</activation>
 			<id>prod</id> 
 			<properties>
 				<config.profile>PROD</config.profile>

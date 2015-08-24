@@ -15,23 +15,12 @@
 <div class="theme-showcaseApp" role="main" id="intro"> 
       
       <!-- Main jumbotron for a primary marketing message or call to action -->
-      <div class="container text-center">
+    <div class="container text-center">
     <div class="divider hidden-xs hidden-sm"></div>
     <h1 class="textBlack hidden">Registra tu cuenta</h1>
     <h3 class="textBlack">Registra tu cuenta</h3>
     <div class="container">
           <form id="formRegistro" action="registrar" method="post">
-<!--         nombre -->
-<!--         <div class="form-group col-xs-12 col-sm-12 col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3"> -->
-<!--               <div class="control-group"> -->
-<!--             <label class="control-label hidden-xs"></label> -->
-<!--             <div class="controls"> -->
-<!--                   <input type="text" class="form-control" placeholder="Nombre" id="nombre" name="nombre" required="required"/> -->
-<!--                   <p class="help-block"></p> -->
-<!--                 </div> -->
-<!--           </div> -->
-<!--             </div> -->
-<!--         nombre  -->
         
         <!--email-->
         <div class="form-group col-xs-12 col-sm-12 col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3">
@@ -136,37 +125,12 @@
       </div>
         </div>
   </div>
-    </div></p>
-    
+    </div>
 
-<!-- Bootstrap core JavaScript
-    ================================================== --> 
-<!-- Placed at the end of the document so the pages load faster --> 
-<script src="resources/webapp/js/jquery.min.js"></script> 
-<script src="resources/webapp/js/bootstrap.min.js"></script> 
-<script src="resources/webapp/js/docs.min.js"></script> 
-<script src="resources/webapp/js/smoothscroll.js" type="text/javascript"></script> 
-<!-- IE10 viewport hack for Surface/desktop Windows 8 bug --> 
-<script src="resources/webapp/js/ie10-viewport-bug-workaround.js"></script> 
-<!-- bxSlider Javascript file --> 
-<script src="resources/webapp/js/jquery.bxslider.min.js"></script> 
-<script src="resources/webapp/js/jqBootstrapValidation.js"></script> 
-<script>
-  $(function () { $("input,select,textarea,password").not("[type=submit]").jqBootstrapValidation(); } );
-</script> 
-<script>
+<!-- Bootstrap core JavaScript--> 
+<!-- Placed at the end of the document so the pages load faster -->
+<tiles:insertDefinition name="jsCore"></tiles:insertDefinition> 
+<tiles:insertDefinition name="jsScripts"></tiles:insertDefinition>
 
-// jQuery for page scrolling feature - requires jQuery Easing plugin
-
-// Highlight the top nav as scrolling occurs
-$('body').scrollspy({
-    target: '.navbar-fixed-top'
-})
-
-// Closes the Responsive Menu on Menu Item Click
-$('.navbar-collapse ul li a').click(function() {
-    $('.navbar-toggle:visible').click();
-});
-</script>
 </body>
 </html>

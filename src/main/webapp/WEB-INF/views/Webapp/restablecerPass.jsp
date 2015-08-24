@@ -96,62 +96,9 @@
   </div>
     </div></p>
     
-
-<!-- Bootstrap core JavaScript
-    ================================================== --> 
+<!-- Bootstrap core JavaScript --> 
 <!-- Placed at the end of the document so the pages load faster --> 
-<script src="resources/webapp/js/jquery.min.js"></script> 
-<script src="resources/webapp/js/bootstrap.min.js"></script> 
-<script src="resources/webapp/js/docs.min.js"></script> 
-<script src="resources/webapp/js/smoothscroll.js" type="text/javascript"></script> 
-<!-- IE10 viewport hack for Surface/desktop Windows 8 bug --> 
-<script src="resources/webapp/js/ie10-viewport-bug-workaround.js"></script> 
-<!-- bxSlider Javascript file --> 
-<script src="resources/webapp/js/jquery.bxslider.min.js"></script> 
-<script src="resources/webapp/js/jqBootstrapValidation.js"></script> 
-<script>
-  $(function () { $("input,select,textarea").not("[type=submit]").jqBootstrapValidation(); } );
-</script> 
-<script>
-$(document).ready(function(){
-  $('.slider1').bxSlider({
-    slideWidth: 400,
-    minSlides: 1,
-    maxSlides: 3,
-	moveSlides: 1,
-    slideMargin: 0,
-	infiniteLoop: false,
-  hideControlOnEnd: true
-  });
-  $('.slider2').bxSlider({
-    slideWidth: 800,
-    minSlides: 1,
-    maxSlides: 1,
-	moveSlides: 1,
-    slideMargin: 0,
-	captions: true,
-	controls:true,
-	infiniteLoop: false,
-  hideControlOnEnd: true
-  });
-  
-});
-</script> 
-<script>
-
-// jQuery for page scrolling feature - requires jQuery Easing plugin
-
-// Highlight the top nav as scrolling occurs
-$('body').scrollspy({
-    target: '.navbar-fixed-top'
-})
-
-// Closes the Responsive Menu on Menu Item Click
-$('.navbar-collapse ul li a').click(function() {
-    $('.navbar-toggle:visible').click();
-});
-
-
-</script>
+<tiles:insertDefinition name="jsCore"></tiles:insertDefinition> 
+<tiles:insertDefinition name="jsScripts"></tiles:insertDefinition>
 </body>
 </html>

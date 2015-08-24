@@ -85,4 +85,4 @@
 <!--  /HEAD HTML 5 -->
  </head>
  
-<!-- <h1> estoy en el fragment</h1> -->
+<h1> desde el head</h1> 

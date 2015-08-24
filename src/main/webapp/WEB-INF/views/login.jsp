@@ -13,11 +13,6 @@
 
 <!--Theme showcase -->
 <div class="theme-showcaseApp" role="main" id="intro"> 
- 
-<%--      <c:if test="${not empty errorCta}"> --%>
-<!-- 			<div class="errorblock col-xs-12 text-center textWhite"> -->
-<%-- 				<img src="<c:url value="/resources/webapp/images/fa-warning.png"/>" width="15" height="15" alt="Alerta" /> ${errorCta}</div> --%>
-<%-- 	</c:if> --%>
 
 	<c:if test="${not empty errorCta}">
 			<div class="errorblock col-xs-12 text-center textBlack">
@@ -101,72 +96,49 @@
 
 <!--/Footer--> 
 <!-- /container -->
-
-<div id="myModalTerminos" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-      <div class="modal-dialog modal-lg">
-    <div class="modal-content">
-          <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <p class="modal-title" >Condiciones del servicio</p>
-      </div>
-          <div class="modal-body bgWhite">
+ 
+ <tiles:insertDefinition name="modalGen">
+	<tiles:putAttribute name="tituloModal" value="Condiciones del servicio"/>
+	<tiles:putAttribute name="nombreArchivo" value="Terminos.html"/>
+</tiles:insertDefinition>
+<!-- <div id="myModalTerminos" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"> -->
+<!--       <div class="modal-dialog modal-lg"> -->
+<!--     <div class="modal-content"> -->
+<!--           <div class="modal-header"> -->
+<!--         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button> -->
+<!--         <p class="modal-title" >Condiciones del servicio</p> -->
+<!--       </div> -->
+<!--           <div class="modal-body bgWhite"> -->
           
          
-        <iframe class="legales" src="http://www.infomovil.com/pages/legal/terminos.html" frameborder="0"></iframe>
-      </div>
-          <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-      </div>
-        </div>
-  </div>
-    </div>
-<div id="myModalAviso" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-      <div class="modal-dialog modal-lg">
-    <div class="modal-content">
-          <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <p class="modal-title" >Pol&iacute;ticas de privacidad</p>
-      </div>
-          <div class="modal-body bgWhite">
-        <iframe class="legales" src="http://www.infomovil.com/pages/legal/aviso.html" frameborder="0"></iframe>
-      </div>
-          <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-      </div>
-        </div>
-  </div>
-    </div>
-<!-- Bootstrap core JavaScript================================================== --> 
+<!--         <iframe class="legales" src="http://www.infomovil.com/pages/legal/terminos.html" frameborder="0"></iframe> -->
+<!--       </div> -->
+<!--           <div class="modal-footer"> -->
+<!--         <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button> -->
+<!--       </div> -->
+<!--         </div> -->
+<!--   </div> -->
+<!--     </div> -->
+<!-- <div id="myModalAviso" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"> -->
+<!--       <div class="modal-dialog modal-lg"> -->
+<!--     <div class="modal-content"> -->
+<!--           <div class="modal-header"> -->
+<!--         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button> -->
+<!--         <p class="modal-title" >Pol&iacute;ticas de privacidad</p> -->
+<!--       </div> -->
+<!--           <div class="modal-body bgWhite"> -->
+<!--         <iframe class="legales" src="http://www.infomovil.com/pages/legal/aviso.html" frameborder="0"></iframe> -->
+<!--       </div> -->
+<!--           <div class="modal-footer"> -->
+<!--         <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button> -->
+<!--       </div> -->
+<!--         </div> -->
+<!--   </div> -->
+<!--     </div> -->
+<!-- Bootstrap core JavaScript --> 
 <!-- Placed at the end of the document so the pages load faster --> 
-<script type="text/javascript" src="<c:url value="/resources/webapp/js/jquery.min.js"/>"></script> 
+<tiles:insertDefinition name="jsCore"></tiles:insertDefinition> 
+<tiles:insertDefinition name="jsScripts"></tiles:insertDefinition>
 
-<script src="<c:url value="/resources/webapp/js/jquery.min.js"/>"></script> 
-<script src="<c:url value="/resources/webapp/js/bootstrap.min.js"/>"></script> 
-<script src="<c:url value="/resources/webapp/js/docs.min.js"/>"></script> 
-<script type="text/javascript" src="<c:url value="/resources/webapp/js/smoothscroll.js"/>"></script> 
-<!-- IE10 viewport hack for Surface/desktop Windows 8 bug --> 
-<script src="<c:url value="/resources/webapp/js/ie10-viewport-bug-workaround.js"/>"></script> 
-<!-- bxSlider Javascript file --> 
-<script src="<c:url value="/resources/webapp/js/jquery.bxslider.min.js"/>"></script>
-<script src="<c:url value="/resources/webapp/js/jqBootstrapValidation.js"/>"></script>
-<script>
-  $(function () { $("input,select,textarea").not("[type=submit]").jqBootstrapValidation(); } );
-</script>  
-<script>
-
-// jQuery for page scrolling feature - requires jQuery Easing plugin
-
-// Highlight the top nav as scrolling occurs
-$('body').scrollspy({
-    target: '.navbar-fixed-top'
-})
-
-// Closes the Responsive Menu on Menu Item Click
-$('.navbar-collapse ul li a').click(function() {
-    $('.navbar-toggle:visible').click();
-});
-
-
-</script>
 </body>
 </html>

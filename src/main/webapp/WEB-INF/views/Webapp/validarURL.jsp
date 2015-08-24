@@ -1,16 +1,11 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib uri="http://tiles.apache.org/tags-tiles" prefix="tiles"%>
 
-
 <tiles:insertDefinition name="head">
 	<tiles:putAttribute name="titulo" value="Valida Url"/>
 </tiles:insertDefinition>
 
-<body role="document" data-spy="scroll" data-target=".navbar" data-offset="75" id="page-top" onload="autosave()">
-
-
-
-
+<body>
 <!-- Fixed navbar -->
 <nav class="navbar navbar-inverse navbar-static-top">
       <div class="container">
@@ -30,9 +25,6 @@
 
 <!--Theme showcase -->
 <div class="theme-showcaseApp" role="main" id="intro"> 
-   
-   
-   
    <!-- Header -->
 <div class="headerBg">
   <header>
@@ -64,13 +56,6 @@
 
 <!-- /container -->
 
-
-<form id="publicarDominio" action="<c:url value="/infomovil/publicarSitio"/>" method="post">
-	<div id="modalPublicacion"></div>
-	<input type="hidden" id="nombreDominio" name="nombreDominio" >
-	<input type="hidden" id="tipoDominio" name="tipoDominio" >
-	<input type="hidden" id="idCatTipoRecurso" name="idCatTipoRecurso" value="1">
-</form>
 <!-- Bootstrap core JavaScript
     ================================================== --> 
 <!-- Placed at the end of the document so the pages load faster --> 
@@ -81,8 +66,8 @@
 <!-- IE10 viewport hack for Surface/desktop Windows 8 bug --> 
 <script type="text/javascript" src="<c:url value="/resources/webapp/js/ie10-viewport-bug-workaround.js"/>"></script>
 <!-- bxSlider Javascript file --> 
-<script type="text/javascript" src="<c:url value="/resources/webapp/js/jquery.bxslider.min.js"/>"></script>
-<script type="text/javascript" src="<c:url value="/resources/webapp/js/jqBootstrapValidation.js"/>"></script>
+<%-- <script type="text/javascript" src="<c:url value="/resources/webapp/js/jquery.bxslider.min.js"/>"></script> --%>
+<%-- <script type="text/javascript" src="<c:url value="/resources/webapp/js/jqBootstrapValidation.js"/>"></script> --%>
 
 <script>
 

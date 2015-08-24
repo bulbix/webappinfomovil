@@ -6,8 +6,10 @@
 
 	<definition name="head" template="/WEB-INF/fragments/head.jsp" />
 	<definition name="navGen" template="/WEB-INF/fragments/navGen.jsp" />
+	<definition name="jsCore" template="/WEB-INF/fragments/jsCore.jsp" />
+	<definition name="jsScripts" template="/WEB-INF/fragments/jsScripts.jsp" />
 	<definition name="footer" template="/WEB-INF/fragments/footer.jsp" />
-
+	<definition name="modalGen" template="/WEB-INF/fragments/modalGen.jsp" />
 
 	<definition name="infomovilTemplate" template="/WEB-INF/templates/infomovilTemplate.jsp">
 		<put-attribute name="header" value="headerFragment" />

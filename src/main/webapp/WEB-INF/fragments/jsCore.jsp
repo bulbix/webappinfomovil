@@ -10,3 +10,6 @@
 <!-- bxSlider Javascript file --> 
 <script src="resources/webapp/js/jquery.bxslider.min.js"></script> 
 <script src="resources/webapp/js/jqBootstrapValidation.js"></script> 
+
+
+<h1>desde jsCore</h1>
