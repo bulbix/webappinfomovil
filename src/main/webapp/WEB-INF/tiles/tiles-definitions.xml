@@ -9,7 +9,9 @@
 	<definition name="jsCore" template="/WEB-INF/fragments/jsCore.jsp" />
 	<definition name="jsScripts" template="/WEB-INF/fragments/jsScripts.jsp" />
 	<definition name="footer" template="/WEB-INF/fragments/footer.jsp" />
+	<definition name="modalTerminos" template="/WEB-INF/fragments/modalTerminos.jsp" />
 	<definition name="modalGen" template="/WEB-INF/fragments/modalGen.jsp" />
+	<definition name="headEditorSitio" template="/WEB-INF/fragments/headEditorSitio.jsp" />
 
 	<definition name="infomovilTemplate" template="/WEB-INF/templates/infomovilTemplate.jsp">
 		<put-attribute name="header" value="headerFragment" />
