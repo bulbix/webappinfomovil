@@ -15,5 +15,3 @@ $('.navbar-collapse ul li a').click(function() {
     $('.navbar-toggle:visible').click();
 });
 </script>
-
-<h1>desde jsScripts</h1>

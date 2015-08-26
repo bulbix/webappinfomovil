@@ -385,6 +385,9 @@ public class WebappController
 		String esquemaProducto = "";
 		String tipoPublica = "";
 		String planPro = "";
+		String urlEjemploSitio = "";
+		String visibleRecurso = "";
+		String visibleTel = "";
 		
 		try
 		{
@@ -431,6 +434,9 @@ public class WebappController
 					extensionImg = "-bk";
 					tipoPublica = "tel";
 					planPro = "SI";
+					visibleTel = "display:block;";
+					visibleRecurso = "display:none";
+					urlEjemploSitio = "misitio.tel";
 				}
 				else
 				{
@@ -440,6 +446,9 @@ public class WebappController
 					colorTexto = "textWhite";
 					extensionImg = "";
 					tipoPublica = "recurso";
+					visibleRecurso = "display:block;";
+					visibleTel = "display:none";
+					urlEjemploSitio = "www.infomovil.com/misitio";
 					planPro = "NO";
 				}
 				
@@ -449,12 +458,19 @@ public class WebappController
 				if (esquemaProducto.equals("NEW"))
 				{
 					tipoPublica = "recurso";
-					
+					visibleRecurso = "display:block;";
+					visibleTel = "display:none";
+					urlEjemploSitio = "www.infomovil.com/misitio";
 					ProductoUsuarioVO productoVO = null;
 					productoVO = modeloWebApp.getProducto("tel");
 					
 					if (productoVO != null) /*Tipo de dominio a publicar*/
+					{
 						tipoPublica = "tel";
+						visibleTel = "display:block;";
+						visibleRecurso = "display:none";
+						urlEjemploSitio = "misitio.tel";
+					}
 					
 					planPro = "NO";
 					productoVO = null;
@@ -488,6 +504,9 @@ public class WebappController
 				model.put("extensionImg", extensionImg);		
 				model.put("tipoPublica", tipoPublica);
 				model.put("planPro", planPro);
+				model.put("urlEjemploSitio", urlEjemploSitio);
+				model.put("visibleRecurso", visibleRecurso);
+				model.put("visibleTel", visibleTel);
 			}
 			else 
 			{
@@ -502,7 +521,6 @@ public class WebappController
 				return modelAndView;
 			}
 
-		//	return new ModelAndView("redirect:/infomovil/editarSitio", model);
 			return new ModelAndView("Webapp/editorSitio", model);
 		}		
 		catch (Exception e) 

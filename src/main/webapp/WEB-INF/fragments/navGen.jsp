@@ -1,6 +1,5 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
-<!-- Fixed navbar -->
 <nav class="navbar navbar-inverse navbar-static-top">
       <div class="container">
     <div class="navbar-header">
@@ -15,10 +14,6 @@
         <li><a href="http://infomovil.com" class="smoothScroll">Inicio</a></li>
         <li><a href="<c:url value="/login"/>" class="smoothScroll">Iniciar sesión</a></li>
       </ul>
-        </div>
-    <!--/.nav-collapse --> 
+    </div>
   </div>
-    </nav>
-<!-- / Fixed navbar -->
-
-<h1>nav Gen -------></h1>
+</nav>

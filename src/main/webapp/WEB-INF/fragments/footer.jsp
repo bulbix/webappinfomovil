@@ -30,5 +30,3 @@
 <img src="<c:url value="/resources/webapp/images/fa-chevron-up.png"/>" width="15" height="15" alt="Alerta" /> Subir</a> </div>
 
 <!--/Footer-->
-
-<h1>-----> Footer</h1>

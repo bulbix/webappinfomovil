@@ -1,0 +1,84 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib uri="http://tiles.apache.org/tags-tiles" prefix="tiles"%>
+
+<div id="publicarSitio"> 
+	<div class="bgDobleBlack "></div>
+	<section class="bgFondo publicar btnsEditor">
+		<div class="container whiteBg">
+			<div class="row">
+				<h3 class=" text-center textBlack ">&iexcl;Ponle un nombre a tu p&aacute;gina web!</h3>
+				<span class="col-xs-12 text-center textBlack"><strong><tiles:getAsString name="urlEjemploSitio"/></strong></span>
+				
+				<div id="divTel" class="form-group col-xs-12 col-sm-12 col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3" style=<tiles:getAsString name="visibleTel"/>>
+					<div class="divider"></div>
+					<div class="form-group">
+						<label class="sr-only" for="exampleInputAmount">www.</label>
+						<div class="input-group">
+							<div class="input-group-addon">www.</div>
+							<input type="text" class="form-control textBlack text-center"
+								id="nombreDominioBusqueda" name="nombreDominioBusqueda"
+								placeholder="Nombra tu sitio" maxlength="30" style="text-transform:lowercase;" autocomplete="off"/>
+							<div class="input-group-addon">.tel</div>
+						</div>
+						<input type="hidden" id="tipoDominioBusqueda"
+							name="tipoDominioBusqueda" value="tel" /> <input type="hidden"
+							id="idCatTipoRecursoBusqueda" name="idCatTipoRecursoBusqueda"
+							value="1" />
+					</div>
+					<div class="col-xs-12 col-sm-6">
+						<div class="divider hidden-sm hidden-md hidden-lg"></div>
+					</div>
+				    <div class="col-xs-12 text-center textWhite" style="display:none" id="validacionNombre">
+						<img src="<c:url value="/resources/webapp/images/fa-warning.png"/>" width="20" height="20" alt="Alerta" />
+					</div>
+					<div
+						class="form-group col-xs-12 col-sm-12 col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3">
+						<div class="divider"></div>
+						<input type="submit" value="Publicar" id="btnPublicarTel"
+							class="btn btn-default btn-outline col-xs-12 text-center textWhite"
+							style="display: none;"> <input type="button"
+							value="Buscar nombre" id="btnBuscarTel"
+							class="btn btn-default btn-outline col-xs-12 text-center textBlack"
+							onClick="validaDominio('tel')">
+						<div class="clear"></div>
+						<div class="divider"></div>
+					</div>
+				</div>
+				
+				  <div id="divRecurso" class="form-group col-xs-12 col-sm-12 col-md-12 col-lg-12" style=<tiles:getAsString name="visibleRecurso"/>>
+		        
+		          <div class="col-xs-12 col-sm-6">
+		          
+		            <div class="divider"></div>
+		            	<input id="idCatTipoRec" class="form-control text-center" style="height:36px !important; display:block; padding:6px 12px; color:#000!important;cursor:not-allowed" value="www.infomovil.com/" readonly="readonly"/>
+		            <div class="divider hidden-sm hidden-md hidden-lg"></div>
+		          </div>
+		          <div class="col-xs-12 col-sm-6">
+		            <div class="divider hidden-xs"></div>
+		            <input type="text" placeholder="Nombra tu sitio" maxlength="30" id="nombreDominioRec" name="nombreDominioRec" class="form-control text-center" autocomplete="off" style="text-transform:lowercase;">
+		            <input type="hidden" id="tipoDominioRec" name="tipoDominioRec" value="recurso"/>
+		          </div>
+		          <div class="form-group col-xs-12 col-sm-12 col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3">
+		            <div class="col-xs-12 text-center textBlack" style="display:none" id="validacionNombreRec">
+						<img src="<c:url value="/resources/webapp/images/fa-warning.png"/>" width="20" height="20" alt="Alerta" />
+					</div>
+		            <div class="divider"></div>
+		            <input type="button" value="Buscar nombre" id="btnBuscarTel" class="btn btn-default btn-outline col-xs-12 text-center textBlack" onClick="validaDominio('recurso')">
+		            <div class="clear"></div>
+		            <div class="divider"></div>
+		            
+		          </div>
+		          
+		        </div>
+		        
+				<span class="col-xs-12 text-center textBlack"><strong>Se recomienda usar nombres cortos y fáciles de recordar</strong></span>
+     			<div class="clear"></div>
+     			<div class="divider"></div>
+			</div>
+		</div>
+	</section>
+</div>
+
+<h1><tiles:getAsString name="urlEjemploSitio"/></h1>
+<h1>tel: <tiles:getAsString name="visibleTel"/></h1>
+<h1>recurso: <tiles:getAsString name="visibleRecurso"/></h1>

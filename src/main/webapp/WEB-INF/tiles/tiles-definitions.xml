@@ -9,10 +9,16 @@
 	<definition name="jsCore" template="/WEB-INF/fragments/jsCore.jsp" />
 	<definition name="jsScripts" template="/WEB-INF/fragments/jsScripts.jsp" />
 	<definition name="footer" template="/WEB-INF/fragments/footer.jsp" />
-	<definition name="modalTerminos" template="/WEB-INF/fragments/modalTerminos.jsp" />
+	<definition name="modalTerminos" template="/WEB-INF/fragments/modalTermCond.jsp" />
 	<definition name="modalGen" template="/WEB-INF/fragments/modalGen.jsp" />
 	<definition name="headEditorSitio" template="/WEB-INF/fragments/headEditorSitio.jsp" />
-
+	<definition name="formPublicar" template="/WEB-INF/fragments/formPublicar.jsp" />
+	<definition name="modalMapFragment" template="/WEB-INF/fragments/modalMapFragment.jsp" />
+	<definition name="modalVideoFragment" template="/WEB-INF/fragments/modalVideoFragment.jsp" />
+	<definition name="modalExitoFragment" template="/WEB-INF/fragments/modalExitoFragment.jsp" />
+	<definition name="modalFalloFragment" template="/WEB-INF/fragments/modalFalloFragment.jsp" />
+	<definition name="modalRegistroFragment" template="/WEB-INF/fragments/modalRegistroFragment.jsp" />
+	
 	<definition name="infomovilTemplate" template="/WEB-INF/templates/infomovilTemplate.jsp">
 		<put-attribute name="header" value="headerFragment" />
 		<put-attribute name="footer" value="footerFragment" />

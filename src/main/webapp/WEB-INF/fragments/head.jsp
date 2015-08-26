@@ -84,5 +84,3 @@
      <!-- / CODIGO SEGUIMIENTO ANALYTICS -->
 <!--  /HEAD HTML 5 -->
  </head>
- 
-<h1> desde el head</h1> 

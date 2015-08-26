@@ -91,16 +91,16 @@
 <!--/Footer--> 
 <!-- /container -->
  
- <tiles:insertDefinition name="modalGen">
+ <tiles:insertDefinition name="modalTerminos">
 	<tiles:putAttribute name="tituloModal" value="Condiciones del servicio"/>
 	<tiles:putAttribute name="idModal" value="myModalTerminos"/>
-	<tiles:putAttribute name="nombreArchivo" value="terminos.html"/>
+	<tiles:putAttribute name="urlSrc" value="http://www.infomovil.com/pages/legal/terminos.html"/>
 </tiles:insertDefinition>
 
- <tiles:insertDefinition name="modalGen">
+ <tiles:insertDefinition name="modalTerminos">
 	<tiles:putAttribute name="tituloModal" value="Políticas de privacidad"/>
 	<tiles:putAttribute name="idModal" value="myModalAviso"/>
-	<tiles:putAttribute name="nombreArchivo" value="aviso.html"/>
+	<tiles:putAttribute name="urlSrc" value="http://www.infomovil.com/pages/legal/aviso.html"/>
 </tiles:insertDefinition>
 
 <!-- Bootstrap core JavaScript --> 
