@@ -17,7 +17,7 @@
 							<div class="input-group-addon">www.</div>
 							<input type="text" class="form-control textBlack text-center"
 								id="nombreDominioBusqueda" name="nombreDominioBusqueda"
-								placeholder="Nombra tu sitio" maxlength="30" style="text-transform:lowercase;" autocomplete="off"/>
+								placeholder="Nombra tu sitio" maxlength="30" class="lowCase" autocomplete="off"/>
 							<div class="input-group-addon">.tel</div>
 						</div>
 						<input type="hidden" id="tipoDominioBusqueda"
@@ -50,12 +50,12 @@
 		          <div class="col-xs-12 col-sm-6">
 		          
 		            <div class="divider"></div>
-		            	<input id="idCatTipoRec" class="form-control text-center" style="height:36px !important; display:block; padding:6px 12px; color:#000!important;cursor:not-allowed" value="www.infomovil.com/" readonly="readonly"/>
+		            	<input id="idCatTipoRec" class="form-control text-center" class="catTipRec" value="www.infomovil.com/" readonly="readonly"/>
 		            <div class="divider hidden-sm hidden-md hidden-lg"></div>
 		          </div>
 		          <div class="col-xs-12 col-sm-6">
 		            <div class="divider hidden-xs"></div>
-		            <input type="text" placeholder="Nombra tu sitio" maxlength="30" id="nombreDominioRec" name="nombreDominioRec" class="form-control text-center" autocomplete="off" style="text-transform:lowercase;">
+		            <input type="text" placeholder="Nombra tu sitio" maxlength="30" id="nombreDominioRec" name="nombreDominioRec" class="form-control text-center" autocomplete="off" class="lowCase">
 		            <input type="hidden" id="tipoDominioRec" name="tipoDominioRec" value="recurso"/>
 		          </div>
 		          <div class="form-group col-xs-12 col-sm-12 col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3">
@@ -78,7 +78,3 @@
 		</div>
 	</section>
 </div>
-
-<h1><tiles:getAsString name="urlEjemploSitio"/></h1>
-<h1>tel: <tiles:getAsString name="visibleTel"/></h1>
-<h1>recurso: <tiles:getAsString name="visibleRecurso"/></h1>

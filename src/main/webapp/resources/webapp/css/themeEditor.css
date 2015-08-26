@@ -23,6 +23,7 @@ theme-showcaseApp > p > .btn { margin: 5px 0; }
 .textWhite { color: #fff !important; text-shadow: 1px 1px 1px #aeafaf;}
 .textBlack { color: #000 !important; }
 .textPurple { color: #7c41bc !important; }
+.text700{font-weight:700;}
 a.textBlack { color: #000 !important; }
 .text-small{ font-size:.9em !important; padding:20px 0;}
 .shadowSmooth { text-shadow: 1px 1px 5px rgba(150, 150, 150, 1); }
@@ -49,6 +50,20 @@ section.bgBlack { /*margin: 0 -5px 0 0; */}
 .legales { min-height: 500px; background: #FFFFFF; width: 100%; }
 .marLeft { margin: 0 0 0 10px; }
 .helpMx{ font-size:1.2em!important;}
+.lowCase{text-transform:lowercase;}
+.directionMap{font-size:.85em; display:block; width:90%; overflow:hidden; margin:0 auto}
+.catTipRec{height:36px !important; display:block; padding:6px 12px; color:#000!important;cursor:not-allowed}
+.lh1_3{line-height:1.3em;}
+.location{height:32px; min-width:280px; max-width:400px; width:100%; color:#000!important;}
+.blkh100{display:block; height:100px;}
+.blk30100{display:block; height:30px; width:100%;}
+.blk10100{width:100%; height:10px; display:block}
+.blk80p{display:block; margin:0 auto; width:80%;}
+.listNone{list-style:none; margin:0 0 0 -30px;}
+.blkVideo{width:80% !important; height:auto; min-height:300px; display:block; min-width:200px; margin: 0 auto; border:0}
+.blkIn1020{display:inline-block; width:10px; height:20px;}
+.spaceBtnsMap{display:inline-block !important; width:10px !important; height:20px !important;}
+#pac-input{ width:200px;}
 @media only screen and (min-device-width : 320px) and (max-device-width : 480px) { /* STYLES GO HERE */
 p { font-size: 110%; }
 .h1, h1 { font-size: 250%; }
@@ -271,3 +286,4 @@ textarea{resize: none;}
 .pac-input:-ms-input-placeholder {  
    color: #000 !important;  
 }
+

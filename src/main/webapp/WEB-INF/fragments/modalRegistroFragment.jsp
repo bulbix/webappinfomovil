@@ -8,13 +8,13 @@
 		<p class="modal-title"></p>
 	</div>
 	<div class="modal-body bgWhite">
-	<h3 class="textBlack col-xs-12 col-sm-12 text-center" style="color:#7c41bc !important;" >Bienvenido a Infomovil</h3>
+	<h3 class="textBlack col-xs-12 col-sm-12 text-center" class="textPurple">Bienvenido a Infomovil</h3>
 	<div class="clear"></div>
 	<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-center textBlack"></div>
 	<div class="clear"></div>
 	<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">		
 		<p class="text-left">
-			<table width="80%" border="0" class="text-left col-xs-12 col-sm-12 col-md-4 col-md-offset-4 col-lg-4 col-lg-offset-4" style="font-weight:700;">
+			<table width="80%" border="0" class="text-left col-xs-12 col-sm-12 col-md-4 col-md-offset-4 col-lg-4 col-lg-offset-4" class="text700">
 				<tbody>
 					<tr>
 						<td><img width="20" height="20" alt="Infomovil"	src="<c:url value="/resources/webapp/images/paso1.png"/>" /></td>

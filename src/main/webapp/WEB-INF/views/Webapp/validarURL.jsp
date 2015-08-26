@@ -2,25 +2,12 @@
 <%@ taglib uri="http://tiles.apache.org/tags-tiles" prefix="tiles"%>
 
 <tiles:insertDefinition name="head">
-	<tiles:putAttribute name="titulo" value="Valida Url"/>
+	<tiles:putAttribute name="titulo" value="Infomovil"/>
 </tiles:insertDefinition>
 
 <body>
 <!-- Fixed navbar -->
-<nav class="navbar navbar-inverse navbar-static-top">
-      <div class="container">
-    <div class="navbar-header">
-          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar"> <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
-          <a class="navbar-brand" href="http://infomovil.com"><span><img src="<c:url value="/resources/webapp/images/apple-touch-icon-57x57.png"/>" width="50" height="50" alt="Infomovil" /> </span><span class="marLeft">Modo edición  <span class="hidden-xs">Infomovil</span></span></a> </div>
-    <div id="navbar" class="navbar-collapse collapse text-right">
-          <ul class="nav navbar-nav navbar-right">
-        <li class="active"><a href="#" class="smoothScroll">${usuarioLogueado} <img width="20" height="20" alt="Infomovil" src="<c:url value="/resources/webapp/images/fa-user.png"/>"/> </a></li>
-        <li><a href="<c:url value="/infomovil/cerrarSesion"></c:url>" class="smoothScroll"> Cerrar sesión <img width="20" height="20" alt="Infomovil" src="<c:url value="/resources/webapp/images/fa-sign-out.png"/>"/></a></li>
-      </ul>
-        </div>
-    <!--/.nav-collapse --> 
-  </div>
-    </nav>
+<tiles:insertDefinition name="navGen"></tiles:insertDefinition>
 <!-- / Fixed navbar --> 
 
 <!--Theme showcase -->
@@ -31,24 +18,21 @@
     <div class="container header" >
       <div class="row">
         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-          <div style="height:30%; display:block; width:100%; min-height:70px;"></div>
+          <div class="h30w100"></div>
           <p class="textWhite text-center"> <img src="<c:url value="/resources/webapp/images/fa-warning.png"/>" width="30" height="30" alt="Alerta" /></p>
-          <p class="textWhite text-center"><strong>El formato de la URL no es el correcto</strong></p>
-          <div style="height:30%; display:block; width:100%; min-height:70px;"></div>
+          <p class="textWhite text-center">El formato de la URL no es el correcto</p>
+          <div class="h30w100"></div>
         </div>
       </div>
     </div>
   </header>
 </div>
 <!-- /. Header --> 
-
     </div>
 <!--/Theme showcase --> 
-
-
 <!--Footer-->
 
-<footer class="footer bgBlack"> </footer>
+<tiles:insertDefinition name="footer"></tiles:insertDefinition>
 <!-- Scroll to Top Button (Only visible on small and extra-small screen sizes) -->
 <div class="scroll-top page-scroll visible-xs visble-sm"> <a class="btn" href="#page-top"> <img width="20" height="20" alt="Infomovil" src="<c:url value="/resources/webapp/images/fa-chevron-up.png"/>"/> Subir</a> </div>
 

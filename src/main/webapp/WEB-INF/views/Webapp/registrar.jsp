@@ -2,7 +2,7 @@
 <%@ taglib uri="http://tiles.apache.org/tags-tiles" prefix="tiles"%>
 
 <tiles:insertDefinition name="head">
-	<tiles:putAttribute name="titulo" value="${tituloCont}"/>
+	<tiles:putAttribute name="titulo" value="Registrar"/>
 </tiles:insertDefinition>
 
 <body role="document" data-spy="scroll" data-target=".navbar" data-offset="75" id="page-top">
@@ -79,8 +79,8 @@
 	        </div>
 	        
 	        <div class="divider"></div>
-	        <div class="text-center"><img src="resources/webapp/images/line.png" width="740" alt=""/></div>
-	        <div class="col-xs-12 col-sm-12"> <span class="textWhite text-center text-small">Si continúas, aceptas las</span><span> 
+	        <div class="text-center"><img src="resources/webapp/images/line.png" class="lineWht" alt=""/></div>
+	        <div class="col-xs-12 col-sm-12 lineNotesLogin"> <span class="textWhite text-center text-small">Si continúas, aceptas las</span><span> 
 	        	<a href="#" title="Condiciones del servicio" data-toggle="modal" data-target="#myModalTerminos">condiciones del servicio</a></span>
 	        	<span class="textWhite">y las </span><span><a href="#" data-toggle="modal" data-target="#myModalAviso">pol&iacute;ticas de privacidad</a></span>
 	        	<span class="textWhite"> de Infomovil.</span>              
@@ -96,18 +96,6 @@
 <tiles:insertDefinition name="footer"></tiles:insertDefinition>
 <!-- Scroll to Top Button (Only visible on small and extra-small screen sizes) -->
 <div class="scroll-top page-scroll visible-xs visble-sm"> <a class="btn" href="#page-top"> <i class="fa fa-chevron-up"></i> Subir</a> </div>
-
- <tiles:insertDefinition name="modalTerminos">
-	<tiles:putAttribute name="tituloModal" value="Condiciones del servicio"/>
-	<tiles:putAttribute name="idModal" value="myModalTerminos"/>
-	<tiles:putAttribute name="urlSrc" value="http://www.infomovil.com/pages/legal/terminos.html"/>
-</tiles:insertDefinition>
-
- <tiles:insertDefinition name="modalTerminos">
-	<tiles:putAttribute name="tituloModal" value="Políticas de privacidad"/>
-	<tiles:putAttribute name="idModal" value="myModalAviso"/>
-	<tiles:putAttribute name="urlSrc" value="http://www.infomovil.com/pages/legal/aviso.html"/>
-</tiles:insertDefinition>
 
 <!-- Bootstrap core JavaScript--> 
 <!-- Placed at the end of the document so the pages load faster -->

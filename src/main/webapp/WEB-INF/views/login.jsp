@@ -2,7 +2,7 @@
 <%@ taglib uri="http://tiles.apache.org/tags-tiles" prefix="tiles"%>
 
 <tiles:insertDefinition name="head">
-	<tiles:putAttribute name="titulo" value="Login Infomovil"/>
+	<tiles:putAttribute name="titulo" value="Iniciar sesión"/>
 </tiles:insertDefinition>
 
 <body role="document" data-spy="scroll" data-target=".navbar" data-offset="75" id="page-top">
@@ -60,19 +60,19 @@
       
       	<input type='checkbox' style="display:none" name='_spring_security_remember_me' checked/>     
 
-    	<div class="form-group col-xs-12 col-sm-12 col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3"> <span style="margin:10px 0; display:block; width:100%; min-height:23px; "><a href="<c:url value="/resetpassword"/>" class="linkWhite">Si olvidaste o no tienes contraseña, haz click aquí</a></span> </div>
+    	<div class="form-group col-xs-12 col-sm-12 col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3"> <span class="lineNotesLogin"><a href="<c:url value="/resetpassword"/>" class="linkWhite">Si olvidaste o no tienes contraseña, haz click aquí</a></span> </div>
 
       	<div class="form-group col-xs-12 col-sm-12 col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3">
       		<input type="submit" value="Inicia sesi&oacute;n" class="btn btn-default btn-outlineGreen col-xs-12 text-center textWhite">
       	</div>
       
 		<div class="clear dividerSmall"></div>
-		<div class="form-group col-xs-12 col-sm-12 col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3"> <span class="textWhite"> ¿Aún no tienes cuenta? </span><span><a href="<c:url value="/registrar"/>">Regístrate</a></span> </div>
+		<div class="form-group col-xs-12 col-sm-12 col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3"> <div class="lineNotesLogin"> <span class="textWhite"> ¿Aún no tienes cuenta? </span><span><a href="<c:url value="/registrar"/>">Regístrate</a></span></div> </div>
 	    <div class="divider"></div>
 	    <div class="text-center">
       
-      	<img src="<c:url value="/resources/webapp/images/line.png"/>" width="740" alt="Linea"/></div>
-      	<div class="col-xs-12 col-sm-12" style="padding: 10px 0;"> <span class="textWhite text-center text-small" >Si continúas, aceptas las</span>
+      	<img src="<c:url value="/resources/webapp/images/line.png"/>" class="lineWht" alt="Linea"/></div>
+      	<div class="col-xs-12 col-sm-12" class="pad10_0"> <span class="textWhite text-center text-small" >Si continúas, aceptas las</span>
       		<span> <a href="#" title="Condiciones del servicio" data-toggle="modal" data-target="#myModalTerminos">condiciones del servicio </a></span>
       		<span class="textWhite">y las </span><span><a href="#" data-toggle="modal" data-target="#myModalAviso">pol&iacute;ticas de privacidad</a></span>
       		<span class="textWhite"> de Infomovil.</span>
@@ -91,17 +91,6 @@
 <!--/Footer--> 
 <!-- /container -->
  
- <tiles:insertDefinition name="modalTerminos">
-	<tiles:putAttribute name="tituloModal" value="Condiciones del servicio"/>
-	<tiles:putAttribute name="idModal" value="myModalTerminos"/>
-	<tiles:putAttribute name="urlSrc" value="http://www.infomovil.com/pages/legal/terminos.html"/>
-</tiles:insertDefinition>
-
- <tiles:insertDefinition name="modalTerminos">
-	<tiles:putAttribute name="tituloModal" value="Políticas de privacidad"/>
-	<tiles:putAttribute name="idModal" value="myModalAviso"/>
-	<tiles:putAttribute name="urlSrc" value="http://www.infomovil.com/pages/legal/aviso.html"/>
-</tiles:insertDefinition>
 
 <!-- Bootstrap core JavaScript --> 
 <!-- Placed at the end of the document so the pages load faster --> 

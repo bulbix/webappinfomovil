@@ -9,7 +9,7 @@ p { font-size: 1.3em; line-height: 200%; }
 .theme-showcase { margin: -10px -5px 0 0; background: url(../images/bg.png) no-repeat center center fixed; -webkit-background-size: 100% auto; background-attachment: fixed; -moz-background-size: cover; -o-background-size: cover; background-size: cover; padding: 2% 0 10% 0; }
 theme-showcaseApp > p > .btn { margin: 5px 0; }
 .theme-showcaseApp .navbar .container { width: auto; }
-.theme-showcaseApp { /*margin: -10px -5px 0 0;*/  padding: 2% 0 20% 0; }
+.theme-showcaseApp { /*margin: -10px -5px 0 0;*/  padding: 2% 0 15% 0; }
 .theme-showcaseError > p > .btn { margin: 5px 0; }
 .theme-showcaseError .navbar .container { width: auto; }
 .theme-showcaseError { margin: -10px -5px 0 0; padding: 2% 0 10% 0; }
@@ -88,3 +88,8 @@ p { font-size: 110%; }
 .imgLog{min-width:210px; max-width:215px; text-align:center; margin:0 auto;}
 .imgDes{max-width:120px; min-width:100px; text-align:center; margin:0 auto; width:100%}
 ul{ list-style:none;}
+
+.lineNotesLogin{margin:20px 0; display:block; width:100%; min-height:23px; }
+.lineWht{max-width:740px; width:100%;}
+.pad10_0{padding: 10px 0;}
+.h30w100{height:30%; display:block; width:100%; min-height:70px;}

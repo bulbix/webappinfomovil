@@ -65,7 +65,7 @@
 		<link href="https://s3.amazonaws.com/landing.infomovil.com/webapp/templates/<tiles:getAsString name="template"/>/css/info.css" rel="stylesheet" />
 		<link href="/WebAppInfomovil/resources/webapp/css/jquery.bxslider.css" rel="stylesheet" /> 
 		<link href="/WebAppInfomovil/resources/webapp/fonts/font-awesome.min.css" rel="stylesheet" />			
-		<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=places&signed_in=false"></script>
+		<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=places&signed_in=false"></script> 
 		<script>
 		  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
 		  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
