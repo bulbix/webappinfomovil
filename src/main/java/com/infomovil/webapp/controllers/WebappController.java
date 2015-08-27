@@ -164,6 +164,41 @@ public class WebappController
 		
 		return resultMap;
 	}
+	/*
+	@RequestMapping(value = "/infomovil/actualizaImagen", method = RequestMethod.GET, produces = "application/json")
+	@ResponseBody
+	public Map<String, String> actualizaImagen(@RequestParam String baseImagen, 
+												@RequestParam String tipoImagen,
+												@RequestParam String dominioId,
+												@RequestParam String imagenId,
+												@RequestParam String descripcionImagen) 
+			throws UnsupportedEncodingException
+	{		
+		Map<String, String> resultMap = new HashMap<String, String>();
+		RespuestaVO wsRespuesta = new RespuestaVO();
+		
+		try
+		{
+			String correo = Util.getUserLogged().getUsername();
+			String password = Util.getUserLogged().getPassword();		
+			wsRespuesta = wsCliente.crearSitioGuardarImagen(correo, password, baseImagen,tipoImagen,dominioId, imagenId,descripcionImagen);
+		}		
+		catch (Exception e) 
+		{
+			logger.error("actualizaImagen:::::", e);	
+			resultMap.put("codeError", "-100");
+		}	
+		
+		resultMap.put("actualizaImagen", wsRespuesta.getCodeError());
+		
+		return resultMap;
+	}
+	*/
+	
+	
+	
+	
+	
 	
 	@RequestMapping(value = "/infomovil/publicarSitio", method = RequestMethod.POST)
 	@ResponseBody
@@ -270,7 +305,7 @@ public class WebappController
 		else
 		{
 			logoutInfomovil(request, response);
-			
+			correo = correo.toLowerCase();
 			wsRespuesta = wsCliente.crearSitioRegistrar(correo, passwordDefault, nombre, codigo.toLowerCase());
 			codigoError = wsRespuesta.getCodeError();
 			descripcionError = wsRespuesta.getMsgError();
@@ -317,14 +352,13 @@ public class WebappController
 		HashMap<String, Object> model = new HashMap<String, Object>();
 		RespuestaVO wsRespuesta = new RespuestaVO();
 		String codigoError = "", descripcionError = "", vista="";
-		
+		correo = correo.toLowerCase();
 		wsRespuesta = wsCliente.crearSitioRegistrar(correo, contrasenia, correo, codigo.toLowerCase());
 		codigoError = wsRespuesta.getCodeError();
 		descripcionError = wsRespuesta.getMsgError();
 		
 		if (codigoError.equals("0"))
-		{
-			
+		{			
 			Util.loginUsuario(correo, contrasenia);
 			remember.onLoginSuccess(request, response, SecurityContextHolder.getContext().getAuthentication());
 			vista = "redirect:/infomovil/editarSitio";
@@ -350,7 +384,6 @@ public class WebappController
 		String editarSitioInfomovil, Model model) 
 	{
 		if(StringUtils.isEmpty(editarSitioInfomovil)){
-			model.addAttribute("tituloCont","tituloCOntroller");
 			return "Webapp/registrar";
 		}
 		else{
