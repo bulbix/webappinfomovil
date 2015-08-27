@@ -224,7 +224,7 @@ function guardarUbicacion(map) {
 		myApp.longitud = myApp.mapCenter.lng(); 	
 	}
 	
-//	console.log("ultimas a guardar: lat-> " + myApp.latitud + ", lon-> " +  myApp.longitud);
+	console.log("ultimas a guardar: lat-> " + myApp.latitud + ", lon-> " +  myApp.longitud);
 	latLng = new google.maps.LatLng(myApp.latitud, myApp.longitud);	
 	getLocationData(latLng, guardarDatos);	
 }

@@ -94,9 +94,6 @@
 
 <!--Footer-->
 <tiles:insertDefinition name="footer"></tiles:insertDefinition>
-<!-- Scroll to Top Button (Only visible on small and extra-small screen sizes) -->
-<div class="scroll-top page-scroll visible-xs visble-sm"> <a class="btn" href="#page-top"> <i class="fa fa-chevron-up"></i> Subir</a> </div>
-
 <!-- Bootstrap core JavaScript--> 
 <!-- Placed at the end of the document so the pages load faster -->
 <tiles:insertDefinition name="jsCore"></tiles:insertDefinition> 

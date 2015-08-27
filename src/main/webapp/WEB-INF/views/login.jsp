@@ -39,7 +39,7 @@
         	<div class="control-group">
           <!--<label class="control-label"></label>-->
 	        	<div class="controls">
-	            	<input type="email" class="form-control" placeholder="Email" required="required" name="j_username" <c:if test="${not empty ctaCorreo}"> value = " ${ ctaCorreo } " </c:if>/>
+	            	<input type="email" class="form-control" style="text-transform:lowercase;" placeholder="Email" required="required" name="j_username" <c:if test="${not empty ctaCorreo}"> value = " ${ ctaCorreo } " </c:if>/>
 	                <p class="help-block"></p>
 	            </div>
         	</div>
@@ -85,13 +85,8 @@
 
 <!--Footer-->
 <tiles:insertDefinition name="footer"></tiles:insertDefinition>
-<!-- Scroll to Top Button (Only visible on small and extra-small screen sizes) -->
-<div class="scroll-top page-scroll visible-xs visble-sm"> <a class="btn" href="#page-top"> <img src="<c:url value="/resources/webapp/images/fa-chevron-up.png"/>" width="15" height="15" alt="Alerta" /> Subir</a> </div>
-
 <!--/Footer--> 
 <!-- /container -->
- 
-
 <!-- Bootstrap core JavaScript --> 
 <!-- Placed at the end of the document so the pages load faster --> 
 <tiles:insertDefinition name="jsCore"></tiles:insertDefinition> 

@@ -134,13 +134,16 @@
 										class=" col-xs-12 col-sm-12 col-md-12 col-lg-12 mar0auto reset">
 										<img
 											src="http://landing.infomovil.com/webapp/templates/${ template }/images/mail_icn.png"
-											class="img mxw50miw43w100" alt="Contacto" /> <span
-											class="dblw100 mxh70 08em"> </span> <span
-											class="col-xs-12 08em mar0auto"> <input type="text"
+											class="img mxw50miw43w100" alt="Contacto" /> 
+											<span
+											class="dblw100 mxh70 08em"> </span> 
+											<span
+											class="col-xs-12 08em mar0auto"> 
+											<input type="text" style="text-transform:lowercase;"
 											class="form-control colorA text-center col-xs-11"
 											maxlength="100" placeholder="Correo" required="required"
 											<c:if test="${not empty correoElectronico}"> value = "${ correoElectronico }" </c:if>
-											id="txtCorreo" class="lowCase"/>
+											id="txtCorreo" />
 										</span>
 										<p class="help-block"></p>
 									</div>

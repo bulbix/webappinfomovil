@@ -50,7 +50,7 @@ section.bgBlack { /*margin: 0 -5px 0 0; */}
 .legales { min-height: 500px; background: #FFFFFF; width: 100%; }
 .marLeft { margin: 0 0 0 10px; }
 .helpMx{ font-size:1.2em!important;}
-.lowCase{text-transform:lowercase;}
+.lowCase{text-transform:lowercase !important;}
 .directionMap{font-size:.85em; display:block; width:90%; overflow:hidden; margin:0 auto}
 .catTipRec{height:36px !important; display:block; padding:6px 12px; color:#000!important;cursor:not-allowed}
 .lh1_3{line-height:1.3em;}

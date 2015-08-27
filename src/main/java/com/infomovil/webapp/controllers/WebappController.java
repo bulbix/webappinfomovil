@@ -270,7 +270,7 @@ public class WebappController
 		else
 		{
 			logoutInfomovil(request, response);
-			
+			correo = correo.toLowerCase();
 			wsRespuesta = wsCliente.crearSitioRegistrar(correo, passwordDefault, nombre, codigo.toLowerCase());
 			codigoError = wsRespuesta.getCodeError();
 			descripcionError = wsRespuesta.getMsgError();
@@ -317,14 +317,13 @@ public class WebappController
 		HashMap<String, Object> model = new HashMap<String, Object>();
 		RespuestaVO wsRespuesta = new RespuestaVO();
 		String codigoError = "", descripcionError = "", vista="";
-		
+		correo = correo.toLowerCase();
 		wsRespuesta = wsCliente.crearSitioRegistrar(correo, contrasenia, correo, codigo.toLowerCase());
 		codigoError = wsRespuesta.getCodeError();
 		descripcionError = wsRespuesta.getMsgError();
 		
 		if (codigoError.equals("0"))
-		{
-			
+		{			
 			Util.loginUsuario(correo, contrasenia);
 			remember.onLoginSuccess(request, response, SecurityContextHolder.getContext().getAuthentication());
 			vista = "redirect:/infomovil/editarSitio";
@@ -350,7 +349,6 @@ public class WebappController
 		String editarSitioInfomovil, Model model) 
 	{
 		if(StringUtils.isEmpty(editarSitioInfomovil)){
-			model.addAttribute("tituloCont","tituloCOntroller");
 			return "Webapp/registrar";
 		}
 		else{

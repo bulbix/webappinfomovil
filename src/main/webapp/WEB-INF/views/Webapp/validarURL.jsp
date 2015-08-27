@@ -33,9 +33,6 @@
 <!--Footer-->
 
 <tiles:insertDefinition name="footer"></tiles:insertDefinition>
-<!-- Scroll to Top Button (Only visible on small and extra-small screen sizes) -->
-<div class="scroll-top page-scroll visible-xs visble-sm"> <a class="btn" href="#page-top"> <img width="20" height="20" alt="Infomovil" src="<c:url value="/resources/webapp/images/fa-chevron-up.png"/>"/> Subir</a> </div>
-
 <!--/Footer--> 
 
 <!-- /container -->
