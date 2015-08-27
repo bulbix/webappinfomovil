@@ -9,10 +9,10 @@
 	</div>
 	<div class="modal-body bgWhite">
 		<h2 class="textPurple col-xs-12 col-sm-12 col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3 text-center">&iexcl;Felicidades!</h2>
-		<p  class="textBlack text-left col-xs-12 col-sm-12 col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3" style="line-height:1.3em;">El proceso de publicaci&oacute;n tarda unos minutos.</p>
+		<p  class="textBlack text-left col-xs-12 col-sm-12 col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3" class="lh1_3">El proceso de publicaci&oacute;n tarda unos minutos.</p>
 		<p  class="textBlack col-xs-12 col-sm-12 col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3 text-left">Ya tomaste el primer paso.</p>
 		<div class="clear"></div>
-		<p class="col-xs-12 col-sm-12 col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3 text-left textBlack" style="line-height:1.3em;">Ahora, haz tu página más llamativa:</p>
+		<p class="col-xs-12 col-sm-12 col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3 text-left textBlack" class="lh1_3">Ahora, haz tu página más llamativa:</p>
 					
 	<table width="70%" border="0" class="text-left col-xs-12 col-sm-12 col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3 textPurple" >
 		<tbody> 

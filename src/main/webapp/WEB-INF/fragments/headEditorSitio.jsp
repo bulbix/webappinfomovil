@@ -1,4 +1,6 @@
 <%@ taglib uri="http://tiles.apache.org/tags-tiles" prefix="tiles"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
 	<head itemscope="" itemtype="http://schema.org/WebSite">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
@@ -59,13 +61,21 @@
 		      <script src="<c:url value="/WebAppInfomovil/resources/webapp/js/respond.min.js"/>"></script>
 		    <![endif]-->
 		<!-- Bootstrap core CSS -->
-		<link href="/WebAppInfomovil/resources/webapp/css/bootstrap.min.css" rel="stylesheet" />
-		<link href="/WebAppInfomovil/resources/webapp/css/bootstrap-theme.min.css" rel="stylesheet" />
-		<link href="/WebAppInfomovil/resources/webapp/css/themeEditor.css" rel="stylesheet" />
-		<link href="https://s3.amazonaws.com/landing.infomovil.com/webapp/templates/<tiles:getAsString name="template"/>/css/info.css" rel="stylesheet" />
-		<link href="/WebAppInfomovil/resources/webapp/css/jquery.bxslider.css" rel="stylesheet" /> 
-		<link href="/WebAppInfomovil/resources/webapp/fonts/font-awesome.min.css" rel="stylesheet" />			
-		<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=places&signed_in=false"></script>
+<!-- 		<link href="/WebAppInfomovil/resources/webapp/css/bootstrap.min.css" rel="stylesheet" /> -->
+<!-- 		<link href="/WebAppInfomovil/resources/webapp/css/bootstrap-theme.min.css" rel="stylesheet" /> -->
+<!-- 		<link href="/WebAppInfomovil/resources/webapp/css/themeEditor.css" rel="stylesheet" /> -->
+<%-- 		<link href="https://s3.amazonaws.com/landing.infomovil.com/webapp/templates/<tiles:getAsString name="template"/>/css/info.css" rel="stylesheet" /> --%>
+<!-- 		<link href="/WebAppInfomovil/resources/webapp/css/jquery.bxslider.css" rel="stylesheet" />  -->
+<!-- 		<link href="/WebAppInfomovil/resources/webapp/fonts/font-awesome.min.css" rel="stylesheet" />			 -->
+
+	<link href="<c:url value="/resources/webapp/css/bootstrap.min.css"/>" rel="stylesheet" />
+	<link href="<c:url value="/resources/webapp/css/bootstrap-theme.min.css"/>"	rel="stylesheet" />
+	<link href="<c:url value="/resources/webapp/css/themeEditor.css"/>"	rel="stylesheet" />
+	<link href="<c:url value="/resources/webapp/css/jquery.bxslider.css"/>" rel="stylesheet" /> 
+	<link href="<c:url value="/resources/webapp/fonts/font-awesome.min.css"/>" rel="stylesheet" />
+	<link href="https://s3.amazonaws.com/landing.infomovil.com/webapp/templates/<tiles:getAsString name="template"/>/css/info.css" rel="stylesheet" />	
+		
+		<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=places&signed_in=false"></script> 
 		<script>
 		  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
 		  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),

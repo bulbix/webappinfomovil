@@ -55,21 +55,6 @@
 
 <!--Footer-->
 <tiles:insertDefinition name="footer"></tiles:insertDefinition>
-<!-- Scroll to Top Button (Only visible on small and extra-small screen sizes) -->
-<div class="scroll-top page-scroll visible-xs visble-sm"> <a class="btn" href="#page-top"> <i class="fa fa-chevron-up"></i> Subir</a> </div>
-
- <tiles:insertDefinition name="modalTerminos">
-	<tiles:putAttribute name="tituloModal" value="Condiciones del servicio"/>
-	<tiles:putAttribute name="idModal" value="myModalTerminos"/>
-	<tiles:putAttribute name="urlSrc" value="http://www.infomovil.com/pages/legal/terminos.html"/>
-</tiles:insertDefinition>
-
- <tiles:insertDefinition name="modalTerminos">
-	<tiles:putAttribute name="tituloModal" value="Políticas de privacidad"/>
-	<tiles:putAttribute name="idModal" value="myModalAviso"/>
-	<tiles:putAttribute name="urlSrc" value="http://www.infomovil.com/pages/legal/aviso.html"/>
-</tiles:insertDefinition>
-    
 <!-- Bootstrap core JavaScript --> 
 <!-- Placed at the end of the document so the pages load faster --> 
 <tiles:insertDefinition name="jsCore"></tiles:insertDefinition> 

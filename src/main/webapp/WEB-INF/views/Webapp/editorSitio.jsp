@@ -134,13 +134,16 @@
 										class=" col-xs-12 col-sm-12 col-md-12 col-lg-12 mar0auto reset">
 										<img
 											src="http://landing.infomovil.com/webapp/templates/${ template }/images/mail_icn.png"
-											class="img mxw50miw43w100" alt="Contacto" /> <span
-											class="dblw100 mxh70 08em"> </span> <span
-											class="col-xs-12 08em mar0auto"> <input type="text"
+											class="img mxw50miw43w100" alt="Contacto" /> 
+											<span
+											class="dblw100 mxh70 08em"> </span> 
+											<span
+											class="col-xs-12 08em mar0auto"> 
+											<input type="text" style="text-transform:lowercase;"
 											class="form-control colorA text-center col-xs-11"
 											maxlength="100" placeholder="Correo" required="required"
 											<c:if test="${not empty correoElectronico}"> value = "${ correoElectronico }" </c:if>
-											id="txtCorreo" style="text-transform:lowercase;"/>
+											id="txtCorreo" />
 										</span>
 										<p class="help-block"></p>
 									</div>
@@ -170,7 +173,6 @@
 				<!-- /page header -->
 				<br/>
 				<br/>
-	<!-- 			<span id="masContenido" class="col-xs-12 textBlack btnsEditor" style="font-size:1.4em; text-align:center; display:none;"><strong>¡Nuevo!</strong> Agrega más contenido</span> -->
 			</div>
 			
 			<!--/Theme showcase -->
@@ -185,7 +187,7 @@
 				<a href="#" data-toggle="modal" data-target="#myModalMaps" class="col-xs-12 col-sm-6 col-sm-offset-3 col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3 btn btn-default btn-outline navEditor">
 	 			<img width="30" height="30" alt="Infomovil" src="<c:url value="/resources/webapp/images/icn_marc_maps.png"/>" /> 
 	 			<span id="idOpcionUbicacion">Coloca tu ubicación</span>
-	 			<br /><span id="direccionMap" style="font-size:.85em; display:block; width:90%; overflow:hidden; margin:0 auto"></span>
+	 			<br /><span id="direccionMap" class="directionMap"></span>
 	 			</a>
 	 		</div>
 			<!-- /Botón Nuevo Estilo -->
