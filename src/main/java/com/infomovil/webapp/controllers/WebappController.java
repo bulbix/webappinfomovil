@@ -513,6 +513,13 @@ public class WebappController
 						planPro = "SI";
 				}
 
+				/*Ajuste para validar si este usuario tiene un PP (comprado)*/
+				if (planPro.equals("NO"))
+				{
+					status = wsRespuesta.getDominioCreaSitio().getEstatusCuenta();
+					if (modeloWebApp.getStatus(status))
+						planPro = "SI";
+				}
 				/*End ajuste para trabajar con la lista de productos*/
 				
 				model.put("usuarioLogueado", correo);
