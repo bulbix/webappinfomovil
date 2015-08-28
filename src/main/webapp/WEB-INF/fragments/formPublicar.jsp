@@ -74,13 +74,7 @@
 		            <div class="divider"></div>
 		            
 		          </div>
-		          
-		        </div>
-		        
-<!-- 				<span class="col-xs-12 text-center textBlack"><strong>Se recomienda usar nombres cortos y fáciles de recordar</strong></span> -->
-<!-- 				<span class="col-xs-12 text-center textBlack"><strong>Sin acentos y sin espacios</strong></span> -->
-     			
-     			
+		        </div>    			
 			</div>
 			
 		</div>
