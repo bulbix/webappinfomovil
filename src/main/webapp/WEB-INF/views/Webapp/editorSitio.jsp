@@ -95,7 +95,7 @@
 				<!-- page header -->
 				<div class="page-header text-center">
 					<strong><span class="text-center btnsEditor _1_1em" id="urlSitio" style="display: none;">
-						 <a href="http://${sitioWeb}" target="_blank" class="col-xs-12 col-sm-12  col-md-12 col-lg-12 textWhite navEditor">${sitioWeb}</a>
+						 <a href="http://${sitioWeb}" target="_blank" class="col-xs-12 col-sm-12  col-md-12 col-lg-12 textBlack navEditor"><strong>${sitioWeb}</strong></a>
 					</span></strong>
 					<div>
 						<form id="formEditar">
@@ -253,9 +253,9 @@
 <!-- 		<!--/MODAL REGISTRO--> 
 
 <!-- 		<!--MODAL RECURSO AYUDA--> 
-		<tiles:insertDefinition name="modalGen">
-			<tiles:putAttribute name="idModal" value="myModalRecAyuda"/>
-			<c:set var="fragmentName" value="modalRecAyuda" scope="request" />
+		<tiles:insertDefinition name="modalRecAyuda">
+			<tiles:putAttribute name="visibleRecurso" value="${ visibleRecurso }"/>
+			<tiles:putAttribute name="visibleTel" value="${ visibleTel }"/>
 		</tiles:insertDefinition>
 <!-- 		<!--/MODAL RECURSO AYUDA--> 
 								

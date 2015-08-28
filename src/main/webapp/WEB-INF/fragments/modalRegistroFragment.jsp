@@ -14,7 +14,7 @@
 	<div class="clear"></div>
 	<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">		
 		<p class="text-left">
-			<table width="80%" border="0" class="text-left col-xs-12 col-sm-12 col-md-4 col-md-offset-4 col-lg-4 col-lg-offset-4" class="text700">
+			<table width="80%" border="0" class="text-left col-xs-12 col-sm-12 col-md-6 col-md-offset-3" class="text700">
 				<tbody>
 					<tr>
 						<td><img width="20" height="20" alt="Infomovil"	src="<c:url value="/resources/webapp/images/paso1.png"/>" /></td>
