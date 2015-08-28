@@ -1,5 +1,8 @@
 package com.infomovil.webapp.model;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collection;
 import java.util.List;
 
 import org.apache.commons.collections4.CollectionUtils;
@@ -43,5 +46,20 @@ public class ModeloWebApp
 				return busqueda;
 			}
 		});
+	}
+	
+	public boolean getStatus(final String status)
+	{
+		String statusPP [] = {"4", "14", "18", "19"};
+		boolean busqueda = false;
+		
+		for (String s : statusPP)
+			if (s.equals(status))
+			{
+				busqueda = true;
+				break;
+			}
+		
+		return busqueda;
 	}
 }
