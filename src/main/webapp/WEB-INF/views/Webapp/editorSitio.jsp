@@ -312,6 +312,13 @@
 			});
 		
 		</script>
+		
+		<script>
+			$("#nombreDominioRec").keyup(function () {
+				var value = $(this).val();
+		   		 $("#idCatTipoRecAutocompleta").text(value);
+		 	 }).keyup();
+		</script>
 
 		<script>
 		
@@ -363,7 +370,7 @@
 			<c:if test="${resultadoPublicacion =='NO'}">
 				$("#myModalFallo").modal('show');
 			</c:if>
-	
+			
 	 	</script>
 	</body>
 </html>
