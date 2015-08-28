@@ -81,3 +81,10 @@
 		
 	</section>
 </div>
+
+<!-- 		<!--MODAL RECURSO AYUDA--> 
+<tiles:insertDefinition name="modalRecAyuda">
+	<tiles:putAttribute name="visibleRecurso" value="${ visibleRecurso }"/>
+	<tiles:putAttribute name="visibleTel" value="${ visibleTel }"/>
+</tiles:insertDefinition>
+<!-- 		<!--/MODAL RECURSO AYUDA--> 

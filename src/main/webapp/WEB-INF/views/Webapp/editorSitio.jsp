@@ -251,13 +251,6 @@
 			<c:set var="fragmentName" value="modalRegistroFragment" scope="request" />
 		</tiles:insertDefinition>
 <!-- 		<!--/MODAL REGISTRO--> 
-
-<!-- 		<!--MODAL RECURSO AYUDA--> 
-		<tiles:insertDefinition name="modalRecAyuda">
-			<tiles:putAttribute name="visibleRecurso" value="${ visibleRecurso }"/>
-			<tiles:putAttribute name="visibleTel" value="${ visibleTel }"/>
-		</tiles:insertDefinition>
-<!-- 		<!--/MODAL RECURSO AYUDA--> 
 								
 		<!-- Scroll to Top Button (Only visible on small and extra-small screen sizes) -->
 		<div class="scroll-top page-scroll visible-xs visble-sm">
