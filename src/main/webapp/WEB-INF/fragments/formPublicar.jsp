@@ -37,8 +37,8 @@
 						<input type="submit" value="Publicar" id="btnPublicarTel"
 							class="btn btn-default btn-outline col-xs-12 text-center textWhite"
 							style="display: none;"> <input type="button"
-							value="Buscar nombre" id="btnBuscarTel"
-							class="btn btn-default btn-outline col-xs-12 text-center textBlack"
+							value="Busca nombre" id="btnBuscarTel"
+							class="btn btn-default btn-outlineGreen col-xs-12 text-center textWhite"
 							onClick="validaDominio('tel')">
 						<div class="clear"></div>
 						<div class="divider"></div>
@@ -69,7 +69,7 @@
 		            <div class="divider"></div>
 					 
 		          
-		            <input type="button" value="Buscar nombre" id="btnBuscarTel" class="btn btn-default btn-outlineGreen col-xs-12 text-center textWhite" onClick="validaDominio('recurso')">
+		            <input type="button" value="Busca nombre" id="btnBuscarTel" class="btn btn-default btn-outlineGreen col-xs-12 text-center textWhite" onClick="validaDominio('recurso')">
 		            <div class="clear"></div>
 		            <div class="divider"></div>
 		            
