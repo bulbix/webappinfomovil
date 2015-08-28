@@ -253,9 +253,9 @@
 <!-- 		<!--/MODAL REGISTRO--> 
 
 <!-- 		<!--MODAL RECURSO AYUDA--> 
-		<tiles:insertDefinition name="modalGen">
-			<tiles:putAttribute name="idModal" value="myModalRecAyuda"/>
-			<c:set var="fragmentName" value="modalRecAyuda" scope="request" />
+		<tiles:insertDefinition name="modalRecAyuda">
+			<tiles:putAttribute name="visibleRecurso" value="${ visibleRecurso }"/>
+			<tiles:putAttribute name="visibleTel" value="${ visibleTel }"/>
 		</tiles:insertDefinition>
 <!-- 		<!--/MODAL RECURSO AYUDA--> 
 								
