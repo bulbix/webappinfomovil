@@ -95,7 +95,7 @@
 				<!-- page header -->
 				<div class="page-header text-center">
 					<strong><span class="text-center btnsEditor _1_1em" id="urlSitio" style="display: none;">
-						<a href="http://${sitioWeb}" target="_blank" class="textBlack">${sitioWeb}</a>
+						 <a href="http://${sitioWeb}" target="_blank" class="col-xs-12 col-sm-12  col-md-12 col-lg-12 textWhite navEditor">${sitioWeb}</a>
 					</span></strong>
 					<div>
 						<form id="formEditar">
@@ -325,6 +325,9 @@
 				var value = $(this).val().replace(/[^A-Za-z0-9_-]/g, "");
 				$("#nombreDominioRec").val($("#nombreDominioRec").val().replace(/ /g, ""));
 		   		 $("#idCatTipoRecAutocompleta").text(value);
+		   		 if(value.length ==0){
+		   			 $("#idCatTipoRecAutocompleta").text("mi-pagina");
+		   		 }
 		 	 });
 		</script>
 
