@@ -481,7 +481,7 @@ public class WebappController
 					tipoPublica = "recurso";
 					visibleRecurso = "display:block;";
 					visibleTel = "display:none";
-					urlEjemploSitio = "www.infomovil.com/misitio";
+					urlEjemploSitio = "";
 					planPro = "NO";
 				}
 				
@@ -493,7 +493,7 @@ public class WebappController
 					tipoPublica = "recurso";
 					visibleRecurso = "display:block;";
 					visibleTel = "display:none";
-					urlEjemploSitio = "www.infomovil.com/misitio";
+					urlEjemploSitio = "";
 					ProductoUsuarioVO productoVO = null;
 					productoVO = modeloWebApp.getProducto("tel");
 					

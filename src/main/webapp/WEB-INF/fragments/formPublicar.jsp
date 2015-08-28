@@ -6,7 +6,7 @@
 	<section class="bgFondo publicar btnsEditor">
 		<div class="container whiteBg">
 			<div class="row">
-				<h3 class=" text-center textBlack ">&iexcl;Ponle un nombre a tu p&aacute;gina web!</h3>
+				<h3 class=" text-center textBlack ">&iexcl;Ponle un nombre a tu p&aacute;gina web! </h3> 
 				<span class="col-xs-12 text-center textBlack"><strong><tiles:getAsString name="urlEjemploSitio"/></strong></span>
 				
 				<div id="divTel" class="form-group col-xs-12 col-sm-12 col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3" style=<tiles:getAsString name="visibleTel"/>>
@@ -48,14 +48,16 @@
 				
 				  <div id="divRecurso" class="form-group col-xs-12 col-sm-12 col-md-12 col-lg-12" style=<tiles:getAsString name="visibleRecurso"/>>
 		        
-<!-- 		          <div class="col-xs-12 col-sm-6"> -->
-		          
-<!-- 		            <div class="divider"></div> -->
-<!-- 		            	<input id="idCatTipoRec" class="form-control text-center" class="catTipRec" value="www.infomovil.com/" readonly="readonly"/> -->
-<!-- 		            <div class="divider hidden-sm hidden-md hidden-lg"></div> -->
-<!-- 		          </div> -->
-		          <div class="col-xs-12 col-sm-12">
-		            <div class="divider hidden-xs"></div>
+		        <div class="col-xs-12 col-sm-12 text-center textBlack" >
+		        <a href=""  data-toggle="modal" data-target="#myModalRecAyuda" class="textBlack"> <strong>Ver tips</strong> <img src="<c:url value="/resources/webapp/images/help.png"/>" width="25" height="25" alt=""/></a> 
+					<br/>
+					
+					
+					<strong><span>www.infomovil.com/</span><span id="idCatTipoRecAutocompleta" style="text-transform:lowercase">mi-sitio</span></strong>  
+		           </div>
+
+		          <div class="col-xs-12 col-sm-12 col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3">
+		            <div class="divider "></div>
 		            <input type="text" placeholder="Nombra tu sitio" maxlength="30" id="nombreDominioRec" name="nombreDominioRec" class="form-control text-center lowCase" autocomplete="off" >
 		            <input type="hidden" id="tipoDominioRec" name="tipoDominioRec" value="recurso"/>
 		          </div>
@@ -65,11 +67,8 @@
 					</div>
 					<div class="clear"></div>
 		            <div class="divider"></div>
-					 <div class="col-xs-12 col-sm-12 text-center textBlack" >
-					<strong><span>www.infomovil.com/</span><span id="idCatTipoRecAutocompleta" style="text-transform:lowercase"></span></strong>
-		           </div>
-		           <div class="clear"></div>
-		            <div class="divider"></div>
+					 
+		          
 		            <input type="button" value="Buscar nombre" id="btnBuscarTel" class="btn btn-default btn-outlineGreen col-xs-12 text-center textWhite" onClick="validaDominio('recurso')">
 		            <div class="clear"></div>
 		            <div class="divider"></div>
@@ -83,8 +82,7 @@
      			
      			
 			</div>
-			<div class="clear"></div>
-     			<div class="divider"></div>
+			
 		</div>
 		
 	</section>

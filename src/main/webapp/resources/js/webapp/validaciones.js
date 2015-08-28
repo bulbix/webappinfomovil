@@ -40,7 +40,7 @@ function validaDominio(tipo)
 		tipoDominio = $("#tipoDominioBusqueda").val();
 	}
 	
-	nombreDominio = nombreDominio.toLowerCase();
+	nombreDominio = nombreDominio.toLowerCase().trim();
 
 	console.log("nombreDominio::: " + nombreDominio + ", tipoDominio:::: " + tipoDominio + ", tipo: " + tipo);
 	
@@ -116,14 +116,14 @@ function validaDominio(tipo)
 				opcion = "PUBLICAR";
 				msjValidacion = "";
 				textoBoton = "&iexcl;Lo quiero!";				
-				sitioDisponible =  sitioDisponible + " est&aacute; disponible";
+				sitioDisponible =  sitioDisponible + " <br/>est&aacute; disponible";
 			}
 			else
 			{
 				funcion = "aceptar()"
 				msjValidacion = "";
 				textoBoton = "Aceptar";
-				sitioDisponible =  sitioDisponible + " no est&aacute; disponible";
+				sitioDisponible =  sitioDisponible + " <br/>no est&aacute; disponible";
 			}
 			
 			$('#modalPublicacion').html("<div id='myModalPublicar' class='modal fade' tabindex='-1' role='dialog' aria-labelledby='myModalLabel' aria-hidden='true'>"+
@@ -158,7 +158,7 @@ function publicar()
 //		$("#idCatTipoRecurso").val($("#idCatTipoRec").val());
 	
 	console.log("publicar::::: " + nombreDominio + ", tipoDominio: " + tipoDominio + ", tipo: " + $("#idCatTipoRecurso").val());
-	$("#nombreDominio").val(nombreDominio.toLowerCase());
+	$("#nombreDominio").val(nombreDominio.toLowerCase().trim());
 	$("#tipoDominio").val(tipoDominio.toLowerCase());
 
 	$("#modalPublicacion").css("display", "none");

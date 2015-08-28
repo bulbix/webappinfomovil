@@ -251,6 +251,13 @@
 			<c:set var="fragmentName" value="modalRegistroFragment" scope="request" />
 		</tiles:insertDefinition>
 <!-- 		<!--/MODAL REGISTRO--> 
+
+<!-- 		<!--MODAL RECURSO AYUDA--> 
+		<tiles:insertDefinition name="modalGen">
+			<tiles:putAttribute name="idModal" value="myModalRecAyuda"/>
+			<c:set var="fragmentName" value="modalRecAyuda" scope="request" />
+		</tiles:insertDefinition>
+<!-- 		<!--/MODAL RECURSO AYUDA--> 
 								
 		<!-- Scroll to Top Button (Only visible on small and extra-small screen sizes) -->
 		<div class="scroll-top page-scroll visible-xs visble-sm">
@@ -315,9 +322,10 @@
 		
 		<script>
 			$("#nombreDominioRec").keyup(function () {
-				var value = $(this).val();
+				var value = $(this).val().replace(/[^A-Za-z0-9_-]/g, "");
+				$("#nombreDominioRec").val($("#nombreDominioRec").val().replace(/ /g, ""));
 		   		 $("#idCatTipoRecAutocompleta").text(value);
-		 	 }).keyup();
+		 	 });
 		</script>
 
 		<script>

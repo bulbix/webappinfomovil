@@ -18,6 +18,7 @@
 	<definition name="modalExitoFragment" template="/WEB-INF/fragments/modalExitoFragment.jsp" />
 	<definition name="modalFalloFragment" template="/WEB-INF/fragments/modalFalloFragment.jsp" />
 	<definition name="modalRegistroFragment" template="/WEB-INF/fragments/modalRegistroFragment.jsp" />
+	<definition name="modalRecAyuda" template="/WEB-INF/fragments/modalRecAyuda.jsp" />
 	
 	<definition name="infomovilTemplate" template="/WEB-INF/templates/infomovilTemplate.jsp">
 		<put-attribute name="header" value="headerFragment" />
