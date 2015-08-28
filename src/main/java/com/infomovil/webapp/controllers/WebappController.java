@@ -469,7 +469,7 @@ public class WebappController
 					planPro = "SI";
 					visibleTel = "display:block;";
 					visibleRecurso = "display:none";
-					urlEjemploSitio = "misitio.tel";
+					urlEjemploSitio = "www.misitio.tel";
 				}
 				else
 				{
@@ -502,7 +502,7 @@ public class WebappController
 						tipoPublica = "tel";
 						visibleTel = "display:block;";
 						visibleRecurso = "display:none";
-						urlEjemploSitio = "misitio.tel";
+						urlEjemploSitio = "www.misitio.tel";
 					}
 					
 					planPro = "NO";

@@ -7,9 +7,12 @@
 		<div class="container whiteBg">
 			<div class="row">
 				<h3 class=" text-center textBlack ">&iexcl;Ponle un nombre a tu p&aacute;gina web! </h3> 
+				<a href="" data-toggle="modal" data-target="#myModalRecAyuda" class="textBlack col-xs-12 col-sm-12 col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3 text-center"> <strong>Ver tips</strong> <img src="<c:url value="/resources/webapp/images/help.png"/>" width="25" height="25" alt=""/></a> 
+					<br/>
 				<span class="col-xs-12 text-center textBlack"><strong><tiles:getAsString name="urlEjemploSitio"/></strong></span>
 				
 				<div id="divTel" class="form-group col-xs-12 col-sm-12 col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3" style=<tiles:getAsString name="visibleTel"/>>
+				
 					<div class="divider"></div>
 					<div class="form-group">
 						<label class="sr-only" for="exampleInputAmount">www.</label>
@@ -37,8 +40,8 @@
 						<input type="submit" value="Publicar" id="btnPublicarTel"
 							class="btn btn-default btn-outline col-xs-12 text-center textWhite"
 							style="display: none;"> <input type="button"
-							value="Buscar nombre" id="btnBuscarTel"
-							class="btn btn-default btn-outline col-xs-12 text-center textBlack"
+							value="Busca nombre" id="btnBuscarTel"
+							class="btn btn-default btn-outlineGreen col-xs-12 text-center textWhite"
 							onClick="validaDominio('tel')">
 						<div class="clear"></div>
 						<div class="divider"></div>
@@ -69,7 +72,7 @@
 		            <div class="divider"></div>
 					 
 		          
-		            <input type="button" value="Buscar nombre" id="btnBuscarTel" class="btn btn-default btn-outlineGreen col-xs-12 text-center textWhite" onClick="validaDominio('recurso')">
+		            <input type="button" value="Busca nombre" id="btnBuscarTel" class="btn btn-default btn-outlineGreen col-xs-12 text-center textWhite" onClick="validaDominio('recurso')">
 		            <div class="clear"></div>
 		            <div class="divider"></div>
 		            
