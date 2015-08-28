@@ -1,5 +1,8 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-
+<div id=<tiles:getAsString name="idModal"/> class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	<div class="modal-dialog modal-md">   
+    	<div class="modal-content">
+    	
 
 <div class="modal-content btnsEditor ">
 	<div class="modal-header">
@@ -12,10 +15,10 @@
 	<div class="modal-body bgWhite">
 	
 	
-	<div class="textBlack col-xs-12 col-sm-12 col-md-8 col-md-offset-2 col-lg-8 col-lg-offset-2 text-left" style="margin: 0 0 0 -30px;">
+	<div class="textBlack col-xs-12 col-sm-12 col-md-8 col-md-offset-2 col-lg-8 col-lg-offset-2 text-left">
 	<span class="textBlack">&nbsp;</span>
 	
-	<ul>
+	<ul style="margin: 0 0 0 -30px;">
 	<li class="textBlack">Se recomienda usar nombres cortos y fáciles de recordar</li>
 	
 	<li class="textBlack">Evita espacios y acentos </li>
@@ -24,7 +27,7 @@
 	
 	<div>
 <!-- 	<div style=<tiles:getAsString name="visibleRecurso"/>> -->
-	<ul style="list-style:none;" >
+	<ul style="list-style:none; margin: 0 0 0 -30px;" >
 	<li><span class="hidden-xs">www.</span>infomovil.com/taquizasamantha</li>
 	<li><span class="hidden-xs">www.</span>infomovil.com/esteticalejandra</li>
 	<li><span class="hidden-xs">www.</span>infomovil.com/abogadomonroy</li>
@@ -68,3 +71,9 @@
 		</button>
 	</div>
 </div>
+
+
+   	 	</div>
+  	</div>
+</div>
+

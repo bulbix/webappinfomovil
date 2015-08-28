@@ -9,7 +9,7 @@ p { font-size: 1.3em; line-height: 200%; }
 .theme-showcase { margin: -10px -5px 0 0; background: url(../images/bg.png) no-repeat center center fixed; -webkit-background-size: 100% auto; background-attachment: fixed; -moz-background-size: cover; -o-background-size: cover; background-size: cover; padding: 2% 0 10% 0; }
 theme-showcaseApp > p > .btn { margin: 5px 0; }
 .theme-showcaseApp .navbar .container { width: auto; }
-.theme-showcaseApp { /*margin: -10px -5px 0 0;*/  padding: 2% 0 5% 0; }
+.theme-showcaseApp { /*margin: -10px -5px 0 0;*/  padding: 0 0 5% 0; }
 .theme-showcaseError > p > .btn { margin: 5px 0; }
 .theme-showcaseError .navbar .container { width: auto; }
 .theme-showcaseError { margin: -10px -5px 0 0; padding: 2% 0 10% 0; }
@@ -204,6 +204,7 @@ textarea { padding: 10px; width: 300px; }
 #myModalMaps div div.modal-content{ background:#f3f3f3 !important; color:#000 !important}
 #myModalVideo div div.modal-content{ background:#f3f3f3 !important; color:#000 !important}
 .navEditor{ font-family: 'Lato', Arial, sans-serif; font-weight: 300; padding:20px 0 !important; display:block; float:left;}
+.txtBtnEditor{ font-family: 'Lato', Arial, sans-serif; font-weight: 300; }
 .btnsEditor{ font-family: 'Lato', Arial, sans-serif; font-weight: 300; }
 .text-left{ text-align:left}
 .text-right{ text-align:right}

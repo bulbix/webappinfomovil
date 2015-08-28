@@ -53,7 +53,7 @@
 					<br/>
 					
 					
-					<strong><span>www.infomovil.com/</span><span id="idCatTipoRecAutocompleta" style="text-transform:lowercase">mi-sitio</span></strong>  
+					<strong><span>www.infomovil.com/</span><span id="idCatTipoRecAutocompleta" style="text-transform:lowercase">mi-pagina</span></strong>  
 		           </div>
 
 		          <div class="col-xs-12 col-sm-12 col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3">
