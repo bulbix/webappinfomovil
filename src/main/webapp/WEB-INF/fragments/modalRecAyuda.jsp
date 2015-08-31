@@ -22,15 +22,15 @@
 			</ul>
 			
 			<div style=<tiles:getAsString name="visibleRecurso"/>>
-				<ul>
+				<ul style="list-style:none; margin: 0 0 0 -30px;">
 				<li><span class="hidden-xs">www.</span>infomovil.com/taquizasamantha</li>
 				<li><span class="hidden-xs">www.</span>infomovil.com/esteticalejandra</li>
 				<li><span class="hidden-xs">www.</span>infomovil.com/abogadomonroy</li>
 				</ul>
 			</div>
 		
-			<div>
-				<ul style=<tiles:getAsString name="visibleTel"/>>
+			<div style=<tiles:getAsString name="visibleTel"/>>
+				<ul style="list-style:none; margin: 0 0 0 -30px;">
 				<li>www.taqueriaelpibe.tel</li>
 				<li>www.esteticalubelle.tel</li>
 				<li>www.abogadostabasco.tel</li>

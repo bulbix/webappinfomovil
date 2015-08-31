@@ -7,7 +7,8 @@
 		<div class="container whiteBg">
 			<div class="row">
 				<h3 class=" text-center textBlack ">&iexcl;Ponle un nombre a tu p&aacute;gina web! </h3> 
-				<a href="" data-toggle="modal" data-target="#myModalRecAyuda" class="textBlack col-xs-12 col-sm-12 col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3 text-center"> <strong>Ver tips</strong> <img src="<c:url value="/resources/webapp/images/help.png"/>" width="25" height="25" alt=""/></a> 
+				<a href="" data-toggle="modal" data-target="#myModalRecAyuda" class="textBlack col-xs-12 col-sm-12 col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3 text-center"> 
+				<strong>Ver tips</strong> <img src="<c:url value="/resources/webapp/images/help.png"/>" width="25" height="25" alt=""/></a> 
 					<br/>
 				<span class="col-xs-12 text-center textBlack"><strong><tiles:getAsString name="urlEjemploSitio"/></strong></span>
 				
@@ -20,7 +21,7 @@
 							<div class="input-group-addon">www.</div>
 							<input type="text" style="text-transform:lowercase;" class="form-control textBlack text-center"
 								id="nombreDominioBusqueda" name="nombreDominioBusqueda"
-								placeholder="Nombra tu sitio" maxlength="30" autocomplete="off"/>
+								placeholder="Nombra tu sitio" maxlength="30" placeholder="Nombra tu sitio" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Nombra tu sitio'" autocomplete="off"/>
 							<div class="input-group-addon">.tel</div>
 						</div>
 						<input type="hidden" id="tipoDominioBusqueda"
@@ -58,7 +59,8 @@
 
 		          <div class="col-xs-12 col-sm-12 col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3">
 		            <div class="divider "></div>
-		            <input type="text" placeholder="Nombra tu sitio" maxlength="30" id="nombreDominioRec" name="nombreDominioRec" class="form-control text-center lowCase" autocomplete="off" >
+		            <input type="text" placeholder="Nombra tu sitio" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Nombra tu sitio'" maxlength="30" 
+		            	id="nombreDominioRec" name="nombreDominioRec" class="form-control text-center lowCase" autocomplete="off" >
 		            <input type="hidden" id="tipoDominioRec" name="tipoDominioRec" value="recurso"/>
 		          </div>
 		          <div class="form-group col-xs-12 col-sm-12 col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3">

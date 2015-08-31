@@ -18,7 +18,7 @@
 </div>
 <div class="modal-body bgWhite">
 	
-	<div style="background:url(<c:url value="/resources/webapp/images/ubicacion.png"/>) center center no-repeat; position:absolute; top: 42%; left:47%; width:50px; height:50px; z-index: 999" class="hidden-xs hidden-sm"></div>
+	<div style="background:url(<c:url value="/resources/webapp/images/ubicacion.png"/>) center center no-repeat; position:absolute; top: 43%; left:46%; width:50px; height:50px; z-index: 999" class="hidden-xs hidden-sm"></div>
 	<div id="map-canvas"></div>
 </div>
 <div class="modal-footer"></div>

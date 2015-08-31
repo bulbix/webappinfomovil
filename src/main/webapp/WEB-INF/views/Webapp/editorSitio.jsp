@@ -106,6 +106,7 @@
 									<div class="controls">
 										<input type="text" class="form-control h1 text-center"
 											maxlength="128" placeholder="Pon tu nombre o negocio"
+											onfocus="this.placeholder = ''" onblur="this.placeholder = 'Pon tu nombre o negocio'"
 											required="required"
 											<c:if test="${not empty nombreEmpresa}"> value = " ${ nombreEmpresa } " </c:if>
 											id="txtNombreNegocio" />
@@ -120,6 +121,7 @@
 									<div class="controls">
 										<textarea class="form-control h2 text-center" maxlength="255"
 											placeholder="Agrega una descripción corta de tus servicios o productos"
+											onfocus="this.placeholder = ''" onblur="this.placeholder = 'Agrega una descripción corta de tus servicios o productos'"
 											required id="txtDescripcionCorta" rows="5"><c:if
 												test="${not empty descripcionCorta}">${descripcionCorta}</c:if></textarea>
 										<p class="help-block"></p>
@@ -142,6 +144,7 @@
 											<input type="text" style="text-transform:lowercase;"
 											class="form-control colorA text-center col-xs-11"
 											maxlength="100" placeholder="Correo" required="required"
+											onfocus="this.placeholder = ''" onblur="this.placeholder = 'Correo'"
 											<c:if test="${not empty correoElectronico}"> value = "${ correoElectronico }" </c:if>
 											id="txtCorreo" />
 										</span>
@@ -158,6 +161,7 @@
 											class="col-xs-12 08em mar0auto"> <input type="text"
 											class="form-control text-center col-xs-11" maxlength="10"
 											placeholder="Celular" required="required"
+											onfocus="this.placeholder = ''" onblur="this.placeholder = 'Celular'"
 											<c:if test="${not empty telefonoUsuario}"> value = "${ telefonoUsuario }" </c:if>
 											id="txtTelefono" />
 										</span>
@@ -316,7 +320,7 @@
 		<script>
 			$("#nombreDominioRec").keyup(function () {
 				var value = $(this).val().replace(/[^A-Za-z0-9_-]/g, "");
-				$("#nombreDominioRec").val($("#nombreDominioRec").val().replace(/ /g, ""));
+				$("#nombreDominioRec").val($("#nombreDominioRec").val().replace(/[^A-Za-z0-9_-]/g, ""));
 		   		 $("#idCatTipoRecAutocompleta").text(value);
 		   		 if(value.length ==0){
 		   			 $("#idCatTipoRecAutocompleta").text("mi-pagina");
