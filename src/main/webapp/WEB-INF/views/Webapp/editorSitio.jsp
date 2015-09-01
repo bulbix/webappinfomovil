@@ -58,7 +58,7 @@
 							</a>
 						</li>
 						<li class="botonDesPublicar" id="btnContLi" style="display:none;">
-							<a href="#" data-toggle="modal" data-target="#myModalDescApp" class="smoothScroll ${colorTexto}">Más <span class="hidden-sm hidden-md">contenido</span> 
+							<a href="#" data-toggle="modal" data-target="#myModalDescApp" class="smoothScroll ${colorTexto}">¿Qué sigue? <span class="hidden-sm hidden-md"></span> 
 								<img width="20" height="20" alt="Infomovil"	src="<c:url value="/resources/webapp/images/ico_mas_cont${ extensionImg }.png"/>" />
 							</a>
 						</li>
@@ -216,7 +216,7 @@
 							<!-- /Botón AGREGAR MAS CONTENIDO --> 
 				<div id="idBtnMasCont" class="botonDesPublicar" style="display:none;">
 					<a href="#" data-toggle="modal" data-target="#myModalDescApp" class="col-xs-12 col-sm-6 col-sm-offset-3 col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3 btn btn-default btn-outline navEditor"> 
-					<img width="30" height="30" alt="Infomovil" src="<c:url value="/resources/webapp/images/ico_mas_cont.png"/>" /> <span id="idOpcionMasCont">Agrega más contenido</span></a> 
+					<img width="30" height="30" alt="Infomovil" src="<c:url value="/resources/webapp/images/ico_mas_cont.png"/>" /> <span id="idOpcionMasCont">¿Qué sigue?</span></a> 
 				</div>
 							<!-- /Botón AGREGAR MAS CONTENIDO -->	
 							
