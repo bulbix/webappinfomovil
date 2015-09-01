@@ -52,7 +52,7 @@
 				
 				  <div id="divRecurso" class="form-group col-xs-12 col-sm-12 col-md-12 col-lg-12" style=<tiles:getAsString name="visibleRecurso"/>>
 		        
-		        <div class="col-xs-12 col-sm-12 text-center textBlack" >			
+		        <div class="col-xs-12 col-sm-12 text-center textBlack reset" >			
 					
 					<strong><span>www.infomovil.com/</span><span id="idCatTipoRecAutocompleta" style="text-transform:lowercase">mi-pagina</span></strong>  
 		           </div>

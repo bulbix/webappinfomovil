@@ -44,20 +44,26 @@
 							<a href="#" data-toggle="modal" data-target="#myModalTemplates" class="smoothScroll ${colorTexto}">Estilo 
 								<img width="20" height="20" alt="Infomovil"	src="<c:url value="/resources/webapp/images/fa-templates${ extensionImg }.png"/>" />
 							</a>
-						<li>
+						</li>
 						
 						<li class="botonDesPublicar" style="display:none;">
 							<a href="#" data-toggle="modal" data-target="#myModalMaps" class="smoothScroll ${colorTexto}">Ubicación
 								<img width="20" height="20" alt="Infomovil"	src="<c:url value="/resources/webapp/images/icn_marc_maps${ extensionImg }.png"/>" />
 							</a>
-						<li>
+						</li>
 						
 						<li class="botonDesPublicarVid" id="btnVideoLi" style="display:none;">
 							<a href="#" data-toggle="modal" data-target="#myModalVideo" class="smoothScroll ${colorTexto}">Video 
 								<img width="20" height="20" alt="Infomovil"	src="<c:url value="/resources/webapp/images/ico_ppp_youtube${ extensionImg }.png"/>" />
 							</a>
+						</li>
+						<li class="botonDesPublicar" id="btnContLi" style="display:none;">
+							<a href="#" data-toggle="modal" data-target="#myModalDescApp" class="smoothScroll ${colorTexto}">Más <span class="hidden-sm hidden-md">contenido</span> 
+								<img width="20" height="20" alt="Infomovil"	src="<c:url value="/resources/webapp/images/ico_mas_cont${ extensionImg }.png"/>" />
+							</a>
+						</li>
 						<li>						
-							<a href="<c:url value="/logout"></c:url>" class="smoothScroll ${colorTexto}"> Cerrar sesión					
+							<a href="<c:url value="/logout"></c:url>" class="smoothScroll ${colorTexto}"> Cerrar <span class="hidden-sm hidden-md">sesión	</span>				
 								<img width="20"	height="20" alt="Infomovil" src="<c:url value="/resources/webapp/images/fa-sign-out${ extensionImg }.png"/>" />
 							</a>
 						</li>
@@ -82,8 +88,8 @@
 		<!-- Botón Nuevo Estilo -->
 		<div class="seccTop bgBlack">
 			<div class="" >
-				<a href="#" data-toggle="modal" data-target="#myModalTemplates" class="col-xs-12 col-sm-6 col-sm-offset-3 col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3 btn btn-default btn-outline navEditor">Elige estilo 
-					<img width="20" height="20" alt="Infomovil" src="<c:url value="/resources/webapp/images/fa-templates.png"/>" /><br /><span class="text-center _90em">¡Lo puedes cambiar las veces que quieras!</span></a>
+				<a href="#" data-toggle="modal" data-target="#myModalTemplates" class="col-xs-12 col-sm-6 col-sm-offset-3 col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3 btn btn-defaultBlack btn-outline navEditor textBlack"><strong>Elige estilo</strong> 
+					<img width="20" height="20" alt="Infomovil" src="<c:url value="/resources/webapp/images/fa-templates-bk.png"/>" /><br /><span class="text-center _90em textBlack">¡Lo puedes cambiar las veces que quieras!</span></a>
 			</div>
 		</div>
 		<!-- /Botón Nuevo Estilo -->
@@ -197,13 +203,25 @@
 			<!-- /Botón Nuevo Estilo -->
 									
 			<div class="clearfix"></div>
-				<div class="dividerSmall"></div>
+				<div class="dividerSmallest"></div>
 				<!-- /Botón AGREGAR VIDEO --> 
 				<div id="idBtnVideo" class="botonDesPublicarVid" style="display:none;">
 					<a href="#" data-toggle="modal" data-target="#myModalVideo" class="col-xs-12 col-sm-6 col-sm-offset-3 col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3 btn btn-default btn-outline navEditor"> 
 					<img width="30" height="30" alt="Infomovil" src="<c:url value="/resources/webapp/images/ico_ppp_youtube.png"/>" /> <span id="idOpcionVideo">Agrega un video</span></a> 
 				</div>
 							<!-- /Botón AGREGAR VIDEO -->	
+							<div class="clearfix"></div>
+							<div class="dividerSmallest"></div>
+							
+							<!-- /Botón AGREGAR MAS CONTENIDO --> 
+				<div id="idBtnMasCont" class="botonDesPublicar" style="display:none;">
+					<a href="#" data-toggle="modal" data-target="#myModalDescApp" class="col-xs-12 col-sm-6 col-sm-offset-3 col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3 btn btn-default btn-outline navEditor"> 
+					<img width="30" height="30" alt="Infomovil" src="<c:url value="/resources/webapp/images/ico_mas_cont.png"/>" /> <span id="idOpcionMasCont">Agrega más contenido</span></a> 
+				</div>
+							<!-- /Botón AGREGAR MAS CONTENIDO -->	
+							
+							<div class="clearfix"></div>
+							<div class="dividerSmallest"></div>
 	
 	<c:if test="${sitioWeb =='SIN_PUBLICAR'}">
 	
@@ -255,6 +273,14 @@
 			<c:set var="fragmentName" value="modalRegistroFragment" scope="request" />
 		</tiles:insertDefinition>
 <!-- 		<!--/MODAL REGISTRO--> 
+
+<!-- 		<!--MODAL DESCARGA LA APP--> 
+		<tiles:insertDefinition name="modalGen">
+			<tiles:putAttribute name="idModal" value="myModalDescApp"/>
+			<c:set var="fragmentName" value="modalDescApp" scope="request" />
+		</tiles:insertDefinition>
+<!-- 		<!--/MODAL DESCARGA LA APP--> 
+
 								
 		<!-- Scroll to Top Button (Only visible on small and extra-small screen sizes) -->
 		<div class="scroll-top page-scroll visible-xs visble-sm">

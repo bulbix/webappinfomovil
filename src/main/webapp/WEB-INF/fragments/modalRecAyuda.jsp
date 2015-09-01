@@ -22,7 +22,7 @@
 			</ul>
 			
 			<div style=<tiles:getAsString name="visibleRecurso"/>>
-				<ul style="list-style:none; margin: 0 0 0 -30px;">
+				<ul style="list-style:none; margin: 0 0 0 -30px;" class="textPurple">
 				<li><span class="hidden-xs">www.</span>infomovil.com/taquizasamantha</li>
 				<li><span class="hidden-xs">www.</span>infomovil.com/esteticalejandra</li>
 				<li><span class="hidden-xs">www.</span>infomovil.com/abogadomonroy</li>
@@ -30,7 +30,7 @@
 			</div>
 		
 			<div style=<tiles:getAsString name="visibleTel"/>>
-				<ul style="list-style:none; margin: 0 0 0 -30px;">
+				<ul style="list-style:none; margin: 0 0 0 -30px;" class="textPurple">
 				<li>www.taqueriaelpibe.tel</li>
 				<li>www.esteticalubelle.tel</li>
 				<li>www.abogadostabasco.tel</li>
