@@ -8,9 +8,9 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Clase Java para crearSitio_existeDominio complex type.
+ * <p>Java class for crearSitio_existeDominio complex type.
  * 
- * <p>El siguiente fragmento de esquema especifica el contenido que se espera que haya en esta clase.
+ * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
  * &lt;complexType name="crearSitio_existeDominio">
@@ -39,7 +39,7 @@ public class CrearSitioExisteDominio {
     protected String tipoDominio;
 
     /**
-     * Obtiene el valor de la propiedad nombreDominio.
+     * Gets the value of the nombreDominio property.
      * 
      * @return
      *     possible object is
@@ -51,7 +51,7 @@ public class CrearSitioExisteDominio {
     }
 
     /**
-     * Define el valor de la propiedad nombreDominio.
+     * Sets the value of the nombreDominio property.
      * 
      * @param value
      *     allowed object is
@@ -63,7 +63,7 @@ public class CrearSitioExisteDominio {
     }
 
     /**
-     * Obtiene el valor de la propiedad tipoDominio.
+     * Gets the value of the tipoDominio property.
      * 
      * @return
      *     possible object is
@@ -75,7 +75,7 @@ public class CrearSitioExisteDominio {
     }
 
     /**
-     * Define el valor de la propiedad tipoDominio.
+     * Sets the value of the tipoDominio property.
      * 
      * @param value
      *     allowed object is

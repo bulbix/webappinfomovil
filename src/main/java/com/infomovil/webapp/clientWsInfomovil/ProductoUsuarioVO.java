@@ -7,9 +7,9 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Clase Java para productoUsuarioVO complex type.
+ * <p>Java class for productoUsuarioVO complex type.
  * 
- * <p>El siguiente fragmento de esquema especifica el contenido que se espera que haya en esta clase.
+ * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
  * &lt;complexType name="productoUsuarioVO">
@@ -58,7 +58,7 @@ public class ProductoUsuarioVO {
     protected String referencia;
 
     /**
-     * Obtiene el valor de la propiedad email.
+     * Gets the value of the email property.
      * 
      * @return
      *     possible object is
@@ -70,7 +70,7 @@ public class ProductoUsuarioVO {
     }
 
     /**
-     * Define el valor de la propiedad email.
+     * Sets the value of the email property.
      * 
      * @param value
      *     allowed object is
@@ -82,7 +82,7 @@ public class ProductoUsuarioVO {
     }
 
     /**
-     * Obtiene el valor de la propiedad userId.
+     * Gets the value of the userId property.
      * 
      */
     public long getUserId() {
@@ -90,7 +90,7 @@ public class ProductoUsuarioVO {
     }
 
     /**
-     * Define el valor de la propiedad userId.
+     * Sets the value of the userId property.
      * 
      */
     public void setUserId(long value) {
@@ -98,7 +98,7 @@ public class ProductoUsuarioVO {
     }
 
     /**
-     * Obtiene el valor de la propiedad productoId.
+     * Gets the value of the productoId property.
      * 
      */
     public long getProductoId() {
@@ -106,7 +106,7 @@ public class ProductoUsuarioVO {
     }
 
     /**
-     * Define el valor de la propiedad productoId.
+     * Sets the value of the productoId property.
      * 
      */
     public void setProductoId(long value) {
@@ -114,7 +114,7 @@ public class ProductoUsuarioVO {
     }
 
     /**
-     * Obtiene el valor de la propiedad claveComercial.
+     * Gets the value of the claveComercial property.
      * 
      * @return
      *     possible object is
@@ -126,7 +126,7 @@ public class ProductoUsuarioVO {
     }
 
     /**
-     * Define el valor de la propiedad claveComercial.
+     * Sets the value of the claveComercial property.
      * 
      * @param value
      *     allowed object is
@@ -138,7 +138,7 @@ public class ProductoUsuarioVO {
     }
 
     /**
-     * Obtiene el valor de la propiedad descripcion.
+     * Gets the value of the descripcion property.
      * 
      * @return
      *     possible object is
@@ -150,7 +150,7 @@ public class ProductoUsuarioVO {
     }
 
     /**
-     * Define el valor de la propiedad descripcion.
+     * Sets the value of the descripcion property.
      * 
      * @param value
      *     allowed object is
@@ -162,7 +162,7 @@ public class ProductoUsuarioVO {
     }
 
     /**
-     * Obtiene el valor de la propiedad abc.
+     * Gets the value of the abc property.
      * 
      * @return
      *     possible object is
@@ -174,7 +174,7 @@ public class ProductoUsuarioVO {
     }
 
     /**
-     * Define el valor de la propiedad abc.
+     * Sets the value of the abc property.
      * 
      * @param value
      *     allowed object is
@@ -186,7 +186,7 @@ public class ProductoUsuarioVO {
     }
 
     /**
-     * Obtiene el valor de la propiedad fechaInicio.
+     * Gets the value of the fechaInicio property.
      * 
      * @return
      *     possible object is
@@ -198,7 +198,7 @@ public class ProductoUsuarioVO {
     }
 
     /**
-     * Define el valor de la propiedad fechaInicio.
+     * Sets the value of the fechaInicio property.
      * 
      * @param value
      *     allowed object is
@@ -210,7 +210,7 @@ public class ProductoUsuarioVO {
     }
 
     /**
-     * Obtiene el valor de la propiedad fechaFin.
+     * Gets the value of the fechaFin property.
      * 
      * @return
      *     possible object is
@@ -222,7 +222,7 @@ public class ProductoUsuarioVO {
     }
 
     /**
-     * Define el valor de la propiedad fechaFin.
+     * Sets the value of the fechaFin property.
      * 
      * @param value
      *     allowed object is
@@ -234,7 +234,7 @@ public class ProductoUsuarioVO {
     }
 
     /**
-     * Obtiene el valor de la propiedad referencia.
+     * Gets the value of the referencia property.
      * 
      * @return
      *     possible object is
@@ -246,7 +246,7 @@ public class ProductoUsuarioVO {
     }
 
     /**
-     * Define el valor de la propiedad referencia.
+     * Sets the value of the referencia property.
      * 
      * @param value
      *     allowed object is
@@ -256,16 +256,5 @@ public class ProductoUsuarioVO {
     public void setReferencia(String value) {
         this.referencia = value;
     }
-
-	@Override
-	public String toString() {
-		return "ProductoUsuarioVO [email=" + email + ", userId=" + userId
-				+ ", productoId=" + productoId + ", claveComercial="
-				+ claveComercial + ", descripcion=" + descripcion + ", abc="
-				+ abc + ", fechaInicio=" + fechaInicio + ", fechaFin="
-				+ fechaFin + ", referencia=" + referencia + "]";
-	}
-    
-    
 
 }

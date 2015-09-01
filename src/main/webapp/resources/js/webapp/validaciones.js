@@ -4,11 +4,6 @@ var nombreDominio = "";
 var tipoDominio = "";
 var indice = 0;
 	
-
-
-
-
-
 $(document).ready(function() {
 	$("#txtTelefono").numeric({negative : false} );
 	if(contextPath == "/")
@@ -19,7 +14,7 @@ $(document).ready(function() {
 
 function validaDominio(tipo)
 {
-	console.log("validaDominio::::::");
+	//console.log("validaDominio::::::");
 	var sitioDisponible = "";
 	var infomovil = "infomovil";
 	var textoBoton = "Aceptar";
@@ -42,7 +37,7 @@ function validaDominio(tipo)
 	
 	nombreDominio = nombreDominio.toLowerCase().trim();
 
-	console.log("nombreDominio::: " + nombreDominio + ", tipoDominio:::: " + tipoDominio + ", tipo: " + tipo);
+	//console.log("nombreDominio::: " + nombreDominio + ", tipoDominio:::: " + tipoDominio + ", tipo: " + tipo);
 	
 	if (nombreDominio == null || nombreDominio.trim().length == 0 || nombreDominio.trim().length < 3 || nombreDominio.trim().length > 30)
 	{
@@ -104,12 +99,12 @@ function validaDominio(tipo)
 				sitioDisponible = "www." + nombreDominio + "." + tipoDominio;
 			
 			nombreSitio = sitioDisponible.length;
-			console.log("nombreSitio: " + nombreSitio + ", longitud tel: " + nombreSitio);
+//			console.log("nombreSitio: " + nombreSitio + ", longitud tel: " + nombreSitio);
 			
 			if (nombreSitio > 25)
 				sitioDisponible = sitioDisponible.substring(4, nombreSitio);
 			
-			console.log("termino busqueda de dominio:::::: " + json.resultado);
+			//console.log("termino busqueda de dominio:::::: " + json.resultado);
 			if (json.resultado.indexOf("No existe") != -1)
 			{				
 				funcion = "publicar()";
@@ -138,7 +133,7 @@ function validaDominio(tipo)
 			$.unblockUI();
 	    }
 	 ).fail(function( jqXHR, textStatus ) {
-		 console.log("fail:::::");
+		 //console.log("fail:::::");
 		 $.unblockUI();
 	 });
 }
@@ -151,13 +146,13 @@ function aceptar()
 function publicar()
 {
 
-	console.log("publicar::: " + nombreDominio + ", " + tipoDominio);
+//	console.log("publicar::: " + nombreDominio + ", " + tipoDominio);
 	$("#idCatTipoRecurso").val("1"); /*tel*/	
 	
 //	if (tipoDominio == "recurso")
 //		$("#idCatTipoRecurso").val($("#idCatTipoRec").val());
 	
-	console.log("publicar::::: " + nombreDominio + ", tipoDominio: " + tipoDominio + ", tipo: " + $("#idCatTipoRecurso").val());
+	//console.log("publicar::::: " + nombreDominio + ", tipoDominio: " + tipoDominio + ", tipo: " + $("#idCatTipoRecurso").val());
 	$("#nombreDominio").val(nombreDominio.toLowerCase().trim());
 	$("#tipoDominio").val(tipoDominio.toLowerCase());
 
@@ -176,7 +171,7 @@ function publicar()
 
 function actualizaPlantilla(plantillaElegida)
 {	
-	console.log("actualizaPlantilla");
+	//console.log("actualizaPlantilla");
 	var plantillaNueva = plantillaElegida; // Obtener del modal
 	var nombreNegocio = $("#txtNombreNegocio").val();
 	var descripcionCorta = $("#txtDescripcionCorta").val() ;
@@ -185,7 +180,7 @@ function actualizaPlantilla(plantillaElegida)
 	var plantilla = $("#plantilla").val();			
 	var aux;
 	
-	console.log("plantillaNueva: " + plantillaNueva + ", plantilla: " + plantilla);
+//	console.log("plantillaNueva: " + plantillaNueva + ", plantilla: " + plantilla);
 //	if (plantillaNueva == plantilla)
 //		return;
 
@@ -213,19 +208,19 @@ function actualizaPlantilla(plantillaElegida)
 		},
 		success : function(json) {
 			
-			console.log("json.actualizaTemplate:::" + json.actualizaTemplate);
+//			console.log("json.actualizaTemplate:::" + json.actualizaTemplate);
 			$("#plantilla").val(plantillaNueva);			
 			
 			if(json.actualizaTemplate == "0")
 			{
-				console.log("Plantilla actualizada correctamente");				
+		//		console.log("Plantilla actualizada correctamente");				
 				window.location = contextPath + '/infomovil/editarSitio';
 			}
 
 			$.unblockUI();
 		},
 		error : function(json) {
-			console.log("Error");
+			//console.log("Error");
 			$.unblockUI();
 		}
 
@@ -295,7 +290,7 @@ function plantillaElegida(indicador)
 		span = "<img src='https://s3.amazonaws.com/landing.infomovil.com/webapp/images/temp_act.png' width='30'/>";
 
 	$("#imgActivo").val(span);
-	console.log(":::::: " + $("#imgActivo").val());
+	//console.log(":::::: " + $("#imgActivo").val());
 }
 
 function actualizaEstilo()
@@ -338,7 +333,7 @@ function autosave() {
 						autosaveForm($form, seconds);
 					},
 					error : function(json) {
-						console.log('Algo salio mal!');
+						//console.log('Algo salio mal!');
 					}
 
 				});

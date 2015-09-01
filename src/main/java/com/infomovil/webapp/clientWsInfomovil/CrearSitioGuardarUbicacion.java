@@ -8,9 +8,9 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Clase Java para crearSitio_guardarUbicacion complex type.
+ * <p>Java class for crearSitio_guardarUbicacion complex type.
  * 
- * <p>El siguiente fragmento de esquema especifica el contenido que se espera que haya en esta clase.
+ * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
  * &lt;complexType name="crearSitio_guardarUbicacion">
@@ -48,7 +48,7 @@ public class CrearSitioGuardarUbicacion {
     protected String direccionMap;
 
     /**
-     * Obtiene el valor de la propiedad email.
+     * Gets the value of the email property.
      * 
      * @return
      *     possible object is
@@ -60,7 +60,7 @@ public class CrearSitioGuardarUbicacion {
     }
 
     /**
-     * Define el valor de la propiedad email.
+     * Sets the value of the email property.
      * 
      * @param value
      *     allowed object is
@@ -72,7 +72,7 @@ public class CrearSitioGuardarUbicacion {
     }
 
     /**
-     * Obtiene el valor de la propiedad password.
+     * Gets the value of the password property.
      * 
      * @return
      *     possible object is
@@ -84,7 +84,7 @@ public class CrearSitioGuardarUbicacion {
     }
 
     /**
-     * Define el valor de la propiedad password.
+     * Sets the value of the password property.
      * 
      * @param value
      *     allowed object is
@@ -96,7 +96,7 @@ public class CrearSitioGuardarUbicacion {
     }
 
     /**
-     * Obtiene el valor de la propiedad longitudeMap.
+     * Gets the value of the longitudeMap property.
      * 
      * @return
      *     possible object is
@@ -108,7 +108,7 @@ public class CrearSitioGuardarUbicacion {
     }
 
     /**
-     * Define el valor de la propiedad longitudeMap.
+     * Sets the value of the longitudeMap property.
      * 
      * @param value
      *     allowed object is
@@ -120,7 +120,7 @@ public class CrearSitioGuardarUbicacion {
     }
 
     /**
-     * Obtiene el valor de la propiedad latitudeMap.
+     * Gets the value of the latitudeMap property.
      * 
      * @return
      *     possible object is
@@ -132,7 +132,7 @@ public class CrearSitioGuardarUbicacion {
     }
 
     /**
-     * Define el valor de la propiedad latitudeMap.
+     * Sets the value of the latitudeMap property.
      * 
      * @param value
      *     allowed object is
@@ -144,7 +144,7 @@ public class CrearSitioGuardarUbicacion {
     }
 
     /**
-     * Obtiene el valor de la propiedad direccionMap.
+     * Gets the value of the direccionMap property.
      * 
      * @return
      *     possible object is
@@ -156,7 +156,7 @@ public class CrearSitioGuardarUbicacion {
     }
 
     /**
-     * Define el valor de la propiedad direccionMap.
+     * Sets the value of the direccionMap property.
      * 
      * @param value
      *     allowed object is

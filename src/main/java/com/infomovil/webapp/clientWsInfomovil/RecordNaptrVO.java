@@ -7,9 +7,9 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Clase Java para recordNaptrVO complex type.
+ * <p>Java class for recordNaptrVO complex type.
  * 
- * <p>El siguiente fragmento de esquema especifica el contenido que se espera que haya en esta clase.
+ * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
  * &lt;complexType name="recordNaptrVO">
@@ -55,7 +55,7 @@ public class RecordNaptrVO {
     protected String visible;
 
     /**
-     * Obtiene el valor de la propiedad categoryNaptr.
+     * Gets the value of the categoryNaptr property.
      * 
      * @return
      *     possible object is
@@ -67,7 +67,7 @@ public class RecordNaptrVO {
     }
 
     /**
-     * Define el valor de la propiedad categoryNaptr.
+     * Sets the value of the categoryNaptr property.
      * 
      * @param value
      *     allowed object is
@@ -79,7 +79,7 @@ public class RecordNaptrVO {
     }
 
     /**
-     * Obtiene el valor de la propiedad longLabelNaptr.
+     * Gets the value of the longLabelNaptr property.
      * 
      * @return
      *     possible object is
@@ -91,7 +91,7 @@ public class RecordNaptrVO {
     }
 
     /**
-     * Define el valor de la propiedad longLabelNaptr.
+     * Sets the value of the longLabelNaptr property.
      * 
      * @param value
      *     allowed object is
@@ -103,7 +103,7 @@ public class RecordNaptrVO {
     }
 
     /**
-     * Obtiene el valor de la propiedad regExp.
+     * Gets the value of the regExp property.
      * 
      * @return
      *     possible object is
@@ -115,7 +115,7 @@ public class RecordNaptrVO {
     }
 
     /**
-     * Define el valor de la propiedad regExp.
+     * Sets the value of the regExp property.
      * 
      * @param value
      *     allowed object is
@@ -127,7 +127,7 @@ public class RecordNaptrVO {
     }
 
     /**
-     * Obtiene el valor de la propiedad servicesNaptr.
+     * Gets the value of the servicesNaptr property.
      * 
      * @return
      *     possible object is
@@ -139,7 +139,7 @@ public class RecordNaptrVO {
     }
 
     /**
-     * Define el valor de la propiedad servicesNaptr.
+     * Sets the value of the servicesNaptr property.
      * 
      * @param value
      *     allowed object is
@@ -151,7 +151,7 @@ public class RecordNaptrVO {
     }
 
     /**
-     * Obtiene el valor de la propiedad subCategory.
+     * Gets the value of the subCategory property.
      * 
      * @return
      *     possible object is
@@ -163,7 +163,7 @@ public class RecordNaptrVO {
     }
 
     /**
-     * Define el valor de la propiedad subCategory.
+     * Sets the value of the subCategory property.
      * 
      * @param value
      *     allowed object is
@@ -175,7 +175,7 @@ public class RecordNaptrVO {
     }
 
     /**
-     * Obtiene el valor de la propiedad claveContacto.
+     * Gets the value of the claveContacto property.
      * 
      * @return
      *     possible object is
@@ -187,7 +187,7 @@ public class RecordNaptrVO {
     }
 
     /**
-     * Define el valor de la propiedad claveContacto.
+     * Sets the value of the claveContacto property.
      * 
      * @param value
      *     allowed object is
@@ -199,7 +199,7 @@ public class RecordNaptrVO {
     }
 
     /**
-     * Obtiene el valor de la propiedad preference.
+     * Gets the value of the preference property.
      * 
      * @return
      *     possible object is
@@ -211,7 +211,7 @@ public class RecordNaptrVO {
     }
 
     /**
-     * Define el valor de la propiedad preference.
+     * Sets the value of the preference property.
      * 
      * @param value
      *     allowed object is
@@ -223,7 +223,7 @@ public class RecordNaptrVO {
     }
 
     /**
-     * Obtiene el valor de la propiedad visible.
+     * Gets the value of the visible property.
      * 
      * @return
      *     possible object is
@@ -235,7 +235,7 @@ public class RecordNaptrVO {
     }
 
     /**
-     * Define el valor de la propiedad visible.
+     * Sets the value of the visible property.
      * 
      * @param value
      *     allowed object is

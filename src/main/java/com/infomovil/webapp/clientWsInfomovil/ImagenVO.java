@@ -8,9 +8,9 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Clase Java para imagenVO complex type.
+ * <p>Java class for imagenVO complex type.
  * 
- * <p>El siguiente fragmento de esquema especifica el contenido que se espera que haya en esta clase.
+ * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
  * &lt;complexType name="imagenVO">
@@ -54,7 +54,7 @@ public class ImagenVO {
     protected String preference;
 
     /**
-     * Obtiene el valor de la propiedad typeImage.
+     * Gets the value of the typeImage property.
      * 
      * @return
      *     possible object is
@@ -66,7 +66,7 @@ public class ImagenVO {
     }
 
     /**
-     * Define el valor de la propiedad typeImage.
+     * Sets the value of the typeImage property.
      * 
      * @param value
      *     allowed object is
@@ -78,7 +78,7 @@ public class ImagenVO {
     }
 
     /**
-     * Obtiene el valor de la propiedad descripcionImagen.
+     * Gets the value of the descripcionImagen property.
      * 
      * @return
      *     possible object is
@@ -90,7 +90,7 @@ public class ImagenVO {
     }
 
     /**
-     * Define el valor de la propiedad descripcionImagen.
+     * Sets the value of the descripcionImagen property.
      * 
      * @param value
      *     allowed object is
@@ -102,7 +102,7 @@ public class ImagenVO {
     }
 
     /**
-     * Obtiene el valor de la propiedad idImagen.
+     * Gets the value of the idImagen property.
      * 
      * @return
      *     possible object is
@@ -114,7 +114,7 @@ public class ImagenVO {
     }
 
     /**
-     * Define el valor de la propiedad idImagen.
+     * Sets the value of the idImagen property.
      * 
      * @param value
      *     allowed object is
@@ -126,7 +126,7 @@ public class ImagenVO {
     }
 
     /**
-     * Obtiene el valor de la propiedad imagenClobGaleria.
+     * Gets the value of the imagenClobGaleria property.
      * 
      * @return
      *     possible object is
@@ -138,7 +138,7 @@ public class ImagenVO {
     }
 
     /**
-     * Define el valor de la propiedad imagenClobGaleria.
+     * Sets the value of the imagenClobGaleria property.
      * 
      * @param value
      *     allowed object is
@@ -150,7 +150,7 @@ public class ImagenVO {
     }
 
     /**
-     * Obtiene el valor de la propiedad path.
+     * Gets the value of the path property.
      * 
      * @return
      *     possible object is
@@ -162,7 +162,7 @@ public class ImagenVO {
     }
 
     /**
-     * Define el valor de la propiedad path.
+     * Sets the value of the path property.
      * 
      * @param value
      *     allowed object is
@@ -174,7 +174,7 @@ public class ImagenVO {
     }
 
     /**
-     * Obtiene el valor de la propiedad url.
+     * Gets the value of the url property.
      * 
      * @return
      *     possible object is
@@ -186,7 +186,7 @@ public class ImagenVO {
     }
 
     /**
-     * Define el valor de la propiedad url.
+     * Sets the value of the url property.
      * 
      * @param value
      *     allowed object is
@@ -198,7 +198,7 @@ public class ImagenVO {
     }
 
     /**
-     * Obtiene el valor de la propiedad preference.
+     * Gets the value of the preference property.
      * 
      * @return
      *     possible object is
@@ -210,7 +210,7 @@ public class ImagenVO {
     }
 
     /**
-     * Define el valor de la propiedad preference.
+     * Sets the value of the preference property.
      * 
      * @param value
      *     allowed object is

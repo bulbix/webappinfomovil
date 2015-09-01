@@ -8,9 +8,9 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Clase Java para compraDominioResponse complex type.
+ * <p>Java class for compraDominioResponse complex type.
  * 
- * <p>El siguiente fragmento de esquema especifica el contenido que se espera que haya en esta clase.
+ * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
  * &lt;complexType name="compraDominioResponse">
@@ -36,7 +36,7 @@ public class CompraDominioResponse {
     protected DominioVO dominioVO;
 
     /**
-     * Obtiene el valor de la propiedad dominioVO.
+     * Gets the value of the dominioVO property.
      * 
      * @return
      *     possible object is
@@ -48,7 +48,7 @@ public class CompraDominioResponse {
     }
 
     /**
-     * Define el valor de la propiedad dominioVO.
+     * Sets the value of the dominioVO property.
      * 
      * @param value
      *     allowed object is

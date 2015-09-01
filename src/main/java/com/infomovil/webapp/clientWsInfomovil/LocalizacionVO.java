@@ -7,9 +7,9 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Clase Java para localizacionVO complex type.
+ * <p>Java class for localizacionVO complex type.
  * 
- * <p>El siguiente fragmento de esquema especifica el contenido que se espera que haya en esta clase.
+ * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
  * &lt;complexType name="localizacionVO">
@@ -40,7 +40,7 @@ public class LocalizacionVO {
     protected String longitudeLoc;
 
     /**
-     * Obtiene el valor de la propiedad idLocalizacion.
+     * Gets the value of the idLocalizacion property.
      * 
      * @return
      *     possible object is
@@ -52,7 +52,7 @@ public class LocalizacionVO {
     }
 
     /**
-     * Define el valor de la propiedad idLocalizacion.
+     * Sets the value of the idLocalizacion property.
      * 
      * @param value
      *     allowed object is
@@ -64,7 +64,7 @@ public class LocalizacionVO {
     }
 
     /**
-     * Obtiene el valor de la propiedad latitudeLoc.
+     * Gets the value of the latitudeLoc property.
      * 
      * @return
      *     possible object is
@@ -76,7 +76,7 @@ public class LocalizacionVO {
     }
 
     /**
-     * Define el valor de la propiedad latitudeLoc.
+     * Sets the value of the latitudeLoc property.
      * 
      * @param value
      *     allowed object is
@@ -88,7 +88,7 @@ public class LocalizacionVO {
     }
 
     /**
-     * Obtiene el valor de la propiedad longitudeLoc.
+     * Gets the value of the longitudeLoc property.
      * 
      * @return
      *     possible object is
@@ -100,7 +100,7 @@ public class LocalizacionVO {
     }
 
     /**
-     * Define el valor de la propiedad longitudeLoc.
+     * Sets the value of the longitudeLoc property.
      * 
      * @param value
      *     allowed object is

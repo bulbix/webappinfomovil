@@ -7,9 +7,9 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Clase Java para visitasVO complex type.
+ * <p>Java class for visitasVO complex type.
  * 
- * <p>El siguiente fragmento de esquema especifica el contenido que se espera que haya en esta clase.
+ * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
  * &lt;complexType name="visitasVO">
@@ -49,7 +49,7 @@ public class VisitasVO {
     protected String resultado;
 
     /**
-     * Obtiene el valor de la propiedad descripcionVisitas.
+     * Gets the value of the descripcionVisitas property.
      * 
      * @return
      *     possible object is
@@ -61,7 +61,7 @@ public class VisitasVO {
     }
 
     /**
-     * Define el valor de la propiedad descripcionVisitas.
+     * Sets the value of the descripcionVisitas property.
      * 
      * @param value
      *     allowed object is
@@ -73,7 +73,7 @@ public class VisitasVO {
     }
 
     /**
-     * Obtiene el valor de la propiedad numeroFecha.
+     * Gets the value of the numeroFecha property.
      * 
      * @return
      *     possible object is
@@ -85,7 +85,7 @@ public class VisitasVO {
     }
 
     /**
-     * Define el valor de la propiedad numeroFecha.
+     * Sets the value of the numeroFecha property.
      * 
      * @param value
      *     allowed object is
@@ -97,7 +97,7 @@ public class VisitasVO {
     }
 
     /**
-     * Obtiene el valor de la propiedad visitas.
+     * Gets the value of the visitas property.
      * 
      * @return
      *     possible object is
@@ -109,7 +109,7 @@ public class VisitasVO {
     }
 
     /**
-     * Define el valor de la propiedad visitas.
+     * Sets the value of the visitas property.
      * 
      * @param value
      *     allowed object is
@@ -121,7 +121,7 @@ public class VisitasVO {
     }
 
     /**
-     * Obtiene el valor de la propiedad fecha.
+     * Gets the value of the fecha property.
      * 
      * @return
      *     possible object is
@@ -133,7 +133,7 @@ public class VisitasVO {
     }
 
     /**
-     * Define el valor de la propiedad fecha.
+     * Sets the value of the fecha property.
      * 
      * @param value
      *     allowed object is
@@ -145,7 +145,7 @@ public class VisitasVO {
     }
 
     /**
-     * Obtiene el valor de la propiedad token.
+     * Gets the value of the token property.
      * 
      * @return
      *     possible object is
@@ -157,7 +157,7 @@ public class VisitasVO {
     }
 
     /**
-     * Define el valor de la propiedad token.
+     * Sets the value of the token property.
      * 
      * @param value
      *     allowed object is
@@ -169,7 +169,7 @@ public class VisitasVO {
     }
 
     /**
-     * Obtiene el valor de la propiedad resultado.
+     * Gets the value of the resultado property.
      * 
      * @return
      *     possible object is
@@ -181,7 +181,7 @@ public class VisitasVO {
     }
 
     /**
-     * Define el valor de la propiedad resultado.
+     * Sets the value of the resultado property.
      * 
      * @param value
      *     allowed object is

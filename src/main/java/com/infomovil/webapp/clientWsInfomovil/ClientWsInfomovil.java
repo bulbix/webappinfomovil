@@ -152,7 +152,28 @@ public class ClientWsInfomovil {
 		
 	}
 
+	public RespuestaVO crearSitioGuardaImage(String domainId, String baseImagen, String tipoImagen, String descImagen)
+	{
+		log.info("Invoking crearSitioInsertImage...");
+	    com.infomovil.webapp.clientWsInfomovil.CrearSitioInsertImage _crearSitioInsertImage_parameters = new CrearSitioInsertImage();
+	    _crearSitioInsertImage_parameters.domainId = domainId;
+	    _crearSitioInsertImage_parameters.baseImagen = baseImagen;
+	    _crearSitioInsertImage_parameters.tipoImagen = tipoImagen;
+	    _crearSitioInsertImage_parameters.descImagen = descImagen;
+	    com.infomovil.webapp.clientWsInfomovil.CrearSitioInsertImageResponse _crearSitioInsertImage__return = port.crearSitioInsertImage(_crearSitioInsertImage_parameters);
+	    log.info("crearSitioInsertImage.result=" + _crearSitioInsertImage__return);
+	    return _crearSitioInsertImage__return.respuestaVO;
+    }
 
-
-
+	public RespuestaVO crearSitioEliminaImage(String domainId, String imageId)
+	{
+		log.info("Invoking crearSitioDeleteImage...");
+        com.infomovil.webapp.clientWsInfomovil.CrearSitioDeleteImage _crearSitioDeleteImage_parameters = new CrearSitioDeleteImage();
+        _crearSitioDeleteImage_parameters.domainId = domainId;
+        _crearSitioDeleteImage_parameters.imageId = imageId;
+        com.infomovil.webapp.clientWsInfomovil.CrearSitioDeleteImageResponse _crearSitioDeleteImage__return = port.crearSitioDeleteImage(_crearSitioDeleteImage_parameters);
+        log.info("crearSitioDeleteImage.result=" + _crearSitioDeleteImage__return);
+        
+        return _crearSitioDeleteImage__return.respuestaVO;
+	}
 }

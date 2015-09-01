@@ -8,9 +8,9 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Clase Java para statusDominio complex type.
+ * <p>Java class for statusDominio complex type.
  * 
- * <p>El siguiente fragmento de esquema especifica el contenido que se espera que haya en esta clase.
+ * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
  * &lt;complexType name="statusDominio">
@@ -40,7 +40,7 @@ public class StatusDominio {
     protected String email;
 
     /**
-     * Obtiene el valor de la propiedad domainId.
+     * Gets the value of the domainId property.
      * 
      * @return
      *     possible object is
@@ -52,7 +52,7 @@ public class StatusDominio {
     }
 
     /**
-     * Define el valor de la propiedad domainId.
+     * Sets the value of the domainId property.
      * 
      * @param value
      *     allowed object is
@@ -64,7 +64,7 @@ public class StatusDominio {
     }
 
     /**
-     * Obtiene el valor de la propiedad email.
+     * Gets the value of the email property.
      * 
      * @return
      *     possible object is
@@ -76,7 +76,7 @@ public class StatusDominio {
     }
 
     /**
-     * Define el valor de la propiedad email.
+     * Sets the value of the email property.
      * 
      * @param value
      *     allowed object is

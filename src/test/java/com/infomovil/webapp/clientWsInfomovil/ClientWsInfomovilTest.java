@@ -123,4 +123,17 @@ public class ClientWsInfomovilTest {
 		assertNotNull(resp);
 	}
 
+	@Test
+	public void testCrearSitioGuardarImage() {
+		RespuestaVO resp = clientWsInfomovil.crearSitioGuardaImage("1124", "asfafRasdftaeftetwetgewt", "IMAGEN", "descImagenTest");
+		System.out.println(resp);
+		assertNotNull(resp);
+	}
+	
+	@Test
+	public void testCrearSitioEliminarImage() {
+		RespuestaVO resp = clientWsInfomovil.crearSitioEliminaImage("1124", "2023");
+		System.out.println(resp);
+		assertNotNull(resp);
+	}
 }

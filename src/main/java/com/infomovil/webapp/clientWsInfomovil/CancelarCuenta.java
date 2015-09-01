@@ -8,9 +8,9 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Clase Java para cancelarCuenta complex type.
+ * <p>Java class for cancelarCuenta complex type.
  * 
- * <p>El siguiente fragmento de esquema especifica el contenido que se espera que haya en esta clase.
+ * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
  * &lt;complexType name="cancelarCuenta">
@@ -52,7 +52,7 @@ public class CancelarCuenta {
     protected String token;
 
     /**
-     * Obtiene el valor de la propiedad domain.
+     * Gets the value of the domain property.
      * 
      * @return
      *     possible object is
@@ -64,7 +64,7 @@ public class CancelarCuenta {
     }
 
     /**
-     * Define el valor de la propiedad domain.
+     * Sets the value of the domain property.
      * 
      * @param value
      *     allowed object is
@@ -76,7 +76,7 @@ public class CancelarCuenta {
     }
 
     /**
-     * Obtiene el valor de la propiedad usuario.
+     * Gets the value of the usuario property.
      * 
      * @return
      *     possible object is
@@ -88,7 +88,7 @@ public class CancelarCuenta {
     }
 
     /**
-     * Define el valor de la propiedad usuario.
+     * Sets the value of the usuario property.
      * 
      * @param value
      *     allowed object is
@@ -100,7 +100,7 @@ public class CancelarCuenta {
     }
 
     /**
-     * Obtiene el valor de la propiedad descripcion.
+     * Gets the value of the descripcion property.
      * 
      * @return
      *     possible object is
@@ -112,7 +112,7 @@ public class CancelarCuenta {
     }
 
     /**
-     * Define el valor de la propiedad descripcion.
+     * Sets the value of the descripcion property.
      * 
      * @param value
      *     allowed object is
@@ -124,7 +124,7 @@ public class CancelarCuenta {
     }
 
     /**
-     * Obtiene el valor de la propiedad password.
+     * Gets the value of the password property.
      * 
      * @return
      *     possible object is
@@ -136,7 +136,7 @@ public class CancelarCuenta {
     }
 
     /**
-     * Define el valor de la propiedad password.
+     * Sets the value of the password property.
      * 
      * @param value
      *     allowed object is
@@ -148,7 +148,7 @@ public class CancelarCuenta {
     }
 
     /**
-     * Obtiene el valor de la propiedad token.
+     * Gets the value of the token property.
      * 
      * @return
      *     possible object is
@@ -160,7 +160,7 @@ public class CancelarCuenta {
     }
 
     /**
-     * Define el valor de la propiedad token.
+     * Sets the value of the token property.
      * 
      * @param value
      *     allowed object is

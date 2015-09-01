@@ -8,12 +8,12 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java class for createDomainResponse complex type.
+ * <p>Java class for crearSitio_deleteImageResponse complex type.
  * 
  * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
- * &lt;complexType name="createDomainResponse">
+ * &lt;complexType name="crearSitio_deleteImageResponse">
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
@@ -27,12 +27,12 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "createDomainResponse", propOrder = {
+@XmlType(name = "crearSitio_deleteImageResponse", propOrder = {
     "respuestaVO"
 })
-public class CreateDomainResponse {
+public class CrearSitioDeleteImageResponse {
 
-    @XmlElement(name = "RespuestaVO", namespace = "http://ws.webservice.infomovil.org/")
+    @XmlElement(name = "RespuestaVO")
     protected RespuestaVO respuestaVO;
 
     /**

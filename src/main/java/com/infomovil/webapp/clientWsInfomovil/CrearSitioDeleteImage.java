@@ -3,22 +3,21 @@ package com.infomovil.webapp.clientWsInfomovil;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java class for cerrarSession complex type.
+ * <p>Java class for crearSitio_deleteImage complex type.
  * 
  * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
- * &lt;complexType name="cerrarSession">
+ * &lt;complexType name="crearSitio_deleteImage">
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element name="email" type="{http://www.w3.org/2001/XMLSchema}string"/>
- *         &lt;element name="token" type="{http://www.w3.org/2001/XMLSchema}string"/>
+ *         &lt;element name="domainId" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *         &lt;element name="imageId" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -28,63 +27,61 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "cerrarSession", propOrder = {
-    "email",
-    "token"
+@XmlType(name = "crearSitio_deleteImage", propOrder = {
+    "domainId",
+    "imageId"
 })
-public class CerrarSession {
+public class CrearSitioDeleteImage {
 
-    @XmlElement(required = true)
-    protected String email;
-    @XmlElement(required = true)
-    protected String token;
+    protected String domainId;
+    protected String imageId;
 
     /**
-     * Gets the value of the email property.
+     * Gets the value of the domainId property.
      * 
      * @return
      *     possible object is
      *     {@link String }
      *     
      */
-    public String getEmail() {
-        return email;
+    public String getDomainId() {
+        return domainId;
     }
 
     /**
-     * Sets the value of the email property.
+     * Sets the value of the domainId property.
      * 
      * @param value
      *     allowed object is
      *     {@link String }
      *     
      */
-    public void setEmail(String value) {
-        this.email = value;
+    public void setDomainId(String value) {
+        this.domainId = value;
     }
 
     /**
-     * Gets the value of the token property.
+     * Gets the value of the imageId property.
      * 
      * @return
      *     possible object is
      *     {@link String }
      *     
      */
-    public String getToken() {
-        return token;
+    public String getImageId() {
+        return imageId;
     }
 
     /**
-     * Sets the value of the token property.
+     * Sets the value of the imageId property.
      * 
      * @param value
      *     allowed object is
      *     {@link String }
      *     
      */
-    public void setToken(String value) {
-        this.token = value;
+    public void setImageId(String value) {
+        this.imageId = value;
     }
 
 }

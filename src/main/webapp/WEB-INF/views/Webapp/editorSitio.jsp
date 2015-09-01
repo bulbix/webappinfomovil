@@ -344,6 +344,7 @@
 		</script>
 		
 		<script>
+		
 			$("#nombreDominioRec").keyup(function () {
 				var value = $(this).val().replace(/[^A-Za-z0-9_-]/g, "");
 				$("#nombreDominioRec").val($("#nombreDominioRec").val().replace(/[^A-Za-z0-9_-]/g, ""));
@@ -352,6 +353,16 @@
 		   			 $("#idCatTipoRecAutocompleta").text("mi-pagina");
 		   		 }
 		 	 });
+
+			$("#nombreDominioBusqueda").keyup(function () {
+				var value = $(this).val().replace(/[^A-Za-z0-9_-]/g, "");
+				$("#nombreDominioBusqueda").val($("#nombreDominioBusqueda").val().replace(/[^A-Za-z0-9_-]/g, ""));
+		   		 $("#idCatTipoRecAutocompletaTel").text(value);
+		   		 if(value.length ==0){
+		   			 $("#idCatTipoRecAutocompletaTel").text("mi-pagina");
+		   		 }
+		 	 });
+			
 		</script>
 
 		<script>

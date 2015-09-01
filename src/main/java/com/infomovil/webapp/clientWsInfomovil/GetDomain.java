@@ -7,9 +7,9 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Clase Java para getDomain complex type.
+ * <p>Java class for getDomain complex type.
  * 
- * <p>El siguiente fragmento de esquema especifica el contenido que se espera que haya en esta clase.
+ * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
  * &lt;complexType name="getDomain">
@@ -61,7 +61,7 @@ public class GetDomain {
     protected String versionSistema;
 
     /**
-     * Obtiene el valor de la propiedad email.
+     * Gets the value of the email property.
      * 
      * @return
      *     possible object is
@@ -73,7 +73,7 @@ public class GetDomain {
     }
 
     /**
-     * Define el valor de la propiedad email.
+     * Sets the value of the email property.
      * 
      * @param value
      *     allowed object is
@@ -85,7 +85,7 @@ public class GetDomain {
     }
 
     /**
-     * Obtiene el valor de la propiedad password.
+     * Gets the value of the password property.
      * 
      * @return
      *     possible object is
@@ -97,7 +97,7 @@ public class GetDomain {
     }
 
     /**
-     * Define el valor de la propiedad password.
+     * Sets the value of the password property.
      * 
      * @param value
      *     allowed object is
@@ -109,7 +109,7 @@ public class GetDomain {
     }
 
     /**
-     * Obtiene el valor de la propiedad tipoDispositivo.
+     * Gets the value of the tipoDispositivo property.
      * 
      * @return
      *     possible object is
@@ -121,7 +121,7 @@ public class GetDomain {
     }
 
     /**
-     * Define el valor de la propiedad tipoDispositivo.
+     * Sets the value of the tipoDispositivo property.
      * 
      * @param value
      *     allowed object is
@@ -133,7 +133,7 @@ public class GetDomain {
     }
 
     /**
-     * Obtiene el valor de la propiedad sistema.
+     * Gets the value of the sistema property.
      * 
      * @return
      *     possible object is
@@ -145,7 +145,7 @@ public class GetDomain {
     }
 
     /**
-     * Define el valor de la propiedad sistema.
+     * Sets the value of the sistema property.
      * 
      * @param value
      *     allowed object is
@@ -157,7 +157,7 @@ public class GetDomain {
     }
 
     /**
-     * Obtiene el valor de la propiedad notificacion.
+     * Gets the value of the notificacion property.
      * 
      * @return
      *     possible object is
@@ -169,7 +169,7 @@ public class GetDomain {
     }
 
     /**
-     * Define el valor de la propiedad notificacion.
+     * Sets the value of the notificacion property.
      * 
      * @param value
      *     allowed object is
@@ -181,7 +181,7 @@ public class GetDomain {
     }
 
     /**
-     * Obtiene el valor de la propiedad redSocial.
+     * Gets the value of the redSocial property.
      * 
      * @return
      *     possible object is
@@ -193,7 +193,7 @@ public class GetDomain {
     }
 
     /**
-     * Define el valor de la propiedad redSocial.
+     * Sets the value of the redSocial property.
      * 
      * @param value
      *     allowed object is
@@ -205,7 +205,7 @@ public class GetDomain {
     }
 
     /**
-     * Obtiene el valor de la propiedad suscrito.
+     * Gets the value of the suscrito property.
      * 
      * @return
      *     possible object is
@@ -217,7 +217,7 @@ public class GetDomain {
     }
 
     /**
-     * Define el valor de la propiedad suscrito.
+     * Sets the value of the suscrito property.
      * 
      * @param value
      *     allowed object is
@@ -229,7 +229,7 @@ public class GetDomain {
     }
 
     /**
-     * Obtiene el valor de la propiedad tipoPlan.
+     * Gets the value of the tipoPlan property.
      * 
      * @return
      *     possible object is
@@ -241,7 +241,7 @@ public class GetDomain {
     }
 
     /**
-     * Define el valor de la propiedad tipoPlan.
+     * Sets the value of the tipoPlan property.
      * 
      * @param value
      *     allowed object is
@@ -253,7 +253,7 @@ public class GetDomain {
     }
 
     /**
-     * Obtiene el valor de la propiedad medioPago.
+     * Gets the value of the medioPago property.
      * 
      * @return
      *     possible object is
@@ -265,7 +265,7 @@ public class GetDomain {
     }
 
     /**
-     * Define el valor de la propiedad medioPago.
+     * Sets the value of the medioPago property.
      * 
      * @param value
      *     allowed object is
@@ -277,7 +277,7 @@ public class GetDomain {
     }
 
     /**
-     * Obtiene el valor de la propiedad versionSistema.
+     * Gets the value of the versionSistema property.
      * 
      * @return
      *     possible object is
@@ -289,7 +289,7 @@ public class GetDomain {
     }
 
     /**
-     * Define el valor de la propiedad versionSistema.
+     * Sets the value of the versionSistema property.
      * 
      * @param value
      *     allowed object is

@@ -10,9 +10,9 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Clase Java para updateRecordNaptr complex type.
+ * <p>Java class for updateRecordNaptr complex type.
  * 
- * <p>El siguiente fragmento de esquema especifica el contenido que se espera que haya en esta clase.
+ * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
  * &lt;complexType name="updateRecordNaptr">
@@ -45,7 +45,7 @@ public class UpdateRecordNaptr {
     protected String token;
 
     /**
-     * Obtiene el valor de la propiedad domainId.
+     * Gets the value of the domainId property.
      * 
      * @return
      *     possible object is
@@ -57,7 +57,7 @@ public class UpdateRecordNaptr {
     }
 
     /**
-     * Define el valor de la propiedad domainId.
+     * Sets the value of the domainId property.
      * 
      * @param value
      *     allowed object is
@@ -98,7 +98,7 @@ public class UpdateRecordNaptr {
     }
 
     /**
-     * Obtiene el valor de la propiedad token.
+     * Gets the value of the token property.
      * 
      * @return
      *     possible object is
@@ -110,7 +110,7 @@ public class UpdateRecordNaptr {
     }
 
     /**
-     * Define el valor de la propiedad token.
+     * Sets the value of the token property.
      * 
      * @param value
      *     allowed object is

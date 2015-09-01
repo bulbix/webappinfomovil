@@ -7,9 +7,9 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Clase Java para statusDomainVO complex type.
+ * <p>Java class for statusDomainVO complex type.
  * 
- * <p>El siguiente fragmento de esquema especifica el contenido que se espera que haya en esta clase.
+ * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
  * &lt;complexType name="statusDomainVO">
@@ -40,7 +40,7 @@ public class StatusDomainVO {
     protected String descripcionItem;
 
     /**
-     * Obtiene el valor de la propiedad fechaExpiracion.
+     * Gets the value of the fechaExpiracion property.
      * 
      * @return
      *     possible object is
@@ -52,7 +52,7 @@ public class StatusDomainVO {
     }
 
     /**
-     * Define el valor de la propiedad fechaExpiracion.
+     * Sets the value of the fechaExpiracion property.
      * 
      * @param value
      *     allowed object is
@@ -64,7 +64,7 @@ public class StatusDomainVO {
     }
 
     /**
-     * Obtiene el valor de la propiedad status.
+     * Gets the value of the status property.
      * 
      * @return
      *     possible object is
@@ -76,7 +76,7 @@ public class StatusDomainVO {
     }
 
     /**
-     * Define el valor de la propiedad status.
+     * Sets the value of the status property.
      * 
      * @param value
      *     allowed object is
@@ -88,7 +88,7 @@ public class StatusDomainVO {
     }
 
     /**
-     * Obtiene el valor de la propiedad descripcionItem.
+     * Gets the value of the descripcionItem property.
      * 
      * @return
      *     possible object is
@@ -100,7 +100,7 @@ public class StatusDomainVO {
     }
 
     /**
-     * Define el valor de la propiedad descripcionItem.
+     * Sets the value of the descripcionItem property.
      * 
      * @param value
      *     allowed object is

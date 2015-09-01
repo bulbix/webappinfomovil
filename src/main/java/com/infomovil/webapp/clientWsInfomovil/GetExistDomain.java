@@ -7,9 +7,9 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Clase Java para getExistDomain complex type.
+ * <p>Java class for getExistDomain complex type.
  * 
- * <p>El siguiente fragmento de esquema especifica el contenido que se espera que haya en esta clase.
+ * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
  * &lt;complexType name="getExistDomain">
@@ -37,7 +37,7 @@ public class GetExistDomain {
     protected String domainType;
 
     /**
-     * Obtiene el valor de la propiedad domainName.
+     * Gets the value of the domainName property.
      * 
      * @return
      *     possible object is
@@ -49,7 +49,7 @@ public class GetExistDomain {
     }
 
     /**
-     * Define el valor de la propiedad domainName.
+     * Sets the value of the domainName property.
      * 
      * @param value
      *     allowed object is
@@ -61,7 +61,7 @@ public class GetExistDomain {
     }
 
     /**
-     * Obtiene el valor de la propiedad domainType.
+     * Gets the value of the domainType property.
      * 
      * @return
      *     possible object is
@@ -73,7 +73,7 @@ public class GetExistDomain {
     }
 
     /**
-     * Define el valor de la propiedad domainType.
+     * Sets the value of the domainType property.
      * 
      * @param value
      *     allowed object is

@@ -7,18 +7,19 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java class for deleteImage complex type.
+ * <p>Java class for crearSitio_insertImage complex type.
  * 
  * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
- * &lt;complexType name="deleteImage">
+ * &lt;complexType name="crearSitio_insertImage">
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
  *         &lt;element name="domainId" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
- *         &lt;element name="imageId" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
- *         &lt;element name="token" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *         &lt;element name="baseImagen" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *         &lt;element name="tipoImagen" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *         &lt;element name="descImagen" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -28,16 +29,18 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "deleteImage", propOrder = {
+@XmlType(name = "crearSitio_insertImage", propOrder = {
     "domainId",
-    "imageId",
-    "token"
+    "baseImagen",
+    "tipoImagen",
+    "descImagen"
 })
-public class DeleteImage {
+public class CrearSitioInsertImage {
 
     protected String domainId;
-    protected String imageId;
-    protected String token;
+    protected String baseImagen;
+    protected String tipoImagen;
+    protected String descImagen;
 
     /**
      * Gets the value of the domainId property.
@@ -64,51 +67,75 @@ public class DeleteImage {
     }
 
     /**
-     * Gets the value of the imageId property.
+     * Gets the value of the baseImagen property.
      * 
      * @return
      *     possible object is
      *     {@link String }
      *     
      */
-    public String getImageId() {
-        return imageId;
+    public String getBaseImagen() {
+        return baseImagen;
     }
 
     /**
-     * Sets the value of the imageId property.
+     * Sets the value of the baseImagen property.
      * 
      * @param value
      *     allowed object is
      *     {@link String }
      *     
      */
-    public void setImageId(String value) {
-        this.imageId = value;
+    public void setBaseImagen(String value) {
+        this.baseImagen = value;
     }
 
     /**
-     * Gets the value of the token property.
+     * Gets the value of the tipoImagen property.
      * 
      * @return
      *     possible object is
      *     {@link String }
      *     
      */
-    public String getToken() {
-        return token;
+    public String getTipoImagen() {
+        return tipoImagen;
     }
 
     /**
-     * Sets the value of the token property.
+     * Sets the value of the tipoImagen property.
      * 
      * @param value
      *     allowed object is
      *     {@link String }
      *     
      */
-    public void setToken(String value) {
-        this.token = value;
+    public void setTipoImagen(String value) {
+        this.tipoImagen = value;
+    }
+
+    /**
+     * Gets the value of the descImagen property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getDescImagen() {
+        return descImagen;
+    }
+
+    /**
+     * Sets the value of the descImagen property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setDescImagen(String value) {
+        this.descImagen = value;
     }
 
 }

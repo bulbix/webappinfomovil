@@ -8,9 +8,9 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Clase Java para domainVO complex type.
+ * <p>Java class for domainVO complex type.
  * 
- * <p>El siguiente fragmento de esquema especifica el contenido que se espera que haya en esta clase.
+ * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
  * &lt;complexType name="domainVO">
@@ -59,7 +59,7 @@ public class DomainVO {
     protected String template;
 
     /**
-     * Obtiene el valor de la propiedad backGroundImage.
+     * Gets the value of the backGroundImage property.
      * 
      * @return
      *     possible object is
@@ -71,7 +71,7 @@ public class DomainVO {
     }
 
     /**
-     * Define el valor de la propiedad backGroundImage.
+     * Sets the value of the backGroundImage property.
      * 
      * @param value
      *     allowed object is
@@ -83,7 +83,7 @@ public class DomainVO {
     }
 
     /**
-     * Obtiene el valor de la propiedad colour.
+     * Gets the value of the colour property.
      * 
      * @return
      *     possible object is
@@ -95,7 +95,7 @@ public class DomainVO {
     }
 
     /**
-     * Define el valor de la propiedad colour.
+     * Sets the value of the colour property.
      * 
      * @param value
      *     allowed object is
@@ -107,7 +107,7 @@ public class DomainVO {
     }
 
     /**
-     * Obtiene el valor de la propiedad displayString.
+     * Gets the value of the displayString property.
      * 
      * @return
      *     possible object is
@@ -119,7 +119,7 @@ public class DomainVO {
     }
 
     /**
-     * Define el valor de la propiedad displayString.
+     * Sets the value of the displayString property.
      * 
      * @param value
      *     allowed object is
@@ -131,7 +131,7 @@ public class DomainVO {
     }
 
     /**
-     * Obtiene el valor de la propiedad textRecord.
+     * Gets the value of the textRecord property.
      * 
      * @return
      *     possible object is
@@ -143,7 +143,7 @@ public class DomainVO {
     }
 
     /**
-     * Define el valor de la propiedad textRecord.
+     * Sets the value of the textRecord property.
      * 
      * @param value
      *     allowed object is
@@ -155,7 +155,7 @@ public class DomainVO {
     }
 
     /**
-     * Obtiene el valor de la propiedad domainName.
+     * Gets the value of the domainName property.
      * 
      * @return
      *     possible object is
@@ -167,7 +167,7 @@ public class DomainVO {
     }
 
     /**
-     * Define el valor de la propiedad domainName.
+     * Sets the value of the domainName property.
      * 
      * @param value
      *     allowed object is
@@ -179,7 +179,7 @@ public class DomainVO {
     }
 
     /**
-     * Obtiene el valor de la propiedad textDomain.
+     * Gets the value of the textDomain property.
      * 
      * @return
      *     possible object is
@@ -191,7 +191,7 @@ public class DomainVO {
     }
 
     /**
-     * Define el valor de la propiedad textDomain.
+     * Sets the value of the textDomain property.
      * 
      * @param value
      *     allowed object is
@@ -203,7 +203,7 @@ public class DomainVO {
     }
 
     /**
-     * Obtiene el valor de la propiedad template.
+     * Gets the value of the template property.
      * 
      * @return
      *     possible object is
@@ -215,7 +215,7 @@ public class DomainVO {
     }
 
     /**
-     * Define el valor de la propiedad template.
+     * Sets the value of the template property.
      * 
      * @param value
      *     allowed object is

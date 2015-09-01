@@ -8,9 +8,9 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Clase Java para updateInserLocRecord complex type.
+ * <p>Java class for updateInserLocRecord complex type.
  * 
- * <p>El siguiente fragmento de esquema especifica el contenido que se espera que haya en esta clase.
+ * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
  * &lt;complexType name="updateInserLocRecord">
@@ -42,7 +42,7 @@ public class UpdateInserLocRecord {
     protected String token;
 
     /**
-     * Obtiene el valor de la propiedad domainId.
+     * Gets the value of the domainId property.
      * 
      * @return
      *     possible object is
@@ -54,7 +54,7 @@ public class UpdateInserLocRecord {
     }
 
     /**
-     * Define el valor de la propiedad domainId.
+     * Sets the value of the domainId property.
      * 
      * @param value
      *     allowed object is
@@ -66,7 +66,7 @@ public class UpdateInserLocRecord {
     }
 
     /**
-     * Obtiene el valor de la propiedad localizacionVO.
+     * Gets the value of the localizacionVO property.
      * 
      * @return
      *     possible object is
@@ -78,7 +78,7 @@ public class UpdateInserLocRecord {
     }
 
     /**
-     * Define el valor de la propiedad localizacionVO.
+     * Sets the value of the localizacionVO property.
      * 
      * @param value
      *     allowed object is
@@ -90,7 +90,7 @@ public class UpdateInserLocRecord {
     }
 
     /**
-     * Obtiene el valor de la propiedad token.
+     * Gets the value of the token property.
      * 
      * @return
      *     possible object is
@@ -102,7 +102,7 @@ public class UpdateInserLocRecord {
     }
 
     /**
-     * Define el valor de la propiedad token.
+     * Sets the value of the token property.
      * 
      * @param value
      *     allowed object is

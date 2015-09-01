@@ -7,9 +7,9 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Clase Java para catalogo complex type.
+ * <p>Java class for catalogo complex type.
  * 
- * <p>El siguiente fragmento de esquema especifica el contenido que se espera que haya en esta clase.
+ * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
  * &lt;complexType name="catalogo">
@@ -37,7 +37,7 @@ public class Catalogo {
     protected String descripcion;
 
     /**
-     * Obtiene el valor de la propiedad id.
+     * Gets the value of the id property.
      * 
      * @return
      *     possible object is
@@ -49,7 +49,7 @@ public class Catalogo {
     }
 
     /**
-     * Define el valor de la propiedad id.
+     * Sets the value of the id property.
      * 
      * @param value
      *     allowed object is
@@ -61,7 +61,7 @@ public class Catalogo {
     }
 
     /**
-     * Obtiene el valor de la propiedad descripcion.
+     * Gets the value of the descripcion property.
      * 
      * @return
      *     possible object is
@@ -73,7 +73,7 @@ public class Catalogo {
     }
 
     /**
-     * Define el valor de la propiedad descripcion.
+     * Sets the value of the descripcion property.
      * 
      * @param value
      *     allowed object is

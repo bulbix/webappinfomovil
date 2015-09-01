@@ -8,9 +8,9 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Clase Java para cambiaNombreRecurso complex type.
+ * <p>Java class for cambiaNombreRecurso complex type.
  * 
- * <p>El siguiente fragmento de esquema especifica el contenido que se espera que haya en esta clase.
+ * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
  * &lt;complexType name="cambiaNombreRecurso">
@@ -48,7 +48,7 @@ public class CambiaNombreRecurso {
     protected String email;
 
     /**
-     * Obtiene el valor de la propiedad domain.
+     * Gets the value of the domain property.
      * 
      * @return
      *     possible object is
@@ -60,7 +60,7 @@ public class CambiaNombreRecurso {
     }
 
     /**
-     * Define el valor de la propiedad domain.
+     * Sets the value of the domain property.
      * 
      * @param value
      *     allowed object is
@@ -72,7 +72,7 @@ public class CambiaNombreRecurso {
     }
 
     /**
-     * Obtiene el valor de la propiedad domainId.
+     * Gets the value of the domainId property.
      * 
      * @return
      *     possible object is
@@ -84,7 +84,7 @@ public class CambiaNombreRecurso {
     }
 
     /**
-     * Define el valor de la propiedad domainId.
+     * Sets the value of the domainId property.
      * 
      * @param value
      *     allowed object is
@@ -96,7 +96,7 @@ public class CambiaNombreRecurso {
     }
 
     /**
-     * Obtiene el valor de la propiedad recursoId.
+     * Gets the value of the recursoId property.
      * 
      * @return
      *     possible object is
@@ -108,7 +108,7 @@ public class CambiaNombreRecurso {
     }
 
     /**
-     * Define el valor de la propiedad recursoId.
+     * Sets the value of the recursoId property.
      * 
      * @param value
      *     allowed object is
@@ -120,7 +120,7 @@ public class CambiaNombreRecurso {
     }
 
     /**
-     * Obtiene el valor de la propiedad email.
+     * Gets the value of the email property.
      * 
      * @return
      *     possible object is
@@ -132,7 +132,7 @@ public class CambiaNombreRecurso {
     }
 
     /**
-     * Define el valor de la propiedad email.
+     * Sets the value of the email property.
      * 
      * @param value
      *     allowed object is

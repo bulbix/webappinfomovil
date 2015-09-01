@@ -10,9 +10,9 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Clase Java para insertKeywordDataAddress complex type.
+ * <p>Java class for insertKeywordDataAddress complex type.
  * 
- * <p>El siguiente fragmento de esquema especifica el contenido que se espera que haya en esta clase.
+ * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
  * &lt;complexType name="insertKeywordDataAddress">
@@ -73,7 +73,7 @@ public class InsertKeywordDataAddress {
     }
 
     /**
-     * Obtiene el valor de la propiedad idDomain.
+     * Gets the value of the idDomain property.
      * 
      * @return
      *     possible object is
@@ -85,7 +85,7 @@ public class InsertKeywordDataAddress {
     }
 
     /**
-     * Define el valor de la propiedad idDomain.
+     * Sets the value of the idDomain property.
      * 
      * @param value
      *     allowed object is
@@ -97,7 +97,7 @@ public class InsertKeywordDataAddress {
     }
 
     /**
-     * Obtiene el valor de la propiedad token.
+     * Gets the value of the token property.
      * 
      * @return
      *     possible object is
@@ -109,7 +109,7 @@ public class InsertKeywordDataAddress {
     }
 
     /**
-     * Define el valor de la propiedad token.
+     * Sets the value of the token property.
      * 
      * @param value
      *     allowed object is

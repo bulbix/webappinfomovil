@@ -7,9 +7,9 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Clase Java para infoUsuarioVO complex type.
+ * <p>Java class for infoUsuarioVO complex type.
  * 
- * <p>El siguiente fragmento de esquema especifica el contenido que se espera que haya en esta clase.
+ * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
  * &lt;complexType name="infoUsuarioVO">
@@ -67,7 +67,7 @@ public class InfoUsuarioVO {
     protected String nameEmpresa;
 
     /**
-     * Obtiene el valor de la propiedad pais.
+     * Gets the value of the pais property.
      * 
      * @return
      *     possible object is
@@ -79,7 +79,7 @@ public class InfoUsuarioVO {
     }
 
     /**
-     * Define el valor de la propiedad pais.
+     * Sets the value of the pais property.
      * 
      * @param value
      *     allowed object is
@@ -91,7 +91,7 @@ public class InfoUsuarioVO {
     }
 
     /**
-     * Obtiene el valor de la propiedad estado.
+     * Gets the value of the estado property.
      * 
      * @return
      *     possible object is
@@ -103,7 +103,7 @@ public class InfoUsuarioVO {
     }
 
     /**
-     * Define el valor de la propiedad estado.
+     * Sets the value of the estado property.
      * 
      * @param value
      *     allowed object is
@@ -115,7 +115,7 @@ public class InfoUsuarioVO {
     }
 
     /**
-     * Obtiene el valor de la propiedad poblacion.
+     * Gets the value of the poblacion property.
      * 
      * @return
      *     possible object is
@@ -127,7 +127,7 @@ public class InfoUsuarioVO {
     }
 
     /**
-     * Define el valor de la propiedad poblacion.
+     * Sets the value of the poblacion property.
      * 
      * @param value
      *     allowed object is
@@ -139,7 +139,7 @@ public class InfoUsuarioVO {
     }
 
     /**
-     * Obtiene el valor de la propiedad ciudad.
+     * Gets the value of the ciudad property.
      * 
      * @return
      *     possible object is
@@ -151,7 +151,7 @@ public class InfoUsuarioVO {
     }
 
     /**
-     * Define el valor de la propiedad ciudad.
+     * Sets the value of the ciudad property.
      * 
      * @param value
      *     allowed object is
@@ -163,7 +163,7 @@ public class InfoUsuarioVO {
     }
 
     /**
-     * Obtiene el valor de la propiedad cp.
+     * Gets the value of the cp property.
      * 
      * @return
      *     possible object is
@@ -175,7 +175,7 @@ public class InfoUsuarioVO {
     }
 
     /**
-     * Define el valor de la propiedad cp.
+     * Sets the value of the cp property.
      * 
      * @param value
      *     allowed object is
@@ -187,7 +187,7 @@ public class InfoUsuarioVO {
     }
 
     /**
-     * Obtiene el valor de la propiedad nombre.
+     * Gets the value of the nombre property.
      * 
      * @return
      *     possible object is
@@ -199,7 +199,7 @@ public class InfoUsuarioVO {
     }
 
     /**
-     * Define el valor de la propiedad nombre.
+     * Sets the value of the nombre property.
      * 
      * @param value
      *     allowed object is
@@ -211,7 +211,7 @@ public class InfoUsuarioVO {
     }
 
     /**
-     * Obtiene el valor de la propiedad correo.
+     * Gets the value of the correo property.
      * 
      * @return
      *     possible object is
@@ -223,7 +223,7 @@ public class InfoUsuarioVO {
     }
 
     /**
-     * Define el valor de la propiedad correo.
+     * Sets the value of the correo property.
      * 
      * @param value
      *     allowed object is
@@ -235,7 +235,7 @@ public class InfoUsuarioVO {
     }
 
     /**
-     * Obtiene el valor de la propiedad tel.
+     * Gets the value of the tel property.
      * 
      * @return
      *     possible object is
@@ -247,7 +247,7 @@ public class InfoUsuarioVO {
     }
 
     /**
-     * Define el valor de la propiedad tel.
+     * Sets the value of the tel property.
      * 
      * @param value
      *     allowed object is
@@ -259,7 +259,7 @@ public class InfoUsuarioVO {
     }
 
     /**
-     * Obtiene el valor de la propiedad calleNum.
+     * Gets the value of the calleNum property.
      * 
      * @return
      *     possible object is
@@ -271,7 +271,7 @@ public class InfoUsuarioVO {
     }
 
     /**
-     * Define el valor de la propiedad calleNum.
+     * Sets the value of the calleNum property.
      * 
      * @param value
      *     allowed object is
@@ -283,7 +283,7 @@ public class InfoUsuarioVO {
     }
 
     /**
-     * Obtiene el valor de la propiedad userName.
+     * Gets the value of the userName property.
      * 
      * @return
      *     possible object is
@@ -295,7 +295,7 @@ public class InfoUsuarioVO {
     }
 
     /**
-     * Define el valor de la propiedad userName.
+     * Sets the value of the userName property.
      * 
      * @param value
      *     allowed object is
@@ -307,7 +307,7 @@ public class InfoUsuarioVO {
     }
 
     /**
-     * Obtiene el valor de la propiedad canal.
+     * Gets the value of the canal property.
      * 
      * @return
      *     possible object is
@@ -319,7 +319,7 @@ public class InfoUsuarioVO {
     }
 
     /**
-     * Define el valor de la propiedad canal.
+     * Sets the value of the canal property.
      * 
      * @param value
      *     allowed object is
@@ -331,7 +331,7 @@ public class InfoUsuarioVO {
     }
 
     /**
-     * Obtiene el valor de la propiedad nameEmpresa.
+     * Gets the value of the nameEmpresa property.
      * 
      * @return
      *     possible object is
@@ -343,7 +343,7 @@ public class InfoUsuarioVO {
     }
 
     /**
-     * Define el valor de la propiedad nameEmpresa.
+     * Sets the value of the nameEmpresa property.
      * 
      * @param value
      *     allowed object is

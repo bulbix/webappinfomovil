@@ -10,9 +10,9 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Clase Java para getNumVisitas complex type.
+ * <p>Java class for getNumVisitas complex type.
  * 
- * <p>El siguiente fragmento de esquema especifica el contenido que se espera que haya en esta clase.
+ * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
  * &lt;complexType name="getNumVisitas">
@@ -45,7 +45,7 @@ public class GetNumVisitas {
     protected String token;
 
     /**
-     * Obtiene el valor de la propiedad domain.
+     * Gets the value of the domain property.
      * 
      * @return
      *     possible object is
@@ -57,7 +57,7 @@ public class GetNumVisitas {
     }
 
     /**
-     * Define el valor de la propiedad domain.
+     * Sets the value of the domain property.
      * 
      * @param value
      *     allowed object is
@@ -98,7 +98,7 @@ public class GetNumVisitas {
     }
 
     /**
-     * Obtiene el valor de la propiedad token.
+     * Gets the value of the token property.
      * 
      * @return
      *     possible object is
@@ -110,7 +110,7 @@ public class GetNumVisitas {
     }
 
     /**
-     * Define el valor de la propiedad token.
+     * Sets the value of the token property.
      * 
      * @param value
      *     allowed object is

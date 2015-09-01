@@ -8,9 +8,9 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Clase Java para insertUserDomain1Response complex type.
+ * <p>Java class for insertUserDomain1Response complex type.
  * 
- * <p>El siguiente fragmento de esquema especifica el contenido que se espera que haya en esta clase.
+ * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
  * &lt;complexType name="insertUserDomain1Response">
@@ -36,7 +36,7 @@ public class InsertUserDomain1Response {
     protected RespuestaVO respuestaVO;
 
     /**
-     * Obtiene el valor de la propiedad respuestaVO.
+     * Gets the value of the respuestaVO property.
      * 
      * @return
      *     possible object is
@@ -48,7 +48,7 @@ public class InsertUserDomain1Response {
     }
 
     /**
-     * Define el valor de la propiedad respuestaVO.
+     * Sets the value of the respuestaVO property.
      * 
      * @param value
      *     allowed object is

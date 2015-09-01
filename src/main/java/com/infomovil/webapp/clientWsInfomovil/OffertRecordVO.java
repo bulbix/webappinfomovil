@@ -7,9 +7,9 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Clase Java para offertRecordVO complex type.
+ * <p>Java class for offertRecordVO complex type.
  * 
- * <p>El siguiente fragmento de esquema especifica el contenido que se espera que haya en esta clase.
+ * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
  * &lt;complexType name="offertRecordVO">
@@ -64,7 +64,7 @@ public class OffertRecordVO {
     protected String urlImage;
 
     /**
-     * Obtiene el valor de la propiedad titleOffer.
+     * Gets the value of the titleOffer property.
      * 
      * @return
      *     possible object is
@@ -76,7 +76,7 @@ public class OffertRecordVO {
     }
 
     /**
-     * Define el valor de la propiedad titleOffer.
+     * Sets the value of the titleOffer property.
      * 
      * @param value
      *     allowed object is
@@ -88,7 +88,7 @@ public class OffertRecordVO {
     }
 
     /**
-     * Obtiene el valor de la propiedad descOffer.
+     * Gets the value of the descOffer property.
      * 
      * @return
      *     possible object is
@@ -100,7 +100,7 @@ public class OffertRecordVO {
     }
 
     /**
-     * Define el valor de la propiedad descOffer.
+     * Sets the value of the descOffer property.
      * 
      * @param value
      *     allowed object is
@@ -112,7 +112,7 @@ public class OffertRecordVO {
     }
 
     /**
-     * Obtiene el valor de la propiedad termsOffer.
+     * Gets the value of the termsOffer property.
      * 
      * @return
      *     possible object is
@@ -124,7 +124,7 @@ public class OffertRecordVO {
     }
 
     /**
-     * Define el valor de la propiedad termsOffer.
+     * Sets the value of the termsOffer property.
      * 
      * @param value
      *     allowed object is
@@ -136,7 +136,7 @@ public class OffertRecordVO {
     }
 
     /**
-     * Obtiene el valor de la propiedad imageClobOffer.
+     * Gets the value of the imageClobOffer property.
      * 
      * @return
      *     possible object is
@@ -148,7 +148,7 @@ public class OffertRecordVO {
     }
 
     /**
-     * Define el valor de la propiedad imageClobOffer.
+     * Sets the value of the imageClobOffer property.
      * 
      * @param value
      *     allowed object is
@@ -160,7 +160,7 @@ public class OffertRecordVO {
     }
 
     /**
-     * Obtiene el valor de la propiedad linkOffer.
+     * Gets the value of the linkOffer property.
      * 
      * @return
      *     possible object is
@@ -172,7 +172,7 @@ public class OffertRecordVO {
     }
 
     /**
-     * Define el valor de la propiedad linkOffer.
+     * Sets the value of the linkOffer property.
      * 
      * @param value
      *     allowed object is
@@ -184,7 +184,7 @@ public class OffertRecordVO {
     }
 
     /**
-     * Obtiene el valor de la propiedad endDateOffer.
+     * Gets the value of the endDateOffer property.
      * 
      * @return
      *     possible object is
@@ -196,7 +196,7 @@ public class OffertRecordVO {
     }
 
     /**
-     * Define el valor de la propiedad endDateOffer.
+     * Sets the value of the endDateOffer property.
      * 
      * @param value
      *     allowed object is
@@ -208,7 +208,7 @@ public class OffertRecordVO {
     }
 
     /**
-     * Obtiene el valor de la propiedad promoCodeOffer.
+     * Gets the value of the promoCodeOffer property.
      * 
      * @return
      *     possible object is
@@ -220,7 +220,7 @@ public class OffertRecordVO {
     }
 
     /**
-     * Define el valor de la propiedad promoCodeOffer.
+     * Sets the value of the promoCodeOffer property.
      * 
      * @param value
      *     allowed object is
@@ -232,7 +232,7 @@ public class OffertRecordVO {
     }
 
     /**
-     * Obtiene el valor de la propiedad discountOffer.
+     * Gets the value of the discountOffer property.
      * 
      * @return
      *     possible object is
@@ -244,7 +244,7 @@ public class OffertRecordVO {
     }
 
     /**
-     * Define el valor de la propiedad discountOffer.
+     * Sets the value of the discountOffer property.
      * 
      * @param value
      *     allowed object is
@@ -256,7 +256,7 @@ public class OffertRecordVO {
     }
 
     /**
-     * Obtiene el valor de la propiedad redeemOffer.
+     * Gets the value of the redeemOffer property.
      * 
      * @return
      *     possible object is
@@ -268,7 +268,7 @@ public class OffertRecordVO {
     }
 
     /**
-     * Define el valor de la propiedad redeemOffer.
+     * Sets the value of the redeemOffer property.
      * 
      * @param value
      *     allowed object is
@@ -280,7 +280,7 @@ public class OffertRecordVO {
     }
 
     /**
-     * Obtiene el valor de la propiedad idOffer.
+     * Gets the value of the idOffer property.
      * 
      * @return
      *     possible object is
@@ -292,7 +292,7 @@ public class OffertRecordVO {
     }
 
     /**
-     * Define el valor de la propiedad idOffer.
+     * Sets the value of the idOffer property.
      * 
      * @param value
      *     allowed object is
@@ -304,7 +304,7 @@ public class OffertRecordVO {
     }
 
     /**
-     * Obtiene el valor de la propiedad urlImage.
+     * Gets the value of the urlImage property.
      * 
      * @return
      *     possible object is
@@ -316,7 +316,7 @@ public class OffertRecordVO {
     }
 
     /**
-     * Define el valor de la propiedad urlImage.
+     * Sets the value of the urlImage property.
      * 
      * @param value
      *     allowed object is

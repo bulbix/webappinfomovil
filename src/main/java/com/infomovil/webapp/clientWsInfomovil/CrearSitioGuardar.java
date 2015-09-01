@@ -8,9 +8,9 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Clase Java para crearSitio_guardar complex type.
+ * <p>Java class for crearSitio_guardar complex type.
  * 
- * <p>El siguiente fragmento de esquema especifica el contenido que se espera que haya en esta clase.
+ * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
  * &lt;complexType name="crearSitio_guardar">
@@ -57,7 +57,7 @@ public class CrearSitioGuardar {
     protected String template;
 
     /**
-     * Obtiene el valor de la propiedad email.
+     * Gets the value of the email property.
      * 
      * @return
      *     possible object is
@@ -69,7 +69,7 @@ public class CrearSitioGuardar {
     }
 
     /**
-     * Define el valor de la propiedad email.
+     * Sets the value of the email property.
      * 
      * @param value
      *     allowed object is
@@ -81,7 +81,7 @@ public class CrearSitioGuardar {
     }
 
     /**
-     * Obtiene el valor de la propiedad password.
+     * Gets the value of the password property.
      * 
      * @return
      *     possible object is
@@ -93,7 +93,7 @@ public class CrearSitioGuardar {
     }
 
     /**
-     * Define el valor de la propiedad password.
+     * Sets the value of the password property.
      * 
      * @param value
      *     allowed object is
@@ -105,7 +105,7 @@ public class CrearSitioGuardar {
     }
 
     /**
-     * Obtiene el valor de la propiedad nombreUsuario.
+     * Gets the value of the nombreUsuario property.
      * 
      * @return
      *     possible object is
@@ -117,7 +117,7 @@ public class CrearSitioGuardar {
     }
 
     /**
-     * Define el valor de la propiedad nombreUsuario.
+     * Sets the value of the nombreUsuario property.
      * 
      * @param value
      *     allowed object is
@@ -129,7 +129,7 @@ public class CrearSitioGuardar {
     }
 
     /**
-     * Obtiene el valor de la propiedad nombreEmpresa.
+     * Gets the value of the nombreEmpresa property.
      * 
      * @return
      *     possible object is
@@ -141,7 +141,7 @@ public class CrearSitioGuardar {
     }
 
     /**
-     * Define el valor de la propiedad nombreEmpresa.
+     * Sets the value of the nombreEmpresa property.
      * 
      * @param value
      *     allowed object is
@@ -153,7 +153,7 @@ public class CrearSitioGuardar {
     }
 
     /**
-     * Obtiene el valor de la propiedad descripcionCorta.
+     * Gets the value of the descripcionCorta property.
      * 
      * @return
      *     possible object is
@@ -165,7 +165,7 @@ public class CrearSitioGuardar {
     }
 
     /**
-     * Define el valor de la propiedad descripcionCorta.
+     * Sets the value of the descripcionCorta property.
      * 
      * @param value
      *     allowed object is
@@ -177,7 +177,7 @@ public class CrearSitioGuardar {
     }
 
     /**
-     * Obtiene el valor de la propiedad correoElectronico.
+     * Gets the value of the correoElectronico property.
      * 
      * @return
      *     possible object is
@@ -189,7 +189,7 @@ public class CrearSitioGuardar {
     }
 
     /**
-     * Define el valor de la propiedad correoElectronico.
+     * Sets the value of the correoElectronico property.
      * 
      * @param value
      *     allowed object is
@@ -201,7 +201,7 @@ public class CrearSitioGuardar {
     }
 
     /**
-     * Obtiene el valor de la propiedad telefono.
+     * Gets the value of the telefono property.
      * 
      * @return
      *     possible object is
@@ -213,7 +213,7 @@ public class CrearSitioGuardar {
     }
 
     /**
-     * Define el valor de la propiedad telefono.
+     * Sets the value of the telefono property.
      * 
      * @param value
      *     allowed object is
@@ -225,7 +225,7 @@ public class CrearSitioGuardar {
     }
 
     /**
-     * Obtiene el valor de la propiedad template.
+     * Gets the value of the template property.
      * 
      * @return
      *     possible object is
@@ -237,7 +237,7 @@ public class CrearSitioGuardar {
     }
 
     /**
-     * Define el valor de la propiedad template.
+     * Sets the value of the template property.
      * 
      * @param value
      *     allowed object is

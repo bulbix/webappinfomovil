@@ -9,9 +9,9 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Clase Java para respuestaVO complex type.
+ * <p>Java class for respuestaVO complex type.
  * 
- * <p>El siguiente fragmento de esquema especifica el contenido que se espera que haya en esta clase.
+ * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
  * &lt;complexType name="respuestaVO">
@@ -33,10 +33,12 @@ import javax.xml.bind.annotation.XmlType;
  *         &lt;element name="canal" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="campania" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="esquemaProducto" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *         &lt;element name="idDominio" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="listProductoUsuarioVO" type="{http://ws.webservice.infomovil.org/}productoUsuarioVO" maxOccurs="unbounded" minOccurs="0"/>
  *         &lt;element name="listStatusDomainVO" type="{http://ws.webservice.infomovil.org/}statusDomainVO" maxOccurs="unbounded" minOccurs="0"/>
  *         &lt;element name="listUsuarioDominiosVO" type="{http://ws.webservice.infomovil.org/}usuarioDominiosVO" maxOccurs="unbounded" minOccurs="0"/>
  *         &lt;element name="dominioCreaSitio" type="{http://ws.webservice.infomovil.org/}dominioCreaSitio" minOccurs="0"/>
+ *         &lt;element name="listImagenVO" type="{http://ws.webservice.infomovil.org/}imagenVO" maxOccurs="unbounded" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -62,10 +64,12 @@ import javax.xml.bind.annotation.XmlType;
     "canal",
     "campania",
     "esquemaProducto",
+    "idDominio",
     "listProductoUsuarioVO",
     "listStatusDomainVO",
     "listUsuarioDominiosVO",
-    "dominioCreaSitio"
+    "dominioCreaSitio",
+    "listImagenVO"
 })
 public class RespuestaVO {
 
@@ -84,13 +88,15 @@ public class RespuestaVO {
     protected String canal;
     protected String campania;
     protected String esquemaProducto;
+    protected String idDominio;
     protected List<ProductoUsuarioVO> listProductoUsuarioVO;
     protected List<StatusDomainVO> listStatusDomainVO;
     protected List<UsuarioDominiosVO> listUsuarioDominiosVO;
     protected DominioCreaSitio dominioCreaSitio;
+    protected List<ImagenVO> listImagenVO;
 
     /**
-     * Obtiene el valor de la propiedad resultado.
+     * Gets the value of the resultado property.
      * 
      * @return
      *     possible object is
@@ -102,7 +108,7 @@ public class RespuestaVO {
     }
 
     /**
-     * Define el valor de la propiedad resultado.
+     * Sets the value of the resultado property.
      * 
      * @param value
      *     allowed object is
@@ -114,7 +120,7 @@ public class RespuestaVO {
     }
 
     /**
-     * Obtiene el valor de la propiedad token.
+     * Gets the value of the token property.
      * 
      * @return
      *     possible object is
@@ -126,7 +132,7 @@ public class RespuestaVO {
     }
 
     /**
-     * Define el valor de la propiedad token.
+     * Sets the value of the token property.
      * 
      * @param value
      *     allowed object is
@@ -138,7 +144,7 @@ public class RespuestaVO {
     }
 
     /**
-     * Obtiene el valor de la propiedad fechaIni.
+     * Gets the value of the fechaIni property.
      * 
      * @return
      *     possible object is
@@ -150,7 +156,7 @@ public class RespuestaVO {
     }
 
     /**
-     * Define el valor de la propiedad fechaIni.
+     * Sets the value of the fechaIni property.
      * 
      * @param value
      *     allowed object is
@@ -162,7 +168,7 @@ public class RespuestaVO {
     }
 
     /**
-     * Obtiene el valor de la propiedad fechaFin.
+     * Gets the value of the fechaFin property.
      * 
      * @return
      *     possible object is
@@ -174,7 +180,7 @@ public class RespuestaVO {
     }
 
     /**
-     * Define el valor de la propiedad fechaFin.
+     * Sets the value of the fechaFin property.
      * 
      * @param value
      *     allowed object is
@@ -186,7 +192,7 @@ public class RespuestaVO {
     }
 
     /**
-     * Obtiene el valor de la propiedad fTelNamesIni.
+     * Gets the value of the fTelNamesIni property.
      * 
      * @return
      *     possible object is
@@ -198,7 +204,7 @@ public class RespuestaVO {
     }
 
     /**
-     * Define el valor de la propiedad fTelNamesIni.
+     * Sets the value of the fTelNamesIni property.
      * 
      * @param value
      *     allowed object is
@@ -210,7 +216,7 @@ public class RespuestaVO {
     }
 
     /**
-     * Obtiene el valor de la propiedad fTelNamesFin.
+     * Gets the value of the fTelNamesFin property.
      * 
      * @return
      *     possible object is
@@ -222,7 +228,7 @@ public class RespuestaVO {
     }
 
     /**
-     * Define el valor de la propiedad fTelNamesFin.
+     * Sets the value of the fTelNamesFin property.
      * 
      * @param value
      *     allowed object is
@@ -234,7 +240,7 @@ public class RespuestaVO {
     }
 
     /**
-     * Obtiene el valor de la propiedad codeError.
+     * Gets the value of the codeError property.
      * 
      * @return
      *     possible object is
@@ -246,7 +252,7 @@ public class RespuestaVO {
     }
 
     /**
-     * Define el valor de la propiedad codeError.
+     * Sets the value of the codeError property.
      * 
      * @param value
      *     allowed object is
@@ -258,7 +264,7 @@ public class RespuestaVO {
     }
 
     /**
-     * Obtiene el valor de la propiedad msgError.
+     * Gets the value of the msgError property.
      * 
      * @return
      *     possible object is
@@ -270,7 +276,7 @@ public class RespuestaVO {
     }
 
     /**
-     * Define el valor de la propiedad msgError.
+     * Sets the value of the msgError property.
      * 
      * @param value
      *     allowed object is
@@ -282,7 +288,7 @@ public class RespuestaVO {
     }
 
     /**
-     * Obtiene el valor de la propiedad statusDominio.
+     * Gets the value of the statusDominio property.
      * 
      * @return
      *     possible object is
@@ -294,7 +300,7 @@ public class RespuestaVO {
     }
 
     /**
-     * Define el valor de la propiedad statusDominio.
+     * Sets the value of the statusDominio property.
      * 
      * @param value
      *     allowed object is
@@ -306,7 +312,7 @@ public class RespuestaVO {
     }
 
     /**
-     * Obtiene el valor de la propiedad codeCamp.
+     * Gets the value of the codeCamp property.
      * 
      * @return
      *     possible object is
@@ -318,7 +324,7 @@ public class RespuestaVO {
     }
 
     /**
-     * Define el valor de la propiedad codeCamp.
+     * Sets the value of the codeCamp property.
      * 
      * @param value
      *     allowed object is
@@ -330,7 +336,7 @@ public class RespuestaVO {
     }
 
     /**
-     * Obtiene el valor de la propiedad urlImagen.
+     * Gets the value of the urlImagen property.
      * 
      * @return
      *     possible object is
@@ -342,7 +348,7 @@ public class RespuestaVO {
     }
 
     /**
-     * Define el valor de la propiedad urlImagen.
+     * Sets the value of the urlImagen property.
      * 
      * @param value
      *     allowed object is
@@ -354,7 +360,7 @@ public class RespuestaVO {
     }
 
     /**
-     * Obtiene el valor de la propiedad scriptMovilizaSitio.
+     * Gets the value of the scriptMovilizaSitio property.
      * 
      * @return
      *     possible object is
@@ -366,7 +372,7 @@ public class RespuestaVO {
     }
 
     /**
-     * Define el valor de la propiedad scriptMovilizaSitio.
+     * Sets the value of the scriptMovilizaSitio property.
      * 
      * @param value
      *     allowed object is
@@ -378,7 +384,7 @@ public class RespuestaVO {
     }
 
     /**
-     * Obtiene el valor de la propiedad canal.
+     * Gets the value of the canal property.
      * 
      * @return
      *     possible object is
@@ -390,7 +396,7 @@ public class RespuestaVO {
     }
 
     /**
-     * Define el valor de la propiedad canal.
+     * Sets the value of the canal property.
      * 
      * @param value
      *     allowed object is
@@ -402,7 +408,7 @@ public class RespuestaVO {
     }
 
     /**
-     * Obtiene el valor de la propiedad campania.
+     * Gets the value of the campania property.
      * 
      * @return
      *     possible object is
@@ -414,7 +420,7 @@ public class RespuestaVO {
     }
 
     /**
-     * Define el valor de la propiedad campania.
+     * Sets the value of the campania property.
      * 
      * @param value
      *     allowed object is
@@ -426,7 +432,7 @@ public class RespuestaVO {
     }
 
     /**
-     * Obtiene el valor de la propiedad esquemaProducto.
+     * Gets the value of the esquemaProducto property.
      * 
      * @return
      *     possible object is
@@ -438,7 +444,7 @@ public class RespuestaVO {
     }
 
     /**
-     * Define el valor de la propiedad esquemaProducto.
+     * Sets the value of the esquemaProducto property.
      * 
      * @param value
      *     allowed object is
@@ -447,6 +453,30 @@ public class RespuestaVO {
      */
     public void setEsquemaProducto(String value) {
         this.esquemaProducto = value;
+    }
+
+    /**
+     * Gets the value of the idDominio property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getIdDominio() {
+        return idDominio;
+    }
+
+    /**
+     * Sets the value of the idDominio property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setIdDominio(String value) {
+        this.idDominio = value;
     }
 
     /**
@@ -537,7 +567,7 @@ public class RespuestaVO {
     }
 
     /**
-     * Obtiene el valor de la propiedad dominioCreaSitio.
+     * Gets the value of the dominioCreaSitio property.
      * 
      * @return
      *     possible object is
@@ -549,7 +579,7 @@ public class RespuestaVO {
     }
 
     /**
-     * Define el valor de la propiedad dominioCreaSitio.
+     * Sets the value of the dominioCreaSitio property.
      * 
      * @param value
      *     allowed object is
@@ -559,5 +589,54 @@ public class RespuestaVO {
     public void setDominioCreaSitio(DominioCreaSitio value) {
         this.dominioCreaSitio = value;
     }
+
+    /**
+     * Gets the value of the listImagenVO property.
+     * 
+     * <p>
+     * This accessor method returns a reference to the live list,
+     * not a snapshot. Therefore any modification you make to the
+     * returned list will be present inside the JAXB object.
+     * This is why there is not a <CODE>set</CODE> method for the listImagenVO property.
+     * 
+     * <p>
+     * For example, to add a new item, do as follows:
+     * <pre>
+     *    getListImagenVO().add(newItem);
+     * </pre>
+     * 
+     * 
+     * <p>
+     * Objects of the following type(s) are allowed in the list
+     * {@link ImagenVO }
+     * 
+     * 
+     */
+    public List<ImagenVO> getListImagenVO() {
+        if (listImagenVO == null) {
+            listImagenVO = new ArrayList<ImagenVO>();
+        }
+        return this.listImagenVO;
+    }
+
+	@Override
+	public String toString() {
+		return "RespuestaVO [resultado=" + resultado + ", token=" + token
+				+ ", fechaIni=" + fechaIni + ", fechaFin=" + fechaFin
+				+ ", fTelNamesIni=" + fTelNamesIni + ", fTelNamesFin="
+				+ fTelNamesFin + ", codeError=" + codeError + ", msgError="
+				+ msgError + ", statusDominio=" + statusDominio + ", codeCamp="
+				+ codeCamp + ", urlImagen=" + urlImagen
+				+ ", scriptMovilizaSitio=" + scriptMovilizaSitio + ", canal="
+				+ canal + ", campania=" + campania + ", esquemaProducto="
+				+ esquemaProducto + ", idDominio=" + idDominio
+				+ ", listProductoUsuarioVO=" + listProductoUsuarioVO
+				+ ", listStatusDomainVO=" + listStatusDomainVO
+				+ ", listUsuarioDominiosVO=" + listUsuarioDominiosVO
+				+ ", dominioCreaSitio=" + dominioCreaSitio + ", listImagenVO="
+				+ listImagenVO + "]";
+	}
+    
+    
 
 }

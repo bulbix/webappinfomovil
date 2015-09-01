@@ -8,9 +8,9 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Clase Java para userDomainVO complex type.
+ * <p>Java class for userDomainVO complex type.
  * 
- * <p>El siguiente fragmento de esquema especifica el contenido que se espera que haya en esta clase.
+ * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
  * &lt;complexType name="userDomainVO">
@@ -107,7 +107,7 @@ public class UserDomainVO {
     protected String idCatDominio;
 
     /**
-     * Obtiene el valor de la propiedad email.
+     * Gets the value of the email property.
      * 
      * @return
      *     possible object is
@@ -119,7 +119,7 @@ public class UserDomainVO {
     }
 
     /**
-     * Define el valor de la propiedad email.
+     * Sets the value of the email property.
      * 
      * @param value
      *     allowed object is
@@ -131,7 +131,7 @@ public class UserDomainVO {
     }
 
     /**
-     * Obtiene el valor de la propiedad phone.
+     * Gets the value of the phone property.
      * 
      * @return
      *     possible object is
@@ -143,7 +143,7 @@ public class UserDomainVO {
     }
 
     /**
-     * Define el valor de la propiedad phone.
+     * Sets the value of the phone property.
      * 
      * @param value
      *     allowed object is
@@ -155,7 +155,7 @@ public class UserDomainVO {
     }
 
     /**
-     * Obtiene el valor de la propiedad password.
+     * Gets the value of the password property.
      * 
      * @return
      *     possible object is
@@ -167,7 +167,7 @@ public class UserDomainVO {
     }
 
     /**
-     * Define el valor de la propiedad password.
+     * Sets the value of the password property.
      * 
      * @param value
      *     allowed object is
@@ -179,7 +179,7 @@ public class UserDomainVO {
     }
 
     /**
-     * Obtiene el valor de la propiedad domainName.
+     * Gets the value of the domainName property.
      * 
      * @return
      *     possible object is
@@ -191,7 +191,7 @@ public class UserDomainVO {
     }
 
     /**
-     * Define el valor de la propiedad domainName.
+     * Sets the value of the domainName property.
      * 
      * @param value
      *     allowed object is
@@ -203,7 +203,7 @@ public class UserDomainVO {
     }
 
     /**
-     * Obtiene el valor de la propiedad status.
+     * Gets the value of the status property.
      * 
      * @return
      *     possible object is
@@ -215,7 +215,7 @@ public class UserDomainVO {
     }
 
     /**
-     * Define el valor de la propiedad status.
+     * Sets the value of the status property.
      * 
      * @param value
      *     allowed object is
@@ -227,7 +227,7 @@ public class UserDomainVO {
     }
 
     /**
-     * Obtiene el valor de la propiedad sistema.
+     * Gets the value of the sistema property.
      * 
      * @return
      *     possible object is
@@ -239,7 +239,7 @@ public class UserDomainVO {
     }
 
     /**
-     * Define el valor de la propiedad sistema.
+     * Sets the value of the sistema property.
      * 
      * @param value
      *     allowed object is
@@ -251,7 +251,7 @@ public class UserDomainVO {
     }
 
     /**
-     * Obtiene el valor de la propiedad typoDispositivo.
+     * Gets the value of the typoDispositivo property.
      * 
      * @return
      *     possible object is
@@ -263,7 +263,7 @@ public class UserDomainVO {
     }
 
     /**
-     * Define el valor de la propiedad typoDispositivo.
+     * Sets the value of the typoDispositivo property.
      * 
      * @param value
      *     allowed object is
@@ -275,7 +275,7 @@ public class UserDomainVO {
     }
 
     /**
-     * Obtiene el valor de la propiedad notificacion.
+     * Gets the value of the notificacion property.
      * 
      * @return
      *     possible object is
@@ -287,7 +287,7 @@ public class UserDomainVO {
     }
 
     /**
-     * Define el valor de la propiedad notificacion.
+     * Sets the value of the notificacion property.
      * 
      * @param value
      *     allowed object is
@@ -299,7 +299,7 @@ public class UserDomainVO {
     }
 
     /**
-     * Obtiene el valor de la propiedad tipoAction.
+     * Gets the value of the tipoAction property.
      * 
      * @return
      *     possible object is
@@ -311,7 +311,7 @@ public class UserDomainVO {
     }
 
     /**
-     * Define el valor de la propiedad tipoAction.
+     * Sets the value of the tipoAction property.
      * 
      * @param value
      *     allowed object is
@@ -323,7 +323,7 @@ public class UserDomainVO {
     }
 
     /**
-     * Obtiene el valor de la propiedad pais.
+     * Gets the value of the pais property.
      * 
      * @return
      *     possible object is
@@ -335,7 +335,7 @@ public class UserDomainVO {
     }
 
     /**
-     * Define el valor de la propiedad pais.
+     * Sets the value of the pais property.
      * 
      * @param value
      *     allowed object is
@@ -347,7 +347,7 @@ public class UserDomainVO {
     }
 
     /**
-     * Obtiene el valor de la propiedad canal.
+     * Gets the value of the canal property.
      * 
      * @return
      *     possible object is
@@ -359,7 +359,7 @@ public class UserDomainVO {
     }
 
     /**
-     * Define el valor de la propiedad canal.
+     * Sets the value of the canal property.
      * 
      * @param value
      *     allowed object is
@@ -371,7 +371,7 @@ public class UserDomainVO {
     }
 
     /**
-     * Obtiene el valor de la propiedad sucursal.
+     * Gets the value of the sucursal property.
      * 
      * @return
      *     possible object is
@@ -383,7 +383,7 @@ public class UserDomainVO {
     }
 
     /**
-     * Define el valor de la propiedad sucursal.
+     * Sets the value of the sucursal property.
      * 
      * @param value
      *     allowed object is
@@ -395,7 +395,7 @@ public class UserDomainVO {
     }
 
     /**
-     * Obtiene el valor de la propiedad folio.
+     * Gets the value of the folio property.
      * 
      * @return
      *     possible object is
@@ -407,7 +407,7 @@ public class UserDomainVO {
     }
 
     /**
-     * Define el valor de la propiedad folio.
+     * Sets the value of the folio property.
      * 
      * @param value
      *     allowed object is
@@ -419,7 +419,7 @@ public class UserDomainVO {
     }
 
     /**
-     * Obtiene el valor de la propiedad nPais.
+     * Gets the value of the nPais property.
      * 
      * @return
      *     possible object is
@@ -431,7 +431,7 @@ public class UserDomainVO {
     }
 
     /**
-     * Define el valor de la propiedad nPais.
+     * Sets the value of the nPais property.
      * 
      * @param value
      *     allowed object is
@@ -443,7 +443,7 @@ public class UserDomainVO {
     }
 
     /**
-     * Obtiene el valor de la propiedad nombre.
+     * Gets the value of the nombre property.
      * 
      * @return
      *     possible object is
@@ -455,7 +455,7 @@ public class UserDomainVO {
     }
 
     /**
-     * Define el valor de la propiedad nombre.
+     * Sets the value of the nombre property.
      * 
      * @param value
      *     allowed object is
@@ -467,7 +467,7 @@ public class UserDomainVO {
     }
 
     /**
-     * Obtiene el valor de la propiedad direccion1.
+     * Gets the value of the direccion1 property.
      * 
      * @return
      *     possible object is
@@ -479,7 +479,7 @@ public class UserDomainVO {
     }
 
     /**
-     * Define el valor de la propiedad direccion1.
+     * Sets the value of the direccion1 property.
      * 
      * @param value
      *     allowed object is
@@ -491,7 +491,7 @@ public class UserDomainVO {
     }
 
     /**
-     * Obtiene el valor de la propiedad direccion2.
+     * Gets the value of the direccion2 property.
      * 
      * @return
      *     possible object is
@@ -503,7 +503,7 @@ public class UserDomainVO {
     }
 
     /**
-     * Define el valor de la propiedad direccion2.
+     * Sets the value of the direccion2 property.
      * 
      * @param value
      *     allowed object is
@@ -515,7 +515,7 @@ public class UserDomainVO {
     }
 
     /**
-     * Obtiene el valor de la propiedad codigoCamp.
+     * Gets the value of the codigoCamp property.
      * 
      * @return
      *     possible object is
@@ -527,7 +527,7 @@ public class UserDomainVO {
     }
 
     /**
-     * Define el valor de la propiedad codigoCamp.
+     * Sets the value of the codigoCamp property.
      * 
      * @param value
      *     allowed object is
@@ -539,7 +539,7 @@ public class UserDomainVO {
     }
 
     /**
-     * Obtiene el valor de la propiedad domainType.
+     * Gets the value of the domainType property.
      * 
      * @return
      *     possible object is
@@ -551,7 +551,7 @@ public class UserDomainVO {
     }
 
     /**
-     * Define el valor de la propiedad domainType.
+     * Sets the value of the domainType property.
      * 
      * @param value
      *     allowed object is
@@ -563,7 +563,7 @@ public class UserDomainVO {
     }
 
     /**
-     * Obtiene el valor de la propiedad idDominio.
+     * Gets the value of the idDominio property.
      * 
      * @return
      *     possible object is
@@ -575,7 +575,7 @@ public class UserDomainVO {
     }
 
     /**
-     * Define el valor de la propiedad idDominio.
+     * Sets the value of the idDominio property.
      * 
      * @param value
      *     allowed object is
@@ -587,7 +587,7 @@ public class UserDomainVO {
     }
 
     /**
-     * Obtiene el valor de la propiedad idRecurso.
+     * Gets the value of the idRecurso property.
      * 
      * @return
      *     possible object is
@@ -599,7 +599,7 @@ public class UserDomainVO {
     }
 
     /**
-     * Define el valor de la propiedad idRecurso.
+     * Sets the value of the idRecurso property.
      * 
      * @param value
      *     allowed object is
@@ -611,7 +611,7 @@ public class UserDomainVO {
     }
 
     /**
-     * Obtiene el valor de la propiedad emailTel.
+     * Gets the value of the emailTel property.
      * 
      * @return
      *     possible object is
@@ -623,7 +623,7 @@ public class UserDomainVO {
     }
 
     /**
-     * Define el valor de la propiedad emailTel.
+     * Sets the value of the emailTel property.
      * 
      * @param value
      *     allowed object is
@@ -635,7 +635,7 @@ public class UserDomainVO {
     }
 
     /**
-     * Obtiene el valor de la propiedad idCatDominio.
+     * Gets the value of the idCatDominio property.
      * 
      * @return
      *     possible object is
@@ -647,7 +647,7 @@ public class UserDomainVO {
     }
 
     /**
-     * Define el valor de la propiedad idCatDominio.
+     * Sets the value of the idCatDominio property.
      * 
      * @param value
      *     allowed object is

@@ -7,9 +7,9 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Clase Java para extDominioVO complex type.
+ * <p>Java class for extDominioVO complex type.
  * 
- * <p>El siguiente fragmento de esquema especifica el contenido que se espera que haya en esta clase.
+ * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
  * &lt;complexType name="extDominioVO">
@@ -40,7 +40,7 @@ public class ExtDominioVO {
     protected String extStatus;
 
     /**
-     * Obtiene el valor de la propiedad idTipodom.
+     * Gets the value of the idTipodom property.
      * 
      * @return
      *     possible object is
@@ -52,7 +52,7 @@ public class ExtDominioVO {
     }
 
     /**
-     * Define el valor de la propiedad idTipodom.
+     * Sets the value of the idTipodom property.
      * 
      * @param value
      *     allowed object is
@@ -64,7 +64,7 @@ public class ExtDominioVO {
     }
 
     /**
-     * Obtiene el valor de la propiedad extDesc.
+     * Gets the value of the extDesc property.
      * 
      * @return
      *     possible object is
@@ -76,7 +76,7 @@ public class ExtDominioVO {
     }
 
     /**
-     * Define el valor de la propiedad extDesc.
+     * Sets the value of the extDesc property.
      * 
      * @param value
      *     allowed object is
@@ -88,7 +88,7 @@ public class ExtDominioVO {
     }
 
     /**
-     * Obtiene el valor de la propiedad extStatus.
+     * Gets the value of the extStatus property.
      * 
      * @return
      *     possible object is
@@ -100,7 +100,7 @@ public class ExtDominioVO {
     }
 
     /**
-     * Define el valor de la propiedad extStatus.
+     * Sets the value of the extStatus property.
      * 
      * @param value
      *     allowed object is

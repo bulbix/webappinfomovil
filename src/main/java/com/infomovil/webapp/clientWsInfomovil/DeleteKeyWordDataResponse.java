@@ -8,9 +8,9 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Clase Java para deleteKeyWordDataResponse complex type.
+ * <p>Java class for deleteKeyWordDataResponse complex type.
  * 
- * <p>El siguiente fragmento de esquema especifica el contenido que se espera que haya en esta clase.
+ * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
  * &lt;complexType name="deleteKeyWordDataResponse">
@@ -36,7 +36,7 @@ public class DeleteKeyWordDataResponse {
     protected RespuestaVO respuestaVO;
 
     /**
-     * Obtiene el valor de la propiedad respuestaVO.
+     * Gets the value of the respuestaVO property.
      * 
      * @return
      *     possible object is
@@ -48,7 +48,7 @@ public class DeleteKeyWordDataResponse {
     }
 
     /**
-     * Define el valor de la propiedad respuestaVO.
+     * Sets the value of the respuestaVO property.
      * 
      * @param value
      *     allowed object is
