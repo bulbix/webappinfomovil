@@ -261,9 +261,6 @@
     <profiles>
 		<profile>
 			<id>dev</id>
-			<activation>
-				<activeByDefault>true</activeByDefault>
-			</activation>
 			<properties>
 				<config.profile>DEV</config.profile>
 			</properties>
@@ -273,7 +270,9 @@
 			<properties>
 				<config.profile>QA</config.profile>
 			</properties>
-			
+			<activation>
+				<activeByDefault>true</activeByDefault>
+			</activation>			
 		</profile>
 		<profile>
 			<id>prod</id> 

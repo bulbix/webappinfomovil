@@ -28,6 +28,10 @@ public class WsInfomovilDomainService extends Service {
     public final static QName WsInfomovilDomainPort = new QName("http://ws.webservice.infomovil.org/", "WsInfomovilDomainPort");
     static {
     	 URL url = null;//WsInfomovilDomainService.class.getResource("/var/folders/52/xttscp9j4n54ndmzy3sz_4rc0000gn/T/tempdir6239003104282830238.tmp/wsInfomovildomain_1.wsdl");
+<<<<<<< HEAD
+=======
+
+>>>>>>> 2677d2799ca7323d20f260d077521d78a0f9859a
          if (url == null) {
              try {
              	if(Util.getProfile().equals("DEV")){
