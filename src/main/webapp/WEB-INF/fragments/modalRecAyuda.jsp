@@ -16,24 +16,24 @@
 			<span class="textBlack">&nbsp;</span>
 			
 			<ul style="margin: 0 0 0 -30px;">
-				<li class="textBlack">Se recomienda usar nombres cortos y fáciles de recordar</li>
-				<li class="textBlack">Evita espacios y acentos </li>
-				<li class="textBlack">Mira algunos ejemplos:</li>
+				<li class="textBlack"><strong>Se recomienda usar nombres cortos y fáciles de recordar</strong></li>
+				<li class="textBlack"><strong>Evita espacios y acentos</strong> </li>
+				<li class="textBlack"><strong>Mira algunos ejemplos:</strong></li>
 			</ul>
 			
 			<div style=<tiles:getAsString name="visibleRecurso"/>>
 				<ul style="list-style:none; margin: 0 0 0 -30px;" class="textPurple">
-				<li><span class="hidden-xs">www.</span>infomovil.com/taquizasamantha</li>
-				<li><span class="hidden-xs">www.</span>infomovil.com/esteticalejandra</li>
-				<li><span class="hidden-xs">www.</span>infomovil.com/abogadomonroy</li>
+				<li><strong><span class="hidden-xs">www.</span>infomovil.com/taquizasamantha</strong></li>
+				<li><strong><span class="hidden-xs">www.</span>infomovil.com/esteticalejandra</strong></li>
+				<li><strong><span class="hidden-xs">www.</span>infomovil.com/abogadomonroy</strong></li>
 				</ul>
 			</div>
 		
 			<div style=<tiles:getAsString name="visibleTel"/>>
 				<ul style="list-style:none; margin: 0 0 0 -30px;" class="textPurple">
-				<li>www.taqueriaelpibe.tel</li>
-				<li>www.esteticalubelle.tel</li>
-				<li>www.abogadostabasco.tel</li>
+				<li><strong>www.taqueriaelpibe.tel</strong></li>
+				<li><strong>www.esteticalubelle.tel</strong></li>
+				<li><strong>www.abogadostabasco.tel</strong></li>
 				</ul>
 			</div>
 	

@@ -8,17 +8,17 @@
 	</div>
 	<div class="modal-body bgWhite ">
 	<div class="col-xs-12">
- <p class="textBlack" >Ya tomaste el primer paso.
- Ahora, toma el siguiente.  </p><p class="textPurple">Utiliza nuestra app móvil para:</p> 
+ <p class="textBlack" ><strong>Ya tomaste el primer paso.</strong>
+ <strong>Ahora, toma el siguiente.  </strong></p><p class="textPurple"><strong>Utiliza nuestra app móvil para:</strong></p> 
 <br/>
-						<ol class="textPurple"><li>Personalizar tu página con imágenes y más contenido.</li>
-						<li>Armar una promoción y compartirla por Facebook, Whatsapp y correo.</li>
-						<li>Ver reportes de uso.</li>
-						</ol>
+						<ul class="textPurple" style="list-style:none"><li><strong>1. Personalizar tu página con imágenes y más contenido.</strong></li>
+						<li><strong>2. Armar una promoción y compartirla por Facebook, Whatsapp y correo.</strong></li>
+						<li><strong>3. Ver reportes de uso.</strong></li>
+						</ul>
 				<br/>		
 
 						
-<h6 class="textPurple">Descarga la app e ingresa con tus datos de cuenta.</h6>
+<p class="textPurple"><strong>Descarga la app e ingresa con tus datos de cuenta.</strong></p>
 <div class="clear"></div><br/>
 <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 text-center">
 <a href="https://itunes.apple.com/mx/app/infomovil/id898313250?mt=8" style="margin: 0px; padding: 0px; color: rgb(49, 165, 154);" target="_blank"><img alt="AppStore" src="<c:url value="/resources/webapp/images/appstore_icn.png"/>" style="margin: 0px; padding: 0px; max-width: 200px;" title="AppStore" /></a>
@@ -28,9 +28,9 @@
 </div>
 				<div class="clear"></div>
 							<br/>
-							<span class="textBlack">Si tienes alguna pregunta, no dudes en contactarnos:
+							<span class="textBlack"><strong>Si tienes alguna pregunta, no dudes en contactarnos:
 							
-info@infomovil.com</span>
+info@infomovil.com</strong></span>
 							</div>
 		
 		<div class="clear divider"></div>
