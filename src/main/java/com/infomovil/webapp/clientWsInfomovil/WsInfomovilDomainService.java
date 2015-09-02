@@ -28,13 +28,7 @@ public class WsInfomovilDomainService extends Service {
     public final static QName WsInfomovilDomainPort = new QName("http://ws.webservice.infomovil.org/", "WsInfomovilDomainPort");
     static {
     	 URL url = null;//WsInfomovilDomainService.class.getResource("/var/folders/52/xttscp9j4n54ndmzy3sz_4rc0000gn/T/tempdir6239003104282830238.tmp/wsInfomovildomain_1.wsdl");
-    	 try {
-			url = new URL("http://localhost:8080/WsInfomovil/wsInfomovildomain?wsdl");
-		} catch (MalformedURLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-     /*    if (url == null) {
+         if (url == null) {
              try {
              	if(Util.getProfile().equals("DEV")){
              		url = new URL("http://localhost:8080/WsInfomovil/wsInfomovildomain?wsdl");
@@ -55,7 +49,7 @@ public class WsInfomovilDomainService extends Service {
              java.util.logging.Logger.getLogger(WsInfomovilDomainService.class.getName())
                  .log(java.util.logging.Level.INFO, 
                       "Can not initialize the default wsdl from {0}", "/var/folders/52/xttscp9j4n54ndmzy3sz_4rc0000gn/T/tempdir6239003104282830238.tmp/wsInfomovildomain_1.wsdl");
-         }       */
+         }       
          WSDL_LOCATION = url;
     }
 
