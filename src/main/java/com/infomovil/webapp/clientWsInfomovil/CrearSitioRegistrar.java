@@ -21,6 +21,7 @@ import javax.xml.bind.annotation.XmlType;
  *         &lt;element name="password" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="codigo" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="nombreUsuario" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *         &lt;element name="tipoRegistro" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -34,7 +35,8 @@ import javax.xml.bind.annotation.XmlType;
     "email",
     "password",
     "codigo",
-    "nombreUsuario" //,    "tipoRegistro"
+    "nombreUsuario",
+    "tipoRegistro"
 })
 public class CrearSitioRegistrar {
 
@@ -43,7 +45,7 @@ public class CrearSitioRegistrar {
     protected String password;
     protected String codigo;
     protected String nombreUsuario;
-//    protected String tipoRegistro;
+    protected String tipoRegistro;
 
     /**
      * Gets the value of the email property.
@@ -141,12 +143,28 @@ public class CrearSitioRegistrar {
         this.nombreUsuario = value;
     }
 
-/*	public String getTipoRegistro() {
-		return tipoRegistro;
-	}
+    /**
+     * Gets the value of the tipoRegistro property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getTipoRegistro() {
+        return tipoRegistro;
+    }
 
-	public void setTipoRegistro(String tipoRegistro) {
-		this.tipoRegistro = tipoRegistro;
-	}
-*/
+    /**
+     * Sets the value of the tipoRegistro property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setTipoRegistro(String value) {
+        this.tipoRegistro = value;
+    }
+
 }

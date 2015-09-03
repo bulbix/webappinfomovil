@@ -619,24 +619,4 @@ public class RespuestaVO {
         return this.listImagenVO;
     }
 
-	@Override
-	public String toString() {
-		return "RespuestaVO [resultado=" + resultado + ", token=" + token
-				+ ", fechaIni=" + fechaIni + ", fechaFin=" + fechaFin
-				+ ", fTelNamesIni=" + fTelNamesIni + ", fTelNamesFin="
-				+ fTelNamesFin + ", codeError=" + codeError + ", msgError="
-				+ msgError + ", statusDominio=" + statusDominio + ", codeCamp="
-				+ codeCamp + ", urlImagen=" + urlImagen
-				+ ", scriptMovilizaSitio=" + scriptMovilizaSitio + ", canal="
-				+ canal + ", campania=" + campania + ", esquemaProducto="
-				+ esquemaProducto + ", idDominio=" + idDominio
-				+ ", listProductoUsuarioVO=" + listProductoUsuarioVO
-				+ ", listStatusDomainVO=" + listStatusDomainVO
-				+ ", listUsuarioDominiosVO=" + listUsuarioDominiosVO
-				+ ", dominioCreaSitio=" + dominioCreaSitio + ", listImagenVO="
-				+ listImagenVO + "]";
-	}
-    
-    
-
 }

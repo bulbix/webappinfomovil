@@ -154,7 +154,6 @@ public class ClientWsInfomovil {
 		
 	}
 
-/*
 	public RespuestaVO crearSitioGuardaImage(String domainId, String baseImagen, String tipoImagen, String descImagen)
 	{
 		log.info("Invoking crearSitioInsertImage...");
@@ -180,8 +179,6 @@ public class ClientWsInfomovil {
         return _crearSitioDeleteImage__return.respuestaVO;
 	}
 
-	*/
-	
 	public List<ImagenVO> crearSitioGetImagenes(String email, Integer domainId,String sistema,String versionSistema)
 	{
         log.info("Invoking getImagenes en clientwsinfomovol...");
@@ -193,5 +190,18 @@ public class ClientWsInfomovil {
         log.info("getImagenes.result=" + _getImagenes__return);
         return _getImagenes__return;
 
-        }
+    }
+	
+	public RespuestaVO crearSitioUpdateImage(String domainId, String imageId, String baseImagen, String descImagen)
+	{
+	    log.info("Invoking crearSitioUpdateImage...");
+	    com.infomovil.webapp.clientWsInfomovil.CrearSitioUpdateImage _crearSitioUpdateImage_parameters = new CrearSitioUpdateImage();
+	    _crearSitioUpdateImage_parameters.domainId = domainId;
+	    _crearSitioUpdateImage_parameters.imageId = imageId;
+	    _crearSitioUpdateImage_parameters.baseImagen = baseImagen;
+	    _crearSitioUpdateImage_parameters.descImagen = descImagen;    
+	    com.infomovil.webapp.clientWsInfomovil.CrearSitioUpdateImageResponse _crearSitioUpdateImage__return = port.crearSitioUpdateImage(_crearSitioUpdateImage_parameters);
+	    log.info("crearSitioUpdateImage.result=" + _crearSitioUpdateImage__return);
+	    return _crearSitioUpdateImage__return.respuestaVO;
+    }
 }
