@@ -1,5 +1,4 @@
-
-var infoAlbumes = new Array();
+	var infoAlbumes = new Array();
 	var photosDelAlbum = new Array();
   
 var testapiFacebook = function testAPI() {
@@ -232,7 +231,7 @@ window.fbAsyncInit = function() {
     
 function guardarImagenesJQF(){
     	
-	var imageUrl = "http://localhost:8282/WebAppInfomovil/resources/webapp/images/apple-touch-icon-57x57.png"
+	var imageUrl = $("#imgVistaPrevia").attr("src");
     console.log('imageUrl', imageUrl);
     convertImgToBase64(imageUrl, function(base64Img){
     	binaryString = btoa(base64Img);
