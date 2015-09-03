@@ -176,4 +176,20 @@ public class ClientWsInfomovil {
         
         return _crearSitioDeleteImage__return.respuestaVO;
 	}
+	
+	public List<ImagenVO> crearSitioGetImagenes(String email, Integer domainId,String sistema,String versionSistema)
+	{
+        log.info("Invoking getImagenes en clientwsinfomovol...");
+        java.lang.String _getImagenes_email = email;
+        java.lang.Integer _getImagenes_domainId = domainId;
+        java.lang.String _getImagenes_sistema = sistema;
+        java.lang.String _getImagenes_versionSistema = versionSistema;
+        java.util.List<com.infomovil.webapp.clientWsInfomovil.ImagenVO> _getImagenes__return = port.getImagenes(_getImagenes_email, _getImagenes_domainId, _getImagenes_sistema, _getImagenes_versionSistema);
+        log.info("getImagenes.result=" + _getImagenes__return);
+        return _getImagenes__return;
+
+        }
+	
+	
+	
 }

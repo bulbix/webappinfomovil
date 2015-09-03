@@ -192,6 +192,7 @@ textarea { padding: 10px; width: 300px; }
 #myModalMaps div div.modal-content{ background:#f3f3f3 !important; color:#000 !important}
 #myModalRecAyuda div div.modal-content{ background:#f3f3f3 !important; color:#000 !important}
 #myModalDescApp div div.modal-content{ background:#f3f3f3 !important; color:#000 !important}
+#myModalImagenes div div.modal-content{ background:#f3f3f3 !important; color:#000 !important}
 
 #validacionNombre{ color:#000 !important}
 .btn-purple{ background:#7c41bc !important; color:#fff;}

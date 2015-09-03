@@ -19,6 +19,8 @@ $("#myModalVideo").on('hidden.bs.modal', function() {
     $("#segundo").hide();	
 });
 
+
+
 $(document).ready(function(){
     $("#tercero").hide();
     $(".dinamico").remove();
@@ -87,6 +89,122 @@ $(document).ready(function(){
     $("#segundo").hide();
     $("#primero").show();
   });
+  
+  
+  
+  ////VOY A PEGAR AQUI EL CODIGO DE IMAGENES!!!!//////
+
+      $("#terceroFB").hide();
+      $(".albumDinamico").remove();
+      $("#segundoFB").hide();
+      $("#galeriaVacia").hide();
+      $("#imgSeleccionadaDeGaleria").hide();
+      $("#facebookDiv").hide();
+      $("#primeroFB").show();
+      $("#btnAlbumsDeFacebook").show();
+      $("#btnSeleccionaImagen").show();
+      $("#btnGuardarImagen").hide();
+
+      $( "#btnAlbumsDeFacebook" ).click(function(e) {
+            $(this).hide();
+            $("#btnSeleccionaImagen").hide();
+            $("#terceroFB").hide();
+            $("#galeriaImagenes").hide();
+            $(".albumDinamico").remove();
+            $("#facebookDiv").show();
+            $("#primeroFB").show();
+            $("#segundoFB").hide();
+            $("#nombreDeImgn").val('');
+            FB.getLoginStatus(function(response) {
+               if (response.status === 'connected') {
+                $('#myModalFacebook').modal();
+                
+                    for (var p in infoAlbumes) {
+                            var $photosList = $('#albumsList');
+                            var $li = $('<li class="albumDinamico"/>');
+                             $li.append('<img src="' + infoAlbumes[p].picture + '" width="100" height="100"/>');
+                             $li.append('<div>Album: '+ infoAlbumes[p].title +'</div>');
+                             
+                            $li.click(function() {
+                                  var r = $(this).index();
+                                  $(".photoDinamico").remove();
+                                  $("#primeroFB").hide();
+                                  $("#segundoFB").show();
+                                  $("#terceroFB").hide();
+                                    
+                                     var fotos = photosDelAlbum[r];
+                                     for (var a in fotos ) {
+                                           var $photosList = $('#photosList');
+                                           var $li = $('<li class="photoDinamico"/>');
+                                           $li.append('<img src="' + fotos[a].origen + '" width="100" height="100"/>');
+                                           $li.on("click", "img", function(){ 
+                                                 $("#imgVistaPrevia").attr('src',$(this).attr("src"));
+                                                 $("#primeroFB").hide();
+                                                 $("#segundoFB").hide();
+                                                 $("#terceroFB").show();
+                                           });
+                                           $photosList.append($li);                                
+                                     }                               
+                            });
+                            $photosList.append($li);                                
+                    }
+                 }else{
+                    FB.login(function(response) {
+                      statusChangeCallback(response);
+                    }, {scope: 'public_profile,email,user_photos'});
+
+                 }
+            });
+      });
+
+      $("#idRegresarAlbum").click(function(){
+        $(".photoDinamico").remove();
+        $("#terceroFB").hide();
+        $("#segundoFB").hide();
+        $("#primeroFB").show();
+      });
+       
+
+      $("#idCloseImgFace").click(function(){
+          $("#imgVistaPrevia").attr('src','');
+      });
+
+      $("#llamarGaleriaImagenes").click(function(){ 
+            $("#galeriaImagenes").show();
+            $("#buscarImagenes").hide();
+            $("#facebookDiv").hide();
+            $("#actualizarImagenes").hide();
+            $('#myModalImagenes').modal();
+            $("#btnSeleccionaImagen").show();
+            $("#btnAlbumsDeFacebook").show();
+        });
+      $("#closemyModalImagenes").click(function(){
+        $("#myModalImagenes").modal('toggle');
+        $("#galeriaImagenes").hide();
+      });
+      $("#regresarSelecImg").click(function(){
+          $("#galeriaImagenes").show();
+          $("#imgSeleccionadaDeGaleria").hide();
+          $("#btnGuardarImagen").hide();
+          $("#btnAlbumsDeFacebook").show();
+      });
+    $("#regresarDeFace").click(function(){
+          $("#facebookDiv").hide();
+          $(".albumDinamico").remove();
+          $(".photoDinamico").remove();
+          $("#galeriaImagenes").show();
+          $("#btnAlbumsDeFacebook").show();
+          $("#btnSeleccionaImagen").show();
+      });
+     $("#regresarDeFotos").click(function(){
+          $("#terceroFB").hide();
+          $("#segundoFB").show();
+      });
+     
+   
+    
+////////////// FIND EL CODIGO DE IMAGENES ////////////
+
   
 });
 
