@@ -240,17 +240,12 @@ function guardarImagenesJQ()
 	
 	$.unblockUI();
 }
-    
-<<<<<<< HEAD
-function guardarImagenesJQF(){
-    	
-	var imageUrl = $("#imgVistaPrevia").attr("src");
-=======
+
 function guardarImagenesJQF()
 {    	
 	var textFoto = "";
-	var imageUrl = "http://localhost:8282/WebAppInfomovil/resources/webapp/images/apple-touch-icon-57x57.png"
->>>>>>> 4b73880cde76b3d3daeeaee7aea14fc0e132d2e1
+	var imageUrl = $("#imgVistaPrevia").attr("src");
+	
     console.log('imageUrl', imageUrl);
 	
 	$.blockUI.defaults.baseZ = 9000;   
