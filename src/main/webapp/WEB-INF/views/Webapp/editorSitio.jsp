@@ -313,6 +313,7 @@
 		<input type="hidden" id="longitud" name="longitud" value = "${ longitud }">
 		<input type="hidden" id="direccionMapAux" name="direccionMapAux">
 		<input type="hidden" id="urlVideo" name="urlVideo" value = "${ urlVideo }">
+		<input type="hidden" id="idDominio" name="idDominio" value = "${ idDominio }">
 		<!-- Bootstrap core JavaScript
 	    ================================================== -->
 		<!-- Placed at the end of the document so the pages load faster -->
@@ -336,7 +337,7 @@
 		<script src="<c:url value="/resources/js/webapp/mapa.js"/>"></script>
 		<script src="<c:url value="/resources/js/webapp/videoYoutube.js"/>"></script>
 		<script src="<c:url value="/resources/js/webapp/imagenes.js"/>"></script>
-		
+		<h1>${ idDominio }</h1>
 		<script>
 			$(document).ready(function(){
 				generarSlider();

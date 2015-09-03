@@ -30,7 +30,7 @@ public class ClientWsInfomovil {
 		return _crearSitioLogin__return.getRespuestaVO();
 	}
 
-	public RespuestaVO crearSitioRegistrar(String email, String password, String nombreUsuario, String codigo, String tipoRegistro){
+	public RespuestaVO crearSitioRegistrar(String email, String password, String nombreUsuario, String codigo/*, String tipoRegistro*/){
 
 		//log.info("Invoking crearSitioRegistrar...");
 		com.infomovil.webapp.clientWsInfomovil.CrearSitioRegistrar _crearSitioRegistrar_parameters = new CrearSitioRegistrar();
@@ -38,7 +38,7 @@ public class ClientWsInfomovil {
 		_crearSitioRegistrar_parameters.password = password;
 		_crearSitioRegistrar_parameters.nombreUsuario = nombreUsuario;
 		_crearSitioRegistrar_parameters.codigo = codigo;
-		_crearSitioRegistrar_parameters.tipoRegistro = tipoRegistro;
+	//	_crearSitioRegistrar_parameters.tipoRegistro = tipoRegistro;
 		
 		com.infomovil.webapp.clientWsInfomovil.CrearSitioRegistrarResponse _crearSitioRegistrar__return = port.crearSitioRegistrar(_crearSitioRegistrar_parameters);
 		//log.info("crearSitioRegistrar.result=" + _crearSitioRegistrar__return.respuestaVO.codeError);
@@ -178,7 +178,7 @@ public class ClientWsInfomovil {
         
         return _crearSitioDeleteImage__return.respuestaVO;
 	}
-	
+
 	public List<ImagenVO> crearSitioGetImagenes(String email, Integer domainId,String sistema,String versionSistema)
 	{
         log.info("Invoking getImagenes en clientwsinfomovol...");
@@ -190,8 +190,18 @@ public class ClientWsInfomovil {
         log.info("getImagenes.result=" + _getImagenes__return);
         return _getImagenes__return;
 
-        }
+    }
 	
-	
-	
+	public RespuestaVO crearSitioUpdateImage(String domainId, String imageId, String baseImagen, String descImagen)
+	{
+	    log.info("Invoking crearSitioUpdateImage...");
+	    com.infomovil.webapp.clientWsInfomovil.CrearSitioUpdateImage _crearSitioUpdateImage_parameters = new CrearSitioUpdateImage();
+	    _crearSitioUpdateImage_parameters.domainId = domainId;
+	    _crearSitioUpdateImage_parameters.imageId = imageId;
+	    _crearSitioUpdateImage_parameters.baseImagen = baseImagen;
+	    _crearSitioUpdateImage_parameters.descImagen = descImagen;    
+	    com.infomovil.webapp.clientWsInfomovil.CrearSitioUpdateImageResponse _crearSitioUpdateImage__return = port.crearSitioUpdateImage(_crearSitioUpdateImage_parameters);
+	    log.info("crearSitioUpdateImage.result=" + _crearSitioUpdateImage__return);
+	    return _crearSitioUpdateImage__return.respuestaVO;
+    }
 }

@@ -183,14 +183,14 @@ public class WebappController
 		try
 		{	
 			wsRespuesta = wsCliente.crearSitioGuardaImage(domainId, baseImagen, tipoImagen, descImagen) ;
+			resultMap.put("codeError", wsRespuesta.getCodeError());
 		}		
 		catch (Exception e) 
 		{
 			logger.error("guardarImagen:::::", e);	
-			resultMap.put("codeError", "-100");
+			resultMap.put("codeError", wsRespuesta.getCodeError());
+			resultMap.put("descError", wsRespuesta.getMsgError());
 		}	
-		
-		resultMap.put("guardarImagen", wsRespuesta.getCodeError());
 		
 		return resultMap;
 	}
@@ -213,7 +213,7 @@ public class WebappController
 		}		
 		catch (Exception e) 
 		{
-			logger.error("guardarImagen:::::", e);	
+			logger.error("getImagenes:::::", e);
 		}	
 
 		return list;
@@ -221,8 +221,30 @@ public class WebappController
 	
 	@RequestMapping(value = "/infomovil/borrarImagen", method = RequestMethod.GET, produces = "application/json")
 	@ResponseBody
-	public Map<String, String> borrarImagen(@RequestParam String domainId, 
-												@RequestParam String imageId) 
+	public Map<String, String> borrarImagen(@RequestParam String domainId, @RequestParam String imageId) 
+			throws UnsupportedEncodingException
+	{		
+		Map<String, String> resultMap = new HashMap<String, String>();
+		RespuestaVO wsRespuesta = new RespuestaVO();
+		
+		try
+		{				
+			wsRespuesta = wsCliente.crearSitioEliminaImage(domainId, imageId);
+			resultMap.put("codeError", wsRespuesta.getCodeError());
+		}		
+		catch (Exception e) 
+		{
+			logger.error("borrarImagen:::::", e);	
+			resultMap.put("codeError", wsRespuesta.getCodeError());
+			resultMap.put("descError", wsRespuesta.getMsgError());
+		}	
+		
+		return resultMap;
+	}
+
+	@RequestMapping(value = "/infomovil/actualizarImagen", method = RequestMethod.GET, produces = "application/json")
+	@ResponseBody
+	public Map<String, String> actualizarImagen(@RequestParam String domainId, @RequestParam String imageId, @RequestParam String baseImagen, String descImagen) 
 			throws UnsupportedEncodingException
 	{		
 		Map<String, String> resultMap = new HashMap<String, String>();
@@ -230,23 +252,18 @@ public class WebappController
 		
 		try
 		{
-				
-			wsRespuesta = wsCliente.crearSitioEliminaImage(domainId, imageId);
+			wsRespuesta = wsCliente.crearSitioUpdateImage(domainId, imageId, baseImagen, descImagen);
+			resultMap.put("codeError", wsRespuesta.getCodeError());
 		}		
 		catch (Exception e) 
 		{
 			logger.error("borrarImagen:::::", e);	
-			resultMap.put("codeError", "-100");
+			resultMap.put("codeError", wsRespuesta.getCodeError());
+			resultMap.put("descError", wsRespuesta.getMsgError());
 		}	
-		
-		resultMap.put("borrarImagen", wsRespuesta.getCodeError());
-		
+				
 		return resultMap;
 	}
-	
-	
-	
-	
 	
 	@RequestMapping(value = "/infomovil/publicarSitio", method = RequestMethod.POST)
 	@ResponseBody
@@ -354,7 +371,7 @@ public class WebappController
 		{
 			logoutInfomovil(request, response);
 			correo = correo.toLowerCase();
-			wsRespuesta = wsCliente.crearSitioRegistrar(correo, passwordDefault, nombre, codigo.toLowerCase(),"automatico");
+			wsRespuesta = wsCliente.crearSitioRegistrar(correo, passwordDefault, nombre, codigo.toLowerCase()/*, "automatico"*/);
 			codigoError = wsRespuesta.getCodeError();
 			descripcionError = wsRespuesta.getMsgError();
 			
@@ -401,7 +418,7 @@ public class WebappController
 		RespuestaVO wsRespuesta = new RespuestaVO();
 		String codigoError = "", descripcionError = "", vista="";
 		correo = correo.toLowerCase();
-		wsRespuesta = wsCliente.crearSitioRegistrar(correo, contrasenia, correo, codigo.toLowerCase(),"formulario");
+		wsRespuesta = wsCliente.crearSitioRegistrar(correo, contrasenia, correo, codigo.toLowerCase()/*, "formulario"*/);
 		codigoError = wsRespuesta.getCodeError();
 		descripcionError = wsRespuesta.getMsgError();
 		
@@ -469,6 +486,7 @@ public class WebappController
 		String urlEjemploSitio = "";
 		String visibleRecurso = "";
 		String visibleTel = "";
+		String idDominio = "";
 		
 		try
 		{
@@ -482,6 +500,7 @@ public class WebappController
 				Util.getCurrentSession().setAttribute("nombreUsuario", 
 				wsRespuesta.getDominioCreaSitio().getNombreUsuario());				
 				campania = wsRespuesta.getDominioCreaSitio().getCampania().toLowerCase();
+				idDominio = wsRespuesta.getIdDominio();
 				
 				if (wsRespuesta.getDominioCreaSitio().getNombreEmpresa().trim().equals("TÃtulo"))
 					model.put("nombreEmpresa", "");
@@ -595,6 +614,7 @@ public class WebappController
 				model.put("urlEjemploSitio", urlEjemploSitio);
 				model.put("visibleRecurso", visibleRecurso);
 				model.put("visibleTel", visibleTel);
+				model.put("idDominio", idDominio);
 			}
 			else 
 			{
