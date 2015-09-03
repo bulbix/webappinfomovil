@@ -36,7 +36,7 @@ public class ClientWsInfomovilTest {
 	
 	@Test
 	public void testCrearSitioRegistrar() {
-		RespuestaVO resp = clientWsInfomovil.crearSitioRegistrar(correoPrueba, "garbage1", nombrePrueba, "");
+		RespuestaVO resp = clientWsInfomovil.crearSitioRegistrar(correoPrueba, "garbage1", nombrePrueba, "","formulario");
 		assertNotNull(resp);
 	}
 	
