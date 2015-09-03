@@ -28,10 +28,11 @@ public class WsInfomovilDomainService extends Service {
     public final static QName WsInfomovilDomainPort = new QName("http://ws.webservice.infomovil.org/", "WsInfomovilDomainPort");
     static {
     	 URL url = null;//WsInfomovilDomainService.class.getResource("/var/folders/52/xttscp9j4n54ndmzy3sz_4rc0000gn/T/tempdir6239003104282830238.tmp/wsInfomovildomain_1.wsdl");
+
          if (url == null) {
              try {
              	if(Util.getProfile().equals("DEV")){
-             		url = new URL("http://localhost:8080/WsInfomovil/wsInfomovildomain?wsdl");
+             		url = new URL("http://172.16.51.30:8080/WsInfomovil/wsInfomovildomain?wsdl");
              	}
              	else if(Util.getProfile().equals("QA")){
              		url = new URL("http://qa.mobileinfo.io/WsInfomovil/wsInfomovildomain?wsdl");

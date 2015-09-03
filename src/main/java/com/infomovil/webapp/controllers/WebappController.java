@@ -14,6 +14,8 @@ import org.apache.commons.collections4.Predicate;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.validator.routines.EmailValidator;
 import org.apache.log4j.Logger;
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
 import org.springframework.stereotype.Controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
@@ -29,8 +31,10 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.google.gson.JsonObject;
 import com.infomovil.webapp.clientWsInfomovil.Catalogo;
 import com.infomovil.webapp.clientWsInfomovil.ClientWsInfomovil;
+import com.infomovil.webapp.clientWsInfomovil.ImagenVO;
 import com.infomovil.webapp.clientWsInfomovil.ProductoUsuarioVO;
 import com.infomovil.webapp.clientWsInfomovil.RespuestaVO;
 import com.infomovil.webapp.model.ModeloWebApp;
@@ -164,14 +168,61 @@ public class WebappController
 		
 		return resultMap;
 	}
-	/*
-	@RequestMapping(value = "/infomovil/actualizaImagen", method = RequestMethod.GET, produces = "application/json")
+	
+	@RequestMapping(value = "/infomovil/guardarImagen", method = RequestMethod.POST, produces = "application/json")
 	@ResponseBody
-	public Map<String, String> actualizaImagen(@RequestParam String baseImagen, 
+	public Map<String, String> guardarImagen(@RequestParam String baseImagen, 
 												@RequestParam String tipoImagen,
-												@RequestParam String dominioId,
-												@RequestParam String imagenId,
-												@RequestParam String descripcionImagen) 
+												@RequestParam String domainId,
+												 String descImagen) 
+			throws UnsupportedEncodingException
+	{		
+		Map<String, String> resultMap = new HashMap<String, String>();
+		RespuestaVO wsRespuesta = new RespuestaVO();
+		
+		try
+		{	
+			wsRespuesta = wsCliente.crearSitioGuardaImage(domainId, baseImagen, tipoImagen, descImagen) ;
+		}		
+		catch (Exception e) 
+		{
+			logger.error("guardarImagen:::::", e);	
+			resultMap.put("codeError", "-100");
+		}	
+		
+		resultMap.put("guardarImagen", wsRespuesta.getCodeError());
+		
+		return resultMap;
+	}
+	
+	@SuppressWarnings("unchecked")
+	@RequestMapping(value = "/infomovil/getImagenes", method = RequestMethod.GET, produces = "application/json")
+	@ResponseBody
+	public JSONArray getImagenes(@RequestParam int domainId) 
+			throws UnsupportedEncodingException
+	{		
+		JSONArray list = new JSONArray();
+		List<ImagenVO> wsRespuesta = null;
+		try
+		{	
+			String correo = Util.getUserLogged().getUsername();		
+			wsRespuesta = wsCliente.crearSitioGetImagenes(correo, domainId, "android", "3.0.2");			
+			list.addAll(wsRespuesta);
+			logger.info(list);
+			
+		}		
+		catch (Exception e) 
+		{
+			logger.error("guardarImagen:::::", e);	
+		}	
+
+		return list;
+	}
+	
+	@RequestMapping(value = "/infomovil/borrarImagen", method = RequestMethod.GET, produces = "application/json")
+	@ResponseBody
+	public Map<String, String> borrarImagen(@RequestParam String domainId, 
+												@RequestParam String imageId) 
 			throws UnsupportedEncodingException
 	{		
 		Map<String, String> resultMap = new HashMap<String, String>();
@@ -179,22 +230,19 @@ public class WebappController
 		
 		try
 		{
-			String correo = Util.getUserLogged().getUsername();
-			String password = Util.getUserLogged().getPassword();		
-			wsRespuesta = wsCliente.crearSitioGuardarImagen(correo, password, baseImagen,tipoImagen,dominioId, imagenId,descripcionImagen);
+				
+			wsRespuesta = wsCliente.crearSitioEliminaImage(domainId, imageId);
 		}		
 		catch (Exception e) 
 		{
-			logger.error("actualizaImagen:::::", e);	
+			logger.error("borrarImagen:::::", e);	
 			resultMap.put("codeError", "-100");
 		}	
 		
-		resultMap.put("actualizaImagen", wsRespuesta.getCodeError());
+		resultMap.put("borrarImagen", wsRespuesta.getCodeError());
 		
 		return resultMap;
 	}
-	*/
-	
 	
 	
 	

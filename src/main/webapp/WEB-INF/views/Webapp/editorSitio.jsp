@@ -53,7 +53,12 @@
 						</li>
 						
 						<li class="botonDesPublicarVid" id="btnVideoLi" style="display:none;">
-							<a href="#" data-toggle="modal" data-target="#myModalVideo" class="smoothScroll ${colorTexto}">Video 
+							<a href="#" data-toggle="modal" data-target="#myModalVideo" class="smoothScroll ${colorTexto}">Videos
+								<img width="20" height="20" alt="Infomovil"	src="<c:url value="/resources/webapp/images/ico_ppp_youtube${ extensionImg }.png"/>" />
+							</a>
+						</li>
+						<li class="botonDesPublicar" id="btnImgLi">
+							<a href="#"  class="smoothScroll ${colorTexto}" onclick="getImagenesJQ()">Agregar Imágenes 
 								<img width="20" height="20" alt="Infomovil"	src="<c:url value="/resources/webapp/images/ico_ppp_youtube${ extensionImg }.png"/>" />
 							</a>
 						</li>
@@ -279,7 +284,14 @@
 			<tiles:putAttribute name="idModal" value="myModalDescApp"/>
 			<c:set var="fragmentName" value="modalDescApp" scope="request" />
 		</tiles:insertDefinition>
-<!-- 		<!--/MODAL DESCARGA LA APP--> 
+<!-- 		<!--/MODAL DESCARGA LA APP-->
+
+<!-- 		<!--MODAL IMAGENES--> 
+		<tiles:insertDefinition name="modalGen">
+			<tiles:putAttribute name="idModal" value="myModalImagenes"/>
+			<c:set var="fragmentName" value="modalImagenes" scope="request" />
+		</tiles:insertDefinition>
+<!-- 		<!--/MODAL IMAGENES-->  
 
 								
 		<!-- Scroll to Top Button (Only visible on small and extra-small screen sizes) -->
@@ -323,6 +335,7 @@
 		<script src="<c:url value="/resources/js/webapp/validaciones.js"/>"></script>
 		<script src="<c:url value="/resources/js/webapp/mapa.js"/>"></script>
 		<script src="<c:url value="/resources/js/webapp/videoYoutube.js"/>"></script>
+		<script src="<c:url value="/resources/js/webapp/imagenes.js"/>"></script>
 		
 		<script>
 			$(document).ready(function(){
