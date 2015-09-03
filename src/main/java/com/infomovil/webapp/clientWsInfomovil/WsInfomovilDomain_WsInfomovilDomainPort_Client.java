@@ -386,14 +386,14 @@ public final class WsInfomovilDomain_WsInfomovilDomainPort_Client {
 
 
         }
-        {
+       /* {
         System.out.println("Invoking crearSitioDeleteImage...");
         com.infomovil.webapp.clientWsInfomovil.CrearSitioDeleteImage _crearSitioDeleteImage_parameters = null;
         com.infomovil.webapp.clientWsInfomovil.CrearSitioDeleteImageResponse _crearSitioDeleteImage__return = port.crearSitioDeleteImage(_crearSitioDeleteImage_parameters);
         System.out.println("crearSitioDeleteImage.result=" + _crearSitioDeleteImage__return);
 
 
-        }
+        }*/
         {
         System.out.println("Invoking cerrarSession...");
         com.infomovil.webapp.clientWsInfomovil.CerrarSession _cerrarSession_parameters = null;
@@ -425,14 +425,14 @@ public final class WsInfomovilDomain_WsInfomovilDomainPort_Client {
 
 
         }
-        {
+      /*  {
         System.out.println("Invoking crearSitioInsertImage...");
         com.infomovil.webapp.clientWsInfomovil.CrearSitioInsertImage _crearSitioInsertImage_parameters = null;
         com.infomovil.webapp.clientWsInfomovil.CrearSitioInsertImageResponse _crearSitioInsertImage__return = port.crearSitioInsertImage(_crearSitioInsertImage_parameters);
         System.out.println("crearSitioInsertImage.result=" + _crearSitioInsertImage__return);
 
 
-        }
+        }*/
         {
         System.out.println("Invoking getExistCampaniaByMail...");
         com.infomovil.webapp.clientWsInfomovil.GetExistCampaniaByMail _getExistCampaniaByMail_parameters = null;

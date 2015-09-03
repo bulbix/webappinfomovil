@@ -30,7 +30,7 @@ public class ClientWsInfomovil {
 		return _crearSitioLogin__return.getRespuestaVO();
 	}
 
-	public RespuestaVO crearSitioRegistrar(String email, String password, String nombreUsuario, String codigo, String tipoRegistro){
+	public RespuestaVO crearSitioRegistrar(String email, String password, String nombreUsuario, String codigo/*, String tipoRegistro*/){
 
 		//log.info("Invoking crearSitioRegistrar...");
 		com.infomovil.webapp.clientWsInfomovil.CrearSitioRegistrar _crearSitioRegistrar_parameters = new CrearSitioRegistrar();
@@ -38,7 +38,7 @@ public class ClientWsInfomovil {
 		_crearSitioRegistrar_parameters.password = password;
 		_crearSitioRegistrar_parameters.nombreUsuario = nombreUsuario;
 		_crearSitioRegistrar_parameters.codigo = codigo;
-		_crearSitioRegistrar_parameters.tipoRegistro = tipoRegistro;
+	//	_crearSitioRegistrar_parameters.tipoRegistro = tipoRegistro;
 		
 		com.infomovil.webapp.clientWsInfomovil.CrearSitioRegistrarResponse _crearSitioRegistrar__return = port.crearSitioRegistrar(_crearSitioRegistrar_parameters);
 		//log.info("crearSitioRegistrar.result=" + _crearSitioRegistrar__return.respuestaVO.codeError);
@@ -154,6 +154,7 @@ public class ClientWsInfomovil {
 		
 	}
 
+/*
 	public RespuestaVO crearSitioGuardaImage(String domainId, String baseImagen, String tipoImagen, String descImagen)
 	{
 		log.info("Invoking crearSitioInsertImage...");
@@ -178,4 +179,5 @@ public class ClientWsInfomovil {
         
         return _crearSitioDeleteImage__return.respuestaVO;
 	}
+	*/
 }

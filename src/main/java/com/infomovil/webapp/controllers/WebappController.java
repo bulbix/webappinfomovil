@@ -306,7 +306,7 @@ public class WebappController
 		{
 			logoutInfomovil(request, response);
 			correo = correo.toLowerCase();
-			wsRespuesta = wsCliente.crearSitioRegistrar(correo, passwordDefault, nombre, codigo.toLowerCase(),"automatico");
+			wsRespuesta = wsCliente.crearSitioRegistrar(correo, passwordDefault, nombre, codigo.toLowerCase()/*, "automatico"*/);
 			codigoError = wsRespuesta.getCodeError();
 			descripcionError = wsRespuesta.getMsgError();
 			
@@ -353,7 +353,7 @@ public class WebappController
 		RespuestaVO wsRespuesta = new RespuestaVO();
 		String codigoError = "", descripcionError = "", vista="";
 		correo = correo.toLowerCase();
-		wsRespuesta = wsCliente.crearSitioRegistrar(correo, contrasenia, correo, codigo.toLowerCase(),"formulario");
+		wsRespuesta = wsCliente.crearSitioRegistrar(correo, contrasenia, correo, codigo.toLowerCase()/*, "formulario"*/);
 		codigoError = wsRespuesta.getCodeError();
 		descripcionError = wsRespuesta.getMsgError();
 		

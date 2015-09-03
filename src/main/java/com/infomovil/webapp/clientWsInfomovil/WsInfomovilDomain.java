@@ -413,6 +413,7 @@ public interface WsInfomovilDomain {
         UpdateTemplate parameters
     );
 
+    /*
     @SOAPBinding(parameterStyle = SOAPBinding.ParameterStyle.BARE)
     @WebResult(name = "crearSitio_deleteImageResponse", targetNamespace = "http://ws.webservice.infomovil.org/", partName = "parameters")
     @Action(input = "http://ws.webservice.infomovil.org/WsInfomovilDomain/crearSitio_deleteImageRequest", output = "http://ws.webservice.infomovil.org/WsInfomovilDomain/crearSitio_deleteImageResponse")
@@ -420,7 +421,7 @@ public interface WsInfomovilDomain {
     public CrearSitioDeleteImageResponse crearSitioDeleteImage(
         @WebParam(partName = "parameters", name = "crearSitio_deleteImage", targetNamespace = "http://ws.webservice.infomovil.org/")
         CrearSitioDeleteImage parameters
-    );
+    );*/
 
     @SOAPBinding(parameterStyle = SOAPBinding.ParameterStyle.BARE)
     @WebResult(name = "cerrarSessionResponse", targetNamespace = "http://ws.webservice.infomovil.org/", partName = "parameters")
@@ -455,7 +456,7 @@ public interface WsInfomovilDomain {
         @WebParam(partName = "parameters", name = "updateTextRecord", targetNamespace = "http://ws.webservice.infomovil.org/")
         UpdateTextRecord parameters
     );
-
+/*
     @SOAPBinding(parameterStyle = SOAPBinding.ParameterStyle.BARE)
     @WebResult(name = "crearSitio_insertImageResponse", targetNamespace = "http://ws.webservice.infomovil.org/", partName = "parameters")
     @Action(input = "http://ws.webservice.infomovil.org/WsInfomovilDomain/crearSitio_insertImageRequest", output = "http://ws.webservice.infomovil.org/WsInfomovilDomain/crearSitio_insertImageResponse")
@@ -463,7 +464,7 @@ public interface WsInfomovilDomain {
     public CrearSitioInsertImageResponse crearSitioInsertImage(
         @WebParam(partName = "parameters", name = "crearSitio_insertImage", targetNamespace = "http://ws.webservice.infomovil.org/")
         CrearSitioInsertImage parameters
-    );
+    );*/
 
     @SOAPBinding(parameterStyle = SOAPBinding.ParameterStyle.BARE)
     @WebResult(name = "getExistCampaniaByMailResponse", targetNamespace = "http://ws.webservice.infomovil.org/", partName = "parameters")
