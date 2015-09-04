@@ -316,9 +316,8 @@ function getImagenesJQ()
 }
     
 function guardarImagenesJQ()
-<<<<<<< HEAD
 {	console.log("Las iamgenes del usuario son" +IMAGENESDELUSUARIO + "Las imagnes maximas son: " +IMAGENESMAX);
-	if(IMAGENESDELUSUARIO <= IMAGENESMAX && planPro){
+	if(IMAGENESDELUSUARIO <= IMAGENESMAX){
 			$.blockUI.defaults.baseZ = 9000;   
 		    $.blockUI({ 
 		        message: "Guardando la imagen...", 
