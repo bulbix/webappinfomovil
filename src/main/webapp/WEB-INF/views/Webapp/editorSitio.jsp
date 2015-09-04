@@ -292,13 +292,12 @@
 			<c:set var="fragmentName" value="modalImagenes" scope="request" />
 		</tiles:insertDefinition>
 <!-- 		<!--/MODAL IMAGENES-->  
-
 								
 		<!-- Scroll to Top Button (Only visible on small and extra-small screen sizes) -->
 		<div class="scroll-top page-scroll visible-xs visble-sm">
 			<a class="btn" href="#page-top"> <img width="20" height="20" alt="Infomovil" src="http://landing.infomovil.com/webapp/templates/${ template }/images/fa-chevron-up.png" />Subir</a>
 		</div>
-
+	
 	<!-- /container -->
 		<form id="publicarDominio"
 			action="<c:url value="/infomovil/publicarSitio"/>" method="post">
@@ -321,6 +320,7 @@
 		<script src="<c:url value="/resources/webapp/js/bootstrap.js"/>"></script>
 		<script src="<c:url value="/resources/webapp/js/docs.min.js"/>"></script>
 		<script src="<c:url value="/resources/webapp/js/smoothscroll.js"/>"></script>
+		<script src="<c:url value="/resources/webapp/js/bootbox.min.js"/>"></script>
 		<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
 		<script	src="<c:url value="/resources/webapp/js/ie10-viewport-bug-workaround.js"/>"></script>
 		<!-- bxSlider Javascript file -->

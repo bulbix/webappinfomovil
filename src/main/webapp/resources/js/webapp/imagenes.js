@@ -174,8 +174,8 @@ function getImagenesJQ()
                 if(typeImg == "IMAGEN")
                 {
                     var $li = $('<li class="imagenDinamica"><img src="'+imgUrl+'" width="80" height="80" class="ImgDinamica"/>');
-                    	$li.append('<input type="text" id="actualizarTexto" value="'+descImg+'"></input>');
-                    	$li.append('<button type="button" class="btn btn-default"  class="eliminarImagen">A</button>');
+                    	$li.append("<input type='text' id='actualizarTexto" + idImg + "' value='"+descImg+"'></input>");
+                    	$li.append('<button type="button" class="btn btn-default"  class="eliminarImagen" onClick="actualizarImagen('+idImg+', ' + "'" + imgUrl+ "'" + ')">A</button>');
                     	$li.append('<button type="button" class="btn btn-default" class="eliminarImagen" id="'+idImg+'"onclick="borrarImagenJQ('+idImg+')">X</button>');	
                     	$li.append('<input type="hidden" id="IdImg" value="'+idImg+'"/></li>');	
                     	$listaImg.append($li);	
@@ -211,8 +211,6 @@ function guardarImagenesJQ()
         } 
     }); 
 
-	textFoto = $("#actualizarTextoFoto").val();
-	
 	$.ajax({
 		type : "POST",
 		url : contextPath + "/infomovil/guardarImagen",
@@ -222,14 +220,14 @@ function guardarImagenesJQ()
 			baseImagen: binaryString,
 			tipoImagen: "IMAGEN",
 			domainId: $('#idDominio').val(),
-			descImagen:  textFoto,
+			descImagen:  $("#actualizarTextoFoto").val(),
 			
 		},
 		success : function(data) {		
         console.log("LA RESPUESTA DEL GUARDADO ES: " +data);
-        $("#myModalImagenes").modal('toggle');
-        $("#galeriaImagenes").hide();
-			
+    //    $("#myModalImagenes").modal('toggle');
+     //   $("#galeriaImagenes").hide();
+        getImagenesJQ();	
 		},
 		error : function(json) {
 			console.log("Error guardarImagen");
@@ -292,14 +290,53 @@ function guardarImagenesJQF()
     });   
 }
     
- function borrarImagenJQ(idImg)
- { 	
-	var textFoto = $("#actualizarTextoFoto").val();
-	console.log("descripcion es: " + textFoto);
-	
+function borrarImagenJQ(idImg)
+{ 	
+	bootbox.confirm("¿Seguro que deseas borrar la imagen?", function(result) {
+
+		if (result)
+		{
+			$.blockUI.defaults.baseZ = 9000;   
+		    $.blockUI({ 
+		        message: "Eliminando la imagen...", 
+		        css: { 
+		        	class:"alertaUI",
+		            top:  ($(window).height() - 400) /2 + 'px', 
+		            left: ($(window).width() - 400) /2 + 'px', 
+		            width: '400px' 
+		        } 
+		    }); 
+		
+			$.ajax({
+				type : "GET",
+				url : contextPath + "/infomovil/borrarImagen",
+				dataType : "json",
+				contentType: "text/plain",
+				data : {
+					domainId: $('#idDominio').val(),
+					imageId: idImg,
+					
+				},
+				success : function(data) {
+		        	$.unblockUI();
+		            console.log("LA RESPUESTA DEL ELIMINAR IMAGEN ES: " +data);
+		            getImagenesJQ();
+				},
+				error : function(json) {
+					console.log("Error Eliminar Imagen");
+					$.unblockUI();
+				}
+		
+			});		
+		}	
+	}); 
+}
+
+function actualizarImagen(idImg, imgUrl)
+{
 	$.blockUI.defaults.baseZ = 9000;   
     $.blockUI({ 
-        message: "Eliminando la imagen...", 
+        message: "Actualizando imagen...", 
         css: { 
         	class:"alertaUI",
             top:  ($(window).height() - 400) /2 + 'px', 
@@ -310,31 +347,31 @@ function guardarImagenesJQF()
 
 	$.ajax({
 		type : "GET",
-		url : contextPath + "/infomovil/borrarImagen",
+		url : contextPath + "/infomovil/actualizarImagen",
 		dataType : "json",
 		contentType: "text/plain",
 		data : {
 			domainId: $('#idDominio').val(),
 			imageId: idImg,
-			
+			baseImagen : "",
+			descImagen : $('#actualizarTexto' + idImg).val()			
 		},
-		success : function(data) {		
-            console.log("LA RESPUESTA DEL ELIMINAR IMAGEN ES: " +data);
+		success : function(data) {
+        	$.unblockUI();
+            console.log("LA RESPUESTA DE ACTUALIZAR IMAGEN ES: " + data);
             getImagenesJQ();
-			
 		},
 		error : function(json) {
-			console.log("Error Eliminar Imagen");
+			console.log("Error Actualizar Imagen");
 			$.unblockUI();
 		}
 
 	});		
-	
-	$.unblockUI();
 }
- 
+
 function convertImgToBase64(url, callback, outputFormat)
 {
+	console.log("url: " + url);
 	var img = new Image();
 	img.crossOrigin = 'Anonymous';
 	
