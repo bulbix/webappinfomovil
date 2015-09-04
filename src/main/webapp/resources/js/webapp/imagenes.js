@@ -1,3 +1,120 @@
+$(document).ready(function(){
+
+    $("#terceroFB").hide();
+    $(".albumDinamico").remove();
+    $("#segundoFB").hide();
+    $("#galeriaVacia").hide();
+    $("#imgSeleccionadaDeGaleria").hide();
+    $("#facebookDiv").hide();
+    $("#primeroFB").show();
+    $("#btnAlbumsDeFacebook").show();
+    $("#btnSeleccionaImagen").show();
+    $("#btnGuardarImagen").hide();
+
+    $( "#btnAlbumsDeFacebook" ).click(function(e) {
+          $(this).hide();
+          $("#btnSeleccionaImagen").hide();
+          $("#terceroFB").hide();
+          $("#galeriaImagenes").hide();
+          $(".albumDinamico").remove();
+          $("#facebookDiv").show();
+          $("#primeroFB").show();
+          $("#segundoFB").hide();
+          $("#nombreDeImgn").val('');
+          FB.getLoginStatus(function(response) {
+             if (response.status === 'connected') {
+              $('#myModalFacebook').modal();
+              
+                  for (var p in infoAlbumes) {
+                          var $photosList = $('#albumsList');
+                          var $li = $('<li class="albumDinamico"/>');
+                           $li.append('<img src="' + infoAlbumes[p].picture + '" width="100" height="100"/>');
+                           $li.append('<div>Album: '+ infoAlbumes[p].title +'</div>');
+                           
+                          $li.click(function() {
+                                var r = $(this).index();
+                                $(".photoDinamico").remove();
+                                $("#primeroFB").hide();
+                                $("#segundoFB").show();
+                                $("#terceroFB").hide();
+                                  
+                                   var fotos = photosDelAlbum[r];
+                                   for (var a in fotos ) {
+                                         var $photosList = $('#photosList');
+                                         var $li = $('<li class="photoDinamico"/>');
+                                         $li.append('<img src="' + fotos[a].origen + '" width="100" height="100"/>');
+                                         $li.on("click", "img", function(){ 
+                                               $("#imgVistaPrevia").attr('src',$(this).attr("src"));
+                                               $("#primeroFB").hide();
+                                               $("#segundoFB").hide();
+                                               $("#terceroFB").show();
+                                         });
+                                         $photosList.append($li);                                
+                                   }                               
+                          });
+                          $photosList.append($li);                                
+                  }
+               }else{
+                  FB.login(function(response) {
+                    statusChangeCallback(response);
+                  }, {scope: 'public_profile,email,user_photos'});
+
+               }
+          });
+    });
+
+    $("#idRegresarAlbum").click(function(){
+      $(".photoDinamico").remove();
+      $("#terceroFB").hide();
+      $("#segundoFB").hide();
+      $("#primeroFB").show();
+    });
+     
+
+    $("#idCloseImgFace").click(function(){
+        $("#imgVistaPrevia").attr('src','');
+    });
+
+    $("#llamarGaleriaImagenes").click(function(){ 
+          $("#galeriaImagenes").show();
+          $("#buscarImagenes").hide();
+          $("#facebookDiv").hide();
+          $("#actualizarImagenes").hide();
+          $('#myModalImagenes').modal();
+          $("#btnSeleccionaImagen").show();
+          $("#btnAlbumsDeFacebook").show();
+      });
+    $("#closemyModalImagenes").click(function(){
+      $("#myModalImagenes").modal('toggle');
+      $("#galeriaImagenes").hide();
+    });
+    $("#regresarSelecImg").click(function(){
+        $("#galeriaImagenes").show();
+        $("#imgSeleccionadaDeGaleria").hide();
+        $("#btnGuardarImagen").hide();
+        $("#btnAlbumsDeFacebook").show();
+    });
+  $("#regresarDeFace").click(function(){
+        $("#facebookDiv").hide();
+        $(".albumDinamico").remove();
+        $(".photoDinamico").remove();
+        $("#galeriaImagenes").show();
+        $("#btnAlbumsDeFacebook").show();
+        $("#btnSeleccionaImagen").show();
+    });
+   $("#regresarDeFotos").click(function(){
+        $("#terceroFB").hide();
+        $("#segundoFB").show();
+    });
+   
+ 
+  
+//////////////FIND EL CODIGO DE IMAGENES ////////////
+	
+});
+
+var IMAGENESMAX = 5;
+var IMAGENESDELUSUARIO = 0;
 var infoAlbumes = new Array();
 var photosDelAlbum = new Array();
   
@@ -57,11 +174,11 @@ window.fbAsyncInit = function() {
       }(document, 'script', 'facebook-jssdk'));
 
     
-  // ESTA FUNCION ES PARA SABER SI ESTA CONECTADO A FACEBOOK //
+
   function statusChangeCallback(response) {
     if (response.status === 'connected') {
       testapiFacebook();  
-    }else if (response.status === 'not_authorized') {  // REINTENTAR CONEXION // 
+    }else if (response.status === 'not_authorized') {  
         FB.login(function(response) {
             statusChangeCallback2(response);
         }, {scope: 'public_profile,email,user_photos'});    
@@ -137,6 +254,8 @@ function picChange(evt)
     
 function getImagenesJQ()
 {
+	$('#actualizarTextoFoto').val("");
+    $('#nombreDeImgn').val("");
 	$.blockUI.defaults.baseZ = 9000;   
     $.blockUI({ 
         message: "Obteniendo imagenes...", 
@@ -163,7 +282,7 @@ function getImagenesJQ()
 			
 		},
 		success : function(data) {
-			
+			IMAGENESDELUSUARIO = data.length;
             for(var i = 0; i < data.length; i++) 
             {	
             	var imgUrl = data[i].url;
@@ -197,105 +316,117 @@ function getImagenesJQ()
 }
     
 function guardarImagenesJQ()
-{
-	var textFoto = "";
-	
-	$.blockUI.defaults.baseZ = 9000;   
-    $.blockUI({ 
-        message: "Guardando la imagen...", 
-        css: { 
-        	class:"alertaUI",
-            top:  ($(window).height() - 400) /2 + 'px', 
-            left: ($(window).width() - 400) /2 + 'px', 
-            width: '400px' 
-        } 
-    }); 
-
-	textFoto = $("#actualizarTextoFoto").val();
-	
-	$.ajax({
-		type : "POST",
-		url : contextPath + "/infomovil/guardarImagen",
-		dataType : "json",
-		contentType: "application/x-www-form-urlencoded",
-		data : {
-			baseImagen: binaryString,
-			tipoImagen: "IMAGEN",
-			domainId: $('#idDominio').val(),
-			descImagen:  textFoto,
+{	console.log("Las iamgenes del usuario son" +IMAGENESDELUSUARIO + "Las imagnes maximas son: " +IMAGENESMAX);
+	if(IMAGENESDELUSUARIO <= IMAGENESMAX && planPro){
+			$.blockUI.defaults.baseZ = 9000;   
+		    $.blockUI({ 
+		        message: "Guardando la imagen...", 
+		        css: { 
+		        	class:"alertaUI", 
+		            top:  ($(window).height() - 400) /2 + 'px', 
+		            left: ($(window).width() - 400) /2 + 'px', 
+		            width: '400px' 
+		        } 
+		    }); 
+		
+		    var textFoto = $("#actualizarTextoFoto").val();
 			
-		},
-		success : function(data) {		
-        console.log("LA RESPUESTA DEL GUARDADO ES: " +data);
-        $("#myModalImagenes").modal('toggle');
-        $("#galeriaImagenes").hide();
-			
-		},
-		error : function(json) {
-			console.log("Error guardarImagen");
-			$.unblockUI();
-		}
-
-	});		
+			$.ajax({
+				type : "POST",
+				url : contextPath + "/infomovil/guardarImagen",
+				dataType : "json",
+				contentType: "application/x-www-form-urlencoded",
+				data : {
+					baseImagen: binaryString,
+					tipoImagen: "IMAGEN",
+					domainId: $('#idDominio').val(),
+					descImagen:  textFoto,
+					
+				},
+				success : function(data) {		
+			        console.log("LA RESPUESTA DEL GUARDADO ES: " +data);
+			       // $("#myModalImagenes").modal('toggle');
+			        
+			        $("#facebookDiv").hide();
+			        $("#imgSeleccionadaDeGaleria").hide();
+			        $("#btnSeleccionaImagen").show();
+			        $("#btnAlbumsDeFacebook").show();
+			        getImagenesJQ();
+			        $("#galeriaImagenes").show();
+			        $("#btnGuardarImagen").hide();
+			        $.unblockUI();
+				},
+				error : function(json) {
+					console.log("Error guardarImagen");
+					$.unblockUI();
+				}
+		
+			});		
+	}else{
+		console.log("YA ALCANZASTE EL MÁXIMO DE IMAGENES PERMITIDAS ADQUIERE Plan Pro");
+	}
 	
-	$.unblockUI();
 }
 
 function guardarImagenesJQF()
 {    	
-	var textFoto = "";
-	var imageUrl = $("#imgVistaPrevia").attr("src");
-	
-    console.log('imageUrl', imageUrl);
-	
-	$.blockUI.defaults.baseZ = 9000;   
-    $.blockUI({ 
-        message: "Guardando la imagen...", 
-        css: { 
-        	class:"alertaUI",
-            top:  ($(window).height() - 400) /2 + 'px', 
-            left: ($(window).width() - 400) /2 + 'px', 
-            width: '400px' 
-        } 
-    }); 
-    
-    convertImgToBase64(imageUrl, function(base64Img) {
-    	
-    	binaryString = btoa(base64Img);
-    	textFoto = $("#nombreDeImgn").val();
-
-    	$.ajax({
-    		type : "POST",
-    		url : contextPath + "/infomovil/guardarImagen",
-    		dataType : "json",
-    		contentType: "application/x-www-form-urlencoded",
-    		data : {
-    			baseImagen: binaryString,
-    			tipoImagen: "IMAGEN",
-    			domainId: $('#idDominio').val(),
-    			descImagen:  textFoto,
-    			
-    		},
-    		success : function(data) {		
-            console.log("LA RESPUESTA DEL GUARDADO ES: " +data);
-            $("#myModalImagenes").modal('toggle');
-            $("#galeriaImagenes").hide();
-            $.unblockUI();
-    		},
-    		error : function(json) {
-    			console.log("Error guardarImagen");
-    			$.unblockUI();
-    		}
-
-    	});		
-	
-    });   
+	if(IMAGENESDELUSUARIO <= IMAGENESMAX){
+			var imageUrl = $("#imgVistaPrevia").attr("src");
+		    console.log('imageUrl', imageUrl);
+			$.blockUI.defaults.baseZ = 9000;   
+		    $.blockUI({ 
+		        message: "Guardando la imagen...", 
+		        css: { 
+		        	class:"alertaUI",
+		            top:  ($(window).height() - 400) /2 + 'px', 
+		            left: ($(window).width() - 400) /2 + 'px', 
+		            width: '400px' 
+		        } 
+		    }); 
+		    
+		    convertImgToBase64(imageUrl, function(base64Img) {
+		    	
+		    	binaryString = btoa(base64Img);
+		    	var textFoto = $("#nombreDeImgn").val();
+		
+		    	$.ajax({
+		    		type : "POST",
+		    		url : contextPath + "/infomovil/guardarImagen",
+		    		dataType : "json",
+		    		contentType: "application/x-www-form-urlencoded",
+		    		data : {
+		    			baseImagen: binaryString,
+		    			tipoImagen: "IMAGEN",
+		    			domainId: $('#idDominio').val(),
+		    			descImagen:  textFoto,
+		    			
+		    		},
+		    		success : function(data) {		
+			            console.log("LA RESPUESTA DEL GUARDADO ES: " +data);
+			            $("#facebookDiv").hide();
+				        $("#imgSeleccionadaDeGaleria").hide();
+				        $("#btnSeleccionaImagen").show();
+				        $("#btnAlbumsDeFacebook").show();
+				        getImagenesJQ();
+				        $("#galeriaImagenes").show();
+				        $("#btnGuardarImagen").hide();
+			            $.unblockUI();
+		    		},
+		    		error : function(json) {
+		    			console.log("Error guardarImagen");
+		    			$.unblockUI();
+		    		}
+		
+		    	});		
+			
+		    });   
+	}else{
+		console.log("YA ALCANZASTE EL MÁXIMO DE IMAGENES PERMITIDAS ADQUIERE P");
+	}
 }
     
  function borrarImagenJQ(idImg)
  { 	
-	var textFoto = $("#actualizarTextoFoto").val();
-	console.log("descripcion es: " + textFoto);
 	
 	$.blockUI.defaults.baseZ = 9000;   
     $.blockUI({ 
@@ -321,7 +452,7 @@ function guardarImagenesJQF()
 		success : function(data) {		
             console.log("LA RESPUESTA DEL ELIMINAR IMAGEN ES: " +data);
             getImagenesJQ();
-			
+            $.unblockUI();
 		},
 		error : function(json) {
 			console.log("Error Eliminar Imagen");
@@ -330,7 +461,7 @@ function guardarImagenesJQF()
 
 	});		
 	
-	$.unblockUI();
+	
 }
  
 function convertImgToBase64(url, callback, outputFormat)

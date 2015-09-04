@@ -314,6 +314,7 @@
 		<input type="hidden" id="direccionMapAux" name="direccionMapAux">
 		<input type="hidden" id="urlVideo" name="urlVideo" value = "${ urlVideo }">
 		<input type="hidden" id="idDominio" name="idDominio" value = "${ idDominio }">
+		<input type="hidden" id="idDominio" name="planPro" value = "${ planPro }">
 		<!-- Bootstrap core JavaScript
 	    ================================================== -->
 		<!-- Placed at the end of the document so the pages load faster -->

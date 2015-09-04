@@ -88,5 +88,5 @@
 				var contextPath='<%=request.getContextPath()%>';
 				console.log("ContextPath: " + contextPath);
 		</script>
-		<script src="<c:url value="/resources/js/webapp/imagenes.js"/>"></script>
+		
 	</head>
