@@ -1,5 +1,6 @@
-$(document).ready(function(){
 
+
+$(document).ready(function(){
 	$("#terceroFB").hide();
 	$(".albumDinamico").remove();
 	$("#segundoFB").hide();
@@ -113,7 +114,7 @@ $(document).ready(function(){
 
 });
 
-var IMAGENESMAX = 5;
+var IMAGENESMAX = $("#galeriaImagenesMax").val();
 var IMAGENESDELUSUARIO = 0;
 var infoAlbumes = [];
 var photosDelAlbum = [];
@@ -253,7 +254,8 @@ function picChange(evt)
 
 var bloqueo1Vez = 0;
 function getImagenesJQ()
-{
+{ 	
+	IMAGENESDELUSUARIO= 0;
 	if(bloqueo1Vez == 0){
 		bloqueo1Vez = 1;
 		$('#actualizarTextoFoto').val("");
@@ -285,7 +287,18 @@ function getImagenesJQ()
 			},
 			success : function(data) {
 				bloqueo1Vez = 0;
-				IMAGENESDELUSUARIO = data.length;
+				var imgSinLogo = 0;
+				for(var i = 0; i < data.length; i++)
+				{
+					
+					if(data[i].typeImage == "IMAGEN")imgSinLogo++;
+				}
+				
+				IMAGENESDELUSUARIO = imgSinLogo;
+				console.log("las imagenes del usuario son: " + IMAGENESDELUSUARIO);
+				if(IMAGENESDELUSUARIO > 0) {$("#galeriaVacia").hide();}
+				else {$("#galeriaVacia").show();}
+				
 				for(var i = 0; i < data.length; i++)
 				{
 					var imgUrl = data[i].url;
@@ -295,12 +308,21 @@ function getImagenesJQ()
 
 					if(typeImg == "IMAGEN")
 					{
-						var $li = $('<li class="imagenDinamica"><img src="'+imgUrl+'" width="80" height="80" class="ImgDinamica"/>');
-						$li.append("<input type='text' id='actualizarTexto" + idImg + "' value='"+descImg+"'></input>");
-						$li.append('<button type="button" class="btn btn-default"  class="eliminarImagen" onClick="actualizarImagen('+idImg+', ' + "'" + imgUrl+ "'" + ')">A</button>');
-						$li.append('<button type="button" class="btn btn-default" class="eliminarImagen" id="'+idImg+'"onclick="borrarImagenJQ('+idImg+')">X</button>');
-						$li.append('<input type="hidden" id="IdImg" value="'+idImg+'"/></li>');
-						$listaImg.append($li);
+						if(i < IMAGENESMAX){
+							var $li = $('<li class="imagenDinamica"><img src="'+imgUrl+'" width="80" height="80" class="ImgDinamica"/>');
+							$li.append("<input type='text' id='actualizarTexto" + idImg + "' value='"+descImg+"'></input>");
+							$li.append('<button type="button" class="btn btn-default"  class="eliminarImagen" onClick="actualizarImagen('+idImg+', ' + "'" + imgUrl+ "'" + ')">A</button>');
+							$li.append('<button type="button" class="btn btn-default" class="eliminarImagen" id="'+idImg+'"onclick="borrarImagenJQ('+idImg+')">X</button>');
+							$li.append('<input type="hidden" id="IdImg" value="'+idImg+'"/></li>');
+							$listaImg.append($li);
+						}else{
+							var $li = $('<li class="imagenDinamica"><img src="'+imgUrl+'" width="80" height="80" class="ImgDinamica"/>');
+							$li.append("<input type='text' id='actualizarTexto" + idImg + "' value='"+descImg+"'></input>");
+							$li.append('<button type="button" class="btn btn-default"  class="eliminarImagen" onClick="actualizarImagen('+idImg+', ' + "'" + imgUrl+ "'" + ')">A</button>');
+							$li.append('<button type="button" class="btn btn-default" class="eliminarImagen" id="'+idImg+'"onclick="borrarImagenJQ('+idImg+')">X</button>');
+							$li.append('<input type="hidden" id="IdImg" value="'+idImg+'"/></li>');
+							$listaImg.append($li);
+						}
 					}
 				}
 
@@ -321,9 +343,10 @@ function getImagenesJQ()
 }
 
 function guardarImagenesJQ(){
-	bloqueo1Vez = 1;
-	console.log("Las iamgenes del usuario son" +IMAGENESDELUSUARIO + "Las imagnes maximas son: " +IMAGENESMAX);
-	if(IMAGENESDELUSUARIO <= IMAGENESMAX){
+	
+	console.log("las imagenes del usuario son: " + IMAGENESDELUSUARIO + "las imagenes max son: " + IMAGENESMAX);
+	if(IMAGENESDELUSUARIO < IMAGENESMAX){
+		console.log("si entro a al if: " + IMAGENESDELUSUARIO);
 		$.blockUI.defaults.baseZ = 9000;
 		$.blockUI({
 			message: "Guardando la imagen...",
@@ -375,8 +398,9 @@ function guardarImagenesJQ(){
 }
 
 function guardarImagenesJQF()
-{
-	if(IMAGENESDELUSUARIO <= IMAGENESMAX){
+{	console.log("las imagenes del usuario son: " + IMAGENESDELUSUARIO);
+	if(IMAGENESDELUSUARIO < IMAGENESMAX){
+		console.log("si entro a al if: " + IMAGENESDELUSUARIO);
 		var imageUrl = $("#imgVistaPrevia").attr("src");
 		console.log('imageUrl', imageUrl);
 		$.blockUI.defaults.baseZ = 9000;

@@ -57,8 +57,8 @@
 		<link rel="canonical" href="http://www.infomovil.com" itemprop="url" />
 		<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
 		<!--[if lt IE 8]>
-		      <script src="<c:url value="/resources/webapp/js/html5shiv.min.js"/>"></script>
-		      <script src="<c:url value="/resources/webapp/js/respond.min.js"/>"></script>
+		      <script src="<c:url value="/WebAppInfomovil/resources/webapp/js/html5shiv.min.js"/>"></script>
+		      <script src="<c:url value="/WebAppInfomovil/resources/webapp/js/respond.min.js"/>"></script>
 		    <![endif]-->
 		<!-- Bootstrap core CSS -->
 <!-- 		<link href="/WebAppInfomovil/resources/webapp/css/bootstrap.min.css" rel="stylesheet" /> -->
