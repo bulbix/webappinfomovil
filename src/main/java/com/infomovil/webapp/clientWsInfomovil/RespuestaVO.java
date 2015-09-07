@@ -34,11 +34,13 @@ import javax.xml.bind.annotation.XmlType;
  *         &lt;element name="campania" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="esquemaProducto" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="idDominio" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *         &lt;element name="downgrade" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="listProductoUsuarioVO" type="{http://ws.webservice.infomovil.org/}productoUsuarioVO" maxOccurs="unbounded" minOccurs="0"/>
  *         &lt;element name="listStatusDomainVO" type="{http://ws.webservice.infomovil.org/}statusDomainVO" maxOccurs="unbounded" minOccurs="0"/>
  *         &lt;element name="listUsuarioDominiosVO" type="{http://ws.webservice.infomovil.org/}usuarioDominiosVO" maxOccurs="unbounded" minOccurs="0"/>
  *         &lt;element name="dominioCreaSitio" type="{http://ws.webservice.infomovil.org/}dominioCreaSitio" minOccurs="0"/>
  *         &lt;element name="listImagenVO" type="{http://ws.webservice.infomovil.org/}imagenVO" maxOccurs="unbounded" minOccurs="0"/>
+ *         &lt;element name="listStatusDomainGratisVO" type="{http://ws.webservice.infomovil.org/}statusDomainVO" maxOccurs="unbounded" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -50,6 +52,7 @@ import javax.xml.bind.annotation.XmlType;
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "respuestaVO", propOrder = {
     "resultado",
+    "downgrade",
     "token",
     "fechaIni",
     "fechaFin",
@@ -65,11 +68,13 @@ import javax.xml.bind.annotation.XmlType;
     "campania",
     "esquemaProducto",
     "idDominio",
+  
     "listProductoUsuarioVO",
     "listStatusDomainVO",
     "listUsuarioDominiosVO",
     "dominioCreaSitio",
-    "listImagenVO"
+    "listImagenVO",
+    "listStatusDomainGratisVO"
 })
 public class RespuestaVO {
 
@@ -89,11 +94,13 @@ public class RespuestaVO {
     protected String campania;
     protected String esquemaProducto;
     protected String idDominio;
+    protected String downgrade;
     protected List<ProductoUsuarioVO> listProductoUsuarioVO;
     protected List<StatusDomainVO> listStatusDomainVO;
     protected List<UsuarioDominiosVO> listUsuarioDominiosVO;
     protected DominioCreaSitio dominioCreaSitio;
     protected List<ImagenVO> listImagenVO;
+    protected List<StatusDomainVO> listStatusDomainGratisVO;
 
     /**
      * Gets the value of the resultado property.
@@ -480,6 +487,30 @@ public class RespuestaVO {
     }
 
     /**
+     * Gets the value of the downgrade property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getDowngrade() {
+        return downgrade;
+    }
+
+    /**
+     * Sets the value of the downgrade property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setDowngrade(String value) {
+        this.downgrade = value;
+    }
+
+    /**
      * Gets the value of the listProductoUsuarioVO property.
      * 
      * <p>
@@ -617,6 +648,35 @@ public class RespuestaVO {
             listImagenVO = new ArrayList<ImagenVO>();
         }
         return this.listImagenVO;
+    }
+
+    /**
+     * Gets the value of the listStatusDomainGratisVO property.
+     * 
+     * <p>
+     * This accessor method returns a reference to the live list,
+     * not a snapshot. Therefore any modification you make to the
+     * returned list will be present inside the JAXB object.
+     * This is why there is not a <CODE>set</CODE> method for the listStatusDomainGratisVO property.
+     * 
+     * <p>
+     * For example, to add a new item, do as follows:
+     * <pre>
+     *    getListStatusDomainGratisVO().add(newItem);
+     * </pre>
+     * 
+     * 
+     * <p>
+     * Objects of the following type(s) are allowed in the list
+     * {@link StatusDomainVO }
+     * 
+     * 
+     */
+    public List<StatusDomainVO> getListStatusDomainGratisVO() {
+        if (listStatusDomainGratisVO == null) {
+            listStatusDomainGratisVO = new ArrayList<StatusDomainVO>();
+        }
+        return this.listStatusDomainGratisVO;
     }
 
 }
