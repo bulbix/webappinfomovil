@@ -37,6 +37,7 @@ import com.infomovil.webapp.clientWsInfomovil.ClientWsInfomovil;
 import com.infomovil.webapp.clientWsInfomovil.ImagenVO;
 import com.infomovil.webapp.clientWsInfomovil.ProductoUsuarioVO;
 import com.infomovil.webapp.clientWsInfomovil.RespuestaVO;
+import com.infomovil.webapp.clientWsInfomovil.StatusDomainVO;
 import com.infomovil.webapp.model.ModeloWebApp;
 import com.infomovil.webapp.util.Util;
 
@@ -470,6 +471,8 @@ public class WebappController
 	{		
 		HashMap<String, Object> model = new HashMap<String, Object>();
 		RespuestaVO wsRespuesta = new RespuestaVO();
+		StatusDomainVO statusDom = new StatusDomainVO();
+		
 	    String template = "Coverpage1azul";
 		String sitioWeb = "SIN_PUBLICAR";
 		String canal = "NO_TIENE";
@@ -487,6 +490,8 @@ public class WebappController
 		String visibleRecurso = "";
 		String visibleTel = "";
 		String idDominio = "";
+		String downgrade = "";
+		String galeriaImagenes = "";
 		
 		try
 		{
@@ -501,6 +506,13 @@ public class WebappController
 				wsRespuesta.getDominioCreaSitio().getNombreUsuario());				
 				campania = wsRespuesta.getDominioCreaSitio().getCampania().toLowerCase();
 				idDominio = wsRespuesta.getIdDominio();
+				downgrade = wsRespuesta.getDowngrade();
+				
+				for (StatusDomainVO stat : wsRespuesta.getListStatusDomainGratisVO())
+				{
+					if (stat.getDescripcionItem().equalsIgnoreCase("GALERIA DE IMAGENES"))
+						galeriaImagenes = stat.getStatus();						
+				}
 				
 				if (wsRespuesta.getDominioCreaSitio().getNombreEmpresa().trim().equals("TÃtulo"))
 					model.put("nombreEmpresa", "");
@@ -615,6 +627,8 @@ public class WebappController
 				model.put("visibleRecurso", visibleRecurso);
 				model.put("visibleTel", visibleTel);
 				model.put("idDominio", idDominio);
+				model.put("downgrade", downgrade);
+				model.put("galeriaImagenes", galeriaImagenes);
 			}
 			else 
 			{

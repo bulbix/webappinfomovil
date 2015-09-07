@@ -70,10 +70,13 @@ public class ClientWsInfomovilTest {
 
 	@Test
 	public void testCrearSitioCargar() {
-		RespuestaVO resp = clientWsInfomovil.crearSitioCargar("luisproducto@mail.com", "garbage1");
-		System.out.println(resp.dominioCreaSitio);
+		RespuestaVO resp = clientWsInfomovil.crearSitioCargar("wallie7@mail.com", "joseluis1");
+	//	System.out.println(resp.dominioCreaSitio);
 		System.out.println(resp.getEsquemaProducto());
-		System.out.println(resp.getListProductoUsuarioVO());
+		//System.out.println(resp.getListProductoUsuarioVO());
+		System.out.println(resp.getDowngrade());
+		System.out.println(resp.getListStatusDomainGratisVO());
+		System.out.println(resp.getListStatusDomainVO());
 		assertNotNull(resp);
 	}
 
