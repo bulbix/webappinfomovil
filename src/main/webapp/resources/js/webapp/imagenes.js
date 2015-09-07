@@ -3,7 +3,7 @@ $(document).ready(function(){
     $("#terceroFB").hide();
     $(".albumDinamico").remove();
     $("#segundoFB").hide();
-    $("#galeriaVacia").hide();
+    //$("#galeriaVacia").hide();
     $("#imgSeleccionadaDeGaleria").hide();
     $("#facebookDiv").hide();
     $("#primeroFB").show();
@@ -14,6 +14,7 @@ $(document).ready(function(){
     $( "#btnAlbumsDeFacebook" ).click(function(e) {
           $(this).hide();
           $("#btnSeleccionaImagen").hide();
+          $("#btnSeleccionaImagen2").hide();
           $("#terceroFB").hide();
           $("#galeriaImagenes").hide();
           $(".albumDinamico").remove();
@@ -27,9 +28,9 @@ $(document).ready(function(){
               
                   for (var p in infoAlbumes) {
                           var $photosList = $('#albumsList');
-                          var $li = $('<li class="albumDinamico"/>');
-                           $li.append('<img src="' + infoAlbumes[p].picture + '" width="100" height="100"/>');
-                           $li.append('<div>Album: '+ infoAlbumes[p].title +'</div>');
+                          var $li = $('<li class="albumDinamico" style="display: block;height:50px; margin:10px;"/><span class="col-xs-3"><img src="' + infoAlbumes[p].picture + '" style="max-width:100px; height:50px;"/></span><span class="col-xs-9"> Album: '+ infoAlbumes[p].title +'</span>');
+                          // $li.append('');
+                          
                            
                           $li.click(function() {
                                 var r = $(this).index();
@@ -42,7 +43,7 @@ $(document).ready(function(){
                                    for (var a in fotos ) {
                                          var $photosList = $('#photosList');
                                          var $li = $('<li class="photoDinamico"/>');
-                                         $li.append('<img src="' + fotos[a].origen + '" width="100" height="100"/>');
+                                         $li.append('<img src="' + fotos[a].origen + '" style="max-width:100px; height:50px;"/>');
                                          $li.on("click", "img", function(){ 
                                                $("#imgVistaPrevia").attr('src',$(this).attr("src"));
                                                $("#primeroFB").hide();
@@ -254,11 +255,13 @@ function picChange(evt)
     
 function getImagenesJQ()
 {
+	$('#btnSeleccionaImagen').show();
+	$('#btnSeleccionaImagen2').show();
 	$('#actualizarTextoFoto').val("");
     $('#nombreDeImgn').val("");
 	$.blockUI.defaults.baseZ = 9000;   
     $.blockUI({ 
-        message: "Obteniendo imagenes...", 
+        message: "Obteniendo imágenes...", 
         css: { 
         	class:"alertaUI",
             top:  ($(window).height() - 400) /2 + 'px', 
@@ -292,11 +295,9 @@ function getImagenesJQ()
                 
                 if(typeImg == "IMAGEN")
                 {
-                    var $li = $('<li class="imagenDinamica"><img src="'+imgUrl+'" width="80" height="80" class="ImgDinamica"/>');
-                    	$li.append("<input type='text' id='actualizarTexto" + idImg + "' value='"+descImg+"'></input>");
-                    	$li.append('<button type="button" class="btn btn-default"  class="eliminarImagen" onClick="actualizarImagen('+idImg+', ' + "'" + imgUrl+ "'" + ')">A</button>');
-                    	$li.append('<button type="button" class="btn btn-default" class="eliminarImagen" id="'+idImg+'"onclick="borrarImagenJQ('+idImg+')">X</button>');	
-                    	$li.append('<input type="hidden" id="IdImg" value="'+idImg+'"/></li>');	
+                    var $li = $('<li class="imagenDinamica" style="display:block;height:50px; width:100%; margin:10px 0;"><div class="col-xs-3 text-center" style="max-height:50px;"><img src="'+imgUrl+'" onerror="errorPreview(this)" style="max-width:100px; max-height:50px;" class="ImgDinamica"/></div><div class="col-xs-9"><input type="text" id="actualizarTexto"' + idImg + '"" value="'+descImg+'" /><div class="spaceBtnsMap"></div><button type="button" class="btn btn-purple"  class="eliminarImagen" onClick="actualizarImagen('+idImg+', ' + "'" + imgUrl+ "'" + ')"><img width="20" height="20" alt="Borrar" src="../resources/webapp/images/ico_actualizar.png" /></button><div class="spaceBtnsMap"></div><button type="button" class="btn btn-purple" class="eliminarImagen" id="'+idImg+'"onclick="borrarImagenJQ('+idImg+')"><img width="20" height="20" alt="Borrar" src="../resources/webapp/images/trash.png" /></button><input type="hidden" id="IdImg" value="'+idImg+'"/></div></li>');
+                    	//$li.append('');
+                    	
                     	$listaImg.append($li);	
                 }
             }
@@ -314,9 +315,13 @@ function getImagenesJQ()
 	
 	$.unblockUI();
 }
-    
+function errorPreview(element) {
+    //alert('The image could not be loaded.');
+    element.onerror='';
+    element.src='../resources/webapp/images/ico_img-gy.png';
+}
 function guardarImagenesJQ()
-{	console.log("Las iamgenes del usuario son" +IMAGENESDELUSUARIO + "Las imagnes maximas son: " +IMAGENESMAX);
+{	console.log("Las imágenes del usuario son" +IMAGENESDELUSUARIO + "Las imágenes máximas son: " +IMAGENESMAX);
 	if(IMAGENESDELUSUARIO <= IMAGENESMAX){
 			$.blockUI.defaults.baseZ = 9000;   
 		    $.blockUI({ 
@@ -346,7 +351,6 @@ function guardarImagenesJQ()
 				success : function(data) {		
 			        console.log("LA RESPUESTA DEL GUARDADO ES: " +data);
 			       // $("#myModalImagenes").modal('toggle');
-			        
 			        $("#facebookDiv").hide();
 			        $("#imgSeleccionadaDeGaleria").hide();
 			        $("#btnSeleccionaImagen").show();
@@ -363,7 +367,7 @@ function guardarImagenesJQ()
 		
 			});		
 	}else{
-		console.log("YA ALCANZASTE EL MÁXIMO DE IMAGENES PERMITIDAS ADQUIERE Plan Pro");
+		console.log("YA ALCANZASTE EL MÁXIMO DE IMAGENES PERMITIDAS ADQUIERE PLAN PRO");
 	}
 
 }
@@ -421,7 +425,7 @@ function guardarImagenesJQF()
 			
 		    });   
 	}else{
-		console.log("YA ALCANZASTE EL MÁXIMO DE IMAGENES PERMITIDAS ADQUIERE P");
+		console.log("YA ALCANZASTE EL MÁXIMO DE IMAGENES PERMITIDAS ADQUIERE PLAN PRO");
 	}
 }
     
