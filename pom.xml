@@ -276,17 +276,26 @@
 			<properties>
 				<config.profile>DEV</config.profile>
 			</properties>
+<<<<<<< HEAD
 			
+=======
+>>>>>>> e1b2a539155b2df642566e114204d91b2c08440e
 		</profile>
 		<profile>
-			<id>qa</id>
-			
+			<id>qa</id>			
 			<properties>
 				<config.profile>QA</config.profile>
+<<<<<<< HEAD
 			</properties>		
 			<activation>
 				<activeByDefault>true</activeByDefault>
 			</activation>
+=======
+			</properties>	
+			<activation>
+				<activeByDefault>true</activeByDefault>
+			</activation>	
+>>>>>>> e1b2a539155b2df642566e114204d91b2c08440e
 		</profile>
 		<profile>
 			<id>prod</id> 
