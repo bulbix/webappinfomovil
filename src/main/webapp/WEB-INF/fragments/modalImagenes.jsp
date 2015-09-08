@@ -61,7 +61,15 @@
     	<ul id="listaImagenes" class="listNone" style="list-style:none"></ul> 
     	</div>   
     </div>  
-    
+    <div id="imgSeleccionadaDeGaleria">
+    	<div style="display:block; margin:10px; min-height:100px;"><button type="button" class="btn btn-purple"  id="regresarSelecImg" style="margin:10px;">Regresar</button></div>
+    	<div class="col-xs-12"> 
+    	<div class="col-xs-3 text-center"><img src=""  class="imgActualizar img-thumbnail" id="fotoDeGaleria" style="max-width:100px; max-height:100px;"/></div>
+        <div class="col-xs-9">
+        <label style="display:inline">Nombre: </label> <input type="text" value="" id="actualizarTextoFoto" style="display:inline" ></input>
+        </div>
+    </div>
+</div>
       
     <div id="facebookDiv">
     	<div id="primeroFB">
@@ -87,15 +95,7 @@
         </div><!--Fin del div tercero -->
 	</div>    
 	
-    <div id="imgSeleccionadaDeGaleria">
-    	<div style="display:block; margin:10px;"><button type="button" class="btn btn-purple"  id="regresarSelecImg" style="margin:10px;">Regresar</button></div>
-    	<div class="col-xs-12"> 
-    	<div class="col-xs-3 text-center"><img src=""  class="imgActualizar img-thumbnail" id="fotoDeGaleria" style="max-width:100px; max-height:50px;"/></div>
-        <div class="col-xs-9">
-        <label style="display:inline">Nombre: </label> <input type="text" value="" id="actualizarTextoFoto" style="display:inline" ></input>
-        </div>
-    </div>
-</div>
+    
 <div class="clear"></div>
 </div>
 

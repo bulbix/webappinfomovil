@@ -402,9 +402,11 @@ function guardarImagenesJQ(){
 		});
 	}else{
 		console.log("YA ALCANZASTE EL MÁXIMO DE IMAGENES PERMITIDAS ADQUIERE Plan Pro");
-		bootbox.confirm("Ya alcanzaste el máximo de imágenes permitidas, adquiere Plan Pro desde la app", function(result) {
-			  Example.show("Confirm result: "+result);
-			}); 
+		bootbox.alert("Ya alcanzaste el máximo de imágenes permitidas, adquiere Plan Pro desde la app", function() {
+			  Example.show("Ya alcanzaste el máximo de imágenes permitidas, adquiere Plan Pro desde la app");
+			});
+		
+		
 	}
 
 }
@@ -469,9 +471,9 @@ function guardarImagenesJQF()
 		});
 	}else{
 		console.log("YA ALCANZASTE EL MÁXIMO DE IMAGENES PERMITIDAS ADQUIERE PLAN PRO");
-		bootbox.confirm("Ya alcanzaste el máximo de imágenes permitidas, adquiere Plan Pro desde la app", function(result) {
-			  Example.show("Confirm result: "+result);
-			}); 
+		bootbox.alert("Ya alcanzaste el máximo de imágenes permitidas, adquiere Plan Pro desde la app", function() {
+			  Example.show("Ya alcanzaste el máximo de imágenes permitidas, adquiere Plan Pro desde la app");
+			});
 	}
 }
 

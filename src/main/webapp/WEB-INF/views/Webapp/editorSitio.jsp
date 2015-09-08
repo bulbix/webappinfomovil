@@ -336,7 +336,7 @@
 		<input type="hidden" id="urlVideo" name="urlVideo" value = "${ urlVideo }">
 		<input type="hidden" id="idDominio" name="idDominio" value = "${ idDominio }">
 		<input type="hidden" id="downgrade" name="downgrade" value = "${ downgrade }">
-		<input type="text" id="galeriaImagenesMax" name="galeriaImagenes" value = "${ galeriaImagenes }">
+		<input type="hidden" id="galeriaImagenesMax" name="galeriaImagenes" value = "${ galeriaImagenes }">
 		<!--  Numero de imagenes MAximo q' puede tener el usuario activas-->
 		<!-- Bootstrap core JavaScript
 	    ================================================== -->
