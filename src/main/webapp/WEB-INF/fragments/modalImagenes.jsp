@@ -4,11 +4,11 @@
 	<button type="button" class="btn btn-purple pull-right btnsEditor"  id="btnGuardarImagen" onclick="guardarImagenesJQ()"><img width="15" height="15" alt="Infomovil" 
     	src="<c:url value="/resources/webapp/images/successWhite.png"/>" /><span class="hidden-xs"> Guardar</span></button>
     	
-    <span class="btn btn-purple pull-right btnsEditor" id="btnSeleccionaImagen2" style="max-width:260px; overflow-x:hidden"><img width="20" height="20" alt="Infomovil" src="<c:url value="/resources/webapp/images/ico_upload.png"/>" style="display:inline" />
+    <span class="btn btn-purple pull-right btnsEditor col-xs-12 col-sm-6" id="btnSeleccionaImagen2" style="overflow-x:hidden"><img width="20" height="20" alt="Infomovil" src="<c:url value="/resources/webapp/images/ico_upload.png"/>" style="display:inline" />
 		<input style="display:inline" type="file" accept="image/*" onClick="validaImg()" onchange="picChange(event)" id="btnSeleccionaImagen" />
 	</span>
     	
-    	<button type="button" class="btn btn-blueFB pull-right btnsEditor col-xs-12"  id="btnAlbumsDeFacebook"><img width="20" height="20" alt="Infomovil" src="<c:url value="/resources/webapp/images/ico_facebook.png"/>" /> <span class="hidden-sm">Fotos de Facebook</span></button>
+    	<button type="button" class="btn btn-blueFB pull-right btnsEditor col-xs-12 col-sm-6"  id="btnAlbumsDeFacebook"><img width="20" height="20" alt="Infomovil" src="<c:url value="/resources/webapp/images/ico_facebook.png"/>" /> <span class="hidden-sm">Fotos de Facebook</span></button>
     	<button type="button" id="regresarDeFace" class="btn btn-purple pull-right" ><img width="20" height="20" alt="Infomovil" src="<c:url value="/resources/webapp/images/ico_back.png"/>" /> <span class="hidden-xs">Regresar</span></button>
     	<button type="button" class="btn btn-purple pull-right"  id="regresarSelecImg" style=""><img width="20" height="20" alt="Infomovil" src="<c:url value="/resources/webapp/images/ico_back.png"/>" /> <span class="hidden-xs">Regresar</span></button>
 	
