@@ -45,7 +45,9 @@
 	<button type="button" class="btn btn-purple pull-right btnsEditor"  id="btnGuardarImagen" onclick="guardarImagenesJQ()"><img width="15" height="15" alt="Infomovil" 
     	src="<c:url value="/resources/webapp/images/successWhite.png"/>" /><span class="hidden-xs"> Guardar</span></button>
 	<div class="pull-right spaceBtnsMap"></div>
-	<span class="btn btn-purple pull-right btnsEditor" id="btnSeleccionaImagen2"><img width="20" height="20" alt="Infomovil" src="<c:url value="/resources/webapp/images/ico_upload.png"/>" style="display:inline" /><input style="display:inline" type="file" accept="image/*" onchange="picChange(event)" id="btnSeleccionaImagen" /></span>
+	<span class="btn btn-purple pull-right btnsEditor" id="btnSeleccionaImagen2"><img width="20" height="20" alt="Infomovil" src="<c:url value="/resources/webapp/images/ico_upload.png"/>" style="display:inline" />
+		<input style="display:inline" type="file" accept="image/*" onClick="validaImg()" onchange="picChange(event)" id="btnSeleccionaImagen" />
+	</span>
 	<div class="pull-right spaceBtnsMap"></div>
 	<button type="button" class="btn btn-blueFB pull-right btnsEditor"  id="btnAlbumsDeFacebook"><img width="20" height="20" alt="Infomovil" src="<c:url value="/resources/webapp/images/ico_facebook.png"/>" /> <span class="hidden-xs">Facebook</span></button>
 </div>

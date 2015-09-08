@@ -1,6 +1,11 @@
+var bloqueo1Vez = 0;
+var IMAGENESMAX = $("#galeriaImagenesMax").val();
+var IMAGENESDELUSUARIO = 0;
+var binaryString;
+var infoAlbumes = [];
+var photosDelAlbum = [];
 
-
-$(document).ready(function(){
+$(document).ready(function() {
 	$("#terceroFB").hide();
 	$(".albumDinamico").remove();
 	$("#segundoFB").hide();
@@ -97,6 +102,8 @@ $(document).ready(function(){
 		$("#imgSeleccionadaDeGaleria").hide();
 		$("#btnGuardarImagen").hide();
 		$("#btnAlbumsDeFacebook").show();
+		$("#btnSeleccionaImagen").val("");
+		$("#actualizarTextoFoto").val("");
 	});
 	$("#regresarDeFace").click(function(){
 		$("#facebookDiv").hide();
@@ -114,11 +121,6 @@ $(document).ready(function(){
 //////////////FIND EL CODIGO DE IMAGENES ////////////
 
 });
-
-var IMAGENESMAX = $("#galeriaImagenesMax").val();
-var IMAGENESDELUSUARIO = 0;
-var infoAlbumes = [];
-var photosDelAlbum = [];
 
 var testapiFacebook = function testAPI() {
 	var k = 0;
@@ -174,8 +176,6 @@ window.fbAsyncInit = function() {
 	fjs.parentNode.insertBefore(js, fjs);
 }(document, 'script', 'facebook-jssdk'));
 
-
-
 function statusChangeCallback(response) {
 	if (response.status === 'connected') {
 		testapiFacebook();
@@ -187,7 +187,6 @@ function statusChangeCallback(response) {
 		// REINTENTAR CONEXION//
 	}
 }
-
 
 function statusChangeCallback2(response) {
 	console.log('ENTRO EN statusChangeCallback2');
@@ -205,8 +204,6 @@ var revisarEstado = function checkLoginState() {
 		statusChangeCallback(response);
 	});
 }
-
-var binaryString;
 
 function picChange(evt)
 {
@@ -254,24 +251,35 @@ function picChange(evt)
 	}
 }
 
-var bloqueo1Vez = 0;
+function validaImg()
+{
+	console.log("IMAGENESMAX: " + IMAGENESMAX + ", IMAGENESDELUSUARIO: " + IMAGENESDELUSUARIO);
+	if (IMAGENESDELUSUARIO == IMAGENESMAX)
+		bootbox.alert("Ya alcanzaste el máximo de imágenes permitidas, adquiere Plan Pro desde la app", function() {
+			  return;
+			});
+}
+
 function getImagenesJQ()
 { 	
-	IMAGENESDELUSUARIO= 0;
-	if(bloqueo1Vez == 0){
+	$('#actualizarTextoFoto').val("");
+	$('#nombreDeImgn').val("");
+	$.blockUI.defaults.baseZ = 9000;
+	$.blockUI({
+		message: "Obteniendo imagenes...",
+		css: {
+			class:"alertaUI",
+			top:  ($(window).height() - 400) /2 + 'px',
+			left: ($(window).width() - 400) /2 + 'px',
+			width: '400px'
+		}
+	});
+	
+	IMAGENESDELUSUARIO = 0;
+	
+	if(bloqueo1Vez == 0)
+	{
 		bloqueo1Vez = 1;
-		$('#actualizarTextoFoto').val("");
-		$('#nombreDeImgn').val("");
-		$.blockUI.defaults.baseZ = 9000;
-		$.blockUI({
-			message: "Obteniendo imagenes...",
-			css: {
-				class:"alertaUI",
-				top:  ($(window).height() - 400) /2 + 'px',
-				left: ($(window).width() - 400) /2 + 'px',
-				width: '400px'
-			}
-		});
 		
 		$('#btnAlbumsDeFacebook').show();
 		$(".imagenDinamica").remove();
@@ -311,49 +319,47 @@ function getImagenesJQ()
 
 					if(typeImg == "IMAGEN")
 					{
-						if(i < IMAGENESMAX){
+						if(i < IMAGENESMAX) 
+						{
 							var $li = $('<li class="imagenDinamica" style="display:block;height:50px; width:100%; margin:10px 0;"/>')
-                    	$li.append('<div class="col-xs-3 text-left" style="max-height:50px;"><img src="'+imgUrl+'" onerror="errorPreview(this)" style="max-width:100px; max-height:50px;" class="ImgDinamica img-thumbnail"/></div>');
-                    	$li.append('<div class="col-xs-9"><input type="text" id="actualizarTexto' + idImg + '"  value="'+descImg+'"></input><div class="spaceBtnsMap"></div><button type="button" class="btn btn-purple"  class="eliminarImagen" onClick="actualizarImagen('+idImg+', ' + "'" + imgUrl+ "'" + ')"><img width="20" height="20" alt="Borrar" src="../resources/webapp/images/ico_actualizar.png" /></button><div class="spaceBtnsMap"></div><button type="button" class="btn btn-purple" class="eliminarImagen" id="'+idImg+'"onclick="borrarImagenJQ('+idImg+')"><img width="20" height="20" alt="Borrar" src="../resources/webapp/images/trash.png" /></button><input type="hidden" id="IdImg" value="'+idImg+'"/></div></li>');
-                    	
-                    	$listaImg.append($li);
-						}else{
+							$li.append('<div class="col-xs-3 text-left" style="max-height:50px;"><img src="'+imgUrl+'" onerror="errorPreview(this)" style="max-width:100px; max-height:50px;" class="ImgDinamica img-thumbnail"/></div>');
+							$li.append('<div class="col-xs-9"><input type="text" id="actualizarTexto' + idImg + '"  value="'+descImg+'"/></input><div class="spaceBtnsMap"></div><button type="button" class="btn btn-purple" class="eliminarImagen" onClick="actualizarImagen('+idImg+', ' + "'" + imgUrl+ "'" + ')"><img width="20" height="20" alt="Borrar" src="../resources/webapp/images/ico_actualizar.png" /></button><div class="spaceBtnsMap"></div><button type="button" class="btn btn-purple" class="eliminarImagen" id="'+idImg+'"onclick="borrarImagenJQ('+idImg+')"><img width="20" height="20" alt="Borrar" src="../resources/webapp/images/trash.png" /></button><input type="hidden" id="IdImg" value="'+idImg+'"/></div></li>');
+							$listaImg.append($li);
+						}
+						else
+						{
 							var $li = $('<li class="imagenDinamica" style="display:block;height:50px; width:100%; margin:10px 0;"/>')
 	                    	$li.append('<div class="col-xs-3 text-center" style="max-height:50px;"><img src="'+imgUrl+'" onerror="errorPreview(this)" style="max-width:100px; max-height:50px;" class="ImgDinamica img-thumbnail"/></div>');
-	                    	$li.append('<div class="col-xs-9"><input type="text" id="actualizarTexto' + idImg + '" value="'+descImg+'" /><div class="spaceBtnsMap"></div><button type="button" class="btn btn-purple"  class="eliminarImagen" onClick="actualizarImagen('+idImg+', ' + "'" + imgUrl+ "'" + ')"><img width="20" height="20" alt="Borrar" src="../resources/webapp/images/ico_actualizar.png" /></button><div class="spaceBtnsMap"></div><button type="button" class="btn btn-purple" class="eliminarImagen" id="'+idImg+'"onclick="borrarImagenJQ('+idImg+')"><img width="20" height="20" alt="Borrar" src="../resources/webapp/images/trash.png" /></button><input type="hidden" id="IdImg" value="'+idImg+'"/></div></li>');
-	                    	
-	                    	$listaImg.append($li);
+	                    	$li.append('<div class="col-xs-9"><input type="text" id="actualizarTexto' + idImg + '" value="'+descImg+'" disabled="disabled" /><div class="spaceBtnsMap"></div><button type="button" disabled="disabled" class="btn" class="eliminarImagen" onClick="actualizarImagen('+idImg+', ' + "'" + imgUrl+ "'" + ')"><img width="20" height="20" alt="Borrar" src="../resources/webapp/images/ico_actualizar.png" /></button><div class="spaceBtnsMap"></div><button type="button" disable="disable" class="btn" class="eliminarImagen" id="'+idImg+'"onclick="borrarImagenJQ('+idImg+')"><img width="20" height="20" alt="Borrar" src="../resources/webapp/images/trash.png" /></button><input type="hidden" id="IdImg" value="'+idImg+'"/></div></li>');
+	                        $listaImg.append($li);
 						}
 					}
 				}
 
 				$('#myModalImagenes').modal('show') ;
 				$('#galeriaImagenes').show();
-
+				$.unblockUI();
 			},
 			error : function(json) {
 				bloqueo1Vez = 0;
 				console.log("Error Actualizar");
 				$.unblockUI();
 			}
-
 		});
-		$.unblockUI();
-
-
 	}
 }
-
 
 function errorPreview(element) {
     //alert('The image could not be loaded.');
     element.onerror='';
     element.src='../resources/webapp/images/ico_img-gy.png';
 }
-function guardarImagenesJQ(){
-	
+
+function guardarImagenesJQ() 
+{	
 	console.log("las imagenes del usuario son: " + IMAGENESDELUSUARIO + "las imagenes max son: " + IMAGENESMAX);
-	if(IMAGENESDELUSUARIO < IMAGENESMAX){
+	if(IMAGENESDELUSUARIO < IMAGENESMAX) 
+	{
 		console.log("si entro a al if: " + IMAGENESDELUSUARIO);
 		$.blockUI.defaults.baseZ = 9000;
 		$.blockUI({
@@ -533,8 +539,6 @@ function actualizarImagen(idImg, imgUrl)
 		}
 	});
 
-
-
 	$.ajax({
 		type : "GET",
 		url : contextPath + "/infomovil/actualizarImagen",
@@ -550,21 +554,16 @@ function actualizarImagen(idImg, imgUrl)
 			$.unblockUI();
 			console.log("LA RESPUESTA DE ACTUALIZAR IMAGEN ES: " + data);
 			getImagenesJQ();
-			$.unblockUI();
-
 		},
 		error : function(json) {
 			console.log("Error Actualizar Imagen");
 			$.unblockUI();
 		}
-
 	});
-
 }
 
 function convertImgToBase64(url, callback, outputFormat)
 {
-	console.log("url: " + url);
 	var img = new Image();
 	img.crossOrigin = 'Anonymous';
 
