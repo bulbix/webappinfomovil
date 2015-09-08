@@ -362,11 +362,11 @@
 		<script src="<c:url value="/resources/js/webapp/mapa.js"/>"></script>
 		<script src="<c:url value="/resources/js/webapp/videoYoutube.js"/>"></script>
 		<script src="<c:url value="/resources/js/webapp/imagenes.js"/>"></script>
-		<h1>${ idDominio }</h1>
-		<h1>${ galeriaImagenes }</h1>
-	 	<h1>${ downgrade }</h1>
-	 	<h1>${ sitioWeb }</h1>
-		<h1>${sitioWeb}></h1>
+<%-- 		<h1>${ idDominio }</h1> --%>
+<%-- 		<h1>${ galeriaImagenes }</h1> --%>
+<%-- 	 	<h1>${ downgrade }</h1> --%>
+<%-- 	 	<h1>${ sitioWeb }</h1> --%>
+<%-- 		<h1>${sitioWeb}></h1> --%>
 
 		<script>
 			$(document).ready(function(){
