@@ -167,7 +167,6 @@ window.fbAsyncInit = function() {
 	});
 };
 
-
 (function(d, s, id){
 	var js, fjs = d.getElementsByTagName(s)[0];
 	if (d.getElementById(id)) {return;}
@@ -300,15 +299,15 @@ function getImagenesJQ()
 				bloqueo1Vez = 0;
 				var imgSinLogo = 0;
 				for(var i = 0; i < data.length; i++)
-				{
-					
-					if(data[i].typeImage == "IMAGEN")imgSinLogo++;
-				}
+					if (data[i].typeImage == "IMAGEN")
+						imgSinLogo++;
 				
 				IMAGENESDELUSUARIO = imgSinLogo;
 				console.log("las imagenes del usuario son: " + IMAGENESDELUSUARIO);
-				if(IMAGENESDELUSUARIO > 0) {$("#galeriaVacia").hide();}
-				else {$("#galeriaVacia").show();}
+				if (IMAGENESDELUSUARIO > 0) 
+					$("#galeriaVacia").hide(); 
+				else 
+					$("#galeriaVacia").show(); 
 				
 				for(var i = 0; i < data.length; i++)
 				{
@@ -388,17 +387,16 @@ function guardarImagenesJQ()
 			},
 			success : function(data) {
 				console.log("LA RESPUESTA DEL GUARDADO ES: " +data);
-				// $("#myModalImagenes").modal('toggle');
-
 				$("#facebookDiv").hide();
 				$("#imgSeleccionadaDeGaleria").hide();
 				$("#btnSeleccionaImagen").show();
 				$("#btnSeleccionaImagen2").show();
 				$("#btnAlbumsDeFacebook").show();
+				$("#btnSeleccionaImagen").val("");
+				$("#actualizarTextoFoto").val("");
 				getImagenesJQ();
 				$("#galeriaImagenes").show();
 				$("#btnGuardarImagen").hide();
-				$.unblockUI();
 			},
 			error : function(json) {
 				console.log("Error guardarImagen");
@@ -411,13 +409,9 @@ function guardarImagenesJQ()
 		bootbox.dialog({
 			  title: "<span class='textBlack' style='font-size:.9em;'>Alcanzaste el máximo de imágenes permitidas</span>",
 			  message: '<div style="display:block; min-height:300px;"><div>Adquiere <strong>Plan Pro</strong> desde la app para agregar más imágenes </div><br/> <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 text-center"><a href="https://itunes.apple.com/mx/app/infomovil/id898313250?mt=8" style="margin: 0px; padding: 0px; color: rgb(49, 165, 154);" target="_blank"><img alt="AppStore" src="../resources/webapp/images/appstore_icn.png" style="margin: 0px; padding: 0px; max-width: 150px;" title="AppStore" /></a></div><div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 text-center"><a href="https://play.google.com/store/apps/details?id=com.infomovil.infomovil" style="margin: 0px; padding: 0px; color: rgb(49, 165, 154);" target="_blank"><img alt="Google Play" src="../resources/webapp/images/gstore_icn.png"  style="margin: 0px; padding: 0px; max-width: 150px;" title="Google Play" /></a></div></div>'
-			});
-		
-		
+			});		
 	}
-
 }
-
 
 function guardarImagenesJQF()
 {	console.log("las imagenes del usuario son: " + IMAGENESDELUSUARIO);
@@ -441,7 +435,6 @@ function guardarImagenesJQF()
 			binaryString = btoa(base64Img);
 			var textFoto = $("#nombreDeImgn").val();
 
-
 			$.ajax({
 				type : "POST",
 				url : contextPath + "/infomovil/guardarImagen",
@@ -454,7 +447,6 @@ function guardarImagenesJQF()
 					descImagen:  textFoto,
 
 				},
-
 				success : function(data) {
 					console.log("LA RESPUESTA DEL GUARDADO ES: " +data);
 					$("#facebookDiv").hide();
@@ -485,7 +477,6 @@ function guardarImagenesJQF()
 		
 	}
 }
-
 
 function borrarImagenJQ(idImg)
 {

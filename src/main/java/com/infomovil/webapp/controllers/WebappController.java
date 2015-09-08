@@ -181,6 +181,7 @@ public class WebappController
 		Map<String, String> resultMap = new HashMap<String, String>();
 		RespuestaVO wsRespuesta = new RespuestaVO();
 		String desc = new String(descImagen.getBytes("ISO-8859-1"), "UTF-8");
+		
 		try
 		{	
 			wsRespuesta = wsCliente.crearSitioGuardaImage(domainId, baseImagen, tipoImagen, desc) ;

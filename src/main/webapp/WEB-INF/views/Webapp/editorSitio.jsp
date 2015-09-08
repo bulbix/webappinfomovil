@@ -365,6 +365,9 @@
 		<h1>${ idDominio }</h1>
 		<h1>${ galeriaImagenes }</h1>
 	 	<h1>${ downgrade }</h1>
+	 	<h1>${ sitioWeb }</h1>
+		<h1>${sitioWeb}></h1>
+
 		<script>
 			$(document).ready(function(){
 				generarSlider();
