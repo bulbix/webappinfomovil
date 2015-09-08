@@ -1,33 +1,34 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <div class="modal-header">
 	<button type="button" class="close textBlack pull-left btnsEditor"  aria-label="Close" id="closemyModalImagenes"><span aria-hidden="true">&times;</span></button>
-	<button type="button" class="btn btn-purple pull-right btnsEditor"  id="btnGuardarImagen" onclick="guardarImagenesJQ()"><img width="15" height="15" alt="Infomovil" 
+	<button type="button" class="btn btn-purple pull-right btnsEditor"  id="btnGuardarImagen" onclick="guardarImagenesJQ()" style="margin: 5px 0;"><img width="15" height="15" alt="Infomovil" 
     	src="<c:url value="/resources/webapp/images/successWhite.png"/>" /><span class="hidden-xs"> Guardar</span></button>
     	
-    <span class="btn btn-purple pull-right btnsEditor col-xs-12 col-sm-6" id="btnSeleccionaImagen2" style="overflow-x:hidden"><img width="20" height="20" alt="Infomovil" src="<c:url value="/resources/webapp/images/ico_upload.png"/>" style="display:inline" />
+    <span class="btn btn-purple pull-right btnsEditor col-xs-12 col-sm-5" id="btnSeleccionaImagen2" style="overflow-x:hidden; margin:5px 0;"><img width="20" height="20" alt="Infomovil" src="<c:url value="/resources/webapp/images/ico_upload.png"/>" style="display:inline" />
 		<input style="display:inline" type="file" accept="image/*" onClick="validaImg()" onchange="picChange(event)" id="btnSeleccionaImagen" />
 	</span>
     	
-    	<button type="button" class="btn btn-blueFB pull-right btnsEditor col-xs-12 col-sm-6"  id="btnAlbumsDeFacebook"><img width="20" height="20" alt="Infomovil" src="<c:url value="/resources/webapp/images/ico_facebook.png"/>" /> <span class="hidden-sm">Fotos de Facebook</span></button>
+    	<button type="button" class="btn btn-blueFB pull-right btnsEditor col-xs-12 col-sm-5"  id="btnAlbumsDeFacebook" style="margin:5px 0;"><img width="20" height="20" alt="Infomovil" src="<c:url value="/resources/webapp/images/ico_facebook.png"/>" /> <span class="hidden-sm">Fotos de Facebook</span></button>
     	<button type="button" id="regresarDeFace" class="btn btn-purple pull-right" ><img width="20" height="20" alt="Infomovil" src="<c:url value="/resources/webapp/images/ico_back.png"/>" /> <span class="hidden-xs">Regresar</span></button>
-    	<button type="button" class="btn btn-purple pull-right"  id="regresarSelecImg" style=""><img width="20" height="20" alt="Infomovil" src="<c:url value="/resources/webapp/images/ico_back.png"/>" /> <span class="hidden-xs">Regresar</span></button>
+    	<button type="button" class="btn btn-purple pull-right"  id="regresarSelecImg" style="margin: 5px 0;"><img width="20" height="20" alt="Infomovil" src="<c:url value="/resources/webapp/images/ico_back.png"/>" /> <span class="hidden-xs">Regresar</span></button>
 	
 	
 
 	
-		<button type="button" class="btn btn-purple pull-right"  id="btnGuardarImagenFB" onclick="guardarImagenesJQF()"><img width="15" height="15" alt="Infomovil" 
+		<button type="button" class="btn btn-purple pull-right"  id="btnGuardarImagenFB" onclick="guardarImagenesJQF()" style="margin:5px 0;"><img width="15" height="15" alt="Infomovil" 
     	src="<c:url value="/resources/webapp/images/successWhite.png"/>" /><span class="hidden-xs"> Guardar</span></button>
     	<div class="pull-right spaceBtnsMap"></div>
-    	<button type="button" id="regresarDeFotos" class="btn btn-purple pull-right" ><img width="20" height="20" alt="Infomovil" src="<c:url value="/resources/webapp/images/ico_back.png"/>" /> <span class="hidden-xs">Regresar</span></button>
+    	<button type="button" id="regresarDeFotos" class="btn btn-purple pull-right" style="margin:5px 0;"><img width="20" height="20" alt="Infomovil" src="<c:url value="/resources/webapp/images/ico_back.png"/>" /> <span class="hidden-xs">Regresar</span></button>
 	
     	
-	<button type="button" id="idRegresarAlbum" class="btn btn-purple pull-right" ><img width="20" height="20" alt="Infomovil" src="<c:url value="/resources/webapp/images/ico_back.png"/>" /> <span class="hidden-xs">Regresar</span></button>
+	<button type="button" id="idRegresarAlbum" class="btn btn-purple pull-right" style="margin:5px 0;"><img width="20" height="20" alt="Infomovil" src="<c:url value="/resources/webapp/images/ico_back.png"/>" /> <span class="hidden-xs">Regresar</span></button>
 	<div class="pull-right spaceBtnsMap"></div>
 	<div class="pull-right spaceBtnsMap"></div>
 	
 	<!-- <div style="display:block; margin:10px; min-height:100px;"></div>-->
 	<div class="pull-left textBlack" style="display:block; margin:12px 10px;" id="msjEligeFotoAlbum"><strong>Elige una foto <span class="hidden-xs">del album</span></strong></div>
 	<div class="pull-left textBlack" style="display:none; margin:12px 10px;" id="msjEligeAlbumFoto"><strong>Elige un album <span class="hidden-xs">de fotos</span></strong></div>
+	<div class="clear"></div>
 </div>
 
 <div class="modal-body">  
