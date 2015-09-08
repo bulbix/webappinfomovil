@@ -2,12 +2,19 @@
 
 $(document).ready(function(){
 	$("#terceroFB").hide();
+	$("#regresarDeFotos").hide();
+	$("#btnGuardarImagenFB").hide();
 	$(".albumDinamico").remove();
 	$("#segundoFB").hide();
+	$("#msjEligeFotoAlbum").hide();
+	$("#idRegresarAlbum").hide();
 	$("#galeriaVacia").hide();
 	$("#imgSeleccionadaDeGaleria").hide();
+	$("#regresarSelecImg").hide();
 	$("#facebookDiv").hide();
 	$("#primeroFB").show();
+	$("#msjEligeAlbumFoto").show();
+	$("#regresarDeFace").show();
 	var $btnAlbumsDeFacebook = $("#btnAlbumsDeFacebook").show();
 	$("#btnSeleccionaImagen").show();
 	$("#btnSeleccionaImagen2").show();
@@ -18,11 +25,17 @@ $(document).ready(function(){
 		$("#btnSeleccionaImagen").hide();
 		$("#btnSeleccionaImagen2").hide();
 		$("#terceroFB").hide();
+		$("#regresarDeFotos").hide();
+		$("#btnGuardarImagenFB").hide();
 		$("#galeriaImagenes").hide();
 		$(".albumDinamico").remove();
 		$("#facebookDiv").show();
 		$("#primeroFB").show();
+		$("#msjEligeAlbumFoto").show();
+		$("#regresarDeFace").show();
 		$("#segundoFB").hide();
+		$("#msjEligeFotoAlbum").hide();
+		$("#idRegresarAlbum").hide();
 		$("#nombreDeImgn").val('');
 		FB.getLoginStatus(function(response) {
 			if (response.status === 'connected') {
@@ -38,8 +51,14 @@ $(document).ready(function(){
 						var r = $(this).index();
 						$(".photoDinamico").remove();
 						$("#primeroFB").hide();
+						$("#msjEligeAlbumFoto").hide();
+						$("#regresarDeFace").hide();
 						$("#segundoFB").show();
+						$("#msjEligeFotoAlbum").show();
+						$("#idRegresarAlbum").show();
 						$("#terceroFB").hide();
+						$("#regresarDeFotos").hide();
+						$("#btnGuardarImagenFB").hide();
 
 						var fotos = photosDelAlbum[r];
 						for (var a in fotos ) {
@@ -49,8 +68,14 @@ $(document).ready(function(){
 							$li.on("click", "img", function(){
 								$("#imgVistaPrevia").attr('src',$(this).attr("src"));
 								$("#primeroFB").hide();
+								$("#msjEligeAlbumFoto").hide();
+								$("#regresarDeFace").hide();
 								$("#segundoFB").hide();
+								$("#msjEligeFotoAlbum").hide();
+								$("#idRegresarAlbum").hide();
 								$("#terceroFB").show();
+								$("#regresarDeFotos").show();
+								$("#btnGuardarImagenFB").show();
 							});
 							$photosList.append($li);
 						}
@@ -69,8 +94,14 @@ $(document).ready(function(){
 	$("#idRegresarAlbum").click(function(){
 		$(".photoDinamico").remove();
 		$("#terceroFB").hide();
+		$("#regresarDeFotos").hide();
+		$("#btnGuardarImagenFB").hide();
 		$("#segundoFB").hide();
+		$("#msjEligeFotoAlbum").hide();
+		$("#idRegresarAlbum").hide();
 		$("#primeroFB").show();
+		$("#msjEligeAlbumFoto").show();
+		$("#regresarDeFace").show();
 	});
 
 
@@ -95,6 +126,7 @@ $(document).ready(function(){
 	$("#regresarSelecImg").click(function(){
 		$("#galeriaImagenes").show();
 		$("#imgSeleccionadaDeGaleria").hide();
+		$("#regresarSelecImg").hide();
 		$("#btnGuardarImagen").hide();
 		$("#btnAlbumsDeFacebook").show();
 	});
@@ -106,10 +138,17 @@ $(document).ready(function(){
 		$("#btnAlbumsDeFacebook").show();
 		$("#btnSeleccionaImagen").show();
 		$("#btnSeleccionaImagen2").show();
+		$("#regresarDeFace").hide();
+		$("#msjEligeAlbumFoto").hide();
 	});
 	$("#regresarDeFotos").click(function(){
 		$("#terceroFB").hide();
+		$("#regresarDeFotos").hide();
+		$("#btnGuardarImagenFB").hide();
 		$("#segundoFB").show();
+		$("#msjEligeFotoAlbum").show();
+		$("#idRegresarAlbum").show();
+		
 	});
 //////////////FIND EL CODIGO DE IMAGENES ////////////
 
@@ -221,6 +260,7 @@ function picChange(evt)
 		$("#galeriaImagenes").hide();
 		$("#galeriaVacia").hide();
 		$("#imgSeleccionadaDeGaleria").show();
+		$("#regresarSelecImg").show();
 		$("#btnGuardarImagen").show();
 		$("#btnAlbumsDeFacebook").hide();
 		
@@ -273,10 +313,17 @@ function getImagenesJQ()
 			}
 		});
 		
+		$('#regresarDeFace').hide();
+		$('#idRegresarAlbum').hide();
+		$('#btnSeleccionaImagen').show();
+		$('#btnSeleccionaImagen2').show();
 		$('#btnAlbumsDeFacebook').show();
 		$(".imagenDinamica").remove();
 		$("#imgSeleccionadaDeGaleria").hide();
+		$("#regresarSelecImg").hide();
 		$("#terceroFB").hide();
+		$("#regresarDeFotos").hide();
+		$("#btnGuardarImagenFB").hide();
 		var $listaImg = $('#listaImagenes');
 
 		$.ajax({
@@ -383,9 +430,11 @@ function guardarImagenesJQ(){
 			success : function(data) {
 				console.log("LA RESPUESTA DEL GUARDADO ES: " +data);
 				// $("#myModalImagenes").modal('toggle');
-
+				$("#msjEligeFotoAlbum").hide();
+				$("#msjEligeAlbumFoto").hide();
 				$("#facebookDiv").hide();
 				$("#imgSeleccionadaDeGaleria").hide();
+				$("#regresarSelecImg").hide();
 				$("#btnSeleccionaImagen").show();
 				$("#btnSeleccionaImagen2").show();
 				$("#btnAlbumsDeFacebook").show();
@@ -453,6 +502,7 @@ function guardarImagenesJQF()
 					console.log("LA RESPUESTA DEL GUARDADO ES: " +data);
 					$("#facebookDiv").hide();
 					$("#imgSeleccionadaDeGaleria").hide();
+					$("#regresarSelecImg").hide();
 					$("#btnSeleccionaImagen").show();
 					$("#btnSeleccionaImagen2").show();
 					$("#btnAlbumsDeFacebook").show();

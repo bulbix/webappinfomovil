@@ -48,6 +48,14 @@
 	<span class="btn btn-purple pull-right btnsEditor" id="btnSeleccionaImagen2"><img width="20" height="20" alt="Infomovil" src="<c:url value="/resources/webapp/images/ico_upload.png"/>" style="display:inline" /><input style="display:inline" type="file" accept="image/*" onchange="picChange(event)" id="btnSeleccionaImagen" /></span>
 	<div class="pull-right spaceBtnsMap"></div>
 	<button type="button" class="btn btn-blueFB pull-right btnsEditor"  id="btnAlbumsDeFacebook"><img width="20" height="20" alt="Infomovil" src="<c:url value="/resources/webapp/images/ico_facebook.png"/>" /> <span class="hidden-xs">Facebook</span></button>
+	<button type="button" id="regresarDeFotos" class="btn btn-purple" style="margin:10px;">Regresar</button>
+	<button type="button" class="btn btn-purple pull-right"  id="btnGuardarImagenFB" onclick="guardarImagenesJQF()">Guardar</button>
+	<button type="button" id="idRegresarAlbum" class="btn btn-purple" style="margin:10px;">Regresar</button>
+	<button type="button" id="regresarDeFace" class="btn btn-purple" style="margin:10px;">Regresar</button>
+	<button type="button" class="btn btn-purple"  id="regresarSelecImg" style="margin:10px;">Regresar</button>
+	<!-- <div style="display:block; margin:10px; min-height:100px;"></div>-->
+	<div class="pull-right textBlack" style="display:block; margin:12px 10px;" id="msjEligeFotoAlbum"><strong>Elige una foto del album</strong></div>
+	<div class="pull-right textBlack" style="display:block; margin:12px 10px;" id="msjEligeAlbumFoto"><strong>Elige un album de fotos</strong></div>
 </div>
 
 <div class="modal-body">  
@@ -62,7 +70,7 @@
     	</div>   
     </div>  
     <div id="imgSeleccionadaDeGaleria">
-    	<div style="display:block; margin:10px; min-height:100px;"><button type="button" class="btn btn-purple"  id="regresarSelecImg" style="margin:10px;">Regresar</button></div>
+    	
     	<div class="col-xs-12"> 
     	<div class="col-xs-3 text-center"><img src=""  class="imgActualizar img-thumbnail" id="fotoDeGaleria" style="max-width:100px; max-height:100px;"/></div>
         <div class="col-xs-9">
@@ -73,24 +81,22 @@
       
     <div id="facebookDiv">
     	<div id="primeroFB">
-        	<button type="button" id="regresarDeFace" class="btn btn-purple" style="margin:10px;">Regresar</button>
-        	<div class="pull-right" style="display:block; margin:12px 10px;"><strong>Elige un album de fotos</strong></div>
+        	
+        	
             <ul id="albumsList" style="list-style:none;"></ul>
         </div><!--Fin del div primero -->
         <div id="segundoFB">
-        <div class="pull-right" style="display:block; margin:12px 10px;"><strong>Elige una foto del album</strong></div>
-        	<button type="button" id="idRegresarAlbum" class="btn btn-purple" style="margin:10px;">Regresar</button>
             <div id="photosList" ></div>
         </div><!--Fin del div segundo -->
         <div id="terceroFB">
-       		<button type="button" id="regresarDeFotos" class="btn btn-purple" style="margin:10px;">Regresar</button>
-       		<div></div>
+       		
+       		<div style="display:block; padding: 10px 0 0 0;"></div>
        		<div class="col-xs-12"> 
             <div class="col-xs-3 text-left"><img src="" style="max-width:100px; max-height:100px;" id="imgVistaPrevia" class="img-thumbnail"/></div>
            <div class="col-xs-9">
-            <form action="">
-            	<label style="display:inline">Nombre: </label> <input type="text" name="fname" id="nombreDeImgn" maxlength="50"></input> <button type="button" class="btn btn-purple"  id="btnGuardarImagen" onclick="guardarImagenesJQF()">Guardar</button>
-            </form>
+            
+            	<label style="display:inline">Nombre: </label> <input type="text" name="fname" id="nombreDeImgn" maxlength="50"></input> 
+          
             </div>
         </div><!--Fin del div tercero -->
 	</div>    
