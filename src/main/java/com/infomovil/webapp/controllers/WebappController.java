@@ -372,7 +372,7 @@ public class WebappController
 		{
 			logoutInfomovil(request, response);
 			correo = correo.toLowerCase();
-			wsRespuesta = wsCliente.crearSitioRegistrar(correo, passwordDefault, nombre, codigo.toLowerCase()/*, "automatico"*/);
+			wsRespuesta = wsCliente.crearSitioRegistrar(correo, passwordDefault, nombre, codigo.toLowerCase(), "automatico");
 			codigoError = wsRespuesta.getCodeError();
 			descripcionError = wsRespuesta.getMsgError();
 			
@@ -419,7 +419,7 @@ public class WebappController
 		RespuestaVO wsRespuesta = new RespuestaVO();
 		String codigoError = "", descripcionError = "", vista="";
 		correo = correo.toLowerCase();
-		wsRespuesta = wsCliente.crearSitioRegistrar(correo, contrasenia, correo, codigo.toLowerCase()/*, "formulario"*/);
+		wsRespuesta = wsCliente.crearSitioRegistrar(correo, contrasenia, correo, codigo.toLowerCase(), "formulario");
 		codigoError = wsRespuesta.getCodeError();
 		descripcionError = wsRespuesta.getMsgError();
 		
@@ -490,8 +490,8 @@ public class WebappController
 		String visibleRecurso = "";
 		String visibleTel = "";
 		String idDominio = "";
-		String downgrade = "";
-		String galeriaImagenes = "";
+		//String downgrade = "";
+		//String galeriaImagenes = "";
 		
 		try
 		{
@@ -506,13 +506,13 @@ public class WebappController
 				wsRespuesta.getDominioCreaSitio().getNombreUsuario());				
 				campania = wsRespuesta.getDominioCreaSitio().getCampania().toLowerCase();
 				idDominio = wsRespuesta.getIdDominio();
-				downgrade = wsRespuesta.getDowngrade();
+			//	downgrade = wsRespuesta.getDowngrade();
 				
-				for (StatusDomainVO stat : wsRespuesta.getListStatusDomainGratisVO())
+				/*for (StatusDomainVO stat : wsRespuesta.getListStatusDomainGratisVO())
 				{
 					if (stat.getDescripcionItem().equalsIgnoreCase("GALERIA DE IMAGENES"))
 						galeriaImagenes = stat.getStatus();						
-				}
+				}*/
 				
 				if (wsRespuesta.getDominioCreaSitio().getNombreEmpresa().trim().equals("TÃtulo"))
 					model.put("nombreEmpresa", "");
@@ -627,8 +627,8 @@ public class WebappController
 				model.put("visibleRecurso", visibleRecurso);
 				model.put("visibleTel", visibleTel);
 				model.put("idDominio", idDominio);
-				model.put("downgrade", downgrade);
-				model.put("galeriaImagenes", galeriaImagenes);
+				//model.put("downgrade", downgrade);
+				//model.put("galeriaImagenes", galeriaImagenes);
 			}
 			else 
 			{

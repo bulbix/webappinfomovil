@@ -57,11 +57,11 @@
 								<img width="20" height="20" alt="Infomovil"	src="<c:url value="/resources/webapp/images/ico_ppp_youtube${ extensionImg }.png"/>" />
 							</a>
 						</li>
-						<li class="botonDesPublicar" id="btnImgLi">
-							<a href="#"  class="smoothScroll ${colorTexto}" onclick="getImagenesJQ()">Agregar Imágenes 
-								<img width="20" height="20" alt="Infomovil"	src="<c:url value="/resources/webapp/images/ico_ppp_youtube${ extensionImg }.png"/>" />
-							</a>
-						</li>
+<!-- 						<li class="botonDesPublicar" id="btnImgLi"> -->
+<%-- 							<a href="#"  class="smoothScroll ${colorTexto}" onclick="getImagenesJQ()">Agregar Imágenes  --%>
+<%-- 								<img width="20" height="20" alt="Infomovil"	src="<c:url value="/resources/webapp/images/ico_ppp_youtube${ extensionImg }.png"/>" /> --%>
+<!-- 							</a> -->
+<!-- 						</li> -->
 						<li class="botonDesPublicar" id="btnContLi" style="display:none;">
 							<a href="#" data-toggle="modal" data-target="#myModalDescApp" class="smoothScroll ${colorTexto}">¿Qué sigue? <span class="hidden-sm hidden-md"></span> 
 								<img width="20" height="20" alt="Infomovil"	src="<c:url value="/resources/webapp/images/ico_mas_cont${ extensionImg }.png"/>" />
@@ -247,6 +247,7 @@
 		<!--MODAL MAPA-->
 		<tiles:insertDefinition name="modalGen">
 			<tiles:putAttribute name="idModal" value="myModalMaps"/>
+			<tiles:putAttribute name="tamanioModal" value='"modal-dialog modal-lg"'/>
 			<c:set var="fragmentName" value="modalMapFragment" scope="request" />
 		</tiles:insertDefinition>
 		<!--/MODAL MAPA-->
@@ -254,6 +255,7 @@
 		<!--MODAL VIDEO-->
 		<tiles:insertDefinition name="modalGen">
 			<tiles:putAttribute name="idModal" value="myModalVideo"/>
+			<tiles:putAttribute name="tamanioModal" value='"modal-dialog modal-md"'/>
 			<c:set var="fragmentName" value="modalVideoFragment" scope="request" />
 		</tiles:insertDefinition>
 		<!--/MODAL VIDEO-->
@@ -261,6 +263,7 @@
 		<!--MODAL EXITO-->
 		<tiles:insertDefinition name="modalGen">
 			<tiles:putAttribute name="idModal" value="myModalExito"/>
+			<tiles:putAttribute name="tamanioModal" value='"modal-dialog modal-md"'/>
 			<c:set var="fragmentName" value="modalExitoFragment" scope="request" />
 		</tiles:insertDefinition>
 		<!--/MODAL EXITO-->
@@ -268,6 +271,7 @@
 <!-- 		<!--MODAL FAIL--> 
 		<tiles:insertDefinition name="modalGen">
 			<tiles:putAttribute name="idModal" value="myModalFallo"/>
+			<tiles:putAttribute name="tamanioModal" value='"modal-dialog modal-md"'/>
 			<c:set var="fragmentName" value="modalFalloFragment" scope="request" />
 		</tiles:insertDefinition>
 <!-- 		<!--/MODAL FAIL--> 
@@ -275,6 +279,7 @@
 <!-- 		<!--MODAL REGISTRO--> 
 		<tiles:insertDefinition name="modalGen">
 			<tiles:putAttribute name="idModal" value="myModalRegistro"/>
+			<tiles:putAttribute name="tamanioModal" value='"modal-dialog modal-md"'/>
 			<c:set var="fragmentName" value="modalRegistroFragment" scope="request" />
 		</tiles:insertDefinition>
 <!-- 		<!--/MODAL REGISTRO--> 
@@ -282,6 +287,7 @@
 <!-- 		<!--MODAL DESCARGA LA APP--> 
 		<tiles:insertDefinition name="modalGen">
 			<tiles:putAttribute name="idModal" value="myModalDescApp"/>
+			<tiles:putAttribute name="tamanioModal" value='"modal-dialog modal-md"'/>
 			<c:set var="fragmentName" value="modalDescApp" scope="request" />
 		</tiles:insertDefinition>
 <!-- 		<!--/MODAL DESCARGA LA APP-->
@@ -289,6 +295,7 @@
 <!-- 		<!--MODAL IMAGENES--> 
 		<tiles:insertDefinition name="modalGen">
 			<tiles:putAttribute name="idModal" value="myModalImagenes"/>
+			<tiles:putAttribute name="tamanioModal" value="modal-dialog modal-md"/>
 			<c:set var="fragmentName" value="modalImagenes" scope="request" />
 		</tiles:insertDefinition>
 <!-- 		<!--/MODAL IMAGENES-->  
@@ -339,9 +346,9 @@
 		<script src="<c:url value="/resources/js/webapp/mapa.js"/>"></script>
 		<script src="<c:url value="/resources/js/webapp/videoYoutube.js"/>"></script>
 		<script src="<c:url value="/resources/js/webapp/imagenes.js"/>"></script>
-		<h1>${ idDominio }</h1>
-		<h1>${ galeriaImagenes }</h1>
-	 	<h1>${ downgrade }</h1>
+<%-- 		<h1>${ idDominio }</h1> --%>
+<%-- 		<h1>${ galeriaImagenes }</h1> --%>
+<%-- 	 	<h1>${ downgrade }</h1> --%>
 		<script>
 			$(document).ready(function(){
 				generarSlider();
