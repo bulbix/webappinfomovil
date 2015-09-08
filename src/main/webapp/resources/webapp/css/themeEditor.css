@@ -213,7 +213,7 @@ textarea { padding: 10px; width: 300px; }
 #myModalRegistro div div.modal-content{ background:#f3f3f3 !important; color:#000 !important}
 #myModalMaps div div.modal-content{ background:#f3f3f3 !important; color:#000 !important}
 #myModalVideo div div.modal-content{ background:#f3f3f3 !important; color:#000 !important}
-.navEditor{ font-family: 'Lato', Arial, sans-serif; font-weight: 300; padding:20px 0 !important; display:block; float:left;}
+.navEditor{ font-family: 'Lato', Arial, sans-serif; font-weight: 300; padding:5px 0 !important; display:block; float:left;}
 .txtBtnEditor{ font-family: 'Lato', Arial, sans-serif; font-weight: 300; }
 .btnsEditor{ font-family: 'Lato', Arial, sans-serif; font-weight: 300; }
 .text-left{ text-align:left}
@@ -222,7 +222,7 @@ textarea { padding: 10px; width: 300px; }
 .nav a{font-family: 'Lato', Arial, sans-serif !important; font-weight: 300;}
 .btn-purple:hover{color:#fff!important;}
 textarea{resize: none;}
-.seccTop{position: relative; top: -20px; width: 100%; background: url(../images/lineDark.png) repeat; background-size: auto; padding: 15px 0; height: 120px; display: block;}
+.seccTop{position: relative; top: -20px; width: 100%; background: url(../images/lineDark.png) repeat; background-size: auto; padding: 15px 0; height: 100px; display: block;}
 #publicarSitio{ height:240px;}
 
 .textLoCase{text-transform: lowercase;}
