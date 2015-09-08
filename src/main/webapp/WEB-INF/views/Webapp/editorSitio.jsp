@@ -53,7 +53,7 @@
 						</li>
 						
 						<li class="botonDesPublicarVid" id="btnVideoLi" style="display:none;">
-							<a href="#" data-toggle="modal" data-target="#myModalVideo" class="smoothScroll ${colorTexto}">Videos
+							<a href="#" data-toggle="modal" data-target="#myModalVideo" class="smoothScroll ${colorTexto}">Video
 								<img width="20" height="20" alt="Infomovil"	src="<c:url value="/resources/webapp/images/ico_ppp_youtube${ extensionImg }.png"/>" />
 							</a>
 						</li>
@@ -362,11 +362,11 @@
 		<script src="<c:url value="/resources/js/webapp/mapa.js"/>"></script>
 		<script src="<c:url value="/resources/js/webapp/videoYoutube.js"/>"></script>
 		<script src="<c:url value="/resources/js/webapp/imagenes.js"/>"></script>
-		<h1>${ idDominio }</h1>
-		<h1>${ galeriaImagenes }</h1>
-	 	<h1>${ downgrade }</h1>
-	 	<h1>${ sitioWeb }</h1>
-		<h1>${sitioWeb}></h1>
+<%-- 		<h1>${ idDominio }</h1> --%>
+<%-- 		<h1>${ galeriaImagenes }</h1> --%>
+<%-- 	 	<h1>${ downgrade }</h1> --%>
+<%-- 	 	<h1>${ sitioWeb }</h1> --%>
+<%-- 		<h1>${sitioWeb}></h1> --%>
 
 		<script>
 			$(document).ready(function(){
