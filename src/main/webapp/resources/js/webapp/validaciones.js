@@ -39,6 +39,7 @@ function validaDominio(tipo)
 	
 	if (nombreDominio == null || nombreDominio.trim().length == 0 || nombreDominio.trim().length < 3 || nombreDominio.trim().length > 30)
 	{
+		console.log("primer if");
 		$("#validacionNombre").html("El nombre debe ser de una longitud mínimo de 2 y máximo 30 caracteres");
 		$("#validacionNombreRec").html("El nombre debe ser de una longitud mínimo de 2 y máximo 30 caracteres");
 		$("#validacionNombre").css("display", "block");
@@ -48,6 +49,7 @@ function validaDominio(tipo)
 
 	if (infomovil.indexOf(nombreDominio.toLowerCase()) != -1 || nombreDominio.toLowerCase().indexOf("infomovil") != -1)
 	{
+		console.log("segundo if");
 		$("#validacionNombre").html("No debe contener la palabra Infomovil");
 		$("#validacionNombreRec").html("No debe contener la palabra Infomovil");
 		$("#validacionNombre").css("display", "block");
@@ -57,6 +59,7 @@ function validaDominio(tipo)
 
 	if (!regAuxiliar.test(nombreDominio)) 
 	{
+		console.log("tercer if");
 		$("#validacionNombre").html("Caracteres no v&aacutelidos");
 		$("#validacionNombreRec").html("Caracteres no v&aacutelidos");
 		$("#validacionNombreRec").css("display", "block");
@@ -91,6 +94,7 @@ function validaDominio(tipo)
     (
 		function(json)
     	{
+			console.log("done...");
 			if (tipoDominio == "recurso")
 				sitioDisponible = "www.infomovil.com/" + nombreDominio;
 			else
@@ -118,7 +122,7 @@ function validaDominio(tipo)
 				textoBoton = "Aceptar";
 				sitioDisponible = "<strong class='textPurple'>"+ sitioDisponible + "</strong> <br/>no est&aacute; disponible";
 			}
-			
+			console.log("antes del modal");
 			$('#modalPublicacion').html("<div id='myModalPublicar' class='modal fade' tabindex='-1' role='dialog' aria-labelledby='myModalLabel' aria-hidden='true'>"+
 					"<div class='modal-dialog modal-md'><div class='modal-content'><div class='modal-header'><button type='button' class='close textBlack' data-dismiss='modal' aria-label='Close'>"+
 					"<span aria-hidden='true'>&times;</span></button></div><div class='modal-body bgWhite'>"+
