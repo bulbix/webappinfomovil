@@ -3,25 +3,31 @@
 	<button type="button" class="close textBlack pull-left btnsEditor"  aria-label="Close" id="closemyModalImagenes"><span aria-hidden="true">&times;</span></button>
 	<button type="button" class="btn btn-purple pull-right btnsEditor"  id="btnGuardarImagen" onclick="guardarImagenesJQ()"><img width="15" height="15" alt="Infomovil" 
     	src="<c:url value="/resources/webapp/images/successWhite.png"/>" /><span class="hidden-xs"> Guardar</span></button>
-    	<button type="button" class="btn btn-blueFB pull-right btnsEditor"  id="btnAlbumsDeFacebook"><img width="20" height="20" alt="Infomovil" src="<c:url value="/resources/webapp/images/ico_facebook.png"/>" /> <span class="hidden-sm">Facebook</span></button>
     	
-    	<button type="button" class="btn btn-purple pull-right"  id="regresarSelecImg" style=""><img width="20" height="20" alt="Infomovil" src="<c:url value="/resources/webapp/images/ico_back.png"/>" /> <span class="hidden-xs">Regresar</span></button>
-	
-	<div class="pull-right spaceBtnsMap"></div>
-	<span class="btn btn-purple pull-right btnsEditor" id="btnSeleccionaImagen2" style="max-width:260px; overflow-x:hidden"><img width="20" height="20" alt="Infomovil" src="<c:url value="/resources/webapp/images/ico_upload.png"/>" style="display:inline" />
+    <span class="btn btn-purple pull-right btnsEditor" id="btnSeleccionaImagen2" style="max-width:260px; overflow-x:hidden"><img width="20" height="20" alt="Infomovil" src="<c:url value="/resources/webapp/images/ico_upload.png"/>" style="display:inline" />
 		<input style="display:inline" type="file" accept="image/*" onClick="validaImg()" onchange="picChange(event)" id="btnSeleccionaImagen" />
 	</span>
-	<div class="pull-right spaceBtnsMap"></div>
+    	
+    	<button type="button" class="btn btn-blueFB pull-right btnsEditor col-xs-12"  id="btnAlbumsDeFacebook"><img width="20" height="20" alt="Infomovil" src="<c:url value="/resources/webapp/images/ico_facebook.png"/>" /> <span class="hidden-sm">Fotos de Facebook</span></button>
+    	<button type="button" id="regresarDeFace" class="btn btn-purple pull-right" ><img width="20" height="20" alt="Infomovil" src="<c:url value="/resources/webapp/images/ico_back.png"/>" /> <span class="hidden-xs">Regresar</span></button>
+    	<button type="button" class="btn btn-purple pull-right"  id="regresarSelecImg" style=""><img width="20" height="20" alt="Infomovil" src="<c:url value="/resources/webapp/images/ico_back.png"/>" /> <span class="hidden-xs">Regresar</span></button>
+	
+	
+
+	
 		<button type="button" class="btn btn-purple pull-right"  id="btnGuardarImagenFB" onclick="guardarImagenesJQF()"><img width="15" height="15" alt="Infomovil" 
     	src="<c:url value="/resources/webapp/images/successWhite.png"/>" /><span class="hidden-xs"> Guardar</span></button>
+    	<div class="pull-right spaceBtnsMap"></div>
     	<button type="button" id="regresarDeFotos" class="btn btn-purple pull-right" ><img width="20" height="20" alt="Infomovil" src="<c:url value="/resources/webapp/images/ico_back.png"/>" /> <span class="hidden-xs">Regresar</span></button>
 	
-    	<div class="pull-right spaceBtnsMap"></div>
+    	
 	<button type="button" id="idRegresarAlbum" class="btn btn-purple pull-right" ><img width="20" height="20" alt="Infomovil" src="<c:url value="/resources/webapp/images/ico_back.png"/>" /> <span class="hidden-xs">Regresar</span></button>
-	<button type="button" id="regresarDeFace" class="btn btn-purple pull-right" ><img width="20" height="20" alt="Infomovil" src="<c:url value="/resources/webapp/images/ico_back.png"/>" /> <span class="hidden-xs">Regresar</span></button>
+	<div class="pull-right spaceBtnsMap"></div>
+	<div class="pull-right spaceBtnsMap"></div>
+	
 	<!-- <div style="display:block; margin:10px; min-height:100px;"></div>-->
-	<div class="pull-left textBlack" style="display:block; margin:12px 10px;" id="msjEligeFotoAlbum"><strong>Elige una foto del album</strong></div>
-	<div class="pull-left textBlack" style="display:none; margin:12px 10px;" id="msjEligeAlbumFoto"><strong>Elige un album de fotos</strong></div>
+	<div class="pull-left textBlack" style="display:block; margin:12px 10px;" id="msjEligeFotoAlbum"><strong>Elige una foto <span class="hidden-xs">del album</span></strong></div>
+	<div class="pull-left textBlack" style="display:none; margin:12px 10px;" id="msjEligeAlbumFoto"><strong>Elige un album <span class="hidden-xs">de fotos</span></strong></div>
 </div>
 
 <div class="modal-body">  
@@ -49,7 +55,7 @@
     	<div id="primeroFB">
         	
         	
-            <ul id="albumsList" style="list-style:none;"></ul>
+            <ul id="albumsList" style="list-style:none; margin: 0 0 0 -60px;"></ul>
         </div><!--Fin del div primero -->
         <div class="clear"></div>
         
@@ -61,8 +67,8 @@
        		
        		<div style="display:block; padding: 10px 0 0 0;"></div>
        		<div class="col-xs-12"> 
-            <div class="col-xs-3 text-left"><img src="" style="max-width:130px; max-height:150px;" id="imgVistaPrevia" class="img-thumbnail"/></div>
-           <div class="col-xs-9">
+            <div class="col-xs-12 col-sm-3 text-left"><img src="" style="max-width:130px; max-height:150px;" id="imgVistaPrevia" class="img-thumbnail"/></div>
+           <div class="col-xs-12 col-sm-9">
             
             	<label style="display:inline">Nombre: </label> <input type="text" name="fname" id="nombreDeImgn" maxlength="50"></input> 
           
