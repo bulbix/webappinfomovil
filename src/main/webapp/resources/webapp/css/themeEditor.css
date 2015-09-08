@@ -202,6 +202,13 @@ textarea { padding: 10px; width: 300px; }
 .btn-purple:active{ color:#fff !important;}
 
 
+.btn-blueFB{ background:#3b5998 !important; color:#fff;}
+.btn-blueFB:hover{ color:#fff !important;}
+.btn-blueFB:link{ color:#fff !important;}
+.btn-blueFB:visited { color:#fff !important;}
+.btn-blueFB:active{ color:#fff !important;}
+
+
 #myModalTemplates div div.modal-content{ background:#f3f3f3 !important; color:#000 !important}
 #myModalRegistro div div.modal-content{ background:#f3f3f3 !important; color:#000 !important}
 #myModalMaps div div.modal-content{ background:#f3f3f3 !important; color:#000 !important}

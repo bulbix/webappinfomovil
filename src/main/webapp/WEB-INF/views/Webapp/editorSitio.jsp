@@ -57,11 +57,11 @@
 								<img width="20" height="20" alt="Infomovil"	src="<c:url value="/resources/webapp/images/ico_ppp_youtube${ extensionImg }.png"/>" />
 							</a>
 						</li>
-<!-- 						<li class="botonDesPublicar" id="btnImgLi"> -->
-<%-- 							<a href="#"  class="smoothScroll ${colorTexto}" onclick="getImagenesJQ()">Agregar Imágenes  --%>
-<%-- 								<img width="20" height="20" alt="Infomovil"	src="<c:url value="/resources/webapp/images/ico_ppp_youtube${ extensionImg }.png"/>" /> --%>
-<!-- 							</a> -->
-<!-- 						</li> -->
+						<li class="botonDesPublicar" id="btnImgLi">
+							<a href="#"  class="smoothScroll ${colorTexto}" onclick="getImagenesJQ()">Imágenes 
+								<img width="20" height="20" alt="Infomovil"	src="<c:url value="/resources/webapp/images/ico_img${ extensionImg }.png"/>" />
+							</a>
+						</li>
 						<li class="botonDesPublicar" id="btnContLi" style="display:none;">
 							<a href="#" data-toggle="modal" data-target="#myModalDescApp" class="smoothScroll ${colorTexto}">¿Qué sigue? <span class="hidden-sm hidden-md"></span> 
 								<img width="20" height="20" alt="Infomovil"	src="<c:url value="/resources/webapp/images/ico_mas_cont${ extensionImg }.png"/>" />
@@ -205,6 +205,21 @@
 	 			<br /><span id="direccionMap" class="directionMap"></span>
 	 			</a>
 	 		</div>
+	 		
+	 		<div class="clearfix"></div>
+				<div class="dividerSmallest"></div>
+	 		
+	 		<!-- Botón IMAGENES --> 
+			
+			<div class="botonDesPublicar " style="display:none;">
+				<a href="#" onclick="getImagenesJQ()" class="col-xs-12 col-sm-6 col-sm-offset-3 col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3 btn btn-default btn-outline navEditor">
+	 			<img width="30" height="30" alt="Infomovil" src="<c:url value="/resources/webapp/images/ico_img.png"/>" /> 
+	 			<span id="idOpcionUbicacion">Agrega imágenes</span>
+	 			<br /><span id="direccionMap" class="directionMap"></span>
+	 			</a>
+	 		</div>
+	 		<!-- /Botón IMAGENES --> 
+	 		
 			<!-- /Botón Nuevo Estilo -->
 									
 			<div class="clearfix"></div>
@@ -321,7 +336,8 @@
 		<input type="hidden" id="urlVideo" name="urlVideo" value = "${ urlVideo }">
 		<input type="hidden" id="idDominio" name="idDominio" value = "${ idDominio }">
 		<input type="hidden" id="downgrade" name="downgrade" value = "${ downgrade }">
-		<input type="hidden" id="galeriaImagenes" name="galeriaImagenes" value = "${ galeriaImagenes }">
+		<input type="text" id="galeriaImagenesMax" name="galeriaImagenes" value = "${ galeriaImagenes }">
+		<!--  Numero de imagenes MAximo q' puede tener el usuario activas-->
 		<!-- Bootstrap core JavaScript
 	    ================================================== -->
 		<!-- Placed at the end of the document so the pages load faster -->
