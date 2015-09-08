@@ -180,10 +180,10 @@ public class WebappController
 	{		
 		Map<String, String> resultMap = new HashMap<String, String>();
 		RespuestaVO wsRespuesta = new RespuestaVO();
-		
+		String desc = new String(descImagen.getBytes("ISO-8859-1"), "UTF-8");
 		try
 		{	
-			wsRespuesta = wsCliente.crearSitioGuardaImage(domainId, baseImagen, tipoImagen, descImagen) ;
+			wsRespuesta = wsCliente.crearSitioGuardaImage(domainId, baseImagen, tipoImagen, desc) ;
 			resultMap.put("codeError", wsRespuesta.getCodeError());
 		}		
 		catch (Exception e) 
@@ -251,9 +251,11 @@ public class WebappController
 		Map<String, String> resultMap = new HashMap<String, String>();
 		RespuestaVO wsRespuesta = new RespuestaVO();
 		
+		String desc = new String(descImagen.getBytes("ISO-8859-1"), "UTF-8");
+		
 		try
 		{
-			wsRespuesta = wsCliente.crearSitioUpdateImage(domainId, imageId, baseImagen, descImagen);
+			wsRespuesta = wsCliente.crearSitioUpdateImage(domainId, imageId, baseImagen, desc);
 			resultMap.put("codeError", wsRespuesta.getCodeError());
 		}		
 		catch (Exception e) 
@@ -490,8 +492,8 @@ public class WebappController
 		String visibleRecurso = "";
 		String visibleTel = "";
 		String idDominio = "";
-		//String downgrade = "";
-		//String galeriaImagenes = "";
+		String downgrade = "";
+		String galeriaImagenes = "";
 		
 		try
 		{
@@ -506,13 +508,16 @@ public class WebappController
 				wsRespuesta.getDominioCreaSitio().getNombreUsuario());				
 				campania = wsRespuesta.getDominioCreaSitio().getCampania().toLowerCase();
 				idDominio = wsRespuesta.getIdDominio();
-			//	downgrade = wsRespuesta.getDowngrade();
+				downgrade = wsRespuesta.getDowngrade();
 				
-				/*for (StatusDomainVO stat : wsRespuesta.getListStatusDomainGratisVO())
+				for (StatusDomainVO stat : wsRespuesta.getListStatusDomainGratisVO())
 				{
 					if (stat.getDescripcionItem().equalsIgnoreCase("GALERIA DE IMAGENES"))
-						galeriaImagenes = stat.getStatus();						
-				}*/
+					{
+						galeriaImagenes = stat.getStatus();
+						break;
+					}
+				}
 				
 				if (wsRespuesta.getDominioCreaSitio().getNombreEmpresa().trim().equals("TÃtulo"))
 					model.put("nombreEmpresa", "");
@@ -627,8 +632,8 @@ public class WebappController
 				model.put("visibleRecurso", visibleRecurso);
 				model.put("visibleTel", visibleTel);
 				model.put("idDominio", idDominio);
-				//model.put("downgrade", downgrade);
-				//model.put("galeriaImagenes", galeriaImagenes);
+				model.put("downgrade", downgrade);
+				model.put("galeriaImagenes", galeriaImagenes);
 			}
 			else 
 			{
