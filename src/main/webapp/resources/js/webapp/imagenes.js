@@ -461,6 +461,14 @@ function guardarImagenesJQ()
 			  title: "<span class='textBlack' style='font-size:.9em;'>Alcanzaste el máximo de imágenes permitidas</span>",
 			  message: '<div style="display:block; min-height:300px;"><div>Adquiere <strong>Plan Pro</strong> desde la app para agregar más imágenes </div><br/> <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 text-center"><a href="https://itunes.apple.com/mx/app/infomovil/id898313250?mt=8" style="margin: 0px; padding: 0px; color: rgb(49, 165, 154);" target="_blank"><img alt="AppStore" src="../resources/webapp/images/appstore_icn.png" style="margin: 0px; padding: 0px; max-width: 150px;" title="AppStore" /></a></div><div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 text-center"><a href="https://play.google.com/store/apps/details?id=com.infomovil.infomovil" style="margin: 0px; padding: 0px; color: rgb(49, 165, 154);" target="_blank"><img alt="Google Play" src="../resources/webapp/images/gstore_icn.png"  style="margin: 0px; padding: 0px; max-width: 150px;" title="Google Play" /></a></div></div>'
 			});		
+		
+		$("#galeriaImagenes").show();
+		$("#imgSeleccionadaDeGaleria").hide();
+		$("#regresarSelecImg").hide();
+		$("#btnGuardarImagen").hide();
+		$("#btnAlbumsDeFacebook").show();
+		$("#btnSeleccionaImagen").val("");
+		$("#actualizarTextoFoto").val("");
 	}
 }
 
