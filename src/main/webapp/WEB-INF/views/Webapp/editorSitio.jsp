@@ -53,7 +53,7 @@
 						</li>
 						
 						<li class="botonDesPublicarVid" id="btnVideoLi" style="display:none;">
-							<a href="#" data-toggle="modal" data-target="#myModalVideo" class="smoothScroll ${colorTexto}">Videos
+							<a href="#" data-toggle="modal" data-target="#myModalVideo" class="smoothScroll ${colorTexto}">Video
 								<img width="20" height="20" alt="Infomovil"	src="<c:url value="/resources/webapp/images/ico_ppp_youtube${ extensionImg }.png"/>" />
 							</a>
 						</li>
