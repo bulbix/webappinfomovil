@@ -367,7 +367,7 @@ function getImagenesJQ()
 
 					if(typeImg == "IMAGEN")
 					{
-						if(i < IMAGENESMAX) 
+						if(i <= IMAGENESMAX) 
 						{
 							var $li = $('<li class="imagenDinamica" style="display:block;height:80px; width:100%; margin:10px 0;"/>')
 							$li.append('<div class="col-xs-3 text-left" style="max-height:50px;"><img src="'+imgUrl+'" onerror="errorPreview(this)" style="max-width:100px; max-height:50px;" class="ImgDinamica img-thumbnail"/></div>');
