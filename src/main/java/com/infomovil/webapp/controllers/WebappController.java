@@ -208,7 +208,7 @@ public class WebappController
 		try
 		{	
 			String correo = Util.getUserLogged().getUsername();		
-			wsRespuesta = wsCliente.crearSitioGetImagenes(correo, domainId, "android", "3.0.2");			
+			wsRespuesta = wsCliente.crearSitioGetImagenes(correo, domainId, "android", "3.0.3");			
 			list.addAll(wsRespuesta);
 			logger.info(list);
 			

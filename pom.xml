@@ -273,19 +273,21 @@
     <profiles>
 		<profile>
 			<id>dev</id>
+			
 			<properties>
 				<config.profile>DEV</config.profile>
 			</properties>
 
 		</profile>
 		<profile>
-			<id>qa</id>			
-			<properties>
-				<config.profile>QA</config.profile>
-			</properties>	
+			<id>qa</id>		
 			<activation>
 				<activeByDefault>true</activeByDefault>
 			</activation>	
+			<properties>
+				<config.profile>QA</config.profile>
+			</properties>	
+				
 
 		</profile>
 		<profile>

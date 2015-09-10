@@ -3,7 +3,6 @@ var planPro = "";
 var visible = "";
 var IMAGENESMAX = $("#galeriaImagenesMax").val();
 var IMAGENESDELUSUARIO = 0;
-var binaryString;
 var infoAlbumes = [];
 var photosDelAlbum = [];
 
@@ -245,6 +244,7 @@ var revisarEstado = function checkLoginState() {
 	});
 }
 
+var binaryString;
 function picChange(evt)
 {
 	console.log("Aqui llega primero");
@@ -280,7 +280,9 @@ function picChange(evt)
 			var reader = new FileReader();
 			reader.onload = function(readerEvt) {
 				binaryString = readerEvt.target.result;
+				//console.log("el binari string base 64 es: " + binaryString );
 				binaryString =  btoa(binaryString);
+				//console.log("el binari string de text es: " + binaryString );
 			};
 
 			reader.readAsBinaryString(file);
@@ -486,9 +488,9 @@ function guardarImagenesJQ()
 }
 
 function guardarImagenesJQF()
-{	console.log("las imagenes del usuario son: " + IMAGENESDELUSUARIO);
+{	
 	if(IMAGENESDELUSUARIO < IMAGENESMAX){
-		console.log("si entro a al if: " + IMAGENESDELUSUARIO);
+		
 		var imageUrl = $("#imgVistaPrevia").attr("src");
 		console.log('imageUrl', imageUrl);
 		$.blockUI.defaults.baseZ = 9000;
@@ -501,12 +503,11 @@ function guardarImagenesJQF()
 				width: '400px'
 			}
 		});
-
+		
 		convertImgToBase64(imageUrl, function(base64Img) {
-
-			binaryString = btoa(base64Img);
+			binaryString = base64Img.replace(/^data:image\/(png|jpeg);base64,/, "");
+			console.log("EL base 64 ES: " + binaryString);
 			var textFoto = $("#nombreDeImgn").val();
-
 			$.ajax({
 				type : "POST",
 				url : contextPath + "/infomovil/guardarImagen",
@@ -530,6 +531,7 @@ function guardarImagenesJQF()
 					getImagenesJQ();
 					$("#galeriaImagenes").show();
 					$("#btnGuardarImagen").hide();
+					
 					$.unblockUI();
 
 				},
@@ -541,6 +543,7 @@ function guardarImagenesJQF()
 			});
 
 		});
+		console.log("termino de hacer la consulta");
 	}else{
 		console.log("YA ALCANZASTE EL MÁXIMO DE IMAGENES PERMITIDAS ADQUIERE PLAN PRO");
 		bootbox.dialog({
@@ -631,6 +634,7 @@ function actualizarImagen(idImg, imgUrl)
 
 function convertImgToBase64(url, callback, outputFormat)
 {
+	
 	var img = new Image();
 	img.crossOrigin = 'Anonymous';
 
@@ -644,6 +648,6 @@ function convertImgToBase64(url, callback, outputFormat)
 		callback(dataURL);
 		canvas = null;
 	};
-
+	console.log("La url nueva es: " + url );
 	img.src = url;
 }
