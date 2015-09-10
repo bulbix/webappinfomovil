@@ -52,7 +52,7 @@ $(document).ready(function() {
 					var $photosList = $('#albumsList');
 					var $li = $('<li class="albumDinamico" style="display:block; height:100px; margin:0 5px 5px 5px;"/>');
 					$li.append('<span class="col-xs-4"><img src="' + infoAlbumes[p].picture + '" style="max-width:100px; max-height:100px;"  class="img-thumbnail"/></span>');
-					$li.append('<span class="col-xs-8"><strong style="color:#7c41bc" class="hidden-xs"> Album:</strong> '+ infoAlbumes[p].title +'</span><hr>');
+					$li.append('<span class="col-xs-8"><strong style="color:#7c41bc" class="hidden-xs"> Album:</strong> '+ infoAlbumes[p].title +'</span><br/><span style="color:#7c41bc; text-decoration:underline;">Ver imágenes</span><hr>');
 
 					$li.click(function() {
 						var r = $(this).index();
@@ -322,6 +322,7 @@ function getImagenesJQ()
 	{
 		bloqueo1Vez = 1;
 		
+		$("#facebookDiv").hide();
 		$('#regresarDeFace').hide();
 		$('#idRegresarAlbum').hide();
 		$('#btnSeleccionaImagen').show();
@@ -503,8 +504,8 @@ function guardarImagenesJQF()
 		});
 
 		convertImgToBase64(imageUrl, function(base64Img) {
-
-			binaryString = btoa(base64Img);
+			
+			binaryString = base64Img.replace(/^data:image\/(png|jpeg);base64,/, "");
 			var textFoto = $("#nombreDeImgn").val();
 
 			$.ajax({

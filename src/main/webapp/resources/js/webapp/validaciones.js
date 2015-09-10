@@ -116,7 +116,7 @@ function validaDominio(tipo)
 				textoBoton = "Aceptar";
 				sitioDisponible = "<strong class='textPurple'>"+ sitioDisponible + "</strong> <br/>no est&aacute; disponible";
 			}
-
+			
 			$('#modalPublicacion').html("<div id='myModalPublicar' class='modal fade' tabindex='-1' role='dialog' aria-labelledby='myModalLabel' aria-hidden='true'>"+
 					"<div class='modal-dialog modal-md'><div class='modal-content'><div class='modal-header'><button type='button' class='close textBlack' data-dismiss='modal' aria-label='Close'>"+
 					"<span aria-hidden='true'>&times;</span></button></div><div class='modal-body bgWhite'>"+
@@ -124,7 +124,7 @@ function validaDominio(tipo)
 					"" + sitioDisponible + "</span><div class='clear divider'></div></div><div class='modal-footer'>"+
 					"<button type='button' class='btn btn-purple text-center col-xs-12 col-sm-12 col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3' data-dismiss='modal' onClick=" + funcion + "><strong>"+ textoBoton +"</strong>" + 
 					"</button><input type='hidden' id='opcion' value=" + opcion + "/></div></div></div></div>");
-
+			
 			$('#modalPublicacion > .alert-success').append($('#myModalPublicar').modal('show'));
 			$.unblockUI();
 	    }
