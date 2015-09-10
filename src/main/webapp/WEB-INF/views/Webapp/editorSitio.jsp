@@ -230,8 +230,8 @@
 					<img width="30" height="30" alt="Infomovil" src="<c:url value="/resources/webapp/images/ico_ppp_youtube.png"/>" /> <span id="idOpcionVideo">Agrega un video</span></a> 
 				</div>
 							<!-- /Botón AGREGAR VIDEO -->	
-							<div class="clearfix"></div>
-							<div class="dividerSmallest"></div>
+							<div id="idBtnVideoClearFix" class="clearfix" style="display:none;"></div>
+							<div id="idBtnVideoDivider" class="dividerSmallest" style="display:none;"></div>
 							
 							<!-- /Botón AGREGAR MAS CONTENIDO --> 
 				<div id="idBtnMasCont" class="botonDesPublicar" style="display:none;">
@@ -314,7 +314,9 @@
 			<c:set var="fragmentName" value="modalImagenes" scope="request" />
 		</tiles:insertDefinition>
 <!-- 		<!--/MODAL IMAGENES-->  
-								
+		<!--MODAL PUBLICACION--> 		
+		<div id="modalPublicacion"></div>	
+		<!--MODAL PUBLICACION--> 			
 		<!-- Scroll to Top Button (Only visible on small and extra-small screen sizes) -->
 		<div class="scroll-top page-scroll visible-xs visble-sm">
 			<a class="btn" href="#page-top"> <img width="20" height="20" alt="Infomovil" src="http://landing.infomovil.com/webapp/templates/${ template }/images/fa-chevron-up.png" />Subir</a>
@@ -323,12 +325,11 @@
 	<!-- /container -->
 		<form id="publicarDominio"
 			action="<c:url value="/infomovil/publicarSitio"/>" method="post">
-			<div id="modalPublicacion"></div>
 			<input type="hidden" id="nombreDominio" name="nombreDominio">
 			<input type="hidden" id="tipoDominio" name="tipoDominio"> 
 			<input type="hidden" id="idCatTipoRecurso" name="idCatTipoRecurso">
 		</form>
-			
+		
 		<input type="hidden" id="plantilla" name="plantilla" <c:if test="${not empty template}"> value = "${ template }" </c:if>>
 		<input type="hidden" id="latitud" name="latitud" value = "${ latitud }">
 		<input type="hidden" id="longitud" name="longitud" value = "${ longitud }">
@@ -364,7 +365,7 @@
 		<script src="<c:url value="/resources/js/webapp/videoYoutube.js"/>"></script>
 		<script src="<c:url value="/resources/js/webapp/imagenes.js"/>"></script>
 <%-- 		<h1>${ idDominio }</h1> --%>
-		<h1>${ galeriaImagenes }</h1>
+<%-- 		<h1>${ galeriaImagenes }</h1> --%>
 <%-- 	 	<h1>${ downgrade }</h1> --%>
 <%-- 	 	<h1>${ sitioWeb }</h1> --%>
 <%-- 		<h1>${sitioWeb}></h1> --%>
@@ -434,6 +435,8 @@
 					
 					<c:if test="${planPro == 'SI'}">
 						$("#idBtnVideo").css("display", "block");
+						$("#idBtnVideoClearFix").css("display", "block");
+						$("#idBtnVideoDivider").css("display", "block");
 						$("#btnVideoLi").css("display", "block");
 						$(".botonDesPublicarVid").css("display", "block");
 						$("#imgPlanPro").css("display", "table-row");
