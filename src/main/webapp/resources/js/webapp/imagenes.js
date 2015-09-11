@@ -5,7 +5,8 @@ var IMAGENESMAX = $("#galeriaImagenesMax").val();
 var IMAGENESDELUSUARIO = 0;
 var infoAlbumes = [];
 var photosDelAlbum = [];
-
+var binaryString;
+var siHayImagen = 0;
 $(document).ready(function() {
 	$("#terceroFB").hide();
 	$("#regresarDeFotos").hide();
@@ -25,75 +26,10 @@ $(document).ready(function() {
 	$("#btnSeleccionaImagen").show();
 	$("#btnSeleccionaImagen2").show();
 	$("#btnGuardarImagen").hide();
-
 	$btnAlbumsDeFacebook.click(function(e) {
-		$(this).hide();
-		$("#btnSeleccionaImagen").hide();
-		$("#btnSeleccionaImagen2").hide();
-		$("#terceroFB").hide();
-		$("#regresarDeFotos").hide();
-		$("#btnGuardarImagenFB").hide();
-		$("#galeriaImagenes").hide();
-		$(".albumDinamico").remove();
-		$("#facebookDiv").show();
-		$("#primeroFB").show();
-		$("#msjEligeAlbumFoto").show();
-		$("#regresarDeFace").show();
-		$("#segundoFB").hide();
-		$("#msjEligeFotoAlbum").hide();
-		$("#idRegresarAlbum").hide();
-		$("#nombreDeImgn").val('');
+		
 		FB.getLoginStatus(function(response) {
-			if (response.status === 'connected') {
-				$('#myModalFacebook').modal();
-
-				for (var p in infoAlbumes) {
-					var $photosList = $('#albumsList');
-					var $li = $('<li class="albumDinamico" style="display:block; height:100px; margin:0 5px 5px 5px;"/>');
-					$li.append('<span class="col-xs-4"><img src="' + infoAlbumes[p].picture + '" style="max-width:100px; max-height:100px;"  class="img-thumbnail"/></span>');
-					$li.append('<span class="col-xs-8"><strong style="color:#7c41bc" class="hidden-xs"> Album:</strong> '+ infoAlbumes[p].title +'</span><br/><span style="color:#7c41bc; text-decoration:underline;">Ver imágenes</span><hr>');
-
-					$li.click(function() {
-						var r = $(this).index();
-						$(".photoDinamico").remove();
-						$("#primeroFB").hide();
-						$("#msjEligeAlbumFoto").hide();
-						$("#regresarDeFace").hide();
-						$("#segundoFB").show();
-						$("#msjEligeFotoAlbum").show();
-						$("#idRegresarAlbum").show();
-						$("#terceroFB").hide();
-						$("#regresarDeFotos").hide();
-						$("#btnGuardarImagenFB").hide();
-
-						var fotos = photosDelAlbum[r];
-						for (var a in fotos ) {
-							var $photosList = $('#photosList');
-							var $li = $('<div class="photoDinamico" style="display:block; height:100px; margin:10px 5px; max-width:100px; float:left "/>');
-							$li.append('<span class="col-xs-12"><img src="' + fotos[a].origen + '" style="max-width:100px; max-height:100px;" class="img-thumbnail"/></span>');
-							$li.on("click", "img", function(){
-								$("#imgVistaPrevia").attr('src',$(this).attr("src"));
-								$("#primeroFB").hide();
-								$("#msjEligeAlbumFoto").hide();
-								$("#regresarDeFace").hide();
-								$("#segundoFB").hide();
-								$("#msjEligeFotoAlbum").hide();
-								$("#idRegresarAlbum").hide();
-								$("#terceroFB").show();
-								$("#regresarDeFotos").show();
-								$("#btnGuardarImagenFB").show();
-							});
-							$photosList.append($li);
-						}
-					});
-					$photosList.append($li);
-				}
-			}else{
-				FB.login(function(response) {
-					statusChangeCallback(response);
-				}, {scope: 'public_profile,email,user_photos'});
-
-			}
+			logueoFacebook(response);
 		});
 	});
 
@@ -108,6 +44,7 @@ $(document).ready(function() {
 		$("#primeroFB").show();
 		$("#msjEligeAlbumFoto").show();
 		$("#regresarDeFace").show();
+		$("#galeriaVacia").hide();
 	});
 
 
@@ -148,6 +85,7 @@ $(document).ready(function() {
 		$("#btnSeleccionaImagen2").show();
 		$("#regresarDeFace").hide();
 		$("#msjEligeAlbumFoto").hide();
+		if(siHayImagen == 1){$("#galeriaVacia").hide();}else{$("#galeriaVacia").show();}
 	});
 	$("#regresarDeFotos").click(function(){
 		$("#terceroFB").hide();
@@ -162,24 +100,30 @@ $(document).ready(function() {
 
 });
 
-var testapiFacebook = function testAPI() {
-	var k = 0;
-	FB.api('/me/albums?fields=count,name,id,picture', function(response) {
-		$(response.data).map(function(){
-			if (this.count > 0) {
-				infoAlbumes[k] = {
-                    aid : this.id,
-                    title : this.name,
-                    count : this.count,
-                    picture : this.picture.data.url
-                };
-				k ++;
-			}
-		});
-		for (var p in infoAlbumes) {
-			generaFotos(infoAlbumes[p],p);
+function testapiFacebook() { 
+var k = 0;
+dfd = new $.Deferred();
+FB.api('/me/albums?fields=count,name,id,picture', function(response) {
+	$(response.data).map(function(){
+		if (this.count > 0) {
+			infoAlbumes[k] = {
+                aid : this.id,
+                title : this.name,
+                count : this.count,
+                picture : this.picture.data.url
+            };
+			k ++;
 		}
+		
 	});
+	
+	for (var p in infoAlbumes) {
+		generaFotos(infoAlbumes[p],p);
+	}
+	 dfd.resolve();
+});
+dfd.done(function(){ logueoFacebook2(); });
+
 }// Fin del test API //
 
 function generaFotos(idAlbum,p) {
@@ -244,7 +188,7 @@ var revisarEstado = function checkLoginState() {
 	});
 }
 
-var binaryString;
+
 function picChange(evt)
 {
 	console.log("Aqui llega primero");
@@ -274,19 +218,33 @@ function picChange(evt)
 		console.log("La pic url es: " + picURL);
 		var files = evt.target.files;
 		var file = files[0];
+		if(file.size <= 1024000){
+			if (files && file)
+			{
+				var reader = new FileReader();
+				reader.onload = function(readerEvt) {
+					binaryString = readerEvt.target.result;
+					//console.log("el binari string base 64 es: " + binaryString );
+					binaryString =  btoa(binaryString);
+					//console.log("el binari string de text es: " + binaryString );
+				};
 
-		if (files && file)
-		{
-			var reader = new FileReader();
-			reader.onload = function(readerEvt) {
-				binaryString = readerEvt.target.result;
-				//console.log("el binari string base 64 es: " + binaryString );
-				binaryString =  btoa(binaryString);
-				//console.log("el binari string de text es: " + binaryString );
-			};
-
-			reader.readAsBinaryString(file);
+				reader.readAsBinaryString(file);
+			}
+			
+		}else{
+			bootbox.alert("La imágen ha superado el limite permitido. El límite es de 768x1024 px", function() {
+				  return;
+				});
+			$("#galeriaImagenes").show();
+			$("#imgSeleccionadaDeGaleria").hide();
+			$("#regresarSelecImg").hide();
+			$("#btnGuardarImagen").hide();
+			$("#btnAlbumsDeFacebook").show();
+			$("#btnSeleccionaImagen").val("");
+			$("#actualizarTextoFoto").val("");
 		}
+		
 	}
 	else
 	{
@@ -336,6 +294,7 @@ function getImagenesJQ()
 		$("#terceroFB").hide();
 		$("#regresarDeFotos").hide();
 		$("#btnGuardarImagenFB").hide();
+		$("#msjEligeAlbumFoto").hide();
 		var $listaImg = $('#listaImagenes');
 
 		$.ajax({
@@ -360,7 +319,7 @@ function getImagenesJQ()
 					$("#galeriaVacia").hide(); 
 				else 
 					$("#galeriaVacia").show(); 
-				
+				 siHayImagen = 0;
 				for(var i = 0; i < data.length; i++)
 				{
 					var imgUrl = data[i].url;
@@ -369,7 +328,7 @@ function getImagenesJQ()
 					var idImg = data[i].idImagen;
 
 					if(typeImg == "IMAGEN")
-					{
+					{   siHayImagen = 1;
 						if(i <= IMAGENESMAX) 
 						{
 							var $li = $('<li class="imagenDinamica" style="display:block;height:80px; width:100%; margin:10px 0;"/>')
@@ -386,7 +345,7 @@ function getImagenesJQ()
 						}
 					}
 				}
-
+				if(siHayImagen == 1){$("#galeriaVacia").hide();}
 				$('#myModalImagenes').modal('show') ;
 				$('#galeriaImagenes').show();
 				$.unblockUI();
@@ -506,7 +465,7 @@ function guardarImagenesJQF()
 		});
 		
 		convertImgToBase64(imageUrl, function(base64Img) {
-			binaryString = base64Img.replace(/^data:image\/(png|jpeg);base64,/, "");
+			binaryString = base64Img.replace(/^data:image\/(png|jpeg|jpg);base64,/, "");
 			var textFoto = $("#nombreDeImgn").val();
 			$.ajax({
 				type : "POST",
@@ -641,13 +600,163 @@ function convertImgToBase64(url, callback, outputFormat)
 	img.onload = function() {
 		var canvas = document.createElement('CANVAS');
 		var ctx = canvas.getContext('2d');
-		canvas.height = this.height;
-		canvas.width = this.width;
-		ctx.drawImage(this,0,0);
+		console.log(this.height + " y " + this.width);
+		if(this.width > 900 && this.width < 1400){
+		console.log("una");
+			canvas.height = this.height * .30;
+			canvas.width = this.width *.30;
+			ctx.drawImage(this,0,0,this.width,this.height,0,0,canvas.width,canvas.height);
+		
+		}else if(this.width > 1400 && this.width < 5000){
+			console.log("dos");
+			canvas.height = this.height * .20;
+			canvas.width = this.width *.20;
+			ctx.drawImage(this,0,0,this.width,this.height,0,0,canvas.width,canvas.height);
+			
+			
+		}else{
+			console.log("tres");
+			canvas.height = this.height;
+			canvas.width = this.width;
+			ctx.drawImage(this,0,0);
+		}
+	
 		var dataURL = canvas.toDataURL(outputFormat || 'image/png');
 		callback(dataURL);
 		canvas = null;
 	};
-	console.log("La url nueva es: " + url );
+	
 	img.src = url;
+}
+
+function logueoFacebook(response){
+	console.log("EL RESPONSE ES:  " + response.status);
+	if (response.status === 'connected') {
+		$("#btnAlbumsDeFacebook").hide();
+		$("#btnSeleccionaImagen").hide();
+		$("#btnSeleccionaImagen2").hide();
+		$("#terceroFB").hide();
+		$("#regresarDeFotos").hide();
+		$("#btnGuardarImagenFB").hide();
+		$("#galeriaImagenes").hide();
+		$(".albumDinamico").remove();
+		$("#facebookDiv").show();
+		$("#primeroFB").show();
+		$("#msjEligeAlbumFoto").show();
+		$("#regresarDeFace").show();
+		$("#segundoFB").hide();
+		$("#galeriaVacia").hide();
+		$("#msjEligeFotoAlbum").hide();
+		$("#idRegresarAlbum").hide();
+		$("#nombreDeImgn").val('');
+		for (var p in infoAlbumes) {
+			var $photosList = $('#albumsList');
+			var $li = $('<li class="albumDinamico" style="display:block; height:100px; margin:0 5px 5px 5px;"/>');
+			$li.append('<span class="col-xs-4"><img src="' + infoAlbumes[p].picture + '" style="max-width:100px; max-height:100px;"  class="img-thumbnail"/></span>');
+			$li.append('<span class="col-xs-8"><strong style="color:#7c41bc" class="hidden-xs"> Album:</strong> '+ infoAlbumes[p].title +'</span><br/><span style="color:#7c41bc; text-decoration:underline;">Ver imágenes</span><hr>');
+
+			$li.click(function() {
+				var r = $(this).index();
+				$(".photoDinamico").remove();
+				$("#primeroFB").hide();
+				$("#msjEligeAlbumFoto").hide();
+				$("#regresarDeFace").hide();
+				$("#segundoFB").show();
+				$("#msjEligeFotoAlbum").show();
+				$("#idRegresarAlbum").show();
+				$("#terceroFB").hide();
+				$("#regresarDeFotos").hide();
+				$("#btnGuardarImagenFB").hide();
+				$("#galeriaVacia").hide();
+				var fotos = photosDelAlbum[r];
+				for (var a in fotos ) {
+					var $photosList = $('#photosList');
+					var $li = $('<div class="photoDinamico" style="display:block; height:100px; margin:10px 5px; max-width:100px; float:left "/>');
+					$li.append('<span class="col-xs-12"><img src="' + fotos[a].origen + '" style="max-width:100px; max-height:100px;" class="img-thumbnail"/></span>');
+					$li.on("click", "img", function(){
+						$("#imgVistaPrevia").attr('src',$(this).attr("src"));
+						$("#primeroFB").hide();
+						$("#msjEligeAlbumFoto").hide();
+						$("#regresarDeFace").hide();
+						$("#segundoFB").hide();
+						$("#msjEligeFotoAlbum").hide();
+						$("#idRegresarAlbum").hide();
+						$("#terceroFB").show();
+						$("#regresarDeFotos").show();
+						$("#btnGuardarImagenFB").show();
+					});
+					$photosList.append($li);
+				}
+			});
+			$photosList.append($li);
+		}
+	}else{
+		FB.login(function(response) {
+			statusChangeCallback(response);
+		}, {scope: 'public_profile,email,user_photos'});
+
+	}
+}
+
+
+function logueoFacebook2(){
+	$("#btnAlbumsDeFacebook").hide();
+	$("#btnSeleccionaImagen").hide();
+	$("#btnSeleccionaImagen2").hide();
+	$("#terceroFB").hide();
+	$("#regresarDeFotos").hide();
+	$("#btnGuardarImagenFB").hide();
+	$("#galeriaImagenes").hide();
+	$(".albumDinamico").remove();
+	$("#facebookDiv").show();
+	$("#primeroFB").show();
+	$("#msjEligeAlbumFoto").show();
+	$("#regresarDeFace").show();
+	$("#segundoFB").hide();
+	$("#galeriaVacia").hide();
+	$("#msjEligeFotoAlbum").hide();
+	$("#idRegresarAlbum").hide();
+	$("#nombreDeImgn").val('');
+	for (var p in infoAlbumes) {
+		var $photosList = $('#albumsList');
+		var $li = $('<li class="albumDinamico" style="display:block; height:100px; margin:0 5px 5px 5px;"/>');
+		$li.append('<span class="col-xs-4"><img src="' + infoAlbumes[p].picture + '" style="max-width:100px; max-height:100px;"  class="img-thumbnail"/></span>');
+		$li.append('<span class="col-xs-8"><strong style="color:#7c41bc" class="hidden-xs"> Album:</strong> '+ infoAlbumes[p].title +'</span><br/><span style="color:#7c41bc; text-decoration:underline;">Ver imágenes</span><hr>');
+
+		$li.click(function() {
+			var r = $(this).index();
+			$(".photoDinamico").remove();
+			$("#primeroFB").hide();
+			$("#msjEligeAlbumFoto").hide();
+			$("#regresarDeFace").hide();
+			$("#segundoFB").show();
+			$("#msjEligeFotoAlbum").show();
+			$("#idRegresarAlbum").show();
+			$("#terceroFB").hide();
+			$("#regresarDeFotos").hide();
+			$("#btnGuardarImagenFB").hide();
+			$("#galeriaVacia").hide();
+			var fotos = photosDelAlbum[r];
+			for (var a in fotos ) {
+				var $photosList = $('#photosList');
+				var $li = $('<div class="photoDinamico" style="display:block; height:100px; margin:10px 5px; max-width:100px; float:left "/>');
+				$li.append('<span class="col-xs-12"><img src="' + fotos[a].origen + '" style="max-width:100px; max-height:100px;" class="img-thumbnail"/></span>');
+				$li.on("click", "img", function(){
+					$("#imgVistaPrevia").attr('src',$(this).attr("src"));
+					$("#primeroFB").hide();
+					$("#msjEligeAlbumFoto").hide();
+					$("#regresarDeFace").hide();
+					$("#segundoFB").hide();
+					$("#msjEligeFotoAlbum").hide();
+					$("#idRegresarAlbum").hide();
+					$("#terceroFB").show();
+					$("#regresarDeFotos").show();
+					$("#btnGuardarImagenFB").show();
+				});
+				$photosList.append($li);
+			}
+		});
+		$photosList.append($li);
+	}
+
 }
