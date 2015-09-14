@@ -8,6 +8,8 @@
 	<tiles:insertDefinition name="headEditorSitio">
 		<tiles:putAttribute name="template" value="${ template }"/>
 	</tiles:insertDefinition>	
+	
+	
 
 	<body role="document" data-spy="scroll" data-target=".navbar" data-offset="75" id="page-top" onload="autosave()">
 		<!-- Fixed navbar --> 
@@ -352,10 +354,12 @@
 		<script	src="<c:url value="/resources/webapp/js/ie10-viewport-bug-workaround.js"/>"></script>
 		<!-- bxSlider Javascript file -->
 		<script src="<c:url value="/resources/webapp/js/jquery.bxslider.min.js"/>"></script>
-		<script	src="<c:url value="/resources/webapp/js/jqBootstrapValidation.js"/>"></script>
+		
+
+
 		
 		<script>
-			$(function () { $("input,select,textarea").not("[type=submit]").jqBootstrapValidation(); } );
+			//$(function () { $("input,select,textarea").not("[type=submit]").jqBootstrapValidation(); } );
 		</script>
 	
 		<script src="<c:url value="/resources/webapp/js/jquery.numeric.js"/>"></script>
@@ -369,7 +373,7 @@
 <%-- 	 	<h1>${ downgrade }</h1> --%>
 <%-- 	 	<h1>${ sitioWeb }</h1> --%>
 <%-- 		<h1>${sitioWeb}></h1> --%>
-
+<script	src="<c:url value="/resources/webapp/js/si.files.js"/>"></script>
 		<script>
 			$(document).ready(function(){
 				generarSlider();
@@ -410,7 +414,11 @@
 		 	 });
 			
 		</script>
-
+<script type="text/javascript" language="javascript">
+// <![CDATA[
+SI.Files.stylizeAll();
+// ]]>
+</script>
 		<script>
 		
 			<c:choose> 

@@ -256,9 +256,16 @@ function validaImg()
 {
 	console.log("IMAGENESMAX: " + IMAGENESMAX + ", IMAGENESDELUSUARIO: " + IMAGENESDELUSUARIO);
 	if (IMAGENESDELUSUARIO == IMAGENESMAX)
-		bootbox.alert("Ya alcanzaste el máximo de imágenes permitidas, adquiere Plan Pro desde la app", function() {
-			  return;
+//		bootbox.alert("Ya alcanzaste el máximo de imágenes permitidas, adquiere Plan Pro desde la app", function() {
+//			  return;
+//			});
+	
+		bootbox.dialog({
+			  title: "<span class='textBlack' style='font-size:.7em;'><img alt='' src='../resources/webapp/images/fa-warning-bk.png'  title='Alerta' />Alcanzaste el máximo de imágenes permitidas</span>",
+			  message: '<div style="display:block; min-height:150px;"><p class="textBlack text-center" style="font-size:1.15em;">Adquiere <strong>Plan Pro</strong> desde la app para agregar más imágenes </p><br/> <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 text-center"><a href="https://itunes.apple.com/mx/app/infomovil/id898313250?mt=8" style="margin: 0px; padding: 0px; color: rgb(49, 165, 154);" target="_blank"><img alt="AppStore" src="../resources/webapp/images/appstore_icn.png" style="margin: 0px; padding: 0px; max-width: 150px;" title="AppStore" /></a></div><div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 text-center"><a href="https://play.google.com/store/apps/details?id=com.infomovil.infomovil" style="margin: 0px; padding: 0px; color: rgb(49, 165, 154);" target="_blank"><img alt="Google Play" src="../resources/webapp/images/gstore_icn.png"  style="margin: 0px; padding: 0px; max-width: 150px;" title="Google Play" /></a></div></div><div class="clearfix"></div><div style="display:block; height:30px; width:100%;"></div>'
 			});
+	
+	
 }
 
 function getImagenesJQ()
@@ -294,6 +301,7 @@ function getImagenesJQ()
 		$("#terceroFB").hide();
 		$("#regresarDeFotos").hide();
 		$("#btnGuardarImagenFB").hide();
+		
 		$("#msjEligeAlbumFoto").hide();
 		var $listaImg = $('#listaImagenes');
 
@@ -429,13 +437,9 @@ function guardarImagenesJQ()
 			visible = "display:none;";
 		
 		bootbox.dialog({
-			  title: "<span class='textBlack' style='font-size:.9em;'>Alcanzaste el máximo de imágenes permitidas en tu plan</span>",
-			  message: '<div style="' + visible + '"min-height:300px;"><div>Adquiere <strong>Plan Pro</strong> desde la app para agregar más imágenes </div><br/>' +
-				  	   '<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 text-center"><a href="https://itunes.apple.com/mx/app/infomovil/id898313250?mt=8" style="margin: 0px; padding: 0px; color: rgb(49, 165, 154);" target="_blank">' + 
-				  	   '<img alt="AppStore" src="../resources/webapp/images/appstore_icn.png" style="margin: 0px; padding: 0px; max-width: 150px;" title="AppStore" /></a></div><div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 text-center">' + 
-				  	   '<a href="https://play.google.com/store/apps/details?id=com.infomovil.infomovil" style="margin: 0px; padding: 0px; color: rgb(49, 165, 154);" target="_blank"><img alt="Google Play" src="../resources/webapp/images/gstore_icn.png"' + 
-				  	   'style="margin: 0px; padding: 0px; max-width: 150px;" title="Google Play" /></a></div></div>'
-			});		
+			  title: "<span class='textBlack' style='font-size:.7em;'><img alt='' src='../resources/webapp/images/fa-warning-bk.png'  title='Alerta' />Alcanzaste el máximo de imágenes permitidas</span>",
+			  message: '<div style="display:block; min-height:150px;"><p class="textBlack text-center" style="font-size:1.15em;">Adquiere <strong>Plan Pro</strong> desde la app para agregar más imágenes </p><br/> <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 text-center"><a href="https://itunes.apple.com/mx/app/infomovil/id898313250?mt=8" style="margin: 0px; padding: 0px; color: rgb(49, 165, 154);" target="_blank"><img alt="AppStore" src="../resources/webapp/images/appstore_icn.png" style="margin: 0px; padding: 0px; max-width: 150px;" title="AppStore" /></a></div><div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 text-center"><a href="https://play.google.com/store/apps/details?id=com.infomovil.infomovil" style="margin: 0px; padding: 0px; color: rgb(49, 165, 154);" target="_blank"><img alt="Google Play" src="../resources/webapp/images/gstore_icn.png"  style="margin: 0px; padding: 0px; max-width: 150px;" title="Google Play" /></a></div></div><div class="clearfix"></div><div style="display:block; height:30px; width:100%;"></div>'
+			});	
 		
 		$("#galeriaImagenes").show();
 		$("#imgSeleccionadaDeGaleria").hide();
@@ -507,7 +511,7 @@ function guardarImagenesJQF()
 		console.log("YA ALCANZASTE EL MÁXIMO DE IMAGENES PERMITIDAS ADQUIERE PLAN PRO");
 		bootbox.dialog({
 			  title: "<span class='textBlack' style='font-size:.7em;'><img alt='' src='../resources/webapp/images/fa-warning-bk.png'  title='Alerta' />Alcanzaste el máximo de imágenes permitidas</span>",
-			  message: '<div style="display:block; min-height:150px;"><p class="textBlack text-center" style="font-size:1.15em;">Adquiere <strong>Plan Pro</strong> desde la app para agregar más imágenes </p><br/> <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 text-center"><a href="https://itunes.apple.com/mx/app/infomovil/id898313250?mt=8" style="margin: 0px; padding: 0px; color: rgb(49, 165, 154);" target="_blank"><img alt="AppStore" src="../resources/webapp/images/appstore_icn.png" style="margin: 0px; padding: 0px; max-width: 150px;" title="AppStore" /></a></div><div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 text-center"><a href="https://play.google.com/store/apps/details?id=com.infomovil.infomovil" style="margin: 0px; padding: 0px; color: rgb(49, 165, 154);" target="_blank"><img alt="Google Play" src="../resources/webapp/images/gstore_icn.png"  style="margin: 0px; padding: 0px; max-width: 150px;" title="Google Play" /></a></div></div>'
+			  message: '<div style="display:block; min-height:150px;"><p class="textBlack text-center" style="font-size:1.15em;">Adquiere <strong>Plan Pro</strong> desde la app para agregar más imágenes </p><br/> <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 text-center"><a href="https://itunes.apple.com/mx/app/infomovil/id898313250?mt=8" style="margin: 0px; padding: 0px; color: rgb(49, 165, 154);" target="_blank"><img alt="AppStore" src="../resources/webapp/images/appstore_icn.png" style="margin: 0px; padding: 0px; max-width: 150px;" title="AppStore" /></a></div><div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 text-center"><a href="https://play.google.com/store/apps/details?id=com.infomovil.infomovil" style="margin: 0px; padding: 0px; color: rgb(49, 165, 154);" target="_blank"><img alt="Google Play" src="../resources/webapp/images/gstore_icn.png"  style="margin: 0px; padding: 0px; max-width: 150px;" title="Google Play" /></a></div></div><div class="clearfix"></div><div style="display:block; height:30px; width:100%;"></div>'
 			});
 		
 	}
@@ -653,7 +657,7 @@ function logueoFacebook(response){
 			var $photosList = $('#albumsList');
 			var $li = $('<li class="albumDinamico" style="display:block; height:100px; margin:0 5px 5px 5px;"/>');
 			$li.append('<span class="col-xs-4"><img src="' + infoAlbumes[p].picture + '" style="max-width:100px; max-height:100px;"  class="img-thumbnail"/></span>');
-			$li.append('<span class="col-xs-8"><strong style="color:#7c41bc" class="hidden-xs"> Album:</strong> '+ infoAlbumes[p].title +'</span><br/><span style="color:#7c41bc; text-decoration:underline;">Ver imágenes</span><hr>');
+			$li.append('<span class="col-xs-8"><strong style="color:#7c41bc" class="hidden-xs"> Album:</strong> '+ infoAlbumes[p].title +'<img alt="" src="../resources/webapp/images/ir.png" style="max-width:23px; max-height:23px;" title="Ir" class="pull-right"/></span>');
 
 			$li.click(function() {
 				var r = $(this).index();
@@ -721,7 +725,7 @@ function logueoFacebook2(){
 		var $photosList = $('#albumsList');
 		var $li = $('<li class="albumDinamico" style="display:block; height:100px; margin:0 5px 5px 5px;"/>');
 		$li.append('<span class="col-xs-4"><img src="' + infoAlbumes[p].picture + '" style="max-width:100px; max-height:100px;"  class="img-thumbnail"/></span>');
-		$li.append('<span class="col-xs-8"><strong style="color:#7c41bc" class="hidden-xs"> Album:</strong> '+ infoAlbumes[p].title +'</span><br/><span style="color:#7c41bc; text-decoration:underline;">Ver imágenes</span><hr>');
+		$li.append('<span class="col-xs-8"><strong style="color:#7c41bc" class="hidden-xs"> Album:</strong> '+ infoAlbumes[p].title +' <img alt="" src="../resources/webapp/images/ir.png" style="max-width:23px; max-height:23px;" title="Ir" class="pull-right"/></span><br/>');
 
 		$li.click(function() {
 			var r = $(this).index();

@@ -6,9 +6,12 @@
 	<button type="button" class="btn btn-purple pull-right btnsEditor"  id="btnGuardarImagen" onclick="guardarImagenesJQ()" style="margin: 5px 0;"><img width="15" height="15" alt="Infomovil" 
     	src="<c:url value="/resources/webapp/images/successWhite.png"/>" /><span class="hidden-xs"> Guardar</span></button>
     	
-    <span class="btn btn-purple pull-right btnsEditor col-xs-12 col-sm-5" id="btnSeleccionaImagen2" style="overflow-x:hidden; margin:5px 0;"><img width="20" height="20" alt="Infomovil" src="<c:url value="/resources/webapp/images/ico_upload.png"/>" style="display:inline" />
-		<input style="display:inline" type="file" accept="image/*" onClick="validaImg()" onchange="picChange(event)" id="btnSeleccionaImagen" />
-	</span>
+    <div class="btn btn-purple pull-right btnsEditor col-xs-12 col-sm-5" id="btnSeleccionaImagen2" style="overflow-x:hidden; margin:5px 0;">
+<label class="cabinet" > 
+		<input type="file" class="file" accept="image/*" onClick="validaImg()" onchange="picChange(event)" id="btnSeleccionaImagen"/><!-- 		<input style="display:inline" type="file" accept="image/*" onClick="validaImg()" onchange="picChange(event)" id="btnSeleccionaImagen"  /> -->
+	</label>
+
+	</div>
     	
     	<button type="button" class="btn btn-blueFB pull-right btnsEditor col-xs-12 col-sm-5"  id="btnAlbumsDeFacebook" style="margin:5px 0;"><img width="20" height="20" alt="Infomovil" src="<c:url value="/resources/webapp/images/ico_facebook.png"/>" /> <span class="hidden-sm">Fotos de Facebook</span></button>
     	<button type="button" id="regresarDeFace" class="btn btn-purple pull-right" ><img width="20" height="20" alt="Infomovil" src="<c:url value="/resources/webapp/images/ico_back.png"/>" /> <span class="hidden-xs">Regresar</span></button>
@@ -83,3 +86,4 @@
 </div>
 
 <div class="modal-footer"></div>
+

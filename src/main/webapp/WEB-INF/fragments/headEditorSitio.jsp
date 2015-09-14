@@ -52,6 +52,30 @@
 			{
 				z-index:10500!important;
 			}
+			/* <![CDATA[ */
+
+.SI-FILES-STYLIZED label.cabinet
+{
+	width: 136px;
+	/*height: 30px;*/
+	background: url(<c:url value="/resources/webapp/images/btn-choose-file.png"/>) 0 0 no-repeat;
+
+	display: block;
+	overflow: hidden;
+	cursor: pointer;
+}
+
+.SI-FILES-STYLIZED label.cabinet input.file
+{
+	position: relative;
+	height: 100%;
+	width: auto;
+	opacity: 0;
+	-moz-opacity: 0;
+	filter:progid:DXImageTransform.Microsoft.Alpha(opacity=0);
+}
+
+/* ]]> */
 		</style>
 		<title itemprop="name">Infomovil</title>
 		<link rel="canonical" href="http://www.infomovil.com" itemprop="url" />
