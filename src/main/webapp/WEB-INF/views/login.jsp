@@ -23,8 +23,8 @@
       <!-- Main jumbotron for a primary marketing message or call to action -->
     <div class="container text-center">
     <div class="divider hidden-xs hidden-sm"></div>
-    <h1 class="textBlack hidden">Edita tu sitio web</h1>
-    <h3 class="textBlack">Edita tu sitio web</h3>
+    <h1 class="textBlack hidden">Edita tu página web</h1>
+    <h3 class="textBlack">Edita tu página web</h3>
     <div class="container">
     
     <c:if test="${not empty error}">
