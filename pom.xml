@@ -272,7 +272,7 @@
     
     <profiles>
 		<profile>
-<<<<<<< HEAD
+
 			<id>dev</id>			
 			<properties>
 				<config.profile>DEV</config.profile>
@@ -283,20 +283,7 @@
 		</profile>
 		<profile>
 			<id>qa</id>		
-=======
-			<id>dev</id>
-			<activation>
-				<activeByDefault>true</activeByDefault>
-			</activation>
-			<properties>
-				<config.profile>DEV</config.profile>
-			</properties>
 
-		</profile>
-		<profile>
-			<id>qa</id>		
-				
->>>>>>> 425f4e4a493f4bbb4a4ebd5b7ab9158941a09614
 			<properties>
 				<config.profile>QA</config.profile>
 			</properties>	
