@@ -10,7 +10,7 @@
 	<div class="modal-body bgWhite">
 	<h3 class="textBlack col-xs-12 col-sm-12 text-center" class="textPurple">Bienvenido a Infomovil</h3>
 	<div class="clear"></div>
-	<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-center textBlack"></div>
+	<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-center textBlack"><strong>Toma tu primer paso y publica tu p&aacute;gina de Perfil</strong></div>
 	<div class="clear"></div>
 	<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">		
 		<p class="text-left">

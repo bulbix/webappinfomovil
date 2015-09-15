@@ -8,7 +8,7 @@
     	
     	
     	
-	<button type="button" class="close textBlack pull-left btnsEditor"  aria-label="Close" id="closemyModalImagenes"><span aria-hidden="true">&times;</span></button>
+	<button type="button" class="close textBlack pull-left btnsEditor"  aria-label="Close" id="closemyModalImagenes"><span aria-hidden="true"><strong>&times;</strong></span></button>
 	
 	
     	
@@ -78,7 +78,7 @@
        		
        		<div style="display:block; padding: 10px 0 0 0;"></div>
        		<div class="col-xs-12"> 
-            <div class="col-xs-12 col-sm-3 text-left"><img src="" style="max-width:130px; max-height:150px;" id="imgVistaPrevia" class="img-thumbnail"/></div>
+            <div class="col-xs-12 col-sm-3 text-left"><img src="" style="max-width:130px; max-height:150px; margin: 0 0 10px 0" id="imgVistaPrevia" class="img-thumbnail"/></div>
            <div class="col-xs-12 col-sm-9">
             
             	<label style="display:inline">Nombre: </label> <input type="text" name="fname" id="nombreDeImgn" maxlength="50"></input> 
