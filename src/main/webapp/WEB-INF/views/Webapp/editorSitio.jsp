@@ -341,6 +341,7 @@
 		<input type="hidden" id="downgrade" name="downgrade" value = "${ downgrade }">
 		<input type="hidden" id="galeriaImagenesMax" name="galeriaImagenes" value = "${ galeriaImagenes }">
 		<input type="hidden" id="planPro" name="planPro" value = "${ planPro }">
+		
 		<!--  Numero de imagenes MAximo q' puede tener el usuario activas-->
 		<!-- Bootstrap core JavaScript
 	    ================================================== -->
@@ -349,13 +350,13 @@
 		<script src="<c:url value="/resources/webapp/js/bootstrap.js"/>"></script>
 		<script src="<c:url value="/resources/webapp/js/docs.min.js"/>"></script>
 		<script src="<c:url value="/resources/webapp/js/smoothscroll.js"/>"></script>
-		<script src="<c:url value="/resources/webapp/js/bootbox.min.js"/>"></script>
+<%-- 		<script src="<c:url value="/resources/webapp/js/bootbox.min.js"/>"></script> --%>
 		<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
 		<script	src="<c:url value="/resources/webapp/js/ie10-viewport-bug-workaround.js"/>"></script>
 		<!-- bxSlider Javascript file -->
 		<script src="<c:url value="/resources/webapp/js/jquery.bxslider.min.js"/>"></script>
-		
-
+<!-- 		<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap3-dialog/1.34.5/js/bootstrap-dialog.min.js"></script> -->
+		<script src="<c:url value="/resources/webapp/js/bootstrap-dialog.min.js"/>"></script>
 
 		
 		<script>

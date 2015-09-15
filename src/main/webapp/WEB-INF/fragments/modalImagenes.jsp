@@ -8,7 +8,7 @@
     	
     <div class="btn btn-purple pull-right btnsEditor col-xs-12 col-sm-5" id="btnSeleccionaImagen2" style="overflow-x:hidden; margin:5px 0;">
 <label class="cabinet" > 
-		<input type="file" class="file" accept="image/*" onClick="validaImg()" onchange="picChange(event)" id="btnSeleccionaImagen"/><!-- 		<input style="display:inline" type="file" accept="image/*" onClick="validaImg()" onchange="picChange(event)" id="btnSeleccionaImagen"  /> -->
+		<input type="file" class="file" accept="image/*" onchange="picChange(event)" id="btnSeleccionaImagen"/><!-- 		<input style="display:inline" type="file" accept="image/*" onClick="validaImg()" onchange="picChange(event)" id="btnSeleccionaImagen"  /> -->
 	</label>
 
 	</div>

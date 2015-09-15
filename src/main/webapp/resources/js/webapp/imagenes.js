@@ -7,6 +7,30 @@ var infoAlbumes = [];
 var photosDelAlbum = [];
 var binaryString;
 var siHayImagen = 0;
+if( navigator.userAgent.match(/iPhone|iPad|iPod/i) ) {
+    $('.modal').on('show.bs.modal', function() {
+        $(this)
+            .css({
+                position: 'absolute',
+                marginTop: $(window).scrollTop() + 'px',
+                bottom: 'auto'
+            });
+       
+        setTimeout( function() {
+            $('.modal-backdrop').css({
+                position: 'absolute', 
+                top: 0, 
+                left: 0,
+                width: '100%',
+                height: Math.max(
+                    document.body.scrollHeight, document.documentElement.scrollHeight,
+                    document.body.offsetHeight, document.documentElement.offsetHeight,
+                    document.body.clientHeight, document.documentElement.clientHeight
+                ) + 'px'
+            });
+        }, 0);
+    });
+}
 $(document).ready(function() {
 	$("#terceroFB").hide();
 	$("#regresarDeFotos").hide();
@@ -24,7 +48,7 @@ $(document).ready(function() {
 	$("#regresarDeFace").hide();
 	var $btnAlbumsDeFacebook = $("#btnAlbumsDeFacebook").show();
 	$("#btnSeleccionaImagen").show();
-	$("#btnSeleccionaImagen2").show();
+	$("#btnSeleccionaImagen2").hide();//quitar
 	$("#btnGuardarImagen").hide();
 	$btnAlbumsDeFacebook.click(function(e) {
 		
@@ -59,7 +83,7 @@ $(document).ready(function() {
 		$("#actualizarImagenes").hide();
 		$('#myModalImagenes').modal();
 		$("#btnSeleccionaImagen").show();
-		$("#btnSeleccionaImagen2").show();
+		//$("#btnSeleccionaImagen2").show();
 		$("#btnAlbumsDeFacebook").show();
 	});
 	$("#closemyModalImagenes").click(function(){
@@ -82,7 +106,7 @@ $(document).ready(function() {
 		$("#galeriaImagenes").show();
 		$("#btnAlbumsDeFacebook").show();
 		$("#btnSeleccionaImagen").show();
-		$("#btnSeleccionaImagen2").show();
+		//$("#btnSeleccionaImagen2").show();
 		$("#regresarDeFace").hide();
 		$("#msjEligeAlbumFoto").hide();
 		if(siHayImagen == 1){$("#galeriaVacia").hide();}else{$("#galeriaVacia").show();}
@@ -193,6 +217,7 @@ function picChange(evt)
 {
 	console.log("Aqui llega primero");
 	var fileInput = evt.target.files;
+	binaryString = "";
 	
 	if(fileInput.length > 0)
 	{
@@ -233,9 +258,12 @@ function picChange(evt)
 			}
 			
 		}else{
-			bootbox.alert("La imágen ha superado el limite permitido. El límite es de 768x1024 px", function() {
-				  return;
+
+			BootstrapDialog.show({
+				  title: "<span class='textBlack' style='font-size:.7em;'><img alt='' src='../resources/webapp/images/fa-warning-bk.png'  title='Alerta' />Imagen demasiado grande</span>",
+				  message: '<div style="display:block; min-height:150px;"><p class="textBlack text-center" style="font-size:1.15em;">La imagen ha superado el límite permitido. El límite es de 768x1024 px</p><br/>'
 				});
+			
 			$("#galeriaImagenes").show();
 			$("#imgSeleccionadaDeGaleria").hide();
 			$("#regresarSelecImg").hide();
@@ -250,22 +278,6 @@ function picChange(evt)
 	{
 		console.log("Esto es que dio cancelar me imagino vamos a ver!");
 	}
-}
-
-function validaImg()
-{
-	console.log("IMAGENESMAX: " + IMAGENESMAX + ", IMAGENESDELUSUARIO: " + IMAGENESDELUSUARIO);
-	if (IMAGENESDELUSUARIO == IMAGENESMAX)
-//		bootbox.alert("Ya alcanzaste el máximo de imágenes permitidas, adquiere Plan Pro desde la app", function() {
-//			  return;
-//			});
-	
-		bootbox.dialog({
-			  title: "<span class='textBlack' style='font-size:.7em;'><img alt='' src='../resources/webapp/images/fa-warning-bk.png'  title='Alerta' />Alcanzaste el máximo de imágenes permitidas</span>",
-			  message: '<div style="display:block; min-height:150px;"><p class="textBlack text-center" style="font-size:1.15em;">Adquiere <strong>Plan Pro</strong> desde la app para agregar más imágenes </p><br/> <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 text-center"><a href="https://itunes.apple.com/mx/app/infomovil/id898313250?mt=8" style="margin: 0px; padding: 0px; color: rgb(49, 165, 154);" target="_blank"><img alt="AppStore" src="../resources/webapp/images/appstore_icn.png" style="margin: 0px; padding: 0px; max-width: 150px;" title="AppStore" /></a></div><div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 text-center"><a href="https://play.google.com/store/apps/details?id=com.infomovil.infomovil" style="margin: 0px; padding: 0px; color: rgb(49, 165, 154);" target="_blank"><img alt="Google Play" src="../resources/webapp/images/gstore_icn.png"  style="margin: 0px; padding: 0px; max-width: 150px;" title="Google Play" /></a></div></div><div class="clearfix"></div><div style="display:block; height:30px; width:100%;"></div>'
-			});
-	
-	
 }
 
 function getImagenesJQ()
@@ -293,7 +305,7 @@ function getImagenesJQ()
 		$('#regresarDeFace').hide();
 		$('#idRegresarAlbum').hide();
 		$('#btnSeleccionaImagen').show();
-		$('#btnSeleccionaImagen2').show();
+		//$('#btnSeleccionaImagen2').show();
 		$('#btnAlbumsDeFacebook').show();
 		$(".imagenDinamica").remove();
 		$("#imgSeleccionadaDeGaleria").hide();
@@ -413,7 +425,7 @@ function guardarImagenesJQ()
 				$("#imgSeleccionadaDeGaleria").hide();
 				$("#regresarSelecImg").hide();
 				$("#btnSeleccionaImagen").show();
-				$("#btnSeleccionaImagen2").show();
+				//$("#btnSeleccionaImagen2").show();
 				$("#btnAlbumsDeFacebook").show();
 				$("#btnSeleccionaImagen").val("");
 				$("#actualizarTextoFoto").val("");
@@ -423,6 +435,12 @@ function guardarImagenesJQ()
 			},
 			error : function(json) {
 				console.log("Error guardarImagen");
+//				alert("La imágen ha superado el limite permitido. El límite es de 768x1024 px");
+				
+				BootstrapDialog.show({
+					  title: "<span class='textBlack' style='font-size:.7em;'><img alt='' src='../resources/webapp/images/fa-warning-bk.png'  title='Alerta' />Imagen demasiado grande</span>",
+					  message: '<div style="display:block; min-height:150px;"><p class="textBlack text-center" style="font-size:1.15em;">La imagen ha superado el límite permitido. El límite es de 768x1024 px</p><br/>'
+					});
 				$.unblockUI();
 			}
 
@@ -436,7 +454,7 @@ function guardarImagenesJQ()
 		if (planPro == "SI")
 			visible = "display:none;";
 		
-		bootbox.dialog({
+		BootstrapDialog.show({
 			  title: "<span class='textBlack' style='font-size:.7em;'><img alt='' src='../resources/webapp/images/fa-warning-bk.png'  title='Alerta' />Alcanzaste el máximo de imágenes permitidas</span>",
 			  message: '<div style="display:block; min-height:150px;"><p class="textBlack text-center" style="font-size:1.15em;">Adquiere <strong>Plan Pro</strong> desde la app para agregar más imágenes </p><br/> <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 text-center"><a href="https://itunes.apple.com/mx/app/infomovil/id898313250?mt=8" style="margin: 0px; padding: 0px; color: rgb(49, 165, 154);" target="_blank"><img alt="AppStore" src="../resources/webapp/images/appstore_icn.png" style="margin: 0px; padding: 0px; max-width: 150px;" title="AppStore" /></a></div><div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 text-center"><a href="https://play.google.com/store/apps/details?id=com.infomovil.infomovil" style="margin: 0px; padding: 0px; color: rgb(49, 165, 154);" target="_blank"><img alt="Google Play" src="../resources/webapp/images/gstore_icn.png"  style="margin: 0px; padding: 0px; max-width: 150px;" title="Google Play" /></a></div></div><div class="clearfix"></div><div style="display:block; height:30px; width:100%;"></div>'
 			});	
@@ -489,7 +507,7 @@ function guardarImagenesJQF()
 					$("#imgSeleccionadaDeGaleria").hide();
 					$("#regresarSelecImg").hide();
 					$("#btnSeleccionaImagen").show();
-					$("#btnSeleccionaImagen2").show();
+					//$("#btnSeleccionaImagen2").show();
 					$("#btnAlbumsDeFacebook").show();
 					getImagenesJQ();
 					$("#galeriaImagenes").show();
@@ -500,6 +518,10 @@ function guardarImagenesJQF()
 				},
 				error : function(json) {
 					console.log("Error guardarImagen");
+					BootstrapDialog.show({
+						  title: "<span class='textBlack' style='font-size:.7em;'><img alt='' src='../resources/webapp/images/fa-warning-bk.png'  title='Alerta' />Imagen demasiado grande</span>",
+						  message: '<div style="display:block; min-height:150px;"><p class="textBlack text-center" style="font-size:1.15em;">La imagen ha superado el límite permitido. El límite es de 768x1024 px</p><br/>'
+						});
 					$.unblockUI();
 				}
 
@@ -509,7 +531,7 @@ function guardarImagenesJQF()
 		console.log("termino de hacer la consulta");
 	}else{
 		console.log("YA ALCANZASTE EL MÁXIMO DE IMAGENES PERMITIDAS ADQUIERE PLAN PRO");
-		bootbox.dialog({
+		BootstrapDialog.show({
 			  title: "<span class='textBlack' style='font-size:.7em;'><img alt='' src='../resources/webapp/images/fa-warning-bk.png'  title='Alerta' />Alcanzaste el máximo de imágenes permitidas</span>",
 			  message: '<div style="display:block; min-height:150px;"><p class="textBlack text-center" style="font-size:1.15em;">Adquiere <strong>Plan Pro</strong> desde la app para agregar más imágenes </p><br/> <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 text-center"><a href="https://itunes.apple.com/mx/app/infomovil/id898313250?mt=8" style="margin: 0px; padding: 0px; color: rgb(49, 165, 154);" target="_blank"><img alt="AppStore" src="../resources/webapp/images/appstore_icn.png" style="margin: 0px; padding: 0px; max-width: 150px;" title="AppStore" /></a></div><div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 text-center"><a href="https://play.google.com/store/apps/details?id=com.infomovil.infomovil" style="margin: 0px; padding: 0px; color: rgb(49, 165, 154);" target="_blank"><img alt="Google Play" src="../resources/webapp/images/gstore_icn.png"  style="margin: 0px; padding: 0px; max-width: 150px;" title="Google Play" /></a></div></div><div class="clearfix"></div><div style="display:block; height:30px; width:100%;"></div>'
 			});
@@ -519,44 +541,52 @@ function guardarImagenesJQF()
 
 function borrarImagenJQ(idImg)
 {
-	bootbox.confirm("<span style='margin:5px 0 0 0; display:block; padding:20px;'>¿Seguro que deseas borrar la imagen?</span>", function(result) {
+	BootstrapDialog.show({
+        title: '<div class="textBlack">Borrar Imagen</div>',
+        message: '<div style="display:block; padding: 10px;">¿Seguro que deseas borrar la imagen?</div>',
+        buttons: [{
+            label: '<span class="btn btn-purple">Cancelar</span>',
+            action: function(dialog) {
+            	dialog.close();
+            }
+        }, {        
+        	label: '<span class="btn btn-purple">Aceptar</span>',
+        	action: function(dialog) {
+	        	dialog.close();
+				$.blockUI.defaults.baseZ = 9000;
+				$.blockUI({
+					message: "Eliminando la imagen...",
+					css: {
+						class:"alertaUI",
+						top:  ($(window).height() - 400) /2 + 'px',
+						left: ($(window).width() - 400) /2 + 'px',
+						width: '400px'
+					}
+				});
 
-		if (result)
-		{
-			$.blockUI.defaults.baseZ = 9000;
-			$.blockUI({
-				message: "Eliminando la imagen...",
-				css: {
-					class:"alertaUI",
-					top:  ($(window).height() - 400) /2 + 'px',
-					left: ($(window).width() - 400) /2 + 'px',
-					width: '400px'
-				}
-			});
-
-			$.ajax({
-				type : "GET",
-				url : contextPath + "/infomovil/borrarImagen",
-				dataType : "json",
-				contentType: "text/plain",
-				data : {
-					domainId: $('#idDominio').val(),
-					imageId: idImg,
-
-				},
-				success : function(data) {
-					$.unblockUI();
-					console.log("LA RESPUESTA DEL ELIMINAR IMAGEN ES: " +data);
-					getImagenesJQ();
-				},
-				error : function(json) {
-					console.log("Error Eliminar Imagen");
-					$.unblockUI();
-				}
-
-			});
-		}
-	});
+				$.ajax({
+					type : "GET",
+					url : contextPath + "/infomovil/borrarImagen",
+					dataType : "json",
+					contentType: "text/plain",
+					data : {
+						domainId: $('#idDominio').val(),
+						imageId: idImg,
+	
+					},
+					success : function(data) {
+						$.unblockUI();
+						getImagenesJQ();
+					},
+					error : function(json) {
+						console.log("Error Eliminar Imagen");
+						$.unblockUI();
+					}
+				});
+        }
+            
+        }]
+    });
 }
 
 function actualizarImagen(idImg, imgUrl)
