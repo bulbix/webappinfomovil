@@ -281,9 +281,9 @@
 		</profile>
 		<profile>
 			<id>qa</id>		
-			<activation>
+				<activation>
 				<activeByDefault>true</activeByDefault>
-			</activation>	
+			</activation>
 			<properties>
 				<config.profile>QA</config.profile>
 			</properties>	

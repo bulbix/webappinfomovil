@@ -5,6 +5,21 @@ var IMAGENESMAX = $("#galeriaImagenesMax").val();
 var IMAGENESDELUSUARIO = 0;
 var infoAlbumes = [];
 var photosDelAlbum = [];
+var binaryString;
+var siHayImagen = 0;
+
+if( navigator.userAgent.match(/iPhone|iPad|iPod/i) ) {
+    $('.modal').on('show.bs.modal', function() {
+        $(this)
+            .css({
+                position: 'absolute',
+                marginTop: $(window).scrollTop() + 'px',
+                bottom: document.documentElement.scrollHeigh + 'px'
+            });
+       
+        
+    });
+}
 
 $(document).ready(function() {
 	$("#terceroFB").hide();
@@ -23,81 +38,19 @@ $(document).ready(function() {
 	$("#regresarDeFace").hide();
 	var $btnAlbumsDeFacebook = $("#btnAlbumsDeFacebook").show();
 	$("#btnSeleccionaImagen").show();
-	$("#btnSeleccionaImagen2").show();
+	$("#btnSeleccionaImagen2").hide();//quitar
 	$("#btnGuardarImagen").hide();
-
 	$btnAlbumsDeFacebook.click(function(e) {
-		$(this).hide();
-		$("#btnSeleccionaImagen").hide();
-		$("#btnSeleccionaImagen2").hide();
-		$("#terceroFB").hide();
-		$("#regresarDeFotos").hide();
-		$("#btnGuardarImagenFB").hide();
-		$("#galeriaImagenes").hide();
-		$(".albumDinamico").remove();
-		$("#facebookDiv").show();
-		$("#primeroFB").show();
-		$("#msjEligeAlbumFoto").show();
-		$("#regresarDeFace").show();
-		$("#segundoFB").hide();
-		$("#msjEligeFotoAlbum").hide();
-		$("#idRegresarAlbum").hide();
-		$("#nombreDeImgn").val('');
-		FB.getLoginStatus(function(response) {
-			if (response.status === 'connected') {
-				$('#myModalFacebook').modal();
-
-				for (var p in infoAlbumes) {
-					var $photosList = $('#albumsList');
-					var $li = $('<li class="albumDinamico" style="display:block; height:100px; margin:0 5px 5px 5px;"/>');
-					$li.append('<span class="col-xs-4"><img src="' + infoAlbumes[p].picture + '" style="max-width:100px; max-height:100px;"  class="img-thumbnail"/></span>');
-					$li.append('<span class="col-xs-8"><strong style="color:#7c41bc" class="hidden-xs"> Album:</strong> '+ infoAlbumes[p].title +'</span><br/><span style="color:#7c41bc; text-decoration:underline;">Ver imágenes</span><hr>');
-
-					$li.click(function() {
-						var r = $(this).index();
-						$(".photoDinamico").remove();
-						$("#primeroFB").hide();
-						$("#msjEligeAlbumFoto").hide();
-						$("#regresarDeFace").hide();
-						$("#segundoFB").show();
-						$("#msjEligeFotoAlbum").show();
-						$("#idRegresarAlbum").show();
-						$("#terceroFB").hide();
-						$("#regresarDeFotos").hide();
-						$("#btnGuardarImagenFB").hide();
-
-						var fotos = photosDelAlbum[r];
-						for (var a in fotos ) {
-							var $photosList = $('#photosList');
-							var $li = $('<div class="photoDinamico" style="display:block; height:100px; margin:10px 5px; max-width:100px; float:left "/>');
-							$li.append('<span class="col-xs-12"><img src="' + fotos[a].origen + '" style="max-width:100px; max-height:100px;" class="img-thumbnail"/></span>');
-							$li.on("click", "img", function(){
-								$("#imgVistaPrevia").attr('src',$(this).attr("src"));
-								$("#primeroFB").hide();
-								$("#msjEligeAlbumFoto").hide();
-								$("#regresarDeFace").hide();
-								$("#segundoFB").hide();
-								$("#msjEligeFotoAlbum").hide();
-								$("#idRegresarAlbum").hide();
-								$("#terceroFB").show();
-								$("#regresarDeFotos").show();
-								$("#btnGuardarImagenFB").show();
-							});
-							$photosList.append($li);
-						}
-					});
-					$photosList.append($li);
-				}
-			}else{
-				FB.login(function(response) {
-					statusChangeCallback(response);
-				}, {scope: 'public_profile,email,user_photos'});
-
-			}
-		});
+		
+			FB.getLoginStatus(function(response) {
+				console.log("no entro en getlogin");
+				logueoFacebook(response);
+			});
+		
 	});
 
-	$("#idRegresarAlbum").click(function(){
+	$("#idRegresarAlbum").click(function() {
+		console.log("idRegresarAlbum");
 		$(".photoDinamico").remove();
 		$("#terceroFB").hide();
 		$("#regresarDeFotos").hide();
@@ -108,6 +61,7 @@ $(document).ready(function() {
 		$("#primeroFB").show();
 		$("#msjEligeAlbumFoto").show();
 		$("#regresarDeFace").show();
+		$("#galeriaVacia").hide();
 	});
 
 
@@ -115,21 +69,23 @@ $(document).ready(function() {
 		$("#imgVistaPrevia").attr('src','');
 	});
 
-	$("#llamarGaleriaImagenes").click(function(){
+	$("#llamarGaleriaImagenes").click(function() {
+		console.log("llamarGaleriaImagenes");
 		$("#galeriaImagenes").show();
 		$("#buscarImagenes").hide();
 		$("#facebookDiv").hide();
 		$("#actualizarImagenes").hide();
 		$('#myModalImagenes').modal();
 		$("#btnSeleccionaImagen").show();
-		$("#btnSeleccionaImagen2").show();
+		//$("#btnSeleccionaImagen2").show();
 		$("#btnAlbumsDeFacebook").show();
 	});
-	$("#closemyModalImagenes").click(function(){
+	$("#closemyModalImagenes").click(function() {
 		$("#myModalImagenes").modal('toggle');
 		$("#galeriaImagenes").hide();
 	});
-	$("#regresarSelecImg").click(function(){
+	$("#regresarSelecImg").click(function() {
+		console.log("regresarSelecImg");
 		$("#galeriaImagenes").show();
 		$("#imgSeleccionadaDeGaleria").hide();
 		$("#regresarSelecImg").hide();
@@ -138,18 +94,21 @@ $(document).ready(function() {
 		$("#btnSeleccionaImagen").val("");
 		$("#actualizarTextoFoto").val("");
 	});
-	$("#regresarDeFace").click(function(){
+	$("#regresarDeFace").click(function() {
+		console.log("regresarDeFace");
 		$("#facebookDiv").hide();
 		$(".albumDinamico").remove();
 		$(".photoDinamico").remove();
 		$("#galeriaImagenes").show();
 		$("#btnAlbumsDeFacebook").show();
 		$("#btnSeleccionaImagen").show();
-		$("#btnSeleccionaImagen2").show();
+		//$("#btnSeleccionaImagen2").show();
 		$("#regresarDeFace").hide();
 		$("#msjEligeAlbumFoto").hide();
+		if(siHayImagen == 1){$("#galeriaVacia").hide();}else{$("#galeriaVacia").show();}
 	});
-	$("#regresarDeFotos").click(function(){
+	$("#regresarDeFotos").click(function() {
+		console.log("regresarDeFotos");
 		$("#terceroFB").hide();
 		$("#regresarDeFotos").hide();
 		$("#btnGuardarImagenFB").hide();
@@ -162,24 +121,30 @@ $(document).ready(function() {
 
 });
 
-var testapiFacebook = function testAPI() {
-	var k = 0;
-	FB.api('/me/albums?fields=count,name,id,picture', function(response) {
-		$(response.data).map(function(){
-			if (this.count > 0) {
-				infoAlbumes[k] = {
-                    aid : this.id,
-                    title : this.name,
-                    count : this.count,
-                    picture : this.picture.data.url
-                };
-				k ++;
-			}
-		});
-		for (var p in infoAlbumes) {
-			generaFotos(infoAlbumes[p],p);
+function testapiFacebook() { 
+var k = 0;
+dfd = new $.Deferred();
+FB.api('/me/albums?fields=count,name,id,picture', function(response) {
+	$(response.data).map(function(){
+		if (this.count > 0) {
+			infoAlbumes[k] = {
+                aid : this.id,
+                title : this.name,
+                count : this.count,
+                picture : this.picture.data.url
+            };
+			k ++;
 		}
+		
 	});
+	
+	for (var p in infoAlbumes) {
+		generaFotos(infoAlbumes[p],p);
+	}
+	 dfd.resolve();
+});
+dfd.done(function(){ logueoFacebook2(); });
+
 }// Fin del test API //
 
 function generaFotos(idAlbum,p) {
@@ -195,7 +160,7 @@ function generaFotos(idAlbum,p) {
 }
 
 window.fbAsyncInit = function() {
-	console.log('ENTRO EN fbAsyncInit');
+//	console.log('ENTRO EN fbAsyncInit');
 	FB.init({
 		appId      : '346859792130678',
 		cookie     : true,  // enable cookies to allow the server to access
@@ -228,7 +193,7 @@ function statusChangeCallback(response) {
 }
 
 function statusChangeCallback2(response) {
-	console.log('ENTRO EN statusChangeCallback2');
+//	console.log('ENTRO EN statusChangeCallback2');
 	if (response.status === 'connected') {
 		testapiFacebook();
 	} else if (response.status === 'not_authorized') {
@@ -244,15 +209,16 @@ var revisarEstado = function checkLoginState() {
 	});
 }
 
-var binaryString;
+
 function picChange(evt)
 {
-	console.log("Aqui llega primero");
+//	console.log("Aqui llega primero");
 	var fileInput = evt.target.files;
+	binaryString = "";
 	
 	if(fileInput.length > 0)
 	{
-		console.log("SI HAY UNA IMAGEN SELECCIONADA");
+//		console.log("SI HAY UNA IMAGEN SELECCIONADA");
 		var picURL;
 		$("#facebookDiv").hide();
 		$("#galeriaImagenes").hide();
@@ -271,36 +237,44 @@ function picChange(evt)
 		}
 
 		fotoDeGaleria.src = picURL;
-		console.log("La pic url es: " + picURL);
+//		console.log("La pic url es: " + picURL);
 		var files = evt.target.files;
 		var file = files[0];
+		if(file.size <= 1024000){
+			if (files && file)
+			{
+				var reader = new FileReader();
+				reader.onload = function(readerEvt) {
+					binaryString = readerEvt.target.result;
+					//console.log("el binari string base 64 es: " + binaryString );
+					binaryString =  btoa(binaryString);
+					//console.log("el binari string de text es: " + binaryString );
+				};
 
-		if (files && file)
-		{
-			var reader = new FileReader();
-			reader.onload = function(readerEvt) {
-				binaryString = readerEvt.target.result;
-				//console.log("el binari string base 64 es: " + binaryString );
-				binaryString =  btoa(binaryString);
-				//console.log("el binari string de text es: " + binaryString );
-			};
+				reader.readAsBinaryString(file);
+			}
+			
+		}else{
 
-			reader.readAsBinaryString(file);
+			BootstrapDialog.show({
+				  title: "<span class='textBlack' style='font-size:1.15em;'><img alt='' src='../resources/webapp/images/fa-warning-bk.png'  title='Alerta' />Imagen demasiado grande</span>",
+				  message: '<div style="display:block; min-height:150px;"><p class="textBlack text-center" style="font-size:1.15em;">La imagen ha superado el límite permitido. El límite es de 768x1024 px</p><br/>'
+				});
+			
+			$("#galeriaImagenes").show();
+			$("#imgSeleccionadaDeGaleria").hide();
+			$("#regresarSelecImg").hide();
+			$("#btnGuardarImagen").hide();
+			$("#btnAlbumsDeFacebook").show();
+			$("#btnSeleccionaImagen").val("");
+			$("#actualizarTextoFoto").val("");
 		}
+		
 	}
 	else
 	{
 		console.log("Esto es que dio cancelar me imagino vamos a ver!");
 	}
-}
-
-function validaImg()
-{
-	console.log("IMAGENESMAX: " + IMAGENESMAX + ", IMAGENESDELUSUARIO: " + IMAGENESDELUSUARIO);
-	if (IMAGENESDELUSUARIO == IMAGENESMAX)
-		bootbox.alert("Ya alcanzaste el máximo de imágenes permitidas, adquiere Plan Pro desde la app", function() {
-			  return;
-			});
 }
 
 function getImagenesJQ()
@@ -328,7 +302,7 @@ function getImagenesJQ()
 		$('#regresarDeFace').hide();
 		$('#idRegresarAlbum').hide();
 		$('#btnSeleccionaImagen').show();
-		$('#btnSeleccionaImagen2').show();
+		//$('#btnSeleccionaImagen2').show();
 		$('#btnAlbumsDeFacebook').show();
 		$(".imagenDinamica").remove();
 		$("#imgSeleccionadaDeGaleria").hide();
@@ -336,6 +310,8 @@ function getImagenesJQ()
 		$("#terceroFB").hide();
 		$("#regresarDeFotos").hide();
 		$("#btnGuardarImagenFB").hide();
+		
+		$("#msjEligeAlbumFoto").hide();
 		var $listaImg = $('#listaImagenes');
 
 		$.ajax({
@@ -360,7 +336,7 @@ function getImagenesJQ()
 					$("#galeriaVacia").hide(); 
 				else 
 					$("#galeriaVacia").show(); 
-				
+				 siHayImagen = 0;
 				for(var i = 0; i < data.length; i++)
 				{
 					var imgUrl = data[i].url;
@@ -369,24 +345,24 @@ function getImagenesJQ()
 					var idImg = data[i].idImagen;
 
 					if(typeImg == "IMAGEN")
-					{
+					{   siHayImagen = 1;
 						if(i <= IMAGENESMAX) 
 						{
 							var $li = $('<li class="imagenDinamica" style="display:block;height:80px; width:100%; margin:10px 0;"/>')
-							$li.append('<div class="col-xs-3 text-left" style="max-height:50px;"><img src="'+imgUrl+'" onerror="errorPreview(this)" style="max-width:100px; max-height:50px;" class="ImgDinamica img-thumbnail"/></div>');
+							$li.append('<div class="col-xs-3 text-left" style="max-height:50px;"><img src="'+imgUrl+'" onerror="errorPreview(this)" style="max-width:100px; max-height:45px;" class="ImgDinamica img-thumbnail"/></div>');
 							$li.append('<div class="col-xs-9 reset"><input type="text" id="actualizarTexto' + idImg + '"  value="'+descImg+'" class="col-xs-5 col-sm-8" style="height:38px"/></input><div class="spaceBtnsMap"></div><button type="button" class="btn btn-purple" class="eliminarImagen" onClick="actualizarImagen('+idImg+', ' + "'" + imgUrl+ "'" + ')"><img width="20" height="20" alt="Borrar" src="../resources/webapp/images/ico_actualizar.png" /></button><div class="spaceBtnsMap"></div><button type="button" class="btn btn-purple" class="eliminarImagen" id="'+idImg+'"onclick="borrarImagenJQ('+idImg+')"><img width="20" height="20" alt="Borrar" src="../resources/webapp/images/trash.png" /></button><input type="hidden" id="IdImg" value="'+idImg+'"/></div></li>');
 							$listaImg.append($li);
 						}
 						else
 						{
 							var $li = $('<li class="imagenDinamica" style="display:block;height:80px; width:100%; margin:10px 0;"/>')
-	                    	$li.append('<div class="col-xs-3 text-center" style="max-height:50px;"><img src="'+imgUrl+'" onerror="errorPreview(this)" style="max-width:100px; max-height:50px;" class="ImgDinamica img-thumbnail"/></div>');
+	                    	$li.append('<div class="col-xs-3 text-center" style="max-height:50px;"><img src="'+imgUrl+'" onerror="errorPreview(this)" style="max-width:100px; max-height:45px;" class="ImgDinamica img-thumbnail"/></div>');
 	                    	$li.append('<div class="col-xs-9 reset"><input type="text" id="actualizarTexto' + idImg + '" value="'+descImg+'" disabled="disabled" class="col-xs-5 col-sm-8" style="height:38px"/><div class="spaceBtnsMap"></div><button type="button" disabled="disabled" class="btn" class="eliminarImagen" onClick="actualizarImagen('+idImg+', ' + "'" + imgUrl+ "'" + ')"><img width="20" height="20" alt="Borrar" src="../resources/webapp/images/ico_actualizar.png" /></button><div class="spaceBtnsMap"></div><button type="button" disable="disable" class="btn" class="eliminarImagen" id="'+idImg+'"onclick="borrarImagenJQ('+idImg+')"><img width="20" height="20" alt="Borrar" src="../resources/webapp/images/trash.png" /></button><input type="hidden" id="IdImg" value="'+idImg+'"/></div></li>');
 	                        $listaImg.append($li);
 						}
 					}
 				}
-
+				if(siHayImagen == 1){$("#galeriaVacia").hide();}
 				$('#myModalImagenes').modal('show') ;
 				$('#galeriaImagenes').show();
 				$.unblockUI();
@@ -446,7 +422,7 @@ function guardarImagenesJQ()
 				$("#imgSeleccionadaDeGaleria").hide();
 				$("#regresarSelecImg").hide();
 				$("#btnSeleccionaImagen").show();
-				$("#btnSeleccionaImagen2").show();
+				//$("#btnSeleccionaImagen2").show();
 				$("#btnAlbumsDeFacebook").show();
 				$("#btnSeleccionaImagen").val("");
 				$("#actualizarTextoFoto").val("");
@@ -456,6 +432,12 @@ function guardarImagenesJQ()
 			},
 			error : function(json) {
 				console.log("Error guardarImagen");
+//				alert("La imágen ha superado el limite permitido. El límite es de 768x1024 px");
+				
+				BootstrapDialog.show({
+					  title: "<span class='textBlack' style='font-size:1.15em;'><img alt='' src='../resources/webapp/images/fa-warning-bk.png'  title='Alerta' />Imagen demasiado grande</span>",
+					  message: '<div style="display:block; min-height:150px;"><p class="textBlack text-center" style="font-size:1.15em;">La imagen ha superado el límite permitido. El límite es de 768x1024 px</p><br/>'
+					});
 				$.unblockUI();
 			}
 
@@ -468,15 +450,11 @@ function guardarImagenesJQ()
 		
 		if (planPro == "SI")
 			visible = "display:none;";
-		
-		bootbox.dialog({
-			  title: "<span class='textBlack' style='font-size:.9em;'>Alcanzaste el máximo de imágenes permitidas en tu plan</span>",
-			  message: '<div style="' + visible + '"min-height:300px;"><div>Adquiere <strong>Plan Pro</strong> desde la app para agregar más imágenes </div><br/>' +
-				  	   '<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 text-center"><a href="https://itunes.apple.com/mx/app/infomovil/id898313250?mt=8" style="margin: 0px; padding: 0px; color: rgb(49, 165, 154);" target="_blank">' + 
-				  	   '<img alt="AppStore" src="../resources/webapp/images/appstore_icn.png" style="margin: 0px; padding: 0px; max-width: 150px;" title="AppStore" /></a></div><div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 text-center">' + 
-				  	   '<a href="https://play.google.com/store/apps/details?id=com.infomovil.infomovil" style="margin: 0px; padding: 0px; color: rgb(49, 165, 154);" target="_blank"><img alt="Google Play" src="../resources/webapp/images/gstore_icn.png"' + 
-				  	   'style="margin: 0px; padding: 0px; max-width: 150px;" title="Google Play" /></a></div></div>'
-			});		
+
+		BootstrapDialog.show({
+			  title: "<span class='textBlack' style='font-size:1.15em;'><img alt='' src='../resources/webapp/images/fa-warning-bk.png'  title='Alerta' />Alcanzaste el máximo de imágenes permitidas</span>",
+			  message: '<div style="display:block; min-height:150px;"><p class="textBlack text-center" style="font-size:1.15em;">Adquiere <strong>Plan Pro</strong> desde la app para agregar más imágenes </p><br/> <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 text-center"><a href="https://itunes.apple.com/mx/app/infomovil/id898313250?mt=8" style="margin: 0px; padding: 0px; color: rgb(49, 165, 154);" target="_blank"><img alt="AppStore" src="../resources/webapp/images/appstore_icn.png" style="margin: 0px; padding: 0px; max-width: 150px;" title="AppStore" /></a></div><div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 text-center"><a href="https://play.google.com/store/apps/details?id=com.infomovil.infomovil" style="margin: 0px; padding: 0px; color: rgb(49, 165, 154);" target="_blank"><img alt="Google Play" src="../resources/webapp/images/gstore_icn.png"  style="margin: 0px; padding: 0px; max-width: 150px;" title="Google Play" /></a></div></div><div class="clearfix"></div><div style="display:block; height:30px; width:100%;"></div>'
+			});	
 		
 		$("#galeriaImagenes").show();
 		$("#imgSeleccionadaDeGaleria").hide();
@@ -506,7 +484,7 @@ function guardarImagenesJQF()
 		});
 		
 		convertImgToBase64(imageUrl, function(base64Img) {
-			binaryString = base64Img.replace(/^data:image\/(png|jpeg);base64,/, "");
+			binaryString = base64Img.replace(/^data:image\/(png|jpeg|jpg);base64,/, "");
 			var textFoto = $("#nombreDeImgn").val();
 			$.ajax({
 				type : "POST",
@@ -526,7 +504,7 @@ function guardarImagenesJQF()
 					$("#imgSeleccionadaDeGaleria").hide();
 					$("#regresarSelecImg").hide();
 					$("#btnSeleccionaImagen").show();
-					$("#btnSeleccionaImagen2").show();
+					//$("#btnSeleccionaImagen2").show();
 					$("#btnAlbumsDeFacebook").show();
 					getImagenesJQ();
 					$("#galeriaImagenes").show();
@@ -537,6 +515,10 @@ function guardarImagenesJQF()
 				},
 				error : function(json) {
 					console.log("Error guardarImagen");
+					BootstrapDialog.show({
+						  title: "<span class='textBlack' style='font-size:1.15em;'><img alt='' src='../resources/webapp/images/fa-warning-bk.png'  title='Alerta' />Imagen demasiado grande</span>",
+						  message: '<div style="display:block; min-height:150px;"><p class="textBlack text-center" style="font-size:1.15em;">La imagen ha superado el límite permitido. El límite es de 768x1024 px</p><br/>'
+						});
 					$.unblockUI();
 				}
 
@@ -546,9 +528,9 @@ function guardarImagenesJQF()
 		console.log("termino de hacer la consulta");
 	}else{
 		console.log("YA ALCANZASTE EL MÁXIMO DE IMAGENES PERMITIDAS ADQUIERE PLAN PRO");
-		bootbox.dialog({
-			  title: "<span class='textBlack' style='font-size:.7em;'><img alt='' src='../resources/webapp/images/fa-warning-bk.png'  title='Alerta' />Alcanzaste el máximo de imágenes permitidas</span>",
-			  message: '<div style="display:block; min-height:150px;"><p class="textBlack text-center" style="font-size:1.15em;">Adquiere <strong>Plan Pro</strong> desde la app para agregar más imágenes </p><br/> <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 text-center"><a href="https://itunes.apple.com/mx/app/infomovil/id898313250?mt=8" style="margin: 0px; padding: 0px; color: rgb(49, 165, 154);" target="_blank"><img alt="AppStore" src="../resources/webapp/images/appstore_icn.png" style="margin: 0px; padding: 0px; max-width: 150px;" title="AppStore" /></a></div><div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 text-center"><a href="https://play.google.com/store/apps/details?id=com.infomovil.infomovil" style="margin: 0px; padding: 0px; color: rgb(49, 165, 154);" target="_blank"><img alt="Google Play" src="../resources/webapp/images/gstore_icn.png"  style="margin: 0px; padding: 0px; max-width: 150px;" title="Google Play" /></a></div></div>'
+		BootstrapDialog.show({
+			  title: "<span class='textBlack' style='font-size:1.15em;'><img alt='' src='../resources/webapp/images/fa-warning-bk.png'  title='Alerta' />Alcanzaste el máximo de imágenes permitidas</span>",
+			  message: '<div style="display:block; min-height:150px;"><p class="textBlack text-center" style="font-size:1.15em;">Adquiere <strong>Plan Pro</strong> desde la app para agregar más imágenes </p><br/> <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 text-center"><a href="https://itunes.apple.com/mx/app/infomovil/id898313250?mt=8" style="margin: 0px; padding: 0px; color: rgb(49, 165, 154);" target="_blank"><img alt="AppStore" src="../resources/webapp/images/appstore_icn.png" style="margin: 0px; padding: 0px; max-width: 150px;" title="AppStore" /></a></div><div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 text-center"><a href="https://play.google.com/store/apps/details?id=com.infomovil.infomovil" style="margin: 0px; padding: 0px; color: rgb(49, 165, 154);" target="_blank"><img alt="Google Play" src="../resources/webapp/images/gstore_icn.png"  style="margin: 0px; padding: 0px; max-width: 150px;" title="Google Play" /></a></div></div><div class="clearfix"></div><div style="display:block; height:30px; width:100%;"></div>'
 			});
 		
 	}
@@ -556,44 +538,52 @@ function guardarImagenesJQF()
 
 function borrarImagenJQ(idImg)
 {
-	bootbox.confirm("<span style='margin:5px 0 0 0; display:block; padding:20px;'>¿Seguro que deseas borrar la imagen?</span>", function(result) {
+	BootstrapDialog.show({
+        title: '<div class="textBlack">Borrar Imagen</div>',
+        message: '<div style="display:block; padding: 10px;">¿Seguro que deseas borrar la imagen?</div>',
+        buttons: [{
+            label: '<span class="btn btn-purple">Cancelar</span>',
+            action: function(dialog) {
+            	dialog.close();
+            }
+        }, {        
+        	label: '<span class="btn btn-purple">Aceptar</span>',
+        	action: function(dialog) {
+	        	dialog.close();
+				$.blockUI.defaults.baseZ = 9000;
+				$.blockUI({
+					message: "Eliminando la imagen...",
+					css: {
+						class:"alertaUI",
+						top:  ($(window).height() - 400) /2 + 'px',
+						left: ($(window).width() - 400) /2 + 'px',
+						width: '400px'
+					}
+				});
 
-		if (result)
-		{
-			$.blockUI.defaults.baseZ = 9000;
-			$.blockUI({
-				message: "Eliminando la imagen...",
-				css: {
-					class:"alertaUI",
-					top:  ($(window).height() - 400) /2 + 'px',
-					left: ($(window).width() - 400) /2 + 'px',
-					width: '400px'
-				}
-			});
-
-			$.ajax({
-				type : "GET",
-				url : contextPath + "/infomovil/borrarImagen",
-				dataType : "json",
-				contentType: "text/plain",
-				data : {
-					domainId: $('#idDominio').val(),
-					imageId: idImg,
-
-				},
-				success : function(data) {
-					$.unblockUI();
-					console.log("LA RESPUESTA DEL ELIMINAR IMAGEN ES: " +data);
-					getImagenesJQ();
-				},
-				error : function(json) {
-					console.log("Error Eliminar Imagen");
-					$.unblockUI();
-				}
-
-			});
-		}
-	});
+				$.ajax({
+					type : "GET",
+					url : contextPath + "/infomovil/borrarImagen",
+					dataType : "json",
+					contentType: "text/plain",
+					data : {
+						domainId: $('#idDominio').val(),
+						imageId: idImg,
+	
+					},
+					success : function(data) {
+						$.unblockUI();
+						getImagenesJQ();
+					},
+					error : function(json) {
+						console.log("Error Eliminar Imagen");
+						$.unblockUI();
+					}
+				});
+        }
+            
+        }]
+    });
 }
 
 function actualizarImagen(idImg, imgUrl)
@@ -633,21 +623,199 @@ function actualizarImagen(idImg, imgUrl)
 }
 
 function convertImgToBase64(url, callback, outputFormat)
-{
-	
+{	
 	var img = new Image();
 	img.crossOrigin = 'Anonymous';
 
 	img.onload = function() {
 		var canvas = document.createElement('CANVAS');
 		var ctx = canvas.getContext('2d');
-		canvas.height = this.height;
-		canvas.width = this.width;
-		ctx.drawImage(this,0,0);
+		console.log(this.height + " y " + this.width);
+		if(this.width > 900 && this.width < 1400){
+		console.log("una");
+			canvas.height = this.height * .30;
+			canvas.width = this.width *.30;
+			ctx.drawImage(this,0,0,this.width,this.height,0,0,canvas.width,canvas.height);
+		
+		}else if(this.width > 1400 && this.width < 5000){
+			console.log("dos");
+			canvas.height = this.height * .20;
+			canvas.width = this.width *.20;
+			ctx.drawImage(this,0,0,this.width,this.height,0,0,canvas.width,canvas.height);
+			
+			
+		}else{
+			console.log("tres");
+			canvas.height = this.height;
+			canvas.width = this.width;
+			ctx.drawImage(this,0,0);
+		}
+	
 		var dataURL = canvas.toDataURL(outputFormat || 'image/png');
 		callback(dataURL);
 		canvas = null;
 	};
-	console.log("La url nueva es: " + url );
+	
 	img.src = url;
+}
+
+function logueoFacebook(response)
+{
+	console.log("EL RESPONSE ES:  " + response.status);
+	if (response.status === 'connected') {
+		$("#btnAlbumsDeFacebook").hide();
+		$("#btnSeleccionaImagen").hide();
+		$("#btnSeleccionaImagen2").hide();
+		$("#terceroFB").hide();
+		$("#regresarDeFotos").hide();
+		$("#btnGuardarImagenFB").hide();
+		$("#galeriaImagenes").hide();
+		$(".albumDinamico").remove();
+		$("#facebookDiv").show();
+		$("#primeroFB").show();
+		$("#msjEligeAlbumFoto").show();
+		$("#regresarDeFace").show();
+		$("#segundoFB").hide();
+		$("#galeriaVacia").hide();
+		$("#msjEligeFotoAlbum").hide();
+		$("#idRegresarAlbum").hide();
+		$("#nombreDeImgn").val('');
+		
+		for (var p in infoAlbumes) 
+		{
+			var $photosList = $('#albumsList');
+			var $li = $('<li class="albumDinamico" style="display:block; height:100px; margin:0 5px 5px 5px;"/>');
+			$li.append('<span class="col-xs-4"><img src="' + infoAlbumes[p].picture + '" style="max-width:100px; max-height:100px;"  class="img-thumbnail"/></span>');
+			$li.append('<span class="col-xs-8"><strong style="color:#7c41bc" class="hidden-xs"> Album:</strong> '+ infoAlbumes[p].title +'<img alt="" src="../resources/webapp/images/ir.png" style="max-width:23px; max-height:23px;" title="Ir" class="pull-right"/></span>');
+
+			$li.click(function() {
+				
+				$.blockUI.defaults.baseZ = 9000;
+				$.blockUI({
+					message: "Obteniendo imágenes...",
+					css: {
+						class:"alertaUI",
+						top:  ($(window).height() - 400) /2 + 'px',
+						left: ($(window).width() - 400) /2 + 'px',
+						width: '400px'
+					}
+				});
+				
+				var r = $(this).index();
+				$(".photoDinamico").remove();
+				$("#primeroFB").hide();
+				$("#msjEligeAlbumFoto").hide();
+				$("#regresarDeFace").hide();
+				$("#segundoFB").show();
+				$("#msjEligeFotoAlbum").show();
+				$("#idRegresarAlbum").show();
+				$("#terceroFB").hide();
+				$("#regresarDeFotos").hide();
+				$("#btnGuardarImagenFB").hide();
+				$("#galeriaVacia").hide();
+				var fotos = photosDelAlbum[r];
+				for (var a in fotos ) 
+				{
+					var $photosList = $('#photosList');
+					var $li = $('<div class="photoDinamico" style="display:block; height:100px; margin:10px 5px; max-width:100px; float:left "/>');
+					$li.append('<span class="col-xs-12"><img src="' + fotos[a].origen + '" style="max-width:100px; max-height:100px;" class="img-thumbnail"/></span>');
+					$li.on("click", "img", function(){
+						$("#imgVistaPrevia").attr('src',$(this).attr("src"));
+						$("#primeroFB").hide();
+						$("#msjEligeAlbumFoto").hide();
+						$("#regresarDeFace").hide();
+						$("#segundoFB").hide();
+						$("#msjEligeFotoAlbum").hide();
+						$("#idRegresarAlbum").hide();
+						$("#terceroFB").show();
+						$("#regresarDeFotos").show();
+						$("#btnGuardarImagenFB").show();
+					});
+					$photosList.append($li);
+				}
+				$.unblockUI();
+			});
+			$photosList.append($li);
+		}
+	}else{
+		if( navigator.userAgent.match('CriOS') ){
+			window.open('https://www.facebook.com/dialog/oauth?client_id=346859792130678&redirect_uri='+ document.location.href +'&scope=email,public_profile,user_photos', '', null);
+		}else{
+			FB.login(function(response) {
+			statusChangeCallback(response);
+			}, {scope: 'public_profile,email,user_photos'});
+		}
+	}
+}
+
+
+function logueoFacebook2() 
+{
+	console.log("logueoFacebook2");
+	$("#btnAlbumsDeFacebook").hide();
+	$("#btnSeleccionaImagen").hide();
+	$("#btnSeleccionaImagen2").hide();
+	$("#terceroFB").hide();
+	$("#regresarDeFotos").hide();
+	$("#btnGuardarImagenFB").hide();
+	$("#galeriaImagenes").hide();
+	$(".albumDinamico").remove();
+	$("#facebookDiv").show();
+	$("#primeroFB").show();
+	$("#msjEligeAlbumFoto").show();
+	$("#regresarDeFace").show();
+	$("#segundoFB").hide();
+	$("#galeriaVacia").hide();
+	$("#msjEligeFotoAlbum").hide();
+	$("#idRegresarAlbum").hide();
+	$("#nombreDeImgn").val('');
+	
+	for (var p in infoAlbumes) 
+	{
+		var $photosList = $('#albumsList');
+		var $li = $('<li class="albumDinamico" style="display:block; height:100px; margin:0 5px 5px 5px;"/>');
+		$li.append('<span class="col-xs-4"><img src="' + infoAlbumes[p].picture + '" style="max-width:100px; max-height:100px;"  class="img-thumbnail"/></span>');
+		$li.append('<span class="col-xs-8"><strong style="color:#7c41bc" class="hidden-xs"> Album:</strong> '+ infoAlbumes[p].title +' <img alt="" src="../resources/webapp/images/ir.png" style="max-width:23px; max-height:23px;" title="Ir" class="pull-right"/></span><br/>');
+
+		$li.click(function() {
+			console.log("li click!");
+			var r = $(this).index();
+			$(".photoDinamico").remove();
+			$("#primeroFB").hide();
+			$("#msjEligeAlbumFoto").hide();
+			$("#regresarDeFace").hide();
+			$("#segundoFB").show();
+			$("#msjEligeFotoAlbum").show();
+			$("#idRegresarAlbum").show();
+			$("#terceroFB").hide();
+			$("#regresarDeFotos").hide();
+			$("#btnGuardarImagenFB").hide();
+			$("#galeriaVacia").hide();
+			var fotos = photosDelAlbum[r];
+			
+			for (var a in fotos ) 
+			{
+				var $photosList = $('#photosList');
+				var $li = $('<div class="photoDinamico" style="display:block; height:100px; margin:10px 5px; max-width:100px; float:left "/>');
+				$li.append('<span class="col-xs-12"><img src="' + fotos[a].origen + '" style="max-width:100px; max-height:100px;" class="img-thumbnail"/></span>');
+				$li.on("click", "img", function() {
+					$("#imgVistaPrevia").attr('src',$(this).attr("src"));
+					$("#primeroFB").hide();
+					$("#msjEligeAlbumFoto").hide();
+					$("#regresarDeFace").hide();
+					$("#segundoFB").hide();
+					$("#msjEligeFotoAlbum").hide();
+					$("#idRegresarAlbum").hide();
+					$("#terceroFB").show();
+					$("#regresarDeFotos").show();
+					$("#btnGuardarImagenFB").show();
+				});
+				
+				$photosList.append($li);
+			}
+			
+		});
+		
+		$photosList.append($li);
+	}
 }
