@@ -19,13 +19,13 @@
 		<meta property="og:title" content="Infomovil" />
 		<meta property="og:type" content="website" />
 		<meta property="og:description"
-			content="Infomovil. Nunca antes ha sido tan f&aacute;cil crear un sitio web. Con Infomovil crea tu sitio f&aacute;cil, r&aacute;pido y gratuito en 5 minutos." />
+			content="Infomovil. Nunca antes ha sido tan f&aacute;cil crear una p&aacute;gina web. Con Infomovil crea tu p&aacute;gina f&aacute;cil, r&aacute;pido y gratuito en 5 minutos." />
 		<meta property="og:image"
 			content="http://landing.infomovil.com/webapp/templates/<tiles:getAsString name="template"/>/images/apple-touch-icon-57x57.png" />
 		<meta property="og:url" content="http://www.infomovil.com" />
 		<meta itemprop="name" content="Infomovil" />
 		<meta itemprop="description"
-			content="Infomovil. Nunca antes ha sido tan f&aacute;cil crear un sitio web. Con Infomovil crea tu sitio f&aacute;cil, r&aacute;pido y gratuito en 5 minutos. Sitio web creado con www.infomovil.com" />
+			content="Infomovil. Nunca antes ha sido tan f&aacute;cil crear una p&aacute;gina web. Con Infomovil crea tu sitio f&aacute;cil, r&aacute;pido y gratuito en 5 minutos. P&aacute;gina web creada con www.infomovil.com" />
 		
 		<link rel="apple-touch-icon"
 			href="http://landing.infomovil.com/webapp/templates/<tiles:getAsString name="template"/>/images/apple-touch-icon.png" />
@@ -52,6 +52,30 @@
 			{
 				z-index:10500!important;
 			}
+			/* <![CDATA[ */
+
+.SI-FILES-STYLIZED label.cabinet
+{
+	width: 136px;
+	height: 22px;
+	background: url(<c:url value="/resources/webapp/images/btn-choose-file.png"/>) 0 0 no-repeat;
+
+	display: block;
+	overflow: hidden;
+	cursor: pointer;
+}
+
+.SI-FILES-STYLIZED label.cabinet input.file
+{
+	position: relative;
+	height: 100%;
+	width: auto;
+	opacity: 0;
+	-moz-opacity: 0;
+	filter:progid:DXImageTransform.Microsoft.Alpha(opacity=0);
+}
+
+/* ]]> */
 		</style>
 		<title itemprop="name">Infomovil</title>
 		<link rel="canonical" href="http://www.infomovil.com" itemprop="url" />

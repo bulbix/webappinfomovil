@@ -16,8 +16,7 @@ if( navigator.userAgent.match(/iPhone|iPad|iPod/i) ) {
                 marginTop: $(window).scrollTop() + 'px',
                 bottom: document.documentElement.scrollHeigh + 'px'
             });
-       
-        
+
     });
 }
 

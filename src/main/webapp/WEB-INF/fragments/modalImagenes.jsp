@@ -1,23 +1,32 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <div class="modal-header">
-	<button type="button" class="close textBlack pull-left btnsEditor"  aria-label="Close" id="closemyModalImagenes"><span aria-hidden="true">&times;</span></button>
-	<button type="button" class="btn btn-purple pull-right"  id="regresarSelecImg" style="margin: 5px 0;"><img width="20" height="20" alt="Infomovil" src="<c:url value="/resources/webapp/images/ico_back.png"/>" /> <span class="hidden-xs">Regresar</span></button>
-	
-	<button type="button" class="btn btn-purple pull-right btnsEditor"  id="btnGuardarImagen" onclick="guardarImagenesJQ()" style="margin: 5px 0;"><img width="15" height="15" alt="Infomovil" 
+<button type="button" class="btn btn-purple pull-right btnsEditor"  id="btnGuardarImagen" onclick="guardarImagenesJQ()" style="margin: 5px 0;"><img width="15" height="15" alt="Infomovil" 
+    	src="<c:url value="/resources/webapp/images/successWhite.png"/>" /><span class="hidden-xs"> Guardar</span></button>
+<button type="button" class="btn btn-purple pull-right"  id="btnGuardarImagenFB" onclick="guardarImagenesJQF()" style="margin:5px 0;"><img width="15" height="15" alt="Infomovil" 
     	src="<c:url value="/resources/webapp/images/successWhite.png"/>" /><span class="hidden-xs"> Guardar</span></button>
     	
-    <span class="btn btn-purple pull-right btnsEditor col-xs-12 col-sm-5" id="btnSeleccionaImagen2" style="overflow-x:hidden; margin:5px 0;"><img width="20" height="20" alt="Infomovil" src="<c:url value="/resources/webapp/images/ico_upload.png"/>" style="display:inline" />
-		<input style="display:inline" type="file" accept="image/*" onClick="validaImg()" onchange="picChange(event)" id="btnSeleccionaImagen" />
-	</span>
     	
+    	
+    	
+	<button type="button" class="close textBlack pull-left btnsEditor"  aria-label="Close" id="closemyModalImagenes"><span aria-hidden="true"><strong>&times;</strong></span></button>
+	
+	
+    	
+    <div class="btn btn-purple pull-right btnsEditor col-xs-12 col-sm-5" id="btnSeleccionaImagen2" style="overflow-x:hidden; margin:5px 0;">
+<label class="cabinet" > 
+		<input type="file" class="file" accept="image/*" onchange="picChange(event)" id="btnSeleccionaImagen"/><!-- 		<input style="display:inline" type="file" accept="image/*" onClick="validaImg()" onchange="picChange(event)" id="btnSeleccionaImagen"  /> -->
+	</label>
+
+	</div>
+    	<button type="button" class="btn btn-purple pull-right"  id="regresarSelecImg" style="margin: 5px 0;"><img width="20" height="20" alt="Infomovil" src="<c:url value="/resources/webapp/images/ico_back.png"/>" /> <span class="hidden-xs">Regresar</span></button>
+	
     	<button type="button" class="btn btn-blueFB pull-right btnsEditor col-xs-12 col-sm-5"  id="btnAlbumsDeFacebook" style="margin:5px 0;"><img width="20" height="20" alt="Infomovil" src="<c:url value="/resources/webapp/images/ico_facebook.png"/>" /> <span class="hidden-sm">Fotos de Facebook</span></button>
     	<button type="button" id="regresarDeFace" class="btn btn-purple pull-right" ><img width="20" height="20" alt="Infomovil" src="<c:url value="/resources/webapp/images/ico_back.png"/>" /> <span class="hidden-xs">Regresar</span></button>
     	
 	
 
 	
-		<button type="button" class="btn btn-purple pull-right"  id="btnGuardarImagenFB" onclick="guardarImagenesJQF()" style="margin:5px 0;"><img width="15" height="15" alt="Infomovil" 
-    	src="<c:url value="/resources/webapp/images/successWhite.png"/>" /><span class="hidden-xs"> Guardar</span></button>
+		
     	<div class="pull-right spaceBtnsMap"></div>
     	<button type="button" id="regresarDeFotos" class="btn btn-purple pull-right" style="margin:5px 0;"><img width="20" height="20" alt="Infomovil" src="<c:url value="/resources/webapp/images/ico_back.png"/>" /> <span class="hidden-xs">Regresar</span></button>
 	
@@ -69,7 +78,7 @@
        		
        		<div style="display:block; padding: 10px 0 0 0;"></div>
        		<div class="col-xs-12"> 
-            <div class="col-xs-12 col-sm-3 text-left"><img src="" style="max-width:130px; max-height:150px;" id="imgVistaPrevia" class="img-thumbnail"/></div>
+            <div class="col-xs-12 col-sm-3 text-left"><img src="" style="max-width:130px; max-height:150px; margin: 0 0 10px 0" id="imgVistaPrevia" class="img-thumbnail"/></div>
            <div class="col-xs-12 col-sm-9">
             
             	<label style="display:inline">Nombre: </label> <input type="text" name="fname" id="nombreDeImgn" maxlength="50"></input> 
@@ -83,3 +92,4 @@
 </div>
 
 <div class="modal-footer"></div>
+

@@ -8,6 +8,8 @@
 	<tiles:insertDefinition name="headEditorSitio">
 		<tiles:putAttribute name="template" value="${ template }"/>
 	</tiles:insertDefinition>	
+	
+	
 
 	<body role="document" data-spy="scroll" data-target=".navbar" data-offset="75" id="page-top" onload="autosave()">
 		<!-- Fixed navbar --> 
@@ -58,7 +60,7 @@
 								<img width="20" height="20" alt="Infomovil"	src="<c:url value="/resources/webapp/images/ico_ppp_youtube${ extensionImg }.png"/>" />
 							</a>
 						</li>
-						<li class="botonDesPublicar" id="btnImgLi">
+						<li class="botonDesPublicar" id="btnImgLi" style="display:none;">
 							<a href="#"  class="smoothScroll ${colorTexto}" onclick="getImagenesJQ()">Imágenes 
 								<img width="20" height="20" alt="Infomovil"	src="<c:url value="/resources/webapp/images/ico_img${ extensionImg }.png"/>" />
 							</a>
@@ -217,7 +219,7 @@
 	 		
 	 		<!-- Botón IMAGENES --> 
 			
-			<div class="botonDesPublicar " style="display:none;">
+			<div class="botonDesPublicar" style="display:none;">
 				<a href="#" onclick="getImagenesJQ()" class="col-xs-12 col-sm-6 col-sm-offset-3 col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3 btn btn-default btn-outline navEditor">
 	 			<img width="30" height="30" alt="Infomovil" src="<c:url value="/resources/webapp/images/ico_img.png"/>" /> 
 	 			<span id="idOpcionUbicacion">Agrega imágenes</span>
@@ -345,6 +347,7 @@
 		<input type="hidden" id="downgrade" name="downgrade" value = "${ downgrade }">
 		<input type="hidden" id="galeriaImagenesMax" name="galeriaImagenes" value = "${ galeriaImagenes }">
 		<input type="hidden" id="planPro" name="planPro" value = "${ planPro }">
+		
 		<!--  Numero de imagenes MAximo q' puede tener el usuario activas-->
 		<!-- Bootstrap core JavaScript
 	    ================================================== -->
@@ -353,15 +356,17 @@
 		<script src="<c:url value="/resources/webapp/js/bootstrap.js"/>"></script>
 		<script src="<c:url value="/resources/webapp/js/docs.min.js"/>"></script>
 		<script src="<c:url value="/resources/webapp/js/smoothscroll.js"/>"></script>
-		<script src="<c:url value="/resources/webapp/js/bootbox.min.js"/>"></script>
+<%-- 		<script src="<c:url value="/resources/webapp/js/bootbox.min.js"/>"></script> --%>
 		<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
 		<script	src="<c:url value="/resources/webapp/js/ie10-viewport-bug-workaround.js"/>"></script>
 		<!-- bxSlider Javascript file -->
 		<script src="<c:url value="/resources/webapp/js/jquery.bxslider.min.js"/>"></script>
-		<script	src="<c:url value="/resources/webapp/js/jqBootstrapValidation.js"/>"></script>
+<!-- 		<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap3-dialog/1.34.5/js/bootstrap-dialog.min.js"></script> -->
+		<script src="<c:url value="/resources/webapp/js/bootstrap-dialog.min.js"/>"></script>
+
 		
 		<script>
-			$(function () { $("input,select,textarea").not("[type=submit]").jqBootstrapValidation(); } );
+			//$(function () { $("input,select,textarea").not("[type=submit]").jqBootstrapValidation(); } );
 		</script>
 	
 		<script src="<c:url value="/resources/webapp/js/jquery.numeric.js"/>"></script>
@@ -375,7 +380,7 @@
 <%-- 	 	<h1>${ downgrade }</h1> --%>
 <%-- 	 	<h1>${ sitioWeb }</h1> --%>
 <%-- 		<h1>${sitioWeb}></h1> --%>
-
+<script	src="<c:url value="/resources/webapp/js/si.files.js"/>"></script>
 		<script>
 			$(document).ready(function(){
 				generarSlider();
@@ -416,7 +421,11 @@
 		 	 });
 			
 		</script>
-
+<script type="text/javascript" language="javascript">
+// <![CDATA[
+SI.Files.stylizeAll();
+// ]]>
+</script>
 		<script>
 		
 			<c:choose> 
