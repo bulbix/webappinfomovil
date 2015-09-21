@@ -2,13 +2,13 @@
 
 <div class="modal-header">
 	<button type="button" class="close textBlack pull-right btnsEditor " data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button> 
-  <p class="modal-title textBlack"><strong>Confirmación de compra</strong></p>
+  <p class="modal-title textPurple" ><strong>Confirmación de compra</strong></p>
 </div>
 <div class="modal-body bgWhite">
 
 	<div class="col-xs-12">
 	
-	<h5>Datos del contacto administrativo</h5>
+	<h5 style="color:#2fa399">Datos del contacto administrativo</h5>
 	<form class="form-horizontal">
   <div class="form-group">
     <label for="inputEmail3" class="col-sm-2 control-label text-left">Nombre</label>
@@ -37,23 +37,24 @@
   </div>
   <div class="dividerSmall"></div>
   <div class="container"><hr/></div>
-  <h5>Renovación de dominio </h5>
+  <h5 style="color:#2fa399">Renovación de dominio </h5>
   <div class="form-group">
     <label for="inputEmail3" class="col-sm-2 control-label text-left">Dominio</label>
     <div class="col-xs-12 col-sm-10">
-      www.mipagina.tel
+       <label class="col-sm-2 control-label text-left" style="font-weight:300;">www.mipagina.tel</label> 
     </div>
   </div>
  <div class="form-group">
     <label for="inputEmail3" class="col-sm-2 control-label text-left">Duración</label>
     <div class="col-xs-12 col-sm-10">
-      12 meses
+      <label class="col-sm-10 control-label text-left" style="font-weight:300;">12 meses</label> 
     </div>
   </div>
   <div class="form-group">
     <label for="inputEmail3" class="col-sm-2 control-label text-left">Costo</label>
     <div class="col-xs-12 col-sm-10">
-      $600.00mxn
+    <label class="col-sm-10 control-label text-left" style="font-weight:300;">$600.00mxn</label> 
+      
     </div>
   </div>
   <div></div>
