@@ -45,51 +45,56 @@
 							width="20" height="20" alt="Infomovil"
 							src="<c:url value="/resources/webapp/images/fa-user${ extensionImg }.png"/>" />
 							Mi cuenta </a></li>
+							
+							<li><a href="<c:url value="/infomovil/editarSitio"></c:url>" class="smoothScroll ${colorTexto}"><img
+							width="20" height="20" alt="Infomovil"
+							src="<c:url value="/resources/webapp/images/fa-back${ extensionImg }.png"/>" />
+							Editor </a></li>
 					<!-- 						<li> -->
 					<%-- 							<a href="#" class="smoothScroll ${colorTexto}">${usuarioLogueado} --%>
 					<%-- 							<img width="20" height="20" alt="Infomovil"	src="<c:url value="/resources/webapp/images/fa-user${ extensionImg }.png"/>" /></a> --%>
 					<!-- 						</li> -->
-					<li><a href="#" data-toggle="modal"
-						data-target="#myModalTemplates" class="smoothScroll ${colorTexto}"><img
-							width="20" height="20" alt="Infomovil"
-							src="<c:url value="/resources/webapp/images/fa-templates${ extensionImg }.png"/>" />
-							Mi Estilo </a></li>
-					<li class="dropdown"><a href="#" class="dropdown-toggle"
-						data-toggle="dropdown" role="button" aria-haspopup="true"
-						aria-expanded="false"><img width="20" height="20"
-							alt="Infomovil"
-							src="<c:url value="/resources/webapp/images/fa-pencil${ extensionImg }.png"/>" />Mi
-							contenido <span class="caret"></span></a>
-						<ul class="dropdown-menu navbar-${ claseCss } ${colorTexto}">
-							<li class="botonDesPublicar" style="display: none;"><a
-								href="#" data-toggle="modal" data-target="#myModalMaps"
-								class="smoothScroll ${colorTexto}"><img width="20"
-									height="20" alt="Infomovil"
-									src="<c:url value="/resources/webapp/images/icn_marc_maps${ extensionImg }.png"/>" />
-									Ubicación </a></li>
-							<li class="botonDesPublicarVid" id="btnVideoLi"
-								style="display: none;"><a href="#" data-toggle="modal"
-								data-target="#myModalVideo" class="smoothScroll ${colorTexto}"><img
-									width="20" height="20" alt="Infomovil"
-									src="<c:url value="/resources/webapp/images/ico_ppp_youtube${ extensionImg }.png"/>" />
-									Video </a></li>
-							<li class="botonDesPublicar" id="btnImgLi" style="display: none;"><a
-								href="#" class="smoothScroll ${colorTexto}"
-								onclick="getImagenesJQ()"><img width="20" height="20"
-									alt="Infomovil"
-									src="<c:url value="/resources/webapp/images/ico_img${ extensionImg }.png"/>" />
-									Imágenes </a></li>
-							<li class="botonDesPublicar" id="btnContLi"
-								style="display: none;"><a href="#" data-toggle="modal"
-								data-target="#myModalDescApp" class="smoothScroll ${colorTexto}"><img
-									width="20" height="20" alt="Infomovil"
-									src="<c:url value="/resources/webapp/images/ico_mas_cont${ extensionImg }.png"/>" />
-									¿Qué sigue? <span class="hidden-sm hidden-md"></span> </a></li>
-							<!--             <li role="separator" class="divider"></li> -->
-							<!--             <li><a href="#">Separated link</a></li> -->
-							<!--             <li role="separator" class="divider"></li> -->
-							<!--             <li><a href="#">One more separated link</a></li> -->
-						</ul></li>
+<!-- 					<li><a href="#" data-toggle="modal" -->
+<%-- 						data-target="#myModalTemplates" class="smoothScroll ${colorTexto}"><img --%>
+<!-- 							width="20" height="20" alt="Infomovil" -->
+<%-- 							src="<c:url value="/resources/webapp/images/fa-templates${ extensionImg }.png"/>" /> --%>
+<!-- 							Mi Estilo </a></li> -->
+<!-- 					<li class="dropdown"><a href="#" class="dropdown-toggle" -->
+<!-- 						data-toggle="dropdown" role="button" aria-haspopup="true" -->
+<!-- 						aria-expanded="false"><img width="20" height="20" -->
+<!-- 							alt="Infomovil" -->
+<%-- 							src="<c:url value="/resources/webapp/images/fa-pencil${ extensionImg }.png"/>" />Mi --%>
+<!-- 							contenido <span class="caret"></span></a> -->
+<%-- 						<ul class="dropdown-menu navbar-${ claseCss } ${colorTexto}"> --%>
+<!-- 							<li class="botonDesPublicar" style="display: none;"><a -->
+<!-- 								href="#" data-toggle="modal" data-target="#myModalMaps" -->
+<%-- 								class="smoothScroll ${colorTexto}"><img width="20" --%>
+<!-- 									height="20" alt="Infomovil" -->
+<%-- 									src="<c:url value="/resources/webapp/images/icn_marc_maps${ extensionImg }.png"/>" /> --%>
+<!-- 									Ubicación </a></li> -->
+<!-- 							<li class="botonDesPublicarVid" id="btnVideoLi" -->
+<!-- 								style="display: none;"><a href="#" data-toggle="modal" -->
+<%-- 								data-target="#myModalVideo" class="smoothScroll ${colorTexto}"><img --%>
+<!-- 									width="20" height="20" alt="Infomovil" -->
+<%-- 									src="<c:url value="/resources/webapp/images/ico_ppp_youtube${ extensionImg }.png"/>" /> --%>
+<!-- 									Video </a></li> -->
+<!-- 							<li class="botonDesPublicar" id="btnImgLi" style="display: none;"><a -->
+<%-- 								href="#" class="smoothScroll ${colorTexto}" --%>
+<!-- 								onclick="getImagenesJQ()"><img width="20" height="20" -->
+<!-- 									alt="Infomovil" -->
+<%-- 									src="<c:url value="/resources/webapp/images/ico_img${ extensionImg }.png"/>" /> --%>
+<!-- 									Imágenes </a></li> -->
+<!-- 							<li class="botonDesPublicar" id="btnContLi" -->
+<!-- 								style="display: none;"><a href="#" data-toggle="modal" -->
+<%-- 								data-target="#myModalDescApp" class="smoothScroll ${colorTexto}"><img --%>
+<!-- 									width="20" height="20" alt="Infomovil" -->
+<%-- 									src="<c:url value="/resources/webapp/images/ico_mas_cont${ extensionImg }.png"/>" /> --%>
+<!-- 									¿Qué sigue? <span class="hidden-sm hidden-md"></span> </a></li> -->
+<!-- 							            <li role="separator" class="divider"></li> -->
+<!-- 							            <li><a href="#">Separated link</a></li> -->
+<!-- 							            <li role="separator" class="divider"></li> -->
+<!-- 							            <li><a href="#">One more separated link</a></li> -->
+<!-- 						</ul></li> -->
 
 
 					<!--  <li class="botonDesPublicar" id="btnContLi" style="display:none;">
@@ -142,8 +147,7 @@
 
 					<span id="idOpcionMasCont"><img width="20" height="20"
 						alt="Infomovil"
-						src="<c:url value="/resources/webapp/images/fa-back.png"/>" /> <span
-						class="hidden-xs"> Editor</span></span>
+						src="<c:url value="/resources/webapp/images/fa-back.png"/>" /> </span>
 				</a>
 
 
@@ -186,7 +190,7 @@
 										</p>
 									</div>
 									<div class="col-xs-12 text-center">
-										<span>Vigencia del <strong>dd/mm/aa</strong> a <strong>dd/mm/aa</strong></span>
+										<span>Vigencia del:<br/> <strong>dd/mm/aa</strong> <br/>a <br/><strong>dd/mm/aa</strong></span>
 									</div>
 									<div class="clearfix"></div>
 									<div class="divider"></div>
@@ -222,7 +226,7 @@
 										</p>
 									</div>
 									<div class="col-xs-12 text-center">
-										<span>Vigencia del <strong>dd/mm/aa</strong> a <strong>dd/mm/aa</strong></span>
+										<span>Vigencia del:<br/> <strong>dd/mm/aa</strong> <br/>a <br/><strong>dd/mm/aa</strong></span>
 									</div>
 									<div class="clearfix"></div>
 									<div class="divider"></div>
@@ -276,7 +280,7 @@
 										</p>
 									</div>
 									<div class="col-xs-12 text-center">
-										<span>Vigencia del <strong>dd/mm/aa</strong> a <strong>dd/mm/aa</strong></span>
+										<span>Vigencia del:<br/> <strong>dd/mm/aa</strong> <br/>a <br/><strong>dd/mm/aa</strong></span>
 									</div>
 									<div class="clearfix"></div>
 									<div class="divider"></div>
@@ -331,7 +335,7 @@
 										</p>
 									</div>
 									<div class="col-xs-12 text-center">
-										<span>Vigencia del <strong>dd/mm/aa</strong> a <strong>dd/mm/aa</strong></span>
+										<span>Vigencia del:<br/> <strong>dd/mm/aa</strong> <br/>a <br/><strong>dd/mm/aa</strong></span>
 									</div>
 									<div class="clearfix"></div>
 									<div class="divider"></div>
@@ -374,7 +378,7 @@
 	<tiles:insertDefinition name="modalGen">
 		<tiles:putAttribute name="idModal" value="myModalConfDatos" />
 		<tiles:putAttribute name="tamanioModal"
-			value='"modal-dialog modal-lg"' />
+			value='"modal-dialog modal-md"' />
 		<c:set var="fragmentName" value="modalConfDatos" scope="request" />
 	</tiles:insertDefinition>
 	<!--/MODAL CONFIRMACIÓN DATOS-->
