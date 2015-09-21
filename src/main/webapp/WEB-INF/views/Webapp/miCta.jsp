@@ -12,7 +12,7 @@
 
 
 <body role="document" data-spy="scroll" data-target=".navbar"
-	data-offset="75" id="page-top" onload="autosave()">
+	data-offset="75" id="page-top" >
 	<!-- Fixed navbar -->
 	<nav class="navbar navbar-${ claseCss } navbar-static-top">
 		<div class="container-fluid">
@@ -240,7 +240,7 @@
 									<div class="clearfix"></div>
 									<div class="divider"></div>
 									<div class="col-xs-12 text-center">
-										<a href="#" data-toggle="modal" data-target="myModalConfDatos"
+										<a href="#" data-toggle="modal" data-target="#myModalConfDatos"
 											class="btn btn-default btn-outlineGreen text-center textWhite">Renueva
 											ahora</a>
 									</div>
@@ -296,7 +296,7 @@
 									<div class="clearfix"></div>
 									<div class="divider"></div>
 									<div class="col-xs-12 text-center">
-										<a href="#" data-toggle="modal" data-target="myModalConfDatos"
+										<a href="#" data-toggle="modal" data-target="#myModalConfDatos"
 											class="btn btn-default btn-outlineGreen text-center textWhite">Renueva
 											ahora</a>
 									</div>
@@ -497,7 +497,7 @@
 	<script src="<c:url value="/resources/webapp/js/si.files.js"/>"></script>
 	<script>
 			$(document).ready(function(){
-				generarSlider();
+				//generarSlider();
 				google.maps.event.addDomListener(window, 'load', initialize);
 				});
 		</script>
