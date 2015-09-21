@@ -127,183 +127,236 @@
 
 
 
-
 	<!-- Botón Nuevo Estilo -->
 	<div class="seccTop bgBlack">
-		<div class="">
-			<a href="#" data-toggle="modal" data-target="#myModalTemplates"
-				class="col-xs-12 col-sm-6 col-sm-offset-3 col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3 btn btn-default btn-outline navEditor"><strong>Elige
-					estilo</strong> <img width="20" height="20" alt="Infomovil"
-				src="<c:url value="/resources/webapp/images/fa-templates.png"/>" /><br />
-			<span class="text-center _90em">¡Lo puedes cambiar las veces
-					que quieras!</span></a>
+		<div class="col-xs-12 col-sm-6 col-sm-offset-3 col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3">
+			<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 reset">
+				<img width="30" height="30" alt="Infomovil"
+					src="<c:url value="/resources/webapp/images/fa-user.png"/>" /> Nombre ${usuarioLogueado}<br/> <img width="25" height="25" alt="Infomovil"
+					src="<c:url value="/resources/webapp/images/fa-mail.png"/>" /> mail@mail.com
+			</div>
+			<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 reset">
+
+				<a href="<c:url value="/infomovil/editarSitio"></c:url>"
+					class="col-xs-6 col-sm-3 col-md-3 col-lg-3 btn btn-default btn-outline navEditor pull-right">
+
+					<span id="idOpcionMasCont"><img width="20" height="20"
+						alt="Infomovil"
+						src="<c:url value="/resources/webapp/images/fa-back.png"/>" /> <span
+						class="hidden-xs"> Editor</span></span>
+				</a>
+
+
+			</div>
 		</div>
 	</div>
 	<!-- /Botón Nuevo Estilo -->
-<div class="clear"></div>
-	<!--Theme showcase -->
-	<div class="theme-showcaseApp" role="main" id="intro">
-		<!-- Main jumbotron for a primary marketing message or call to action -->
-		<div class="container">
-			<!-- page header -->
-			<div class="page-header text-center">
-				<strong><span class="text-center btnsEditor _1_1em"
-					id="urlSitio" style="display: none;"> <a
-						href="http://${sitioWeb}" target="_blank"
-						class="col-xs-12 col-sm-12  col-md-12 col-lg-12 textBlack navEditor"><strong>${sitioWeb}</strong></a>
-				</span></strong>
-				<div>
-					<form id="formEditar">
-						<!--email-->
-						<div class="form-group col-xs-12 col-sm-12">
-							<div class="control-group">
-								<label class="control-label hidden-xs"></label>
-								<div class="controls">
-									<input type="text" class="form-control h1 text-center"
-										maxlength="128" placeholder="Pon tu nombre o negocio"
-										onfocus="this.placeholder = ''"
-										onblur="this.placeholder = 'Pon tu nombre o negocio'"
-										required="required"
-										<c:if test="${not empty nombreEmpresa}"> value = " ${ nombreEmpresa } " </c:if>
-										id="txtNombreNegocio" />
-									<p class="help-block"></p>
-								</div>
-							</div>
-						</div>
-						<!--email-->
-						<!--descripcion-->
-						<div class=" col-xs-12 col-sm-12">
-							<div>
-								<div class="controls">
-									<textarea class="form-control h2 text-center" maxlength="255"
-										placeholder="Agrega una descripción corta de tus servicios o productos"
-										onfocus="this.placeholder = ''"
-										onblur="this.placeholder = 'Agrega una descripción corta de tus servicios o productos'"
-										required id="txtDescripcionCorta" rows="5"><c:if
-											test="${not empty descripcionCorta}">${descripcionCorta}</c:if></textarea>
-									<p class="help-block"></p>
-								</div>
-							</div>
-							<hr />
-						</div>
-						<!--descripcion-->
-						<div class="form-group col-xs-12 col-sm-12">
-							<div class="mar15 col-xs-12 col-sm-12 col-md-6 col-lg-6 reset">
+	<div class="">
+		<div class="col-xs-12 col-sm-6 col-sm-offset-3 col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3">
+			<h3 class="text-left textWhite" style="font-weight: 300;">Mis
+				productos</h3>
+			<hr />
+			<!--Theme showcase -->
+			<div class="theme-showcaseApp" role="main" id="intro">
+				<!-- Main jumbotron for a primary marketing message or call to action -->
+				<div class="">
+					<!-- page header -->
+					<div class="page-header text-center">
+						<strong></strong>
+						<div>
+						
+						<!-- Producto -->
+							<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6"
+								style="display: block; ">
+								<!-- CABECERA -->
 								<div
-									class=" col-xs-12 col-sm-12 col-md-12 col-lg-12 mar0auto reset">
-									<img
-										src="http://landing.infomovil.com/webapp/templates/${ template }/images/mail_icn.png"
-										class="img mxw50miw43w100" alt="Contacto" /> <span
-										class="dblw100 mxh70 08em"> </span> <span
-										class="col-xs-12 08em mar0auto"> <input type="text"
-										style="text-transform: lowercase;"
-										class="form-control colorA text-center col-xs-11"
-										maxlength="100" placeholder="Correo" required="required"
-										onfocus="this.placeholder = ''"
-										onblur="this.placeholder = 'Correo'"
-										<c:if test="${not empty correoElectronico}"> value = "${ correoElectronico }" </c:if>
-										id="txtCorreo" />
-									</span>
-									<p class="help-block"></p>
+									style="background: url(<c:url value="/resources/webapp/images/lineDark.png"/>); color: #fff; padding: 2px 0 5px 0; -webkit-border-top-left-radius: 15px; -webkit-border-top-right-radius: 15px; -moz-border-radius-topleft: 15px; -moz-border-radius-topright: 15px; border-top-left-radius: 15px; border-top-right-radius: 15px;">
+									<h5 style="font-weight: 300; text-transform: uppercase">Dominio</h5>
 								</div>
-							</div>
-							<div class="mar15 col-xs-12 col-sm-12 col-md-6 col-lg-6 reset">
+								<!-- /CABECERA -->
+								<!-- CUERPO -->
 								<div
-									class=" col-xs-12 col-sm-12 col-md-12 col-lg-12 mar0auto reset">
-									<img
-										src="http://landing.infomovil.com/webapp/templates/${ template }/images/cel_icn.png"
-										class="img mxw50miw43w100" alt="Contacto" /> <span
-										class="dblw100 mxh70 08em"> </span> <span
-										class="col-xs-12 08em mar0auto"> <input type="text"
-										class="form-control text-center col-xs-11" maxlength="10"
-										placeholder="Celular" required="required"
-										onfocus="this.placeholder = ''"
-										onblur="this.placeholder = 'Celular'"
-										<c:if test="${not empty telefonoUsuario}"> value = "${ telefonoUsuario }" </c:if>
-										id="txtTelefono" />
-									</span>
-									<p class="help-block"></p>
+									style="display: block; background: #fff; min-height: 100px; height: auto; padding: 10px;">
+									<div class="col-xs-12 text-center" style="padding: 10px 0;">
+										<p style="color: #2fa399">www.mipagina.tel</p>
+										<p style="color:#2fa399">
+											<img width="25" height="25" alt="Infomovil"
+												src="<c:url value="/resources/webapp/images/btn_active.png"/>" />
+											Activo
+										</p>
+									</div>
+									<div class="col-xs-12 text-center">
+										<span>Vigencia del <strong>dd/mm/aa</strong> a <strong>dd/mm/aa</strong></span>
+									</div>
+									<div class="clearfix"></div>
+									<div class="divider"></div>
+
+									<div class="clearfix"></div>
 								</div>
+								<!--/ CUERPO -->
+								<!-- PIE -->
+								<div
+									style="-webkit-border-bottom-right-radius: 15px; -webkit-border-bottom-left-radius: 15px; -moz-border-radius-bottomright: 15px; -moz-border-radius-bottomleft: 15px; border-bottom-right-radius: 15px; border-bottom-left-radius: 15px; height: 15px; background: #fff; margin-bottom:30px"></div>
+								<!-- /PIE -->
 							</div>
+							<!--/ Producto -->
+							
+							<!-- Producto -->
+							<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6"
+								style="display: block;">
+								<!-- CABECERA -->
+								<div
+									style="background: url(<c:url value="/resources/webapp/images/lineDark.png"/>); color: #fff; padding: 2px 0 5px 0; -webkit-border-top-left-radius: 15px; -webkit-border-top-right-radius: 15px; -moz-border-radius-topleft: 15px; -moz-border-radius-topright: 15px; border-top-left-radius: 15px; border-top-right-radius: 15px;">
+									<h5 style="font-weight: 300; text-transform: uppercase">Dominio</h5>
+								</div>
+								<!-- /CABECERA -->
+								<!-- CUERPO -->
+								<div 
+									style="display: block; background: #fff; min-height: 100px; height: auto; padding: 10px;">
+									<div class="col-xs-12 text-center" style="padding: 10px 0;">
+										<p style="color: #2fa399">www.mipagina.tel</p>
+										<p style="color: #2fa399">
+											<img width="25" height="25" alt="Infomovil"
+												src="<c:url value="/resources/webapp/images/btn_active.png"/>" />
+											Activo
+										</p>
+									</div>
+									<div class="col-xs-12 text-center">
+										<span>Vigencia del <strong>dd/mm/aa</strong> a <strong>dd/mm/aa</strong></span>
+									</div>
+									<div class="clearfix"></div>
+									<div class="divider"></div>
+									<hr />
+									
+									
+									<div class="col-xs-12 text-center">
+									<p style="padding:0; margin:0;">12 meses</p>
+										<h2 style="font-weight: 300; color: #2fa399; padding:0; margin:0 0 10px 0;">
+											<sup>$</sup><span><strong>600.00</strong><span
+												style="font-size: .7em;"> mxn</span></span>
+										</h2>
+<!-- 										<span style="font-size:.9em;"><em>Pago anual</em></span> -->
+									</div>
+									<div class="clearfix"></div>
+									<div class="divider"></div>
+									<div class="col-xs-12 text-center">
+										<a href="#" data-toggle="modal" data-target="myModalConfDatos"
+											class="btn btn-default btn-outlineGreen text-center textWhite">Renueva
+											ahora</a>
+									</div>
+									<div class="clearfix"></div>
+								</div>
+								<!--/ CUERPO -->
+								<!-- PIE -->
+								<div
+									style="-webkit-border-bottom-right-radius: 15px; -webkit-border-bottom-left-radius: 15px; -moz-border-radius-bottomright: 15px; -moz-border-radius-bottomleft: 15px; border-bottom-right-radius: 15px; border-bottom-left-radius: 15px; height: 15px; background: #fff;margin-bottom:30px"></div>
+								<!-- /PIE -->
+							</div>
+							<!--/ Producto -->
+							
+							
+							<!-- Producto -->
+							<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6"
+								style="display: block;">
+								<!-- CABECERA -->
+								<div
+									style="background: url(<c:url value="/resources/webapp/images/lineDark.png"/>); color: #fff; padding: 2px 0 5px 0; -webkit-border-top-left-radius: 15px; -webkit-border-top-right-radius: 15px; -moz-border-radius-topleft: 15px; -moz-border-radius-topright: 15px; border-top-left-radius: 15px; border-top-right-radius: 15px;">
+									<h5 style="font-weight: 300; text-transform: uppercase">Plan Pro</h5>
+								</div>
+								<!-- /CABECERA -->
+								<!-- CUERPO -->
+								<div
+									style="display: block; background: #fff; min-height: 100px; height: auto; padding: 10px;">
+									<div class="col-xs-12 text-center" style="padding: 10px 0;">
+										<p style="color: #999999">12 meses</p>
+										<p style="color:#999999">
+											<img width="25" height="25" alt="Infomovil"
+												src="<c:url value="/resources/webapp/images/btn_inactive.png"/>" />
+											Inactivo
+										</p>
+									</div>
+									<div class="col-xs-12 text-center">
+										<span>Vigencia del <strong>dd/mm/aa</strong> a <strong>dd/mm/aa</strong></span>
+									</div>
+									<div class="clearfix"></div>
+									<div class="divider"></div>
+									<hr />
+									
+									
+									<div class="col-xs-12 text-center">
+									<p style="padding:0; margin:0;"><select class="col-xs-12"><option>1 mes</option><option>12 meses</option></select></p>
+								<div class="clearfix"></div>
+									<div class="divider"></div>
+										<h2 style="font-weight: 300; color: #2fa399; padding:0; margin:0 0 10px 0;">
+											<sup>$</sup><span><strong>50.00</strong><span
+												style="font-size: .7em;"> mxn</span></span>
+										</h2>
+<!-- 										<span style="font-size:.9em;"><em>Pago anual</em></span> -->
+									</div>
+									<div class="clearfix"></div>
+									<div class="divider"></div>
+									<div class="col-xs-12 text-center">
+										<a href="#" data-toggle="modal" data-target="myModalConfDatos"
+											class="btn btn-default btn-outlineGreen text-center textWhite">Renueva
+											ahora</a>
+									</div>
+									<div class="clearfix"></div>
+								</div>
+								<!--/ CUERPO -->
+								<!-- PIE -->
+								<div
+									style="-webkit-border-bottom-right-radius: 15px; -webkit-border-bottom-left-radius: 15px; -moz-border-radius-bottomright: 15px; -moz-border-radius-bottomleft: 15px; border-bottom-right-radius: 15px; border-bottom-left-radius: 15px; height: 15px; background: #fff;margin-bottom:30px"></div>
+								<!-- /PIE -->
+							</div>
+							<!--/ Producto -->
+							
+							<!-- Producto -->
+							<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6"
+								style="display: block; ">
+								<!-- CABECERA -->
+								<div
+									style="background: url(<c:url value="/resources/webapp/images/lineDark.png"/>); color: #fff; padding: 2px 0 5px 0; -webkit-border-top-left-radius: 15px; -webkit-border-top-right-radius: 15px; -moz-border-radius-topleft: 15px; -moz-border-radius-topright: 15px; border-top-left-radius: 15px; border-top-right-radius: 15px;">
+									<h5 style="font-weight: 300; text-transform: uppercase">Plan Pro</h5>
+								</div>
+								<!-- /CABECERA -->
+								<!-- CUERPO -->
+								<div
+									style="display: block; background: #fff; min-height: 100px; height: auto; padding: 10px;">
+									<div class="col-xs-12 text-center" style="padding: 10px 0;">
+										<p style="color: #2fa399">12 meses</p>
+										<p style="color:#2fa399">
+											<img width="25" height="25" alt="Infomovil"
+												src="<c:url value="/resources/webapp/images/btn_active.png"/>" />
+											Activo
+										</p>
+									</div>
+									<div class="col-xs-12 text-center">
+										<span>Vigencia del <strong>dd/mm/aa</strong> a <strong>dd/mm/aa</strong></span>
+									</div>
+									<div class="clearfix"></div>
+									<div class="divider"></div>
+
+									<div class="clearfix"></div>
+								</div>
+								<!--/ CUERPO -->
+								<!-- PIE -->
+								<div
+									style="-webkit-border-bottom-right-radius: 15px; -webkit-border-bottom-left-radius: 15px; -moz-border-radius-bottomright: 15px; -moz-border-radius-bottomleft: 15px; border-bottom-right-radius: 15px; border-bottom-left-radius: 15px; height: 15px; background: #fff;margin-bottom:30px"></div>
+								<!-- /PIE -->
+							</div>
+							<!--/ Producto -->
 						</div>
-						<div class="clear"></div>
-						<div class="divider"></div>
-					</form>
+					</div>
+					<!-- /page header -->
+					<br /> <br />
 				</div>
 			</div>
-			<!-- /page header -->
-			<br /> <br />
+			<!--/Theme showcase -->
 		</div>
 	</div>
-	<!--/Theme showcase -->
-
 	<!--Footer-->
 	<footer class="footer bgBlack">
-		<div class="dividerSmall"></div>
-		<div class="clearfix"></div>
-		<!-- /Botón MAPS -->
-
-		<div class="botonDesPublicar " style="display: none;">
-			<a href="#" data-toggle="modal" data-target="#myModalMaps"
-				class="col-xs-12 col-sm-6 col-sm-offset-3 col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3 btn btn-default btn-outline navEditor">
-				<img width="30" height="30" alt="Infomovil"
-				src="<c:url value="/resources/webapp/images/icn_marc_maps.png"/>" />
-				<span id="idOpcionUbicacion">Coloca tu ubicación</span> <br />
-			<span id="direccionMap" class="directionMap"></span>
-			</a>
-		</div>
-
-		<div class="clearfix"></div>
-		<div class="dividerSmallest"></div>
-
-		<!-- Botón IMAGENES -->
-
-		<div class="botonDesPublicar" style="display: none;">
-			<a href="#" onclick="getImagenesJQ()"
-				class="col-xs-12 col-sm-6 col-sm-offset-3 col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3 btn btn-default btn-outline navEditor">
-				<img width="30" height="30" alt="Infomovil"
-				src="<c:url value="/resources/webapp/images/ico_img.png"/>" /> <span
-				id="idOpcionUbicacion">Agrega imágenes</span> <br />
-			<span id="direccionMap" class="directionMap"></span>
-			</a>
-		</div>
-		<!-- /Botón IMAGENES -->
-
-		<!-- /Botón Nuevo Estilo -->
-
-		<div class="clearfix"></div>
-		<div class="dividerSmallest"></div>
-		<!-- /Botón AGREGAR VIDEO -->
-		<div id="idBtnVideo" class="botonDesPublicarVid"
-			style="display: none;">
-			<a href="#" data-toggle="modal" data-target="#myModalVideo"
-				class="col-xs-12 col-sm-6 col-sm-offset-3 col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3 btn btn-default btn-outline navEditor">
-				<img width="30" height="30" alt="Infomovil"
-				src="<c:url value="/resources/webapp/images/ico_ppp_youtube.png"/>" />
-				<span id="idOpcionVideo">Agrega un video</span>
-			</a>
-		</div>
-		<!-- /Botón AGREGAR VIDEO -->
-		<div id="idBtnVideoClearFix" class="clearfix" style="display: none;"></div>
-		<div id="idBtnVideoDivider" class="dividerSmallest"
-			style="display: none;"></div>
-
-		<!-- /Botón AGREGAR MAS CONTENIDO -->
-		<div id="idBtnMasCont" class="botonDesPublicar" style="display: none;">
-			<a href="#" data-toggle="modal" data-target="#myModalDescApp"
-				class="col-xs-12 col-sm-6 col-sm-offset-3 col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3 btn btn-default btn-outline navEditor">
-				<img width="30" height="30" alt="Infomovil"
-				src="<c:url value="/resources/webapp/images/ico_mas_cont.png"/>" />
-				<span id="idOpcionMasCont">¿Qué sigue?</span>
-			</a>
-		</div>
-		<!-- /Botón AGREGAR MAS CONTENIDO -->
-
-		<div class="clearfix"></div>
-		<div class="dividerSmallest"></div>
-
 		<c:if test="${sitioWeb =='SIN_PUBLICAR'}">
-
 			<tiles:insertDefinition name="formPublicar">
 				<tiles:putAttribute name="urlEjemploSitio"
 					value="${ urlEjemploSitio }" />
@@ -312,23 +365,19 @@
 				<tiles:putAttribute name="visibleTel" value="${ visibleTel }" />
 			</tiles:insertDefinition>
 		</c:if>
-
 	</footer>
 	<!--/Footer-->
-
 	<!--MODAL TEMPLATES-->
 	<div id="modalTemplates"></div>
 	<!--/MODAL TEMPLATES-->
-
-	<!--MODAL MAPA-->
+	<!--MODAL CONFIRMACIÓN DATOS-->
 	<tiles:insertDefinition name="modalGen">
-		<tiles:putAttribute name="idModal" value="myModalMaps" />
+		<tiles:putAttribute name="idModal" value="myModalConfDatos" />
 		<tiles:putAttribute name="tamanioModal"
 			value='"modal-dialog modal-lg"' />
-		<c:set var="fragmentName" value="modalMapFragment" scope="request" />
+		<c:set var="fragmentName" value="modalConfDatos" scope="request" />
 	</tiles:insertDefinition>
-	<!--/MODAL MAPA-->
-
+	<!--/MODAL CONFIRMACIÓN DATOS-->
 	<!--MODAL VIDEO-->
 	<tiles:insertDefinition name="modalGen">
 		<tiles:putAttribute name="idModal" value="myModalVideo" />
@@ -337,7 +386,6 @@
 		<c:set var="fragmentName" value="modalVideoFragment" scope="request" />
 	</tiles:insertDefinition>
 	<!--/MODAL VIDEO-->
-
 	<!--MODAL EXITO-->
 	<tiles:insertDefinition name="modalGen">
 		<tiles:putAttribute name="idModal" value="myModalExito" />
@@ -346,7 +394,6 @@
 		<c:set var="fragmentName" value="modalExitoFragment" scope="request" />
 	</tiles:insertDefinition>
 	<!--/MODAL EXITO-->
-
 	<!-- 		<!--MODAL FAIL-->
 	<tiles:insertDefinition name="modalGen">
 		<tiles:putAttribute name="idModal" value="myModalFallo" />
@@ -355,7 +402,6 @@
 		<c:set var="fragmentName" value="modalFalloFragment" scope="request" />
 	</tiles:insertDefinition>
 	<!-- 		<!--/MODAL FAIL-->
-
 	<!-- 		<!--MODAL REGISTRO-->
 	<tiles:insertDefinition name="modalGen">
 		<tiles:putAttribute name="idModal" value="myModalRegistro" />
@@ -365,7 +411,6 @@
 			scope="request" />
 	</tiles:insertDefinition>
 	<!-- 		<!--/MODAL REGISTRO-->
-
 	<!-- 		<!--MODAL DESCARGA LA APP-->
 	<tiles:insertDefinition name="modalGen">
 		<tiles:putAttribute name="idModal" value="myModalDescApp" />
@@ -374,7 +419,6 @@
 		<c:set var="fragmentName" value="modalDescApp" scope="request" />
 	</tiles:insertDefinition>
 	<!-- 		<!--/MODAL DESCARGA LA APP-->
-
 	<!-- 		<!--MODAL IMAGENES-->
 	<tiles:insertDefinition name="modalGen">
 		<tiles:putAttribute name="idModal" value="myModalImagenes" />
@@ -392,7 +436,6 @@
 			src="http://landing.infomovil.com/webapp/templates/${ template }/images/fa-chevron-up.png" />Subir
 		</a>
 	</div>
-
 	<!-- /container -->
 	<form id="publicarDominio"
 		action="<c:url value="/infomovil/publicarSitio"/>" method="post">
@@ -400,7 +443,6 @@
 		<input type="hidden" id="tipoDominio" name="tipoDominio"> <input
 			type="hidden" id="idCatTipoRecurso" name="idCatTipoRecurso">
 	</form>
-
 	<input type="hidden" id="plantilla" name="plantilla"
 		<c:if test="${not empty template}"> value = "${ template }" </c:if>>
 	<input type="hidden" id="latitud" name="latitud" value="${ latitud }">
@@ -443,7 +485,7 @@
 
 	<script src="<c:url value="/resources/webapp/js/jquery.numeric.js"/>"></script>
 	<script src="<c:url value="/resources/webapp/js/jquery.blockUI.js"/>"></script>
-	<script src="<c:url value="/resources/js/webapp/validaciones.js"/>"></script>
+	<%-- 	<script src="<c:url value="/resources/js/webapp/validaciones.js"/>"></script> --%>
 	<script src="<c:url value="/resources/js/webapp/mapa.js"/>"></script>
 	<script src="<c:url value="/resources/js/webapp/videoYoutube.js"/>"></script>
 	<script src="<c:url value="/resources/js/webapp/imagenes.js"/>"></script>

@@ -278,14 +278,14 @@
 				<config.profile>DEV</config.profile>
 			</properties>
 
-			<activation>
-				<activeByDefault>true</activeByDefault>
-			</activation>	
+			
 		</profile>
 		<profile>
 			<id>qa</id>		
 
-
+			<activation>
+				<activeByDefault>true</activeByDefault>
+			</activation>	
 			<properties>
 				<config.profile>QA</config.profile>
 			</properties>	
