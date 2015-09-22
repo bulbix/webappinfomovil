@@ -7,9 +7,9 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java class for crearSitio_insertImage complex type.
+ * <p>Clase Java para crearSitio_insertImage complex type.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * <p>El siguiente fragmento de esquema especifica el contenido que se espera que haya en esta clase.
  * 
  * <pre>
  * &lt;complexType name="crearSitio_insertImage">
@@ -43,7 +43,7 @@ public class CrearSitioInsertImage {
     protected String descImagen;
 
     /**
-     * Gets the value of the domainId property.
+     * Obtiene el valor de la propiedad domainId.
      * 
      * @return
      *     possible object is
@@ -55,7 +55,7 @@ public class CrearSitioInsertImage {
     }
 
     /**
-     * Sets the value of the domainId property.
+     * Define el valor de la propiedad domainId.
      * 
      * @param value
      *     allowed object is
@@ -67,7 +67,7 @@ public class CrearSitioInsertImage {
     }
 
     /**
-     * Gets the value of the baseImagen property.
+     * Obtiene el valor de la propiedad baseImagen.
      * 
      * @return
      *     possible object is
@@ -79,7 +79,7 @@ public class CrearSitioInsertImage {
     }
 
     /**
-     * Sets the value of the baseImagen property.
+     * Define el valor de la propiedad baseImagen.
      * 
      * @param value
      *     allowed object is
@@ -91,7 +91,7 @@ public class CrearSitioInsertImage {
     }
 
     /**
-     * Gets the value of the tipoImagen property.
+     * Obtiene el valor de la propiedad tipoImagen.
      * 
      * @return
      *     possible object is
@@ -103,7 +103,7 @@ public class CrearSitioInsertImage {
     }
 
     /**
-     * Sets the value of the tipoImagen property.
+     * Define el valor de la propiedad tipoImagen.
      * 
      * @param value
      *     allowed object is
@@ -115,7 +115,7 @@ public class CrearSitioInsertImage {
     }
 
     /**
-     * Gets the value of the descImagen property.
+     * Obtiene el valor de la propiedad descImagen.
      * 
      * @return
      *     possible object is
@@ -127,7 +127,7 @@ public class CrearSitioInsertImage {
     }
 
     /**
-     * Sets the value of the descImagen property.
+     * Define el valor de la propiedad descImagen.
      * 
      * @param value
      *     allowed object is

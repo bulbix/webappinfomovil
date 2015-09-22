@@ -7,9 +7,9 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java class for getExistUser complex type.
+ * <p>Clase Java para getExistUser complex type.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * <p>El siguiente fragmento de esquema especifica el contenido que se espera que haya en esta clase.
  * 
  * <pre>
  * &lt;complexType name="getExistUser">
@@ -34,7 +34,7 @@ public class GetExistUser {
     protected String userName;
 
     /**
-     * Gets the value of the userName property.
+     * Obtiene el valor de la propiedad userName.
      * 
      * @return
      *     possible object is
@@ -46,7 +46,7 @@ public class GetExistUser {
     }
 
     /**
-     * Sets the value of the userName property.
+     * Define el valor de la propiedad userName.
      * 
      * @param value
      *     allowed object is

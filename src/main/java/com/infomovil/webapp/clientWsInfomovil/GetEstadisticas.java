@@ -10,9 +10,9 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java class for getEstadisticas complex type.
+ * <p>Clase Java para getEstadisticas complex type.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * <p>El siguiente fragmento de esquema especifica el contenido que se espera que haya en esta clase.
  * 
  * <pre>
  * &lt;complexType name="getEstadisticas">
@@ -45,7 +45,7 @@ public class GetEstadisticas {
     protected String token;
 
     /**
-     * Gets the value of the domain property.
+     * Obtiene el valor de la propiedad domain.
      * 
      * @return
      *     possible object is
@@ -57,7 +57,7 @@ public class GetEstadisticas {
     }
 
     /**
-     * Sets the value of the domain property.
+     * Define el valor de la propiedad domain.
      * 
      * @param value
      *     allowed object is
@@ -98,7 +98,7 @@ public class GetEstadisticas {
     }
 
     /**
-     * Gets the value of the token property.
+     * Obtiene el valor de la propiedad token.
      * 
      * @return
      *     possible object is
@@ -110,7 +110,7 @@ public class GetEstadisticas {
     }
 
     /**
-     * Sets the value of the token property.
+     * Define el valor de la propiedad token.
      * 
      * @param value
      *     allowed object is

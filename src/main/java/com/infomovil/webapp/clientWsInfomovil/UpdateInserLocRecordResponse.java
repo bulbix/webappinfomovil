@@ -8,9 +8,9 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java class for updateInserLocRecordResponse complex type.
+ * <p>Clase Java para updateInserLocRecordResponse complex type.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * <p>El siguiente fragmento de esquema especifica el contenido que se espera que haya en esta clase.
  * 
  * <pre>
  * &lt;complexType name="updateInserLocRecordResponse">
@@ -36,7 +36,7 @@ public class UpdateInserLocRecordResponse {
     protected RespuestaVO respuestaVO;
 
     /**
-     * Gets the value of the respuestaVO property.
+     * Obtiene el valor de la propiedad respuestaVO.
      * 
      * @return
      *     possible object is
@@ -48,7 +48,7 @@ public class UpdateInserLocRecordResponse {
     }
 
     /**
-     * Sets the value of the respuestaVO property.
+     * Define el valor de la propiedad respuestaVO.
      * 
      * @param value
      *     allowed object is

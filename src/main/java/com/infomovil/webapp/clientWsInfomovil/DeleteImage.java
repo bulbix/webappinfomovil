@@ -7,9 +7,9 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java class for deleteImage complex type.
+ * <p>Clase Java para deleteImage complex type.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * <p>El siguiente fragmento de esquema especifica el contenido que se espera que haya en esta clase.
  * 
  * <pre>
  * &lt;complexType name="deleteImage">
@@ -40,7 +40,7 @@ public class DeleteImage {
     protected String token;
 
     /**
-     * Gets the value of the domainId property.
+     * Obtiene el valor de la propiedad domainId.
      * 
      * @return
      *     possible object is
@@ -52,7 +52,7 @@ public class DeleteImage {
     }
 
     /**
-     * Sets the value of the domainId property.
+     * Define el valor de la propiedad domainId.
      * 
      * @param value
      *     allowed object is
@@ -64,7 +64,7 @@ public class DeleteImage {
     }
 
     /**
-     * Gets the value of the imageId property.
+     * Obtiene el valor de la propiedad imageId.
      * 
      * @return
      *     possible object is
@@ -76,7 +76,7 @@ public class DeleteImage {
     }
 
     /**
-     * Sets the value of the imageId property.
+     * Define el valor de la propiedad imageId.
      * 
      * @param value
      *     allowed object is
@@ -88,7 +88,7 @@ public class DeleteImage {
     }
 
     /**
-     * Gets the value of the token property.
+     * Obtiene el valor de la propiedad token.
      * 
      * @return
      *     possible object is
@@ -100,7 +100,7 @@ public class DeleteImage {
     }
 
     /**
-     * Sets the value of the token property.
+     * Define el valor de la propiedad token.
      * 
      * @param value
      *     allowed object is

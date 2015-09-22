@@ -2,6 +2,7 @@ package com.infomovil.webapp.clientWsInfomovil;
 
 import static org.junit.Assert.*;
 
+import java.util.Date;
 import java.util.List;
 
 import org.junit.After;
@@ -140,4 +141,18 @@ public class ClientWsInfomovilTest {
 		assertNotNull(resp);
 	}
 	*/
+	
+	@Test
+	public void testCrearSitioIntentoPago() {
+		RespuestaVO resp = clientWsInfomovil.crearSitioIntentoPago("rambo1@mail.com", "garbage1", "DOMINIO TEL", "PAY PAL", "TEL", "DOMINIO_TEL");
+		assertNotNull(resp);
+		System.out.println(resp);
+	}
+	
+	@Test
+	public void testGetProductosUsuario() {
+		RespuestaVO resp = clientWsInfomovil.crearSitioGetProductosUsuario("rambo1@mail.com", "garbage1");
+		assertNotNull(resp);
+		System.out.println("Tamanio de lista " + resp.getListProductoUsuarioVO().size());
+	}
 }

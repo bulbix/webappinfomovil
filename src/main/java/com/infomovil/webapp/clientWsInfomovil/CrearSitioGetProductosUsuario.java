@@ -3,21 +3,22 @@ package com.infomovil.webapp.clientWsInfomovil;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Clase Java para deleteVideo complex type.
+ * <p>Clase Java para crearSitio_getProductosUsuario complex type.
  * 
  * <p>El siguiente fragmento de esquema especifica el contenido que se espera que haya en esta clase.
  * 
  * <pre>
- * &lt;complexType name="deleteVideo">
+ * &lt;complexType name="crearSitio_getProductosUsuario">
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element name="idDomain" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
- *         &lt;element name="token" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *         &lt;element name="email" type="{http://www.w3.org/2001/XMLSchema}string"/>
+ *         &lt;element name="password" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -27,61 +28,62 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "deleteVideo", propOrder = {
-    "idDomain",
-    "token"
+@XmlType(name = "crearSitio_getProductosUsuario", propOrder = {
+    "email",
+    "password"
 })
-public class DeleteVideo {
+public class CrearSitioGetProductosUsuario {
 
-    protected String idDomain;
-    protected String token;
+    @XmlElement(required = true)
+    protected String email;
+    protected String password;
 
     /**
-     * Obtiene el valor de la propiedad idDomain.
+     * Obtiene el valor de la propiedad email.
      * 
      * @return
      *     possible object is
      *     {@link String }
      *     
      */
-    public String getIdDomain() {
-        return idDomain;
+    public String getEmail() {
+        return email;
     }
 
     /**
-     * Define el valor de la propiedad idDomain.
+     * Define el valor de la propiedad email.
      * 
      * @param value
      *     allowed object is
      *     {@link String }
      *     
      */
-    public void setIdDomain(String value) {
-        this.idDomain = value;
+    public void setEmail(String value) {
+        this.email = value;
     }
 
     /**
-     * Obtiene el valor de la propiedad token.
+     * Obtiene el valor de la propiedad password.
      * 
      * @return
      *     possible object is
      *     {@link String }
      *     
      */
-    public String getToken() {
-        return token;
+    public String getPassword() {
+        return password;
     }
 
     /**
-     * Define el valor de la propiedad token.
+     * Define el valor de la propiedad password.
      * 
      * @param value
      *     allowed object is
      *     {@link String }
      *     
      */
-    public void setToken(String value) {
-        this.token = value;
+    public void setPassword(String value) {
+        this.password = value;
     }
 
 }

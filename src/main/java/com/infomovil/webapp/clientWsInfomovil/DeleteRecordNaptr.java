@@ -7,9 +7,9 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java class for deleteRecordNaptr complex type.
+ * <p>Clase Java para deleteRecordNaptr complex type.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * <p>El siguiente fragmento de esquema especifica el contenido que se espera que haya en esta clase.
  * 
  * <pre>
  * &lt;complexType name="deleteRecordNaptr">
@@ -40,7 +40,7 @@ public class DeleteRecordNaptr {
     protected String token;
 
     /**
-     * Gets the value of the idDomain property.
+     * Obtiene el valor de la propiedad idDomain.
      * 
      * @return
      *     possible object is
@@ -52,7 +52,7 @@ public class DeleteRecordNaptr {
     }
 
     /**
-     * Sets the value of the idDomain property.
+     * Define el valor de la propiedad idDomain.
      * 
      * @param value
      *     allowed object is
@@ -64,7 +64,7 @@ public class DeleteRecordNaptr {
     }
 
     /**
-     * Gets the value of the naptrId property.
+     * Obtiene el valor de la propiedad naptrId.
      * 
      * @return
      *     possible object is
@@ -76,7 +76,7 @@ public class DeleteRecordNaptr {
     }
 
     /**
-     * Sets the value of the naptrId property.
+     * Define el valor de la propiedad naptrId.
      * 
      * @param value
      *     allowed object is
@@ -88,7 +88,7 @@ public class DeleteRecordNaptr {
     }
 
     /**
-     * Gets the value of the token property.
+     * Obtiene el valor de la propiedad token.
      * 
      * @return
      *     possible object is
@@ -100,7 +100,7 @@ public class DeleteRecordNaptr {
     }
 
     /**
-     * Sets the value of the token property.
+     * Define el valor de la propiedad token.
      * 
      * @param value
      *     allowed object is

@@ -8,9 +8,9 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java class for statusDominioResponse complex type.
+ * <p>Clase Java para statusDominioResponse complex type.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * <p>El siguiente fragmento de esquema especifica el contenido que se espera que haya en esta clase.
  * 
  * <pre>
  * &lt;complexType name="statusDominioResponse">
@@ -36,7 +36,7 @@ public class StatusDominioResponse {
     protected DominioVO dominioVO;
 
     /**
-     * Gets the value of the dominioVO property.
+     * Obtiene el valor de la propiedad dominioVO.
      * 
      * @return
      *     possible object is
@@ -48,7 +48,7 @@ public class StatusDominioResponse {
     }
 
     /**
-     * Sets the value of the dominioVO property.
+     * Define el valor de la propiedad dominioVO.
      * 
      * @param value
      *     allowed object is
