@@ -13,19 +13,19 @@
   <div class="form-group">
     <label for="inputEmail3" class="col-sm-2 control-label text-left">Nombre</label>
     <div class="col-xs-12 col-sm-10">
-      <input type="text" class="form-control" id="inputEmail3" placeholder="Elizabeth Basurto">
-    </div>
+      <input type="text" class="form-control" id="inputEmail3" placeholder="" value="" id="nombreUser"/>
+    </div>           
   </div>
   <div class="form-group">
     <label for="inputPassword3" class="col-sm-2 control-label text-left">Dirección</label>
     <div class="col-xs-12  col-sm-10">
-      <input type="text" class="form-control" id="inputPassword3" placeholder="Zamora 187">
+      <input type="text" class="form-control" id="inputPassword3" placeholder="" id="direccionUser">
     </div>
   </div>
   <div class="form-group">
     <label for="inputPassword3" class="col-sm-2 control-label text-left">Correo</label>
     <div class="col-xs-12  col-sm-10">
-      <input type="email" class="form-control" id="inputPassword3" placeholder="biblos01@gmail.com">
+      <input type="email" class="form-control" id="inputPassword3" placeholder="" id="emailUser">
     </div>
   </div>
   
@@ -35,13 +35,14 @@
      <select><option>México</option></select>
     </div>
   </div>
-  <div class="dividerSmall"></div>
+  <div class="dividerSmall" align="center">Datos incompletos por favor ingresalos!</div>
+  
   <div class="container"><hr/></div>
   <h5 style="color:#2fa399">Renovación de dominio </h5>
   <div class="form-group">
     <label for="inputEmail3" class="col-sm-2 control-label text-left">Dominio</label>
     <div class="col-xs-12 col-sm-10">
-       <label class="col-sm-2 control-label text-left" style="font-weight:300;">www.mipagina.tel</label> 
+       <label class="col-sm-2 control-label text-left" style="font-weight:300;">${sitioWeb}</label> 
     </div>
   </div>
  <div class="form-group">
@@ -62,8 +63,9 @@
   
   <div class="form-group">
     <div class="col-xs-12">
-      <button type="submit" class="btn btn-default pull-right"> <img  alt="Infomovil"
-					src="<c:url value="/resources/webapp/images/btn_buyPayPayl.gif"/>" /></button>
+      <button class="btn btn-default pull-right" id="btnPagoPaypal"> <img  alt="Infomovil"
+					src="<c:url value="/resources/webapp/images/btn_buyPayPayl.gif"/>" />
+	  </button>
     </div>
   </div>
 </form>
