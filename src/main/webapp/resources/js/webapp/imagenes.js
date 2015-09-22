@@ -498,7 +498,9 @@ function convertImgToBase64F(url, callback, outputFormat)
 	img.onload = function() {
 		var canvas = document.createElement('CANVAS');
 		var ctx = canvas.getContext('2d');
+
 		var targetWidth = 500;
+
 		var ratio = (targetWidth > this.width) ? 1 : targetWidth / this.width ;
 		canvas.height = this.height * ratio;
 		canvas.width = this.width * ratio;
