@@ -7,9 +7,9 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java class for usuarioDominiosVO complex type.
+ * <p>Clase Java para usuarioDominiosVO complex type.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * <p>El siguiente fragmento de esquema especifica el contenido que se espera que haya en esta clase.
  * 
  * <pre>
  * &lt;complexType name="usuarioDominiosVO">
@@ -61,7 +61,7 @@ public class UsuarioDominiosVO {
     protected String urlSitio;
 
     /**
-     * Gets the value of the idDomain property.
+     * Obtiene el valor de la propiedad idDomain.
      * 
      * @return
      *     possible object is
@@ -73,7 +73,7 @@ public class UsuarioDominiosVO {
     }
 
     /**
-     * Sets the value of the idDomain property.
+     * Define el valor de la propiedad idDomain.
      * 
      * @param value
      *     allowed object is
@@ -85,7 +85,7 @@ public class UsuarioDominiosVO {
     }
 
     /**
-     * Gets the value of the idCtrlDomain property.
+     * Obtiene el valor de la propiedad idCtrlDomain.
      * 
      * @return
      *     possible object is
@@ -97,7 +97,7 @@ public class UsuarioDominiosVO {
     }
 
     /**
-     * Sets the value of the idCtrlDomain property.
+     * Define el valor de la propiedad idCtrlDomain.
      * 
      * @param value
      *     allowed object is
@@ -109,7 +109,7 @@ public class UsuarioDominiosVO {
     }
 
     /**
-     * Gets the value of the domainCtrlName property.
+     * Obtiene el valor de la propiedad domainCtrlName.
      * 
      * @return
      *     possible object is
@@ -121,7 +121,7 @@ public class UsuarioDominiosVO {
     }
 
     /**
-     * Sets the value of the domainCtrlName property.
+     * Define el valor de la propiedad domainCtrlName.
      * 
      * @param value
      *     allowed object is
@@ -133,7 +133,7 @@ public class UsuarioDominiosVO {
     }
 
     /**
-     * Gets the value of the domainType property.
+     * Obtiene el valor de la propiedad domainType.
      * 
      * @return
      *     possible object is
@@ -145,7 +145,7 @@ public class UsuarioDominiosVO {
     }
 
     /**
-     * Sets the value of the domainType property.
+     * Define el valor de la propiedad domainType.
      * 
      * @param value
      *     allowed object is
@@ -157,7 +157,7 @@ public class UsuarioDominiosVO {
     }
 
     /**
-     * Gets the value of the statusCtrlDominio property.
+     * Obtiene el valor de la propiedad statusCtrlDominio.
      * 
      * @return
      *     possible object is
@@ -169,7 +169,7 @@ public class UsuarioDominiosVO {
     }
 
     /**
-     * Sets the value of the statusCtrlDominio property.
+     * Define el valor de la propiedad statusCtrlDominio.
      * 
      * @param value
      *     allowed object is
@@ -181,7 +181,7 @@ public class UsuarioDominiosVO {
     }
 
     /**
-     * Gets the value of the statusVisible property.
+     * Obtiene el valor de la propiedad statusVisible.
      * 
      * @return
      *     possible object is
@@ -193,7 +193,7 @@ public class UsuarioDominiosVO {
     }
 
     /**
-     * Sets the value of the statusVisible property.
+     * Define el valor de la propiedad statusVisible.
      * 
      * @param value
      *     allowed object is
@@ -205,7 +205,7 @@ public class UsuarioDominiosVO {
     }
 
     /**
-     * Gets the value of the fechaCtrlIni property.
+     * Obtiene el valor de la propiedad fechaCtrlIni.
      * 
      * @return
      *     possible object is
@@ -217,7 +217,7 @@ public class UsuarioDominiosVO {
     }
 
     /**
-     * Sets the value of the fechaCtrlIni property.
+     * Define el valor de la propiedad fechaCtrlIni.
      * 
      * @param value
      *     allowed object is
@@ -229,7 +229,7 @@ public class UsuarioDominiosVO {
     }
 
     /**
-     * Gets the value of the fechaCtrlFin property.
+     * Obtiene el valor de la propiedad fechaCtrlFin.
      * 
      * @return
      *     possible object is
@@ -241,7 +241,7 @@ public class UsuarioDominiosVO {
     }
 
     /**
-     * Sets the value of the fechaCtrlFin property.
+     * Define el valor de la propiedad fechaCtrlFin.
      * 
      * @param value
      *     allowed object is
@@ -253,7 +253,7 @@ public class UsuarioDominiosVO {
     }
 
     /**
-     * Gets the value of the vigente property.
+     * Obtiene el valor de la propiedad vigente.
      * 
      * @return
      *     possible object is
@@ -265,7 +265,7 @@ public class UsuarioDominiosVO {
     }
 
     /**
-     * Sets the value of the vigente property.
+     * Define el valor de la propiedad vigente.
      * 
      * @param value
      *     allowed object is
@@ -277,7 +277,7 @@ public class UsuarioDominiosVO {
     }
 
     /**
-     * Gets the value of the urlSitio property.
+     * Obtiene el valor de la propiedad urlSitio.
      * 
      * @return
      *     possible object is
@@ -289,7 +289,7 @@ public class UsuarioDominiosVO {
     }
 
     /**
-     * Sets the value of the urlSitio property.
+     * Define el valor de la propiedad urlSitio.
      * 
      * @param value
      *     allowed object is

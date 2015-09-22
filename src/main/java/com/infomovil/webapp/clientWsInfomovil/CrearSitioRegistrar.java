@@ -8,9 +8,9 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java class for crearSitio_registrar complex type.
+ * <p>Clase Java para crearSitio_registrar complex type.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * <p>El siguiente fragmento de esquema especifica el contenido que se espera que haya en esta clase.
  * 
  * <pre>
  * &lt;complexType name="crearSitio_registrar">
@@ -48,7 +48,7 @@ public class CrearSitioRegistrar {
     protected String tipoRegistro;
 
     /**
-     * Gets the value of the email property.
+     * Obtiene el valor de la propiedad email.
      * 
      * @return
      *     possible object is
@@ -60,7 +60,7 @@ public class CrearSitioRegistrar {
     }
 
     /**
-     * Sets the value of the email property.
+     * Define el valor de la propiedad email.
      * 
      * @param value
      *     allowed object is
@@ -72,7 +72,7 @@ public class CrearSitioRegistrar {
     }
 
     /**
-     * Gets the value of the password property.
+     * Obtiene el valor de la propiedad password.
      * 
      * @return
      *     possible object is
@@ -84,7 +84,7 @@ public class CrearSitioRegistrar {
     }
 
     /**
-     * Sets the value of the password property.
+     * Define el valor de la propiedad password.
      * 
      * @param value
      *     allowed object is
@@ -96,7 +96,7 @@ public class CrearSitioRegistrar {
     }
 
     /**
-     * Gets the value of the codigo property.
+     * Obtiene el valor de la propiedad codigo.
      * 
      * @return
      *     possible object is
@@ -108,7 +108,7 @@ public class CrearSitioRegistrar {
     }
 
     /**
-     * Sets the value of the codigo property.
+     * Define el valor de la propiedad codigo.
      * 
      * @param value
      *     allowed object is
@@ -120,7 +120,7 @@ public class CrearSitioRegistrar {
     }
 
     /**
-     * Gets the value of the nombreUsuario property.
+     * Obtiene el valor de la propiedad nombreUsuario.
      * 
      * @return
      *     possible object is
@@ -132,7 +132,7 @@ public class CrearSitioRegistrar {
     }
 
     /**
-     * Sets the value of the nombreUsuario property.
+     * Define el valor de la propiedad nombreUsuario.
      * 
      * @param value
      *     allowed object is
@@ -144,7 +144,7 @@ public class CrearSitioRegistrar {
     }
 
     /**
-     * Gets the value of the tipoRegistro property.
+     * Obtiene el valor de la propiedad tipoRegistro.
      * 
      * @return
      *     possible object is
@@ -156,7 +156,7 @@ public class CrearSitioRegistrar {
     }
 
     /**
-     * Sets the value of the tipoRegistro property.
+     * Define el valor de la propiedad tipoRegistro.
      * 
      * @param value
      *     allowed object is

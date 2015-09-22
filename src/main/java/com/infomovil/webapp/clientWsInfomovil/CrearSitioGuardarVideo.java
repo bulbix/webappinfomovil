@@ -8,9 +8,9 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java class for crearSitio_guardarVideo complex type.
+ * <p>Clase Java para crearSitio_guardarVideo complex type.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * <p>El siguiente fragmento de esquema especifica el contenido que se espera que haya en esta clase.
  * 
  * <pre>
  * &lt;complexType name="crearSitio_guardarVideo">
@@ -42,7 +42,7 @@ public class CrearSitioGuardarVideo {
     protected String urlVideo;
 
     /**
-     * Gets the value of the email property.
+     * Obtiene el valor de la propiedad email.
      * 
      * @return
      *     possible object is
@@ -54,7 +54,7 @@ public class CrearSitioGuardarVideo {
     }
 
     /**
-     * Sets the value of the email property.
+     * Define el valor de la propiedad email.
      * 
      * @param value
      *     allowed object is
@@ -66,7 +66,7 @@ public class CrearSitioGuardarVideo {
     }
 
     /**
-     * Gets the value of the password property.
+     * Obtiene el valor de la propiedad password.
      * 
      * @return
      *     possible object is
@@ -78,7 +78,7 @@ public class CrearSitioGuardarVideo {
     }
 
     /**
-     * Sets the value of the password property.
+     * Define el valor de la propiedad password.
      * 
      * @param value
      *     allowed object is
@@ -90,7 +90,7 @@ public class CrearSitioGuardarVideo {
     }
 
     /**
-     * Gets the value of the urlVideo property.
+     * Obtiene el valor de la propiedad urlVideo.
      * 
      * @return
      *     possible object is
@@ -102,7 +102,7 @@ public class CrearSitioGuardarVideo {
     }
 
     /**
-     * Sets the value of the urlVideo property.
+     * Define el valor de la propiedad urlVideo.
      * 
      * @param value
      *     allowed object is

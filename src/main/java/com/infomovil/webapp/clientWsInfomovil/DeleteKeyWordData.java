@@ -7,9 +7,9 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java class for deleteKeyWordData complex type.
+ * <p>Clase Java para deleteKeyWordData complex type.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * <p>El siguiente fragmento de esquema especifica el contenido que se espera que haya en esta clase.
  * 
  * <pre>
  * &lt;complexType name="deleteKeyWordData">
@@ -40,7 +40,7 @@ public class DeleteKeyWordData {
     protected String token;
 
     /**
-     * Gets the value of the idDomain property.
+     * Obtiene el valor de la propiedad idDomain.
      * 
      * @return
      *     possible object is
@@ -52,7 +52,7 @@ public class DeleteKeyWordData {
     }
 
     /**
-     * Sets the value of the idDomain property.
+     * Define el valor de la propiedad idDomain.
      * 
      * @param value
      *     allowed object is
@@ -64,7 +64,7 @@ public class DeleteKeyWordData {
     }
 
     /**
-     * Gets the value of the keywordId property.
+     * Obtiene el valor de la propiedad keywordId.
      * 
      * @return
      *     possible object is
@@ -76,7 +76,7 @@ public class DeleteKeyWordData {
     }
 
     /**
-     * Sets the value of the keywordId property.
+     * Define el valor de la propiedad keywordId.
      * 
      * @param value
      *     allowed object is
@@ -88,7 +88,7 @@ public class DeleteKeyWordData {
     }
 
     /**
-     * Gets the value of the token property.
+     * Obtiene el valor de la propiedad token.
      * 
      * @return
      *     possible object is
@@ -100,7 +100,7 @@ public class DeleteKeyWordData {
     }
 
     /**
-     * Sets the value of the token property.
+     * Define el valor de la propiedad token.
      * 
      * @param value
      *     allowed object is

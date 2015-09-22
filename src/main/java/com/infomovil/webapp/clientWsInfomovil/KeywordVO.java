@@ -7,9 +7,9 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java class for keywordVO complex type.
+ * <p>Clase Java para keywordVO complex type.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * <p>El siguiente fragmento de esquema especifica el contenido que se espera que haya en esta clase.
  * 
  * <pre>
  * &lt;complexType name="keywordVO">
@@ -46,7 +46,7 @@ public class KeywordVO {
     protected String typeKeyword;
 
     /**
-     * Gets the value of the keywordField property.
+     * Obtiene el valor de la propiedad keywordField.
      * 
      * @return
      *     possible object is
@@ -58,7 +58,7 @@ public class KeywordVO {
     }
 
     /**
-     * Sets the value of the keywordField property.
+     * Define el valor de la propiedad keywordField.
      * 
      * @param value
      *     allowed object is
@@ -70,7 +70,7 @@ public class KeywordVO {
     }
 
     /**
-     * Gets the value of the keywordValue property.
+     * Obtiene el valor de la propiedad keywordValue.
      * 
      * @return
      *     possible object is
@@ -82,7 +82,7 @@ public class KeywordVO {
     }
 
     /**
-     * Sets the value of the keywordValue property.
+     * Define el valor de la propiedad keywordValue.
      * 
      * @param value
      *     allowed object is
@@ -94,7 +94,7 @@ public class KeywordVO {
     }
 
     /**
-     * Gets the value of the keywordPos property.
+     * Obtiene el valor de la propiedad keywordPos.
      * 
      * @return
      *     possible object is
@@ -106,7 +106,7 @@ public class KeywordVO {
     }
 
     /**
-     * Sets the value of the keywordPos property.
+     * Define el valor de la propiedad keywordPos.
      * 
      * @param value
      *     allowed object is
@@ -118,7 +118,7 @@ public class KeywordVO {
     }
 
     /**
-     * Gets the value of the idKeyword property.
+     * Obtiene el valor de la propiedad idKeyword.
      * 
      * @return
      *     possible object is
@@ -130,7 +130,7 @@ public class KeywordVO {
     }
 
     /**
-     * Sets the value of the idKeyword property.
+     * Define el valor de la propiedad idKeyword.
      * 
      * @param value
      *     allowed object is
@@ -142,7 +142,7 @@ public class KeywordVO {
     }
 
     /**
-     * Gets the value of the typeKeyword property.
+     * Obtiene el valor de la propiedad typeKeyword.
      * 
      * @return
      *     possible object is
@@ -154,7 +154,7 @@ public class KeywordVO {
     }
 
     /**
-     * Sets the value of the typeKeyword property.
+     * Define el valor de la propiedad typeKeyword.
      * 
      * @param value
      *     allowed object is

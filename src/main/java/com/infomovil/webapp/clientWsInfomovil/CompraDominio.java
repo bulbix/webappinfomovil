@@ -8,9 +8,9 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java class for compraDominio complex type.
+ * <p>Clase Java para compraDominio complex type.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * <p>El siguiente fragmento de esquema especifica el contenido que se espera que haya en esta clase.
  * 
  * <pre>
  * &lt;complexType name="compraDominio">
@@ -76,7 +76,7 @@ public class CompraDominio {
     protected String tipoCompra;
 
     /**
-     * Gets the value of the usuario property.
+     * Obtiene el valor de la propiedad usuario.
      * 
      * @return
      *     possible object is
@@ -88,7 +88,7 @@ public class CompraDominio {
     }
 
     /**
-     * Sets the value of the usuario property.
+     * Define el valor de la propiedad usuario.
      * 
      * @param value
      *     allowed object is
@@ -100,7 +100,7 @@ public class CompraDominio {
     }
 
     /**
-     * Gets the value of the dominio property.
+     * Obtiene el valor de la propiedad dominio.
      * 
      * @return
      *     possible object is
@@ -112,7 +112,7 @@ public class CompraDominio {
     }
 
     /**
-     * Sets the value of the dominio property.
+     * Define el valor de la propiedad dominio.
      * 
      * @param value
      *     allowed object is
@@ -124,7 +124,7 @@ public class CompraDominio {
     }
 
     /**
-     * Gets the value of the plan property.
+     * Obtiene el valor de la propiedad plan.
      * 
      * @return
      *     possible object is
@@ -136,7 +136,7 @@ public class CompraDominio {
     }
 
     /**
-     * Sets the value of the plan property.
+     * Define el valor de la propiedad plan.
      * 
      * @param value
      *     allowed object is
@@ -148,7 +148,7 @@ public class CompraDominio {
     }
 
     /**
-     * Gets the value of the medioPago property.
+     * Obtiene el valor de la propiedad medioPago.
      * 
      * @return
      *     possible object is
@@ -160,7 +160,7 @@ public class CompraDominio {
     }
 
     /**
-     * Sets the value of the medioPago property.
+     * Define el valor de la propiedad medioPago.
      * 
      * @param value
      *     allowed object is
@@ -172,7 +172,7 @@ public class CompraDominio {
     }
 
     /**
-     * Gets the value of the titulo property.
+     * Obtiene el valor de la propiedad titulo.
      * 
      * @return
      *     possible object is
@@ -184,7 +184,7 @@ public class CompraDominio {
     }
 
     /**
-     * Sets the value of the titulo property.
+     * Define el valor de la propiedad titulo.
      * 
      * @param value
      *     allowed object is
@@ -196,7 +196,7 @@ public class CompraDominio {
     }
 
     /**
-     * Gets the value of the comision property.
+     * Obtiene el valor de la propiedad comision.
      * 
      * @return
      *     possible object is
@@ -208,7 +208,7 @@ public class CompraDominio {
     }
 
     /**
-     * Sets the value of the comision property.
+     * Define el valor de la propiedad comision.
      * 
      * @param value
      *     allowed object is
@@ -220,7 +220,7 @@ public class CompraDominio {
     }
 
     /**
-     * Gets the value of the montoB property.
+     * Obtiene el valor de la propiedad montoB.
      * 
      * @return
      *     possible object is
@@ -232,7 +232,7 @@ public class CompraDominio {
     }
 
     /**
-     * Sets the value of the montoB property.
+     * Define el valor de la propiedad montoB.
      * 
      * @param value
      *     allowed object is
@@ -244,7 +244,7 @@ public class CompraDominio {
     }
 
     /**
-     * Gets the value of the pagoId property.
+     * Obtiene el valor de la propiedad pagoId.
      * 
      * @return
      *     possible object is
@@ -256,7 +256,7 @@ public class CompraDominio {
     }
 
     /**
-     * Sets the value of the pagoId property.
+     * Define el valor de la propiedad pagoId.
      * 
      * @param value
      *     allowed object is
@@ -268,7 +268,7 @@ public class CompraDominio {
     }
 
     /**
-     * Gets the value of the statusPago property.
+     * Obtiene el valor de la propiedad statusPago.
      * 
      * @return
      *     possible object is
@@ -280,7 +280,7 @@ public class CompraDominio {
     }
 
     /**
-     * Sets the value of the statusPago property.
+     * Define el valor de la propiedad statusPago.
      * 
      * @param value
      *     allowed object is
@@ -292,7 +292,7 @@ public class CompraDominio {
     }
 
     /**
-     * Gets the value of the codigoCobro property.
+     * Obtiene el valor de la propiedad codigoCobro.
      * 
      * @return
      *     possible object is
@@ -304,7 +304,7 @@ public class CompraDominio {
     }
 
     /**
-     * Sets the value of the codigoCobro property.
+     * Define el valor de la propiedad codigoCobro.
      * 
      * @param value
      *     allowed object is
@@ -316,7 +316,7 @@ public class CompraDominio {
     }
 
     /**
-     * Gets the value of the tipoCompra property.
+     * Obtiene el valor de la propiedad tipoCompra.
      * 
      * @return
      *     possible object is
@@ -328,7 +328,7 @@ public class CompraDominio {
     }
 
     /**
-     * Sets the value of the tipoCompra property.
+     * Define el valor de la propiedad tipoCompra.
      * 
      * @param value
      *     allowed object is

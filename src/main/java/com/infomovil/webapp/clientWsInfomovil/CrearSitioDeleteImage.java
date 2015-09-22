@@ -7,9 +7,9 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java class for crearSitio_deleteImage complex type.
+ * <p>Clase Java para crearSitio_deleteImage complex type.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * <p>El siguiente fragmento de esquema especifica el contenido que se espera que haya en esta clase.
  * 
  * <pre>
  * &lt;complexType name="crearSitio_deleteImage">
@@ -37,7 +37,7 @@ public class CrearSitioDeleteImage {
     protected String imageId;
 
     /**
-     * Gets the value of the domainId property.
+     * Obtiene el valor de la propiedad domainId.
      * 
      * @return
      *     possible object is
@@ -49,7 +49,7 @@ public class CrearSitioDeleteImage {
     }
 
     /**
-     * Sets the value of the domainId property.
+     * Define el valor de la propiedad domainId.
      * 
      * @param value
      *     allowed object is
@@ -61,7 +61,7 @@ public class CrearSitioDeleteImage {
     }
 
     /**
-     * Gets the value of the imageId property.
+     * Obtiene el valor de la propiedad imageId.
      * 
      * @return
      *     possible object is
@@ -73,7 +73,7 @@ public class CrearSitioDeleteImage {
     }
 
     /**
-     * Sets the value of the imageId property.
+     * Define el valor de la propiedad imageId.
      * 
      * @param value
      *     allowed object is
