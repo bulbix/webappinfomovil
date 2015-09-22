@@ -177,7 +177,9 @@
 						<strong></strong>
 						<div>
 						
-						<!-- Producto -->
+						<!-- Producto
+						Sí es un único item cambiar a <div class="col-xs-12 col-sm-6 col-sm-offset-3 col-md-6 col-lg-6 dBlock">
+						 -->
 							<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 dBlock">
 								<!-- CABECERA -->
 								<div class="prodHeader">
