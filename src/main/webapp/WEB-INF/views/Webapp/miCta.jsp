@@ -235,10 +235,10 @@
 									
 									<div class="col-xs-12 text-center">
 									<p style="padding:0; margin:0;">12 meses</p>
-										<h2 style="font-weight: 300; color: #2fa399; padding:0; margin:0 0 10px 0;">
+										<h3 style="font-weight: 300; color: #2fa399; padding:0; margin:0 0 10px 0;">
 											<sup>$</sup><span><strong>600.00</strong><span
 												style="font-size: .7em;"> mxn</span></span>
-										</h2>
+										</h3>
 <!-- 										<span style="font-size:.9em;"><em>Pago anual</em></span> -->
 									</div>
 									<div class="clearfix"></div>
@@ -291,10 +291,10 @@
 									<p style="padding:0; margin:0;"><select class="col-xs-12"><option>1 mes</option><option>12 meses</option></select></p>
 								<div class="clearfix"></div>
 									<div class="divider"></div>
-										<h2 style="font-weight: 300; color: #2fa399; padding:0; margin:0 0 10px 0;">
+										<h3 style="font-weight: 300; color: #2fa399; padding:0; margin:0 0 10px 0;">
 											<sup>$</sup><span><strong>50.00</strong><span
 												style="font-size: .7em;"> mxn</span></span>
-										</h2>
+										</h3>
 <!-- 										<span style="font-size:.9em;"><em>Pago anual</em></span> -->
 									</div>
 									<div class="clearfix"></div>

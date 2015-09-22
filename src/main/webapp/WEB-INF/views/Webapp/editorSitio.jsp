@@ -54,7 +54,7 @@
 							width="20" height="20" alt="Infomovil"
 							src="<c:url value="/resources/webapp/images/fa-templates${ extensionImg }.png"/>" />
 							Mi Estilo </a></li>
-					<li class="dropdown"><a href="#" class="dropdown-toggle"
+					<li class="dropdown"><a href="#" class="dropdown-toggle textWhite" 
 						data-toggle="dropdown" role="button" aria-haspopup="true"
 						aria-expanded="false"><img width="20" height="20"
 							alt="Infomovil"
