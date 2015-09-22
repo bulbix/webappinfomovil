@@ -9,8 +9,6 @@
 	<tiles:putAttribute name="template" value="${ template }" />
 </tiles:insertDefinition>
 
-
-
 <body role="document" data-spy="scroll" data-target=".navbar"
 	data-offset="75" id="page-top" >
 	<!-- Fixed navbar -->
@@ -40,68 +38,11 @@
 
 			</div>
 			<div id="navbar" class="navbar-collapse collapse text-right">
-				<ul class="nav navbar-nav navbar-right">
-<%-- 					<li><a href="<c:url value="/infomovil/miCuenta"></c:url>" class="smoothScroll ${colorTexto}"><img --%>
-<!-- 							width="20" height="20" alt="Infomovil" -->
-<%-- 							src="<c:url value="/resources/webapp/images/fa-user${ extensionImg }.png"/>" /> --%>
-<!-- 							Mi cuenta </a></li> -->
-							
+				<ul class="nav navbar-nav navbar-right">							
 							<li><a href="<c:url value="/infomovil/editarSitio"></c:url>" class="smoothScroll ${colorTexto}"><img
 							width="20" height="20" alt="Infomovil"
 							src="<c:url value="/resources/webapp/images/fa-back${ extensionImg }.png"/>" />
 							Editor </a></li>
-					<!-- 						<li> -->
-					<%-- 							<a href="#" class="smoothScroll ${colorTexto}">${usuarioLogueado} --%>
-					<%-- 							<img width="20" height="20" alt="Infomovil"	src="<c:url value="/resources/webapp/images/fa-user${ extensionImg }.png"/>" /></a> --%>
-					<!-- 						</li> -->
-<!-- 					<li><a href="#" data-toggle="modal" -->
-<%-- 						data-target="#myModalTemplates" class="smoothScroll ${colorTexto}"><img --%>
-<!-- 							width="20" height="20" alt="Infomovil" -->
-<%-- 							src="<c:url value="/resources/webapp/images/fa-templates${ extensionImg }.png"/>" /> --%>
-<!-- 							Mi Estilo </a></li> -->
-<!-- 					<li class="dropdown"><a href="#" class="dropdown-toggle" -->
-<!-- 						data-toggle="dropdown" role="button" aria-haspopup="true" -->
-<!-- 						aria-expanded="false"><img width="20" height="20" -->
-<!-- 							alt="Infomovil" -->
-<%-- 							src="<c:url value="/resources/webapp/images/fa-pencil${ extensionImg }.png"/>" />Mi --%>
-<!-- 							contenido <span class="caret"></span></a> -->
-<%-- 						<ul class="dropdown-menu navbar-${ claseCss } ${colorTexto}"> --%>
-<!-- 							<li class="botonDesPublicar" style="display: none;"><a -->
-<!-- 								href="#" data-toggle="modal" data-target="#myModalMaps" -->
-<%-- 								class="smoothScroll ${colorTexto}"><img width="20" --%>
-<!-- 									height="20" alt="Infomovil" -->
-<%-- 									src="<c:url value="/resources/webapp/images/icn_marc_maps${ extensionImg }.png"/>" /> --%>
-<!-- 									Ubicación </a></li> -->
-<!-- 							<li class="botonDesPublicarVid" id="btnVideoLi" -->
-<!-- 								style="display: none;"><a href="#" data-toggle="modal" -->
-<%-- 								data-target="#myModalVideo" class="smoothScroll ${colorTexto}"><img --%>
-<!-- 									width="20" height="20" alt="Infomovil" -->
-<%-- 									src="<c:url value="/resources/webapp/images/ico_ppp_youtube${ extensionImg }.png"/>" /> --%>
-<!-- 									Video </a></li> -->
-<!-- 							<li class="botonDesPublicar" id="btnImgLi" style="display: none;"><a -->
-<%-- 								href="#" class="smoothScroll ${colorTexto}" --%>
-<!-- 								onclick="getImagenesJQ()"><img width="20" height="20" -->
-<!-- 									alt="Infomovil" -->
-<%-- 									src="<c:url value="/resources/webapp/images/ico_img${ extensionImg }.png"/>" /> --%>
-<!-- 									Imágenes </a></li> -->
-<!-- 							<li class="botonDesPublicar" id="btnContLi" -->
-<!-- 								style="display: none;"><a href="#" data-toggle="modal" -->
-<%-- 								data-target="#myModalDescApp" class="smoothScroll ${colorTexto}"><img --%>
-<!-- 									width="20" height="20" alt="Infomovil" -->
-<%-- 									src="<c:url value="/resources/webapp/images/ico_mas_cont${ extensionImg }.png"/>" /> --%>
-<!-- 									¿Qué sigue? <span class="hidden-sm hidden-md"></span> </a></li> -->
-<!-- 							            <li role="separator" class="divider"></li> -->
-<!-- 							            <li><a href="#">Separated link</a></li> -->
-<!-- 							            <li role="separator" class="divider"></li> -->
-<!-- 							            <li><a href="#">One more separated link</a></li> -->
-<!-- 						</ul></li> -->
-
-
-					<!--  <li class="botonDesPublicar" id="btnContLi" style="display:none;">
-							<a href="#" data-toggle="modal" data-target="#myModalDescApp" class="smoothScroll ${colorTexto}">¿Qué sigue? <span class="hidden-sm hidden-md"></span> 
-								<img width="20" height="20" alt="Infomovil"	src="<c:url value="/resources/webapp/images/ico_mas_cont${ extensionImg }.png"/>" />
-							</a>
-						</li>-->
 					<li><a href="<c:url value="/logout"></c:url>"
 						class="smoothScroll ${colorTexto}"><img width="20" height="20"
 							alt="Infomovil"
@@ -129,8 +70,6 @@
 		</div>
 	</nav>
 	<!-- / Fixed navbar -->
-
-
 
 	<!-- Botón Nuevo Estilo -->
 	<div class="seccTop bgBlack">
@@ -177,88 +116,67 @@
 						<strong></strong>
 						<div>
 						
-						<!-- Producto -->
-							<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 dBlock">
-								<!-- CABECERA -->
-								<div class="prodHeader">
-									<h5 class="prodTitle">Dominio</h5>
-								</div>
-								<!-- /CABECERA -->
-								<!-- CUERPO -->
-								<div
-									class="prodBody">
-									<div class="col-xs-12 text-center prodPadd10" >
-										<p class="textGreen">www.mipagina.tel</p>
-										<p class="textGreen">
-											<img width="25" height="25" alt="Infomovil"
-												src="<c:url value="/resources/webapp/images/btn_active.png"/>" />
-											Activo
-										</p>
-									</div>
-									<div class="col-xs-12 text-center">
-										<span>Vigencia del:<br/> <strong>dd/mm/aa</strong> <br/>a <br/><strong>dd/mm/aa</strong></span>
-									</div>
-									<div class="clearfix"></div>
-									<div class="divider"></div>
-
-									<div class="clearfix"></div>
-								</div>
-								<!--/ CUERPO -->
-								<!-- PIE -->
-								<div class="prodFooter"></div>
-								<!-- /PIE -->
-							</div>
-							<!--/ Producto -->
+						<!-- Producto  tel-->					
+						<tiles:insertDefinition name="prodGen">
+							<tiles:putAttribute name="productoTitulo" value="Dominio" />
+							<c:set var="productoNombre" value="dominioTel" scope="request" />
+							<c:set var="productoActivo" value="Activo" scope="request" />
+							<c:set var="datoUrl" value="www.limpbizkitxxx.tel" scope="request" />
+							<c:set var="fechaInicial" value="01/01/2015" scope="request" />
+							<c:set var="fechaFinal" value="01/01/2016" scope="request" />
+							<c:set var="imgActivo" value="btn_active.png" scope="request" />
+						</tiles:insertDefinition>					
+						<!--/ Producto -->
 							
 							<!-- Producto -->
-							<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 dBlock"
-								>
-								<!-- CABECERA -->
-								<div class="prodHeader">
-									<h5 class="prodTitle">Dominio</h5>
-								</div>
-								<!-- /CABECERA -->
-								<!-- CUERPO -->
-								<div 
-									class="prodBody">
-									<div class="col-xs-12 text-center prodPadd10" >
-										<p class="textGreen">www.mipagina.tel</p>
-										<p class="textGreen">
-											<img width="25" height="25" alt="Infomovil"
-												src="<c:url value="/resources/webapp/images/btn_active.png"/>" />
-											Activo
-										</p>
-									</div>
-									<div class="col-xs-12 text-center">
-										<span>Vigencia del:<br/> <strong>dd/mm/aa</strong> <br/>a <br/><strong>dd/mm/aa</strong></span>
-									</div>
-									<div class="clearfix"></div>
-									<div class="divider"></div>
-									<hr />
+<!-- 							<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 dBlock" -->
+<!-- 								> -->
+<!-- 								CABECERA -->
+<!-- 								<div class="prodHeader"> -->
+<!-- 									<h5 class="prodTitle">Dominio</h5> -->
+<!-- 								</div> -->
+<!-- 								/CABECERA -->
+<!-- 								CUERPO -->
+<!-- 								<div  -->
+<!-- 									class="prodBody"> -->
+<!-- 									<div class="col-xs-12 text-center prodPadd10" > -->
+<!-- 										<p class="textGreen">www.mipagina.tel</p> -->
+<!-- 										<p class="textGreen"> -->
+<!-- 											<img width="25" height="25" alt="Infomovil" -->
+<%-- 												src="<c:url value="/resources/webapp/images/btn_active.png"/>" /> --%>
+<!-- 											Activo -->
+<!-- 										</p> -->
+<!-- 									</div> -->
+<!-- 									<div class="col-xs-12 text-center"> -->
+<!-- 										<span>Vigencia del:<br/> <strong>dd/mm/aa</strong> <br/>a <br/><strong>dd/mm/aa</strong></span> -->
+<!-- 									</div> -->
+<!-- 									<div class="clearfix"></div> -->
+<!-- 									<div class="divider"></div> -->
+<!-- 									<hr /> -->
 									
 									
-									<div class="col-xs-12 text-center">
-									<p class="reset">12 meses</p>
-										<h3 class="prodPrice">
-											<sup>$</sup><span><strong>600.00</strong><span
-												class="prodNotes"> mxn</span></span>
-										</h3>
-<!-- 										<span style="font-size:.9em;"><em>Pago anual</em></span> -->
-									</div>
-									<div class="clearfix"></div>
-									<div class="divider"></div>
-									<div class="col-xs-12 text-center">
-										<a href="#" data-toggle="modal" data-target="#myModalConfDatos"
-											class="btn btn-default btn-outlineGreen text-center textWhite">Renueva
-											ahora</a>
-									</div>
-									<div class="clearfix"></div>
-								</div>
-								<!--/ CUERPO -->
-								<!-- PIE -->
-								<div class="prodFooter"></div>
-								<!-- /PIE -->
-							</div>
+<!-- 									<div class="col-xs-12 text-center"> -->
+<!-- 									<p class="reset">12 meses</p> -->
+<!-- 										<h3 class="prodPrice"> -->
+<!-- 											<sup>$</sup><span><strong>600.00</strong><span -->
+<!-- 												class="prodNotes"> mxn</span></span> -->
+<!-- 										</h3> -->
+<!-- <!-- 										<span style="font-size:.9em;"><em>Pago anual</em></span> --> -->
+<!-- 									</div> -->
+<!-- 									<div class="clearfix"></div> -->
+<!-- 									<div class="divider"></div> -->
+<!-- 									<div class="col-xs-12 text-center"> -->
+<!-- 										<a href="#" data-toggle="modal" data-target="#myModalConfDatos" -->
+<!-- 											class="btn btn-default btn-outlineGreen text-center textWhite">Renueva -->
+<!-- 											ahora</a> -->
+<!-- 									</div> -->
+<!-- 									<div class="clearfix"></div> -->
+<!-- 								</div> -->
+<!-- 								/ CUERPO -->
+<!-- 								PIE -->
+<!-- 								<div class="prodFooter"></div> -->
+<!-- 								/PIE -->
+<!-- 							</div> -->
 							<!--/ Producto -->
 							
 							
