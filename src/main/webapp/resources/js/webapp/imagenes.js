@@ -5,22 +5,16 @@ var IMAGENESMAX = $("#galeriaImagenesMax").val();
 var IMAGENESDELUSUARIO = 0;
 var infoAlbumes = [];
 var photosDelAlbum = [];
-var binaryString;
 var siHayImagen = 0;
+var noEsDispositivo = false;
+var ORIGIN_USER = 1;
+var ORIGIN_FACEBOOK = 2;
 
-if( navigator.userAgent.match(/iPhone|iPad|iPod/i) ) {
-    $('.modal').on('show.bs.modal', function() {
-        $(this)
-            .css({
-                position: 'absolute',
-                marginTop: $(window).scrollTop() + 'px',
-                bottom: document.documentElement.scrollHeigh + 'px'
-            });
 
-    });
-}
 
 $(document).ready(function() {
+	
+	isDevice();
 	$("#terceroFB").hide();
 	$("#regresarDeFotos").hide();
 	$("#btnGuardarImagenFB").hide();
@@ -36,20 +30,21 @@ $(document).ready(function() {
 	$("#msjEligeAlbumFoto").hide();
 	$("#regresarDeFace").hide();
 	var $btnAlbumsDeFacebook = $("#btnAlbumsDeFacebook").show();
-	$("#btnSeleccionaImagen").show();
-	$("#btnSeleccionaImagen2").hide();//quitar
+	
 	$("#btnGuardarImagen").hide();
 	$btnAlbumsDeFacebook.click(function(e) {
 		
 			FB.getLoginStatus(function(response) {
-				console.log("no entro en getlogin");
+				
 				logueoFacebook(response);
 			});
 		
 	});
 
+	
+	
 	$("#idRegresarAlbum").click(function() {
-		console.log("idRegresarAlbum");
+		
 		$(".photoDinamico").remove();
 		$("#terceroFB").hide();
 		$("#regresarDeFotos").hide();
@@ -63,20 +58,18 @@ $(document).ready(function() {
 		$("#galeriaVacia").hide();
 	});
 
-
 	$("#idCloseImgFace").click(function(){
 		$("#imgVistaPrevia").attr('src','');
 	});
 
 	$("#llamarGaleriaImagenes").click(function() {
-		console.log("llamarGaleriaImagenes");
+		
 		$("#galeriaImagenes").show();
 		$("#buscarImagenes").hide();
 		$("#facebookDiv").hide();
 		$("#actualizarImagenes").hide();
 		$('#myModalImagenes').modal();
-		$("#btnSeleccionaImagen").show();
-		//$("#btnSeleccionaImagen2").show();
+		if(noEsDispositivo)$("#btnSeleccionaImagen2").show();
 		$("#btnAlbumsDeFacebook").show();
 	});
 	$("#closemyModalImagenes").click(function() {
@@ -84,7 +77,7 @@ $(document).ready(function() {
 		$("#galeriaImagenes").hide();
 	});
 	$("#regresarSelecImg").click(function() {
-		console.log("regresarSelecImg");
+		
 		$("#galeriaImagenes").show();
 		$("#imgSeleccionadaDeGaleria").hide();
 		$("#regresarSelecImg").hide();
@@ -94,20 +87,19 @@ $(document).ready(function() {
 		$("#actualizarTextoFoto").val("");
 	});
 	$("#regresarDeFace").click(function() {
-		console.log("regresarDeFace");
+		
 		$("#facebookDiv").hide();
 		$(".albumDinamico").remove();
 		$(".photoDinamico").remove();
 		$("#galeriaImagenes").show();
 		$("#btnAlbumsDeFacebook").show();
-		$("#btnSeleccionaImagen").show();
-		//$("#btnSeleccionaImagen2").show();
+		if(noEsDispositivo)$("#btnSeleccionaImagen2").show();
 		$("#regresarDeFace").hide();
 		$("#msjEligeAlbumFoto").hide();
 		if(siHayImagen == 1){$("#galeriaVacia").hide();}else{$("#galeriaVacia").show();}
 	});
 	$("#regresarDeFotos").click(function() {
-		console.log("regresarDeFotos");
+		
 		$("#terceroFB").hide();
 		$("#regresarDeFotos").hide();
 		$("#btnGuardarImagenFB").hide();
@@ -117,8 +109,25 @@ $(document).ready(function() {
 		
 	});
 //////////////FIND EL CODIGO DE IMAGENES ////////////
-
+	
 });
+
+function isDevice() {  
+	if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
+			$("#btnSeleccionaImagen2").hide(); 
+			noEsDispositivo = false;
+			$('.modal').on('show.bs.modal', function() {
+			    $(this)
+			        .css({
+			            position: 'absolute',
+			            marginTop:'0px',
+			            bottom: document.documentElement.scrollHeigh + 'px'
+			        });
+			});
+		}else{$("#btnSeleccionaImagen2").show(); 
+			noEsDispositivo = true;}
+}
+
 
 function testapiFacebook() { 
 var k = 0;
@@ -159,9 +168,9 @@ function generaFotos(idAlbum,p) {
 }
 
 window.fbAsyncInit = function() {
-//	console.log('ENTRO EN fbAsyncInit');
+
 	FB.init({
-		appId      : '346859792130678',
+		appId      : '422690184604551',
 		cookie     : true,  // enable cookies to allow the server to access
 		xfbml      : true,  // parse social plugins on this page
 		version    : 'v2.0' // use version 2.2
@@ -192,13 +201,9 @@ function statusChangeCallback(response) {
 }
 
 function statusChangeCallback2(response) {
-//	console.log('ENTRO EN statusChangeCallback2');
+
 	if (response.status === 'connected') {
 		testapiFacebook();
-	} else if (response.status === 'not_authorized') {
-		console.log('still not authorized!');
-	} else {
-		// REINTENTAR CONEXION//
 	}
 }
 
@@ -211,73 +216,51 @@ var revisarEstado = function checkLoginState() {
 
 function picChange(evt)
 {
-//	console.log("Aqui llega primero");
 	var fileInput = evt.target.files;
-	binaryString = "";
-	
 	if(fileInput.length > 0)
 	{
-//		console.log("SI HAY UNA IMAGEN SELECCIONADA");
-		var picURL;
-		$("#facebookDiv").hide();
-		$("#galeriaImagenes").hide();
-		$("#galeriaVacia").hide();
-		$("#imgSeleccionadaDeGaleria").show();
-		$("#regresarSelecImg").show();
-		$("#btnGuardarImagen").show();
-		$("#btnAlbumsDeFacebook").hide();
-		
-		if ( window.webkitURL ) {
-			picURL = window.webkitURL.createObjectURL( fileInput[0] );
-		} else if ( window.URL && window.URL.createObjectURL ) {
-			picURL = window.URL.createObjectURL( fileInput[0] );
-		} else {
-			picURL = null;
-		}
-
-		fotoDeGaleria.src = picURL;
-//		console.log("La pic url es: " + picURL);
-		var files = evt.target.files;
-		var file = files[0];
-		if(file.size <= 1024000){
-			if (files && file)
-			{
-				var reader = new FileReader();
-				reader.onload = function(readerEvt) {
-					binaryString = readerEvt.target.result;
-					//console.log("el binari string base 64 es: " + binaryString );
-					binaryString =  btoa(binaryString);
-					//console.log("el binari string de text es: " + binaryString );
-				};
-
-				reader.readAsBinaryString(file);
+		var file = fileInput[0];
+		if (file)
+		{
+			
+			var picURL;
+			$("#facebookDiv").hide();
+			$("#galeriaImagenes").hide();
+			$("#galeriaVacia").hide();
+			$("#imgSeleccionadaDeGaleria").show();
+			$("#regresarSelecImg").show();
+			$("#btnGuardarImagen").show();
+			$("#btnAlbumsDeFacebook").hide();
+			
+			try{
+				if ( window.webkitURL ) {
+					picURL = window.webkitURL.createObjectURL( file );
+				} else if ( window.URL && window.URL.createObjectURL ) {
+					picURL = window.URL.createObjectURL( file );
+				} else {
+					picURL = null;
+				}
+				fotoDeGaleria.src = picURL;
+			}catch(err){
+				alert("Ocurrio un error!!");
+				return false;
+	        }
+			var reader = new FileReader();
+			
+			
+			reader.onload = function () {
+				fotoDeGaleria.src = reader.result;
 			}
 			
-		}else{
-
-			BootstrapDialog.show({
-				  title: "<span class='textBlack' style='font-size:1.15em;'><img alt='' src='../resources/webapp/images/fa-warning-bk.png'  title='Alerta' />Imagen demasiado grande</span>",
-				  message: '<div style="display:block; min-height:150px;"><p class="textBlack text-center" style="font-size:1.15em;">La imagen ha superado el límite permitido. El límite es de 768x1024 px</p><br/>'
-				});
+			reader.readAsDataURL(file);
 			
-			$("#galeriaImagenes").show();
-			$("#imgSeleccionadaDeGaleria").hide();
-			$("#regresarSelecImg").hide();
-			$("#btnGuardarImagen").hide();
-			$("#btnAlbumsDeFacebook").show();
-			$("#btnSeleccionaImagen").val("");
-			$("#actualizarTextoFoto").val("");
 		}
-		
 	}
-	else
-	{
-		console.log("Esto es que dio cancelar me imagino vamos a ver!");
-	}
+	
 }
 
 function getImagenesJQ()
-{ 	
+{ 	$("#btnGuardarImagen").hide();
 	$('#actualizarTextoFoto').val("");
 	$('#nombreDeImgn').val("");
 	$.blockUI.defaults.baseZ = 9000;
@@ -300,19 +283,19 @@ function getImagenesJQ()
 		$("#facebookDiv").hide();
 		$('#regresarDeFace').hide();
 		$('#idRegresarAlbum').hide();
-		$('#btnSeleccionaImagen').show();
-		//$('#btnSeleccionaImagen2').show();
+		if(noEsDispositivo)$('#btnSeleccionaImagen2').show();
 		$('#btnAlbumsDeFacebook').show();
 		$(".imagenDinamica").remove();
 		$("#imgSeleccionadaDeGaleria").hide();
 		$("#regresarSelecImg").hide();
 		$("#terceroFB").hide();
+		$("#primeroFB").hide();
 		$("#regresarDeFotos").hide();
 		$("#btnGuardarImagenFB").hide();
 		
 		$("#msjEligeAlbumFoto").hide();
 		var $listaImg = $('#listaImagenes');
-
+		var weHaveSuccess = false;
 		$.ajax({
 			type : "GET",
 			url : contextPath + "/infomovil/getImagenes",
@@ -330,7 +313,7 @@ function getImagenesJQ()
 						imgSinLogo++;
 				
 				IMAGENESDELUSUARIO = imgSinLogo;
-				console.log("las imagenes del usuario son: " + IMAGENESDELUSUARIO);
+			
 				if (IMAGENESDELUSUARIO > 0) 
 					$("#galeriaVacia").hide(); 
 				else 
@@ -365,12 +348,18 @@ function getImagenesJQ()
 				$('#myModalImagenes').modal('show') ;
 				$('#galeriaImagenes').show();
 				$.unblockUI();
+				weHaveSuccess = true;
 			},
 			error : function(json) {
 				bloqueo1Vez = 0;
-				console.log("Error Actualizar");
+				
 				$.unblockUI();
-			}
+			},
+		    complete: function(){
+		        if(!weHaveSuccess){
+		             alert('Your username/password seems to be incorrect!');
+		        }
+		    }
 		});
 	}
 }
@@ -383,10 +372,11 @@ function errorPreview(element) {
 
 function guardarImagenesJQ() 
 {	
-	console.log("las imagenes del usuario son: " + IMAGENESDELUSUARIO + "las imágenes max son: " + IMAGENESMAX);
+	
 	if(IMAGENESDELUSUARIO < IMAGENESMAX) 
 	{
-		console.log("si entro a al if: " + IMAGENESDELUSUARIO);
+		var imageDom = document.getElementById("fotoDeGaleria");
+		var imageUrl = imageDom.src;
 		$.blockUI.defaults.baseZ = 9000;
 		$.blockUI({
 			message: "Guardando la imagen...",
@@ -400,47 +390,7 @@ function guardarImagenesJQ()
 
 		var textFoto = $("#actualizarTextoFoto").val();
 
-		$.ajax({
-			type : "POST",
-			url : contextPath + "/infomovil/guardarImagen",
-			dataType : "json",
-			contentType: "application/x-www-form-urlencoded",
-			data : {
-				baseImagen: binaryString,
-				tipoImagen: "IMAGEN",
-				domainId: $('#idDominio').val(),
-				descImagen:  textFoto,
-
-			},
-			success : function(data) {
-				console.log("LA RESPUESTA DEL GUARDADO ES: " +data);
-
-				$("#msjEligeFotoAlbum").hide();
-				$("#msjEligeAlbumFoto").hide();
-				$("#facebookDiv").hide();
-				$("#imgSeleccionadaDeGaleria").hide();
-				$("#regresarSelecImg").hide();
-				$("#btnSeleccionaImagen").show();
-				//$("#btnSeleccionaImagen2").show();
-				$("#btnAlbumsDeFacebook").show();
-				$("#btnSeleccionaImagen").val("");
-				$("#actualizarTextoFoto").val("");
-				getImagenesJQ();
-				$("#galeriaImagenes").show();
-				$("#btnGuardarImagen").hide();
-			},
-			error : function(json) {
-				console.log("Error guardarImagen");
-//				alert("La imágen ha superado el limite permitido. El límite es de 768x1024 px");
-				
-				BootstrapDialog.show({
-					  title: "<span class='textBlack' style='font-size:1.15em;'><img alt='' src='../resources/webapp/images/fa-warning-bk.png'  title='Alerta' />Imagen demasiado grande</span>",
-					  message: '<div style="display:block; min-height:150px;"><p class="textBlack text-center" style="font-size:1.15em;">La imagen ha superado el límite permitido. El límite es de 768x1024 px</p><br/>'
-					});
-				$.unblockUI();
-			}
-
-		});
+		uploadImage(imageDom, imageUrl, ORIGIN_USER, textFoto);
 	}
 	else
 	{
@@ -468,9 +418,7 @@ function guardarImagenesJQ()
 function guardarImagenesJQF()
 {	
 	if(IMAGENESDELUSUARIO < IMAGENESMAX){
-		
 		var imageUrl = $("#imgVistaPrevia").attr("src");
-		console.log('imageUrl', imageUrl);
 		$.blockUI.defaults.baseZ = 9000;
 		$.blockUI({
 			message: "Guardando la imagen...",
@@ -482,9 +430,10 @@ function guardarImagenesJQF()
 			}
 		});
 		
-		convertImgToBase64(imageUrl, function(base64Img) {
+		convertImgToBase64F(imageUrl, function(base64Img) {
 			binaryString = base64Img.replace(/^data:image\/(png|jpeg|jpg);base64,/, "");
 			var textFoto = $("#nombreDeImgn").val();
+			var weHaveSuccess = false;
 			$.ajax({
 				type : "POST",
 				url : contextPath + "/infomovil/guardarImagen",
@@ -502,24 +451,31 @@ function guardarImagenesJQF()
 					$("#facebookDiv").hide();
 					$("#imgSeleccionadaDeGaleria").hide();
 					$("#regresarSelecImg").hide();
-					$("#btnSeleccionaImagen").show();
-					//$("#btnSeleccionaImagen2").show();
+					if(noEsDispositivo)$("#btnSeleccionaImagen2").show();
 					$("#btnAlbumsDeFacebook").show();
 					getImagenesJQ();
 					$("#galeriaImagenes").show();
 					$("#btnGuardarImagen").hide();
-					
+					weHaveSuccess = true;
 					$.unblockUI();
 
 				},
 				error : function(json) {
-					console.log("Error guardarImagen");
+					$.unblockUI();
 					BootstrapDialog.show({
 						  title: "<span class='textBlack' style='font-size:1.15em;'><img alt='' src='../resources/webapp/images/fa-warning-bk.png'  title='Alerta' />Imagen demasiado grande</span>",
 						  message: '<div style="display:block; min-height:150px;"><p class="textBlack text-center" style="font-size:1.15em;">La imagen ha superado el límite permitido. El límite es de 768x1024 px</p><br/>'
 						});
-					$.unblockUI();
-				}
+					
+				},
+			    complete: function(){
+			        if(!weHaveSuccess){
+			        	BootstrapDialog.show({
+							  title: "<span class='textBlack' style='font-size:1.15em;'><img alt='' src='../resources/webapp/images/fa-warning-bk.png'  title='Alerta' />Imagen demasiado grande</span>",
+							  message: '<div style="display:block; min-height:150px;"><p class="textBlack text-center" style="font-size:1.15em;">La imagen ha superado el límite permitido. El límite es de 768x1024 px</p><br/>'
+							});
+			        }
+			    }
 
 			});
 
@@ -533,6 +489,103 @@ function guardarImagenesJQF()
 			});
 		
 	}
+}
+
+function convertImgToBase64F(url, callback, outputFormat)
+{	
+	var img = new Image();
+	img.crossOrigin = 'Anonymous';
+	img.onload = function() {
+		var canvas = document.createElement('CANVAS');
+		var ctx = canvas.getContext('2d');
+		var targetWidth = 500;
+		var ratio = (targetWidth > this.width) ? 1 : targetWidth / this.width ;
+		canvas.height = this.height * ratio;
+		canvas.width = this.width * ratio;
+		ctx.drawImage(this,0,0,this.width,this.height,0,0,canvas.width,canvas.height);
+		var dataURL = canvas.toDataURL(outputFormat || 'image/png');
+		callback(dataURL);
+		canvas = null;
+	};
+	
+	img.src = url;
+}
+
+function uploadImage(imageDom, imageUrl, origin, textFoto) {
+	
+	convertImgToBase64(imageDom, imageUrl, function(base64Img) {
+		binaryString = base64Img.replace(/^data:image\/(png|jpeg|jpg);base64,/, "");
+		var weHaveSuccess = false;
+		$.ajax({
+			type : "POST",
+			url : contextPath + "/infomovil/guardarImagen",
+			dataType : "json",
+			timeout: 25000,
+			contentType: "application/x-www-form-urlencoded",
+			data : {
+				baseImagen: binaryString,
+				tipoImagen: "IMAGEN",
+				domainId: $('#idDominio').val(),
+				descImagen:  textFoto
+
+			},
+			success : function(data) {
+				weHaveSuccess = true;
+				if(origin == ORIGIN_FACEBOOK) {
+					$("#facebookDiv").hide();
+					$("#imgSeleccionadaDeGaleria").hide();
+					$("#regresarSelecImg").hide();
+					if(noEsDispositivo)$("#btnSeleccionaImagen2").show();
+					$("#btnAlbumsDeFacebook").show();
+					getImagenesJQ();
+					$("#galeriaImagenes").show();
+					$("#btnGuardarImagen").hide();
+				} else {
+					$("#msjEligeFotoAlbum").hide();
+					$("#msjEligeAlbumFoto").hide();
+					$("#facebookDiv").hide();
+					$("#imgSeleccionadaDeGaleria").hide();
+					$("#regresarSelecImg").hide();
+					if(noEsDispositivo)$("#btnSeleccionaImagen2").show();
+					$("#btnAlbumsDeFacebook").show();
+					$("#btnSeleccionaImagen").val("");
+					$("#actualizarTextoFoto").val("");
+					getImagenesJQ();
+					$("#galeriaImagenes").show();
+					$("#btnGuardarImagen").hide();
+				}
+				
+				$.unblockUI();
+
+			},
+			error : function(json,t) {
+				$.unblockUI();
+				if(t==="timeout") {
+					BootstrapDialog.show({
+						  title: "<span class='textBlack' style='font-size:1.15em;'><img alt='' src='../resources/webapp/images/fa-warning-bk.png'  title='Alerta' />Se agoto el tiempo de espera</span>",
+						  message: '<div style="display:block; min-height:150px;"><p class="textBlack text-center" style="font-size:1.15em;">Por favor intentalo nuevamente.</p><br/>'
+						});
+		        }else{
+					BootstrapDialog.show({
+					  title: "<span class='textBlack' style='font-size:1.15em;'><img alt='' src='../resources/webapp/images/fa-warning-bk.png'  title='Alerta' />Imagen demasiado grande</span>",
+					  message: '<div style="display:block; min-height:150px;"><p class="textBlack text-center" style="font-size:1.15em;">La imagen ha superado el límite permitido. El límite es de 768x1024 px</p><br/>'
+					});
+				}
+				
+			},
+		    complete: function(){
+		        if(!weHaveSuccess){
+		        	BootstrapDialog.show({
+						  title: "<span class='textBlack' style='font-size:1.15em;'><img alt='' src='../resources/webapp/images/fa-warning-bk.png'  title='Alerta' />Imagen demasiado grande</span>",
+						  message: '<div style="display:block; min-height:150px;"><p class="textBlack text-center" style="font-size:1.15em;">La imagen ha superado el límite permitido. El límite es de 768x1024 px</p><br/>'
+						});
+		        }
+		    }
+
+		});
+
+	});
+	
 }
 
 function borrarImagenJQ(idImg)
@@ -559,7 +612,7 @@ function borrarImagenJQ(idImg)
 						width: '400px'
 					}
 				});
-
+				var weHaveSuccess = false;
 				$.ajax({
 					type : "GET",
 					url : contextPath + "/infomovil/borrarImagen",
@@ -571,13 +624,25 @@ function borrarImagenJQ(idImg)
 	
 					},
 					success : function(data) {
-						$.unblockUI();
-						getImagenesJQ();
+							$.unblockUI();
+							getImagenesJQ();
+							weHaveSuccess = true; 
 					},
 					error : function(json) {
-						console.log("Error Eliminar Imagen");
 						$.unblockUI();
-					}
+						BootstrapDialog.show({
+				  			  title: "<span class='textBlack' style='font-size:1.15em;'><img alt='' src='../resources/webapp/images/fa-warning-bk.png'  title='Alerta' />No se ha eliminado la imagen</span>",
+				  			  message: '<div style="display:block; min-height:150px;"><p class="textBlack text-center" style="font-size:1.15em;">Intenta eliminar la imagen nuevamente.</p><br/>'
+				  			});
+					},
+				    complete: function(){
+				        if(!weHaveSuccess){
+				        	BootstrapDialog.show({
+				  			  title: "<span class='textBlack' style='font-size:1.15em;'><img alt='' src='../resources/webapp/images/fa-warning-bk.png'  title='Alerta' />No se ha eliminado la imagen</span>",
+				  			  message: '<div style="display:block; min-height:150px;"><p class="textBlack text-center" style="font-size:1.15em;">Intenta eliminar la imagen nuevamente.</p><br/>'
+				  			});
+				        }
+				    }
 				});
         }
             
@@ -597,7 +662,7 @@ function actualizarImagen(idImg, imgUrl)
 			width: '400px'
 		}
 	});
-
+	var weHaveSuccess = false;
 	$.ajax({
 		type : "GET",
 		url : contextPath + "/infomovil/actualizarImagen",
@@ -611,59 +676,85 @@ function actualizarImagen(idImg, imgUrl)
 		},
 		success : function(data) {
 			$.unblockUI();
-			console.log("LA RESPUESTA DE ACTUALIZAR IMAGEN ES: " + data);
 			getImagenesJQ();
+			weHaveSuccess = true;
 		},
 		error : function(json) {
-			console.log("Error Actualizar Imagen");
 			$.unblockUI();
-		}
+			BootstrapDialog.show({
+	  			  title: "<span class='textBlack' style='font-size:1.15em;'><img alt='' src='../resources/webapp/images/fa-warning-bk.png'  title='Alerta' />No se ha actualizado el nombre de la imagen</span>",
+	  			  message: '<div style="display:block; min-height:150px;"><p class="textBlack text-center" style="font-size:1.15em;">Intenta actualizar el nombre de la imagen nuevamente.</p><br/>'
+	  			});
+		},
+	    complete: function(){
+	        if(!weHaveSuccess){
+	        	BootstrapDialog.show({
+		  			  title: "<span class='textBlack' style='font-size:1.15em;'><img alt='' src='../resources/webapp/images/fa-warning-bk.png'  title='Alerta' />No se ha actualizado el nombre de la imagen</span>",
+		  			  message: '<div style="display:block; min-height:150px;"><p class="textBlack text-center" style="font-size:1.15em;">Intenta actualizar el nombre de la imagen nuevamente.</p><br/>'
+		  			});
+	        }
+	    }
 	});
 }
 
-function convertImgToBase64(url, callback, outputFormat)
+function convertImgToBase64(imageDom, url, callback, outputFormat)
 {	
-	var img = new Image();
-	img.crossOrigin = 'Anonymous';
-
-	img.onload = function() {
+	var resize1 = function() {
 		var canvas = document.createElement('CANVAS');
 		var ctx = canvas.getContext('2d');
-		console.log(this.height + " y " + this.width);
-		if(this.width > 900 && this.width < 1400){
-		console.log("una");
-			canvas.height = this.height * .30;
-			canvas.width = this.width *.30;
-			ctx.drawImage(this,0,0,this.width,this.height,0,0,canvas.width,canvas.height);
 		
-		}else if(this.width > 1400 && this.width < 5000){
-			console.log("dos");
-			canvas.height = this.height * .20;
-			canvas.width = this.width *.20;
-			ctx.drawImage(this,0,0,this.width,this.height,0,0,canvas.width,canvas.height);
-			
-			
-		}else{
-			console.log("tres");
-			canvas.height = this.height;
-			canvas.width = this.width;
-			ctx.drawImage(this,0,0);
-		}
+		
+		var targetWidth = 320;
+		var ratio = (targetWidth > imageDom.naturalWidth) ? 1 : targetWidth / imageDom.naturalWidth ;
+		console.log(imageDom.naturalWidth, targetWidth, ratio);
+		canvas.height = imageDom.naturalHeight * ratio;
+		canvas.width = imageDom.naturalWidth * ratio;
+		
+		ctx.drawImage(imageDom,0,0,imageDom.naturalWidth,imageDom.naturalHeight,0,0,canvas.width,canvas.height);
 	
-		var dataURL = canvas.toDataURL(outputFormat || 'image/png');
-		callback(dataURL);
-		canvas = null;
+		return canvas.toDataURL(outputFormat || 'image/png');
 	};
 	
-	img.src = url;
+	var resize2 = function() {
+		var canvas = document.createElement('CANVAS');
+		var ctx = canvas.getContext('2d');
+		var targetWidth = 420;
+		var ratio = (targetWidth > imageDom.naturalWidth) ? 1 : targetWidth / imageDom.naturalWidth ;
+		console.log(imageDom.naturalWidth, targetWidth, ratio);
+		canvas.height = imageDom.naturalHeight * ratio;
+		canvas.width = imageDom.naturalWidth * ratio;
+		ctx.drawImage(imageDom,0,0,imageDom.naturalWidth,imageDom.naturalHeight,0,0,canvas.width,canvas.height);
+	
+		return canvas.toDataURL(outputFormat || 'image/png');
+	};
+	
+	if(url.substring(0, 5) == 'data:') {
+		var dataURL = resize1();
+		console.log('guardar imagen Tamaños (original, redimensionado)', url.length, dataURL.length);
+		imageDom.src = dataURL;
+		callback(dataURL);
+		canvas = null;
+	} else {
+		console.log("entro pr facebook");
+		var img = new Image();
+		img.crossOrigin = 'Anonymous';
+		img.onload = function() {
+			var dataURL = resize2();
+			console.log('Tamaños (original, redimensionado)', url.length, dataURL.length);
+			imageDom.src = dataURL;
+			callback(dataURL);
+			canvas = null;
+		};
+		console.log("La nueva URL" + url);
+		img.src = url;
+	}
 }
 
 function logueoFacebook(response)
 {
-	console.log("EL RESPONSE ES:  " + response.status);
+	
 	if (response.status === 'connected') {
 		$("#btnAlbumsDeFacebook").hide();
-		$("#btnSeleccionaImagen").hide();
 		$("#btnSeleccionaImagen2").hide();
 		$("#terceroFB").hide();
 		$("#regresarDeFotos").hide();
@@ -738,7 +829,7 @@ function logueoFacebook(response)
 		}
 	}else{
 		if( navigator.userAgent.match('CriOS') ){
-			window.open('https://www.facebook.com/dialog/oauth?client_id=346859792130678&redirect_uri='+ document.location.href +'&scope=email,public_profile,user_photos', '', null);
+			window.open('https://www.facebook.com/dialog/oauth?client_id=422690184604551&redirect_uri='+ document.location.href +'&scope=email,public_profile,user_photos', '', null);
 		}else{
 			FB.login(function(response) {
 			statusChangeCallback(response);
@@ -750,9 +841,8 @@ function logueoFacebook(response)
 
 function logueoFacebook2() 
 {
-	console.log("logueoFacebook2");
+
 	$("#btnAlbumsDeFacebook").hide();
-	$("#btnSeleccionaImagen").hide();
 	$("#btnSeleccionaImagen2").hide();
 	$("#terceroFB").hide();
 	$("#regresarDeFotos").hide();
@@ -777,7 +867,7 @@ function logueoFacebook2()
 		$li.append('<span class="col-xs-8"><strong style="color:#7c41bc" class="hidden-xs"> Album:</strong> '+ infoAlbumes[p].title +' <img alt="" src="../resources/webapp/images/ir.png" style="max-width:23px; max-height:23px;" title="Ir" class="pull-right"/></span><br/>');
 
 		$li.click(function() {
-			console.log("li click!");
+		
 			var r = $(this).index();
 			$(".photoDinamico").remove();
 			$("#primeroFB").hide();
