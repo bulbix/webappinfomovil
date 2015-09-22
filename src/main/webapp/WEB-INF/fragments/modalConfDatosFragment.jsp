@@ -36,7 +36,7 @@
     </div>
   </div>
   <div class="dividerSmall"></div>
-  <div class="container"><hr/></div>
+  <hr/>
   <h5 style="color:#2fa399">Renovación de dominio </h5>
   <div class="form-group">
     <label for="inputEmail3" class="col-sm-2 control-label text-left">Dominio</label>

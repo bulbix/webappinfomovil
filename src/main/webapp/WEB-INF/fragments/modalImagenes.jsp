@@ -55,6 +55,7 @@
     <div id="imgSeleccionadaDeGaleria">
     	
     	<div class="col-xs-12"> 
+   
     	<div class="col-xs-12 col-sm-3 text-center"><img src=""  class="imgActualizar img-thumbnail" id="fotoDeGaleria" style="max-width:100px; max-height:100px;"/></div>
         <div class="col-xs-12 col-sm-9">
         <label style="display:inline">Nombre: </label> <input type="text" value="" id="actualizarTextoFoto" style="display:inline" ></input>
