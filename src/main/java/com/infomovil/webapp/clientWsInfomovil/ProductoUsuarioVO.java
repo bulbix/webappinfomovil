@@ -7,9 +7,9 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java class for productoUsuarioVO complex type.
+ * <p>Clase Java para productoUsuarioVO complex type.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * <p>El siguiente fragmento de esquema especifica el contenido que se espera que haya en esta clase.
  * 
  * <pre>
  * &lt;complexType name="productoUsuarioVO">
@@ -25,6 +25,13 @@ import javax.xml.bind.annotation.XmlType;
  *         &lt;element name="fechaInicio" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="fechaFin" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="referencia" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *         &lt;element name="nombreUsuario" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *         &lt;element name="nombreUsuarioLanding" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *         &lt;element name="statusProducto" type="{http://www.w3.org/2001/XMLSchema}int"/>
+ *         &lt;element name="domainId" type="{http://www.w3.org/2001/XMLSchema}long"/>
+ *         &lt;element name="nombreDominio" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *         &lt;element name="renovable" type="{http://www.w3.org/2001/XMLSchema}boolean"/>
+ *         &lt;element name="urlDominio" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -43,7 +50,14 @@ import javax.xml.bind.annotation.XmlType;
     "abc",
     "fechaInicio",
     "fechaFin",
-    "referencia"
+    "referencia",
+    "nombreUsuario",
+    "nombreUsuarioLanding",
+    "statusProducto",
+    "domainId",
+    "nombreDominio",
+    "renovable",
+    "urlDominio"
 })
 public class ProductoUsuarioVO {
 
@@ -56,9 +70,16 @@ public class ProductoUsuarioVO {
     protected String fechaInicio;
     protected String fechaFin;
     protected String referencia;
+    protected String nombreUsuario;
+    protected String nombreUsuarioLanding;
+    protected int statusProducto;
+    protected long domainId;
+    protected String nombreDominio;
+    protected boolean renovable;
+    protected String urlDominio;
 
     /**
-     * Gets the value of the email property.
+     * Obtiene el valor de la propiedad email.
      * 
      * @return
      *     possible object is
@@ -70,7 +91,7 @@ public class ProductoUsuarioVO {
     }
 
     /**
-     * Sets the value of the email property.
+     * Define el valor de la propiedad email.
      * 
      * @param value
      *     allowed object is
@@ -82,7 +103,7 @@ public class ProductoUsuarioVO {
     }
 
     /**
-     * Gets the value of the userId property.
+     * Obtiene el valor de la propiedad userId.
      * 
      */
     public long getUserId() {
@@ -90,7 +111,7 @@ public class ProductoUsuarioVO {
     }
 
     /**
-     * Sets the value of the userId property.
+     * Define el valor de la propiedad userId.
      * 
      */
     public void setUserId(long value) {
@@ -98,7 +119,7 @@ public class ProductoUsuarioVO {
     }
 
     /**
-     * Gets the value of the productoId property.
+     * Obtiene el valor de la propiedad productoId.
      * 
      */
     public long getProductoId() {
@@ -106,7 +127,7 @@ public class ProductoUsuarioVO {
     }
 
     /**
-     * Sets the value of the productoId property.
+     * Define el valor de la propiedad productoId.
      * 
      */
     public void setProductoId(long value) {
@@ -114,7 +135,7 @@ public class ProductoUsuarioVO {
     }
 
     /**
-     * Gets the value of the claveComercial property.
+     * Obtiene el valor de la propiedad claveComercial.
      * 
      * @return
      *     possible object is
@@ -126,7 +147,7 @@ public class ProductoUsuarioVO {
     }
 
     /**
-     * Sets the value of the claveComercial property.
+     * Define el valor de la propiedad claveComercial.
      * 
      * @param value
      *     allowed object is
@@ -138,7 +159,7 @@ public class ProductoUsuarioVO {
     }
 
     /**
-     * Gets the value of the descripcion property.
+     * Obtiene el valor de la propiedad descripcion.
      * 
      * @return
      *     possible object is
@@ -150,7 +171,7 @@ public class ProductoUsuarioVO {
     }
 
     /**
-     * Sets the value of the descripcion property.
+     * Define el valor de la propiedad descripcion.
      * 
      * @param value
      *     allowed object is
@@ -162,7 +183,7 @@ public class ProductoUsuarioVO {
     }
 
     /**
-     * Gets the value of the abc property.
+     * Obtiene el valor de la propiedad abc.
      * 
      * @return
      *     possible object is
@@ -174,7 +195,7 @@ public class ProductoUsuarioVO {
     }
 
     /**
-     * Sets the value of the abc property.
+     * Define el valor de la propiedad abc.
      * 
      * @param value
      *     allowed object is
@@ -186,7 +207,7 @@ public class ProductoUsuarioVO {
     }
 
     /**
-     * Gets the value of the fechaInicio property.
+     * Obtiene el valor de la propiedad fechaInicio.
      * 
      * @return
      *     possible object is
@@ -198,7 +219,7 @@ public class ProductoUsuarioVO {
     }
 
     /**
-     * Sets the value of the fechaInicio property.
+     * Define el valor de la propiedad fechaInicio.
      * 
      * @param value
      *     allowed object is
@@ -210,7 +231,7 @@ public class ProductoUsuarioVO {
     }
 
     /**
-     * Gets the value of the fechaFin property.
+     * Obtiene el valor de la propiedad fechaFin.
      * 
      * @return
      *     possible object is
@@ -222,7 +243,7 @@ public class ProductoUsuarioVO {
     }
 
     /**
-     * Sets the value of the fechaFin property.
+     * Define el valor de la propiedad fechaFin.
      * 
      * @param value
      *     allowed object is
@@ -234,7 +255,7 @@ public class ProductoUsuarioVO {
     }
 
     /**
-     * Gets the value of the referencia property.
+     * Obtiene el valor de la propiedad referencia.
      * 
      * @return
      *     possible object is
@@ -246,7 +267,7 @@ public class ProductoUsuarioVO {
     }
 
     /**
-     * Sets the value of the referencia property.
+     * Define el valor de la propiedad referencia.
      * 
      * @param value
      *     allowed object is
@@ -255,6 +276,150 @@ public class ProductoUsuarioVO {
      */
     public void setReferencia(String value) {
         this.referencia = value;
+    }
+
+    /**
+     * Obtiene el valor de la propiedad nombreUsuario.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getNombreUsuario() {
+        return nombreUsuario;
+    }
+
+    /**
+     * Define el valor de la propiedad nombreUsuario.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setNombreUsuario(String value) {
+        this.nombreUsuario = value;
+    }
+
+    /**
+     * Obtiene el valor de la propiedad nombreUsuarioLanding.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getNombreUsuarioLanding() {
+        return nombreUsuarioLanding;
+    }
+
+    /**
+     * Define el valor de la propiedad nombreUsuarioLanding.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setNombreUsuarioLanding(String value) {
+        this.nombreUsuarioLanding = value;
+    }
+
+    /**
+     * Obtiene el valor de la propiedad statusProducto.
+     * 
+     */
+    public int getStatusProducto() {
+        return statusProducto;
+    }
+
+    /**
+     * Define el valor de la propiedad statusProducto.
+     * 
+     */
+    public void setStatusProducto(int value) {
+        this.statusProducto = value;
+    }
+
+    /**
+     * Obtiene el valor de la propiedad domainId.
+     * 
+     */
+    public long getDomainId() {
+        return domainId;
+    }
+
+    /**
+     * Define el valor de la propiedad domainId.
+     * 
+     */
+    public void setDomainId(long value) {
+        this.domainId = value;
+    }
+
+    /**
+     * Obtiene el valor de la propiedad nombreDominio.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getNombreDominio() {
+        return nombreDominio;
+    }
+
+    /**
+     * Define el valor de la propiedad nombreDominio.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setNombreDominio(String value) {
+        this.nombreDominio = value;
+    }
+
+    /**
+     * Obtiene el valor de la propiedad renovable.
+     * 
+     */
+    public boolean isRenovable() {
+        return renovable;
+    }
+
+    /**
+     * Define el valor de la propiedad renovable.
+     * 
+     */
+    public void setRenovable(boolean value) {
+        this.renovable = value;
+    }
+
+    /**
+     * Obtiene el valor de la propiedad urlDominio.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getUrlDominio() {
+        return urlDominio;
+    }
+
+    /**
+     * Define el valor de la propiedad urlDominio.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setUrlDominio(String value) {
+        this.urlDominio = value;
     }
 
 }

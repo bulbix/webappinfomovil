@@ -1,7 +1,44 @@
+$(document).ready(function() {
+	
+	
+	
+	
+	
+});
+
+$("#btnPagoPaypal").click(function() {
+	$nombre  = $("#nombreUser").val();
+	$direccion = $("#direccionUser").val();
+	$correo = $("#emailUser").val();
+	$pais = "México";
+	var falta = 0
+	if($nombre.length > 0 ){
+		falta = 1;
+	}else if($direccion.length > 0){
+		falta = 2;
+	}else if($correo.length > 0){
+		falta = 3;
+	}
+	if(falta == 0){
+		intentoPago($nombre, $direccion, $correo, $pais);
+	}else{
+		switch(falta){
+			case 1:
+				$( ".inner" ).append( "<p>Falta completar el dato Nombre</p>" );
+			case 2:
+				$( ".inner" ).append( "<p>Falta completar el dato Dirección</p>" );
+			case 3: 
+				$( ".inner" ).append( "<p>Falta completar el dato Email</p>" );
+		}	
+		
+	}
+});
 
 
-function intentoPago(){
 
+
+function intentoPago($nombre, $direccion, $correo, $pais){
+	
 	$.ajax({
 			type : "POST",
 			url : contextPath + "/infomovil/intentoPago",
@@ -15,7 +52,8 @@ function intentoPago(){
 
 			},
 			success : function(data) {
-				
+				console.log(data);
+				$.unblockUI();
 			},
 			error : function(json) {
 				
@@ -90,7 +128,7 @@ function comprarPayPal(){
 				return: $return,
 			},
 			success : function(data) {
-				
+				$.unblockUI();
 			},
 			error : function(json) {
 				

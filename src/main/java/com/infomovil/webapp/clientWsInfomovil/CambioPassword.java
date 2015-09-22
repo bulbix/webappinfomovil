@@ -8,9 +8,9 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java class for cambioPassword complex type.
+ * <p>Clase Java para cambioPassword complex type.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * <p>El siguiente fragmento de esquema especifica el contenido que se espera que haya en esta clase.
  * 
  * <pre>
  * &lt;complexType name="cambioPassword">
@@ -39,7 +39,7 @@ public class CambioPassword {
     protected String token;
 
     /**
-     * Gets the value of the usuario property.
+     * Obtiene el valor de la propiedad usuario.
      * 
      * @return
      *     possible object is
@@ -51,7 +51,7 @@ public class CambioPassword {
     }
 
     /**
-     * Sets the value of the usuario property.
+     * Define el valor de la propiedad usuario.
      * 
      * @param value
      *     allowed object is
@@ -63,7 +63,7 @@ public class CambioPassword {
     }
 
     /**
-     * Gets the value of the token property.
+     * Obtiene el valor de la propiedad token.
      * 
      * @return
      *     possible object is
@@ -75,7 +75,7 @@ public class CambioPassword {
     }
 
     /**
-     * Sets the value of the token property.
+     * Define el valor de la propiedad token.
      * 
      * @param value
      *     allowed object is

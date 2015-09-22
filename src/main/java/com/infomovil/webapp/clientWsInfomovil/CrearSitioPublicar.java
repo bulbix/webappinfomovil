@@ -8,9 +8,9 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java class for crearSitio_publicar complex type.
+ * <p>Clase Java para crearSitio_publicar complex type.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * <p>El siguiente fragmento de esquema especifica el contenido que se espera que haya en esta clase.
  * 
  * <pre>
  * &lt;complexType name="crearSitio_publicar">
@@ -54,7 +54,7 @@ public class CrearSitioPublicar {
     protected Integer idCatTipoRecurso;
 
     /**
-     * Gets the value of the email property.
+     * Obtiene el valor de la propiedad email.
      * 
      * @return
      *     possible object is
@@ -66,7 +66,7 @@ public class CrearSitioPublicar {
     }
 
     /**
-     * Sets the value of the email property.
+     * Define el valor de la propiedad email.
      * 
      * @param value
      *     allowed object is
@@ -78,7 +78,7 @@ public class CrearSitioPublicar {
     }
 
     /**
-     * Gets the value of the password property.
+     * Obtiene el valor de la propiedad password.
      * 
      * @return
      *     possible object is
@@ -90,7 +90,7 @@ public class CrearSitioPublicar {
     }
 
     /**
-     * Sets the value of the password property.
+     * Define el valor de la propiedad password.
      * 
      * @param value
      *     allowed object is
@@ -102,7 +102,7 @@ public class CrearSitioPublicar {
     }
 
     /**
-     * Gets the value of the nombrePersona property.
+     * Obtiene el valor de la propiedad nombrePersona.
      * 
      * @return
      *     possible object is
@@ -114,7 +114,7 @@ public class CrearSitioPublicar {
     }
 
     /**
-     * Sets the value of the nombrePersona property.
+     * Define el valor de la propiedad nombrePersona.
      * 
      * @param value
      *     allowed object is
@@ -126,7 +126,7 @@ public class CrearSitioPublicar {
     }
 
     /**
-     * Gets the value of the direccionPersona property.
+     * Obtiene el valor de la propiedad direccionPersona.
      * 
      * @return
      *     possible object is
@@ -138,7 +138,7 @@ public class CrearSitioPublicar {
     }
 
     /**
-     * Sets the value of the direccionPersona property.
+     * Define el valor de la propiedad direccionPersona.
      * 
      * @param value
      *     allowed object is
@@ -150,7 +150,7 @@ public class CrearSitioPublicar {
     }
 
     /**
-     * Gets the value of the nombreDominio property.
+     * Obtiene el valor de la propiedad nombreDominio.
      * 
      * @return
      *     possible object is
@@ -162,7 +162,7 @@ public class CrearSitioPublicar {
     }
 
     /**
-     * Sets the value of the nombreDominio property.
+     * Define el valor de la propiedad nombreDominio.
      * 
      * @param value
      *     allowed object is
@@ -174,7 +174,7 @@ public class CrearSitioPublicar {
     }
 
     /**
-     * Gets the value of the tipoDominio property.
+     * Obtiene el valor de la propiedad tipoDominio.
      * 
      * @return
      *     possible object is
@@ -186,7 +186,7 @@ public class CrearSitioPublicar {
     }
 
     /**
-     * Sets the value of the tipoDominio property.
+     * Define el valor de la propiedad tipoDominio.
      * 
      * @param value
      *     allowed object is
@@ -198,7 +198,7 @@ public class CrearSitioPublicar {
     }
 
     /**
-     * Gets the value of the idCatTipoRecurso property.
+     * Obtiene el valor de la propiedad idCatTipoRecurso.
      * 
      * @return
      *     possible object is
@@ -210,7 +210,7 @@ public class CrearSitioPublicar {
     }
 
     /**
-     * Sets the value of the idCatTipoRecurso property.
+     * Define el valor de la propiedad idCatTipoRecurso.
      * 
      * @param value
      *     allowed object is

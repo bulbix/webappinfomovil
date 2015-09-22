@@ -8,9 +8,9 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java class for getDomainResponse complex type.
+ * <p>Clase Java para getDomainResponse complex type.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * <p>El siguiente fragmento de esquema especifica el contenido que se espera que haya en esta clase.
  * 
  * <pre>
  * &lt;complexType name="getDomainResponse">
@@ -36,7 +36,7 @@ public class GetDomainResponse {
     protected DominioVO domain;
 
     /**
-     * Gets the value of the domain property.
+     * Obtiene el valor de la propiedad domain.
      * 
      * @return
      *     possible object is
@@ -48,7 +48,7 @@ public class GetDomainResponse {
     }
 
     /**
-     * Sets the value of the domain property.
+     * Define el valor de la propiedad domain.
      * 
      * @param value
      *     allowed object is

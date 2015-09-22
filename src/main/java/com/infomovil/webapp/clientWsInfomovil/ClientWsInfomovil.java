@@ -204,4 +204,35 @@ public class ClientWsInfomovil {
 	    log.info("crearSitioUpdateImage.result=" + _crearSitioUpdateImage__return);
 	    return _crearSitioUpdateImage__return.respuestaVO;
     }
+	
+	
+	public RespuestaVO crearSitioIntentoPago(String email, String password, String tipoPlan, String medioPago, String titulo, String tipoCompra)
+	{
+		log.info("Invoking crearSitioIntentoPago...");
+		com.infomovil.webapp.clientWsInfomovil.CrearSitioIntentoPago _crearSitioIntentoPago_parameters = new CrearSitioIntentoPago();
+		_crearSitioIntentoPago_parameters.setEmail(email);
+		_crearSitioIntentoPago_parameters.setPassword(password);
+		_crearSitioIntentoPago_parameters.setTipoPlan(tipoPlan);
+		_crearSitioIntentoPago_parameters.setMedioPago(medioPago);
+		_crearSitioIntentoPago_parameters.setTitulo(titulo);
+		_crearSitioIntentoPago_parameters.setTipoCompra(tipoCompra);
+		com.infomovil.webapp.clientWsInfomovil.CrearSitioIntentoPagoResponse _crearSitioIntentoPago__return = port.crearSitioIntentoPago(_crearSitioIntentoPago_parameters);
+		log.info("crearSitioIntentoPago.result=" + _crearSitioIntentoPago__return);
+		return _crearSitioIntentoPago__return.respuestaVO;
+	}
+	
+	public RespuestaVO crearSitioGetProductosUsuario(String email, String password)
+	{
+		log.info("Invoking crearSitioGetProductosUsuario...");
+		com.infomovil.webapp.clientWsInfomovil.CrearSitioGetProductosUsuario _crearSitioGetProductosUsuario_parameters = new CrearSitioGetProductosUsuario();
+		_crearSitioGetProductosUsuario_parameters.setEmail(email);
+		_crearSitioGetProductosUsuario_parameters.setPassword(password);
+		com.infomovil.webapp.clientWsInfomovil.CrearSitioGetProductosUsuarioResponse _crearSitioGetProductosUsuario__return = port.crearSitioGetProductosUsuario(_crearSitioGetProductosUsuario_parameters);
+		log.info("crearSitioGetProductosUsuario.result=" + _crearSitioGetProductosUsuario__return);
+		return _crearSitioGetProductosUsuario__return.respuestaVO;
+	}
+	
+	
+	
+	
 }

@@ -7,9 +7,9 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java class for dominioCreaSitio complex type.
+ * <p>Clase Java para dominioCreaSitio complex type.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * <p>El siguiente fragmento de esquema especifica el contenido que se espera que haya en esta clase.
  * 
  * <pre>
  * &lt;complexType name="dominioCreaSitio">
@@ -79,7 +79,7 @@ public class DominioCreaSitio {
     protected String tipoCuenta;
 
     /**
-     * Gets the value of the nombreUsuario property.
+     * Obtiene el valor de la propiedad nombreUsuario.
      * 
      * @return
      *     possible object is
@@ -91,7 +91,7 @@ public class DominioCreaSitio {
     }
 
     /**
-     * Sets the value of the nombreUsuario property.
+     * Define el valor de la propiedad nombreUsuario.
      * 
      * @param value
      *     allowed object is
@@ -103,7 +103,7 @@ public class DominioCreaSitio {
     }
 
     /**
-     * Gets the value of the nombreEmpresa property.
+     * Obtiene el valor de la propiedad nombreEmpresa.
      * 
      * @return
      *     possible object is
@@ -115,7 +115,7 @@ public class DominioCreaSitio {
     }
 
     /**
-     * Sets the value of the nombreEmpresa property.
+     * Define el valor de la propiedad nombreEmpresa.
      * 
      * @param value
      *     allowed object is
@@ -127,7 +127,7 @@ public class DominioCreaSitio {
     }
 
     /**
-     * Gets the value of the descripcionCorta property.
+     * Obtiene el valor de la propiedad descripcionCorta.
      * 
      * @return
      *     possible object is
@@ -139,7 +139,7 @@ public class DominioCreaSitio {
     }
 
     /**
-     * Sets the value of the descripcionCorta property.
+     * Define el valor de la propiedad descripcionCorta.
      * 
      * @param value
      *     allowed object is
@@ -151,7 +151,7 @@ public class DominioCreaSitio {
     }
 
     /**
-     * Gets the value of the correoElectronico property.
+     * Obtiene el valor de la propiedad correoElectronico.
      * 
      * @return
      *     possible object is
@@ -163,7 +163,7 @@ public class DominioCreaSitio {
     }
 
     /**
-     * Sets the value of the correoElectronico property.
+     * Define el valor de la propiedad correoElectronico.
      * 
      * @param value
      *     allowed object is
@@ -175,7 +175,7 @@ public class DominioCreaSitio {
     }
 
     /**
-     * Gets the value of the telefono property.
+     * Obtiene el valor de la propiedad telefono.
      * 
      * @return
      *     possible object is
@@ -187,7 +187,7 @@ public class DominioCreaSitio {
     }
 
     /**
-     * Sets the value of the telefono property.
+     * Define el valor de la propiedad telefono.
      * 
      * @param value
      *     allowed object is
@@ -199,7 +199,7 @@ public class DominioCreaSitio {
     }
 
     /**
-     * Gets the value of the sitioWeb property.
+     * Obtiene el valor de la propiedad sitioWeb.
      * 
      * @return
      *     possible object is
@@ -211,7 +211,7 @@ public class DominioCreaSitio {
     }
 
     /**
-     * Sets the value of the sitioWeb property.
+     * Define el valor de la propiedad sitioWeb.
      * 
      * @param value
      *     allowed object is
@@ -223,7 +223,7 @@ public class DominioCreaSitio {
     }
 
     /**
-     * Gets the value of the canal property.
+     * Obtiene el valor de la propiedad canal.
      * 
      * @return
      *     possible object is
@@ -235,7 +235,7 @@ public class DominioCreaSitio {
     }
 
     /**
-     * Sets the value of the canal property.
+     * Define el valor de la propiedad canal.
      * 
      * @param value
      *     allowed object is
@@ -247,7 +247,7 @@ public class DominioCreaSitio {
     }
 
     /**
-     * Gets the value of the campania property.
+     * Obtiene el valor de la propiedad campania.
      * 
      * @return
      *     possible object is
@@ -259,7 +259,7 @@ public class DominioCreaSitio {
     }
 
     /**
-     * Sets the value of the campania property.
+     * Define el valor de la propiedad campania.
      * 
      * @param value
      *     allowed object is
@@ -271,7 +271,7 @@ public class DominioCreaSitio {
     }
 
     /**
-     * Gets the value of the template property.
+     * Obtiene el valor de la propiedad template.
      * 
      * @return
      *     possible object is
@@ -283,7 +283,7 @@ public class DominioCreaSitio {
     }
 
     /**
-     * Sets the value of the template property.
+     * Define el valor de la propiedad template.
      * 
      * @param value
      *     allowed object is
@@ -295,7 +295,7 @@ public class DominioCreaSitio {
     }
 
     /**
-     * Gets the value of the urlVistaPrevia property.
+     * Obtiene el valor de la propiedad urlVistaPrevia.
      * 
      * @return
      *     possible object is
@@ -307,7 +307,7 @@ public class DominioCreaSitio {
     }
 
     /**
-     * Sets the value of the urlVistaPrevia property.
+     * Define el valor de la propiedad urlVistaPrevia.
      * 
      * @param value
      *     allowed object is
@@ -319,7 +319,7 @@ public class DominioCreaSitio {
     }
 
     /**
-     * Gets the value of the latitudeMap property.
+     * Obtiene el valor de la propiedad latitudeMap.
      * 
      * @return
      *     possible object is
@@ -331,7 +331,7 @@ public class DominioCreaSitio {
     }
 
     /**
-     * Sets the value of the latitudeMap property.
+     * Define el valor de la propiedad latitudeMap.
      * 
      * @param value
      *     allowed object is
@@ -343,7 +343,7 @@ public class DominioCreaSitio {
     }
 
     /**
-     * Gets the value of the longitudeMap property.
+     * Obtiene el valor de la propiedad longitudeMap.
      * 
      * @return
      *     possible object is
@@ -355,7 +355,7 @@ public class DominioCreaSitio {
     }
 
     /**
-     * Sets the value of the longitudeMap property.
+     * Define el valor de la propiedad longitudeMap.
      * 
      * @param value
      *     allowed object is
@@ -367,7 +367,7 @@ public class DominioCreaSitio {
     }
 
     /**
-     * Gets the value of the direccionMap property.
+     * Obtiene el valor de la propiedad direccionMap.
      * 
      * @return
      *     possible object is
@@ -379,7 +379,7 @@ public class DominioCreaSitio {
     }
 
     /**
-     * Sets the value of the direccionMap property.
+     * Define el valor de la propiedad direccionMap.
      * 
      * @param value
      *     allowed object is
@@ -391,7 +391,7 @@ public class DominioCreaSitio {
     }
 
     /**
-     * Gets the value of the videoUrl property.
+     * Obtiene el valor de la propiedad videoUrl.
      * 
      * @return
      *     possible object is
@@ -403,7 +403,7 @@ public class DominioCreaSitio {
     }
 
     /**
-     * Sets the value of the videoUrl property.
+     * Define el valor de la propiedad videoUrl.
      * 
      * @param value
      *     allowed object is
@@ -415,7 +415,7 @@ public class DominioCreaSitio {
     }
 
     /**
-     * Gets the value of the estatusCuenta property.
+     * Obtiene el valor de la propiedad estatusCuenta.
      * 
      * @return
      *     possible object is
@@ -427,7 +427,7 @@ public class DominioCreaSitio {
     }
 
     /**
-     * Sets the value of the estatusCuenta property.
+     * Define el valor de la propiedad estatusCuenta.
      * 
      * @param value
      *     allowed object is
@@ -439,7 +439,7 @@ public class DominioCreaSitio {
     }
 
     /**
-     * Gets the value of the tipoCuenta property.
+     * Obtiene el valor de la propiedad tipoCuenta.
      * 
      * @return
      *     possible object is
@@ -451,7 +451,7 @@ public class DominioCreaSitio {
     }
 
     /**
-     * Sets the value of the tipoCuenta property.
+     * Define el valor de la propiedad tipoCuenta.
      * 
      * @param value
      *     allowed object is
