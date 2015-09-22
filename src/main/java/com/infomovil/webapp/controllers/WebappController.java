@@ -672,7 +672,7 @@ public class WebappController
 	}
 	
 	
-	@RequestMapping(value = "/infomovil/miCuenta", method = RequestMethod.GET)
+	@RequestMapping(value = "/infomovil/miCuentaIsaac", method = RequestMethod.GET)
 	public ModelAndView miCuenta(HttpServletRequest request, HttpServletResponse response, RedirectAttributes redirectAttributes)
 	{		
 		HashMap<String, Object> model = new HashMap<String, Object>();

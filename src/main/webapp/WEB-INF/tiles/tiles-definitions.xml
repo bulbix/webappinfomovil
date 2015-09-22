@@ -22,5 +22,5 @@
 	<definition name="modalDescApp" template="/WEB-INF/fragments/modalDescApp.jsp" />
 	<definition name="modalImagenes" template="/WEB-INF/fragments/modalImagenes.jsp" />
 	<definition name="modalConfDatos" template="/WEB-INF/fragments/modalConfDatosFragment.jsp" />
-	
+
 </tiles-definitions>

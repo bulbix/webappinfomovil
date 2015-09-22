@@ -7,9 +7,9 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java class for insertVideo complex type.
+ * <p>Clase Java para insertVideo complex type.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * <p>El siguiente fragmento de esquema especifica el contenido que se espera que haya en esta clase.
  * 
  * <pre>
  * &lt;complexType name="insertVideo">
@@ -40,7 +40,7 @@ public class InsertVideo {
     protected String token;
 
     /**
-     * Gets the value of the idDomain property.
+     * Obtiene el valor de la propiedad idDomain.
      * 
      * @return
      *     possible object is
@@ -52,7 +52,7 @@ public class InsertVideo {
     }
 
     /**
-     * Sets the value of the idDomain property.
+     * Define el valor de la propiedad idDomain.
      * 
      * @param value
      *     allowed object is
@@ -64,7 +64,7 @@ public class InsertVideo {
     }
 
     /**
-     * Gets the value of the url property.
+     * Obtiene el valor de la propiedad url.
      * 
      * @return
      *     possible object is
@@ -76,7 +76,7 @@ public class InsertVideo {
     }
 
     /**
-     * Sets the value of the url property.
+     * Define el valor de la propiedad url.
      * 
      * @param value
      *     allowed object is
@@ -88,7 +88,7 @@ public class InsertVideo {
     }
 
     /**
-     * Gets the value of the token property.
+     * Obtiene el valor de la propiedad token.
      * 
      * @return
      *     possible object is
@@ -100,7 +100,7 @@ public class InsertVideo {
     }
 
     /**
-     * Sets the value of the token property.
+     * Define el valor de la propiedad token.
      * 
      * @param value
      *     allowed object is

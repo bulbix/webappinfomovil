@@ -41,10 +41,10 @@
 			</div>
 			<div id="navbar" class="navbar-collapse collapse text-right">
 				<ul class="nav navbar-nav navbar-right">
-					<li><a href="<c:url value="/infomovil/miCuenta"></c:url>" class="smoothScroll ${colorTexto}"><img
-							width="20" height="20" alt="Infomovil"
-							src="<c:url value="/resources/webapp/images/fa-user${ extensionImg }.png"/>" />
-							Mi cuenta </a></li>
+<%-- 					<li><a href="<c:url value="/infomovil/miCuenta"></c:url>" class="smoothScroll ${colorTexto}"><img --%>
+<!-- 							width="20" height="20" alt="Infomovil" -->
+<%-- 							src="<c:url value="/resources/webapp/images/fa-user${ extensionImg }.png"/>" /> --%>
+<!-- 							Mi cuenta </a></li> -->
 							
 							<li><a href="<c:url value="/infomovil/editarSitio"></c:url>" class="smoothScroll ${colorTexto}"><img
 							width="20" height="20" alt="Infomovil"
@@ -83,30 +83,38 @@
 
 	<!-- Botón Nuevo Estilo -->
 	<div class="seccTop bgBlack">
-		<div class="col-xs-12 col-sm-6 col-sm-offset-3 col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3">
-			<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 reset">
-				<img width="30" height="30" alt="Infomovil"
-					src="<c:url value="/resources/webapp/images/fa-user.png"/>" /> Nombre ${usuarioLogueado}<br/> <img width="25" height="25" alt="Infomovil"
-					src="<c:url value="/resources/webapp/images/fa-mail.png"/>" /> mail@mail.com
-			</div>
-			<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 reset">
-
-				<a href="<c:url value="/infomovil/editarSitio"></c:url>"
-					class="col-xs-6 col-sm-3 col-md-3 col-lg-3 btn btn-default btn-outline navEditor pull-right">
+	<div class="container">
+	
+	<div class="col-xs-12 col-sm-6 hidden-xs"><h3 class="text-left textWhite" style="font-weight: 300;">Mi
+				Cuenta</h3></div>
+		<div class="col-xs-12 col-sm-6">
+			<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 reset text-right pull-right">
+				Nombre ${usuarioLogueado}<img width="30" height="30" alt="Infomovil"
+					src="<c:url value="/resources/webapp/images/fa-user.png"/>" />  <br/> mail@mail.com <img width="25" height="25" alt="Infomovil"
+					src="<c:url value="/resources/webapp/images/fa-mail.png"/>" /> 
+					<div class="clear"></div>
+					<a href="<c:url value="/infomovil/editarSitio"></c:url>"
+					class="col-xs-4 col-sm-3 col-md-3 col-lg-3 btn btn-default btn-outline navEditor pull-right hidden-sm hidden-md hidden-lg">
 
 					<span id="idOpcionMasCont"><img width="20" height="20"
 						alt="Infomovil"
-						src="<c:url value="/resources/webapp/images/fa-back.png"/>" /> </span>
+						src="<c:url value="/resources/webapp/images/fa-back.png"/>" /> Editor </span>
 				</a>
-
-
 			</div>
+			
 		</div>
+	
+	
 	</div>
+	</div>
+	
 	<!-- /Botón Nuevo Estilo -->
+	
 	<div class="">
+	
 		<div class="col-xs-12 col-sm-6 col-sm-offset-3 col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3">
-			<h3 class="text-left textWhite" style="font-weight: 300;">Mis
+		
+			<h3 class="text-left textWhite" style="font-weight: 300; margin:20px 0 0 0;">Mis
 				productos</h3>
 			<hr />
 			<!--Theme showcase -->
@@ -118,21 +126,24 @@
 						<strong></strong>
 						<div>
 						
+
 							<!-- Producto -->
 							<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6"
 								style="display: block; " id="dominioActivo">
+
 								<!-- CABECERA -->
-								<div
-									style="background: url(<c:url value="/resources/webapp/images/lineDark.png"/>); color: #fff; padding: 2px 0 5px 0; -webkit-border-top-left-radius: 15px; -webkit-border-top-right-radius: 15px; -moz-border-radius-topleft: 15px; -moz-border-radius-topright: 15px; border-top-left-radius: 15px; border-top-right-radius: 15px;">
-									<h5 style="font-weight: 300; text-transform: uppercase">Dominio</h5>
+								<div class="prodHeader">
+									<h5 class="prodTitle">Dominio</h5>
 								</div>
 								<!-- /CABECERA -->
 								<!-- CUERPO -->
 								<div
+
 									style="display: block; background: #fff; min-height: 100px; height: auto; padding: 10px;">
 									<div class="col-xs-12 text-center" style="padding: 10px 0;">
 										<p style="color: #2fa399">${sitioWeb}</p>
 										<p style="color:#2fa399">
+
 											<img width="25" height="25" alt="Infomovil"
 												src="<c:url value="/resources/webapp/images/btn_active.png"/>" />
 											Activo
@@ -148,27 +159,29 @@
 								</div>
 								<!--/ CUERPO -->
 								<!-- PIE -->
-								<div
-									style="-webkit-border-bottom-right-radius: 15px; -webkit-border-bottom-left-radius: 15px; -moz-border-radius-bottomright: 15px; -moz-border-radius-bottomleft: 15px; border-bottom-right-radius: 15px; border-bottom-left-radius: 15px; height: 15px; background: #fff; margin-bottom:30px"></div>
+								<div class="prodFooter"></div>
 								<!-- /PIE -->
 							</div>
 							<!--/ Producto -->
 							
 							<!-- Producto -->
+
 							<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6"
 								style="display: block;" id="dominioRenovacion">
+
 								<!-- CABECERA -->
-								<div
-									style="background: url(<c:url value="/resources/webapp/images/lineDark.png"/>); color: #fff; padding: 2px 0 5px 0; -webkit-border-top-left-radius: 15px; -webkit-border-top-right-radius: 15px; -moz-border-radius-topleft: 15px; -moz-border-radius-topright: 15px; border-top-left-radius: 15px; border-top-right-radius: 15px;">
-									<h5 style="font-weight: 300; text-transform: uppercase">Dominio</h5>
+								<div class="prodHeader">
+									<h5 class="prodTitle">Dominio</h5>
 								</div>
 								<!-- /CABECERA -->
 								<!-- CUERPO -->
 								<div 
+
 									style="display: block; background: #fff; min-height: 100px; height: auto; padding: 10px;">
 									<div class="col-xs-12 text-center" style="padding: 10px 0;">
 										<p style="color: #2fa399">${sitioWeb}</p>
 										<p style="color: #2fa399">
+
 											<img width="25" height="25" alt="Infomovil"
 												src="<c:url value="/resources/webapp/images/btn_active.png"/>" />
 											Activo
@@ -183,11 +196,11 @@
 									
 									
 									<div class="col-xs-12 text-center">
-									<p style="padding:0; margin:0;">12 meses</p>
-										<h2 style="font-weight: 300; color: #2fa399; padding:0; margin:0 0 10px 0;">
+									<p class="reset">12 meses</p>
+										<h3 class="prodPrice">
 											<sup>$</sup><span><strong>600.00</strong><span
-												style="font-size: .7em;"> mxn</span></span>
-										</h2>
+												class="prodNotes"> mxn</span></span>
+										</h3>
 <!-- 										<span style="font-size:.9em;"><em>Pago anual</em></span> -->
 									</div>
 									<div class="clearfix"></div>
@@ -201,16 +214,13 @@
 								</div>
 								<!--/ CUERPO -->
 								<!-- PIE -->
-								<div
-									style="-webkit-border-bottom-right-radius: 15px; -webkit-border-bottom-left-radius: 15px; -moz-border-radius-bottomright: 15px; -moz-border-radius-bottomleft: 15px; border-bottom-right-radius: 15px; border-bottom-left-radius: 15px; height: 15px; background: #fff;margin-bottom:30px"></div>
+								<div class="prodFooter"></div>
 								<!-- /PIE -->
 							</div>
 							<!--/ Producto -->
 							
 							
-						
-							
-							
+
 						</div>
 					</div>
 					<!-- /page header -->

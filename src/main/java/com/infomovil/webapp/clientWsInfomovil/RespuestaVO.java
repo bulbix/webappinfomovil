@@ -9,9 +9,9 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java class for respuestaVO complex type.
+ * <p>Clase Java para respuestaVO complex type.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * <p>El siguiente fragmento de esquema especifica el contenido que se espera que haya en esta clase.
  * 
  * <pre>
  * &lt;complexType name="respuestaVO">
@@ -34,6 +34,7 @@ import javax.xml.bind.annotation.XmlType;
  *         &lt;element name="campania" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="esquemaProducto" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="idDominio" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *         &lt;element name="idPago" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="downgrade" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="listProductoUsuarioVO" type="{http://ws.webservice.infomovil.org/}productoUsuarioVO" maxOccurs="unbounded" minOccurs="0"/>
  *         &lt;element name="listStatusDomainVO" type="{http://ws.webservice.infomovil.org/}statusDomainVO" maxOccurs="unbounded" minOccurs="0"/>
@@ -52,7 +53,6 @@ import javax.xml.bind.annotation.XmlType;
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "respuestaVO", propOrder = {
     "resultado",
-    "downgrade",
     "token",
     "fechaIni",
     "fechaFin",
@@ -68,7 +68,8 @@ import javax.xml.bind.annotation.XmlType;
     "campania",
     "esquemaProducto",
     "idDominio",
-  
+    "idPago",
+    "downgrade",
     "listProductoUsuarioVO",
     "listStatusDomainVO",
     "listUsuarioDominiosVO",
@@ -94,6 +95,7 @@ public class RespuestaVO {
     protected String campania;
     protected String esquemaProducto;
     protected String idDominio;
+    protected String idPago;
     protected String downgrade;
     protected List<ProductoUsuarioVO> listProductoUsuarioVO;
     protected List<StatusDomainVO> listStatusDomainVO;
@@ -103,7 +105,7 @@ public class RespuestaVO {
     protected List<StatusDomainVO> listStatusDomainGratisVO;
 
     /**
-     * Gets the value of the resultado property.
+     * Obtiene el valor de la propiedad resultado.
      * 
      * @return
      *     possible object is
@@ -115,7 +117,7 @@ public class RespuestaVO {
     }
 
     /**
-     * Sets the value of the resultado property.
+     * Define el valor de la propiedad resultado.
      * 
      * @param value
      *     allowed object is
@@ -127,7 +129,7 @@ public class RespuestaVO {
     }
 
     /**
-     * Gets the value of the token property.
+     * Obtiene el valor de la propiedad token.
      * 
      * @return
      *     possible object is
@@ -139,7 +141,7 @@ public class RespuestaVO {
     }
 
     /**
-     * Sets the value of the token property.
+     * Define el valor de la propiedad token.
      * 
      * @param value
      *     allowed object is
@@ -151,7 +153,7 @@ public class RespuestaVO {
     }
 
     /**
-     * Gets the value of the fechaIni property.
+     * Obtiene el valor de la propiedad fechaIni.
      * 
      * @return
      *     possible object is
@@ -163,7 +165,7 @@ public class RespuestaVO {
     }
 
     /**
-     * Sets the value of the fechaIni property.
+     * Define el valor de la propiedad fechaIni.
      * 
      * @param value
      *     allowed object is
@@ -175,7 +177,7 @@ public class RespuestaVO {
     }
 
     /**
-     * Gets the value of the fechaFin property.
+     * Obtiene el valor de la propiedad fechaFin.
      * 
      * @return
      *     possible object is
@@ -187,7 +189,7 @@ public class RespuestaVO {
     }
 
     /**
-     * Sets the value of the fechaFin property.
+     * Define el valor de la propiedad fechaFin.
      * 
      * @param value
      *     allowed object is
@@ -199,7 +201,7 @@ public class RespuestaVO {
     }
 
     /**
-     * Gets the value of the fTelNamesIni property.
+     * Obtiene el valor de la propiedad fTelNamesIni.
      * 
      * @return
      *     possible object is
@@ -211,7 +213,7 @@ public class RespuestaVO {
     }
 
     /**
-     * Sets the value of the fTelNamesIni property.
+     * Define el valor de la propiedad fTelNamesIni.
      * 
      * @param value
      *     allowed object is
@@ -223,7 +225,7 @@ public class RespuestaVO {
     }
 
     /**
-     * Gets the value of the fTelNamesFin property.
+     * Obtiene el valor de la propiedad fTelNamesFin.
      * 
      * @return
      *     possible object is
@@ -235,7 +237,7 @@ public class RespuestaVO {
     }
 
     /**
-     * Sets the value of the fTelNamesFin property.
+     * Define el valor de la propiedad fTelNamesFin.
      * 
      * @param value
      *     allowed object is
@@ -247,7 +249,7 @@ public class RespuestaVO {
     }
 
     /**
-     * Gets the value of the codeError property.
+     * Obtiene el valor de la propiedad codeError.
      * 
      * @return
      *     possible object is
@@ -259,7 +261,7 @@ public class RespuestaVO {
     }
 
     /**
-     * Sets the value of the codeError property.
+     * Define el valor de la propiedad codeError.
      * 
      * @param value
      *     allowed object is
@@ -271,7 +273,7 @@ public class RespuestaVO {
     }
 
     /**
-     * Gets the value of the msgError property.
+     * Obtiene el valor de la propiedad msgError.
      * 
      * @return
      *     possible object is
@@ -283,7 +285,7 @@ public class RespuestaVO {
     }
 
     /**
-     * Sets the value of the msgError property.
+     * Define el valor de la propiedad msgError.
      * 
      * @param value
      *     allowed object is
@@ -295,7 +297,7 @@ public class RespuestaVO {
     }
 
     /**
-     * Gets the value of the statusDominio property.
+     * Obtiene el valor de la propiedad statusDominio.
      * 
      * @return
      *     possible object is
@@ -307,7 +309,7 @@ public class RespuestaVO {
     }
 
     /**
-     * Sets the value of the statusDominio property.
+     * Define el valor de la propiedad statusDominio.
      * 
      * @param value
      *     allowed object is
@@ -319,7 +321,7 @@ public class RespuestaVO {
     }
 
     /**
-     * Gets the value of the codeCamp property.
+     * Obtiene el valor de la propiedad codeCamp.
      * 
      * @return
      *     possible object is
@@ -331,7 +333,7 @@ public class RespuestaVO {
     }
 
     /**
-     * Sets the value of the codeCamp property.
+     * Define el valor de la propiedad codeCamp.
      * 
      * @param value
      *     allowed object is
@@ -343,7 +345,7 @@ public class RespuestaVO {
     }
 
     /**
-     * Gets the value of the urlImagen property.
+     * Obtiene el valor de la propiedad urlImagen.
      * 
      * @return
      *     possible object is
@@ -355,7 +357,7 @@ public class RespuestaVO {
     }
 
     /**
-     * Sets the value of the urlImagen property.
+     * Define el valor de la propiedad urlImagen.
      * 
      * @param value
      *     allowed object is
@@ -367,7 +369,7 @@ public class RespuestaVO {
     }
 
     /**
-     * Gets the value of the scriptMovilizaSitio property.
+     * Obtiene el valor de la propiedad scriptMovilizaSitio.
      * 
      * @return
      *     possible object is
@@ -379,7 +381,7 @@ public class RespuestaVO {
     }
 
     /**
-     * Sets the value of the scriptMovilizaSitio property.
+     * Define el valor de la propiedad scriptMovilizaSitio.
      * 
      * @param value
      *     allowed object is
@@ -391,7 +393,7 @@ public class RespuestaVO {
     }
 
     /**
-     * Gets the value of the canal property.
+     * Obtiene el valor de la propiedad canal.
      * 
      * @return
      *     possible object is
@@ -403,7 +405,7 @@ public class RespuestaVO {
     }
 
     /**
-     * Sets the value of the canal property.
+     * Define el valor de la propiedad canal.
      * 
      * @param value
      *     allowed object is
@@ -415,7 +417,7 @@ public class RespuestaVO {
     }
 
     /**
-     * Gets the value of the campania property.
+     * Obtiene el valor de la propiedad campania.
      * 
      * @return
      *     possible object is
@@ -427,7 +429,7 @@ public class RespuestaVO {
     }
 
     /**
-     * Sets the value of the campania property.
+     * Define el valor de la propiedad campania.
      * 
      * @param value
      *     allowed object is
@@ -439,7 +441,7 @@ public class RespuestaVO {
     }
 
     /**
-     * Gets the value of the esquemaProducto property.
+     * Obtiene el valor de la propiedad esquemaProducto.
      * 
      * @return
      *     possible object is
@@ -451,7 +453,7 @@ public class RespuestaVO {
     }
 
     /**
-     * Sets the value of the esquemaProducto property.
+     * Define el valor de la propiedad esquemaProducto.
      * 
      * @param value
      *     allowed object is
@@ -463,7 +465,7 @@ public class RespuestaVO {
     }
 
     /**
-     * Gets the value of the idDominio property.
+     * Obtiene el valor de la propiedad idDominio.
      * 
      * @return
      *     possible object is
@@ -475,7 +477,7 @@ public class RespuestaVO {
     }
 
     /**
-     * Sets the value of the idDominio property.
+     * Define el valor de la propiedad idDominio.
      * 
      * @param value
      *     allowed object is
@@ -487,7 +489,31 @@ public class RespuestaVO {
     }
 
     /**
-     * Gets the value of the downgrade property.
+     * Obtiene el valor de la propiedad idPago.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getIdPago() {
+        return idPago;
+    }
+
+    /**
+     * Define el valor de la propiedad idPago.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setIdPago(String value) {
+        this.idPago = value;
+    }
+
+    /**
+     * Obtiene el valor de la propiedad downgrade.
      * 
      * @return
      *     possible object is
@@ -499,7 +525,7 @@ public class RespuestaVO {
     }
 
     /**
-     * Sets the value of the downgrade property.
+     * Define el valor de la propiedad downgrade.
      * 
      * @param value
      *     allowed object is
@@ -598,7 +624,7 @@ public class RespuestaVO {
     }
 
     /**
-     * Gets the value of the dominioCreaSitio property.
+     * Obtiene el valor de la propiedad dominioCreaSitio.
      * 
      * @return
      *     possible object is
@@ -610,7 +636,7 @@ public class RespuestaVO {
     }
 
     /**
-     * Sets the value of the dominioCreaSitio property.
+     * Define el valor de la propiedad dominioCreaSitio.
      * 
      * @param value
      *     allowed object is
@@ -678,5 +704,20 @@ public class RespuestaVO {
         }
         return this.listStatusDomainGratisVO;
     }
+
+	@Override
+	public String toString() {
+		return "RespuestaVO [resultado=" + resultado + ", token=" + token + ", fechaIni=" + fechaIni + ", fechaFin="
+				+ fechaFin + ", fTelNamesIni=" + fTelNamesIni + ", fTelNamesFin=" + fTelNamesFin + ", codeError="
+				+ codeError + ", msgError=" + msgError + ", statusDominio=" + statusDominio + ", codeCamp=" + codeCamp
+				+ ", urlImagen=" + urlImagen + ", scriptMovilizaSitio=" + scriptMovilizaSitio + ", canal=" + canal
+				+ ", campania=" + campania + ", esquemaProducto=" + esquemaProducto + ", idDominio=" + idDominio
+				+ ", idPago=" + idPago + ", downgrade=" + downgrade + ", listProductoUsuarioVO=" + listProductoUsuarioVO
+				+ ", listStatusDomainVO=" + listStatusDomainVO + ", listUsuarioDominiosVO=" + listUsuarioDominiosVO
+				+ ", dominioCreaSitio=" + dominioCreaSitio + ", listImagenVO=" + listImagenVO
+				+ ", listStatusDomainGratisVO=" + listStatusDomainGratisVO + "]";
+	}
+    
+    
 
 }

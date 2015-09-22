@@ -35,9 +35,11 @@
      <select><option>México</option></select>
     </div>
   </div>
+
   <div class="dividerSmall" align="center">Datos incompletos por favor ingresalos!</div>
   
   <div class="container"><hr/></div>
+
   <h5 style="color:#2fa399">Renovación de dominio </h5>
   <div class="form-group">
     <label for="inputEmail3" class="col-sm-2 control-label text-left">Dominio</label>

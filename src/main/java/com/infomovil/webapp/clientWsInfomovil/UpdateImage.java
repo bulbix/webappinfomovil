@@ -9,9 +9,9 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java class for updateImage complex type.
+ * <p>Clase Java para updateImage complex type.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * <p>El siguiente fragmento de esquema especifica el contenido que se espera que haya en esta clase.
  * 
  * <pre>
  * &lt;complexType name="updateImage">
@@ -48,7 +48,7 @@ public class UpdateImage {
     protected String versionSistema;
 
     /**
-     * Gets the value of the domainId property.
+     * Obtiene el valor de la propiedad domainId.
      * 
      * @return
      *     possible object is
@@ -60,7 +60,7 @@ public class UpdateImage {
     }
 
     /**
-     * Sets the value of the domainId property.
+     * Define el valor de la propiedad domainId.
      * 
      * @param value
      *     allowed object is
@@ -101,7 +101,7 @@ public class UpdateImage {
     }
 
     /**
-     * Gets the value of the token property.
+     * Obtiene el valor de la propiedad token.
      * 
      * @return
      *     possible object is
@@ -113,7 +113,7 @@ public class UpdateImage {
     }
 
     /**
-     * Sets the value of the token property.
+     * Define el valor de la propiedad token.
      * 
      * @param value
      *     allowed object is
@@ -125,7 +125,7 @@ public class UpdateImage {
     }
 
     /**
-     * Gets the value of the sistema property.
+     * Obtiene el valor de la propiedad sistema.
      * 
      * @return
      *     possible object is
@@ -137,7 +137,7 @@ public class UpdateImage {
     }
 
     /**
-     * Sets the value of the sistema property.
+     * Define el valor de la propiedad sistema.
      * 
      * @param value
      *     allowed object is
@@ -149,7 +149,7 @@ public class UpdateImage {
     }
 
     /**
-     * Gets the value of the versionSistema property.
+     * Obtiene el valor de la propiedad versionSistema.
      * 
      * @return
      *     possible object is
@@ -161,7 +161,7 @@ public class UpdateImage {
     }
 
     /**
-     * Sets the value of the versionSistema property.
+     * Define el valor de la propiedad versionSistema.
      * 
      * @param value
      *     allowed object is
