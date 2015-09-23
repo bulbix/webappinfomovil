@@ -14,11 +14,11 @@
 		
 		
 		<div class="clear"></div>
-		<img width="130" height="130"
+		<img width="100" height="100"
 							alt="Infomovil"
 							src="<c:url value="/resources/webapp/images/fa-warning-purchase-bk.png"/>" /> Tu compra no se ha efectuado</h3>
 							<div class="clear divider"></div>
-							<span>Si tienes dudas, puedes contactárnos a mail@mail.com</span>
+							<span>Si tienes dudas, puedes ponerte en contacto con nosotros, envíanos un correo a ops@infomovil.com</span>
 					
 	</div>
 	

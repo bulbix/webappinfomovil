@@ -126,7 +126,93 @@
 							</tiles:insertDefinition>	
 						</c:if>				
 						<!--/ Producto -->
+
+							<!-- Producto -->
+							<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6" 
+								style="display: block;">
+								<!-- CABECERA -->
+								<div
+									class="prodHeader">
+									<h5 class="prodTitle">Plan Pro</h5>
+								</div>
+								<!-- /CABECERA -->
+								<!-- CUERPO -->
+								<div
+									class="prodBody">
+									<div class="col-xs-12 text-center prodPadd10" >
+										<p class="textGray">12 meses</p>
+										<p class="textGray">
+											<img width="25" height="25" alt="Infomovil"
+												src="<c:url value="/resources/webapp/images/btn_inactive.png"/>" />
+											Inactivo
+										</p>
+									</div>
+									<div class="col-xs-12 text-center">
+										<span>Vigencia del:<br/> <strong>dd/mm/aa</strong> <br/>a <br/><strong>dd/mm/aa</strong></span>
+									</div>
+									<div class="clearfix"></div>
+									<div class="divider"></div>
+									<hr />
+									
+									
+									<div class="col-xs-12 text-center">
+									<p class="reset"><select class="col-xs-12"><option>1 mes</option><option>12 meses</option></select></p>
+								<div class="clearfix"></div>
+									<div class="divider"></div>
+										<h3 class="prodPrice">
+											<sup>$</sup><span><strong>50.00</strong><span
+												class="prodNotes"> mxn</span></span>
+										</h3>
+<!-- 										<span style="font-size:.9em;"><em>Pago anual</em></span> -->
+									</div>
+									<div class="clearfix"></div>
+									<div class="divider"></div>
+									<div class="col-xs-12 text-center">
+										<a href="#" data-toggle="modal" data-target="#myModalConfDatos"
+											class="btn btn-default btn-outlineGreen text-center textWhite">Renueva
+											ahora</a>
+									</div>
+									<div class="clearfix"></div>
+								</div>
+								<!--/ CUERPO -->
+								<!-- PIE -->
+								<div class="prodFooter"></div>
+								<!-- /PIE -->
+							</div>
+							<!--/ Producto -->
 							
+							
+							<!-- Producto -->
+							<div class="col-xs-12 col-sm-6 col-sm-offset-3 col-md-6 col-lg-6" 
+								style="display: block;">
+								<!-- CABECERA -->
+								<div
+									class="prodHeader">
+									<h5 class="prodTitle">&nbsp;</h5>
+								</div>
+								<!-- /CABECERA -->
+								<!-- CUERPO -->
+								<div
+									class="prodBody">
+									<div class="col-xs-12 text-center prodPadd10" >
+										<p class="textGray">Actualmente no cuentas con productos</p>
+											<hr />
+									</div>
+									<div class="col-xs-12 text-center">
+										<a href="<c:url value="/infomovil/editarSitio"></c:url>" 
+											class="btn btn-default btn-outlineGreen text-center textWhite"><img width="20" height="20"
+							alt="Infomovil"
+							src="<c:url value="/resources/webapp/images/fa-pencil.png"/>" /> Continuar editando</a>
+									</div>
+									<div class="clearfix"></div>
+									<div class="divider"></div>								
+									<div class="clearfix"></div>
+								</div>
+								<!--/ CUERPO -->
+								<!-- PIE -->
+								<div class="prodFooter"></div>
+								<!-- /PIE -->
+							</div>
 							<div><a href="#" data-toggle="modal" data-target="#myModalCompraExitosa">.</a></div>
 							
 							<div><a href="#" data-toggle="modal" data-target="#myModalCompraFallida" >..</a></div>
