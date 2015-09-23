@@ -41,6 +41,11 @@
 			</div>
 			<div id="navbar" class="navbar-collapse collapse text-right">
 				<ul class="nav navbar-nav navbar-right">
+					
+					<li><a href="#" class="smoothScroll ${colorTexto}"><img width="20" height="20" alt="Infomovil"	src="<c:url value="/resources/webapp/images/fa-user${ extensionImg }.png"/>" /> ${usuarioLogueado} 
+											</a> 
+											</li>
+					
 					<li><a href="<c:url value="/infomovil/miCuenta"></c:url>" class="smoothScroll ${colorTexto}"><img
 							width="20" height="20" alt="Infomovil"
 							src="<c:url value="/resources/webapp/images/fa-user${ extensionImg }.png"/>" />

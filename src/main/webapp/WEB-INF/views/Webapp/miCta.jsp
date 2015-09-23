@@ -353,9 +353,14 @@
 							<!--/ Producto -->
 							
 							
-							<div><a href="<c:url value="/infomovil/compraExitosa"></c:url>" >.</a></div>
+							<div><a href="#" data-toggle="modal" data-target="#myModalCompraExitosa">.</a></div>
 							
-							<div><a href="<c:url value="/infomovil/compraFallida"></c:url>" >..</a></div>
+							<div><a href="#" data-toggle="modal" data-target="#myModalCompraFallida" >..</a></div>
+							
+							
+								<div><a href="<c:url value="/infomovil/compraExitosa"></c:url>" >....</a></div>
+							
+							<div><a href="<c:url value="/infomovil/compraFallida"></c:url>"  >........</a></div>
 						</div>
 					</div>
 					<!-- /page header -->
@@ -378,6 +383,23 @@
 		</c:if>
 	</footer>
 	<!--/Footer-->
+	<!--MODAL COMPRA EXITOSA-->
+	<tiles:insertDefinition name="modalGen">
+		<tiles:putAttribute name="idModal" value="myModalCompraExitosa" />
+		<tiles:putAttribute name="tamanioModal"
+			value='"modal-dialog modal-md"' />
+		<c:set var="fragmentName" value="modalCompraExito" scope="request" />
+	</tiles:insertDefinition>
+	<!--/MODAL COMPRA EXITOSA-->
+	<!--MODAL COMPRA EXITOSA-->
+	<tiles:insertDefinition name="modalGen">
+		<tiles:putAttribute name="idModal" value="myModalCompraFallida" />
+		<tiles:putAttribute name="tamanioModal"
+			value='"modal-dialog modal-md"' />
+		<c:set var="fragmentName" value="modalCompraFallo" scope="request" />
+	</tiles:insertDefinition>
+	<!--/MODAL COMPRA EXITOSA-->
+	
 	<!--MODAL TEMPLATES-->
 	<div id="modalTemplates"></div>
 	<!--/MODAL TEMPLATES-->
