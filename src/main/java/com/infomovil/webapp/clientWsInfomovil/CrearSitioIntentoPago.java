@@ -38,7 +38,10 @@ import javax.xml.bind.annotation.XmlType;
     "tipoPlan",
     "medioPago",
     "titulo",
-    "tipoCompra"
+    "tipoCompra",
+    "nombreCliente",
+    "direccionCliente",
+    "pais"
 })
 public class CrearSitioIntentoPago {
 
@@ -49,6 +52,9 @@ public class CrearSitioIntentoPago {
     protected String medioPago;
     protected String titulo;
     protected String tipoCompra;
+    protected String nombreCliente;
+    protected String direccionCliente;
+    protected String pais;
 
     /**
      * Obtiene el valor de la propiedad email.
@@ -193,5 +199,31 @@ public class CrearSitioIntentoPago {
     public void setTipoCompra(String value) {
         this.tipoCompra = value;
     }
+
+	public String getNombreCliente() {
+		return nombreCliente;
+	}
+
+	public void setNombreCliente(String nombreCliente) {
+		this.nombreCliente = nombreCliente;
+	}
+
+	public String getDireccionCliente() {
+		return direccionCliente;
+	}
+
+	public void setDireccionCliente(String direccionCliente) {
+		this.direccionCliente = direccionCliente;
+	}
+
+	public String getPais() {
+		return pais;
+	}
+
+	public void setPais(String pais) {
+		this.pais = pais;
+	}
+    
+    
 
 }
