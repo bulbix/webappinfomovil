@@ -13,7 +13,7 @@
 	</div>
 	<div class="clearfix"></div>
 	<div class="divider"></div>
-	<div style=<tiles:getAsString name="visibleBtnRenuevaTel"/>>
+	<div style=<tiles:getAsString name="visibleBtnRenueva"/>>
 		<hr/>
 		<div class="col-xs-12 text-center">
 			<p class="reset">12 meses</p>

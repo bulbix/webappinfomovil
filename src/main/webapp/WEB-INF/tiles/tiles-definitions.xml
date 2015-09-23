@@ -8,10 +8,10 @@
 	<definition name="jsCore" template="/WEB-INF/fragments/jsCore.jsp" />
 	<definition name="jsScripts" template="/WEB-INF/fragments/jsScripts.jsp" />
 	<definition name="footer" template="/WEB-INF/fragments/footer.jsp" />
-	<definition name="modalTerminos" template="/WEB-INF/fragments/modals/modalTermCond.jsp" />
-	<definition name="modalGen" template="/WEB-INF/fragments/modals/modalGen.jsp" />
 	<definition name="headEditorSitio" template="/WEB-INF/fragments/headEditorSitio.jsp" />
 	<definition name="formPublicar" template="/WEB-INF/fragments/formPublicar.jsp" />
+	<definition name="modalTerminos" template="/WEB-INF/fragments/modals/modalTermCond.jsp" />
+	<definition name="modalGen" template="/WEB-INF/fragments/modals/modalGen.jsp" />
 	<definition name="modalMapFragment" template="/WEB-INF/fragments/modals/modalMapFragment.jsp" />
 	<definition name="modalVideoFragment" template="/WEB-INF/fragments/modals/modalVideoFragment.jsp" />
 	<definition name="modalExitoFragment" template="/WEB-INF/fragments/modals/modalExitoFragment.jsp" />
@@ -26,5 +26,5 @@
 	<definition name="prodGen" template="/WEB-INF/fragments/productos/prodGen.jsp" />
 	<definition name="dominioTel" template="/WEB-INF/fragments/productos/dominioTel.jsp"/>
 	<definition name="planPro" template="/WEB-INF/fragments/productos/planPro.jsp"/>
-	
+	<definition name="sinProductos" template="/WEB-INF/fragments/productos/sinProductos.jsp"/>
 </tiles-definitions>

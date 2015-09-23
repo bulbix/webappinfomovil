@@ -112,114 +112,51 @@
 						<strong></strong>
 						<div>
 						<!-- Producto  tel-->	
-						<c:if test="${tieneProductoTel =='SI'}">				
-							<tiles:insertDefinition name="prodGen">
-								<tiles:putAttribute name="productoTitulo" value="Dominio" />
-								<tiles:putAttribute name="claseProductos" value="${claseProductos}"/>
-								<c:set var="productoNombre" value="dominioTel" scope="request" />
-								<c:set var="productoActivo" value="Activo" scope="request" />
-								<c:set var="datoUrl" value="${urlDominio}" scope="request" />
-								<c:set var="fechaInicial" value="${fechaInicio}" scope="request" />
-								<c:set var="fechaFin" value="${fechaFin}" scope="request" />
-								<c:set var="imgActivo" value="${imgActivo}" scope="request" />
-								<c:set var="displayButton" value="${displayButton}" scope="request" />
-							</tiles:insertDefinition>	
-						</c:if>				
-						<!--/ Producto -->
+						
+						<c:choose> 
+							<c:when test="${totProductos > 0}">							
+								<c:forEach items="${productos}" var="item">
+									<tiles:insertDefinition name="prodGen">
+										<c:choose>
+											<c:when test="${item.claveComercial == 'TEL'}">
+												<c:set var="productoNombre" value="dominioTel" scope="request" />
+												<c:set var="datoUrl" value="${item.urlDominio}" scope="request" />
+											</c:when>
+											<c:otherwise>
+												<c:set var="productoNombre" value="planPro" scope="request" />
+												<c:set var="datoUrl" value="${item.descripcion}" scope="request" />
+											</c:otherwise>
+										</c:choose>
+	
+										<c:choose> 
+											<c:when test="${item.renovable == 'true'}">	
+												<c:set var="imgActivo" value="btn_inactive.png" scope="request" />
+												<c:set var="displayButton" value="display:block" scope="request" />		
+												<c:set var="productoActivo" value="Inactivo" scope="request" />				
+											</c:when>
+											<c:otherwise>
+												<c:set var="imgActivo" value="btn_active.png" scope="request" />
+												<c:set var="displayButton" value="display:none" scope="request" />		
+												<c:set var="productoActivo" value="Activo" scope="request" />													
+											</c:otherwise>
+										</c:choose>
 
-							<!-- Producto -->
-							<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6" 
-								style="display: block;">
-								<!-- CABECERA -->
-								<div
-									class="prodHeader">
-									<h5 class="prodTitle">Plan Pro</h5>
-								</div>
-								<!-- /CABECERA -->
-								<!-- CUERPO -->
-								<div
-									class="prodBody">
-									<div class="col-xs-12 text-center prodPadd10" >
-										<p class="textGray">12 meses</p>
-										<p class="textGray">
-											<img width="25" height="25" alt="Infomovil"
-												src="<c:url value="/resources/webapp/images/btn_inactive.png"/>" />
-											Inactivo
-										</p>
-									</div>
-									<div class="col-xs-12 text-center">
-										<span>Vigencia del:<br/> <strong>dd/mm/aa</strong> <br/>a <br/><strong>dd/mm/aa</strong></span>
-									</div>
-									<div class="clearfix"></div>
-									<div class="divider"></div>
-									<hr />
-									
-									
-									<div class="col-xs-12 text-center">
-									<p class="reset"><select class="col-xs-12"><option>1 mes</option><option>12 meses</option></select></p>
-								<div class="clearfix"></div>
-									<div class="divider"></div>
-										<h3 class="prodPrice">
-											<sup>$</sup><span><strong>50.00</strong><span
-												class="prodNotes"> mxn</span></span>
-										</h3>
-<!-- 										<span style="font-size:.9em;"><em>Pago anual</em></span> -->
-									</div>
-									<div class="clearfix"></div>
-									<div class="divider"></div>
-									<div class="col-xs-12 text-center">
-										<a href="#" data-toggle="modal" data-target="#myModalConfDatos"
-											class="btn btn-default btn-outlineGreen text-center textWhite">Renueva
-											ahora</a>
-									</div>
-									<div class="clearfix"></div>
-								</div>
-								<!--/ CUERPO -->
-								<!-- PIE -->
-								<div class="prodFooter"></div>
-								<!-- /PIE -->
-							</div>
-							<!--/ Producto -->
+										<c:set var="fechaInicial" value="${item.fechaInicio}" scope="request"/>
+										<c:set var="fechaFin" value="${item.fechaFin}" scope="request"/>
+										<tiles:putAttribute name="productoTitulo" value="${item.abc}"/>	
+										<tiles:putAttribute name="claseProductos" value="${claseProductos}"/>
+											
+									</tiles:insertDefinition>	
+								</c:forEach>		
+							</c:when>
+						<c:otherwise>
+							<tiles:insertDefinition name="sinProductos"></tiles:insertDefinition>
+						</c:otherwise>
+					</c:choose>
 							
-							
-							<!-- Producto -->
-							<div class="col-xs-12 col-sm-6 col-sm-offset-3 col-md-6 col-lg-6" 
-								style="display: block;">
-								<!-- CABECERA -->
-								<div
-									class="prodHeader">
-									<h5 class="prodTitle">&nbsp;</h5>
-								</div>
-								<!-- /CABECERA -->
-								<!-- CUERPO -->
-								<div
-									class="prodBody">
-									<div class="col-xs-12 text-center prodPadd10" >
-										<p class="textGray">Actualmente no cuentas con productos</p>
-											<hr />
-									</div>
-									<div class="col-xs-12 text-center">
-										<a href="<c:url value="/infomovil/editarSitio"></c:url>" 
-											class="btn btn-default btn-outlineGreen text-center textWhite"><img width="20" height="20"
-							alt="Infomovil"
-							src="<c:url value="/resources/webapp/images/fa-pencil.png"/>" /> Continuar editando</a>
-									</div>
-									<div class="clearfix"></div>
-									<div class="divider"></div>								
-									<div class="clearfix"></div>
-								</div>
-								<!--/ CUERPO -->
-								<!-- PIE -->
-								<div class="prodFooter"></div>
-								<!-- /PIE -->
-							</div>
 							<div><a href="#" data-toggle="modal" data-target="#myModalCompraExitosa">.</a></div>
-							
-							<div><a href="#" data-toggle="modal" data-target="#myModalCompraFallida" >..</a></div>
-							
-							
+							<div><a href="#" data-toggle="modal" data-target="#myModalCompraFallida" >..</a></div>							
 							<div><a href="<c:url value="/infomovil/compraExitosa"></c:url>" >....</a></div>
-							
 							<div><a href="<c:url value="/infomovil/compraFallida"></c:url>"  >........</a></div>
 
 						</div>

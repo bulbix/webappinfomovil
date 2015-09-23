@@ -461,47 +461,29 @@ public class WebappController
 		
 	}
 	
-	private ModelAndView validaURL(String vista)
-	{
-		HashMap<String, Object> model = new HashMap<String, Object>();		
-		model.put("name", "");		
-
-		return new ModelAndView(vista, model);
-	}
-	
+	@SuppressWarnings("unchecked")
 	@RequestMapping(value = "/infomovil/miCuenta", method = RequestMethod.GET)
 	public ModelAndView miCuenta(HttpServletRequest request, HttpServletResponse response, RedirectAttributes redirectAttributes)
 	{		
 		HashMap<String, Object> model = new HashMap<String, Object>();
 		RespuestaVO wsRespuesta = new RespuestaVO();
-		String imgActivo = "btn_active.png";
-		String displayButton = "display:none";
-		String tieneProductoTel = "SI";
+		
 		String claseProductos = "col-xs-12 col-sm-6 col-md-6 col-lg-6 dBlock col-sm-offset-3";
 		String claseCss = "";
 		String colorTexto = "";
 		String extensionImg = "";
 		int totProductos = 0;
-		
+
 		try
 		{		
 			String correo = Util.getUserLogged().getUsername();
 			String password = Util.getUserLogged().getPassword();
+			
 			wsRespuesta = wsCliente.crearSitioGetProductosUsuario(correo, password);
+			totProductos = wsRespuesta.getListProductoUsuarioVO().size();
 			
-			for (ProductoUsuarioVO producto : wsRespuesta.getListProductoUsuarioVO())
-			{
-				if (producto.isRenovable())
-				{
-					imgActivo = "btn_inactive.png";
-					displayButton = "display:block";
-				}
-				
-				totProductos++;
-			}
-			
-			if (totProductos > 1)
-				claseProductos = "col-xs-12 col-sm-6 col-md-6 col-lg-6 dBlock";
+			if (totProductos > 0)
+				claseProductos = "'col-xs-12 col-sm-6 col-md-6 col-lg-6 dBlock'";
 			
 			if (Util.getCurrentSession().getAttribute("canal").toString().startsWith("BAZ"))
 			{
@@ -516,34 +498,12 @@ public class WebappController
 				extensionImg = "";
 			}
 			
-			modeloWebApp.setListaProductos(wsRespuesta.getListProductoUsuarioVO());
-			
-			ProductoUsuarioVO productoVO = null;
-			productoVO = modeloWebApp.getProducto("tel");
-			
-			if (productoVO != null) 
-			{	
-				tieneProductoTel = "SI";
-				
-				if (productoVO.isRenovable())
-				{
-					imgActivo = "btn_inactive.png";
-					displayButton = "display:block";
-				}
-				
-				model.put("fechaInicio", productoVO.getFechaInicio());
-				model.put("fechaFin", productoVO.getFechaFin());
-				model.put("urlDominio", productoVO.getUrlDominio());
-				model.put("imgActivo", imgActivo);
-				model.put("displayButton", displayButton);
-			}
-			
 			model.put("claseProductos", claseProductos);
-			model.put("tieneProductoTel", tieneProductoTel);
 			model.put("claseCss", claseCss);
 			model.put("colorTexto", colorTexto);
 			model.put("extensionImg", extensionImg);
-			//model.putAll(m);
+			model.put("totProductos", totProductos);
+			model.put("productos", wsRespuesta.getListProductoUsuarioVO());
 		}		
 		catch (Exception e) 
 		{
