@@ -27,7 +27,17 @@ theme-showcaseApp > p > .btn { margin: 5px 0; }
 .textGray{color:#999 !important;}
 .textGreen{color:#2fa399 !important;}
 .text700{font-weight:700;}
+.boxThnks{border-radius:15px;background: url(../images/lineDark.png); color: #fff; padding: 2px 0 5px 0;}
 a.textBlack { color: #000 !important; }
+.dBlock{display: block;}
+.prodHeader{background: url(../images/lineDark.png); color: #fff; padding: 2px 0 5px 0; -webkit-border-top-left-radius: 15px; -webkit-border-top-right-radius: 15px; -moz-border-radius-topleft: 15px; -moz-border-radius-topright: 15px; border-top-left-radius: 15px; border-top-right-radius: 15px;}
+.prodTitle{font-weight: 300; text-transform: uppercase}
+.prodBody{display: block; background: #fff; min-height: 100px; height: auto; padding: 10px;}
+.prodPadd10{padding: 10px 0;}
+.prodFooter{-webkit-border-bottom-right-radius: 15px; -webkit-border-bottom-left-radius: 15px; -moz-border-radius-bottomright: 15px; -moz-border-radius-bottomleft: 15px; border-bottom-right-radius: 15px; border-bottom-left-radius: 15px; height: 15px; background: #fff; margin-bottom:30px}
+.reset{padding:0; margin:0;}
+.prodPrice{font-weight: 300; color: #2fa399; padding:0; margin:0 0 10px 0;}
+.prodNotes{font-size: .7em;}
 .text-small{ font-size:.9em !important; padding:20px 0;}
 .shadowSmooth { text-shadow: 1px 1px 5px rgba(150, 150, 150, 1); }
 .videoResponsive { display: block; width: 100%; height: auto; margin: 0 auto; min-height: 400px; max-height: 600px; }
@@ -86,7 +96,7 @@ p { font-size: 110%; }
 }
 .btn-outlineGreen{ background:#2fa399 !important; height:44px;}
 .btn-outlineGreen a{ color:#fff}
-.form-control{ background:url(../images/lineWht.png) repeat; border-bottom:2px solid #fff; border-left:none;border-right:none; border-top:none;border-radius:8px; font-size:16px !important; font-weight:400!important; color:#000!important; height:auto!important;}
+.form-control{ background:url(../images/lineWht.png) repeat; border-bottom:2px solid #fff; border-left:none;border-right:none; border-top:none;border-radius:8px; font-size:16px !important; font-weight:300!important; color:#000!important; height:auto!important;}
 
 ::-webkit-input-placeholder {
    color: #efefef !important;
@@ -303,12 +313,3 @@ textarea{resize: none;}
    color: #000 !important;  
 }
 .form-group{margin-bottom:15px !important;}
-.dBlock{display: block;}
-.prodHeader{background: url(../images/lineDark.png); color: #fff; padding: 2px 0 5px 0; -webkit-border-top-left-radius: 15px; -webkit-border-top-right-radius: 15px; -moz-border-radius-topleft: 15px; -moz-border-radius-topright: 15px; border-top-left-radius: 15px; border-top-right-radius: 15px;}
-.prodTitle{font-weight: 300; text-transform: uppercase}
-.prodBody{display: block; background: #fff; min-height: 100px; height: auto; padding: 10px;}
-.prodPadd10{padding: 10px 0;}
-.prodFooter{-webkit-border-bottom-right-radius: 15px; -webkit-border-bottom-left-radius: 15px; -moz-border-radius-bottomright: 15px; -moz-border-radius-bottomleft: 15px; border-bottom-right-radius: 15px; border-bottom-left-radius: 15px; height: 15px; background: #fff; margin-bottom:30px}
-.reset{padding:0; margin:0;}
-.prodPrice{font-weight: 300; color: #2fa399; padding:0; margin:0 0 10px 0;}
-.prodNotes{font-size: .7em;}

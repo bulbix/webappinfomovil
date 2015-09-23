@@ -147,7 +147,7 @@ public class ClientWsInfomovilTest {
 		RespuestaVO resp = clientWsInfomovil.crearSitioIntentoPago("rambo1@mail.com", 
 				"garbage1", "DOMINIO TEL", "PAY PAL", "TEL", "DOMINIO_TEL","Luisxxx","RANDEMxxx","MXX");
 		assertNotNull(resp);
-		System.out.println(resp);
+		System.out.println(resp.idPago);
 	}
 	
 	@Test

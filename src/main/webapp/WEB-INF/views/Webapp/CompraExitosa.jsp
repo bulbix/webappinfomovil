@@ -12,7 +12,7 @@
 
 
 <body role="document" data-spy="scroll" data-target=".navbar"
-	data-offset="75" id="page-top" onload="autosave()">
+	data-offset="75" id="page-top" >
 	<!-- Fixed navbar -->
 	<nav class="navbar navbar-${ claseCss } navbar-static-top">
 		<div class="container-fluid">
@@ -41,60 +41,60 @@
 			</div>
 			<div id="navbar" class="navbar-collapse collapse text-right">
 				<ul class="nav navbar-nav navbar-right">
-					
-<%-- 					<li><a href="#" class="smoothScroll ${colorTexto}"><img width="20" height="20" alt="Infomovil"	src="<c:url value="/resources/webapp/images/fa-user${ extensionImg }.png"/>" /> ${usuarioLogueado}  --%>
-<!-- 											</a>  -->
-<!-- 											</li> -->
-					
-					<li><a href="<c:url value="/infomovil/miCuenta"></c:url>" class="smoothScroll ${colorTexto}"><img
+<%-- 					<li><a href="<c:url value="/infomovil/miCuenta"></c:url>" class="smoothScroll ${colorTexto}"><img --%>
+<!-- 							width="20" height="20" alt="Infomovil" -->
+<%-- 							src="<c:url value="/resources/webapp/images/fa-user${ extensionImg }.png"/>" /> --%>
+<!-- 							Mi cuenta </a></li> -->
+							
+							<li><a href="<c:url value="/infomovil/editarSitio"></c:url>" class="smoothScroll ${colorTexto}"><img
 							width="20" height="20" alt="Infomovil"
-							src="<c:url value="/resources/webapp/images/fa-user${ extensionImg }.png"/>" />
-							Mi cuenta </a></li>
+							src="<c:url value="/resources/webapp/images/fa-back${ extensionImg }.png"/>" />
+							Editor </a></li>
 					<!-- 						<li> -->
 					<%-- 							<a href="#" class="smoothScroll ${colorTexto}">${usuarioLogueado} --%>
 					<%-- 							<img width="20" height="20" alt="Infomovil"	src="<c:url value="/resources/webapp/images/fa-user${ extensionImg }.png"/>" /></a> --%>
 					<!-- 						</li> -->
-					<li><a href="#" data-toggle="modal"
-						data-target="#myModalTemplates" class="smoothScroll ${colorTexto}"><img
-							width="20" height="20" alt="Infomovil"
-							src="<c:url value="/resources/webapp/images/fa-templates${ extensionImg }.png"/>" />
-							Mi Estilo </a></li>
-					<li class="dropdown"><a href="#" class="dropdown-toggle textWhite" 
-						data-toggle="dropdown" role="button" aria-haspopup="true"
-						aria-expanded="false"><img width="20" height="20"
-							alt="Infomovil"
-							src="<c:url value="/resources/webapp/images/fa-pencil${ extensionImg }.png"/>" />Mi
-							contenido <span class="caret"></span></a>
-						<ul class="dropdown-menu navbar-${ claseCss } ${colorTexto}">
-							<li class="botonDesPublicar" style="display: none;"><a
-								href="#" data-toggle="modal" data-target="#myModalMaps"
-								class="smoothScroll ${colorTexto}"><img width="20"
-									height="20" alt="Infomovil"
-									src="<c:url value="/resources/webapp/images/icn_marc_maps${ extensionImg }.png"/>" />
-									Ubicación </a></li>
-							<li class="botonDesPublicarVid" id="btnVideoLi"
-								style="display: none;"><a href="#" data-toggle="modal"
-								data-target="#myModalVideo" class="smoothScroll ${colorTexto}"><img
-									width="20" height="20" alt="Infomovil"
-									src="<c:url value="/resources/webapp/images/ico_ppp_youtube${ extensionImg }.png"/>" />
-									Video </a></li>
-							<li class="botonDesPublicar" id="btnImgLi" style="display: none;"><a
-								href="#" class="smoothScroll ${colorTexto}"
-								onclick="getImagenesJQ()"><img width="20" height="20"
-									alt="Infomovil"
-									src="<c:url value="/resources/webapp/images/ico_img${ extensionImg }.png"/>" />
-									Imágenes </a></li>
-							<li class="botonDesPublicar" id="btnContLi"
-								style="display: none;"><a href="#" data-toggle="modal"
-								data-target="#myModalDescApp" class="smoothScroll ${colorTexto}"><img
-									width="20" height="20" alt="Infomovil"
-									src="<c:url value="/resources/webapp/images/ico_mas_cont${ extensionImg }.png"/>" />
-									¿Qué sigue? <span class="hidden-sm hidden-md"></span> </a></li>
-							<!--             <li role="separator" class="divider"></li> -->
-							<!--             <li><a href="#">Separated link</a></li> -->
-							<!--             <li role="separator" class="divider"></li> -->
-							<!--             <li><a href="#">One more separated link</a></li> -->
-						</ul></li>
+<!-- 					<li><a href="#" data-toggle="modal" -->
+<%-- 						data-target="#myModalTemplates" class="smoothScroll ${colorTexto}"><img --%>
+<!-- 							width="20" height="20" alt="Infomovil" -->
+<%-- 							src="<c:url value="/resources/webapp/images/fa-templates${ extensionImg }.png"/>" /> --%>
+<!-- 							Mi Estilo </a></li> -->
+<!-- 					<li class="dropdown"><a href="#" class="dropdown-toggle" -->
+<!-- 						data-toggle="dropdown" role="button" aria-haspopup="true" -->
+<!-- 						aria-expanded="false"><img width="20" height="20" -->
+<!-- 							alt="Infomovil" -->
+<%-- 							src="<c:url value="/resources/webapp/images/fa-pencil${ extensionImg }.png"/>" />Mi --%>
+<!-- 							contenido <span class="caret"></span></a> -->
+<%-- 						<ul class="dropdown-menu navbar-${ claseCss } ${colorTexto}"> --%>
+<!-- 							<li class="botonDesPublicar" style="display: none;"><a -->
+<!-- 								href="#" data-toggle="modal" data-target="#myModalMaps" -->
+<%-- 								class="smoothScroll ${colorTexto}"><img width="20" --%>
+<!-- 									height="20" alt="Infomovil" -->
+<%-- 									src="<c:url value="/resources/webapp/images/icn_marc_maps${ extensionImg }.png"/>" /> --%>
+<!-- 									Ubicación </a></li> -->
+<!-- 							<li class="botonDesPublicarVid" id="btnVideoLi" -->
+<!-- 								style="display: none;"><a href="#" data-toggle="modal" -->
+<%-- 								data-target="#myModalVideo" class="smoothScroll ${colorTexto}"><img --%>
+<!-- 									width="20" height="20" alt="Infomovil" -->
+<%-- 									src="<c:url value="/resources/webapp/images/ico_ppp_youtube${ extensionImg }.png"/>" /> --%>
+<!-- 									Video </a></li> -->
+<!-- 							<li class="botonDesPublicar" id="btnImgLi" style="display: none;"><a -->
+<%-- 								href="#" class="smoothScroll ${colorTexto}" --%>
+<!-- 								onclick="getImagenesJQ()"><img width="20" height="20" -->
+<!-- 									alt="Infomovil" -->
+<%-- 									src="<c:url value="/resources/webapp/images/ico_img${ extensionImg }.png"/>" /> --%>
+<!-- 									Imágenes </a></li> -->
+<!-- 							<li class="botonDesPublicar" id="btnContLi" -->
+<!-- 								style="display: none;"><a href="#" data-toggle="modal" -->
+<%-- 								data-target="#myModalDescApp" class="smoothScroll ${colorTexto}"><img --%>
+<!-- 									width="20" height="20" alt="Infomovil" -->
+<%-- 									src="<c:url value="/resources/webapp/images/ico_mas_cont${ extensionImg }.png"/>" /> --%>
+<!-- 									¿Qué sigue? <span class="hidden-sm hidden-md"></span> </a></li> -->
+<!-- 							            <li role="separator" class="divider"></li> -->
+<!-- 							            <li><a href="#">Separated link</a></li> -->
+<!-- 							            <li role="separator" class="divider"></li> -->
+<!-- 							            <li><a href="#">One more separated link</a></li> -->
+<!-- 						</ul></li> -->
 
 
 					<!--  <li class="botonDesPublicar" id="btnContLi" style="display:none;">
@@ -132,183 +132,62 @@
 
 
 
-
 	<!-- Botón Nuevo Estilo -->
 	<div class="seccTop bgBlack">
-		<div class="">
-			<a href="#" data-toggle="modal" data-target="#myModalTemplates"
-				class="col-xs-12 col-sm-6 col-sm-offset-3 col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3 btn btn-default btn-outline navEditor"><strong>Elige
-					estilo</strong> <img width="20" height="20" alt="Infomovil"
-				src="<c:url value="/resources/webapp/images/fa-templates.png"/>" /><br />
-			<span class="text-center _90em">¡Lo puedes cambiar las veces
-					que quieras!</span></a>
-		</div>
+	<div class="container">
+	
+	<div class="col-xs-12 col-sm-12 text-center"><h1 class=" textWhite" style="font-weight: 300;">¡Felicidades!</h1></div>
+		
+	
+	
 	</div>
+	</div>
+	
 	<!-- /Botón Nuevo Estilo -->
-<div class="clear"></div>
-	<!--Theme showcase -->
-	<div class="theme-showcaseApp" role="main" id="intro">
-		<!-- Main jumbotron for a primary marketing message or call to action -->
-		<div class="container">
-			<!-- page header -->
-			<div class="page-header text-center">
-				<strong><span class="text-center btnsEditor _1_1em"
-					id="urlSitio" style="display: none;"> <a
-						href="http://${sitioWeb}" target="_blank"
-						class="col-xs-12 col-sm-12  col-md-12 col-lg-12 textBlack navEditor"><strong>${sitioWeb}</strong></a>
-				</span></strong>
-				<div>
-					<form id="formEditar">
-						<!--email-->
-						<div class="form-group col-xs-12 col-sm-12">
-							<div class="control-group">
-								<label class="control-label hidden-xs"></label>
-								<div class="controls">
-									<input type="text" class="form-control h1 text-center"
-										maxlength="128" placeholder="Pon tu nombre o negocio"
-										onfocus="this.placeholder = ''"
-										onblur="this.placeholder = 'Pon tu nombre o negocio'"
-										required="required"
-										<c:if test="${not empty nombreEmpresa}"> value = " ${ nombreEmpresa } " </c:if>
-										id="txtNombreNegocio" />
-									<p class="help-block"></p>
-								</div>
-							</div>
-						</div>
-						<!--email-->
-						<!--descripcion-->
-						<div class=" col-xs-12 col-sm-12">
-							<div>
-								<div class="controls">
-									<textarea class="form-control h2 text-center" maxlength="255"
-										placeholder="Agrega una descripción corta de tus servicios o productos"
-										onfocus="this.placeholder = ''"
-										onblur="this.placeholder = 'Agrega una descripción corta de tus servicios o productos'"
-										required id="txtDescripcionCorta" rows="5"><c:if
-											test="${not empty descripcionCorta}">${descripcionCorta}</c:if></textarea>
-									<p class="help-block"></p>
-								</div>
-							</div>
-							<hr />
-						</div>
-						<!--descripcion-->
-						<div class="form-group col-xs-12 col-sm-12">
-							<div class="mar15 col-xs-12 col-sm-12 col-md-6 col-lg-6 reset">
-								<div
-									class=" col-xs-12 col-sm-12 col-md-12 col-lg-12 mar0auto reset">
-									<img
-										src="http://landing.infomovil.com/webapp/templates/${ template }/images/mail_icn.png"
-										class="img mxw50miw43w100" alt="Contacto" /> <span
-										class="dblw100 mxh70 08em"> </span> <span
-										class="col-xs-12 08em mar0auto"> <input type="text"
-										style="text-transform: lowercase;"
-										class="form-control colorA text-center col-xs-11"
-										maxlength="100" placeholder="Correo" required="required"
-										onfocus="this.placeholder = ''"
-										onblur="this.placeholder = 'Correo'"
-										<c:if test="${not empty correoElectronico}"> value = "${ correoElectronico }" </c:if>
-										id="txtCorreo" />
-									</span>
-									<p class="help-block"></p>
-								</div>
-							</div>
-							<div class="mar15 col-xs-12 col-sm-12 col-md-6 col-lg-6 reset">
-								<div
-									class=" col-xs-12 col-sm-12 col-md-12 col-lg-12 mar0auto reset">
-									<img
-										src="http://landing.infomovil.com/webapp/templates/${ template }/images/cel_icn.png"
-										class="img mxw50miw43w100" alt="Contacto" /> <span
-										class="dblw100 mxh70 08em"> </span> <span
-										class="col-xs-12 08em mar0auto"> <input type="text"
-										class="form-control text-center col-xs-11" maxlength="10"
-										placeholder="Celular" required="required"
-										onfocus="this.placeholder = ''"
-										onblur="this.placeholder = 'Celular'"
-										<c:if test="${not empty telefonoUsuario}"> value = "${ telefonoUsuario }" </c:if>
-										id="txtTelefono" />
-									</span>
-									<p class="help-block"></p>
-								</div>
-							</div>
-						</div>
-						<div class="clear"></div>
+	
+	<div class="">
+	
+		<div class="col-xs-12 col-sm-6 col-sm-offset-3 col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3">
+		
+			
+			<!--Theme showcase -->
+			<div class="theme-showcaseApp boxThnks" role="main" id="intro">
+				<!-- Main jumbotron for a primary marketing message or call to action -->
+				<div class="">
+					<!-- page header -->
+					<div class="page-header text-center">
+						<strong></strong>
+						<div>
+						<p>Tu dominio ha sido renovado</p>
 						<div class="divider"></div>
-					</form>
+						<h3>
+						<img width="130" height="130"
+							alt="Infomovil"
+							src="<c:url value="/resources/webapp/images/fa-purchase.png"/>" /> Gracias tu compra</h3>
+						
+						<div class="divider"></div>
+						<span>En breve recibirás un correo con tu ticket de pago</span>
+						<div class="clearfix"></div>
+						<div class="divider"></div>
+						<a href="<c:url value="/infomovil/editarSitio"></c:url>"
+				class="col-xs-12 col-sm-6 col-sm-offset-3 col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3 btn btn-default btn-outline navEditor">
+				<img width="20" height="20"
+							alt="Infomovil"
+							src="<c:url value="/resources/webapp/images/fa-pencil.png"/>" />
+				<span>Continua editando</span>
+			</a>
+						</div>
+					</div>
+					<!-- /page header -->
+					<br /> <br />
 				</div>
 			</div>
-			<!-- /page header -->
-			<br /> <br />
+			<!--/Theme showcase -->
 		</div>
 	</div>
-	<!--/Theme showcase -->
-
 	<!--Footer-->
 	<footer class="footer bgBlack">
-		<div class="dividerSmall"></div>
-		<div class="clearfix"></div>
-		<!-- /Botón MAPS -->
-
-		<div class="botonDesPublicar " style="display: none;">
-			<a href="#" data-toggle="modal" data-target="#myModalMaps"
-				class="col-xs-12 col-sm-6 col-sm-offset-3 col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3 btn btn-default btn-outline navEditor">
-				<img width="30" height="30" alt="Infomovil"
-				src="<c:url value="/resources/webapp/images/icn_marc_maps.png"/>" />
-				<span id="idOpcionUbicacion">Coloca tu ubicación</span> <br />
-			<span id="direccionMap" class="directionMap"></span>
-			</a>
-		</div>
-
-		<div class="clearfix"></div>
-		<div class="dividerSmallest"></div>
-
-		<!-- Botón IMAGENES -->
-
-		<div class="botonDesPublicar" style="display: none;">
-			<a href="#" onclick="getImagenesJQ()"
-				class="col-xs-12 col-sm-6 col-sm-offset-3 col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3 btn btn-default btn-outline navEditor">
-				<img width="30" height="30" alt="Infomovil"
-				src="<c:url value="/resources/webapp/images/ico_img.png"/>" /> <span
-				id="idOpcionUbicacion">Agrega imágenes</span> <br />
-			<span id="direccionMap" class="directionMap"></span>
-			</a>
-		</div>
-		<!-- /Botón IMAGENES -->
-
-		<!-- /Botón Nuevo Estilo -->
-
-		<div class="clearfix"></div>
-		<div class="dividerSmallest"></div>
-		<!-- /Botón AGREGAR VIDEO -->
-		<div id="idBtnVideo" class="botonDesPublicarVid"
-			style="display: none;">
-			<a href="#" data-toggle="modal" data-target="#myModalVideo"
-				class="col-xs-12 col-sm-6 col-sm-offset-3 col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3 btn btn-default btn-outline navEditor">
-				<img width="30" height="30" alt="Infomovil"
-				src="<c:url value="/resources/webapp/images/ico_ppp_youtube.png"/>" />
-				<span id="idOpcionVideo">Agrega un video</span>
-			</a>
-		</div>
-		<!-- /Botón AGREGAR VIDEO -->
-		<div id="idBtnVideoClearFix" class="clearfix" style="display: none;"></div>
-		<div id="idBtnVideoDivider" class="dividerSmallest"
-			style="display: none;"></div>
-
-		<!-- /Botón AGREGAR MAS CONTENIDO -->
-		<div id="idBtnMasCont" class="botonDesPublicar" style="display: none;">
-			<a href="#" data-toggle="modal" data-target="#myModalDescApp"
-				class="col-xs-12 col-sm-6 col-sm-offset-3 col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3 btn btn-default btn-outline navEditor">
-				<img width="30" height="30" alt="Infomovil"
-				src="<c:url value="/resources/webapp/images/ico_mas_cont.png"/>" />
-				<span id="idOpcionMasCont">¿Qué sigue?</span>
-			</a>
-		</div>
-		<!-- /Botón AGREGAR MAS CONTENIDO -->
-
-		<div class="clearfix"></div>
-		<div class="dividerSmallest"></div>
-
 		<c:if test="${sitioWeb =='SIN_PUBLICAR'}">
-
 			<tiles:insertDefinition name="formPublicar">
 				<tiles:putAttribute name="urlEjemploSitio"
 					value="${ urlEjemploSitio }" />
@@ -317,23 +196,19 @@
 				<tiles:putAttribute name="visibleTel" value="${ visibleTel }" />
 			</tiles:insertDefinition>
 		</c:if>
-
 	</footer>
 	<!--/Footer-->
-
 	<!--MODAL TEMPLATES-->
 	<div id="modalTemplates"></div>
 	<!--/MODAL TEMPLATES-->
-
-	<!--MODAL MAPA-->
+	<!--MODAL CONFIRMACIÓN DATOS-->
 	<tiles:insertDefinition name="modalGen">
-		<tiles:putAttribute name="idModal" value="myModalMaps" />
+		<tiles:putAttribute name="idModal" value="myModalConfDatos" />
 		<tiles:putAttribute name="tamanioModal"
-			value='"modal-dialog modal-lg"' />
-		<c:set var="fragmentName" value="modalMapFragment" scope="request" />
+			value='"modal-dialog modal-md"' />
+		<c:set var="fragmentName" value="modalConfDatos" scope="request" />
 	</tiles:insertDefinition>
-	<!--/MODAL MAPA-->
-
+	<!--/MODAL CONFIRMACIÓN DATOS-->
 	<!--MODAL VIDEO-->
 	<tiles:insertDefinition name="modalGen">
 		<tiles:putAttribute name="idModal" value="myModalVideo" />
@@ -342,7 +217,6 @@
 		<c:set var="fragmentName" value="modalVideoFragment" scope="request" />
 	</tiles:insertDefinition>
 	<!--/MODAL VIDEO-->
-
 	<!--MODAL EXITO-->
 	<tiles:insertDefinition name="modalGen">
 		<tiles:putAttribute name="idModal" value="myModalExito" />
@@ -351,7 +225,6 @@
 		<c:set var="fragmentName" value="modalExitoFragment" scope="request" />
 	</tiles:insertDefinition>
 	<!--/MODAL EXITO-->
-
 	<!-- 		<!--MODAL FAIL-->
 	<tiles:insertDefinition name="modalGen">
 		<tiles:putAttribute name="idModal" value="myModalFallo" />
@@ -360,7 +233,6 @@
 		<c:set var="fragmentName" value="modalFalloFragment" scope="request" />
 	</tiles:insertDefinition>
 	<!-- 		<!--/MODAL FAIL-->
-
 	<!-- 		<!--MODAL REGISTRO-->
 	<tiles:insertDefinition name="modalGen">
 		<tiles:putAttribute name="idModal" value="myModalRegistro" />
@@ -370,7 +242,6 @@
 			scope="request" />
 	</tiles:insertDefinition>
 	<!-- 		<!--/MODAL REGISTRO-->
-
 	<!-- 		<!--MODAL DESCARGA LA APP-->
 	<tiles:insertDefinition name="modalGen">
 		<tiles:putAttribute name="idModal" value="myModalDescApp" />
@@ -379,7 +250,6 @@
 		<c:set var="fragmentName" value="modalDescApp" scope="request" />
 	</tiles:insertDefinition>
 	<!-- 		<!--/MODAL DESCARGA LA APP-->
-
 	<!-- 		<!--MODAL IMAGENES-->
 	<tiles:insertDefinition name="modalGen">
 		<tiles:putAttribute name="idModal" value="myModalImagenes" />
@@ -397,7 +267,6 @@
 			src="http://landing.infomovil.com/webapp/templates/${ template }/images/fa-chevron-up.png" />Subir
 		</a>
 	</div>
-
 	<!-- /container -->
 	<form id="publicarDominio"
 		action="<c:url value="/infomovil/publicarSitio"/>" method="post">
@@ -405,7 +274,6 @@
 		<input type="hidden" id="tipoDominio" name="tipoDominio"> <input
 			type="hidden" id="idCatTipoRecurso" name="idCatTipoRecurso">
 	</form>
-
 	<input type="hidden" id="plantilla" name="plantilla"
 		<c:if test="${not empty template}"> value = "${ template }" </c:if>>
 	<input type="hidden" id="latitud" name="latitud" value="${ latitud }">
@@ -448,7 +316,7 @@
 
 	<script src="<c:url value="/resources/webapp/js/jquery.numeric.js"/>"></script>
 	<script src="<c:url value="/resources/webapp/js/jquery.blockUI.js"/>"></script>
-	<script src="<c:url value="/resources/js/webapp/validaciones.js"/>"></script>
+	<%-- 	<script src="<c:url value="/resources/js/webapp/validaciones.js"/>"></script> --%>
 	<script src="<c:url value="/resources/js/webapp/mapa.js"/>"></script>
 	<script src="<c:url value="/resources/js/webapp/videoYoutube.js"/>"></script>
 	<script src="<c:url value="/resources/js/webapp/imagenes.js"/>"></script>
@@ -460,7 +328,7 @@
 	<script src="<c:url value="/resources/webapp/js/si.files.js"/>"></script>
 	<script>
 			$(document).ready(function(){
-				generarSlider();
+				//generarSlider();
 				google.maps.event.addDomListener(window, 'load', initialize);
 				});
 		</script>
