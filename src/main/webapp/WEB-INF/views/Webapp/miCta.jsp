@@ -10,6 +10,13 @@
 </tiles:insertDefinition>
 <body role="document" data-spy="scroll" data-target=".navbar"
 	data-offset="75" id="page-top" >
+	
+	<c:if test="${paymentStatus == 'Completed'}">
+	<script>
+		alert("Se completo la transacción!");
+	</script></c:if>
+	
+	
 	<!-- Fixed navbar -->
 	<nav class="navbar navbar-${ claseCss } navbar-static-top">
 		<div class="container-fluid">
@@ -79,7 +86,7 @@
 		<div class="col-xs-12 col-sm-6">
 			<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 reset text-right pull-right">
 				Nombre ${usuarioLogueado}<img width="30" height="30" alt="Infomovil"
-					src="<c:url value="/resources/webapp/images/fa-user.png"/>" />  <br/> mail@mail.com <img width="25" height="25" alt="Infomovil"
+					src="<c:url value="/resources/webapp/images/fa-user.png"/>" />  <br/> ${correoElectronico} <img width="25" height="25" alt="Infomovil"
 					src="<c:url value="/resources/webapp/images/fa-mail.png"/>" /> 
 					<div class="clear"></div>
 					<a href="<c:url value="/infomovil/editarSitio"></c:url>"
@@ -224,8 +231,29 @@
 	<script	src="<c:url value="/resources/webapp/js/bootstrap-dialog.min.js"/>"></script>
 	<script src="<c:url value="/resources/webapp/js/jquery.numeric.js"/>"></script>
 	<script src="<c:url value="/resources/webapp/js/jquery.blockUI.js"/>"></script>
-	<script src="<c:url value="/resources/js/webapp/paypal.js"/>"></script>
+	<script src="<c:url value="/resources/js/webapp/paypal.js"/>"></script>		 
 	<script src="<c:url value="/resources/webapp/js/si.files.js"/>"></script>
+
+ 
+<form id="formPaypal" name="formPaypal" method="post" action="https://www.sandbox.paypal.com/cgi-bin/webscr">
+	<input type="hidden" name="charset" value="utf-8">
+  <input type="hidden" value="infomovil.ayf-facilitator@gmail.com" name="business"/>
+  <input type="hidden" value="ES" name="country"/>
+  <input type="hidden" value="_xclick" name="cmd"/>
+  <input type="hidden" value="Renovación de tu Dominio .tel" name="item_name"/>
+  <input type="hidden" value="Dominio .tel" name="item_number"/>
+  <input type="hidden" value="200.00" name="amount"/>
+  <input type="hidden" value="1" name="no_shipping"/>
+  <input type="hidden" value="2" name="rm"/>
+  <input type="hidden" value="1" name="no_note"/>
+  <input type="hidden" value="MXN" name="currency_code"/>
+  <input type="hidden" value="PP-BuyNowBF" name="cn"/>
+  <input type="hidden" name="custom" id="customPaypal"/>
+  <input type="hidden" value="es" name="lc"/>
+  <input type="hidden" value="primary" name="page_style"/>
+  <input type='hidden' name='return' value='http://localhost:8080/WebAppInfomovil/infomovil/miCuenta'/>
+  <input type='hidden' name='cancel_return' value='http://localhost:8080/WebAppInfomovil/infomovil/miCuenta'/>
+</form>
 
 </body>
 </html>

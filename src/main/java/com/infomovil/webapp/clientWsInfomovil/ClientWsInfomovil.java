@@ -206,19 +206,23 @@ public class ClientWsInfomovil {
     }
 	
 	
-	public RespuestaVO crearSitioIntentoPago(String email, String password, String tipoPlan, String medioPago, String titulo, String tipoCompra)
+	public RespuestaVO crearSitioIntentoPago(String email, String password, String tipoPlan, 
+			String medioPago, String titulo, String tipoCompra, String nombreCliente, String direccionCliente, String pais)
 	{
-	/*	log.info("Invoking crearSitioIntentoPago...");
+		log.info("Invoking crearSitioIntentoPago...");
 		com.infomovil.webapp.clientWsInfomovil.CrearSitioIntentoPago _crearSitioIntentoPago_parameters = new CrearSitioIntentoPago();
 		_crearSitioIntentoPago_parameters.setEmail(email);
 		_crearSitioIntentoPago_parameters.setPassword(password);
 		_crearSitioIntentoPago_parameters.setTipoPlan(tipoPlan);
 		_crearSitioIntentoPago_parameters.setMedioPago(medioPago);
 		_crearSitioIntentoPago_parameters.setTitulo(titulo);
-		_crearSitioIntentoPago_parameters.setTipoCompra(tipoCompra);*/
-		//com.infomovil.webapp.clientWsInfomovil.CrearSitioIntentoPagoResponse _crearSitioIntentoPago__return = port.crearSitioIntentoPago(_crearSitioIntentoPago_parameters);
-		//log.info("crearSitioIntentoPago.result=" + _crearSitioIntentoPago__return);
-		return null; //_crearSitioIntentoPago__return.respuestaVO;
+		_crearSitioIntentoPago_parameters.setTipoCompra(tipoCompra);
+		_crearSitioIntentoPago_parameters.setNombreCliente(nombreCliente);
+		_crearSitioIntentoPago_parameters.setDireccionCliente(direccionCliente);
+		_crearSitioIntentoPago_parameters.setPais(pais);
+		com.infomovil.webapp.clientWsInfomovil.CrearSitioIntentoPagoResponse _crearSitioIntentoPago__return = port.crearSitioIntentoPago(_crearSitioIntentoPago_parameters);
+		log.info("crearSitioIntentoPago.result=" + _crearSitioIntentoPago__return);
+		return _crearSitioIntentoPago__return.respuestaVO;
 	}
 	
 	public RespuestaVO crearSitioGetProductosUsuario(String email, String password)
