@@ -1,6 +1,8 @@
 
 package com.infomovil.webapp.controllers;
 
+import static org.junit.Assert.assertNotNull;
+
 import java.io.UnsupportedEncodingException;
 import java.util.HashMap;
 import java.util.Map;
@@ -16,6 +18,7 @@ import org.apache.commons.validator.routines.EmailValidator;
 import org.apache.log4j.Logger;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
+import org.junit.Test;
 import org.springframework.stereotype.Controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
@@ -460,7 +463,7 @@ public class WebappController
 		}
 		
 	}
-	/*
+	
 	@RequestMapping(value = "/infomovil/miCuenta", method = RequestMethod.GET)
 	public ModelAndView miCuenta(@CookieValue(value = "editarSitioInfomovil", defaultValue = "") 
 		String editarSitioInfomovil) 
@@ -473,7 +476,7 @@ public class WebappController
 		
 		return new ModelAndView("Webapp/miCta", model);
 	}
-	*/
+	
 	private ModelAndView validaURL(String vista)
 	{
 		HashMap<String, Object> model = new HashMap<String, Object>();		
@@ -671,8 +674,8 @@ public class WebappController
 		}	
 	}
 	
-	
-	@RequestMapping(value = "/infomovil/miCuentaIsaac", method = RequestMethod.GET)
+	/*
+	@RequestMapping(value = "/infomovil/miCuenta", method = RequestMethod.GET)
 	public ModelAndView miCuenta(HttpServletRequest request, HttpServletResponse response, RedirectAttributes redirectAttributes)
 	{		
 		HashMap<String, Object> model = new HashMap<String, Object>();
@@ -745,7 +748,7 @@ public class WebappController
 					fechaFin = wsRespuesta.getFTelNamesFin();
 				}
 
-				/*Ajuste para trabajar con la lista de productos*/
+				Ajuste para trabajar con la lista de productos
 
 				if (wsRespuesta.getDominioCreaSitio().getCanal().startsWith("BAZ"))
 				{
@@ -785,7 +788,7 @@ public class WebappController
 					ProductoUsuarioVO productoVO = null;
 					productoVO = modeloWebApp.getProducto("tel");
 					
-					if (productoVO != null) /*Tipo de dominio a publicar*/
+					if (productoVO != null) 
 					{
 						tipoPublica = "tel";
 						visibleTel = "display:block;";
@@ -797,18 +800,18 @@ public class WebappController
 					productoVO = null;
 					productoVO = modeloWebApp.getProducto("pp", "pi");
 					
-					if (productoVO != null) /*Busca si en los productos tiene un plan pro*/
+					if (productoVO != null)
 						planPro = "SI";
 				}
 
-				/*Ajuste para validar si este usuario tiene un PP (comprado)*/
+			
 				if (planPro.equals("NO"))
 				{
 					status = wsRespuesta.getDominioCreaSitio().getEstatusCuenta();
 					if (modeloWebApp.getStatus(status))
 						planPro = "SI";
 				}
-				/*End ajuste para trabajar con la lista de productos*/
+			
 				
 				model.put("usuarioLogueado", correo);
 				model.put("nombreUsuario", wsRespuesta.getDominioCreaSitio().getNombreUsuario().trim());				
@@ -860,7 +863,7 @@ public class WebappController
 			return null;
 		}	
 	}
-	
+	*/
 	@RequestMapping(value = "/infomovil/obtenerDominios", method = RequestMethod.GET, produces = "application/json")
 	@ResponseBody
 	public HashMap<String, Object> obtenerDominios()
@@ -926,6 +929,53 @@ public class WebappController
 		
 		return resultMap;
 	}
+	
+	
+	@RequestMapping(value = "/infomovil/crearSitioIntentoPago", method = RequestMethod.POST, produces = "application/json")
+	@ResponseBody
+	public Map<String, String> crearSitioIntentoPago()
+	{		
+		Map<String, String> resultMap = new HashMap<String, String>();
+		RespuestaVO wsRespuesta = new RespuestaVO();
+		String correo = Util.getUserLogged().getUsername();
+		String password = Util.getUserLogged().getPassword();
+		try
+		{
+			wsRespuesta = wsCliente.crearSitioIntentoPago(correo, password, "DOMINIO TEL", "PAY PAL", "TEL", "DOMINIO TEL");
+			resultMap.put("resultado", wsRespuesta.getIdPago());
+		}		
+		catch (Exception e) 
+		{
+			logger.error("existeDominio:::::", e);
+		}	
+		
+		return resultMap;
+	}
+	
+	@RequestMapping(value = "/infomovil/getProductosUsuario", method = RequestMethod.POST, produces = "application/json")
+	@ResponseBody
+	public Map<String, String> getProductosUsuario(@RequestParam String nombreDominio, @RequestParam String tipoDominio)
+	{		
+		Map<String, String> resultMap = new HashMap<String, String>();
+		RespuestaVO wsRespuesta = new RespuestaVO();
+		
+		try
+		{
+			wsRespuesta = wsCliente.crearSitioGetProductosUsuario("rambo1@mail.com", "garbage1");
+			//wsRespuesta = wsCliente.crearSitioIntentoPago(nombreDominio, tipoDominio);
+			
+			System.out.println("Tamanio de lista " + wsRespuesta.getListProductoUsuarioVO().size());
+			resultMap.put("resultado", wsRespuesta.getResultado());
+		}		
+		catch (Exception e) 
+		{
+			logger.error("existeDominio:::::", e);
+		}	
+		
+		return resultMap;
+	}
+	
+	
 	
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String index(){

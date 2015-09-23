@@ -9,23 +9,23 @@
 	<div class="col-xs-12">
 	
 	<h5 style="color:#2fa399">Datos del contacto administrativo</h5>
-	<form class="form-horizontal">
+	
   <div class="form-group">
     <label for="inputEmail3" class="col-sm-2 control-label text-left">Nombre</label>
     <div class="col-xs-12 col-sm-10">
-      <input type="text" class="form-control" id="inputEmail3" placeholder="" value="" id="nombreUser"/>
+      <input type="text" class="form-control" placeholder=""  id="nombreUser"/>
     </div>           
   </div>
   <div class="form-group">
     <label for="inputPassword3" class="col-sm-2 control-label text-left">Dirección</label>
     <div class="col-xs-12  col-sm-10">
-      <input type="text" class="form-control" id="inputPassword3" placeholder="" id="direccionUser">
+      <input type="text" class="form-control" id="direccionUser">
     </div>
   </div>
   <div class="form-group">
     <label for="inputPassword3" class="col-sm-2 control-label text-left">Correo</label>
     <div class="col-xs-12  col-sm-10">
-      <input type="email" class="form-control" id="inputPassword3" placeholder="" id="emailUser">
+      <input type="email" class="form-control" id="emailUser">
     </div>
   </div>
   
@@ -36,7 +36,7 @@
     </div>
   </div>
 
-  <div class="dividerSmall" align="center">Datos incompletos por favor ingresalos!</div>
+  <div class="dividerSmall" align="center" id="datosIncompletos"></div>
   
   <div class="container"><hr/></div>
 
@@ -70,7 +70,7 @@
 	  </button>
     </div>
   </div>
-</form>
+
 	
 	</div>
 	
