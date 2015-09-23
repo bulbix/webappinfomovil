@@ -460,7 +460,7 @@ public class WebappController
 		}
 		
 	}
-	
+	/*
 	@RequestMapping(value = "/infomovil/miCuenta", method = RequestMethod.GET)
 	public ModelAndView miCuenta(@CookieValue(value = "editarSitioInfomovil", defaultValue = "") 
 		String editarSitioInfomovil) 
@@ -473,7 +473,7 @@ public class WebappController
 		
 		return new ModelAndView("Webapp/miCta", model);
 	}
-	
+	*/
 	private ModelAndView validaURL(String vista)
 	{
 		HashMap<String, Object> model = new HashMap<String, Object>();		
@@ -882,7 +882,7 @@ public class WebappController
 				return modelAndView;
 			}
 
-			return new ModelAndView("Webapp/miCuenta", model);
+			return new ModelAndView("Webapp/miCta", model);
 		}		
 		catch (Exception e) 
 		{
