@@ -460,11 +460,18 @@ public class WebappController
 		}
 		
 	}
+
+	private ModelAndView validaURL(String vista)
+	{
+		HashMap<String, Object> model = new HashMap<String, Object>();		
+		model.put("name", "");		
+
+		return new ModelAndView(vista, model);
+	}
 	
 	@RequestMapping(value = "/infomovil/miCuenta", method = RequestMethod.GET)
-	public ModelAndView miCuenta(@CookieValue(value = "editarSitioInfomovil", defaultValue = "") 
-		String editarSitioInfomovil) 
-	{
+	public ModelAndView miCuenta(HttpServletRequest request, HttpServletResponse response, RedirectAttributes redirectAttributes)
+	{		
 		HashMap<String, Object> model = new HashMap<String, Object>();
 		RespuestaVO wsRespuesta = new RespuestaVO();
 		String imgActivo = "btn_active.png";

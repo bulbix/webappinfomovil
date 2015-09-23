@@ -1,4 +1,4 @@
-	<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib uri="http://tiles.apache.org/tags-tiles" prefix="tiles"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
@@ -8,7 +8,6 @@
 <tiles:insertDefinition name="headEditorSitio">
 	<tiles:putAttribute name="template" value="${ template }" />
 </tiles:insertDefinition>
-
 <body role="document" data-spy="scroll" data-target=".navbar"
 	data-offset="75" id="page-top" >
 	<!-- Fixed navbar -->
@@ -127,6 +126,16 @@
 							</tiles:insertDefinition>	
 						</c:if>				
 						<!--/ Producto -->
+							
+							<div><a href="#" data-toggle="modal" data-target="#myModalCompraExitosa">.</a></div>
+							
+							<div><a href="#" data-toggle="modal" data-target="#myModalCompraFallida" >..</a></div>
+							
+							
+							<div><a href="<c:url value="/infomovil/compraExitosa"></c:url>" >....</a></div>
+							
+							<div><a href="<c:url value="/infomovil/compraFallida"></c:url>"  >........</a></div>
+
 						</div>
 					</div>
 					<!-- /page header -->
@@ -148,6 +157,29 @@
 			</tiles:insertDefinition>
 		</c:if>
 	</footer>
+
+	<!--/Footer-->
+	<!--MODAL COMPRA EXITOSA-->
+	<tiles:insertDefinition name="modalGen">
+		<tiles:putAttribute name="idModal" value="myModalCompraExitosa" />
+		<tiles:putAttribute name="tamanioModal"
+			value='"modal-dialog modal-md"' />
+		<c:set var="fragmentName" value="modalCompraExito" scope="request" />
+	</tiles:insertDefinition>
+	<!--/MODAL COMPRA EXITOSA-->
+	<!--MODAL COMPRA EXITOSA-->
+	<tiles:insertDefinition name="modalGen">
+		<tiles:putAttribute name="idModal" value="myModalCompraFallida" />
+		<tiles:putAttribute name="tamanioModal"
+			value='"modal-dialog modal-md"' />
+		<c:set var="fragmentName" value="modalCompraFallo" scope="request" />
+	</tiles:insertDefinition>
+	<!--/MODAL COMPRA EXITOSA-->
+	
+	<!--MODAL TEMPLATES-->
+	<div id="modalTemplates"></div>
+	<!--/MODAL TEMPLATES-->
+
 	<!--MODAL CONFIRMACIÓN DATOS-->
 	<tiles:insertDefinition name="modalGen">
 		<tiles:putAttribute name="idModal" value="myModalConfDatos" />

@@ -8,7 +8,7 @@
 
 	<div class="col-xs-12">
 	
-	<h5 style="color:#2fa399">Datos del contacto administrativo</h5>
+	<p style="color:#2fa399">Datos del contacto administrativo</p>
 	<form class="form-horizontal">
   <div class="form-group">
     <label for="inputEmail3" class="col-sm-2 control-label text-left">Nombre</label>
@@ -36,11 +36,10 @@
     </div>
   </div>
 
-  <div class="dividerSmall" align="center">Datos incompletos por favor ingresalos!</div>
-  
-  <div class="container"><hr/></div>
+  <div class="dividerSmall"></div>
+  <hr/>
+  <p style="color:#2fa399">Renovación de dominio </p>
 
-  <h5 style="color:#2fa399">Renovación de dominio </h5>
   <div class="form-group">
     <label for="inputEmail3" class="col-sm-2 control-label text-left">Dominio</label>
     <div class="col-xs-12 col-sm-10">
@@ -65,9 +64,10 @@
   
   <div class="form-group">
     <div class="col-xs-12">
-      <button class="btn btn-default pull-right" id="btnPagoPaypal"> <img  alt="Infomovil"
-					src="<c:url value="/resources/webapp/images/btn_buyPayPayl.gif"/>" />
-	  </button>
+
+      <button type="submit" class="btn btn-outline pull-right"> <img  alt="Infomovil"
+					src="<c:url value="/resources/webapp/images/btn_buyPayPayl.gif"/>" /></button>
+
     </div>
   </div>
 </form>

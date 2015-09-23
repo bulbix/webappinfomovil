@@ -3,8 +3,7 @@
        "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"
        "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
 <tiles-definitions>
-
-	<definition name="head" template="/WEB-INF/fragments/head.jsp" />
+<definition name="head" template="/WEB-INF/fragments/head.jsp" />
 	<definition name="navGen" template="/WEB-INF/fragments/navGen.jsp" />
 	<definition name="jsCore" template="/WEB-INF/fragments/jsCore.jsp" />
 	<definition name="jsScripts" template="/WEB-INF/fragments/jsScripts.jsp" />
@@ -22,6 +21,8 @@
 	<definition name="modalDescApp" template="/WEB-INF/fragments/modals/modalDescApp.jsp" />
 	<definition name="modalImagenes" template="/WEB-INF/fragments/modals/modalImagenes.jsp" />
 	<definition name="modalConfDatos" template="/WEB-INF/fragments/modals/modalConfDatosFragment.jsp" />
+	<definition name="modalCompraExito" template="/WEB-INF/fragments/modalCompraExito.jsp" />
+	<definition name="modalCompraFallo" template="/WEB-INF/fragments/modalCompraFallo.jsp" />
 	<definition name="prodGen" template="/WEB-INF/fragments/productos/prodGen.jsp" />
 	<definition name="dominioTel" template="/WEB-INF/fragments/productos/dominioTel.jsp"/>
 	<definition name="planPro" template="/WEB-INF/fragments/productos/planPro.jsp"/>

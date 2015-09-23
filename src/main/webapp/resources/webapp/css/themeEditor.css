@@ -27,6 +27,7 @@ theme-showcaseApp > p > .btn { margin: 5px 0; }
 .textGray{color:#999 !important;}
 .textGreen{color:#2fa399 !important;}
 .text700{font-weight:700;}
+.boxThnks{border-radius:15px;background: url(../images/lineDark.png); color: #fff; padding: 2px 0 5px 0;}
 a.textBlack { color: #000 !important; }
 .dBlock{display: block;}
 .prodHeader{background: url(../images/lineDark.png); color: #fff; padding: 2px 0 5px 0; -webkit-border-top-left-radius: 15px; -webkit-border-top-right-radius: 15px; -moz-border-radius-topleft: 15px; -moz-border-radius-topright: 15px; border-top-left-radius: 15px; border-top-right-radius: 15px;}
