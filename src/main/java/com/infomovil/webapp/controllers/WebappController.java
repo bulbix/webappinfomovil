@@ -473,8 +473,8 @@ public class WebappController
 		return new ModelAndView(vista, model);
 	}
 	
-	@RequestMapping(value = "/infomovil/miCuenta", method = RequestMethod.GET)
-	public ModelAndView miCuenta(HttpServletRequest request, HttpServletResponse response, RedirectAttributes redirectAttributes)
+	@RequestMapping(value = "/infomovil/miCuenta", method = {RequestMethod.GET,RequestMethod.POST})
+	public ModelAndView miCuenta(HttpServletRequest request, HttpServletResponse response, RedirectAttributes redirectAttributes,String payment_status)
 	{		
 		HashMap<String, Object> model = new HashMap<String, Object>();
 		RespuestaVO wsRespuesta = new RespuestaVO();
@@ -547,6 +547,8 @@ public class WebappController
 			model.put("claseCss", claseCss);
 			model.put("colorTexto", colorTexto);
 			model.put("extensionImg", extensionImg);
+			model.put("correoElectronico", correo);
+			model.put("paymentStatus", payment_status);
 			//model.putAll(m);
 		}		
 		catch (Exception e) 
@@ -558,13 +560,6 @@ public class WebappController
 	}
 	
 
-	private ModelAndView validaURL(String vista)
-	{
-		HashMap<String, Object> model = new HashMap<String, Object>();		
-		model.put("name", "");		
-
-		return new ModelAndView(vista, model);
-	}
 	
 	@RequestMapping(value = "/infomovil/editarSitio", method = RequestMethod.GET)
 	public ModelAndView editarSitio(HttpServletRequest request, HttpServletResponse response, RedirectAttributes redirectAttributes)
@@ -639,7 +634,7 @@ public class WebappController
 					fechaFin = wsRespuesta.getFTelNamesFin();
 				}
 
-				Ajuste para trabajar con la lista de productos
+				
 
 				if (wsRespuesta.getDominioCreaSitio().getCanal().startsWith("BAZ"))
 				{
@@ -826,7 +821,7 @@ public class WebappController
 	
 	@RequestMapping(value = "/infomovil/crearSitioIntentoPago", method = RequestMethod.POST, produces = "application/json")
 	@ResponseBody
-	public Map<String, String> crearSitioIntentoPago()
+	public Map<String, String> crearSitioIntentoPago(@RequestParam String nombre, @RequestParam String direccion,@RequestParam String pais)
 	{		
 		Map<String, String> resultMap = new HashMap<String, String>();
 		RespuestaVO wsRespuesta = new RespuestaVO();
@@ -834,7 +829,8 @@ public class WebappController
 		String password = Util.getUserLogged().getPassword();
 		try
 		{
-			wsRespuesta = wsCliente.crearSitioIntentoPago(correo, password, "DOMINIO TEL", "PAY PAL", "TEL", "DOMINIO TEL");
+			wsRespuesta = wsCliente.crearSitioIntentoPago(correo, password, "DOMINIO TEL", "PAY PAL", "TEL", "DOMINIO TEL",nombre,direccion,pais);
+				
 			resultMap.put("resultado", wsRespuesta.getIdPago());
 		}		
 		catch (Exception e) 

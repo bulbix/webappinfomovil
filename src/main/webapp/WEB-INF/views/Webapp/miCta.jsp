@@ -11,6 +11,12 @@
 <body role="document" data-spy="scroll" data-target=".navbar"
 	data-offset="75" id="page-top" >
 	
+	<c:if test="${paymentStatus == 'Completed'}">
+	<script>
+		alert("Se completo la transacción!");
+	</script></c:if>
+	
+	
 	<!-- Fixed navbar -->
 	<nav class="navbar navbar-${ claseCss } navbar-static-top">
 		<div class="container-fluid">
@@ -80,7 +86,7 @@
 		<div class="col-xs-12 col-sm-6">
 			<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 reset text-right pull-right">
 				Nombre ${usuarioLogueado}<img width="30" height="30" alt="Infomovil"
-					src="<c:url value="/resources/webapp/images/fa-user.png"/>" />  <br/> mail@mail.com <img width="25" height="25" alt="Infomovil"
+					src="<c:url value="/resources/webapp/images/fa-user.png"/>" />  <br/> ${correoElectronico} <img width="25" height="25" alt="Infomovil"
 					src="<c:url value="/resources/webapp/images/fa-mail.png"/>" /> 
 					<div class="clear"></div>
 					<a href="<c:url value="/infomovil/editarSitio"></c:url>"
@@ -308,6 +314,8 @@
   <input type="hidden" name="custom" id="customPaypal"/>
   <input type="hidden" value="es" name="lc"/>
   <input type="hidden" value="primary" name="page_style"/>
+  <input type='hidden' name='return' value='http://localhost:8080/WebAppInfomovil/infomovil/miCuenta'/>
+  <input type='hidden' name='cancel_return' value='http://localhost:8080/WebAppInfomovil/infomovil/miCuenta'/>
 </form>
 
 </body>

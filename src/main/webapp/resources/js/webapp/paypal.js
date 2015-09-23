@@ -11,14 +11,12 @@ $("#btnPagoPaypal").click(function() {
 	var $direccion = $("#direccionUser").val();
 	var $correo = $("#emailUser").val();
 	var $pais = "México";
-	console.log($nombre + '' + $correo + '' + $direccion)
+	console.log($nombre + '' + $correo )
 	var falta = 0
 	if($nombre.length == 0 ){
 		falta = 1;
 	}else if($direccion.length == 0){
 		falta = 2;
-	}else if($correo.length == 0){
-		falta = 3;
 	}
 	if(falta == 0){
 		$( "#datosIncompletos" ).empty();
@@ -33,9 +31,7 @@ $("#btnPagoPaypal").click(function() {
 			case 2:
 				$( "#datosIncompletos" ).append( "Falta completar el dato Dirección" );
 				break;
-			case 3: 
-				$( "#datosIncompletos" ).append( "Falta completar el dato Email" );
-				break;
+			
 		}	
 		
 	}
@@ -45,6 +41,9 @@ $("#btnPagoPaypal").click(function() {
 
 
 function intentoPago($nombre, $direccion, $correo, $pais){
+	var $nombre  = $("#nombreUser").val();
+	var $direccion = $("#direccionUser").val();
+	var $pais = "México";
 	$.blockUI.defaults.baseZ = 9000;
 	$.blockUI({
 		message: "Redireccionando a paypal...",
@@ -55,30 +54,38 @@ function intentoPago($nombre, $direccion, $correo, $pais){
 			width: '400px'
 		}
 	});
-	console.log("Entro a intento Pago");
+	console.log("Entro a intento Pago" + $nombre + '' + $direccion + '' + $pais);
 	$.ajax({
 			type : "POST",
 			url : contextPath + "/infomovil/crearSitioIntentoPago",
 				dataType : "json",
-				contentType: "text/plain",
-				data : {},
+				//contentType: "text/plain",
+				data : {
+					nombre:$nombre,
+					direccion:$direccion,
+					pais: $pais
+					
+				},
 			success : function(data) {
 				console.log("El resultado es: " + data.resultado);
-				$("#customPaypal").val(data.resultado + "test@test.com");
-				comprarPayPal(data.resultado);
+				if(data.resultado > 0){
+					$("#customPaypal").val(data.resultado + ',' + 'test@test.com');
+					comprarPayPal(data.resultado);
+				}else{
+					$.unblockUI();
+					$( "#datosIncompletos" ).append( "No se ha podido enviar la petición por favor intentalo nuevamente." );
+				}
 				
 			},
 			error : function(json) {
-				
 				$.unblockUI();
+				$( "#datosIncompletos" ).append( "No se ha podido enviar la petición por favor intentalo nuevamente." );
 			}
 
 	});
 }
 
-/*nombre:$("#").val(),
-direccion:$("#").val(),
-pais:$("#").val()*/
+
 
 function comprarPayPal(customId){
 	document.getElementById("formPaypal").submit();
