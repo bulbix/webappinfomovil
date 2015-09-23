@@ -90,11 +90,8 @@
 						alt="Infomovil"
 						src="<c:url value="/resources/webapp/images/fa-back.png"/>" /> Editor </span>
 				</a>
-			</div>
-			
+			</div>			
 		</div>
-	
-	
 	</div>
 	</div>
 	
@@ -115,71 +112,21 @@
 					<div class="page-header text-center">
 						<strong></strong>
 						<div>
-						<!-- Producto  tel-->					
-						<tiles:insertDefinition name="prodGen">
-							<tiles:putAttribute name="productoTitulo" value="Dominio" />
-							<c:set var="productoNombre" value="dominioTel" scope="request" />
-							<c:set var="productoActivo" value="Activo" scope="request" />
-							<c:set var="datoUrl" value="www.limpbizkitxxx.tel" scope="request" />
-							<c:set var="fechaInicial" value="01/01/2015" scope="request" />
-							<c:set var="fechaFinal" value="01/01/2016" scope="request" />
-							<c:set var="imgActivo" value="btn_active.png" scope="request" />
-						</tiles:insertDefinition>					
+						<!-- Producto  tel-->	
+						<c:if test="${tieneProductoTel =='SI'}">				
+							<tiles:insertDefinition name="prodGen">
+								<tiles:putAttribute name="productoTitulo" value="Dominio" />
+								<tiles:putAttribute name="claseProductos" value="${claseProductos}"/>
+								<c:set var="productoNombre" value="dominioTel" scope="request" />
+								<c:set var="productoActivo" value="Activo" scope="request" />
+								<c:set var="datoUrl" value="${urlDominio}" scope="request" />
+								<c:set var="fechaInicial" value="${fechaInicio}" scope="request" />
+								<c:set var="fechaFin" value="${fechaFin}" scope="request" />
+								<c:set var="imgActivo" value="${imgActivo}" scope="request" />
+								<c:set var="displayButton" value="${displayButton}" scope="request" />
+							</tiles:insertDefinition>	
+						</c:if>				
 						<!--/ Producto -->
-							
-							<!-- Producto -->
-<!-- 							<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 dBlock" -->
-<!-- 								> -->
-<!-- 								CABECERA -->
-<!-- 								<div class="prodHeader"> -->
-<!-- 									<h5 class="prodTitle">Dominio</h5> -->
-<!-- 								</div> -->
-<!-- 								/CABECERA -->
-<!-- 								CUERPO -->
-<!-- 								<div  -->
-<!-- 									class="prodBody"> -->
-<!-- 									<div class="col-xs-12 text-center prodPadd10" > -->
-<!-- 										<p class="textGreen">www.mipagina.tel</p> -->
-<!-- 										<p class="textGreen"> -->
-<!-- 											<img width="25" height="25" alt="Infomovil" -->
-<%-- 												src="<c:url value="/resources/webapp/images/btn_active.png"/>" /> --%>
-<!-- 											Activo -->
-<!-- 										</p> -->
-<!-- 									</div> -->
-<!-- 									<div class="col-xs-12 text-center"> -->
-<!-- 										<span>Vigencia del:<br/> <strong>dd/mm/aa</strong> <br/>a <br/><strong>dd/mm/aa</strong></span> -->
-<!-- 									</div> -->
-<!-- 									<div class="clearfix"></div> -->
-<!-- 									<div class="divider"></div> -->
-<!-- 									<hr /> -->
-									
-									
-<!-- 									<div class="col-xs-12 text-center"> -->
-<!-- 									<p class="reset">12 meses</p> -->
-<!-- 										<h3 class="prodPrice"> -->
-<!-- 											<sup>$</sup><span><strong>600.00</strong><span -->
-<!-- 												class="prodNotes"> mxn</span></span> -->
-<!-- 										</h3> -->
-<!-- <!-- 										<span style="font-size:.9em;"><em>Pago anual</em></span> --> -->
-<!-- 									</div> -->
-<!-- 									<div class="clearfix"></div> -->
-<!-- 									<div class="divider"></div> -->
-<!-- 									<div class="col-xs-12 text-center"> -->
-<!-- 										<a href="#" data-toggle="modal" data-target="#myModalConfDatos" -->
-<!-- 											class="btn btn-default btn-outlineGreen text-center textWhite">Renueva -->
-<!-- 											ahora</a> -->
-<!-- 									</div> -->
-<!-- 									<div class="clearfix"></div> -->
-<!-- 								</div> -->
-<!-- 								/ CUERPO -->
-<!-- 								PIE -->
-<!-- 								<div class="prodFooter"></div> -->
-<!-- 								/PIE -->
-<!-- 							</div> -->
-							<!--/ Producto -->
-							
-							
-
 						</div>
 					</div>
 					<!-- /page header -->
@@ -216,25 +163,14 @@
 	<script src="<c:url value="/resources/webapp/js/bootstrap.js"/>"></script>
 	<script src="<c:url value="/resources/webapp/js/docs.min.js"/>"></script>
 	<script src="<c:url value="/resources/webapp/js/smoothscroll.js"/>"></script>
-	<script
-		src="<c:url value="/resources/webapp/js/ie10-viewport-bug-workaround.js"/>"></script>
+	<script src="<c:url value="/resources/webapp/js/ie10-viewport-bug-workaround.js"/>"></script>
 	<!-- bxSlider Javascript file -->
-	<script
-		src="<c:url value="/resources/webapp/js/jquery.bxslider.min.js"/>"></script>
-	<script
-		src="<c:url value="/resources/webapp/js/bootstrap-dialog.min.js"/>"></script>
-
-
+	<script	src="<c:url value="/resources/webapp/js/jquery.bxslider.min.js"/>"></script>
+	<script	src="<c:url value="/resources/webapp/js/bootstrap-dialog.min.js"/>"></script>
 	<script src="<c:url value="/resources/webapp/js/jquery.numeric.js"/>"></script>
 	<script src="<c:url value="/resources/webapp/js/jquery.blockUI.js"/>"></script>
 	<script src="<c:url value="/resources/js/webapp/paypal.js"/>"></script>
-	<%-- 		<h1>${ idDominio }</h1> --%>
-	<%-- 		<h1>${ galeriaImagenes }</h1> --%>
-	<%-- 	 	<h1>${ downgrade }</h1> --%>
-	<%-- 	 	<h1>${ sitioWeb }</h1> --%>
-			<h1>${sitioWeb}</h1> 
 	<script src="<c:url value="/resources/webapp/js/si.files.js"/>"></script>
-
 
 </body>
 </html>

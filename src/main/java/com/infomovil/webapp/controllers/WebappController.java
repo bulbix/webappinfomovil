@@ -460,20 +460,92 @@ public class WebappController
 		}
 		
 	}
-	/*
+	
 	@RequestMapping(value = "/infomovil/miCuenta", method = RequestMethod.GET)
 	public ModelAndView miCuenta(@CookieValue(value = "editarSitioInfomovil", defaultValue = "") 
 		String editarSitioInfomovil) 
 	{
 		HashMap<String, Object> model = new HashMap<String, Object>();
-
-		model.put("claseCss", "default");
-		model.put("colorTexto", "textBlack");
-		model.put("extensionImg", "-bk");
+		RespuestaVO wsRespuesta = new RespuestaVO();
+		String imgActivo = "btn_active.png";
+		String displayButton = "display:none";
+		String tieneProductoTel = "SI";
+		String claseProductos = "col-xs-12 col-sm-6 col-md-6 col-lg-6 dBlock col-sm-offset-3";
+		String claseCss = "";
+		String colorTexto = "";
+		String extensionImg = "";
+		int totProductos = 0;
 		
+		try
+		{		
+			String correo = Util.getUserLogged().getUsername();
+			String password = Util.getUserLogged().getPassword();
+			wsRespuesta = wsCliente.crearSitioGetProductosUsuario(correo, password);
+			
+			for (ProductoUsuarioVO producto : wsRespuesta.getListProductoUsuarioVO())
+			{
+				if (producto.isRenovable())
+				{
+					imgActivo = "btn_inactive.png";
+					displayButton = "display:block";
+				}
+				
+				totProductos++;
+			}
+			
+			if (totProductos > 1)
+				claseProductos = "col-xs-12 col-sm-6 col-md-6 col-lg-6 dBlock";
+			
+			if (Util.getCurrentSession().getAttribute("canal").toString().startsWith("BAZ"))
+			{
+				claseCss = "default";
+				colorTexto = "textBlack";
+				extensionImg = "-bk";
+			}
+			else
+			{
+				claseCss = "inverse";
+				colorTexto = "textWhite";
+				extensionImg = "";
+			}
+			
+			modeloWebApp.setListaProductos(wsRespuesta.getListProductoUsuarioVO());
+			
+			ProductoUsuarioVO productoVO = null;
+			productoVO = modeloWebApp.getProducto("tel");
+			
+			if (productoVO != null) 
+			{	
+				tieneProductoTel = "SI";
+				
+				if (productoVO.isRenovable())
+				{
+					imgActivo = "btn_inactive.png";
+					displayButton = "display:block";
+				}
+				
+				model.put("fechaInicio", productoVO.getFechaInicio());
+				model.put("fechaFin", productoVO.getFechaFin());
+				model.put("urlDominio", productoVO.getUrlDominio());
+				model.put("imgActivo", imgActivo);
+				model.put("displayButton", displayButton);
+			}
+			
+			model.put("claseProductos", claseProductos);
+			model.put("tieneProductoTel", tieneProductoTel);
+			model.put("claseCss", claseCss);
+			model.put("colorTexto", colorTexto);
+			model.put("extensionImg", extensionImg);
+			//model.putAll(m);
+		}		
+		catch (Exception e) 
+		{
+			logger.error("miCuenta:::::", e);
+			return null;
+		}			
 		return new ModelAndView("Webapp/miCta", model);
 	}
-	*/
+	
 	private ModelAndView validaURL(String vista)
 	{
 		HashMap<String, Object> model = new HashMap<String, Object>();		
@@ -515,7 +587,7 @@ public class WebappController
 			String password = Util.getUserLogged().getPassword();
 
 		    wsRespuesta = wsCliente.crearSitioCargar(correo, password);
-			
+		    
 			if (wsRespuesta.getCodeError().equals("0"))
 			{
 				Util.getCurrentSession().setAttribute("nombreUsuario", 
@@ -648,6 +720,8 @@ public class WebappController
 				model.put("idDominio", idDominio);
 				model.put("downgrade", downgrade);
 				model.put("galeriaImagenes", galeriaImagenes);
+				
+			    Util.getCurrentSession().setAttribute("canal", canal);	
 			}
 			else 
 			{
@@ -663,196 +737,6 @@ public class WebappController
 			}
 
 			return new ModelAndView("Webapp/editorSitio", model);
-		}		
-		catch (Exception e) 
-		{
-			logger.error("cargarInformacion:::::", e);
-			return null;
-		}	
-	}
-	
-	
-	@RequestMapping(value = "/infomovil/miCuentaIsaac", method = RequestMethod.GET)
-	public ModelAndView miCuenta(HttpServletRequest request, HttpServletResponse response, RedirectAttributes redirectAttributes)
-	{		
-		HashMap<String, Object> model = new HashMap<String, Object>();
-		RespuestaVO wsRespuesta = new RespuestaVO();
-		StatusDomainVO statusDom = new StatusDomainVO();
-		
-	    String template = "Coverpage1azul";
-		String sitioWeb = "SIN_PUBLICAR";
-		String canal = "NO_TIENE";
-		String claseCss = "default";
-		String campania = "basica";
-		String colorTexto = "textWhite";
-		String extensionImg = "";
-		String fechaIni = "";
-		String fechaFin = "";
-		String status = "";
-		String esquemaProducto = "";
-		String tipoPublica = "";
-		String planPro = "";
-		String urlEjemploSitio = "";
-		String visibleRecurso = "";
-		String visibleTel = "";
-		String idDominio = "";
-		String downgrade = "";
-		String galeriaImagenes = "";
-		
-		try
-		{
-			String correo = Util.getUserLogged().getUsername();
-			String password = Util.getUserLogged().getPassword();
-
-		    wsRespuesta = wsCliente.crearSitioCargar(correo, password);
-			
-			if (wsRespuesta.getCodeError().equals("0"))
-			{
-				Util.getCurrentSession().setAttribute("nombreUsuario", 
-				wsRespuesta.getDominioCreaSitio().getNombreUsuario());				
-				campania = wsRespuesta.getDominioCreaSitio().getCampania().toLowerCase();
-				idDominio = wsRespuesta.getIdDominio();
-				downgrade = wsRespuesta.getDowngrade();
-				
-				for (StatusDomainVO stat : wsRespuesta.getListStatusDomainGratisVO())
-				{
-					if (stat.getDescripcionItem().equalsIgnoreCase("GALERIA DE IMAGENES"))
-					{
-						galeriaImagenes = stat.getStatus();
-						break;
-					}
-				}
-				
-				if (wsRespuesta.getDominioCreaSitio().getNombreEmpresa().trim().equals("TÃtulo"))
-					model.put("nombreEmpresa", "");
-				
-				if (!StringUtils.isEmpty(wsRespuesta.getDominioCreaSitio().getSitioWeb()))
-					sitioWeb = wsRespuesta.getDominioCreaSitio().getSitioWeb();
-
-				if (wsRespuesta.getDominioCreaSitio().getSitioWeb().indexOf("@") != -1)
-					sitioWeb = "SIN_PUBLICAR";
-				
-				if (!StringUtils.isEmpty(wsRespuesta.getDominioCreaSitio().getTemplate()))
-					template = wsRespuesta.getDominioCreaSitio().getTemplate();
-
-				if (template.equals("Moderno") || template.equals("Creativo") || template.equals("Clasico") 
-						|| template.equals("Divertido") || template.equals("Estandar1"))
-					template = "Coverpage1azul";
-				
-				if (sitioWeb.indexOf("tel") != -1)
-				{
-					fechaIni = wsRespuesta.getFTelNamesIni();
-					fechaFin = wsRespuesta.getFTelNamesFin();
-				}
-
-				/*Ajuste para trabajar con la lista de productos*/
-
-				if (wsRespuesta.getDominioCreaSitio().getCanal().startsWith("BAZ"))
-				{
-					canal = "BAZ";
-					claseCss = "default";
-					colorTexto = "textBlack";
-					extensionImg = "-bk";
-					tipoPublica = "tel";
-					planPro = "SI";
-					visibleTel = "display:block;";
-					visibleRecurso = "display:none";
-					urlEjemploSitio = "www.misitio.tel";
-				}
-				else
-				{
-					model.put("dominios", obtenerDominios());
-					canal = wsRespuesta.getDominioCreaSitio().getCanal();
-					claseCss = "inverse";
-					colorTexto = "textWhite";
-					extensionImg = "";
-					tipoPublica = "recurso";
-					visibleRecurso = "display:block;";
-					visibleTel = "display:none";
-					urlEjemploSitio = "";
-					planPro = "NO";
-				}
-				
-				esquemaProducto = wsRespuesta.getEsquemaProducto();
-				modeloWebApp.setListaProductos(wsRespuesta.getListProductoUsuarioVO());
-				
-				if (esquemaProducto.equals("NEW"))
-				{
-					tipoPublica = "recurso";
-					visibleRecurso = "display:block;";
-					visibleTel = "display:none";
-					urlEjemploSitio = "";
-					ProductoUsuarioVO productoVO = null;
-					productoVO = modeloWebApp.getProducto("tel");
-					
-					if (productoVO != null) /*Tipo de dominio a publicar*/
-					{
-						tipoPublica = "tel";
-						visibleTel = "display:block;";
-						visibleRecurso = "display:none";
-						urlEjemploSitio = "www.misitio.tel";
-					}
-					
-					planPro = "NO";
-					productoVO = null;
-					productoVO = modeloWebApp.getProducto("pp", "pi");
-					
-					if (productoVO != null) /*Busca si en los productos tiene un plan pro*/
-						planPro = "SI";
-				}
-
-				/*Ajuste para validar si este usuario tiene un PP (comprado)*/
-				if (planPro.equals("NO"))
-				{
-					status = wsRespuesta.getDominioCreaSitio().getEstatusCuenta();
-					if (modeloWebApp.getStatus(status))
-						planPro = "SI";
-				}
-				/*End ajuste para trabajar con la lista de productos*/
-				
-				model.put("usuarioLogueado", correo);
-				model.put("nombreUsuario", wsRespuesta.getDominioCreaSitio().getNombreUsuario().trim());				
-				model.put("nombreEmpresa", wsRespuesta.getDominioCreaSitio().getNombreEmpresa().trim());
-				model.put("descripcionCorta", wsRespuesta.getDominioCreaSitio().getDescripcionCorta().trim());
-				model.put("correoElectronico", wsRespuesta.getDominioCreaSitio().getCorreoElectronico().trim());
-				model.put("telefonoUsuario", wsRespuesta.getDominioCreaSitio().getTelefono().trim());			
-				model.put("vistaPrevia", wsRespuesta.getDominioCreaSitio().getUrlVistaPrevia());	
-				model.put("urlVideo", wsRespuesta.getDominioCreaSitio().getVideoUrl());
-				model.put("latitud", wsRespuesta.getDominioCreaSitio().getLatitudeMap());
-				model.put("longitud", wsRespuesta.getDominioCreaSitio().getLongitudeMap());
-				model.put("direccionMap", wsRespuesta.getDominioCreaSitio().getDireccionMap());
-				model.put("statusCuenta", wsRespuesta.getDominioCreaSitio().getTipoCuenta().toLowerCase());
-				model.put("template", template);
-				model.put("sitioWeb", sitioWeb); 
-				model.put("fechaIniTel", fechaIni);
-				model.put("fechaFinTel", fechaFin);
-				model.put("canalUsuario", canal);
-				model.put("claseCss", claseCss);
-				model.put("colorTexto", colorTexto);
-				model.put("extensionImg", extensionImg);		
-				model.put("tipoPublica", tipoPublica);
-				model.put("planPro", planPro);
-				model.put("urlEjemploSitio", urlEjemploSitio);
-				model.put("visibleRecurso", visibleRecurso);
-				model.put("visibleTel", visibleTel);
-				model.put("idDominio", idDominio);
-				model.put("downgrade", downgrade);
-				model.put("galeriaImagenes", galeriaImagenes);
-			}
-			else 
-			{
-				logoutInfomovil(request, response);
-				
-				if (wsRespuesta.getCodeError().equals("-3")){
-					redirectAttributes.addFlashAttribute("errorCta", "Si ya tienes Plan Pro. Inicia sesión");
-					redirectAttributes.addFlashAttribute("ctaCorreo", correo);
-				}
-				
-				ModelAndView modelAndView =  new ModelAndView("redirect:/login");
-				return modelAndView;
-			}
-
-			return new ModelAndView("Webapp/miCta", model);
 		}		
 		catch (Exception e) 
 		{

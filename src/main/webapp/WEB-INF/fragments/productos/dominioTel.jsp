@@ -13,5 +13,21 @@
 	</div>
 	<div class="clearfix"></div>
 	<div class="divider"></div>
+	<div style=<tiles:getAsString name="visibleBtnRenuevaTel"/>>
+		<hr/>
+		<div class="col-xs-12 text-center">
+			<p class="reset">12 meses</p>
+			<h3 class="prodPrice">
+				<sup>$</sup><span><strong>600.00</strong><span
+				class="prodNotes"> mxn</span></span>
+			</h3>
+		</div>					
+		<div class="clearfix"></div>
+		<div class="divider"></div>
+		<div class="col-xs-12 text-center">
+		<a href="#" data-toggle="modal" data-target="#myModalConfDatos"
+		class="btn btn-default btn-outlineGreen text-center textWhite">Renueva ahora</a>
+		</div>	
+	</div>						
 	<div class="clearfix"></div>
 </div>

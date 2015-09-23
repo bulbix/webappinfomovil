@@ -23,5 +23,7 @@
 	<definition name="modalImagenes" template="/WEB-INF/fragments/modals/modalImagenes.jsp" />
 	<definition name="modalConfDatos" template="/WEB-INF/fragments/modals/modalConfDatosFragment.jsp" />
 	<definition name="prodGen" template="/WEB-INF/fragments/productos/prodGen.jsp" />
-	<definition name="dominioTel" template="/WEB-INF/fragments/productos/dominioTel.jsp" />
+	<definition name="dominioTel" template="/WEB-INF/fragments/productos/dominioTel.jsp"/>
+	<definition name="planPro" template="/WEB-INF/fragments/productos/planPro.jsp"/>
+	
 </tiles-definitions>
