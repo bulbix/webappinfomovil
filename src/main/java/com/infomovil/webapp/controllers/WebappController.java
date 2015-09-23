@@ -482,6 +482,36 @@ public class WebappController
 		return new ModelAndView(vista, model);
 	}
 	
+	
+	@RequestMapping(value = "/infomovil/compraExitosa", method = RequestMethod.GET)
+	public ModelAndView compraExitosa(@CookieValue(value = "editarSitioInfomovil", defaultValue = "") 
+		String editarSitioInfomovil) 
+	{
+		HashMap<String, Object> model = new HashMap<String, Object>();
+
+		model.put("claseCss", "default");
+		model.put("colorTexto", "textBlack");
+		model.put("extensionImg", "-bk");
+		
+		return new ModelAndView("Webapp/CompraExitosa", model);
+	}
+	
+	@RequestMapping(value = "/infomovil/compraFallida", method = RequestMethod.GET)
+	public ModelAndView compraFallida(@CookieValue(value = "editarSitioInfomovil", defaultValue = "") 
+		String editarSitioInfomovil) 
+	{
+		HashMap<String, Object> model = new HashMap<String, Object>();
+
+		model.put("claseCss", "default");
+		model.put("colorTexto", "textBlack");
+		model.put("extensionImg", "-bk");
+		
+		return new ModelAndView("Webapp/CompraFallida", model);
+	}
+	
+	
+	
+	
 	@RequestMapping(value = "/infomovil/editarSitio", method = RequestMethod.GET)
 	public ModelAndView editarSitio(HttpServletRequest request, HttpServletResponse response, RedirectAttributes redirectAttributes)
 	{		

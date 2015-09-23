@@ -136,24 +136,8 @@
 	<div class="seccTop bgBlack">
 	<div class="container">
 	
-	<div class="col-xs-12 col-sm-6 hidden-xs"><h3 class="text-left textWhite" style="font-weight: 300;">Mi
-				Cuenta</h3></div>
-		<div class="col-xs-12 col-sm-6">
-			<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 reset text-right pull-right">
-				Nombre ${usuarioLogueado}<img width="30" height="30" alt="Infomovil"
-					src="<c:url value="/resources/webapp/images/fa-user.png"/>" />  <br/> mail@mail.com <img width="25" height="25" alt="Infomovil"
-					src="<c:url value="/resources/webapp/images/fa-mail.png"/>" /> 
-					<div class="clear"></div>
-					<a href="<c:url value="/infomovil/editarSitio"></c:url>"
-					class="col-xs-4 col-sm-3 col-md-3 col-lg-3 btn btn-default btn-outline navEditor pull-right hidden-sm hidden-md hidden-lg">
-
-					<span id="idOpcionMasCont"><img width="20" height="20"
-						alt="Infomovil"
-						src="<c:url value="/resources/webapp/images/fa-back.png"/>" /> Editor </span>
-				</a>
-			</div>
-			
-		</div>
+	<div class="col-xs-12 col-sm-12 text-center"><h1 class=" textWhite" style="font-weight: 300;">¡Felicidades!</h1></div>
+		
 	
 	
 	</div>
@@ -165,192 +149,33 @@
 	
 		<div class="col-xs-12 col-sm-6 col-sm-offset-3 col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3">
 		
-			<h3 class="text-left textWhite" style="font-weight: 300; margin:20px 0 0 0;">Mis
-				productos</h3>
-			<hr />
+			
 			<!--Theme showcase -->
-			<div class="theme-showcaseApp" role="main" id="intro">
+			<div class="theme-showcaseApp boxThnks" role="main" id="intro">
 				<!-- Main jumbotron for a primary marketing message or call to action -->
 				<div class="">
 					<!-- page header -->
 					<div class="page-header text-center">
 						<strong></strong>
 						<div>
+						<p>Tu dominio ha sido renovado</p>
+						<div class="divider"></div>
+						<h3>
+						<img width="130" height="130"
+							alt="Infomovil"
+							src="<c:url value="/resources/webapp/images/fa-purchase.png"/>" /> Gracias tu compra</h3>
 						
-						<!-- Producto
-						Sí es un único item cambiar a <div class="col-xs-12 col-sm-6 col-sm-offset-3 col-md-6 col-lg-6 dBlock">
-						 -->
-							<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 dBlock">
-								<!-- CABECERA -->
-								<div class="prodHeader">
-									<h5 class="prodTitle">Dominio</h5>
-								</div>
-								<!-- /CABECERA -->
-								<!-- CUERPO -->
-								<div
-									class="prodBody">
-									<div class="col-xs-12 text-center prodPadd10" >
-										<p class="textGreen">www.mipagina.tel</p>
-										<p class="textGreen">
-											<img width="25" height="25" alt="Infomovil"
-												src="<c:url value="/resources/webapp/images/btn_active.png"/>" />
-											Activo
-										</p>
-									</div>
-									<div class="col-xs-12 text-center">
-										<span>Vigencia del:<br/> <strong>dd/mm/aa</strong> <br/>a <br/><strong>dd/mm/aa</strong></span>
-									</div>
-									<div class="clearfix"></div>
-									<div class="divider"></div>
-
-									<div class="clearfix"></div>
-								</div>
-								<!--/ CUERPO -->
-								<!-- PIE -->
-								<div class="prodFooter"></div>
-								<!-- /PIE -->
-							</div>
-							<!--/ Producto -->
-							
-							<!-- Producto -->
-							<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 dBlock"
-								>
-								<!-- CABECERA -->
-								<div class="prodHeader">
-									<h5 class="prodTitle">Dominio</h5>
-								</div>
-								<!-- /CABECERA -->
-								<!-- CUERPO -->
-								<div 
-									class="prodBody">
-									<div class="col-xs-12 text-center prodPadd10" >
-										<p class="textGreen">www.mipagina.tel</p>
-										<p class="textGreen">
-											<img width="25" height="25" alt="Infomovil"
-												src="<c:url value="/resources/webapp/images/btn_active.png"/>" />
-											Activo
-										</p>
-									</div>
-									<div class="col-xs-12 text-center">
-										<span>Vigencia del:<br/> <strong>dd/mm/aa</strong> <br/>a <br/><strong>dd/mm/aa</strong></span>
-									</div>
-									<div class="clearfix"></div>
-									<div class="divider"></div>
-									<hr />
-									
-									
-									<div class="col-xs-12 text-center">
-									<p class="reset">12 meses</p>
-										<h3 class="prodPrice">
-											<sup>$</sup><span><strong>600.00</strong><span
-												class="prodNotes"> mxn</span></span>
-										</h3>
-<!-- 										<span style="font-size:.9em;"><em>Pago anual</em></span> -->
-									</div>
-									<div class="clearfix"></div>
-									<div class="divider"></div>
-									<div class="col-xs-12 text-center">
-										<a href="#" data-toggle="modal" data-target="#myModalConfDatos"
-											class="btn btn-default btn-outlineGreen text-center textWhite">Renueva
-											ahora</a>
-									</div>
-									<div class="clearfix"></div>
-								</div>
-								<!--/ CUERPO -->
-								<!-- PIE -->
-								<div class="prodFooter"></div>
-								<!-- /PIE -->
-							</div>
-							<!--/ Producto -->
-							
-							
-							<!-- Producto -->
-							<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6"
-								style="display: block;">
-								<!-- CABECERA -->
-								<div
-									class="prodHeader">
-									<h5 class="prodTitle">Plan Pro</h5>
-								</div>
-								<!-- /CABECERA -->
-								<!-- CUERPO -->
-								<div
-									class="prodBody">
-									<div class="col-xs-12 text-center prodPadd10" >
-										<p class="textGray">12 meses</p>
-										<p class="textGray">
-											<img width="25" height="25" alt="Infomovil"
-												src="<c:url value="/resources/webapp/images/btn_inactive.png"/>" />
-											Inactivo
-										</p>
-									</div>
-									<div class="col-xs-12 text-center">
-										<span>Vigencia del:<br/> <strong>dd/mm/aa</strong> <br/>a <br/><strong>dd/mm/aa</strong></span>
-									</div>
-									<div class="clearfix"></div>
-									<div class="divider"></div>
-									<hr />
-									
-									
-									<div class="col-xs-12 text-center">
-									<p class="reset"><select class="col-xs-12"><option>1 mes</option><option>12 meses</option></select></p>
-								<div class="clearfix"></div>
-									<div class="divider"></div>
-										<h3 class="prodPrice">
-											<sup>$</sup><span><strong>50.00</strong><span
-												class="prodNotes"> mxn</span></span>
-										</h3>
-<!-- 										<span style="font-size:.9em;"><em>Pago anual</em></span> -->
-									</div>
-									<div class="clearfix"></div>
-									<div class="divider"></div>
-									<div class="col-xs-12 text-center">
-										<a href="#" data-toggle="modal" data-target="#myModalConfDatos"
-											class="btn btn-default btn-outlineGreen text-center textWhite">Renueva
-											ahora</a>
-									</div>
-									<div class="clearfix"></div>
-								</div>
-								<!--/ CUERPO -->
-								<!-- PIE -->
-								<div class="prodFooter"></div>
-								<!-- /PIE -->
-							</div>
-							<!--/ Producto -->
-							
-							<!-- Producto -->
-							<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 dBlock" ">
-								<!-- CABECERA -->
-								<div
-									class="prodHeader">
-									<h5 class="prodTitle">Plan Pro</h5>
-								</div>
-								<!-- /CABECERA -->
-								<!-- CUERPO -->
-								<div
-									class="prodBody">
-									<div class="col-xs-12 text-center prodPadd10">
-										<p class="textGreen">12 meses</p>
-										<p class="textGreen">
-											<img width="25" height="25" alt="Infomovil"
-												src="<c:url value="/resources/webapp/images/btn_active.png"/>" />
-											Activo
-										</p>
-									</div>
-									<div class="col-xs-12 text-center">
-										<span>Vigencia del:<br/> <strong>dd/mm/aa</strong> <br/>a <br/><strong>dd/mm/aa</strong></span>
-									</div>
-									<div class="clearfix"></div>
-									<div class="divider"></div>
-
-									<div class="clearfix"></div>
-								</div>
-								<!--/ CUERPO -->
-								<!-- PIE -->
-								<div class="prodFooter"></div>
-								<!-- /PIE -->
-							</div>
-							<!--/ Producto -->
+						<div class="divider"></div>
+						<span>En breve recibirás un correo con tu ticket de pago</span>
+						<div class="clearfix"></div>
+						<div class="divider"></div>
+						<a href="<c:url value="/infomovil/editarSitio"></c:url>"
+				class="col-xs-12 col-sm-6 col-sm-offset-3 col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3 btn btn-default btn-outline navEditor">
+				<img width="20" height="20"
+							alt="Infomovil"
+							src="<c:url value="/resources/webapp/images/fa-pencil.png"/>" />
+				<span>Continua editando</span>
+			</a>
 						</div>
 					</div>
 					<!-- /page header -->
