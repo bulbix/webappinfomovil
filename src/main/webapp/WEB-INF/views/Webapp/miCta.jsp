@@ -1,4 +1,4 @@
-	<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib uri="http://tiles.apache.org/tags-tiles" prefix="tiles"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
@@ -8,9 +8,6 @@
 <tiles:insertDefinition name="headEditorSitio">
 	<tiles:putAttribute name="template" value="${ template }" />
 </tiles:insertDefinition>
-
-
-
 <body role="document" data-spy="scroll" data-target=".navbar"
 	data-offset="75" id="page-top" >
 	
@@ -41,17 +38,11 @@
 
 			</div>
 			<div id="navbar" class="navbar-collapse collapse text-right">
-				<ul class="nav navbar-nav navbar-right">
-<%-- 					<li><a href="<c:url value="/infomovil/miCuenta"></c:url>" class="smoothScroll ${colorTexto}"><img --%>
-<!-- 							width="20" height="20" alt="Infomovil" -->
-<%-- 							src="<c:url value="/resources/webapp/images/fa-user${ extensionImg }.png"/>" /> --%>
-<!-- 							Mi cuenta </a></li> -->
-							
+				<ul class="nav navbar-nav navbar-right">							
 							<li><a href="<c:url value="/infomovil/editarSitio"></c:url>" class="smoothScroll ${colorTexto}"><img
 							width="20" height="20" alt="Infomovil"
 							src="<c:url value="/resources/webapp/images/fa-back${ extensionImg }.png"/>" />
 							Editor </a></li>
-			
 					<li><a href="<c:url value="/logout"></c:url>"
 						class="smoothScroll ${colorTexto}"><img width="20" height="20"
 							alt="Infomovil"
@@ -80,8 +71,6 @@
 	</nav>
 	<!-- / Fixed navbar -->
 
-
-
 	<!-- Botón Nuevo Estilo -->
 	<div class="seccTop bgBlack">
 	<div class="container">
@@ -101,11 +90,8 @@
 						alt="Infomovil"
 						src="<c:url value="/resources/webapp/images/fa-back.png"/>" /> Editor </span>
 				</a>
-			</div>
-			
+			</div>			
 		</div>
-	
-	
 	</div>
 	</div>
 	
@@ -126,66 +112,40 @@
 					<div class="page-header text-center">
 						<strong></strong>
 						<div>
-						
+						<!-- Producto  tel-->	
+						<c:if test="${tieneProductoTel =='SI'}">				
+							<tiles:insertDefinition name="prodGen">
+								<tiles:putAttribute name="productoTitulo" value="Dominio" />
+								<tiles:putAttribute name="claseProductos" value="${claseProductos}"/>
+								<c:set var="productoNombre" value="dominioTel" scope="request" />
+								<c:set var="productoActivo" value="Activo" scope="request" />
+								<c:set var="datoUrl" value="${urlDominio}" scope="request" />
+								<c:set var="fechaInicial" value="${fechaInicio}" scope="request" />
+								<c:set var="fechaFin" value="${fechaFin}" scope="request" />
+								<c:set var="imgActivo" value="${imgActivo}" scope="request" />
+								<c:set var="displayButton" value="${displayButton}" scope="request" />
+							</tiles:insertDefinition>	
+						</c:if>				
+						<!--/ Producto -->
 
 							<!-- Producto -->
-							<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6"
-								style="display: block; " id="dominioActivo">
-
+							<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6" 
+								style="display: block;">
 								<!-- CABECERA -->
-								<div class="prodHeader">
-									<h5 class="prodTitle">Dominio</h5>
+								<div
+									class="prodHeader">
+									<h5 class="prodTitle">Plan Pro</h5>
 								</div>
 								<!-- /CABECERA -->
 								<!-- CUERPO -->
 								<div
-
-									style="display: block; background: #fff; min-height: 100px; height: auto; padding: 10px;">
-									<div class="col-xs-12 text-center" style="padding: 10px 0;">
-										<p style="color: #2fa399">${sitioWeb}</p>
-										<p style="color:#2fa399">
-
+									class="prodBody">
+									<div class="col-xs-12 text-center prodPadd10" >
+										<p class="textGray">12 meses</p>
+										<p class="textGray">
 											<img width="25" height="25" alt="Infomovil"
-												src="<c:url value="/resources/webapp/images/btn_active.png"/>" />
-											Activo
-										</p>
-									</div>
-									<div class="col-xs-12 text-center">
-										<span>Vigencia del:<br/> <strong>dd/mm/aa</strong> <br/>a <br/><strong>dd/mm/aa</strong></span>
-									</div>
-									<div class="clearfix"></div>
-									<div class="divider"></div>
-
-									<div class="clearfix"></div>
-								</div>
-								<!--/ CUERPO -->
-								<!-- PIE -->
-								<div class="prodFooter"></div>
-								<!-- /PIE -->
-							</div>
-							<!--/ Producto -->
-							
-							<!-- Producto -->
-
-							<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6"
-								style="display: block;" id="dominioRenovacion">
-
-								<!-- CABECERA -->
-								<div class="prodHeader">
-									<h5 class="prodTitle">Dominio</h5>
-								</div>
-								<!-- /CABECERA -->
-								<!-- CUERPO -->
-								<div 
-
-									style="display: block; background: #fff; min-height: 100px; height: auto; padding: 10px;">
-									<div class="col-xs-12 text-center" style="padding: 10px 0;">
-										<p style="color: #2fa399">${sitioWeb}</p>
-										<p style="color: #2fa399">
-
-											<img width="25" height="25" alt="Infomovil"
-												src="<c:url value="/resources/webapp/images/btn_active.png"/>" />
-											Activo
+												src="<c:url value="/resources/webapp/images/btn_inactive.png"/>" />
+											Inactivo
 										</p>
 									</div>
 									<div class="col-xs-12 text-center">
@@ -197,16 +157,18 @@
 									
 									
 									<div class="col-xs-12 text-center">
-									<p class="reset">12 meses</p>
+									<p class="reset"><select class="col-xs-12"><option>1 mes</option><option>12 meses</option></select></p>
+								<div class="clearfix"></div>
+									<div class="divider"></div>
 										<h3 class="prodPrice">
-											<sup>$</sup><span><strong>600.00</strong><span
+											<sup>$</sup><span><strong>50.00</strong><span
 												class="prodNotes"> mxn</span></span>
 										</h3>
 <!-- 										<span style="font-size:.9em;"><em>Pago anual</em></span> -->
 									</div>
 									<div class="clearfix"></div>
 									<div class="divider"></div>
-									<div class="col-xs-12 text-center" id="compraPaypal">
+									<div class="col-xs-12 text-center">
 										<a href="#" data-toggle="modal" data-target="#myModalConfDatos"
 											class="btn btn-default btn-outlineGreen text-center textWhite">Renueva
 											ahora</a>
@@ -221,6 +183,45 @@
 							<!--/ Producto -->
 							
 							
+							<!-- Producto -->
+							<div class="col-xs-12 col-sm-6 col-sm-offset-3 col-md-6 col-lg-6" 
+								style="display: block;">
+								<!-- CABECERA -->
+								<div
+									class="prodHeader">
+									<h5 class="prodTitle">&nbsp;</h5>
+								</div>
+								<!-- /CABECERA -->
+								<!-- CUERPO -->
+								<div
+									class="prodBody">
+									<div class="col-xs-12 text-center prodPadd10" >
+										<p class="textGray">Actualmente no cuentas con productos</p>
+											<hr />
+									</div>
+									<div class="col-xs-12 text-center">
+										<a href="<c:url value="/infomovil/editarSitio"></c:url>" 
+											class="btn btn-default btn-outlineGreen text-center textWhite"><img width="20" height="20"
+							alt="Infomovil"
+							src="<c:url value="/resources/webapp/images/fa-pencil.png"/>" /> Continuar editando</a>
+									</div>
+									<div class="clearfix"></div>
+									<div class="divider"></div>								
+									<div class="clearfix"></div>
+								</div>
+								<!--/ CUERPO -->
+								<!-- PIE -->
+								<div class="prodFooter"></div>
+								<!-- /PIE -->
+							</div>
+							<div><a href="#" data-toggle="modal" data-target="#myModalCompraExitosa">.</a></div>
+							
+							<div><a href="#" data-toggle="modal" data-target="#myModalCompraFallida" >..</a></div>
+							
+							
+							<div><a href="<c:url value="/infomovil/compraExitosa"></c:url>" >....</a></div>
+							
+							<div><a href="<c:url value="/infomovil/compraFallida"></c:url>"  >........</a></div>
 
 						</div>
 					</div>
@@ -243,6 +244,29 @@
 			</tiles:insertDefinition>
 		</c:if>
 	</footer>
+
+	<!--/Footer-->
+	<!--MODAL COMPRA EXITOSA-->
+	<tiles:insertDefinition name="modalGen">
+		<tiles:putAttribute name="idModal" value="myModalCompraExitosa" />
+		<tiles:putAttribute name="tamanioModal"
+			value='"modal-dialog modal-md"' />
+		<c:set var="fragmentName" value="modalCompraExito" scope="request" />
+	</tiles:insertDefinition>
+	<!--/MODAL COMPRA EXITOSA-->
+	<!--MODAL COMPRA EXITOSA-->
+	<tiles:insertDefinition name="modalGen">
+		<tiles:putAttribute name="idModal" value="myModalCompraFallida" />
+		<tiles:putAttribute name="tamanioModal"
+			value='"modal-dialog modal-md"' />
+		<c:set var="fragmentName" value="modalCompraFallo" scope="request" />
+	</tiles:insertDefinition>
+	<!--/MODAL COMPRA EXITOSA-->
+	
+	<!--MODAL TEMPLATES-->
+	<div id="modalTemplates"></div>
+	<!--/MODAL TEMPLATES-->
+
 	<!--MODAL CONFIRMACIÓN DATOS-->
 	<tiles:insertDefinition name="modalGen">
 		<tiles:putAttribute name="idModal" value="myModalConfDatos" />
@@ -258,23 +282,13 @@
 	<script src="<c:url value="/resources/webapp/js/bootstrap.js"/>"></script>
 	<script src="<c:url value="/resources/webapp/js/docs.min.js"/>"></script>
 	<script src="<c:url value="/resources/webapp/js/smoothscroll.js"/>"></script>
-	<script
-		src="<c:url value="/resources/webapp/js/ie10-viewport-bug-workaround.js"/>"></script>
+	<script src="<c:url value="/resources/webapp/js/ie10-viewport-bug-workaround.js"/>"></script>
 	<!-- bxSlider Javascript file -->
-	<script
-		src="<c:url value="/resources/webapp/js/jquery.bxslider.min.js"/>"></script>
-	<script
-		src="<c:url value="/resources/webapp/js/bootstrap-dialog.min.js"/>"></script>
-
-
+	<script	src="<c:url value="/resources/webapp/js/jquery.bxslider.min.js"/>"></script>
+	<script	src="<c:url value="/resources/webapp/js/bootstrap-dialog.min.js"/>"></script>
 	<script src="<c:url value="/resources/webapp/js/jquery.numeric.js"/>"></script>
 	<script src="<c:url value="/resources/webapp/js/jquery.blockUI.js"/>"></script>
-	<script src="<c:url value="/resources/js/webapp/paypal.js"/>"></script>
-	<%-- 		<h1>${ idDominio }</h1> --%>
-	<%-- 		<h1>${ galeriaImagenes }</h1> --%>
-	<%-- 	 	<h1>${ downgrade }</h1> --%>
-	<%-- 	 	<h1>${sitioWeb}</h1> --%>
-			 
+	<script src="<c:url value="/resources/js/webapp/paypal.js"/>"></script>		 
 	<script src="<c:url value="/resources/webapp/js/si.files.js"/>"></script>
 
  
@@ -290,11 +304,10 @@
   <input type="hidden" value="2" name="rm"/>
   <input type="hidden" value="1" name="no_note"/>
   <input type="hidden" value="MXN" name="currency_code"/>
-   <input type="hidden" value="PP-BuyNowBF" name="cn"/>
-    <input type="hidden" name="custom" id="customPaypal"/>
-     <input type="hidden" value="es" name="lc"/>
-   <input type="hidden" value="primary" name="page_style"/>
-
+  <input type="hidden" value="PP-BuyNowBF" name="cn"/>
+  <input type="hidden" name="custom" id="customPaypal"/>
+  <input type="hidden" value="es" name="lc"/>
+  <input type="hidden" value="primary" name="page_style"/>
 </form>
 
 </body>

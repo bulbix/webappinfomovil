@@ -8,8 +8,16 @@
 
 	<div class="col-xs-12">
 	
-	<h5 style="color:#2fa399">Datos del contacto administrativo</h5>
-	
+
+	<p style="color:#2fa399">Datos del contacto administrativo</p>
+	<form class="form-horizontal">
+	<div class="form-group">
+    <label for="inputEmail3" class="col-sm-2 control-label text-left">Correo</label>
+    <div class="col-xs-12 col-sm-10">
+      <input type="text" class="form-control" id="inputEmail3" placeholder="" value="" id="nombreUser" disabled="disabled"/>
+    </div>           
+  </div>
+
   <div class="form-group">
     <label for="inputEmail3" class="col-sm-2 control-label text-left">Nombre</label>
     <div class="col-xs-12 col-sm-10">
@@ -22,12 +30,14 @@
       <input type="text" class="form-control" id="direccionUser">
     </div>
   </div>
+
   <div class="form-group">
     <label for="inputPassword3" class="col-sm-2 control-label text-left">Correo</label>
     <div class="col-xs-12  col-sm-10">
       <input type="email" class="form-control" id="emailUser">
     </div>
   </div>
+
   
   <div class="form-group">
     <label for="inputPassword3" class="col-sm-2 control-label text-left">País</label>
@@ -36,11 +46,12 @@
     </div>
   </div>
 
-  <div class="dividerSmall" align="center" id="datosIncompletos"></div>
-  
-  <div class="container"><hr/></div>
 
-  <h5 style="color:#2fa399">Renovación de dominio </h5>
+  <div class="dividerSmall"></div>
+  <hr/>
+  <p style="color:#2fa399">Renovación de dominio </p>
+
+
   <div class="form-group">
     <label for="inputEmail3" class="col-sm-2 control-label text-left">Dominio</label>
     <div class="col-xs-12 col-sm-10">
@@ -65,9 +76,10 @@
   
   <div class="form-group">
     <div class="col-xs-12">
-      <button class="btn btn-default pull-right" id="btnPagoPaypal"> <img  alt="Infomovil"
-					src="<c:url value="/resources/webapp/images/btn_buyPayPayl.gif"/>" />
-	  </button>
+
+      <button type="submit" class="btn btn-outline pull-right"> <img  alt="Infomovil"
+					src="<c:url value="/resources/webapp/images/btn_buyPayPayl.gif"/>" /></button>
+
     </div>
   </div>
 

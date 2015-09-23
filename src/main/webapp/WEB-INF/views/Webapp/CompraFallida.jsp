@@ -136,7 +136,7 @@
 	<div class="seccTop bgBlack">
 	<div class="container">
 	
-	<div class="col-xs-12 col-sm-12 text-center"><h1 class=" textWhite" style="font-weight: 300;">¡Felicidades!</h1></div>
+	<div class="col-xs-12 col-sm-12 text-center"><h1 class=" textWhite" style="font-weight: 300;">¡Oops!</h1></div>
 		
 	
 	
@@ -158,23 +158,23 @@
 					<div class="page-header text-center">
 						<strong></strong>
 						<div>
-						<p>Tu dominio ha sido renovado</p>
+<!-- 						<p>Tu dominio ha sido renovado</p> -->
 						<div class="divider"></div>
 						<h3>
 						<img width="130" height="130"
 							alt="Infomovil"
-							src="<c:url value="/resources/webapp/images/fa-purchase.png"/>" /> Gracias tu compra</h3>
+							src="<c:url value="/resources/webapp/images/fa-warning-purchase.png"/>" /> Tu compra no se ha efectuado</h3>
 						
 						<div class="divider"></div>
-						<span>En breve recibirás un correo con tu ticket de pago</span>
+						<span>Si tienes dudas, puedes contactárnos a mail@mail.com</span>
 						<div class="clearfix"></div>
 						<div class="divider"></div>
-						<a href="<c:url value="/infomovil/editarSitio"></c:url>"
+						<a href="<c:url value="/infomovil/miCuenta"></c:url>" 
 				class="col-xs-12 col-sm-6 col-sm-offset-3 col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3 btn btn-default btn-outline navEditor">
 				<img width="20" height="20"
 							alt="Infomovil"
 							src="<c:url value="/resources/webapp/images/fa-pencil.png"/>" />
-				<span>Continua editando</span>
+				<span>Regresar a tus productos</span>
 			</a>
 						</div>
 					</div>
