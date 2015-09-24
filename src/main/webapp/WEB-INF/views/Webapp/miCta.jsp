@@ -12,9 +12,10 @@
 	data-offset="75" id="page-top" >
 	
 	<c:if test="${paymentStatus == 'Completed'}">
-	<script>
-		alert("Se completo la transacción!");
-	</script></c:if>
+		<script>
+			abrirModalExitoso();
+		</script>
+	</c:if>
 	
 	
 	<!-- Fixed navbar -->
@@ -137,14 +138,20 @@
 	
 										<c:choose> 
 											<c:when test="${item.renovable == 'true'}">	
+											
 												<c:set var="imgActivo" value="btn_inactive.png" scope="request" />
 												<c:set var="displayButton" value="display:block" scope="request" />		
-												<c:set var="productoActivo" value="Inactivo" scope="request" />				
+												<c:set var="productoActivo" value="Inactivo" scope="request" />	
+												
+												<c:if test="${item.abc == 'Plan pro'}">
+													<c:set var="displayButton" value="display:none" scope="request" />		
+												</c:if>	
+															
 											</c:when>
 											<c:otherwise>
 												<c:set var="imgActivo" value="btn_active.png" scope="request" />
 												<c:set var="displayButton" value="display:none" scope="request" />		
-												<c:set var="productoActivo" value="Activo" scope="request" />													
+												<c:set var="productoActivo" value="Activo" scope="request" />
 											</c:otherwise>
 										</c:choose>
 

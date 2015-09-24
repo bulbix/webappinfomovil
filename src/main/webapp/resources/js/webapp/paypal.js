@@ -92,3 +92,8 @@ function comprarPayPal(customId){
 	$.unblockUI();
 	
 }
+
+function abrirModalExitoso(){
+	$("#myModalCompraExitosa").modal();
+	
+}

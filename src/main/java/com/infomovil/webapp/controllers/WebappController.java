@@ -472,13 +472,13 @@ public class WebappController
 		return new ModelAndView(vista, model);
 	}
 	
-	@RequestMapping(value = "/infomovil/miCuenta", method = {RequestMethod.GET,RequestMethod.POST})
-	public ModelAndView miCuenta(HttpServletRequest request, HttpServletResponse response, RedirectAttributes redirectAttributes,String payment_status)
+	@RequestMapping(value = "/infomovil/miCuenta", method = {RequestMethod.GET, RequestMethod.POST})
+	public ModelAndView miCuenta(HttpServletRequest request, HttpServletResponse response, RedirectAttributes redirectAttributes, String payment_status)
 	{		
 		HashMap<String, Object> model = new HashMap<String, Object>();
 		RespuestaVO wsRespuesta = new RespuestaVO();
 		
-		String claseProductos = "col-xs-12 col-sm-6 col-md-6 col-lg-6 dBlock col-sm-offset-3";
+		String claseProductos = "'col-xs-12 col-sm-6 col-md-6 col-lg-6 dBlock'";
 		String claseCss = "";
 		String colorTexto = "";
 		String extensionImg = "";
@@ -492,9 +492,9 @@ public class WebappController
 			wsRespuesta = wsCliente.crearSitioGetProductosUsuario(correo, password);
 			totProductos = wsRespuesta.getListProductoUsuarioVO().size();
 			
-			if (totProductos > 0)
-				claseProductos = "'col-xs-12 col-sm-6 col-md-6 col-lg-6 dBlock'";
-			
+			if (totProductos == 1)
+				claseProductos = "'col-xs-12 col-sm-6 col-md-6 col-lg-6 dBlock col-sm-offset-3'";
+		
 			if (Util.getCurrentSession().getAttribute("canal").toString().startsWith("BAZ"))
 			{
 				claseCss = "default";
@@ -516,6 +516,7 @@ public class WebappController
 			model.put("productos", wsRespuesta.getListProductoUsuarioVO());
 			model.put("correoElectronico", correo);
 			model.put("paymentStatus", payment_status);
+			
 		}		
 		catch (Exception e) 
 		{
@@ -524,21 +525,17 @@ public class WebappController
 		}			
 		return new ModelAndView("Webapp/miCta", model);
 	}
-	
 
-	
 	@RequestMapping(value = "/infomovil/editarSitio", method = RequestMethod.GET)
 	public ModelAndView editarSitio(HttpServletRequest request, HttpServletResponse response, RedirectAttributes redirectAttributes)
 	{		
 		HashMap<String, Object> model = new HashMap<String, Object>();
 		RespuestaVO wsRespuesta = new RespuestaVO();
-		StatusDomainVO statusDom = new StatusDomainVO();
 		
 	    String template = "Coverpage1azul";
 		String sitioWeb = "SIN_PUBLICAR";
 		String canal = "NO_TIENE";
 		String claseCss = "default";
-		String campania = "basica";
 		String colorTexto = "textWhite";
 		String extensionImg = "";
 		String fechaIni = "";
@@ -564,8 +561,7 @@ public class WebappController
 			if (wsRespuesta.getCodeError().equals("0"))
 			{
 				Util.getCurrentSession().setAttribute("nombreUsuario", 
-				wsRespuesta.getDominioCreaSitio().getNombreUsuario());				
-				campania = wsRespuesta.getDominioCreaSitio().getCampania().toLowerCase();
+				wsRespuesta.getDominioCreaSitio().getNombreUsuario());	
 				idDominio = wsRespuesta.getIdDominio();
 				downgrade = wsRespuesta.getDowngrade();
 				
@@ -599,8 +595,6 @@ public class WebappController
 					fechaIni = wsRespuesta.getFTelNamesIni();
 					fechaFin = wsRespuesta.getFTelNamesFin();
 				}
-
-				
 
 				if (wsRespuesta.getDominioCreaSitio().getCanal().startsWith("BAZ"))
 				{
@@ -655,7 +649,6 @@ public class WebappController
 					if (productoVO != null)
 						planPro = "SI";
 				}
-
 			
 				if (planPro.equals("NO"))
 				{
@@ -663,8 +656,7 @@ public class WebappController
 					if (modeloWebApp.getStatus(status))
 						planPro = "SI";
 				}
-			
-				
+							
 				model.put("usuarioLogueado", correo);
 				model.put("nombreUsuario", wsRespuesta.getDominioCreaSitio().getNombreUsuario().trim());				
 				model.put("nombreEmpresa", wsRespuesta.getDominioCreaSitio().getNombreEmpresa().trim());
