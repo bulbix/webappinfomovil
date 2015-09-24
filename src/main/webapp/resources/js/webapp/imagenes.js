@@ -774,7 +774,7 @@ function convertImgToBase64(imageDom, url, callback, outputFormat) {
 		var canvas = document.createElement('CANVAS');
 		var ctx = canvas.getContext('2d');
 
-		var targetWidth = 320;
+		var targetWidth = 420;
 		var ratio = (targetWidth > imageDom.naturalWidth) ? 1 : targetWidth
 				/ imageDom.naturalWidth;
 		console.log(imageDom.naturalWidth, targetWidth, ratio);
