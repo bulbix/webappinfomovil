@@ -652,17 +652,17 @@ function uploadImage(imageDom, imageUrl, origin, textFoto) {
 function borrarImagenJQ(idImg) {
 	BootstrapDialog
 			.show({
-				title : '<div class="textBlack">Borrar Imagen</div>',
+				title : '<div class="textBlack">Borrar imagen</div>',
 				message : '<div style="display:block; padding: 10px;">¿Seguro que deseas borrar la imagen?</div>',
 				buttons : [
 						{
-							label : '<span class="btn btn-purple">Cancelar</span>',
+							label : 'Cancelar',
 							action : function(dialog) {
 								dialog.close();
 							}
 						},
 						{
-							label : '<span class="btn btn-purple">Aceptar</span>',
+							label : 'Aceptar',
 							action : function(dialog) {
 								dialog.close();
 								$.blockUI.defaults.baseZ = 9000;
