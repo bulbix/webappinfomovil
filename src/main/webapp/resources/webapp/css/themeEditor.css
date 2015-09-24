@@ -65,7 +65,8 @@ section.bgBlack { /*margin: 0 -5px 0 0; */}
 .blkIn1020{display:inline-block; width:10px; height:20px;}
 .spaceBtnsMap{display:inline-block !important; width:10px !important; height:20px !important;}
 #pac-input{ width:200px;}
-.imgLista{max-width:90px; max-height:80px;}
+.imgLista{max-width:100px; max-height:80px;}
+.imgListaBig{max-width:90px; max-height:80px;}
 .mxhModalScroll{max-height:550px; overflow-y:auto;}
 .modal-body ::-webkit-scrollbar {
     -webkit-appearance: none;
@@ -79,6 +80,7 @@ section.bgBlack { /*margin: 0 -5px 0 0; */}
 
 @media only screen and (min-device-width : 320px) and (max-device-width : 480px) { /* STYLES GO HERE */
 .imgLista{max-width:50px; max-height:40px;}
+.imgListaBig{max-width:90px; max-height:80px;}
 .mxhModalScroll{max-height:300px; overflow-y:auto;}
 p { font-size: 110%; }
 .h1, h1 { font-size: 250%; }
@@ -93,6 +95,7 @@ p { font-size: 110%; }
 }
 @media only screen and (min-device-width : 768px) and (max-device-width : 1024px) {
 .imgLista{max-width:90px; max-height:80px;}
+.imgListaBig{max-width:90px; max-height:80px;}
 .mxhModalScroll{max-height:400px; overflow-y:auto;}
 .theme-showcase { margin: -10px -5px 0 0; background: url(../images/bg.png) no-repeat center top; /*-webkit-background-size: 100% auto; background-attachment: fixed;*/ -moz-background-size: cover; -o-background-size: cover; background-size: 100% 700px; padding: 2% 0 10% 0; }
 .bgPurple { margin: -10px -5px 0 0; background: url(../images/bgPurple.png) no-repeat center top; /*-webkit-background-size: 100% auto; background-attachment: fixed;*/ -moz-background-size: cover; -o-background-size: cover; background-size: 100% 700px; padding: 5% 0 5% 0; color: #fff; }

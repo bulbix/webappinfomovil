@@ -862,7 +862,7 @@ function logueoFacebook(response) {
 			$li
 					.append('<span class="col-xs-4"><img src="'
 							+ infoAlbumes[p].picture
-							+ '"  class="img-thumbnail imgLista"/></span>');
+							+ '"  class="img-thumbnail imgListaBig"/></span>');
 			$li
 					.append('<span class="col-xs-8"><strong style="color:#7c41bc" class="hidden-xs"> Album:</strong> '
 							+ infoAlbumes[p].title
@@ -901,7 +901,7 @@ function logueoFacebook(response) {
 							$li
 									.append('<span class="col-xs-12"><img src="'
 											+ fotos[a].origen
-											+ '"  class="img-thumbnail imgLista"/></span>');
+											+ '"  class="img-thumbnail imgListaBig"/></span>');
 							$li.on("click", "img", function() {
 								$("#imgVistaPrevia").attr('src',
 										$(this).attr("src"));
@@ -978,7 +978,7 @@ function logueoFacebook2() {
 		$li
 				.append('<span class="col-xs-4"><img src="'
 						+ infoAlbumes[p].picture
-						+ '" class="img-thumbnail imgLista"/></span>');
+						+ '" class="img-thumbnail imgListaBig"/></span>');
 		$li
 				.append('<span class="col-xs-8"><strong style="color:#7c41bc" class="hidden-xs"> Album:</strong> '
 						+ infoAlbumes[p].title
