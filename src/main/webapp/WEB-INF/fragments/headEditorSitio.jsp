@@ -57,10 +57,10 @@
 .SI-FILES-STYLIZED label.cabinet
 {
 	width: 136px;
-	height: 22px;
+	height: 18px;
 	background: url(<c:url value="/resources/webapp/images/btn-choose-file.png"/>) 0 0 no-repeat;
-
-	display: block;
+	background-size: 100%;
+	display: inline-block;
 	overflow: hidden;
 	cursor: pointer;
 }
@@ -100,14 +100,25 @@
 	<link href="https://s3.amazonaws.com/landing.infomovil.com/webapp-qa/templates/<tiles:getAsString name="template"/>/css/info.css" rel="stylesheet" />	
 		
 		<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=places&signed_in=false"></script> 
-		<script>
-		  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-		  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-		  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-		  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-		  ga('create', 'UA-53077061-1', 'auto');
-		 ga('send', 'pageview'); 
-		</script>
+		<!-- CODIGO SEGUIMIENTO ANALYTICS -->
+    <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-53077061-1', 'auto');
+  ga('set', 'dimension1', 'Editor');
+ ga('send', 'pageview'); 
+    </script>
+     <!-- / CODIGO SEGUIMIENTO ANALYTICS -->
+     <!--  CODIGO SEGUIMIENTO CrazyEgg -->
+     <script type="text/javascript">
+setTimeout(function(){var a=document.createElement("script");
+var b=document.getElementsByTagName("script")[0];
+a.src=document.location.protocol+"//script.crazyegg.com/pages/scripts/0039/7317.js?"+Math.floor(new Date().getTime()/3600000);
+a.async=true;a.type="text/javascript";b.parentNode.insertBefore(a,b)}, 1);
+</script>
+ <!--  CODIGO SEGUIMIENTO CrazyEgg -->
 		<script type="text/javascript">
 				var contextPath='<%=request.getContextPath()%>';
 				console.log("ContextPath: " + contextPath);

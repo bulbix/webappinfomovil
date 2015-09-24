@@ -13,7 +13,7 @@
 
 	<body role="document" data-spy="scroll" data-target=".navbar" data-offset="75" id="page-top" onload="autosave()">
 		<!-- Fixed navbar --> 
-		<div id="dialog-confirm" title="Empty the recycle bin?" >
+		
 		<nav class="navbar navbar-${ claseCss } navbar-static-top">
 			<div class="container-fluid">
 				<div class="navbar-header">
@@ -190,6 +190,15 @@
 							</div>
 							<div class="clear"></div>
 							<div class="divider"></div>
+							
+<!-- 							<div> <ul class="bxslider"> -->
+                           
+<%--                               <li> <img	src="<c:url value="/resources/webapp/images/apple-touch-icon-57x57.png"/>" width="465" style="margin:0 auto; position:relative; top:40px;" /> --%>
+                              
+                              
+<!--                             </li> -->
+                           
+<!--                           </ul></div> -->
 						</form>
 					</div>
 				</div>
@@ -375,6 +384,7 @@
 		<script src="<c:url value="/resources/js/webapp/mapa.js"/>"></script>
 		<script src="<c:url value="/resources/js/webapp/videoYoutube.js"/>"></script>
 		<script src="<c:url value="/resources/js/webapp/imagenes.js"/>"></script>
+		
 <%-- 		<h1>${ idDominio }</h1> --%>
 <%-- 		<h1>${ galeriaImagenes }</h1> --%>
 <%-- 	 	<h1>${ downgrade }</h1> --%>
@@ -397,7 +407,14 @@
 			$('.navbar-collapse ul li a').click(function() {
 			    $('.navbar-toggle:visible').click();
 			});
-		
+			$(document).ready(function(){
+				$('.bxslider').bxSlider({
+				captions: true,
+				adaptiveHeight: true,
+				infiniteLoop: true,
+				mode: 'fade',
+			});
+			});
 		</script>
 		
 		<script>
