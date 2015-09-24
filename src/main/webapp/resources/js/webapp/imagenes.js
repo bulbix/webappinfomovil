@@ -827,19 +827,17 @@ function convertImgToBase64(imageDom, url, callback, outputFormat) {
 }
 
 function logueoFacebook(response) {
-
+	$.blockUI.defaults.baseZ = 9000;
+	$.blockUI({
+		message : "Obteniendo imágenes...",
+		css : {
+			class : "alertaUI",
+			top : ($(window).height() - 400) / 2 + 'px',
+			left : ($(window).width() - 400) / 2 + 'px',
+			width : '400px'
+		}
+	});
 	if (response.status === 'connected') {
-
-		$.blockUI.defaults.baseZ = 9000;
-		$.blockUI({
-			message : "Obteniendo imágenes...",
-			css : {
-				class : "alertaUI",
-				top : ($(window).height() - 400) / 2 + 'px',
-				left : ($(window).width() - 400) / 2 + 'px',
-				width : '400px'
-			}
-		});
 
 		$("#btnAlbumsDeFacebook").hide();
 		$("#btnSeleccionaImagen2").hide();
@@ -942,6 +940,7 @@ function logueoFacebook(response) {
 			});
 		}
 	}
+	$.unblockUI();
 }
 
 function logueoFacebook2() {
