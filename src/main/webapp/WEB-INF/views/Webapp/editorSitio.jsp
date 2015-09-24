@@ -65,16 +65,16 @@
 								<img width="20" height="20" alt="Infomovil"	src="<c:url value="/resources/webapp/images/ico_img${ extensionImg }.png"/>" />
 							</a>
 						</li>
-						<li class="botonDesPublicar" id="btnImgLi">
-							<a href="#"  class="smoothScroll ${colorTexto}" onclick="location.assign('http://localhost:8080/WebAppInfomovil/infomovil/miCuenta')">Mi Cuenta 
-								<img width="20" height="20" alt="Infomovil"	src="<c:url value="/resources/webapp/images/ico_img${ extensionImg }.png"/>" />
-							</a>
-						</li>
-						<!--  <li class="botonDesPublicar" id="btnContLi" style="display:none;">
+<!-- 						<li class="botonDesPublicar" id="btnImgLi"> -->
+<%-- 							<a href="#"  class="smoothScroll ${colorTexto}" onclick="location.assign('http://localhost:8080/WebAppInfomovil/infomovil/miCuenta')">Mi Cuenta  --%>
+<%-- 								<img width="20" height="20" alt="Infomovil"	src="<c:url value="/resources/webapp/images/ico_img${ extensionImg }.png"/>" /> --%>
+<!-- 							</a> -->
+<!-- 						</li> -->
+						 <li class="botonDesPublicar" id="btnContLi" style="display:none;">
 							<a href="#" data-toggle="modal" data-target="#myModalDescApp" class="smoothScroll ${colorTexto}">¿Qué sigue? <span class="hidden-sm hidden-md"></span> 
 								<img width="20" height="20" alt="Infomovil"	src="<c:url value="/resources/webapp/images/ico_mas_cont${ extensionImg }.png"/>" />
 							</a>
-						</li>-->
+						</li>
 						<li>						
 							<a href="<c:url value="/logout"></c:url>" class="smoothScroll ${colorTexto}"> Cerrar <span class="hidden-sm hidden-md">sesión	</span>				
 								<img width="20"	height="20" alt="Infomovil" src="<c:url value="/resources/webapp/images/fa-sign-out${ extensionImg }.png"/>" />
