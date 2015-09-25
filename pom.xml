@@ -266,10 +266,8 @@
 				<filtering>true</filtering>
 			</resource>
 		</resources>
-
-	</build>
-
-
+    </build>
+   
 	<profiles>
 		<profile>
 			<id>dev</id>
@@ -281,8 +279,7 @@
 			</properties>
 		</profile>
 		<profile>
-
-			<id>qa</id>
+			<id>qa</id>		
 			<properties>
 				<config.profile>QA</config.profile>
 			</properties>

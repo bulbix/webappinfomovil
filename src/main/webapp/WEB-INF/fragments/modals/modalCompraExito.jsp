@@ -27,8 +27,8 @@
 	<div class="clear divider"></div>
 </div>
 	<div class="modal-footer">
-		<button type="button" class="btn btn-purple text-center col-xs-12 col-sm-12 col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3" data-dismiss="modal">
+		<a href="<c:url value="/infomovil/editarSitio"></c:url>" style="color:#fff" type="button" class="btn btn-purple text-center col-xs-12 col-sm-12 col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3" data-dismiss="modal">
 			<strong>Continuar editando</strong>
-		</button>
+		</a>
 	</div>
 </div>

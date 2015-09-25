@@ -59,9 +59,9 @@
 							width="20" height="20" alt="Infomovil"
 							src="<c:url value="/resources/webapp/images/fa-templates${ extensionImg }.png"/>" />
 							Mi Estilo </a></li>
-					<li class="dropdown"><a href="#" class="dropdown-toggle textWhite" 
+					<li class="dropdown"><a href="#" class="dropdown-toggle textWhite botonDesPublicar" 
 						data-toggle="dropdown" role="button" aria-haspopup="true"
-						aria-expanded="false"><img width="20" height="20"
+						aria-expanded="false" style="display: none;"><img width="20" height="20"
 							alt="Infomovil"
 							src="<c:url value="/resources/webapp/images/fa-pencil${ extensionImg }.png"/>" />Mi
 							contenido <span class="caret"></span></a>
@@ -155,7 +155,8 @@
 				<strong><span class="text-center btnsEditor _1_1em"
 					id="urlSitio" style="display: none;"> <a
 						href="http://${sitioWeb}" target="_blank"
-						class="col-xs-12 col-sm-12  col-md-12 col-lg-12 textBlack navEditor"><strong>${sitioWeb}</strong></a>
+						class="col-xs-12 col-sm-12  col-md-12 col-lg-12 textBlack navEditor">Ver mi página: <strong>${sitioWeb}</strong><img width="20" height="20" alt="Infomovil"
+				src="<c:url value="/resources/webapp/images/ir-bk.png"/>" /> </a>
 				</span></strong>
 				<div>
 					<form id="formEditar">
