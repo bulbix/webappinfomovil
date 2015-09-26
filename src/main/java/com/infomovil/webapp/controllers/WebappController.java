@@ -1,8 +1,6 @@
 
 package com.infomovil.webapp.controllers;
 
-import static org.junit.Assert.assertNotNull;
-
 import java.io.UnsupportedEncodingException;
 import java.util.HashMap;
 import java.util.Map;
@@ -11,14 +9,10 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.apache.commons.collections4.CollectionUtils;
-import org.apache.commons.collections4.Predicate;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.validator.routines.EmailValidator;
 import org.apache.log4j.Logger;
 import org.json.simple.JSONArray;
-import org.json.simple.JSONObject;
-import org.junit.Test;
 import org.springframework.stereotype.Controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
@@ -34,7 +28,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import com.google.gson.JsonObject;
 import com.infomovil.webapp.clientWsInfomovil.Catalogo;
 import com.infomovil.webapp.clientWsInfomovil.ClientWsInfomovil;
 import com.infomovil.webapp.clientWsInfomovil.ImagenVO;
@@ -788,7 +781,7 @@ public class WebappController
 		String password = Util.getUserLogged().getPassword();
 		try
 		{
-			wsRespuesta = wsCliente.crearSitioIntentoPago(correo, password, "DOMINIO TEL", "PAY PAL", "TEL", "DOMINIO TEL",nombre,direccion,pais);
+			wsRespuesta = wsCliente.crearSitioIntentoPago(correo, password, "DOMINIO TEL", "PAY PAL", "TEL", "tel",nombre,direccion,pais);
 				
 			resultMap.put("resultado", wsRespuesta.getIdPago());
 		}		
@@ -810,7 +803,6 @@ public class WebappController
 		try
 		{
 			wsRespuesta = wsCliente.crearSitioGetProductosUsuario("rambo1@mail.com", "garbage1");
-			//wsRespuesta = wsCliente.crearSitioIntentoPago(nombreDominio, tipoDominio);
 			
 			System.out.println("Tamanio de lista " + wsRespuesta.getListProductoUsuarioVO().size());
 			resultMap.put("resultado", wsRespuesta.getResultado());
@@ -822,8 +814,6 @@ public class WebappController
 		
 		return resultMap;
 	}
-	
-	
 	
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String index(){

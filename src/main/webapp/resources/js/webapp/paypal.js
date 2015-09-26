@@ -1,12 +1,5 @@
-$(document).ready(function() {
-	
-	
-	
-	
-	
-});
-
 $("#btnPagoPaypal").click(function() {
+	
 	var $nombre  = $("#nombreUser").val();
 	var $direccion = $("#direccionUser").val();
 	var $correo = $("#emailUser").val();
@@ -37,13 +30,13 @@ $("#btnPagoPaypal").click(function() {
 	}
 });
 
-
-
-
-function intentoPago($nombre, $direccion, $correo, $pais){
+function intentoPago($nombre, $direccion, $correo, $pais) {
+	
 	var $nombre  = $("#nombreUser").val();
 	var $direccion = $("#direccionUser").val();
-	var $pais = "México";
+	var $pais = "MX";
+	var $email = $("#emailUser").val();
+	
 	$.blockUI.defaults.baseZ = 9000;
 	$.blockUI({
 		message: "Redireccionando a paypal...",
@@ -61,15 +54,15 @@ function intentoPago($nombre, $direccion, $correo, $pais){
 				dataType : "json",
 				//contentType: "text/plain",
 				data : {
-					nombre:$nombre,
-					direccion:$direccion,
+					nombre: $nombre,
+					direccion: $direccion,
 					pais: $pais
 					
 				},
 			success : function(data) {
 				console.log("El resultado es: " + data.resultado);
-				if(data.resultado > 0){
-					$("#customPaypal").val(data.resultado + ',' + 'test@test.com');
+				if(data.resultado > 0) {
+					$("#customPaypal").val(data.resultado + ',' + $email);
 					comprarPayPal(data.resultado);
 				}else{
 					$.unblockUI();
@@ -85,15 +78,12 @@ function intentoPago($nombre, $direccion, $correo, $pais){
 	});
 }
 
-
-
-function comprarPayPal(customId){
+function comprarPayPal(customId) {
 	document.getElementById("formPaypal").submit();
-	$.unblockUI();
-	
+	$.unblockUI();	
 }
 
-function abrirModalExitoso(){
-	$("#myModalCompraExitosa").modal();
-	
+function abrirModalExitoso() {
+	alert("abrirModalExitoso");
+	$("#myModalCompraExitosa").modal();	
 }

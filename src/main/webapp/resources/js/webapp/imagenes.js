@@ -831,7 +831,7 @@ function logueoFacebook(response)
 		}
 	}else{
 		if( navigator.userAgent.match('CriOS') ){
-			window.open('https://www.facebook.com/dialog/oauth?client_id=422690184604551&redirect_uri='+ document.location.href +'&scope=email,public_profile,user_photos', '', null);
+			window.open('https://www.facebook.com/dialog/oauth?client_id=422690184604551&scope=email,user_photos&redirect_uri='+ document.location.href +'', '', null);
 		}else{
 			FB.login(function(response) {
 			statusChangeCallback(response);

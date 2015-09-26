@@ -57,7 +57,8 @@ import javax.xml.bind.annotation.XmlType;
     "domainId",
     "nombreDominio",
     "renovable",
-    "urlDominio"
+    "urlDominio",
+    "urlRenovar"
 })
 public class ProductoUsuarioVO {
 
@@ -77,8 +78,17 @@ public class ProductoUsuarioVO {
     protected String nombreDominio;
     protected boolean renovable;
     protected String urlDominio;
+    protected String urlRenovar;
+    
+    public String getUrlRenovar() {
+		return urlRenovar;
+	}
 
-    /**
+	public void setUrlRenovar(String urlRenovar) {
+		this.urlRenovar = urlRenovar;
+	}
+
+	/**
      * Obtiene el valor de la propiedad email.
      * 
      * @return

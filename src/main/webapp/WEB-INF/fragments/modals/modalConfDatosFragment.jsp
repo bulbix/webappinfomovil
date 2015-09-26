@@ -36,7 +36,7 @@
   <div class="form-group">
     <label for="inputPassword3" class="col-sm-2 control-label text-left">País</label>
     <div class="col-xs-12  col-sm-10">
-     <select><option>México</option></select>
+     <select><option>MX</option></select>
     </div>
   </div>
 
@@ -61,7 +61,7 @@
   <div class="form-group">
     <label for="inputEmail3" class="col-sm-2 control-label text-left">Costo</label>
     <div class="col-xs-12 col-sm-10">
-    <label class="col-sm-10 control-label text-left" style="font-weight:300;">$600.00mxn</label> 
+    <label class="col-sm-10 control-label text-left" style="font-weight:300;">$200.00mxn</label> 
       
     </div>
   </div>

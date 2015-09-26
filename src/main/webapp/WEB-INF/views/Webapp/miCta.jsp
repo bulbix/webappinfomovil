@@ -17,7 +17,6 @@
 		</script>
 	</c:if>
 	
-	
 	<!-- Fixed navbar -->
 	<nav class="navbar navbar-${ claseCss } navbar-static-top">
 		<div class="container-fluid">
@@ -128,7 +127,7 @@
 										<c:choose>
 											<c:when test="${item.claveComercial == 'TEL'}">
 												<c:set var="productoNombre" value="dominioTel" scope="request" />
-												<c:set var="datoUrl" value="${item.urlDominio}" scope="request" />
+												<c:set var="datoUrl" value="${item.urlRenovar}" scope="request" />
 											</c:when>
 											<c:otherwise>
 												<c:set var="productoNombre" value="planPro" scope="request" />
@@ -157,6 +156,13 @@
 
 										<c:set var="fechaInicial" value="${item.fechaInicio}" scope="request"/>
 										<c:set var="fechaFin" value="${item.fechaFin}" scope="request"/>
+										
+										<c:if test="${item.urlRenovar =='SP'}">
+											<c:set var="fechaInicial" value="----" scope="request"/>
+											<c:set var="fechaFin" value="----" scope="request"/>
+											<c:set var="datoUrl" value="SIN PUBLICAR" scope="request" />			
+										</c:if>
+										
 										<tiles:putAttribute name="productoTitulo" value="${item.abc}"/>	
 										<tiles:putAttribute name="claseProductos" value="${claseProductos}"/>
 											
@@ -258,8 +264,8 @@
   <input type="hidden" name="custom" id="customPaypal"/>
   <input type="hidden" value="es" name="lc"/>
   <input type="hidden" value="primary" name="page_style"/>
-  <input type='hidden' name='return' value='http://localhost:8080/WebAppInfomovil/infomovil/miCuenta'/>
-  <input type='hidden' name='cancel_return' value='http://localhost:8080/WebAppInfomovil/infomovil/miCuenta'/>
+  <input type='hidden' name='return' value='http://localhost:10100/WebAppInfomovil/infomovil/miCuenta'/>
+  <input type='hidden' name='cancel_return' value='http://localhost:10100/WebAppInfomovil/infomovil/miCuenta'/>
 </form>
 
 </body>
