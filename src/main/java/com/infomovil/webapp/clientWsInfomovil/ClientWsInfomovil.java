@@ -236,6 +236,36 @@ public class ClientWsInfomovil {
 		return _crearSitioGetProductosUsuario__return.respuestaVO;
 	}
 	
+	public RespuestaVO crearSitioGuardarPromocion(String email, String password, String descripcion, String fechaVigencia,
+			String redimir, String terminos, String titulo, String base64Imagen, Integer idPromocion)
+	{
+		System.out.println("Invoking crearSitioGuardarPromocion...");
+        com.infomovil.webapp.clientWsInfomovil.CrearSitioGuardarPromocion _crearSitioGuardarPromocion_parameters = new CrearSitioGuardarPromocion();
+        _crearSitioGuardarPromocion_parameters.email = email;
+        _crearSitioGuardarPromocion_parameters.password = password;
+        _crearSitioGuardarPromocion_parameters.descripcion = descripcion;
+        _crearSitioGuardarPromocion_parameters.fechaVigencia = fechaVigencia;
+        _crearSitioGuardarPromocion_parameters.redimir = redimir;
+        _crearSitioGuardarPromocion_parameters.terminos = terminos;
+        _crearSitioGuardarPromocion_parameters.titulo = titulo;
+        _crearSitioGuardarPromocion_parameters.base64Imagen = base64Imagen;
+        _crearSitioGuardarPromocion_parameters.idPromocion = idPromocion;
+        com.infomovil.webapp.clientWsInfomovil.CrearSitioGuardarPromocionResponse _crearSitioGuardarPromocion__return = port.crearSitioGuardarPromocion(_crearSitioGuardarPromocion_parameters);
+        System.out.println("crearSitioGuardarPromocion.result=" + _crearSitioGuardarPromocion__return);
+		return _crearSitioGuardarPromocion__return.respuestaVO;
+	}
+	
+	public RespuestaVO crearSitioGetPromociones(String email, String password)
+	{
+		System.out.println("Invoking crearSitioGetPromociones...");
+		com.infomovil.webapp.clientWsInfomovil.CrearSitioGetPromociones _crearSitioGetPromociones_parameters = new CrearSitioGetPromociones();
+		_crearSitioGetPromociones_parameters.email = email;
+		_crearSitioGetPromociones_parameters.password = password;
+		com.infomovil.webapp.clientWsInfomovil.CrearSitioGetPromocionesResponse _crearSitioGetPromociones__return = port
+				.crearSitioGetPromociones(_crearSitioGetPromociones_parameters);
+		System.out.println("crearSitioGetPromociones.result=" + _crearSitioGetPromociones__return);
+		return _crearSitioGetPromociones__return.respuestaVO;
+	}
 	
 	
 	

@@ -32,7 +32,7 @@ import javax.xml.bind.annotation.XmlType;
 })
 public class DeleteRecordNaptrResponse {
 
-    @XmlElement(name = "RespuestaVO", namespace = "http://ws.webservice.infomovil.org/")
+    @XmlElement(name = "RespuestaVO")
     protected RespuestaVO respuestaVO;
 
     /**

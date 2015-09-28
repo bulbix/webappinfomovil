@@ -42,6 +42,7 @@ import javax.xml.bind.annotation.XmlType;
  *         &lt;element name="dominioCreaSitio" type="{http://ws.webservice.infomovil.org/}dominioCreaSitio" minOccurs="0"/>
  *         &lt;element name="listImagenVO" type="{http://ws.webservice.infomovil.org/}imagenVO" maxOccurs="unbounded" minOccurs="0"/>
  *         &lt;element name="listStatusDomainGratisVO" type="{http://ws.webservice.infomovil.org/}statusDomainVO" maxOccurs="unbounded" minOccurs="0"/>
+ *         &lt;element name="listPromocion" type="{http://ws.webservice.infomovil.org/}offertRecordVO" maxOccurs="unbounded" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -75,7 +76,8 @@ import javax.xml.bind.annotation.XmlType;
     "listUsuarioDominiosVO",
     "dominioCreaSitio",
     "listImagenVO",
-    "listStatusDomainGratisVO"
+    "listStatusDomainGratisVO",
+    "listPromocion"
 })
 public class RespuestaVO {
 
@@ -103,6 +105,7 @@ public class RespuestaVO {
     protected DominioCreaSitio dominioCreaSitio;
     protected List<ImagenVO> listImagenVO;
     protected List<StatusDomainVO> listStatusDomainGratisVO;
+    protected List<OffertRecordVO> listPromocion;
 
     /**
      * Obtiene el valor de la propiedad resultado.
@@ -705,19 +708,33 @@ public class RespuestaVO {
         return this.listStatusDomainGratisVO;
     }
 
-	@Override
-	public String toString() {
-		return "RespuestaVO [resultado=" + resultado + ", token=" + token + ", fechaIni=" + fechaIni + ", fechaFin="
-				+ fechaFin + ", fTelNamesIni=" + fTelNamesIni + ", fTelNamesFin=" + fTelNamesFin + ", codeError="
-				+ codeError + ", msgError=" + msgError + ", statusDominio=" + statusDominio + ", codeCamp=" + codeCamp
-				+ ", urlImagen=" + urlImagen + ", scriptMovilizaSitio=" + scriptMovilizaSitio + ", canal=" + canal
-				+ ", campania=" + campania + ", esquemaProducto=" + esquemaProducto + ", idDominio=" + idDominio
-				+ ", idPago=" + idPago + ", downgrade=" + downgrade + ", listProductoUsuarioVO=" + listProductoUsuarioVO
-				+ ", listStatusDomainVO=" + listStatusDomainVO + ", listUsuarioDominiosVO=" + listUsuarioDominiosVO
-				+ ", dominioCreaSitio=" + dominioCreaSitio + ", listImagenVO=" + listImagenVO
-				+ ", listStatusDomainGratisVO=" + listStatusDomainGratisVO + "]";
-	}
-    
-    
+    /**
+     * Gets the value of the listPromocion property.
+     * 
+     * <p>
+     * This accessor method returns a reference to the live list,
+     * not a snapshot. Therefore any modification you make to the
+     * returned list will be present inside the JAXB object.
+     * This is why there is not a <CODE>set</CODE> method for the listPromocion property.
+     * 
+     * <p>
+     * For example, to add a new item, do as follows:
+     * <pre>
+     *    getListPromocion().add(newItem);
+     * </pre>
+     * 
+     * 
+     * <p>
+     * Objects of the following type(s) are allowed in the list
+     * {@link OffertRecordVO }
+     * 
+     * 
+     */
+    public List<OffertRecordVO> getListPromocion() {
+        if (listPromocion == null) {
+            listPromocion = new ArrayList<OffertRecordVO>();
+        }
+        return this.listPromocion;
+    }
 
 }

@@ -156,4 +156,34 @@ public class ClientWsInfomovilTest {
 		assertNotNull(resp);
 		System.out.println("Tamanio de lista " + resp.getListProductoUsuarioVO().size());
 	}
+	
+	@Test
+	public void testGuardarPromocion() {
+		RespuestaVO resp = clientWsInfomovil.crearSitioGuardarPromocion("pollo1@mail.com", 
+		"garbage1","desc","01/01/2015","redimir","terminos","titulo","",0);
+		assertNotNull(resp);
+		assertTrue(resp.getCodeError().equalsIgnoreCase("0"));
+	}
+	
+	@Test
+	public void testGetPromociones() {
+		RespuestaVO resp = clientWsInfomovil.crearSitioGetPromociones("pollo1@mail.com", "garbage1");
+		assertNotNull(resp);
+		assertTrue(resp.getCodeError().equalsIgnoreCase("0"));
+		assertTrue(resp.getListPromocion().size() > 0);
+	}
+	
+	@Test
+	public void testBorrarPromocion() {
+		RespuestaVO resp = clientWsInfomovil.crearSitioGuardarPromocion("pollo1@mail.com", 
+		"garbage1","","","","","","",787);
+		assertNotNull(resp);
+		assertTrue(resp.getCodeError().equalsIgnoreCase("0"));
+	}
+	
+	
+	
+	
+	
+	
 }

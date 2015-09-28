@@ -23,6 +23,9 @@ import javax.xml.bind.annotation.XmlType;
  *         &lt;element name="medioPago" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="titulo" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="tipoCompra" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *         &lt;element name="nombreCliente" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *         &lt;element name="direccionCliente" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *         &lt;element name="pais" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -200,30 +203,76 @@ public class CrearSitioIntentoPago {
         this.tipoCompra = value;
     }
 
-	public String getNombreCliente() {
-		return nombreCliente;
-	}
+    /**
+     * Obtiene el valor de la propiedad nombreCliente.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getNombreCliente() {
+        return nombreCliente;
+    }
 
-	public void setNombreCliente(String nombreCliente) {
-		this.nombreCliente = nombreCliente;
-	}
+    /**
+     * Define el valor de la propiedad nombreCliente.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setNombreCliente(String value) {
+        this.nombreCliente = value;
+    }
 
-	public String getDireccionCliente() {
-		return direccionCliente;
-	}
+    /**
+     * Obtiene el valor de la propiedad direccionCliente.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getDireccionCliente() {
+        return direccionCliente;
+    }
 
-	public void setDireccionCliente(String direccionCliente) {
-		this.direccionCliente = direccionCliente;
-	}
+    /**
+     * Define el valor de la propiedad direccionCliente.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setDireccionCliente(String value) {
+        this.direccionCliente = value;
+    }
 
-	public String getPais() {
-		return pais;
-	}
+    /**
+     * Obtiene el valor de la propiedad pais.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getPais() {
+        return pais;
+    }
 
-	public void setPais(String pais) {
-		this.pais = pais;
-	}
-    
-    
+    /**
+     * Define el valor de la propiedad pais.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setPais(String value) {
+        this.pais = value;
+    }
 
 }

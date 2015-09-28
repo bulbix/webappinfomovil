@@ -32,6 +32,7 @@ import javax.xml.bind.annotation.XmlType;
  *         &lt;element name="nombreDominio" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="renovable" type="{http://www.w3.org/2001/XMLSchema}boolean"/>
  *         &lt;element name="urlDominio" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *         &lt;element name="urlRenovar" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -79,16 +80,8 @@ public class ProductoUsuarioVO {
     protected boolean renovable;
     protected String urlDominio;
     protected String urlRenovar;
-    
-    public String getUrlRenovar() {
-		return urlRenovar;
-	}
 
-	public void setUrlRenovar(String urlRenovar) {
-		this.urlRenovar = urlRenovar;
-	}
-
-	/**
+    /**
      * Obtiene el valor de la propiedad email.
      * 
      * @return
@@ -430,6 +423,30 @@ public class ProductoUsuarioVO {
      */
     public void setUrlDominio(String value) {
         this.urlDominio = value;
+    }
+
+    /**
+     * Obtiene el valor de la propiedad urlRenovar.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getUrlRenovar() {
+        return urlRenovar;
+    }
+
+    /**
+     * Define el valor de la propiedad urlRenovar.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setUrlRenovar(String value) {
+        this.urlRenovar = value;
     }
 
 }
