@@ -423,6 +423,7 @@
 		value="${ galeriaImagenes }">
 	<input type="hidden" id="planPro" name="planPro" value="${ planPro }">
 
+	<c:set var="plantillaUsuario" value="${ template }" scope="session" />
 	<!--  Numero de imagenes MAximo q' puede tener el usuario activas-->
 	<!-- Bootstrap core JavaScript
 	    ================================================== -->

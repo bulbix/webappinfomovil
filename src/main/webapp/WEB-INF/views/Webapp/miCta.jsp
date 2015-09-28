@@ -6,7 +6,7 @@
 <html lang="es">
 
 <tiles:insertDefinition name="headEditorSitio">
-	<tiles:putAttribute name="template" value="${ template }" />
+	<tiles:putAttribute name="template" value="${sessionScope.plantillaUsuario}" />
 </tiles:insertDefinition>
 <body role="document" data-spy="scroll" data-target=".navbar"
 	data-offset="75" id="page-top" >
@@ -85,8 +85,12 @@
 				Cuenta</h3></div>
 		<div class="col-xs-12 col-sm-6">
 			<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 reset text-right pull-right">
-				Nombre ${usuarioLogueado}<img width="30" height="30" alt="Infomovil"
-					src="<c:url value="/resources/webapp/images/fa-user.png"/>" />  <br/> ${correoElectronico} <img width="25" height="25" alt="Infomovil"
+				<span id="muestraNombreUsuario">
+					<c:if test="${not empty nombreUsuario}">
+						${nombreUsuario} <img width="30" height="30" alt="Infomovil"	src="<c:url value="/resources/webapp/images/fa-user.png"/>"/>
+					</c:if>
+				</span>  
+					<br/> ${correoElectronico} <img width="25" height="25" alt="Infomovil"
 					src="<c:url value="/resources/webapp/images/fa-mail.png"/>" /> 
 					<div class="clear"></div>
 					<a href="<c:url value="/infomovil/editarSitio"></c:url>"
@@ -173,12 +177,6 @@
 							<tiles:insertDefinition name="sinProductos"></tiles:insertDefinition>
 						</c:otherwise>
 					</c:choose>
-							
-							<div><a href="#" data-toggle="modal" data-target="#myModalCompraExitosa">.</a></div>
-							<div><a href="#" data-toggle="modal" data-target="#myModalCompraFallida" >..</a></div>							
-							<div><a href="<c:url value="/infomovil/compraExitosa"></c:url>" >....</a></div>
-							<div><a href="<c:url value="/infomovil/compraFallida"></c:url>"  >........</a></div>
-
 						</div>
 					</div>
 					<!-- /page header -->
@@ -230,6 +228,7 @@
 			value='"modal-dialog modal-md"' />
 		<c:set var="fragmentName" value="modalConfDatos" scope="request" />
 	</tiles:insertDefinition>
+	
 	<!--/MODAL CONFIRMACIÓN DATOS-->
 	<!-- Bootstrap core JavaScript
 	    ================================================== -->
@@ -248,7 +247,7 @@
 	<script src="<c:url value="/resources/webapp/js/si.files.js"/>"></script>
 
  
-<form id="formPaypal" name="formPaypal" method="post" action="https://www.sandbox.paypal.com/cgi-bin/webscr">
+<form id="formPaypal" name="formPaypal" method="post" action="${urlPaypal}">
 	<input type="hidden" name="charset" value="utf-8">
   <input type="hidden" value="infomovil.ayf-facilitator@gmail.com" name="business"/>
   <input type="hidden" value="ES" name="country"/>
@@ -264,8 +263,8 @@
   <input type="hidden" name="custom" id="customPaypal"/>
   <input type="hidden" value="es" name="lc"/>
   <input type="hidden" value="primary" name="page_style"/>
-  <input type='hidden' name='return' value='http://localhost:10100/WebAppInfomovil/infomovil/miCuenta'/>
-  <input type='hidden' name='cancel_return' value='http://localhost:10100/WebAppInfomovil/infomovil/miCuenta'/>
+  <input type='hidden' name='return' value='<c:url value="/infomovil/miCuenta"/>'/>
+  <input type='hidden' name='cancel_return' value='<c:url value="/infomovil/miCuenta"/>'/>
 </form>
 
 </body>

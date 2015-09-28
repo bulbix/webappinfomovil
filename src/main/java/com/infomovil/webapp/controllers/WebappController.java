@@ -473,9 +473,11 @@ public class WebappController
 		RespuestaVO wsRespuesta = new RespuestaVO();
 		
 		String claseProductos = "'col-xs-12 col-sm-6 col-md-6 col-lg-6 dBlock'";
-		String claseCss = "";
-		String colorTexto = "";
+		String claseCss = "inverse";
+		String colorTexto = "textWhite";
 		String extensionImg = "";
+		String urlPaypal = "";
+		String nombreUsuario = "";
 		int totProductos = 0;
 
 		try
@@ -489,19 +491,29 @@ public class WebappController
 			if (totProductos == 1)
 				claseProductos = "'col-xs-12 col-sm-6 col-md-6 col-lg-6 dBlock col-sm-offset-3'";
 		
-			if (Util.getCurrentSession().getAttribute("canal").toString().startsWith("BAZ"))
+			if (Util.getCurrentSession().getAttribute("canal") != null)
 			{
-				claseCss = "default";
-				colorTexto = "textBlack";
-				extensionImg = "-bk";
+				if (Util.getCurrentSession().getAttribute("canal").toString().startsWith("BAZ"))
+				{
+					claseCss = "default";
+					colorTexto = "textBlack";
+					extensionImg = "-bk";
+				}
 			}
-			else
-			{
-				claseCss = "inverse";
-				colorTexto = "textWhite";
-				extensionImg = "";
-			}
-			
+
+			/*URL para paypal*/
+         	if(Util.getProfile().equals("PROD"))
+         		urlPaypal = new String("https://www.paypal.com/cgi-bin/webscr");
+         	else
+         		urlPaypal = new String("https://www.sandbox.paypal.com/cgi-bin/webscr");
+         	/*URL para paypal*/
+         	
+         	if (Util.getCurrentSession().getAttribute("nombreUsuario") != null)
+         	{
+         		if (!(EmailValidator.getInstance().isValid(Util.getCurrentSession().getAttribute("nombreUsuario").toString())))
+         			nombreUsuario = Util.getCurrentSession().getAttribute("nombreUsuario").toString();
+         	}
+         	
 			model.put("claseProductos", claseProductos);
 			model.put("claseCss", claseCss);
 			model.put("colorTexto", colorTexto);
@@ -510,7 +522,8 @@ public class WebappController
 			model.put("productos", wsRespuesta.getListProductoUsuarioVO());
 			model.put("correoElectronico", correo);
 			model.put("paymentStatus", payment_status);
-			
+			model.put("urlPaypal", urlPaypal);
+			model.put("nombreUsuario", nombreUsuario);
 		}		
 		catch (Exception e) 
 		{
@@ -650,7 +663,7 @@ public class WebappController
 					if (modeloWebApp.getStatus(status))
 						planPro = "SI";
 				}
-							
+             	
 				model.put("usuarioLogueado", correo);
 				model.put("nombreUsuario", wsRespuesta.getDominioCreaSitio().getNombreUsuario().trim());				
 				model.put("nombreEmpresa", wsRespuesta.getDominioCreaSitio().getNombreEmpresa().trim());
@@ -680,7 +693,7 @@ public class WebappController
 				model.put("downgrade", downgrade);
 				model.put("galeriaImagenes", galeriaImagenes);
 				
-			    Util.getCurrentSession().setAttribute("canal", canal);	
+			    Util.getCurrentSession().setAttribute("canal", canal);
 			}
 			else 
 			{
