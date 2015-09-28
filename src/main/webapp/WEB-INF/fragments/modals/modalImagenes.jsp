@@ -47,12 +47,12 @@
     </div>
     
     
-	<div id="galeriaImagenes">
+	<div id="galeriaImagenes" class="mxhModalScroll">
 	<div class="col-xs-12"> 
     	<ul id="listaImagenes" class="listNone" style="list-style:none; margin: 0 0 0 -60px;"></ul> 
     	</div>   
     </div>  
-    <div id="imgSeleccionadaDeGaleria">
+    <div id="imgSeleccionadaDeGaleria" class="mxhModalScroll">
     	
     	<div class="col-xs-12"> 
    
@@ -63,7 +63,7 @@
     </div>
 </div>
    </div>  
-    <div id="facebookDiv">
+    <div id="facebookDiv" class="mxhModalScroll">
     	<div id="primeroFB">
         	
         	<div style="display: block; padding: 10px 0 0 0;"></div>
