@@ -9,7 +9,7 @@
 	</div>
 	<div class="prodBody">
 		<div class="col-xs-12 text-center prodPadd10" >
-			<p class="textGray">Actualmente no cuentas con productos</p>
+			<p class="textBlack">Actualmente no cuentas con productos</p>
 			<hr/>
 		</div>
 		<div class="col-xs-12 text-center">
@@ -22,4 +22,4 @@
 		<div class="clearfix"></div>
 	</div>
 	<div class="prodFooter"></div>
-</div>
+</div><div class="clearfix"></div>

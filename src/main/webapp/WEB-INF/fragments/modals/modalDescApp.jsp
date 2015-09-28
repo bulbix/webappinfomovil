@@ -13,12 +13,12 @@
  <table width="90%" border="0" class="text-left col-xs-12 col-sm-12 col-md-12 col-lg-12 " class="text700">
 				<tbody>
 					<tr>
-						<td valign="top"><img width="20" height="20" alt="Infomovil"	src="<c:url value="/resources/webapp/images/paso1.png"/>" /></td>
+						<td ><img width="30" height="30" alt="Infomovil"	src="<c:url value="/resources/webapp/images/paso1.png"/>" /></td>
 						<td valign="top"> <p class="textBlack">Publicaste tu p&aacute;gina de Perfil</p> </td>
 						<td valign="top"><img width="20" height="20" alt="Infomovil"	src="<c:url value="/resources/webapp/images/ico_check_ok.png"/>" /></td>
 					</tr>
 					<tr>
-						<td valign="top"><img width="20" height="20" alt="Infomovil"	src="<c:url value="/resources/webapp/images/paso2.png"/>" /></td>
+						<td ><img width="30" height="30" alt="Infomovil"	src="<c:url value="/resources/webapp/images/paso2.png"/>" /></td>
 						<td valign="top"><p class="textBlack"> La personalizaste</p></td>
 						<td valign="top"><img width="20" height="20" alt="Infomovil"	src="<c:url value="/resources/webapp/images/ico_check_ok.png"/>" /></td>
 					</tr>
@@ -32,11 +32,11 @@
 <p class="textBlack"><strong>¡Arma una promoción y compártela por Facebook y WhatsApp!</strong></p> 
 <br/>
 
-						<ul class="textBlack" style="list-style:none"><li><strong>1. Descarga la app e ingresa con tus datos.</strong></li>
-						<li><strong>2. Selecciona un estilo que incluye la opción de promoción.</strong></li>
-						<li><strong>3. Llena los datos de tu promoción en la sección de promociones.</strong></li>
-						<li><strong>4. Compártela por Facebook y Whatapp.</strong></li>
-						<li><strong>5. Ve reportes de tu página.</strong></li>
+						<ul class="textBlack" style="list-style:none"><li><span class="textBlack _1_1em">1. Descarga la app e ingresa con tus datos.</span></li>
+						<li><span class="textBlack _1_1em">2. Selecciona un estilo que incluye la opción de promoción.</span></li>
+						<li><span class="textBlack _1_1em">3. Llena los datos de tu promoción en la sección de promociones.</span></li>
+						<li><span class="textBlack _1_1em">4. Compártela por Facebook y WhatsApp.</span></li>
+						<li><span class="textBlack _1_1em">5. Ve reportes de tu página.</span></li>
 						</ul>
 				<br/>		
 

@@ -84,7 +84,7 @@
 	<div class="col-xs-12 col-sm-6 hidden-xs"><h3 class="text-left textWhite" style="font-weight: 300;">Mi
 				Cuenta</h3></div>
 		<div class="col-xs-12 col-sm-6">
-			<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 reset text-right pull-right">
+			<div class="col-xs-12 reset text-right pull-right">
 				<span id="muestraNombreUsuario">
 					<c:if test="${not empty nombreUsuario}">
 						${nombreUsuario} <img width="30" height="30" alt="Infomovil"	src="<c:url value="/resources/webapp/images/fa-user.png"/>"/>
@@ -109,17 +109,18 @@
 	
 	<div class="">
 	
-		<div class="col-xs-12 col-sm-6 col-sm-offset-3 col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3">
+		<div class="">
 		
-			<h3 class="text-left textWhite" style="font-weight: 300; margin:20px 0 0 0;">Mis
-				productos</h3>
-			<hr />
+			
 			<!--Theme showcase -->
 			<div class="theme-showcaseApp" role="main" id="intro">
 				<!-- Main jumbotron for a primary marketing message or call to action -->
-				<div class="">
+				<div class="container">
 					<!-- page header -->
 					<div class="page-header text-center">
+					<h3 class="text-left textBlack" style="font-weight: 300; margin:20px 0 0 0;">Mis
+				productos</h3>
+			<hr />
 						<strong></strong>
 						<div>
 						<!-- Producto  tel-->	
