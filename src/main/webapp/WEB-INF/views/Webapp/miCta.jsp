@@ -174,10 +174,10 @@
 						</c:otherwise>
 					</c:choose>
 							
-							<div><a href="#" data-toggle="modal" data-target="#myModalCompraExitosa">.</a></div>
-							<div><a href="#" data-toggle="modal" data-target="#myModalCompraFallida" >..</a></div>							
-							<div><a href="<c:url value="/infomovil/compraExitosa"></c:url>" >....</a></div>
-							<div><a href="<c:url value="/infomovil/compraFallida"></c:url>"  >........</a></div>
+<!-- 							<div><a href="#" data-toggle="modal" data-target="#myModalCompraExitosa">.</a></div> -->
+<!-- 							<div><a href="#" data-toggle="modal" data-target="#myModalCompraFallida" >..</a></div>							 -->
+<%-- 							<div><a href="<c:url value="/infomovil/compraExitosa"></c:url>" >....</a></div> --%>
+<%-- 							<div><a href="<c:url value="/infomovil/compraFallida"></c:url>"  >........</a></div> --%>
 
 						</div>
 					</div>

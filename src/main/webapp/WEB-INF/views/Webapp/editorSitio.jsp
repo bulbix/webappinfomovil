@@ -59,13 +59,14 @@
 							width="20" height="20" alt="Infomovil"
 							src="<c:url value="/resources/webapp/images/fa-templates${ extensionImg }.png"/>" />
 							Mi Estilo </a></li>
-					<li class="dropdown"><a href="#" class="dropdown-toggle textWhite botonDesPublicar" 
+					<li class="dropdown"><a href="#" class="dropdown-toggle botonDesPublicar textWhite" 
 						data-toggle="dropdown" role="button" aria-haspopup="true"
-						aria-expanded="false" style="display: none;"><img width="20" height="20"
+						aria-expanded="false" style="display: none;">
+						<img width="20" height="20"
 							alt="Infomovil"
 							src="<c:url value="/resources/webapp/images/fa-pencil${ extensionImg }.png"/>" />Mi
 							contenido <span class="caret"></span></a>
-						<ul class="dropdown-menu navbar-${ claseCss } ${colorTexto}">
+						<ul class="dropdown-menu navbar-${ claseCss } ${colorTexto} text-right">
 							<li class="botonDesPublicar" style="display: none;"><a
 								href="#" data-toggle="modal" data-target="#myModalMaps"
 								class="smoothScroll ${colorTexto}"><img width="20"
@@ -472,9 +473,11 @@
 			    target: '.navbar-fixed-top'
 			});
 		
-			$('.navbar-collapse ul li a').click(function() {
-			    $('.navbar-toggle:visible').click();
-			});
+// 			$('.navbar-collapse ul li a').click(function() {
+// 			    $('.navbar-toggle:visible').click();
+// 			});
+			
+			$('.dropdown-toggle').dropdown()
 		
 		</script>
 
@@ -498,11 +501,16 @@
 		   		 }
 		 	 });
 			
+			
+			
 		</script>
 	<script type="text/javascript" language="javascript">
 // <![CDATA[
 SI.Files.stylizeAll();
 // ]]>
+
+
+
 </script>
 	<script>
 		

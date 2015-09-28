@@ -130,7 +130,7 @@ function validaDominio(tipo)
 	    }
 		
 	 ).fail(function( jqXHR, textStatus ) {
-		 console.log("fail:::::");
+		 console.log("fail:::::" + textStatus);
 		 $.unblockUI();
 	 });
 }
