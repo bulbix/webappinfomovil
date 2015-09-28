@@ -270,5 +270,19 @@
   <input type='hidden' name='cancel_return' value='<c:url value="/infomovil/miCuenta"/>'/>
 </form>
 
+<script>
+	<c:choose> 
+		<c:when test="${sessionScope.canalUsuario == 'BAZ'}">
+			$("#logoBAZ").css("display", "block");
+			$("#idRegBAZ").css("display", "block");			
+			$("#logoGral").css("display", "none");					
+		</c:when>
+		<c:otherwise>
+			$("#logoBAZ").css("display", "none");
+			$("#idRegBAZ").css("display", "none");	
+			$("#logoGral").css("display", "block");	
+		</c:otherwise>
+	</c:choose>
+</script>
 </body>
 </html>

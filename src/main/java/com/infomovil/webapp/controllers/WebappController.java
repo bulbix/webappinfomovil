@@ -524,6 +524,7 @@ public class WebappController
 			model.put("paymentStatus", payment_status);
 			model.put("urlPaypal", urlPaypal);
 			model.put("nombreUsuario", nombreUsuario);
+			
 		}		
 		catch (Exception e) 
 		{
