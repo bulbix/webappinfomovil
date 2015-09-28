@@ -40,7 +40,7 @@
           <!--<label class="control-label"></label>-->
 	        	<div class="controls">
 	            	<input type="email" class="form-control" style="text-transform:lowercase;" placeholder="Email" required="required" name="j_username" <c:if test="${not empty ctaCorreo}"> value = " ${ ctaCorreo } " </c:if>/>
-	                <p class="help-block"></p>
+	                <p class="help-block text-left"></p>
 	            </div>
         	</div>
         </div>
@@ -52,7 +52,7 @@
           <!--<label class="control-label"></label>-->
 	          	<div class="controls">
 	            	<input type="password" class="form-control" placeholder="Contraseña" required="required" name='j_password'/>
-	                <p class="help-block"></p>
+	                <p class="help-block text-left"></p>
 	            </div>
         	</div>
          </div>

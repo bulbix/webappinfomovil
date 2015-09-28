@@ -29,7 +29,7 @@
 	            	<label class="control-label hidden-xs"></label>
 	            	<div class="controls">
 	                	<input type="email" class="form-control" placeholder="Correo" id="correo" name="correo" required="required"/>
-	                  	<p class="help-block textBlack"></p>
+	                  	<p class="help-block textBlack text-left"></p>
 	                </div>
 	          	</div>
 	        </div>
@@ -43,7 +43,7 @@
 		                  <input type="password" class="form-control" placeholder="Contraseña" id="contrasenia" name="contrasenia" required="required" 
 		                  		data-validation-regex-regex="(?!^[0-9]*$)(?!^[a-zA-Z]*$)^([a-zA-Z0-9]{8,15})$" 
 		        				data-validation-regex-message="Contraseña debe ser de 8 a 15 caracteres (letras y números)"/>
-		                  <p class="help-block textBlack"></p>
+		                  <p class="help-block textBlack text-left"></p>
 		           </div>
 	          </div>
 	       </div>
@@ -56,7 +56,7 @@
 	            	<div class="controls">
 	                	<input type="password" class="form-control" placeholder="Confirmar contraseña" data-validation-matches-match="contrasenia" 
 	                  		data-validation-matches-message="Las contraseñas no coinciden"/>
-	                  	<p class="help-block"></p>
+	                  	<p class="help-block text-left"></p>
 	                </div>
 	          	</div>
 	       </div>
@@ -67,7 +67,7 @@
 	            	<label class="control-label hidden-xs"></label>
 	            	<div class="controls">
 	                	<input type="text" class="form-control" placeholder="Código de promoción" id="codigo" name="codigo"/>
-	                  	<p class="help-block"></p>
+	                  	<p class="help-block text-left"></p>
 	                </div>
 	          	</div>
 	        </div>

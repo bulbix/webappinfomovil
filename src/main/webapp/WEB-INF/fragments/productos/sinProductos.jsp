@@ -3,7 +3,9 @@
 <div class="col-xs-12 col-sm-6 col-sm-offset-3 col-md-6 col-lg-6" 
 	style="display: block;">
 	<div class="prodHeader">
-		<h5 class="prodTitle">&nbsp;</h5>
+		<h5 class="prodTitle">&nbsp;<img
+					src="<c:url value="/resources/webapp/images/fa-warning.png"/>"
+					 alt="Infomovil" /></h5>
 	</div>
 	<div class="prodBody">
 		<div class="col-xs-12 text-center prodPadd10" >

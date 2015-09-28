@@ -59,37 +59,38 @@
 							width="20" height="20" alt="Infomovil"
 							src="<c:url value="/resources/webapp/images/fa-templates${ extensionImg }.png"/>" />
 							Mi Estilo </a></li>
-					<li class="dropdown"><a href="#" class="dropdown-toggle textWhite botonDesPublicar" 
+					<li class="dropdown"><a href="#" class="dropdown-toggle botonDesPublicar ${colorTexto}" 
 						data-toggle="dropdown" role="button" aria-haspopup="true"
-						aria-expanded="false" style="display: none;"><img width="20" height="20"
+						aria-expanded="false" style="display: none;">
+						<img width="20" height="20"
 							alt="Infomovil"
 							src="<c:url value="/resources/webapp/images/fa-pencil${ extensionImg }.png"/>" />Mi
 							contenido <span class="caret"></span></a>
-						<ul class="dropdown-menu navbar-${ claseCss } ${colorTexto}">
-							<li class="botonDesPublicar" style="display: none;"><a
+						<ul class="dropdown-menu navbar-${ claseCss } ${colorTexto} text-right">
+							<li class="botonDesPublicar borderInicial" style="display: none;" ><a
 								href="#" data-toggle="modal" data-target="#myModalMaps"
-								class="smoothScroll ${colorTexto}"><img width="20"
+								class="smoothScroll ${colorTexto}">
+									Ubicación <img width="20"
 									height="20" alt="Infomovil"
-									src="<c:url value="/resources/webapp/images/icn_marc_maps${ extensionImg }.png"/>" />
-									Ubicación </a></li>
+									src="<c:url value="/resources/webapp/images/icn_marc_maps${ extensionImg }.png"/>" /></a></li>
 							<li class="botonDesPublicarVid" id="btnVideoLi"
 								style="display: none;"><a href="#" data-toggle="modal"
-								data-target="#myModalVideo" class="smoothScroll ${colorTexto}"><img
+								data-target="#myModalVideo" class="smoothScroll ${colorTexto}">
+									Video <img
 									width="20" height="20" alt="Infomovil"
-									src="<c:url value="/resources/webapp/images/ico_ppp_youtube${ extensionImg }.png"/>" />
-									Video </a></li>
+									src="<c:url value="/resources/webapp/images/ico_ppp_youtube${ extensionImg }.png"/>" /></a></li>
 							<li class="botonDesPublicar" id="btnImgLi" style="display: none;"><a
 								href="#" class="smoothScroll ${colorTexto}"
-								onclick="getImagenesJQ()"><img width="20" height="20"
+								onclick="getImagenesJQ()">
+									Imágenes <img width="20" height="20"
 									alt="Infomovil"
-									src="<c:url value="/resources/webapp/images/ico_img${ extensionImg }.png"/>" />
-									Imágenes </a></li>
-							<li class="botonDesPublicar" id="btnContLi"
+									src="<c:url value="/resources/webapp/images/ico_img${ extensionImg }.png"/>" /></a></li>
+							<li class="botonDesPublicar borderFin" id="btnContLi"
 								style="display: none;"><a href="#" data-toggle="modal"
-								data-target="#myModalDescApp" class="smoothScroll ${colorTexto}"><img
+								data-target="#myModalDescApp" class="smoothScroll ${colorTexto}">
+									¿Qué sigue? <img
 									width="20" height="20" alt="Infomovil"
-									src="<c:url value="/resources/webapp/images/ico_mas_cont${ extensionImg }.png"/>" />
-									¿Qué sigue? <span class="hidden-sm hidden-md"></span> </a></li>
+									src="<c:url value="/resources/webapp/images/ico_mas_cont${ extensionImg }.png"/>" /> </a></li>
 							<!--             <li role="separator" class="divider"></li> -->
 							<!--             <li><a href="#">Separated link</a></li> -->
 							<!--             <li role="separator" class="divider"></li> -->
@@ -469,13 +470,15 @@
 
 	<script>
 	
-			$('body').scrollspy({
-			    target: '.navbar-fixed-top'
-			});
+// 			$('body').scrollspy({
+// 			    target: '.navbar-fixed-top'
+// 			});
 		
-			$('.navbar-collapse ul li a').click(function() {
-			    $('.navbar-toggle:visible').click();
-			});
+		$('.navbar-collapse ul li ul li a').click(function() {
+ 			    $('.navbar-toggle:visible').click();
+ 			});
+			
+			$('.dropdown-toggle').dropdown()
 		
 		</script>
 
@@ -499,11 +502,16 @@
 		   		 }
 		 	 });
 			
+			
+			
 		</script>
 	<script type="text/javascript" language="javascript">
 // <![CDATA[
 SI.Files.stylizeAll();
 // ]]>
+
+
+
 </script>
 	<script>
 		
