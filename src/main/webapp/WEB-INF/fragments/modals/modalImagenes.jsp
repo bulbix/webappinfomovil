@@ -1,5 +1,5 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<div class="modal-header">
+<div class="modal-header navEditorSFl">
 <button type="button" class="btn btn-purple pull-right btnsEditor"  id="btnGuardarImagen" onclick="guardarImagenesJQ()" style="margin: 5px 0;"><img width="15" height="15" alt="Infomovil" 
     	src="<c:url value="/resources/webapp/images/successWhite.png"/>" /><span class="hidden-xs"> Guardar</span></button>
 <button type="button" class="btn btn-purple pull-right"  id="btnGuardarImagenFB" onclick="guardarImagenesJQF()" style="margin:5px 0;"><img width="15" height="15" alt="Infomovil" 
@@ -44,14 +44,14 @@
 <div class="modal-body">  
 
 	<div id="galeriaVacia">
-    	<p class="textBlack text-center" style="display:block; min-height:150px; margin: 50px 0 0 0;"><img width="30" height="30" alt="Infomovil" src="<c:url value="/resources/webapp/images/ico_img-bk.png"/>" />  Ahora agrega imágenes</p>
+    	<p class="textBlack text-center navEditorSFl" style="display:block; min-height:150px; margin: 50px 0 0 0;"><img width="30" height="30" alt="Infomovil" src="<c:url value="/resources/webapp/images/ico_img-bk.png"/>" />  Ahora agrega imágenes</p>
     </div>
     
     
 	<div id="galeriaImagenes" class="mxhModalScroll">
 	<div class="col-xs-12"> 
 	<div style="display: block; padding: 10px 0 0 0;"></div>
-    	<ul id="listaImagenes" class="listNone" style="list-style:none; margin: 0 0 0 -60px;"></ul> 
+    	<ul id="listaImagenes" class="listNone navEditorSFl" style="list-style:none; margin: 0 0 0 -60px;"></ul> 
     	</div>   
     </div>  
     <div id="imgSeleccionadaDeGaleria" class="mxhModalScroll">
@@ -59,13 +59,13 @@
     	<div class="col-xs-12"> 
    <div style="display: block; padding: 10px 0 0 0;"></div>
     	<div class="col-xs-12 col-sm-3 text-center"><img src=""  class="imgActualizar img-thumbnail" id="fotoDeGaleria" style="max-width:100px; max-height:100px;"/></div>
-        <div class="col-xs-12 col-sm-9">
+        <div class="col-xs-12 col-sm-9 navEditorSFl">
         <label style="display:inline">Nombre: </label> <input type="text" value="" id="actualizarTextoFoto" style="display:inline" ></input>
         </div>
     </div>
 </div>
    </div>  
-    <div id="facebookDiv" class="mxhModalScroll">
+    <div id="facebookDiv" class="mxhModalScroll navEditorSFl">
     	<div id="primeroFB">
         	
         	<div style="display: block; padding: 10px 0 0 0;"></div>
@@ -73,12 +73,12 @@
         </div><!--Fin del div primero -->
         <div class="clear"></div>
         
-        <div id="segundoFB">
+        <div id="segundoFB" class="navEditorSFl">
         <div style="display: block; padding: 10px 0 0 0;"></div>
             <div id="photosList" ></div>
         </div><!--Fin del div segundo -->
         <div class="clear"></div>
-        <div id="terceroFB">
+        <div id="terceroFB" class="navEditorSFl">
        		
        		<div style="display:block; padding: 10px 0 0 0;"></div>
        		<div class="col-xs-12"> 

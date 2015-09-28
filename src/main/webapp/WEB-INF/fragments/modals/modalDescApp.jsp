@@ -13,12 +13,12 @@
  <table width="90%" border="0" class="text-left col-xs-12 col-sm-12 col-md-12 col-lg-12 " class="text700">
 				<tbody>
 					<tr>
-						<td ><img width="30" height="30" alt="Infomovil"	src="<c:url value="/resources/webapp/images/paso1.png"/>" /></td>
+						<td ><img width="25" height="25" alt="Infomovil"	src="<c:url value="/resources/webapp/images/paso1.png"/>" /></td>
 						<td valign="top"> <p class="textBlack">Publicaste tu p&aacute;gina de Perfil</p> </td>
 						<td valign="top"><img width="20" height="20" alt="Infomovil"	src="<c:url value="/resources/webapp/images/ico_check_ok.png"/>" /></td>
 					</tr>
 					<tr>
-						<td ><img width="30" height="30" alt="Infomovil"	src="<c:url value="/resources/webapp/images/paso2.png"/>" /></td>
+						<td ><img width="25" height="25" alt="Infomovil"	src="<c:url value="/resources/webapp/images/paso2.png"/>" /></td>
 						<td valign="top"><p class="textBlack"> La personalizaste</p></td>
 						<td valign="top"><img width="20" height="20" alt="Infomovil"	src="<c:url value="/resources/webapp/images/ico_check_ok.png"/>" /></td>
 					</tr>
