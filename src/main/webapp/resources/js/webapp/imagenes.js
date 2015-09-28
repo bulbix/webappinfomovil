@@ -331,14 +331,14 @@ function getImagenesJQ()
 						if(i <= IMAGENESMAX) 
 						{
 							var $li = $('<li class="imagenDinamica" style="display:block;height:80px; width:100%; margin:10px 0;"/>')
-							$li.append('<div class="col-xs-3 text-left" style="max-height:50px;"><img src="'+imgUrl+'" onerror="errorPreview(this)" style="max-width:100px; max-height:45px;" class="ImgDinamica img-thumbnail"/></div>');
+							$li.append('<div class="col-xs-3 text-left" style="max-height:45px;"><img src="'+imgUrl+'" onerror="errorPreview(this)" class="ImgDinamica img-thumbnail imgLista"/></div>');
 							$li.append('<div class="col-xs-9 reset"><input type="text" id="actualizarTexto' + idImg + '"  value="'+descImg+'" class="col-xs-5 col-sm-8" style="height:38px"/></input><div class="spaceBtnsMap"></div><button type="button" class="btn btn-purple" class="eliminarImagen" onClick="actualizarImagen('+idImg+', ' + "'" + imgUrl+ "'" + ')"><img width="20" height="20" alt="Borrar" src="../resources/webapp/images/ico_actualizar.png" /></button><div class="spaceBtnsMap"></div><button type="button" class="btn btn-purple" class="eliminarImagen" id="'+idImg+'"onclick="borrarImagenJQ('+idImg+')"><img width="20" height="20" alt="Borrar" src="../resources/webapp/images/trash.png" /></button><input type="hidden" id="IdImg" value="'+idImg+'"/></div></li>');
 							$listaImg.append($li);
 						}
 						else
 						{
 							var $li = $('<li class="imagenDinamica" style="display:block;height:80px; width:100%; margin:10px 0;"/>')
-	                    	$li.append('<div class="col-xs-3 text-center" style="max-height:50px;"><img src="'+imgUrl+'" onerror="errorPreview(this)" style="max-width:100px; max-height:45px;" class="ImgDinamica img-thumbnail"/></div>');
+	                    	$li.append('<div class="col-xs-3 text-center" style="max-height:50px;"><img src="'+imgUrl+'" onerror="errorPreview(this)" class="ImgDinamica img-thumbnail imgLista"/></div>');
 	                    	$li.append('<div class="col-xs-9 reset"><input type="text" id="actualizarTexto' + idImg + '" value="'+descImg+'" disabled="disabled" class="col-xs-5 col-sm-8" style="height:38px"/><div class="spaceBtnsMap"></div><button type="button" disabled="disabled" class="btn" class="eliminarImagen" onClick="actualizarImagen('+idImg+', ' + "'" + imgUrl+ "'" + ')"><img width="20" height="20" alt="Borrar" src="../resources/webapp/images/ico_actualizar.png" /></button><div class="spaceBtnsMap"></div><button type="button" disable="disable" class="btn" class="eliminarImagen" id="'+idImg+'"onclick="borrarImagenJQ('+idImg+')"><img width="20" height="20" alt="Borrar" src="../resources/webapp/images/trash.png" /></button><input type="hidden" id="IdImg" value="'+idImg+'"/></div></li>');
 	                        $listaImg.append($li);
 						}
@@ -777,7 +777,7 @@ function logueoFacebook(response)
 		{
 			var $photosList = $('#albumsList');
 			var $li = $('<li class="albumDinamico" style="display:block; height:100px; margin:0 5px 5px 5px;"/>');
-			$li.append('<span class="col-xs-4"><img src="' + infoAlbumes[p].picture + '" style="max-width:100px; max-height:100px;"  class="img-thumbnail"/></span>');
+			$li.append('<span class="col-xs-4"><img src="' + infoAlbumes[p].picture + '" class="img-thumbnail imgListaBig"/></span>');
 			$li.append('<span class="col-xs-8"><strong style="color:#7c41bc" class="hidden-xs"> Album:</strong> '+ infoAlbumes[p].title +'<img alt="" src="../resources/webapp/images/ir.png" style="max-width:23px; max-height:23px;" title="Ir" class="pull-right"/></span>');
 
 			$li.click(function() {
@@ -810,7 +810,7 @@ function logueoFacebook(response)
 				{
 					var $photosList = $('#photosList');
 					var $li = $('<div class="photoDinamico" style="display:block; height:100px; margin:10px 5px; max-width:100px; float:left "/>');
-					$li.append('<span class="col-xs-12"><img src="' + fotos[a].origen + '" style="max-width:100px; max-height:100px;" class="img-thumbnail"/></span>');
+					$li.append('<span class="col-xs-12"><img src="' + fotos[a].origen + '"  class="img-thumbnail imgListaBig"/></span>');
 					$li.on("click", "img", function(){
 						$("#imgVistaPrevia").attr('src',$(this).attr("src"));
 						$("#primeroFB").hide();
@@ -865,7 +865,7 @@ function logueoFacebook2()
 	{
 		var $photosList = $('#albumsList');
 		var $li = $('<li class="albumDinamico" style="display:block; height:100px; margin:0 5px 5px 5px;"/>');
-		$li.append('<span class="col-xs-4"><img src="' + infoAlbumes[p].picture + '" style="max-width:100px; max-height:100px;"  class="img-thumbnail"/></span>');
+		$li.append('<span class="col-xs-4"><img src="' + infoAlbumes[p].picture + '"  class="img-thumbnail imgListaBig"/></span>');
 		$li.append('<span class="col-xs-8"><strong style="color:#7c41bc" class="hidden-xs"> Album:</strong> '+ infoAlbumes[p].title +' <img alt="" src="../resources/webapp/images/ir.png" style="max-width:23px; max-height:23px;" title="Ir" class="pull-right"/></span><br/>');
 
 		$li.click(function() {
@@ -888,7 +888,7 @@ function logueoFacebook2()
 			{
 				var $photosList = $('#photosList');
 				var $li = $('<div class="photoDinamico" style="display:block; height:100px; margin:10px 5px; max-width:100px; float:left "/>');
-				$li.append('<span class="col-xs-12"><img src="' + fotos[a].origen + '" style="max-width:100px; max-height:100px;" class="img-thumbnail"/></span>');
+				$li.append('<span class="col-xs-12"><img src="' + fotos[a].origen + '"  class="img-thumbnail imgLista"/></span>');
 				$li.on("click", "img", function() {
 					$("#imgVistaPrevia").attr('src',$(this).attr("src"));
 					$("#primeroFB").hide();

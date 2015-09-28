@@ -66,7 +66,7 @@
     <div id="facebookDiv">
     	<div id="primeroFB">
         	
-        	
+        	<div style="display: block; padding: 10px 0 0 0;"></div>
             <ul id="albumsList" style="list-style:none; margin: 0 0 0 -60px;"></ul>
         </div><!--Fin del div primero -->
         <div class="clear"></div>
