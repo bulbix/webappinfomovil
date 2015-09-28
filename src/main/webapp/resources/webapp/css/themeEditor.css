@@ -140,6 +140,8 @@ theme-showcaseApp>p>.btn {
 .textPurple {
 	color: #7c41bc !important;
 }
+.textGray{color:#999 !important;}
+.textGreen{color:#2fa399 !important;}
 
 .text700 {
 	font-weight: 700;
@@ -916,6 +918,13 @@ textarea {
 	padding: 5px 0 !important;
 	display: block;
 	float: left;
+}
+.navEditorSFl {
+	font-family: 'Lato', Arial, sans-serif;
+	font-weight: 300;
+	
+	display: block;
+	
 }
 
 .txtBtnEditor {

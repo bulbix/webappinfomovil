@@ -81,10 +81,10 @@
 	<div class="seccTop bgBlack">
 	<div class="container">
 	
-	<div class="col-xs-12 col-sm-6 hidden-xs"><h3 class="text-left textWhite" style="font-weight: 300;">Mi
+	<div class="col-xs-12 col-sm-6 hidden-xs"><h3 class="text-left textWhite navEditor" style="font-weight: 300;">Mi
 				Cuenta</h3></div>
 		<div class="col-xs-12 col-sm-6">
-			<div class="col-xs-12 reset text-right pull-right">
+			<div class="col-xs-12 reset text-right pull-right navEditor">
 				<span id="muestraNombreUsuario">
 					<c:if test="${not empty nombreUsuario}">
 						${nombreUsuario} <img width="30" height="30" alt="Infomovil"	src="<c:url value="/resources/webapp/images/fa-user.png"/>"/>
@@ -117,8 +117,8 @@
 				<!-- Main jumbotron for a primary marketing message or call to action -->
 				<div class="container">
 					<!-- page header -->
-					<div class="page-header text-center">
-					<h3 class="text-left textBlack" style="font-weight: 300; margin:20px 0 0 0;">Mis
+					<div class="page-header text-center navEditorSFl">
+					<h3 class="text-left textBlack " style="font-weight: 300; margin:5px 0 0 0;">Mis
 				productos</h3>
 			<hr />
 						<strong></strong>
@@ -179,6 +179,8 @@
 						</c:otherwise>
 					</c:choose>
 						</div>
+					<div class="clearfix"></div>
+					
 					</div>
 					<!-- /page header -->
 					<br /> <br />

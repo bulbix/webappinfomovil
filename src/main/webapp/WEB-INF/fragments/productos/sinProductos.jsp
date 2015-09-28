@@ -9,10 +9,10 @@
 	</div>
 	<div class="prodBody">
 		<div class="col-xs-12 text-center prodPadd10" >
-			<p class="textBlack">Actualmente no cuentas con productos</p>
+			<p class="textBlack navEditor">Actualmente no cuentas con productos</p>
 			<hr/>
 		</div>
-		<div class="col-xs-12 text-center">
+		<div class="col-xs-12 text-center navEditorSFl">
 			<a href="<c:url value="/infomovil/editarSitio"></c:url>" 
 				class="btn btn-default btn-outlineGreen text-center textWhite"><img width="20" height="20" alt="Infomovil"
 				src="<c:url value="/resources/webapp/images/fa-pencil.png"/>" /> Continuar editando</a> 
