@@ -87,7 +87,7 @@
 			<div class="col-xs-12 reset text-right pull-right navEditor">
 				<span id="muestraNombreUsuario">
 					<c:if test="${not empty nombreUsuario}">
-						${nombreUsuario} <img width="30" height="30" alt="Infomovil"	src="<c:url value="/resources/webapp/images/fa-user.png"/>"/>
+						${nombreUsuario} <img width="20" height="20" alt="Infomovil"	src="<c:url value="/resources/webapp/images/fa-user.png"/>"/>
 					</c:if>
 				</span>  
 					<br/> ${correoElectronico} <img width="25" height="25" alt="Infomovil"
