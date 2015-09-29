@@ -506,16 +506,16 @@ public class WebappController
          	if(Util.getProfile().equals("PROD"))
          	{
          		urlPaypal = new String("https://www.paypal.com/cgi-bin/webscr");
-         		urlReturn = new String("http://www.infomovil.com/infomovil/miCuenta");
+         		urlReturn = new String("http://www.infomovil.com/infomovil/editarSitio");
          	}
          	else
          	{
          		urlPaypal = new String("https://www.sandbox.paypal.com/cgi-bin/webscr");
-         		urlReturn = new String("http://webapp-qa.mobileinfo.io/infomovil/miCuenta");
+         		urlReturn = new String("http://webapp-qa.mobileinfo.io/infomovil/editarSitio");
          	}
          	
          	if (Util.getProfile().equals("DEV"))
-         		urlReturn = new String("http://localhost:10100/WebAppInfomovil/infomovil/miCuenta");
+         		urlReturn = new String("http://localhost:10100/WebAppInfomovil/infomovil/editarSitio");
          	
          	/*URL para paypal*/
          	
@@ -545,7 +545,7 @@ public class WebappController
 		return new ModelAndView("Webapp/miCta", model);
 	}
 
-	@RequestMapping(value = "/infomovil/editarSitio", method = RequestMethod.GET)
+	@RequestMapping(value = "/infomovil/editarSitio", method = { RequestMethod.GET, RequestMethod.POST })
 	public ModelAndView editarSitio(HttpServletRequest request, HttpServletResponse response, RedirectAttributes redirectAttributes)
 	{		
 		HashMap<String, Object> model = new HashMap<String, Object>();

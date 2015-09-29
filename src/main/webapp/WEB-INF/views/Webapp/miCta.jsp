@@ -9,14 +9,7 @@
 	<tiles:putAttribute name="template" value="${sessionScope.plantillaUsuario}" />
 </tiles:insertDefinition>
 <body role="document" data-spy="scroll" data-target=".navbar"
-	data-offset="75" id="page-top" >
-	
-	<c:if test="${paymentStatus == 'Completed'}">
-		<script>
-			abrirModalExitoso();
-		</script>
-	</c:if>
-	
+	data-offset="75" id="page-top" >	
 	<!-- Fixed navbar -->
 	<nav class="navbar navbar-${ claseCss } navbar-static-top">
 		<div class="container-fluid">
@@ -239,26 +232,37 @@
 	<script src="<c:url value="/resources/webapp/js/si.files.js"/>"></script>
 
  
-<form id="formPaypal" name="formPaypal" method="post" action="${urlPaypal}">
-	<input type="hidden" name="charset" value="utf-8">
-  	<input type="hidden" value="infomovil.ayf-facilitator@gmail.com" name="business"/>
-  	<input type="hidden" value="ES" name="country"/>
-  	<input type="hidden" value="_xclick" name="cmd"/>
-  	<input type="hidden" value="Renovación de tu Dominio .tel" name="item_name"/>
-  	<input type="hidden" value="Dominio .tel" name="item_number"/>
-  	<input type="hidden" value="200.00" name="amount"/>
-  	<input type="hidden" value="1" name="no_shipping"/>
-  	<input type="hidden" value="2" name="rm"/>
-  	<input type="hidden" value="1" name="no_note"/>
-  	<input type="hidden" value="MXN" name="currency_code"/>
-  	<input type="hidden" value="PP-BuyNowBF" name="cn"/>
-  	<input type="hidden" name="custom" id="customPaypal"/>
-  	<input type="hidden" value="es" name="lc"/>
-  	<input type="hidden" value="primary" name="page_style"/>
-  	<input type='hidden' name='return' value="${urlReturn}"/>
-</form>
+	<form id="formPaypal" name="formPaypal" method="post" action="${urlPaypal}">
+		<input type="hidden" name="charset" value="utf-8">
+	  	<input type="hidden" value="infomovil.ayf-facilitator@gmail.com" name="business"/>
+	  	<input type="hidden" value="ES" name="country"/>
+	  	<input type="hidden" value="_xclick" name="cmd"/>
+	  	<input type="hidden" value="Renovación de tu Dominio .tel" name="item_name"/>
+	  	<input type="hidden" value="Dominio .tel" name="item_number"/>
+	  	<input type="hidden" value="200.00" name="amount"/>
+	  	<input type="hidden" value="1" name="no_shipping"/>
+	  	<input type="hidden" value="2" name="rm"/>
+	  	<input type="hidden" value="1" name="no_note"/>
+	  	<input type="hidden" value="MXN" name="currency_code"/>
+	  	<input type="hidden" value="PP-BuyNowBF" name="cn"/>
+	  	<input type="hidden" name="custom" id="customPaypal"/>
+	  	<input type="hidden" value="es" name="lc"/>
+	  	<input type="hidden" value="primary" name="page_style"/>
+	  	<input type='hidden' name='return' value="${urlReturn}"/>
+	</form>
 
-<h1>${paymentStatus}</h1>
+	<c:if test="${paymentStatus == 'Completed'}">
+		<script>
+			abrirModalExitoso('myModalCompraExitosa');
+		</script>
+	</c:if>
+	
+	<c:if test="${paymentStatus == 'Canceled'}">
+		<script>
+			abrirModalExitoso('myModalCompraFallida');
+		</script>
+	</c:if>
+	
 <script>
 	<c:choose> 
 		<c:when test="${sessionScope.canalUsuario == 'BAZ'}">
