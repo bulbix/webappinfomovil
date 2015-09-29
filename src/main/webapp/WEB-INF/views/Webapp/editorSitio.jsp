@@ -96,7 +96,10 @@
 							<!--             <li role="separator" class="divider"></li> -->
 							<!--             <li><a href="#">One more separated link</a></li> -->
 						</ul></li>
-
+						<li><a href="<c:url value="/infomovil/promociones"></c:url>" class="smoothScroll ${colorTexto}"><img
+							width="20" height="20" alt="Infomovil"
+							src="<c:url value="/resources/webapp/images/fa-user${ extensionImg }.png"/>" />
+							Mis Promociones </a></li>	
 
 					<!--  <li class="botonDesPublicar" id="btnContLi" style="display:none;">
 							<a href="#" data-toggle="modal" data-target="#myModalDescApp" class="smoothScroll ${colorTexto}">¿Qué sigue? <span class="hidden-sm hidden-md"></span> 

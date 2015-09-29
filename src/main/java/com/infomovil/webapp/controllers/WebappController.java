@@ -839,4 +839,59 @@ public class WebappController
 	private static final Logger logger = Logger.getLogger(WebappController.class);
 	private ClientWsInfomovil wsCliente = new ClientWsInfomovil();
 	private List<Catalogo> wsCatalogo;
+	
+	@RequestMapping(value = "/infomovil/promociones", method = {RequestMethod.GET,RequestMethod.POST})
+	public ModelAndView promociones(HttpServletRequest request, HttpServletResponse response, RedirectAttributes redirectAttributes)
+	{		
+		HashMap<String, Object> model = new HashMap<String, Object>();
+		RespuestaVO wsRespuesta = new RespuestaVO();
+		
+		String claseProductos = "col-xs-12 col-sm-6 col-md-6 col-lg-6 dBlock col-sm-offset-3";
+		String claseCss = "";
+		String colorTexto = "";
+		String extensionImg = "";
+		int totProductos = 0;
+
+		try
+		{		
+			String correo = Util.getUserLogged().getUsername();
+			String password = Util.getUserLogged().getPassword();
+			
+			wsRespuesta = wsCliente.crearSitioGetProductosUsuario(correo, password);
+			totProductos = wsRespuesta.getListProductoUsuarioVO().size();
+			
+			if (totProductos > 0)
+				claseProductos = "'col-xs-12 col-sm-6 col-md-6 col-lg-6 dBlock'";
+			
+			if (Util.getCurrentSession().getAttribute("canal").toString().startsWith("BAZ"))
+			{
+				claseCss = "default";
+				colorTexto = "textBlack";
+				extensionImg = "-bk";
+			}
+			else
+			{
+				claseCss = "inverse";
+				colorTexto = "textWhite";
+				extensionImg = "";
+			}
+			
+			model.put("claseProductos", claseProductos);
+			model.put("claseCss", claseCss);
+			model.put("colorTexto", colorTexto);
+			model.put("extensionImg", extensionImg);
+			model.put("totProductos", totProductos);
+			model.put("productos", wsRespuesta.getListProductoUsuarioVO());
+			model.put("correoElectronico", correo);
+			
+		}		
+		catch (Exception e) 
+		{
+			logger.error("miCuenta:::::", e);
+			return null;
+		}			
+		return new ModelAndView("Webapp/promociones", model);
+		}
 }
+
+
