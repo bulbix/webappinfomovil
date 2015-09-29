@@ -371,7 +371,7 @@ public class WebappController
 		{
 			logoutInfomovil(request, response);
 			correo = correo.toLowerCase();
-			wsRespuesta = wsCliente.crearSitioRegistrar(correo, passwordDefault, nombre, codigo.toLowerCase(), "automatico");
+			wsRespuesta = wsCliente.crearSitioRegistrar(correo, passwordDefault, nombre, codigo, "automatico");
 			codigoError = wsRespuesta.getCodeError();
 			descripcionError = wsRespuesta.getMsgError();
 			
@@ -418,7 +418,7 @@ public class WebappController
 		RespuestaVO wsRespuesta = new RespuestaVO();
 		String codigoError = "", descripcionError = "", vista="";
 		correo = correo.toLowerCase();
-		wsRespuesta = wsCliente.crearSitioRegistrar(correo, contrasenia, correo, codigo.toLowerCase(), "formulario");
+		wsRespuesta = wsCliente.crearSitioRegistrar(correo, contrasenia, correo, codigo, "formulario");
 		codigoError = wsRespuesta.getCodeError();
 		descripcionError = wsRespuesta.getMsgError();
 		
@@ -477,6 +477,7 @@ public class WebappController
 		String colorTexto = "textWhite";
 		String extensionImg = "";
 		String urlPaypal = "";
+		String urlReturn = "";
 		String nombreUsuario = "";
 		int totProductos = 0;
 
@@ -503,9 +504,19 @@ public class WebappController
 
 			/*URL para paypal*/
          	if(Util.getProfile().equals("PROD"))
+         	{
          		urlPaypal = new String("https://www.paypal.com/cgi-bin/webscr");
+         		urlReturn = new String("http://www.infomovil.com/infomovil/miCuenta");
+         	}
          	else
+         	{
          		urlPaypal = new String("https://www.sandbox.paypal.com/cgi-bin/webscr");
+         		urlReturn = new String("http://webapp-qa.mobileinfo.io/infomovil/miCuenta");
+         	}
+         	
+         	if (Util.getProfile().equals("DEV"))
+         		urlReturn = new String("http://localhost:10100/WebAppInfomovil/infomovil/miCuenta");
+         	
          	/*URL para paypal*/
          	
          	if (Util.getCurrentSession().getAttribute("nombreUsuario") != null)
@@ -524,7 +535,7 @@ public class WebappController
 			model.put("paymentStatus", payment_status);
 			model.put("urlPaypal", urlPaypal);
 			model.put("nombreUsuario", nombreUsuario);
-			
+			model.put("urlReturn", urlReturn);
 		}		
 		catch (Exception e) 
 		{

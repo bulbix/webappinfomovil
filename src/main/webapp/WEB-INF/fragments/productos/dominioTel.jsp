@@ -18,7 +18,7 @@
 		<div class="col-xs-12 text-center textBlack">
 			<p class="reset">12 meses</p>
 			<h3 class="prodPrice">
-				<sup>$</sup><span><strong>600.00</strong><span
+				<sup>$</sup><span><strong>200.00</strong><span
 				class="prodNotes"> mxn</span></span>
 			</h3>
 		</div>					

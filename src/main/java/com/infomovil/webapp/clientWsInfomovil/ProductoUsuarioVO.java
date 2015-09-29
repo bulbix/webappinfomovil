@@ -58,7 +58,8 @@ import javax.xml.bind.annotation.XmlType;
     "nombreDominio",
     "renovable",
     "urlDominio",
-    "urlRenovar"
+    "urlRenovar",
+    "activo"
 })
 public class ProductoUsuarioVO {
 
@@ -79,8 +80,18 @@ public class ProductoUsuarioVO {
     protected boolean renovable;
     protected String urlDominio;
     protected String urlRenovar;
+    protected String activo;
     
-    public String getUrlRenovar() {
+    
+    public String getActivo() {
+		return activo;
+	}
+
+	public void setActivo(String activo) {
+		this.activo = activo;
+	}
+
+	public String getUrlRenovar() {
 		return urlRenovar;
 	}
 

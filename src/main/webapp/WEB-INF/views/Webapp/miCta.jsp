@@ -107,22 +107,16 @@
 	
 	<!-- /Botón Nuevo Estilo -->
 	
-	<div class="">
-	
+	<div class="">	
 		<div class="">
-		
-			
 			<!--Theme showcase -->
 			<div class="theme-showcaseApp" role="main" id="intro">
 				<!-- Main jumbotron for a primary marketing message or call to action -->
 				<div class="container">
 					<!-- page header -->
 					<div class="page-header text-center navEditorSFl">
-					<h3 class="text-left textBlack " style="font-weight: 300; margin:5px 0 0 0;">Mis
-				productos</h3>
-			<hr />
-						<strong></strong>
-						<div>
+					<h3 class="text-left textBlack " style="font-weight: 300; margin:5px 0 0 0;">Mis productos</h3><hr/>
+					<div>
 						<!-- Producto  tel-->	
 						
 						<c:choose> 
@@ -142,20 +136,28 @@
 	
 										<c:choose> 
 											<c:when test="${item.renovable == 'true'}">	
-											
 												<c:set var="imgActivo" value="btn_inactive.png" scope="request" />
 												<c:set var="displayButton" value="display:block" scope="request" />		
 												<c:set var="productoActivo" value="Inactivo" scope="request" />	
 												
 												<c:if test="${item.abc == 'Plan pro'}">
 													<c:set var="displayButton" value="display:none" scope="request" />		
+													<c:set var="productoActivo" value="Inactivo" scope="request" />	
 												</c:if>	
 															
 											</c:when>
 											<c:otherwise>
+											
 												<c:set var="imgActivo" value="btn_active.png" scope="request" />
 												<c:set var="displayButton" value="display:none" scope="request" />		
 												<c:set var="productoActivo" value="Activo" scope="request" />
+												
+												<c:if test="${item.activo == 'false'}">
+													<c:set var="displayButton" value="display:none" scope="request" />		
+													<c:set var="productoActivo" value="Inactivo" scope="request" />	
+													<c:set var="imgActivo" value="btn_inactive.png" scope="request" />
+												</c:if>	
+																								
 											</c:otherwise>
 										</c:choose>
 
@@ -172,13 +174,14 @@
 										<tiles:putAttribute name="claseProductos" value="${claseProductos}"/>
 											
 									</tiles:insertDefinition>	
+									<c:set var="urlRenovar" value="${item.urlRenovar}" scope="session" />
 								</c:forEach>		
 							</c:when>
 						<c:otherwise>
 							<tiles:insertDefinition name="sinProductos"></tiles:insertDefinition>
 						</c:otherwise>
 					</c:choose>
-						</div>
+				</div>
 					<div class="clearfix"></div>
 					
 					</div>
@@ -189,20 +192,7 @@
 			<!--/Theme showcase -->
 		</div>
 	</div>
-	<!--Footer-->
-	<footer class="footer bgBlack">
-		<c:if test="${sitioWeb =='SIN_PUBLICAR'}">
-			<tiles:insertDefinition name="formPublicar">
-				<tiles:putAttribute name="urlEjemploSitio"
-					value="${ urlEjemploSitio }" />
-				<tiles:putAttribute name="visibleRecurso"
-					value="${ visibleRecurso }" />
-				<tiles:putAttribute name="visibleTel" value="${ visibleTel }" />
-			</tiles:insertDefinition>
-		</c:if>
-	</footer>
 
-	<!--/Footer-->
 	<!--MODAL COMPRA EXITOSA-->
 	<tiles:insertDefinition name="modalGen">
 		<tiles:putAttribute name="idModal" value="myModalCompraExitosa" />
@@ -227,8 +217,7 @@
 	<!--MODAL CONFIRMACIÓN DATOS-->
 	<tiles:insertDefinition name="modalGen">
 		<tiles:putAttribute name="idModal" value="myModalConfDatos" />
-		<tiles:putAttribute name="tamanioModal"
-			value='"modal-dialog modal-md"' />
+		<tiles:putAttribute name="tamanioModal" value='"modal-dialog modal-md"' />
 		<c:set var="fragmentName" value="modalConfDatos" scope="request" />
 	</tiles:insertDefinition>
 	
@@ -252,24 +241,24 @@
  
 <form id="formPaypal" name="formPaypal" method="post" action="${urlPaypal}">
 	<input type="hidden" name="charset" value="utf-8">
-  <input type="hidden" value="infomovil.ayf-facilitator@gmail.com" name="business"/>
-  <input type="hidden" value="ES" name="country"/>
-  <input type="hidden" value="_xclick" name="cmd"/>
-  <input type="hidden" value="Renovación de tu Dominio .tel" name="item_name"/>
-  <input type="hidden" value="Dominio .tel" name="item_number"/>
-  <input type="hidden" value="200.00" name="amount"/>
-  <input type="hidden" value="1" name="no_shipping"/>
-  <input type="hidden" value="2" name="rm"/>
-  <input type="hidden" value="1" name="no_note"/>
-  <input type="hidden" value="MXN" name="currency_code"/>
-  <input type="hidden" value="PP-BuyNowBF" name="cn"/>
-  <input type="hidden" name="custom" id="customPaypal"/>
-  <input type="hidden" value="es" name="lc"/>
-  <input type="hidden" value="primary" name="page_style"/>
-  <input type='hidden' name='return' value='<c:url value="/infomovil/miCuenta"/>'/>
-  <input type='hidden' name='cancel_return' value='<c:url value="/infomovil/miCuenta"/>'/>
+  	<input type="hidden" value="infomovil.ayf-facilitator@gmail.com" name="business"/>
+  	<input type="hidden" value="ES" name="country"/>
+  	<input type="hidden" value="_xclick" name="cmd"/>
+  	<input type="hidden" value="Renovación de tu Dominio .tel" name="item_name"/>
+  	<input type="hidden" value="Dominio .tel" name="item_number"/>
+  	<input type="hidden" value="200.00" name="amount"/>
+  	<input type="hidden" value="1" name="no_shipping"/>
+  	<input type="hidden" value="2" name="rm"/>
+  	<input type="hidden" value="1" name="no_note"/>
+  	<input type="hidden" value="MXN" name="currency_code"/>
+  	<input type="hidden" value="PP-BuyNowBF" name="cn"/>
+  	<input type="hidden" name="custom" id="customPaypal"/>
+  	<input type="hidden" value="es" name="lc"/>
+  	<input type="hidden" value="primary" name="page_style"/>
+  	<input type='hidden' name='return' value="${urlReturn}"/>
 </form>
 
+<h1>${paymentStatus}</h1>
 <script>
 	<c:choose> 
 		<c:when test="${sessionScope.canalUsuario == 'BAZ'}">
@@ -284,5 +273,7 @@
 		</c:otherwise>
 	</c:choose>
 </script>
+
+<%-- <h1>${paymentStatus}</h1> --%>
 </body>
 </html>
