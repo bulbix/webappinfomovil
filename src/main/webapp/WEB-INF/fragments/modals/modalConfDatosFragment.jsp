@@ -15,20 +15,20 @@
   <div class="form-group">
     <label for="inputEmail3" class="col-sm-2 control-label text-left">Nombre</label>
     <div class="col-xs-12 col-sm-10">
-      <input type="text" class="form-control" placeholder=""  id="nombreUser"/>
+      <input type="text" class="form-controlModal" placeholder=""  id="nombreUser"/>
     </div>           
   </div>
   <div class="form-group">
     <label for="inputPassword3" class="col-sm-2 control-label text-left">Dirección</label>
     <div class="col-xs-12  col-sm-10">
-      <input type="text" class="form-control" id="direccionUser">
+      <input type="text" class="form-controlModal" id="direccionUser">
     </div>
   </div>
 
   <div class="form-group">
     <label for="inputPassword3" class="col-sm-2 control-label text-left">Correo</label>
     <div class="col-xs-12  col-sm-10">
-      <input type="email" class="form-control" id="emailUser" disabled="disabled" value="${correoElectronico}">
+      <input type="email" class="form-controlModal" id="emailUser" disabled="disabled" value="${correoElectronico}">
     </div>
   </div>
 
