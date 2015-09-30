@@ -427,8 +427,12 @@
 		value="${ galeriaImagenes }">
 	<input type="hidden" id="planPro" name="planPro" value="${ planPro }">
 
-	<c:set var="plantillaUsuario" value="${ template }" scope="session" />
-	<c:set var="canalUsuario" value="${ canalUsuario }" scope="session" />
+	<c:set var="plantillaUsuario" value="${ template }" scope="session"/>
+	<c:set var="canalUsuario" value="${ canalUsuario }" scope="session"/>
+	<c:set var="claseCss" value="${ claseCss }" scope="session"/>
+	<c:set var="colorTexto" value="${ colorTexto }" scope="session"/>
+	<c:set var="extensionImg" value="${ extensionImg }" scope="session"/>
+	
 	<!--  Numero de imagenes MAximo q' puede tener el usuario activas-->
 	<!-- Bootstrap core JavaScript
 	    ================================================== -->

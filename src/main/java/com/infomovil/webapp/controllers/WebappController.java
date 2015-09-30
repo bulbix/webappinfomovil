@@ -2,6 +2,7 @@
 package com.infomovil.webapp.controllers;
 
 import java.io.UnsupportedEncodingException;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.List;
@@ -15,6 +16,7 @@ import org.apache.log4j.Logger;
 import org.json.simple.JSONArray;
 import org.springframework.stereotype.Controller;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler;
@@ -787,7 +789,7 @@ public class WebappController
 	
 	@RequestMapping(value = "/infomovil/crearSitioIntentoPago", method = RequestMethod.POST, produces = "application/json")
 	@ResponseBody
-	public Map<String, String> crearSitioIntentoPago(@RequestParam String nombre, @RequestParam String direccion,@RequestParam String pais)
+	public Map<String, String> crearSitioIntentoPago(@RequestParam String nombre, @RequestParam String direccion, @RequestParam String pais)
 	{		
 		Map<String, String> resultMap = new HashMap<String, String>();
 		RespuestaVO wsRespuesta = new RespuestaVO();
@@ -818,7 +820,7 @@ public class WebappController
 	private ClientWsInfomovil wsCliente = new ClientWsInfomovil();
 	private List<Catalogo> wsCatalogo;
 	
-	@RequestMapping(value = "/infomovil/misPromociones", method = {RequestMethod.GET,RequestMethod.POST})
+	@RequestMapping(value = "/infomovil/misPromociones", method = {RequestMethod.GET, RequestMethod.POST})
 	public ModelAndView getPromociones(HttpServletRequest request, HttpServletResponse response, RedirectAttributes redirectAttributes)
 	{		
 		HashMap<String, Object> model = new HashMap<String, Object>();
@@ -841,6 +843,57 @@ public class WebappController
 		
 		return new ModelAndView("Webapp/promociones", model);
 	}
+
+	@RequestMapping(value = "/infomovil/guardarPromocion", method = {RequestMethod.GET, RequestMethod.POST})
+	public Map<String, String> guardarPromocion(@RequestParam String titulo, @RequestParam String descripcion, @RequestParam String fechaVigencia
+				, String base64Imagen, @RequestParam String redimir, @RequestParam String terminos)
+	{		
+		int idPromocion = 0; 
+		RespuestaVO respVO = new RespuestaVO();
+		Map<String, String> resultado = new HashMap<String, String>();
+
+		try
+		{		
+			String correo = Util.getUserLogged().getUsername();
+			String password = Util.getUserLogged().getPassword();
+			respVO = wsCliente.crearSitioGuardarPromocion(correo, password, descripcion, fechaVigencia, redimir, terminos, titulo, base64Imagen, idPromocion);
+			resultado.put("codeError", respVO.getCodeError());
+			resultado.put("descEror", respVO.getMsgError());
+		}		
+		catch (Exception e) 
+		{
+			logger.error("guardarPromocion:::::", e);
+			resultado.put("codeError", respVO.getCodeError());
+			resultado.put("descEror", respVO.getMsgError());
+			return null;
+		}			
+		
+		return resultado;
+	}
+	
+	
+	@RequestMapping(value = "/infomovil/eliminarPromocion", method = {RequestMethod.GET, RequestMethod.POST})
+	public Map<String, String> eliminarPromocion(@RequestParam int idPromocion)
+	{		
+		RespuestaVO respVO = new RespuestaVO();
+		Map<String, String> resultado = new HashMap<String, String>();
+
+		try
+		{		
+			String correo = Util.getUserLogged().getUsername();
+			String password = Util.getUserLogged().getPassword();
+			respVO = wsCliente.crearSitioGuardarPromocion(correo, password,"", "", "", "", "", "", idPromocion);
+			resultado.put("codeError", respVO.getCodeError());
+			resultado.put("descEror", respVO.getMsgError());
+		}		
+		catch (Exception e) 
+		{
+			logger.error("getPromociones:::::", e);
+			resultado.put("codeError", "-1");
+			resultado.put("descEror", "errorEliminarPromocion");
+			return null;
+		}			
+		
+		return resultado;
+	}	
 }
-
-
