@@ -33,6 +33,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import com.infomovil.webapp.clientWsInfomovil.Catalogo;
 import com.infomovil.webapp.clientWsInfomovil.ClientWsInfomovil;
 import com.infomovil.webapp.clientWsInfomovil.ImagenVO;
+import com.infomovil.webapp.clientWsInfomovil.OffertRecordVO;
 import com.infomovil.webapp.clientWsInfomovil.ProductoUsuarioVO;
 import com.infomovil.webapp.clientWsInfomovil.RespuestaVO;
 import com.infomovil.webapp.clientWsInfomovil.StatusDomainVO;
@@ -821,7 +822,7 @@ public class WebappController
 	private List<Catalogo> wsCatalogo;
 	
 	@RequestMapping(value = "/infomovil/misPromociones", method = {RequestMethod.GET, RequestMethod.POST})
-	public ModelAndView getPromociones(HttpServletRequest request, HttpServletResponse response, RedirectAttributes redirectAttributes)
+	public ModelAndView misPromociones(HttpServletRequest request, HttpServletResponse response, RedirectAttributes redirectAttributes)
 	{		
 		HashMap<String, Object> model = new HashMap<String, Object>();
 		RespuestaVO wsRespuesta = new RespuestaVO();
@@ -896,4 +897,35 @@ public class WebappController
 		
 		return resultado;
 	}	
+	
+	
+	@SuppressWarnings("unchecked")
+	@RequestMapping(value = "/infomovil/getPromociones", method = {RequestMethod.GET, RequestMethod.POST}, produces = "application/json")
+	@ResponseBody
+	public JSONArray getPromociones()throws UnsupportedEncodingException
+	{		
+		RespuestaVO respVO = new RespuestaVO();
+		JSONArray list = new JSONArray();
+		List<OffertRecordVO> wsRespuestas = null;
+		try
+		{		
+			String correo = Util.getUserLogged().getUsername();
+			String password = Util.getUserLogged().getPassword();
+			
+			respVO =  wsCliente.crearSitioGetPromociones(correo, password);
+			list.addAll(respVO.getListPromocion());
+			logger.info(list);
+		}		
+		catch (Exception e) 
+		{
+			logger.error("getPromociones:::::", e);
+			return null;
+		}			
+		
+		return list;
+	}
+	
+	
 }
+
+

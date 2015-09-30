@@ -115,6 +115,7 @@
 						<input type="button" id="btnVerPromo" value="Ver promo"/>
 						<input type="button" id="btnEliminar" value="Eliminar"/>
 						<input type="button" id="btnGuardar" value="Guardar"/>
+						
 				</div> 
 			<hr />
 			<!--Theme showcase -->
@@ -123,20 +124,24 @@
 				<div class="">
 					<!-- page header -->
 					<div class="page-header text-center">
-					<c:forEach items="${promociones}" var="item">
 					
-						Nombre de la promoción:<input type="text" name="nombrePromo" id="nombrePromo" value="${item.titleOffer}"><br>
-						Descripción de la promoción:<textarea rows="4"  cols="50"  name="descPromo" id="descPromo">${item.descOffer}</textarea><br>
-						Vigencia al:<input type="text" id="datepicker" value="${item.endDateOffer}"><br><br>
-						¿Cómo redimir?:<br><br>
-								<br><input type="radio" name="radioPromo" value="1" class="radioPromo">No especificado:<br>
-								<br><input type="radio" name="radioPromo" value="2" class="radioPromo">Llámanos<br>
-								<br><input type="radio" name="radioPromo" value="3" class="radioPromo">Envíanos un e-mail<br>
-								<br><input type="radio" name="radioPromo" value="4" class="radioPromo">Visítanos<br>
-								
-						Información adicional:<input type="text" name="infoadiPromo" id="infoadiPromo" value="${item.termsOffer}"><br><br>
+					
+						<input type="hidden" id="idPromocion" value=""/>
+						<input type="hidden" id="checkedRedimir" value=""/>
+						
+							Nombre de la promoción:<input type="text" name="nombrePromo" id="nombrePromo" value=""><br>
+							Descripción de la promoción:<textarea rows="4"  cols="50"  name="descPromo" id="descPromo"></textarea><br>
+							Vigencia al:<input type="text" id="datepicker" value=""><br><br>
+							¿Cómo redimir?:<br><br>
+							
+									<br><input type="radio" name="radioPromo" id="r1" value="No especificado" class="radioPromo">No especificado<br>
+									<br><input type="radio" name="radioPromo" id="r2" value="Llámanos" class="radioPromo">Llámanos<br>
+									<br><input type="radio" name="radioPromo" id="r3" value="Envíanos un e-mail" class="radioPromo">Envíanos un e-mail<br>
+									<br><input type="radio" name="radioPromo" id="r4" value="Visítanos" class="radioPromo">Visítanos<br>
+									
+							Información adicional:<input type="text" name="infoadiPromo" id="infoadiPromo" value=""><br><br>
 
-					</c:forEach>
+				
 						
 						
 						
