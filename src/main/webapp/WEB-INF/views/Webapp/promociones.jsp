@@ -6,7 +6,7 @@
 <html lang="es">
 
 <tiles:insertDefinition name="headEditorSitio">
-	<tiles:putAttribute name="template" value="${ template }" />
+	<tiles:putAttribute name="template" value="${ plantillaUsuario }" />
 </tiles:insertDefinition>
 <link href="<c:url value="/resources/webapp/js/datepicker/datepicker.css"/>" rel="stylesheet" />
 <body role="document" data-spy="scroll" data-target=".navbar"
@@ -123,15 +123,21 @@
 				<div class="">
 					<!-- page header -->
 					<div class="page-header text-center">
-						Nombre de la promoción:<input type="text" name="nombrePromo" id="nombrePromo"><br>
-						Descripción de la promoción:<textarea rows="4"  cols="50"  name="descPromo" id="descPromo"></textarea><br>
-						Vigencia al:<input type="text" id="datepicker"><br><br>
+					<c:forEach items="${promociones}" var="item">
+					
+						Nombre de la promoción:<input type="text" name="nombrePromo" id="nombrePromo" value="${item.titleOffer}"><br>
+						Descripción de la promoción:<textarea rows="4"  cols="50"  name="descPromo" id="descPromo">${item.descOffer}</textarea><br>
+						Vigencia al:<input type="text" id="datepicker" value="${item.endDateOffer}"><br><br>
 						¿Cómo redimir?:<br><br>
 								<br><input type="radio" name="radioPromo" value="1" class="radioPromo">No especificado:<br>
 								<br><input type="radio" name="radioPromo" value="2" class="radioPromo">Llámanos<br>
 								<br><input type="radio" name="radioPromo" value="3" class="radioPromo">Envíanos un e-mail<br>
 								<br><input type="radio" name="radioPromo" value="4" class="radioPromo">Visítanos<br>
-						Información adicional:<input type="text" name="infoadiPromo" id="infoadiPromo"><br><br>
+								
+						Información adicional:<input type="text" name="infoadiPromo" id="infoadiPromo" value="${item.termsOffer}"><br><br>
+
+					</c:forEach>
+						
 						
 						
 						
