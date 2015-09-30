@@ -167,7 +167,7 @@ public class ClientWsInfomovilTest {
 	
 	@Test
 	public void testGetPromociones() {
-		RespuestaVO resp = clientWsInfomovil.crearSitioGetPromociones("pollo1@mail.com", "garbage1");
+		RespuestaVO resp = clientWsInfomovil.crearSitioGetPromociones("test@test.com", "rosas111");
 		assertNotNull(resp);
 		assertTrue(resp.getCodeError().equalsIgnoreCase("0"));
 		assertTrue(resp.getListPromocion().size() > 0);
@@ -175,8 +175,8 @@ public class ClientWsInfomovilTest {
 	
 	@Test
 	public void testBorrarPromocion() {
-		RespuestaVO resp = clientWsInfomovil.crearSitioGuardarPromocion("pollo1@mail.com", 
-		"garbage1","","","","","","",787);
+		RespuestaVO resp = clientWsInfomovil.crearSitioGuardarPromocion("test@test.com", 
+		"rosas111","","","","","","",787);
 		assertNotNull(resp);
 		assertTrue(resp.getCodeError().equalsIgnoreCase("0"));
 	}

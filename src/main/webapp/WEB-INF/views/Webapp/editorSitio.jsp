@@ -96,7 +96,10 @@
 							<!--             <li role="separator" class="divider"></li> -->
 							<!--             <li><a href="#">One more separated link</a></li> -->
 						</ul></li>
-
+						<li><a href="<c:url value="/infomovil/misPromociones"></c:url>" class="smoothScroll ${colorTexto}"><img
+							width="20" height="20" alt="Infomovil"
+							src="<c:url value="/resources/webapp/images/fa-user${ extensionImg }.png"/>" />
+							Mis Promociones </a></li>	
 
 					<!--  <li class="botonDesPublicar" id="btnContLi" style="display:none;">
 							<a href="#" data-toggle="modal" data-target="#myModalDescApp" class="smoothScroll ${colorTexto}">¿Qué sigue? <span class="hidden-sm hidden-md"></span> 
@@ -424,8 +427,12 @@
 		value="${ galeriaImagenes }">
 	<input type="hidden" id="planPro" name="planPro" value="${ planPro }">
 
-	<c:set var="plantillaUsuario" value="${ template }" scope="session" />
-	<c:set var="canalUsuario" value="${ canalUsuario }" scope="session" />
+	<c:set var="plantillaUsuario" value="${ template }" scope="session"/>
+	<c:set var="canalUsuario" value="${ canalUsuario }" scope="session"/>
+	<c:set var="claseCss" value="${ claseCss }" scope="session"/>
+	<c:set var="colorTexto" value="${ colorTexto }" scope="session"/>
+	<c:set var="extensionImg" value="${ extensionImg }" scope="session"/>
+	
 	<!--  Numero de imagenes MAximo q' puede tener el usuario activas-->
 	<!-- Bootstrap core JavaScript
 	    ================================================== -->

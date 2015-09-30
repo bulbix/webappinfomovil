@@ -301,8 +301,7 @@ function getImagenesJQ() {
 		$("#msjEligeAlbumFoto").hide();
 		var $listaImg = $('#listaImagenes');
 		var weHaveSuccess = false;
-		$
-				.ajax({
+		$.ajax({
 					type : "GET",
 					url : contextPath + "/infomovil/getImagenes",
 					dataType : "json",
@@ -335,12 +334,10 @@ function getImagenesJQ() {
 								siHayImagen = 1;
 								if (i <= IMAGENESMAX) {
 									var $li = $('<li class="imagenDinamica" style="display:block;height:80px; width:100%; margin:10px 0;"/>')
-									$li
-											.append('<div class="col-xs-3 text-left" style="max-height:45px;"><img src="'
+										$li.append('<div class="col-xs-3 text-left" style="max-height:45px;"><img src="'
 													+ imgUrl
 													+ '" onerror="errorPreview(this)" class="ImgDinamica img-thumbnail imgLista"/></div>');
-									$li
-											.append('<div class="col-xs-9 reset"><input type="text" id="actualizarTexto'
+										$li.append('<div class="col-xs-9 reset"><input type="text" id="actualizarTexto'
 													+ idImg
 													+ '"  value="'
 													+ descImg
@@ -475,8 +472,7 @@ function guardarImagenesJQF() {
 							/^data:image\/(png|jpeg|jpg);base64,/, "");
 					var textFoto = $("#nombreDeImgn").val();
 					var weHaveSuccess = false;
-					$
-							.ajax({
+						$.ajax({
 								type : "POST",
 								url : contextPath + "/infomovil/guardarImagen",
 								dataType : "json",
@@ -571,8 +567,7 @@ function uploadImage(imageDom, imageUrl, origin, textFoto) {
 				binaryString = base64Img.replace(
 						/^data:image\/(png|jpeg|jpg);base64,/, "");
 				var weHaveSuccess = false;
-				$
-						.ajax({
+					$.ajax({
 							type : "POST",
 							url : contextPath + "/infomovil/guardarImagen",
 							dataType : "json",
@@ -678,8 +673,7 @@ function borrarImagenJQ(idImg) {
 									}
 								});
 								var weHaveSuccess = false;
-								$
-										.ajax({
+										$.ajax({
 											type : "GET",
 											url : contextPath
 													+ "/infomovil/borrarImagen",
@@ -732,8 +726,7 @@ function actualizarImagen(idImg, imgUrl) {
 		}
 	});
 	var weHaveSuccess = false;
-	$
-			.ajax({
+			$.ajax({
 				type : "GET",
 				url : contextPath + "/infomovil/actualizarImagen",
 				dataType : "json",
@@ -849,16 +842,14 @@ function logueoFacebook(response) {
 		for ( var p in infoAlbumes) {
 			var $photosList = $('#albumsList');
 			var $li = $('<li class="albumDinamico" style="display:block; height:100px; margin:0 5px 5px 5px;"/>');
-			$li.append('<span class="col-xs-4"><img src="'
-					+ infoAlbumes[p].picture
-					+ '" class="img-thumbnail imgListaBig"/></span>');
-			$li
-					.append('<span class="col-xs-8"><strong style="color:#7c41bc" class="hidden-xs"> Album:</strong> '
+					$li.append('<span class="col-xs-4"><img src="'
+							+ infoAlbumes[p].picture
+							+ '" class="img-thumbnail imgListaBig"/></span>');
+					$li.append('<span class="col-xs-8"><strong style="color:#7c41bc" class="hidden-xs"> Album:</strong> '
 							+ infoAlbumes[p].title
 							+ '<img alt="" src="../resources/webapp/images/ir.png" style="max-width:23px; max-height:23px;" title="Ir" class="pull-right"/></span>');
 
-			$li
-					.click(function() {
+					$li.click(function() {
 
 						$.blockUI.defaults.baseZ = 9000;
 						$.blockUI({
@@ -948,15 +939,13 @@ function logueoFacebook2() {
 	for ( var p in infoAlbumes) {
 		var $photosList = $('#albumsList');
 		var $li = $('<li class="albumDinamico" style="display:block; height:100px; margin:0 5px 5px 5px;"/>');
-		$li.append('<span class="col-xs-4"><img src="' + infoAlbumes[p].picture
+			$li.append('<span class="col-xs-4"><img src="' + infoAlbumes[p].picture
 				+ '"  class="img-thumbnail imgListaBig"/></span>');
-		$li
-				.append('<span class="col-xs-8"><strong style="color:#7c41bc" class="hidden-xs"> Album:</strong> '
+			$li.append('<span class="col-xs-8"><strong style="color:#7c41bc" class="hidden-xs"> Album:</strong> '
 						+ infoAlbumes[p].title
 						+ ' <img alt="" src="../resources/webapp/images/ir.png" style="max-width:23px; max-height:23px;" title="Ir" class="pull-right"/></span><br/>');
 
-		$li
-				.click(function() {
+			$li.click(function() {
 
 					var r = $(this).index();
 					$(".photoDinamico").remove();
