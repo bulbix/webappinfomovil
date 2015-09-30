@@ -506,16 +506,16 @@ public class WebappController
          	if(Util.getProfile().equals("PROD"))
          	{
          		urlPaypal = new String("https://www.paypal.com/cgi-bin/webscr");
-         		urlReturn = new String("http://www.infomovil.com/infomovil/editarSitio");
+         		urlReturn = new String("http://www.infomovil.com/infomovil/miCuenta");
          	}
          	else
          	{
          		urlPaypal = new String("https://www.sandbox.paypal.com/cgi-bin/webscr");
-         		urlReturn = new String("http://webapp-qa.mobileinfo.io/infomovil/editarSitio");
+         		urlReturn = new String("http://webapp-qa.mobileinfo.io/infomovil/miCuenta");
          	}
          	
          	if (Util.getProfile().equals("DEV"))
-         		urlReturn = new String("http://localhost:10100/WebAppInfomovil/infomovil/editarSitio");
+         		urlReturn = new String("http://localhost:10100/WebAppInfomovil/infomovil/miCuenta");
          	
          	/*URL para paypal*/
          	
