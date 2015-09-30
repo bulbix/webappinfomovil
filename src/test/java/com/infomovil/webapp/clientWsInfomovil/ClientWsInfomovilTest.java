@@ -160,7 +160,7 @@ public class ClientWsInfomovilTest {
 	@Test
 	public void testGuardarPromocion() {
 		RespuestaVO resp = clientWsInfomovil.crearSitioGuardarPromocion("pollo1@mail.com", 
-		"garbage1","desc","01/01/2015","redimir","terminos","titulo","",0);
+		"garbage1","desc","01/01/2015","redimir","terminos","tituloaaaaa","",0);
 		assertNotNull(resp);
 		assertTrue(resp.getCodeError().equalsIgnoreCase("0"));
 	}
@@ -181,6 +181,15 @@ public class ClientWsInfomovilTest {
 		assertTrue(resp.getCodeError().equalsIgnoreCase("0"));
 	}
 	
+	
+	@Test
+	public void testPrevisualizarPromocion() {
+		RespuestaVO resp = clientWsInfomovil.crearSitioPrevisualizarPromocion("pollo1@mail.com", 
+		"garbage1","desc","01/01/2015","redimir","terminos","titulozzzzzzz","");
+		assertNotNull(resp);
+		assertTrue(resp.getCodeError().equalsIgnoreCase("0"));
+		System.out.println(resp.getUrlPromocion());
+	}
 	
 	
 	

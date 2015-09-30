@@ -36,6 +36,7 @@ import javax.xml.bind.annotation.XmlType;
  *         &lt;element name="idDominio" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="idPago" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="downgrade" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *         &lt;element name="urlPromocion" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="listProductoUsuarioVO" type="{http://ws.webservice.infomovil.org/}productoUsuarioVO" maxOccurs="unbounded" minOccurs="0"/>
  *         &lt;element name="listStatusDomainVO" type="{http://ws.webservice.infomovil.org/}statusDomainVO" maxOccurs="unbounded" minOccurs="0"/>
  *         &lt;element name="listUsuarioDominiosVO" type="{http://ws.webservice.infomovil.org/}usuarioDominiosVO" maxOccurs="unbounded" minOccurs="0"/>
@@ -71,6 +72,7 @@ import javax.xml.bind.annotation.XmlType;
     "idDominio",
     "idPago",
     "downgrade",
+    "urlPromocion",
     "listProductoUsuarioVO",
     "listStatusDomainVO",
     "listUsuarioDominiosVO",
@@ -99,6 +101,7 @@ public class RespuestaVO {
     protected String idDominio;
     protected String idPago;
     protected String downgrade;
+    protected String urlPromocion;
     protected List<ProductoUsuarioVO> listProductoUsuarioVO;
     protected List<StatusDomainVO> listStatusDomainVO;
     protected List<UsuarioDominiosVO> listUsuarioDominiosVO;
@@ -537,6 +540,30 @@ public class RespuestaVO {
      */
     public void setDowngrade(String value) {
         this.downgrade = value;
+    }
+
+    /**
+     * Obtiene el valor de la propiedad urlPromocion.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getUrlPromocion() {
+        return urlPromocion;
+    }
+
+    /**
+     * Define el valor de la propiedad urlPromocion.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setUrlPromocion(String value) {
+        this.urlPromocion = value;
     }
 
     /**
