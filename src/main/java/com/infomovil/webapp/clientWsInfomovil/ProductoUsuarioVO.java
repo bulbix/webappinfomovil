@@ -33,6 +33,7 @@ import javax.xml.bind.annotation.XmlType;
  *         &lt;element name="renovable" type="{http://www.w3.org/2001/XMLSchema}boolean"/>
  *         &lt;element name="urlDominio" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="urlRenovar" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *         &lt;element name="activo" type="{http://www.w3.org/2001/XMLSchema}boolean"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -59,7 +60,8 @@ import javax.xml.bind.annotation.XmlType;
     "nombreDominio",
     "renovable",
     "urlDominio",
-    "urlRenovar"
+    "urlRenovar",
+    "activo"
 })
 public class ProductoUsuarioVO {
 
@@ -80,6 +82,7 @@ public class ProductoUsuarioVO {
     protected boolean renovable;
     protected String urlDominio;
     protected String urlRenovar;
+    protected boolean activo;
 
     /**
      * Obtiene el valor de la propiedad email.
@@ -447,6 +450,22 @@ public class ProductoUsuarioVO {
      */
     public void setUrlRenovar(String value) {
         this.urlRenovar = value;
+    }
+
+    /**
+     * Obtiene el valor de la propiedad activo.
+     * 
+     */
+    public boolean isActivo() {
+        return activo;
+    }
+
+    /**
+     * Define el valor de la propiedad activo.
+     * 
+     */
+    public void setActivo(boolean value) {
+        this.activo = value;
     }
 
 }

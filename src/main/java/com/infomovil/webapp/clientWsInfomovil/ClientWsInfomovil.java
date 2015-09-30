@@ -239,7 +239,7 @@ public class ClientWsInfomovil {
 	public RespuestaVO crearSitioGuardarPromocion(String email, String password, String descripcion, String fechaVigencia,
 			String redimir, String terminos, String titulo, String base64Imagen, Integer idPromocion)
 	{
-		System.out.println("Invoking crearSitioGuardarPromocion...");
+		log.info("Invoking crearSitioGuardarPromocion...");
         com.infomovil.webapp.clientWsInfomovil.CrearSitioGuardarPromocion _crearSitioGuardarPromocion_parameters = new CrearSitioGuardarPromocion();
         _crearSitioGuardarPromocion_parameters.email = email;
         _crearSitioGuardarPromocion_parameters.password = password;
@@ -251,20 +251,38 @@ public class ClientWsInfomovil {
         _crearSitioGuardarPromocion_parameters.base64Imagen = base64Imagen;
         _crearSitioGuardarPromocion_parameters.idPromocion = idPromocion;
         com.infomovil.webapp.clientWsInfomovil.CrearSitioGuardarPromocionResponse _crearSitioGuardarPromocion__return = port.crearSitioGuardarPromocion(_crearSitioGuardarPromocion_parameters);
-        System.out.println("crearSitioGuardarPromocion.result=" + _crearSitioGuardarPromocion__return);
+        log.info("crearSitioGuardarPromocion.result=" + _crearSitioGuardarPromocion__return);
 		return _crearSitioGuardarPromocion__return.respuestaVO;
 	}
 	
 	public RespuestaVO crearSitioGetPromociones(String email, String password)
 	{
-		System.out.println("Invoking crearSitioGetPromociones...");
+		log.info("Invoking crearSitioGetPromociones...");
 		com.infomovil.webapp.clientWsInfomovil.CrearSitioGetPromociones _crearSitioGetPromociones_parameters = new CrearSitioGetPromociones();
 		_crearSitioGetPromociones_parameters.email = email;
 		_crearSitioGetPromociones_parameters.password = password;
 		com.infomovil.webapp.clientWsInfomovil.CrearSitioGetPromocionesResponse _crearSitioGetPromociones__return = port
 				.crearSitioGetPromociones(_crearSitioGetPromociones_parameters);
-		System.out.println("crearSitioGetPromociones.result=" + _crearSitioGetPromociones__return);
+		log.info("crearSitioGetPromociones.result=" + _crearSitioGetPromociones__return);
 		return _crearSitioGetPromociones__return.respuestaVO;
+	}
+	
+	public RespuestaVO crearSitioPrevisualizarPromocion(String email, String password, String descripcion, String fechaVigencia,
+			String redimir, String terminos, String titulo, String base64Imagen)
+	{
+		log.info("Invoking crearSitioPrevisualizarPromocion...");
+        com.infomovil.webapp.clientWsInfomovil.CrearSitioPrevisualizarPromocion _crearSitioPrevisualizarPromocion_parameters = new CrearSitioPrevisualizarPromocion();
+        _crearSitioPrevisualizarPromocion_parameters.email = email;
+        _crearSitioPrevisualizarPromocion_parameters.password = password;
+        _crearSitioPrevisualizarPromocion_parameters.descripcion = descripcion;
+        _crearSitioPrevisualizarPromocion_parameters.fechaVigencia = fechaVigencia;
+        _crearSitioPrevisualizarPromocion_parameters.redimir = redimir;
+        _crearSitioPrevisualizarPromocion_parameters.terminos = terminos;
+        _crearSitioPrevisualizarPromocion_parameters.titulo = titulo;
+        _crearSitioPrevisualizarPromocion_parameters.base64Imagen = base64Imagen;
+        com.infomovil.webapp.clientWsInfomovil.CrearSitioPrevisualizarPromocionResponse _crearSitioPrevisualizarPromocion__return = port.crearSitioPrevisualizarPromocion(_crearSitioPrevisualizarPromocion_parameters);
+        log.info("crearSitioPrevisualizarPromocion.result=" + _crearSitioPrevisualizarPromocion__return);
+		return _crearSitioPrevisualizarPromocion__return.respuestaVO;
 	}
 	
 	

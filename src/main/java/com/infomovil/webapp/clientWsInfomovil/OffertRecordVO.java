@@ -27,6 +27,7 @@ import javax.xml.bind.annotation.XmlType;
  *         &lt;element name="redeemOffer" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="idOffer" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="urlImage" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *         &lt;element name="urlSitio" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -47,7 +48,8 @@ import javax.xml.bind.annotation.XmlType;
     "discountOffer",
     "redeemOffer",
     "idOffer",
-    "urlImage"
+    "urlImage",
+    "urlSitio"
 })
 public class OffertRecordVO {
 
@@ -62,6 +64,7 @@ public class OffertRecordVO {
     protected String redeemOffer;
     protected String idOffer;
     protected String urlImage;
+    protected String urlSitio;
 
     /**
      * Obtiene el valor de la propiedad titleOffer.
@@ -325,6 +328,30 @@ public class OffertRecordVO {
      */
     public void setUrlImage(String value) {
         this.urlImage = value;
+    }
+
+    /**
+     * Obtiene el valor de la propiedad urlSitio.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getUrlSitio() {
+        return urlSitio;
+    }
+
+    /**
+     * Define el valor de la propiedad urlSitio.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setUrlSitio(String value) {
+        this.urlSitio = value;
     }
 
 }
