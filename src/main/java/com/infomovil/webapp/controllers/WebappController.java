@@ -807,28 +807,6 @@ public class WebappController
 		return resultMap;
 	}
 	
-	@RequestMapping(value = "/infomovil/getProductosUsuario", method = RequestMethod.POST, produces = "application/json")
-	@ResponseBody
-	public Map<String, String> getProductosUsuario(@RequestParam String nombreDominio, @RequestParam String tipoDominio)
-	{		
-		Map<String, String> resultMap = new HashMap<String, String>();
-		RespuestaVO wsRespuesta = new RespuestaVO();
-		
-		try
-		{
-			wsRespuesta = wsCliente.crearSitioGetProductosUsuario("rambo1@mail.com", "garbage1");
-			
-			System.out.println("Tamanio de lista " + wsRespuesta.getListProductoUsuarioVO().size());
-			resultMap.put("resultado", wsRespuesta.getResultado());
-		}		
-		catch (Exception e) 
-		{
-			logger.error("existeDominio:::::", e);
-		}	
-		
-		return resultMap;
-	}
-	
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String index(){
 		logger.info("redirect:/infomovil/editarSitio");
@@ -840,58 +818,29 @@ public class WebappController
 	private ClientWsInfomovil wsCliente = new ClientWsInfomovil();
 	private List<Catalogo> wsCatalogo;
 	
-	@RequestMapping(value = "/infomovil/promociones", method = {RequestMethod.GET,RequestMethod.POST})
-	public ModelAndView promociones(HttpServletRequest request, HttpServletResponse response, RedirectAttributes redirectAttributes)
+	@RequestMapping(value = "/infomovil/misPromociones", method = {RequestMethod.GET,RequestMethod.POST})
+	public ModelAndView getPromociones(HttpServletRequest request, HttpServletResponse response, RedirectAttributes redirectAttributes)
 	{		
 		HashMap<String, Object> model = new HashMap<String, Object>();
 		RespuestaVO wsRespuesta = new RespuestaVO();
-		
-		String claseProductos = "col-xs-12 col-sm-6 col-md-6 col-lg-6 dBlock col-sm-offset-3";
-		String claseCss = "";
-		String colorTexto = "";
-		String extensionImg = "";
-		int totProductos = 0;
 
 		try
 		{		
 			String correo = Util.getUserLogged().getUsername();
 			String password = Util.getUserLogged().getPassword();
 			
-			wsRespuesta = wsCliente.crearSitioGetProductosUsuario(correo, password);
-			totProductos = wsRespuesta.getListProductoUsuarioVO().size();
-			
-			if (totProductos > 0)
-				claseProductos = "'col-xs-12 col-sm-6 col-md-6 col-lg-6 dBlock'";
-			
-			if (Util.getCurrentSession().getAttribute("canal").toString().startsWith("BAZ"))
-			{
-				claseCss = "default";
-				colorTexto = "textBlack";
-				extensionImg = "-bk";
-			}
-			else
-			{
-				claseCss = "inverse";
-				colorTexto = "textWhite";
-				extensionImg = "";
-			}
-			
-			model.put("claseProductos", claseProductos);
-			model.put("claseCss", claseCss);
-			model.put("colorTexto", colorTexto);
-			model.put("extensionImg", extensionImg);
-			model.put("totProductos", totProductos);
-			model.put("productos", wsRespuesta.getListProductoUsuarioVO());
-			model.put("correoElectronico", correo);
+			wsRespuesta = wsCliente.crearSitioGetPromociones(correo, password);
+			model.put("promociones", wsRespuesta.getListPromocion());
 			
 		}		
 		catch (Exception e) 
 		{
-			logger.error("miCuenta:::::", e);
+			logger.error("getPromociones:::::", e);
 			return null;
 		}			
+		
 		return new ModelAndView("Webapp/promociones", model);
-		}
+	}
 }
 
 

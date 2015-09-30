@@ -96,7 +96,7 @@
 							<!--             <li role="separator" class="divider"></li> -->
 							<!--             <li><a href="#">One more separated link</a></li> -->
 						</ul></li>
-						<li><a href="<c:url value="/infomovil/promociones"></c:url>" class="smoothScroll ${colorTexto}"><img
+						<li><a href="<c:url value="/infomovil/misPromociones"></c:url>" class="smoothScroll ${colorTexto}"><img
 							width="20" height="20" alt="Infomovil"
 							src="<c:url value="/resources/webapp/images/fa-user${ extensionImg }.png"/>" />
 							Mis Promociones </a></li>	
