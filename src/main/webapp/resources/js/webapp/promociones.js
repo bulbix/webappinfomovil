@@ -13,10 +13,8 @@ $btnVerPromo = $("#btnVerPromo");
 $btnEliminar = $("#btnEliminar");
 $btnGuardar = $("#btnGuardar");
 
-	var myRadio = $('input[name=radioPromo]');
-	$radioPromo.on( "click", function() {
-		  $( "#log" ).html( $( "input:checked" ).val() + " is checked!" );
-		});
+	var $myRadio = $('.radioPromo');
+	
 	
 	$(function() {
 		$datepickerPromo.datepicker({ dateFormat: 'yy-mm-dd' });
@@ -28,7 +26,7 @@ $btnGuardar = $("#btnGuardar");
 		
 	});
 
-							
+						
 $(document).ready(function() {					
 				$btnPublicar.click(function(){
 					publicarPromocion()
@@ -55,7 +53,9 @@ $(document).ready(function() {
 					
 				});
 				
-				
+				$myRadio.click(function() {
+					   if($myRadio.is(':checked')) { alert("it's checked"); }
+					});
 				
 });
 							
