@@ -104,21 +104,52 @@
 	
 		<div class="col-xs-12 col-sm-6 col-sm-offset-3 col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3">
 		
-			<h3 class="text-left textWhite" style="font-weight: 300; margin:20px 0 0 0;">Mis
-				promociones</h3>
+
+			
+				<div id="divPublicarPromo">
+				
+				
+				<button type="button" class="btn btn-outlineGreen pull-right"  id="btnPublicar" style="margin: 5px 0;"><img width="20" height="20" alt="Infomovil" src="<c:url value="/resources/webapp/images/successWhite.png"/>" /> 
+						 <span class="hidden-xs">Publicar</span></button>
+						
+						
+<!-- 						<input type="button" id="btnPublicar" value="Publicar" class="btn btn-outlineGreen pull-right"/> -->
+						
+						
+						
+						<button type="button" class="btn btn-outlineGreen pull-right"  id="btnVistaPrevia" style="margin: 5px 8px 0 0;"><img width="20" height="20"
+						alt="Infomovil"
+						src="<c:url value="/resources/webapp/images/fa-eye.png"/>" /> <span class="hidden-xs">Vista Previa</span></button>
 	
-				
-				<div id="divPublicarPromo" style="display:none">
-						<input type="button" id="btnPublicar" value="Publicar"/>
-						<input type="button" id="btnVistaPrevia" value="Vista Previa"/>
+<!-- 						<input type="button" id="btnVistaPrevia" value="Vista Previa" class="btn btn-outlineGreen pull-right"/> -->
 				</div>
-				 <div id="divPromoPublicada" style="display:none">
-						<input type="button" id="btnCompartir" value="Compartir"/>
-						<input type="button" id="btnVerPromo" value="Ver promo"/>
-						<input type="button" id="btnEliminar" value="Eliminar"/>
-						<input type="button" id="btnGuardar" value="Guardar"/>
-				</div> 
+				<div class="clear"></div>
 				
+				<div id="divPromoPublicada">
+				  
+						 <button type="button" class="btn btn-outlineGreen pull-right"  id="btnGuardar" style="margin: 5px 0 0 0;"><img width="20" height="20" alt="Infomovil" src="<c:url value="/resources/webapp/images/successWhite.png"/>" /> 
+						 <span class="hidden-xs">Guardar</span></button>
+						 
+				 <button type="button" class="btn btn-outlineGreen pull-right"  id="btnEliminar" style="margin: 5px 5px 0 0;"><img width="20" height="20" alt="Infomovil" src="<c:url value="/resources/webapp/images/trash.png"/>" /> 
+						 <span class="hidden-xs">Eliminar</span></button>
+						 
+				 <button type="button" class="btn btn-outlineGreen pull-right"  id="btnImprimir" style="margin: 5px 5px 0 0;"><img width="20" height="20" alt="Infomovil" src="<c:url value="/resources/webapp/images/fa-print.png"/>" /> 
+						 <span class="hidden-xs">Imprimir</span></button>
+						 
+						 <button type="button" class="btn btn-outlineGreen pull-right"  id="btnVerPromo" style="margin: 5px 5px 0 0;"><img width="20" height="20" alt="Infomovil" src="<c:url value="/resources/webapp/images/fa-eye.png"/>" /> 
+						 <span class="hidden-xs">Ver</span></button>
+						 
+						 <button type="button" class="btn btn-outlineGreen pull-right"  id="btnCompartir" style="margin: 5px 5px 0 0;"><img width="20" height="20" alt="Infomovil" src="<c:url value="/resources/webapp/images/fa-compartir.png"/>" /> 
+						 <span class="hidden-xs">Compartir</span></button>
+						 
+<!-- 						<input type="button" id="btnCompartir" value="Compartir" class="btn btn-outlineGreen"/> -->
+<!-- 						<input type="button" id="btnVerPromo" value="Ver promo" class="btn btn-outlineGreen"/> -->
+<!-- 						<input type="button" id="btnEliminar" value="Eliminar" class="btn btn-outlineGreen"/> -->
+<!-- 						<input type="button" id="btnGuardar" value="Guardar" class="btn btn-outlineGreen"/> -->
+						
+				</div> 
+				<div class="clear"></div>
+
 			<hr />
 			<!--Theme showcase -->
 			<div class="theme-showcaseApp" role="main" id="intro">
@@ -130,22 +161,74 @@
 							
 						   <input type="hidden" id="idPromocion" value="${idOffer}"/>
 						
-						
-							Nombre de la promoción:<input type="text" name="nombrePromo" id="nombrePromo" value="${titleOffer}" required><br>
-							Descripción de la promoción:<textarea rows="4"  cols="50"  name="descPromo" id="descPromo" required>${descOffer}</textarea><br>
-							Vigencia al:<input type="text" id="datepicker" value="${endDateOffer}" required><br><br>
-							¿Cómo redimir?:<br><br>
-							
-									<br><input type="radio" name="radioPromo" id="r1" value="No especificado" class="radioPromo" checked="checked" >No especificado<br>
-									<br><input type="radio" name="radioPromo" id="r2" value="Llámanos" class="radioPromo">Llámanos<br>
-									<br><input type="radio" name="radioPromo" id="r3" value="Envíanos un e-mail" class="radioPromo">Envíanos un e-mail<br>
-									<br><input type="radio" name="radioPromo" id="r4" value="Visítanos" class="radioPromo">Visítanos<br>
-									
-							Información adicional:<input type="text" name="infoadiPromo" id="infoadiPromo" value="${termsOffer}"><br><br>
-						<div id="divError" style="color:red"></div>
-					
+
+
+						<div class="form-group">
+    <label for="exampleInputEmail1" class="text-left">Nombre de la promoción:</label>
+    <input type="text" class="form-control" name="nombrePromo" id="nombrePromo" value="${titleOffer}">
+    
+    
+  </div>
+  <div class="form-group">
+    <label for="exampleInputPassword1" class="text-left">Descripción de la promoción:</label>
+    
+    <textarea rows="4"  cols="50"  name="descPromo" id="descPromo" class="form-control">${descOffer}</textarea>
+    
+    
+  </div>
+ 
+ <div class="form-group">
+    <label for="exampleInputEmail1" class="text-left">Vigencia al:</label>
+    <input type="text" class="form-control" id="datepicker" value="${endDateOffer}">
+    
+    
+  </div>
+  <div class="clearfix"></div>
+  
+  <div class="form-group">
+   <div class="radio">
+<label for="exampleInputFile" class="text-left">¿Cómo redimir?:</label>
+
+  <label>
+  <input type="radio" name="radioPromo" id="r1" value="No especificado" class="radioPromo">No especificado
+   
+  </label>
+</div>
+<div class="radio">
+  <label>
+  <input type="radio" name="radioPromo" id="r2" value="Llámanos" class="radioPromo">Llámanos
+  
+  </label>
+</div>
+  
+  <div class="radio">
+  <label>
+  <input type="radio" name="radioPromo" id="r3" value="Envíanos un e-mail" class="radioPromo">Envíanos un e-mail
+  </label>
+</div>
+
+  <div class="radio">
+  <label>
+  <input type="radio" name="radioPromo" id="r4" value="Visítanos" class="radioPromo">Visítanos
+  </label>
+</div>
+    
+  </div>
+
+
+<div class="form-group">
+     <label for="exampleInputEmail1" class="text-left">Información adicional:</label>
+    <input type="text" name="infoadiPromo" id="infoadiPromo" value="${termsOffer}">
+    
+    
+    
+  </div>
+
+
+
 						
 					</div>
+					<div id="divError" style="color:red"></div>
 					<!-- /page header -->
 					<br /> <br />
 				</div>
