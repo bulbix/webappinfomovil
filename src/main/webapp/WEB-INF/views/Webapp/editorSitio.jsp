@@ -98,7 +98,7 @@
 						</ul></li>
 						<li><a href="<c:url value="/infomovil/misPromociones"></c:url>" class="smoothScroll ${colorTexto}"><img
 							width="20" height="20" alt="Infomovil"
-							src="<c:url value="/resources/webapp/images/fa-user${ extensionImg }.png"/>" />
+							src="<c:url value="/resources/webapp/images/fa-promo${ extensionImg }.png"/>" />
 							Mis Promociones </a></li>	
 
 					<!--  <li class="botonDesPublicar" id="btnContLi" style="display:none;">
