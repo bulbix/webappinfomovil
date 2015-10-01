@@ -943,7 +943,7 @@ public class WebappController
 	
 	@RequestMapping(value = "/infomovil/verPromo", method = { RequestMethod.GET , RequestMethod.POST }, produces = "application/json")
 	@ResponseBody
-	public Map<String, String> verPromo(String titulo, String descripcion, String fechaVigencia, String base64Imagen, 
+	public Map<String, String> verPromo(int idDominio, String titulo, String descripcion, String fechaVigencia, String base64Imagen, 
 			String redimir, String terminos)
 	{
 		RespuestaVO respVO = new RespuestaVO();
@@ -953,7 +953,12 @@ public class WebappController
 		{		
 			String correo = Util.getUserLogged().getUsername();
 			String password = Util.getUserLogged().getPassword();
-			respVO = wsCliente.crearSitioPrevisualizarPromocion(correo, password, descripcion, fechaVigencia, redimir, terminos, titulo, base64Imagen);
+			
+			if (idDominio == 0) /*Vista previa*/
+				respVO = wsCliente.crearSitioPrevisualizarPromocion(correo, password, descripcion, fechaVigencia, redimir, terminos, titulo, base64Imagen);
+			else /*Ver promo guardada*/
+				respVO = wsCliente.crearSitioGuardarPromocion(correo, password, descripcion, fechaVigencia, redimir, terminos, titulo, base64Imagen, idDominio);
+			
 			resultado.put("codeError", respVO.getCodeError());
 			resultado.put("descEror", respVO.getMsgError());
 			resultado.put("urlVistaPreviaPromo", respVO.getUrlPromocion());
