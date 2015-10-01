@@ -2,11 +2,12 @@
 $nombrePromo =  $("#nombrePromo");
 $descPromo =  $("#descPromo");
 $datepickerPromo =  $("#datepicker");
-$radioPromo =  $(".radioPromo");
 $infoadiPromo =  $("#infoadiPromo");
 $divPromoPublicada = $("#divPromoPublicada");
 $divPublicarPromo = $("#divPublicarPromo");
 $idPromocion = $("#idPromocion");
+// div que muestra que falta un campo por llenar
+$divError = $("#divError");
 //botones para publicar promocion
 $btnPublicar = $("#btnPublicar");
 $btnVistaPrevia = $("#btnVistaPrevia");
@@ -15,18 +16,17 @@ $btnCompartir = $("#btnCompartir");
 $btnVerPromo = $("#btnVerPromo");
 $btnEliminar = $("#btnEliminar");
 $btnGuardar = $("#btnGuardar");
-var weHaveSuccess = false;
 	
 $(function() {
-	$datepickerPromo.datepicker({ dateFormat: 'dd-mm-yy' });	
+	$datepickerPromo.datepicker({ dateFormat: 'dd/mm/yy' });	
 });
 	
 $datepickerPromo.click(function() {
-	var date = $datepickerPromo.datepicker({ dateFormat: 'dd-mm-yy' }).val();
+	var date = $datepickerPromo.datepicker({ dateFormat: 'dd/mm/yy' }).val();
 });
 
+
 var $getPromociones = function(){
-	weHaveSuccess = false;
 	$.blockUI.defaults.baseZ = 9000;
 	$.blockUI({
 		message: "Obteniendo promoción...",
@@ -56,7 +56,7 @@ var $getPromociones = function(){
 					$divPromoPublicada.hide();
 					$divPublicarPromo.show();
 				}
-			weHaveSuccess = true;
+			
 			$.unblockUI();
 		},
 		error : function(json) {
@@ -65,15 +65,7 @@ var $getPromociones = function(){
 				title: "<span class='textBlack' style='font-size:1.15em;'><img alt='' src='../resources/webapp/images/fa-warning-bk.png'  title='Alerta' />No se ha elimiasdasdasdasdasdasdnado la promoción</span>",
 				message: '<div style="display:block; min-height:150px;"><p class="textBlack text-center" style="font-size:1.15em;">Por favor intentalo más tarde.</p><br/>'
 			});		
-			weHaveSuccess = true;
-		},
-		complete: function() {
-			if (!weHaveSuccess) {
-				BootstrapDialog.show({
-					title: "<span class='textBlack' style='font-size:1.15em;'><img alt='' src='../resources/webapp/images/fa-warning-bk.png'  title='Alerta' />No xxxxxse ha eliminado la promoción</span>",
-					message: '<div style="display:block; min-height:150px;"><p class="textBlack text-center" style="font-size:1.15em;">Por favor intentalo más tarde.</p><br/>'
-				});
-			}$.unblockUI();
+		
 		}
 		
 	});	
@@ -83,60 +75,53 @@ var $getPromociones = function(){
 $getPromociones();
 						
 
-var $publicarPromocion = function(){
-	weHaveSuccess = false;
-	$.blockUI.defaults.baseZ = 9000;
-	$.blockUI({
-		message: "Publicando promoción...",
-		css: {
-			class:"alertaUI",
-			top:  ($(window).height() - 400) /2 + 'px',
-			left: ($(window).width() - 400) /2 + 'px',
-			width: '400px'
-		}
-	});	
+var $publicarPromocion = function(){	
 	
-	$.ajax({
-		type : "POST",
-		url : contextPath + "/infomovil/guardarPromocion",
-		dataType : "json",
-		data : {
-			titulo: $nombrePromo.val(),
-			descripcion: $descPromo.val(),
-			fechaVigencia:  $datepickerPromo.val(),
-			base64Imagen: "",
-			redimir: $radioPromo.val(),
-			terminos:$infoadiPromo.val()
-		},
-			success : function(data) {
-				console.log("LA RESPUESTA DEL GUARDADO ES: " +data);
-				$divPublicarPromo.hide();
-				$divPromoPublicada.show();
-				weHaveSuccess = true;
-				$.unblockUI();
-			},
-			error : function(json) {
-				$.unblockUI();
-				BootstrapDialog.show({
-					title: "<span class='textBlack' style='font-size:1.15em;'><img alt='' src='../resources/webapp/images/fa-warning-bk.png'  title='Alerta' />No se ha publicado la promoción</span>",
-					message: '<div style="display:block; min-height:150px;"><p class="textBlack text-center" style="font-size:1.15em;">Por favor intentalo más tarde.</p><br/>'
-				});
-									
-			},
-			complete: function() {
-				if (!weHaveSuccess) {
-					BootstrapDialog.show({
-						title: "<span class='textBlack' style='font-size:1.15em;'><img alt='' src='../resources/webapp/images/fa-warning-bk.png'  title='Alerta' />No se ha publicado la promoción</span>",
-						message: '<div style="display:block; min-height:150px;"><p class="textBlack text-center" style="font-size:1.15em;">Por favor intentalo más tarde.</p><br/>'
-					});
+			$.blockUI.defaults.baseZ = 9000;
+			$.blockUI({
+				message: "Publicando promoción...",
+				css: {
+					class:"alertaUI",
+					top:  ($(window).height() - 400) /2 + 'px',
+					left: ($(window).width() - 400) /2 + 'px',
+					width: '400px'
 				}
-			}
-		});					
+			});	
+			
+			$.ajax({
+				type : "POST",
+				url : contextPath + "/infomovil/guardarPromocion",
+				data : {
+					titulo: $nombrePromo.val(),
+					descripcion: $descPromo.val(),
+					fechaVigencia:  $datepickerPromo.val(),
+					base64Imagen: "",
+					redimir: $('.radioPromo:checked').val(),
+					terminos:$infoadiPromo.val()
+				},
+					success : function(data) {
+						console.log("LA RESPUESTA DEL GUARDADO ES: " +data);
+						$divPublicarPromo.hide();
+						$divPromoPublicada.show();
+					
+						$.unblockUI();
+					},
+					error : function(json) {
+						$.unblockUI();
+						console.log("ocurrio un error!!");
+						BootstrapDialog.show({
+							title: "<span class='textBlack' style='font-size:1.15em;'><img alt='' src='../resources/webapp/images/fa-warning-bk.png'  title='Alerta' />No se ha publicado la promoción</span>",
+							message: '<div style="display:block; min-height:150px;"><p class="textBlack text-center" style="font-size:1.15em;">Por favor intentalo más tarde.</p><br/>'
+						});
+											
+					}
+				});	
+			
 };
 
 
 var $guardarCambiosEnPromocion = function(){
-		weHaveSuccess = false;	
+	
 		$.blockUI.defaults.baseZ = 9000;
 		$.blockUI({
 			message: "Guardando cambios...",
@@ -157,14 +142,13 @@ var $guardarCambiosEnPromocion = function(){
 				descripcion: $descPromo.val(),
 				fechaVigencia:  $datepickerPromo.val(),
 				base64Imagen: "",
-				redimir: $radioPromo.val(),
+				redimir: $('.radioPromo:checked').val(),
 				terminos: $infoadiPromo.val()
 			},
 				success : function(data) {
 					console.log("LA RESPUESTA DEL GUARDADO ES: " +data);
 					$divPublicarPromo.hide();
 					$divPromoPublicada.show();
-					weHaveSuccess = true;
 					$.unblockUI();
 				},
 				error : function(json) {
@@ -174,20 +158,11 @@ var $guardarCambiosEnPromocion = function(){
 						message: '<div style="display:block; min-height:150px;"><p class="textBlack text-center" style="font-size:1.15em;">Por favor intentalo más tarde.</p><br/>'
 					});
 										
-				},
-				complete: function() {
-					if (!weHaveSuccess) {
-						BootstrapDialog.show({
-							title: "<span class='textBlack' style='font-size:1.15em;'><img alt='' src='../resources/webapp/images/fa-warning-bk.png'  title='Alerta' />No se han guardado los cambios</span>",
-							message: '<div style="display:block; min-height:150px;"><p class="textBlack text-center" style="font-size:1.15em;">Por favor intentalo más tarde.</p><br/>'
-						});
-					}
 				}
 			});	
 };
 
 var $eliminarPromocion = function(){
-	weHaveSuccess = false;
 	$.blockUI.defaults.baseZ = 9000;
 	$.blockUI({
 		message: "Eliminando la promoción...",
@@ -216,7 +191,6 @@ var $eliminarPromocion = function(){
 			 $divPublicarPromo.show();
 			 $divPromoPublicada.hide();
 			 $activaRadio("0");
-			 weHaveSuccess = true;
 			 $.unblockUI();
 		},
 		error : function(json) {
@@ -225,14 +199,6 @@ var $eliminarPromocion = function(){
 				title: "<span class='textBlack' style='font-size:1.15em;'><img alt='' src='../resources/webapp/images/fa-warning-bk.png'  title='Alerta' />No se ha eliminado la promoción</span>",
 				message: '<div style="display:block; min-height:150px;"><p class="textBlack text-center" style="font-size:1.15em;">Por favor intentalo más tarde.</p><br/>'
 			});						
-		},
-		complete: function() {
-			if (!weHaveSuccess) {
-				BootstrapDialog.show({
-					title: "<span class='textBlack' style='font-size:1.15em;'><img alt='' src='../resources/webapp/images/fa-warning-bk.png'  title='Alerta' />No se ha eliminado la promoción</span>",
-					message: '<div style="display:block; min-height:150px;"><p class="textBlack text-center" style="font-size:1.15em;">Por favor intentalo más tarde.</p><br/>'
-				});
-			}
 		}
 	});
 };
@@ -319,14 +285,41 @@ var $activaRadio  = function(radio){
 				case 'Visítanos':
 					$("#r4").prop('checked', true);
 					break;
-			default: $("#r1#r2#r3#r4").prop('checked', false);
+			default: $("#r2#r3#r4").prop('checked', false);
+					 $("#r1").prop('checked', true);
 		}
+};
+
+var $validarCampos  = function(){
+	$nom =$nombrePromo.val();
+	if($nom.length() > 0){
+		return "nombre de la promoción";
+	}else if($descPromo.length() > 0){
+		return "descripción de la promoción";
+		
+	}else if($datepickerPromo.length() > 0){
+		return "vigencia de la promoción";
+		
+	}else if($('.radioPromo:checked').empty()){
+		return "comó redimir";
+		
+	}else{
+		return "datosCompletos";
+		
+	}
+		
 };
 
 $(document).ready(function() {					
 	$btnPublicar.click(function(){
 		console.log("Va a publicar!");
-		$publicarPromocion()
+		$resultado = $validarCampos(); 
+		if( $resultado == "datosCompletos"){
+			$publicarPromocion();
+		}else{
+			$divError.val("Falta llenar el campo " + $resultado);
+		}
+		
 	});
 	
 	$btnVistaPrevia.click(function(){
@@ -350,7 +343,13 @@ $(document).ready(function() {
 	});
 	$btnGuardar.click(function(){
 		console.log("Va a guardar los cambios");
-		$guardarCambiosEnPromocion();
+		$resultado = $validarCampos(); 
+		if( $resultado == "datosCompletos"){
+			$guardarCambiosEnPromocion();
+		}else{
+			$divError.text("Falta llenar el campo " + $resultado);
+		}
+		
 		
 	});
 				

@@ -844,8 +844,9 @@ public class WebappController
 		
 		return new ModelAndView("Webapp/promociones", model);
 	}
-
-	@RequestMapping(value = "/infomovil/guardarPromocion", method = {RequestMethod.GET, RequestMethod.POST})
+	@SuppressWarnings("unchecked")
+	@RequestMapping(value = "/infomovil/guardarPromocion", method = {RequestMethod.GET, RequestMethod.POST}, produces = "application/json")
+	@ResponseBody
 	public Map<String, String> guardarPromocion(@RequestParam String titulo, @RequestParam String descripcion, @RequestParam String fechaVigencia
 				, String base64Imagen, @RequestParam String redimir, @RequestParam String terminos)
 	{		
@@ -872,8 +873,9 @@ public class WebappController
 		return resultado;
 	}
 	
-	
-	@RequestMapping(value = "/infomovil/eliminarPromocion", method = {RequestMethod.GET, RequestMethod.POST})
+	@SuppressWarnings("unchecked")
+	@RequestMapping(value = "/infomovil/eliminarPromocion", method = {RequestMethod.GET, RequestMethod.POST}, produces = "application/json")
+	@ResponseBody
 	public Map<String, String> eliminarPromocion(@RequestParam int idPromocion)
 	{		
 		RespuestaVO respVO = new RespuestaVO();
