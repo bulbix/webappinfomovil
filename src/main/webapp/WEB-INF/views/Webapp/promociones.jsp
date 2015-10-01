@@ -103,7 +103,7 @@
 		
 
 			
-				<div id="divPublicarPromo">
+				<div id="divPublicarPromo" style="display:none">
 				
 				
 				<button type="button" class="btn btn-outlineGreen pull-right"  id="btnPublicar" style="margin: 5px 0;"><img width="20" height="20" alt="Infomovil" src="<c:url value="/resources/webapp/images/successWhite.png"/>" /> 
@@ -122,7 +122,7 @@
 				</div>
 				<div class="clear"></div>
 				
-				<div id="divPromoPublicada">
+				<div id="divPromoPublicada" style="display:none">
 				  
 						 <button type="button" class="btn btn-outlineGreen pull-right"  id="btnGuardar" style="margin: 5px 0 0 0;"><img width="20" height="20" alt="Infomovil" src="<c:url value="/resources/webapp/images/successWhite.png"/>" /> 
 						 <span class="hidden-xs">Guardar</span></button>
@@ -130,8 +130,8 @@
 				 <button type="button" class="btn btn-outlineGreen pull-right"  id="btnEliminar" style="margin: 5px 5px 0 0;"><img width="20" height="20" alt="Infomovil" src="<c:url value="/resources/webapp/images/trash.png"/>" /> 
 						 <span class="hidden-xs">Eliminar</span></button>
 						 
-				 <button type="button" class="btn btn-outlineGreen pull-right"  id="btnImprimir" style="margin: 5px 5px 0 0;"><img width="20" height="20" alt="Infomovil" src="<c:url value="/resources/webapp/images/fa-print.png"/>" /> 
-						 <span class="hidden-xs">Imprimir</span></button>
+				  <!-- <button type="button" class="btn btn-outlineGreen <pull-right"  id="btnImprimir" style="margin: 5px 5px 0 0;"><img width="20" height="20" alt="Infomovil" src="<c:url value="/resources/webapp/images/fa-print.png"/>" /> 
+						 <span class="hidden-xs">Imprimir</span></button>-->
 						 
 						 <button type="button" class="btn btn-outlineGreen pull-right"  id="btnVerPromo" style="margin: 5px 5px 0 0;"><img width="20" height="20" alt="Infomovil" src="<c:url value="/resources/webapp/images/fa-eye.png"/>" /> 
 						 <span class="hidden-xs">Ver</span></button>
