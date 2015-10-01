@@ -1,21 +1,21 @@
 //Calores para 
-$nombrePromo =  $("#nombrePromo");
-$descPromo =  $("#descPromo");
-$datepickerPromo =  $("#datepicker");
-$infoadiPromo =  $("#infoadiPromo");
-$divPromoPublicada = $("#divPromoPublicada");
-$divPublicarPromo = $("#divPublicarPromo");
-$idPromocion = $("#idPromocion");
+var $nombrePromo =  $("#nombrePromo");
+var $descPromo =  $("#descPromo");
+var $datepickerPromo =  $("#datepicker");
+var $infoadiPromo =  $("#infoadiPromo");
+var $divPromoPublicada = $("#divPromoPublicada");
+var $divPublicarPromo = $("#divPublicarPromo");
+var $idPromocion = $("#idPromocion");
 // div que muestra que falta un campo por llenar
-$divError = $("#divError");
+var $divError = $("#divError");
 //botones para publicar promocion
-$btnPublicar = $("#btnPublicar");
-$btnVistaPrevia = $("#btnVistaPrevia");
+var $btnPublicar = $("#btnPublicar");
+var $btnVistaPrevia = $("#btnVistaPrevia");
 //botones para modificar promocion publicada
-$btnCompartir = $("#btnCompartir");
-$btnVerPromo = $("#btnVerPromo");
-$btnEliminar = $("#btnEliminar");
-$btnGuardar = $("#btnGuardar");
+var $btnCompartir = $("#btnCompartir");
+var $btnVerPromo = $("#btnVerPromo");
+var $btnEliminar = $("#btnEliminar");
+var $btnGuardar = $("#btnGuardar");
 	
 $(function() {
 	$datepickerPromo.datepicker({ dateFormat: 'dd/mm/yy' });	
@@ -24,6 +24,7 @@ $(function() {
 $datepickerPromo.click(function() {
 	var date = $datepickerPromo.datepicker({ dateFormat: 'dd/mm/yy' }).val();
 });
+
 
 
 var $getPromociones = function(){
@@ -328,20 +329,21 @@ var $activaRadio  = function(radio){
 
 var $validarCampos  = function(){
 	$nom =$nombrePromo.val();
-	if($nom.length() > 0){
+	$desc = $descPromo.val();
+	$dp = $datepickerPromo.val();
+	$rp = $('.radioPromo:checked').val();
+	if($nom.length <= 0){
 		return "nombre de la promoción";
-	}else if($descPromo.length() > 0){
+	}else if($desc.length <= 0){
 		return "descripción de la promoción";
 		
-	}else if($datepickerPromo.length() > 0){
+	}else if($dp.length <= 0){
 		return "vigencia de la promoción";
 		
-	}else if($('.radioPromo:checked').empty()){
+	}else if($rp.length <= 0){
 		return "comó redimir";
-		
 	}else{
 		return "datosCompletos";
-		
 	}
 		
 };

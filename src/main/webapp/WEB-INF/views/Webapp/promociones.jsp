@@ -106,17 +106,19 @@
 		
 			<h3 class="text-left textWhite" style="font-weight: 300; margin:20px 0 0 0;">Mis
 				promociones</h3>
-				<div id="divPublicarPromo">
+	
+				
+				<div id="divPublicarPromo" style="display:none">
 						<input type="button" id="btnPublicar" value="Publicar"/>
 						<input type="button" id="btnVistaPrevia" value="Vista Previa"/>
 				</div>
-				 <div id="divPromoPublicada">
+				 <div id="divPromoPublicada" style="display:none">
 						<input type="button" id="btnCompartir" value="Compartir"/>
 						<input type="button" id="btnVerPromo" value="Ver promo"/>
 						<input type="button" id="btnEliminar" value="Eliminar"/>
 						<input type="button" id="btnGuardar" value="Guardar"/>
-						
 				</div> 
+				
 			<hr />
 			<!--Theme showcase -->
 			<div class="theme-showcaseApp" role="main" id="intro">
@@ -126,12 +128,12 @@
 					<div class="page-header text-center">
 					
 							
-						   <input type="hidden" id="idPromocion" value=""/>
+						   <input type="hidden" id="idPromocion" value="${idOffer}"/>
 						
 						
-							Nombre de la promoción:<input type="text" name="nombrePromo" id="nombrePromo" value="" required><br>
-							Descripción de la promoción:<textarea rows="4"  cols="50"  name="descPromo" id="descPromo" required></textarea><br>
-							Vigencia al:<input type="text" id="datepicker" value="" required><br><br>
+							Nombre de la promoción:<input type="text" name="nombrePromo" id="nombrePromo" value="${titleOffer}" required><br>
+							Descripción de la promoción:<textarea rows="4"  cols="50"  name="descPromo" id="descPromo" required>${descOffer}</textarea><br>
+							Vigencia al:<input type="text" id="datepicker" value="${endDateOffer}" required><br><br>
 							¿Cómo redimir?:<br><br>
 							
 									<br><input type="radio" name="radioPromo" id="r1" value="No especificado" class="radioPromo" checked="checked" >No especificado<br>
@@ -139,7 +141,7 @@
 									<br><input type="radio" name="radioPromo" id="r3" value="Envíanos un e-mail" class="radioPromo">Envíanos un e-mail<br>
 									<br><input type="radio" name="radioPromo" id="r4" value="Visítanos" class="radioPromo">Visítanos<br>
 									
-							Información adicional:<input type="text" name="infoadiPromo" id="infoadiPromo" value=""><br><br>
+							Información adicional:<input type="text" name="infoadiPromo" id="infoadiPromo" value="${termsOffer}"><br><br>
 						<div id="divError" style="color:red"></div>
 					
 						
@@ -172,7 +174,15 @@
 	<script src="<c:url value="/resources/webapp/js/datepicker/jquery.ui.datepicker.js"/>"></script>
 	
 	<script src="<c:url value="/resources/js/webapp/promociones.js"/>"></script>
-	
+	<input type="hidden" id="valRadio" value="${redeemOffer}"/>
+	<c:choose>
+		   		<c:when test="${idOffer > 0}">
+		   				<script>$(document).ready(function() {	$("#diPublicarPromo").hide(); $("#divPromoPublicada").show(); $activaRadio($("#valRadio").val()); }); </script>
+		   		</c:when>
+		  		<c:otherwise>
+			  			<script>$("#diPublicarPromo").show(); $("#divPromoPublicada").hide();  </script>
+		  		</c:otherwise>
+		</c:choose>
  
 
 
