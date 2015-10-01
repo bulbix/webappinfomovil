@@ -122,12 +122,12 @@
 			<div class="theme-showcaseApp" role="main" id="intro">
 				<!-- Main jumbotron for a primary marketing message or call to action -->
 				<div class="">
-					<!-- page header -->
+					<!-- page header <input type="text" id="checkedRedimir" value=""/>-->
 					<div class="page-header text-center">
 					
 					
 						<input type="hidden" id="idPromocion" value=""/>
-						<input type="hidden" id="checkedRedimir" value=""/>
+						
 						
 							Nombre de la promoción:<input type="text" name="nombrePromo" id="nombrePromo" value=""><br>
 							Descripción de la promoción:<textarea rows="4"  cols="50"  name="descPromo" id="descPromo"></textarea><br>
@@ -141,13 +141,7 @@
 									
 							Información adicional:<input type="text" name="infoadiPromo" id="infoadiPromo" value=""><br><br>
 
-				
-						
-						
-						
-						
-						
-						
+					
 						
 					</div>
 					<!-- /page header -->
