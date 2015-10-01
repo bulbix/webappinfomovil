@@ -2,7 +2,7 @@
 $nombrePromo =  $("#nombrePromo");
 $descPromo =  $("#descPromo");
 $datepickerPromo =  $("#datepicker");
-$radioPromo =  $(".radioPromo");
+$radioPromo =  $(".radioPromo:checked");
 $infoadiPromo =  $("#infoadiPromo");
 $divPromoPublicada = $("#divPromoPublicada");
 $divPublicarPromo = $("#divPublicarPromo");
@@ -78,10 +78,6 @@ var $getPromociones = function(){
 		
 	});	
 };
-
-//Carga los datos de las promociones //
-$getPromociones();
-						
 
 var $publicarPromocion = function(){
 	weHaveSuccess = false;
@@ -301,8 +297,47 @@ var $compartirPromocion = function(){
 };
 
 
-var $verPromocionActiva = function(){
+var $verPromocionActiva = function() {
+
+	$.blockUI.defaults.baseZ = 9000;
+	$.blockUI({
+		message: "Generando vista previa...",
+		css: {
+			class:"alertaUI",
+			top:  ($(window).height() - 400) /2 + 'px',
+			left: ($(window).width() - 400) /2 + 'px',
+			width: '400px'
+		}
+	});
+	
+	$.ajax({
 		
+		type : "POST",
+		url : contextPath + "/infomovil/verPromo",
+		dataType : "json",
+		data : {			
+			titulo: $nombrePromo.val(),
+			descripcion: $descPromo.val(),
+			fechaVigencia:  $datepickerPromo.val(),
+			base64Imagen: "",
+			redimir: $radioPromo.val(),
+			terminos:$infoadiPromo.val()
+		},
+			success : function(data) {
+				console.log("Mostrar el modal con el iframe: " + data.urlVistaPreviaPromo);
+				$.unblockUI();
+				window.open(data.urlVistaPreviaPromo, '_blank');
+			},
+			error : function(json) {
+				$.unblockUI();
+				console.log("json::: " + json);
+				BootstrapDialog.show({
+					title: "<span class='textBlack' style='font-size:1.15em;'><img alt='' src='../resources/webapp/images/fa-warning-bk.png'  title='Alerta' />No se ha podido obtener la vista previa de la promoción</span>",
+					message: '<div style="display:block; min-height:150px;"><p class="textBlack text-center" style="font-size:1.15em;">Por favor intentalo más tarde.</p><br/>'
+				});
+									
+			}
+		});	
 };
 
 var $activaRadio  = function(radio){
@@ -323,39 +358,35 @@ var $activaRadio  = function(radio){
 		}
 };
 
-$(document).ready(function() {					
+$(document).ready(function() {	
+	
 	$btnPublicar.click(function(){
 		console.log("Va a publicar!");
 		$publicarPromocion()
 	});
 	
-	$btnVistaPrevia.click(function(){
+	$btnVistaPrevia.click(function() {
 		console.log("Va a vista previa");
 		$vistaPrevia();
-		
 	});
-	$btnCompartir.click(function(){
+	
+	$btnCompartir.click(function() {
 		console.log("va a compartir!!");
-		$compartirPromocion();
-		
+		$compartirPromocion();	
 	});
-	$btnVerPromo.click(function(){
-		console.log(" va a ver la promo en linea");
-		$verPromocionActiva();
-		
+	
+	$btnVerPromo.click(function() {
+		$verPromocionActiva();		
 	});
-	$btnEliminar.click(function(){
+	
+	$btnEliminar.click(function() {
 		console.log("va a eliminar promocion");
 		$eliminarPromocion();
 	});
-	$btnGuardar.click(function(){
+	
+	$btnGuardar.click(function() {
 		console.log("Va a guardar los cambios");
 		$guardarCambiosEnPromocion();
-		
 	});
 				
 });
-
- 
-	
-
