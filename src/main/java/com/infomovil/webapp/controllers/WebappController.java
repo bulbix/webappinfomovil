@@ -826,26 +826,41 @@ public class WebappController
 	{		
 		HashMap<String, Object> model = new HashMap<String, Object>();
 		RespuestaVO wsRespuesta = new RespuestaVO();
-
+//		OffertRecordVO promocion = new OffertRecordVO();
+		
 		try
 		{		
 			String correo = Util.getUserLogged().getUsername();
 			String password = Util.getUserLogged().getPassword();
 			
 			wsRespuesta = wsCliente.crearSitioGetPromociones(correo, password);
-			model.put("promociones", wsRespuesta.getListPromocion());
+			//model.put("promociones", wsRespuesta.getListPromocion());
+			for (OffertRecordVO promocion : wsRespuesta.getListPromocion())
+			{
+				model.put("titleOffer", promocion.getTitleOffer());
+				model.put("descOffer", promocion.getDescOffer());
+				model.put("termsOffer", promocion.getTermsOffer());
+				model.put("imageClobOffer", promocion.getImageClobOffer());
+				model.put("endDateOffer", promocion.getEndDateOffer());
+				model.put("promoCodeOffer", promocion.getPromoCodeOffer());
+				model.put("discountOffer", promocion.getDiscountOffer());
+				model.put("redeemOffer", promocion.getRedeemOffer());
+				model.put("idOffer", promocion.getIdOffer());
+				model.put("urlImage", promocion.getUrlImage());
+			}
 			
 		}		
 		catch (Exception e) 
 		{
-			logger.error("getPromociones:::::", e);
+			logger.error("misPromociones:::::", e);
 			return null;
 		}			
 		
 		return new ModelAndView("Webapp/promociones", model);
 	}
-
-	@RequestMapping(value = "/infomovil/guardarPromocion", method = {RequestMethod.GET, RequestMethod.POST})
+	@SuppressWarnings("unchecked")
+	@RequestMapping(value = "/infomovil/guardarPromocion", method = {RequestMethod.GET, RequestMethod.POST}, produces = "application/json")
+	@ResponseBody
 	public Map<String, String> guardarPromocion(@RequestParam String titulo, @RequestParam String descripcion, @RequestParam String fechaVigencia
 				, String base64Imagen, @RequestParam String redimir, @RequestParam String terminos)
 	{		
@@ -872,8 +887,9 @@ public class WebappController
 		return resultado;
 	}
 	
-	
-	@RequestMapping(value = "/infomovil/eliminarPromocion", method = {RequestMethod.GET, RequestMethod.POST})
+	@SuppressWarnings("unchecked")
+	@RequestMapping(value = "/infomovil/eliminarPromocion", method = {RequestMethod.GET, RequestMethod.POST}, produces = "application/json")
+	@ResponseBody
 	public Map<String, String> eliminarPromocion(@RequestParam int idPromocion)
 	{		
 		RespuestaVO respVO = new RespuestaVO();
@@ -925,6 +941,35 @@ public class WebappController
 		return list;
 	}
 	
+	@RequestMapping(value = "/infomovil/verPromo", method = { RequestMethod.GET , RequestMethod.POST }, produces = "application/json")
+	@ResponseBody
+	public Map<String, String> verPromo(String titulo, String descripcion, String fechaVigencia, String base64Imagen, 
+			String redimir, String terminos)
+	{
+		RespuestaVO respVO = new RespuestaVO();
+		Map<String, String> resultado = new HashMap<String, String>();
+
+		try
+		{		
+			String correo = Util.getUserLogged().getUsername();
+			String password = Util.getUserLogged().getPassword();
+			respVO = wsCliente.crearSitioPrevisualizarPromocion(correo, password, descripcion, fechaVigencia, redimir, terminos, titulo, base64Imagen);
+			resultado.put("codeError", respVO.getCodeError());
+			resultado.put("descEror", respVO.getMsgError());
+			resultado.put("urlVistaPreviaPromo", respVO.getUrlPromocion());
+			logger.info("UrlPromocion: " + respVO.getUrlPromocion());
+		}		
+		catch (Exception e) 
+		{
+			logger.error("verPromo:::::", e);
+			resultado.put("codeError", respVO.getCodeError());
+			resultado.put("descEror", respVO.getMsgError());
+			resultado.put("urlVistaPreviaPromo", "");
+			return null;
+		}			
+		
+		return resultado;
+	}
 	
 }
 

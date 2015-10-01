@@ -156,9 +156,10 @@
 					<!-- page header <input type="text" id="checkedRedimir" value=""/>-->
 					<div class="page-header text-center">
 					
-					
-						<input type="hidden" id="idPromocion" value=""/>
+							
+						   <input type="hidden" id="idPromocion" value=""/>
 						
+
 						<div class="form-group">
     <label for="exampleInputEmail1" class="text-left">Nombre de la promoción:</label>
     <input type="text" class="form-control" name="nombrePromo" id="nombrePromo" value="">
@@ -220,7 +221,7 @@
     
   </div>
 
-  
+
 						
 					</div>
 					<!-- /page header -->
