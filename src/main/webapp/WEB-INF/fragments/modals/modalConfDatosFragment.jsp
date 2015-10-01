@@ -31,17 +31,12 @@
       <input type="email" class="form-controlModal" id="emailUser" disabled="disabled" value="${correoElectronico}">
     </div>
   </div>
-
-  
   <div class="form-group">
     <label for="inputPassword3" class="col-sm-2 control-label text-left">País</label>
     <div class="col-xs-12  col-sm-10">
      <select><option>MX</option></select>
     </div>
   </div>
-
-
-
   <div class="dividerSmall"></div>
   <hr/>
   <p style="color:#2fa399">Renovación de dominio</p>
@@ -81,7 +76,9 @@
 <!-- 	</form> -->
 	
     <button type="button" class="btn btn-outline pull-right" id="btnPagoPaypal" > 
-		<img alt="Infomovil" src="<c:url value="/resources/webapp/images/btn_buyPayPayl.gif"/>"/>
+    <img src="https://www.paypalobjects.com/webstatic/es_MX/mktg/logos-buttons/redesign/btn_11.png" alt="undefined" />
+    
+<%-- 		<img alt="Infomovil" src="<c:url value="/resources/webapp/images/btn_buyPayPayl.gif"/>"/> --%>
     </button>
 
     </div>

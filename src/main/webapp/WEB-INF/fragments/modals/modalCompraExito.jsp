@@ -20,6 +20,10 @@
 							src="<c:url value="/resources/webapp/images/fa-purchase-bk.png"/>" /> Gracias por tu compra</h3>
 							
 							<span>En breve recibirás un correo con tu ticket de pago</span>
+							
+							<br/>
+							<hr/>
+							<span>Puede tardar unos minutos en reflejarse las nuevas fechas de vigencia</span>
 					
 	</div>
 	
