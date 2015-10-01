@@ -286,13 +286,14 @@ var $verPromocionActiva = function() {
 			descripcion: $descPromo.val(),
 			fechaVigencia:  $datepickerPromo.val(),
 			base64Imagen: "",
-			redimir: $radioPromo.val(),
+			redimir: $('.radioPromo:checked').val(),
 			terminos:$infoadiPromo.val()
 		},
 			success : function(data) {
 				console.log("Mostrar el modal con el iframe: " + data.urlVistaPreviaPromo);
+				$("#urlVistaPreviaPromo").attr('src', data.urlVistaPreviaPromo);
+				$("#myModalPromo").modal();	
 				$.unblockUI();
-				window.open(data.urlVistaPreviaPromo, '_blank');
 			},
 			error : function(json) {
 				$.unblockUI();
