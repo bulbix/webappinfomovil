@@ -371,7 +371,7 @@ public class WebappController
 		{
 			logoutInfomovil(request, response);
 			correo = correo.toLowerCase();
-			wsRespuesta = wsCliente.crearSitioRegistrar(correo, passwordDefault, nombre, codigo, "automatico");
+			wsRespuesta = wsCliente.crearSitioRegistrar(correo, passwordDefault, nombre, codigo.toLowerCase(), "automatico");
 			codigoError = wsRespuesta.getCodeError();
 			descripcionError = wsRespuesta.getMsgError();
 			
@@ -418,7 +418,7 @@ public class WebappController
 		RespuestaVO wsRespuesta = new RespuestaVO();
 		String codigoError = "", descripcionError = "", vista="";
 		correo = correo.toLowerCase();
-		wsRespuesta = wsCliente.crearSitioRegistrar(correo, contrasenia, correo, codigo, "formulario");
+		wsRespuesta = wsCliente.crearSitioRegistrar(correo, contrasenia, correo, codigo.toLowerCase(), "formulario");
 		codigoError = wsRespuesta.getCodeError();
 		descripcionError = wsRespuesta.getMsgError();
 		
@@ -545,7 +545,7 @@ public class WebappController
 		return new ModelAndView("Webapp/miCta", model);
 	}
 
-	@RequestMapping(value = "/infomovil/editarSitio", method = RequestMethod.GET)
+	@RequestMapping(value = "/infomovil/editarSitio", method = { RequestMethod.GET, RequestMethod.POST })
 	public ModelAndView editarSitio(HttpServletRequest request, HttpServletResponse response, RedirectAttributes redirectAttributes)
 	{		
 		HashMap<String, Object> model = new HashMap<String, Object>();
