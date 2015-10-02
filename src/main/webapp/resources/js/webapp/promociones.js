@@ -373,7 +373,17 @@ $(document).ready(function() {
 	});
 	
 	$btnCompartir.click(function() {
-		console.log("va a compartir!!");
+		var url = $("#urlPromocion").val(); 
+		var lFace = "http://www.facebook.com/sharer/sharer.php?u=" + url + "&t=Sitio%20creado%20con%20www.infomovil.com"; 
+		$('#Facebook').attr('href', lFace); 
+		var lGoogle = "https://plus.google.com/share?url=http://" + url; 
+		$('#Google').attr('href', lGoogle);
+		var lEmail = "mailto:?subject=http://"+ url + "%20Checa%20este%20sitio!&body=Checa%20este%20sitio%20web:%20http://"+ url + "%0A%0ACreado%20con%20www.infomovil.com"; 
+		$('#Email').attr('href', lEmail); 
+		var lTwitt = "http://www.twitter.com/intent/tweet?text=http://"+ url +"%20%0A%0ACheca%20este%20sitio%20web:"+ url; 
+		$('#Twitter').attr('href', lTwitt);
+		if(navigator.userAgent.match(/Android|BlackBerry|iPhone|iPad|iPod|Opera Mini|IEMobile/i)){ var lWhatsapp = "whatsapp://send?text=Checa%20este%20sitio%20web:" + url; }else{ var lWhatsapp = "javascript:alert('Esta acción no se puede completar en este dispositivo')"; } 
+		$('#WhatsApp').attr('href', lWhatsapp);
 		$compartirPromocion();	
 	});
 	
