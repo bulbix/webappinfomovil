@@ -608,6 +608,18 @@ section.bgBlack { /*margin: 0 -5px 0 0; */
 	color: #000 !important;
 	height: auto !important;
 }
+.form-control3 {
+	background: url(../images/bg_inpt_cal.png) no-repeat top right;
+	border-bottom: 2px solid #fff;
+	border-left: none;
+	border-right: none;
+	border-top: none;
+	border-radius: 8px;
+	font-size: 16px !important;
+	font-weight: 400 !important;
+	color: #000 !important;
+	height: auto !important;
+}
 
 ::-webkit-input-placeholder {
 	color: #efefef !important;
