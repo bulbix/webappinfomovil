@@ -99,6 +99,8 @@ var $publicarPromocion = function() {
 		success : function(data) {			
 			$divPublicarPromo.hide();
 			$divPromoPublicada.show();
+			$("#idPromocion").val(data.idOffer);
+			console.log("idOffer: " + data.idOffer); 
 			$.unblockUI();
 		},
 		error : function(json) {
@@ -139,9 +141,9 @@ var $guardarCambiosEnPromocion = function() {
 			terminos: $infoadiPromo.val()
 			},
 			success : function(data) {
-				console.log("LA RESPUESTA DEL GUARDADO ES: " +data);
 				$divPublicarPromo.hide();
 				$divPromoPublicada.show();
+				$("#idPromocion").val(data.idOffer);				
 				$.unblockUI();
 			},
 			error : function(json) {
@@ -156,44 +158,66 @@ var $guardarCambiosEnPromocion = function() {
 };
 
 var $eliminarPromocion = function() {
+
+	var eliminarPromocion = false;
 	
-	$.blockUI.defaults.baseZ = 9000;
-	$.blockUI({
-		message: "Eliminando la promoción...",
-		css: {
-			class:"alertaUI",
-			top:  ($(window).height() - 400) /2 + 'px',
-			left: ($(window).width() - 400) /2 + 'px',
-			width: '400px'
-		}
-	});
-	
-	$.ajax({
-		type : "POST",
-		url : contextPath + "/infomovil/eliminarPromocion",
-		dataType : "json",
-		
-		data : {
-			idPromocion: $idPromocion.val()	
+	BootstrapDialog
+	.show({
+		title : '<div class="textBlack">Eliminar Imagen</div>',
+		message : '<div style="display:block; padding: 10px;">¿Seguro que deseas eliminar la promoción?</div>',
+		buttons : [{
+					
+			label : 'Cancelar',
+			action : function(dialog) {
+				dialog.close();
+				
+			}
 		},
-		success : function(data) {
-			 $nombrePromo.val(""); 
-			 $descPromo.val("");
-			 $infoadiPromo.val("");
-			 $idPromocion.val("");
-			 $datepickerPromo.val("");
-			 $divPublicarPromo.show();
-			 $divPromoPublicada.hide();
-			 $activaRadio("0");
-			 $.unblockUI();
-		},
-		error : function(json) {
-			$.unblockUI();
-			BootstrapDialog.show({
-				title: "<span class='textBlack' style='font-size:1.15em;'><img alt='' src='../resources/webapp/images/fa-warning-bk.png'  title='Alerta' />No se ha eliminado la promoción</span>",
-				message: '<div style="display:block; min-height:150px;"><p class="textBlack text-center" style="font-size:1.15em;">Por favor intentalo más tarde.</p><br/>'
-			});						
-		}
+		{
+			label : 'Aceptar',
+			action : function(dialog) {
+				dialog.close();
+
+				$.blockUI.defaults.baseZ = 9000;
+				$.blockUI({
+					message: "Eliminando la promoción...",
+					css: {
+						class:"alertaUI",
+						top:  ($(window).height() - 400) /2 + 'px',
+						left: ($(window).width() - 400) /2 + 'px',
+						width: '400px'
+					}
+				});
+				
+				$.ajax({
+					type : "POST",
+					url : contextPath + "/infomovil/eliminarPromocion",
+					dataType : "json",
+					
+					data : {
+						idPromocion: $idPromocion.val()	
+					},
+					success : function(data) {
+						 $nombrePromo.val(""); 
+						 $descPromo.val("");
+						 $infoadiPromo.val("");
+						 $idPromocion.val("");
+						 $datepickerPromo.val("");
+						 $divPublicarPromo.show();
+						 $divPromoPublicada.hide();
+						 $activaRadio("0");
+						 $.unblockUI();
+					},
+					error : function(json) {
+						$.unblockUI();
+						BootstrapDialog.show({
+							title: "<span class='textBlack' style='font-size:1.15em;'><img alt='' src='../resources/webapp/images/fa-warning-bk.png'  title='Alerta' />No se ha eliminado la promoción</span>",
+							message: '<div style="display:block; min-height:150px;"><p class="textBlack text-center" style="font-size:1.15em;">Por favor intentalo más tarde.</p><br/>'
+						});						
+					}
+				});
+			}
+		}]
 	});
 };
 

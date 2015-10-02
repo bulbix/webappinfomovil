@@ -858,11 +858,11 @@ public class WebappController
 		
 		return new ModelAndView("Webapp/promociones", model);
 	}
-	@SuppressWarnings("unchecked")
+
 	@RequestMapping(value = "/infomovil/guardarPromocion", method = {RequestMethod.GET, RequestMethod.POST}, produces = "application/json")
 	@ResponseBody
 	public Map<String, String> guardarPromocion(@RequestParam String titulo, @RequestParam String descripcion, @RequestParam String fechaVigencia
-				, String base64Imagen, @RequestParam String redimir, @RequestParam String terminos)
+				, String base64Imagen, @RequestParam String redimir, @RequestParam String terminos, Model model)
 	{		
 		int idPromocion = 0; 
 		RespuestaVO respVO = new RespuestaVO();
@@ -875,6 +875,12 @@ public class WebappController
 			respVO = wsCliente.crearSitioGuardarPromocion(correo, password, descripcion, fechaVigencia, redimir, terminos, titulo, base64Imagen, idPromocion);
 			resultado.put("codeError", respVO.getCodeError());
 			resultado.put("descEror", respVO.getMsgError());
+			
+			respVO = wsCliente.crearSitioGetPromociones(correo, password);
+			for (OffertRecordVO promocion : respVO.getListPromocion())
+			{
+				resultado.put("idOffer", promocion.getIdOffer());
+			}
 		}		
 		catch (Exception e) 
 		{
@@ -887,7 +893,6 @@ public class WebappController
 		return resultado;
 	}
 	
-	@SuppressWarnings("unchecked")
 	@RequestMapping(value = "/infomovil/eliminarPromocion", method = {RequestMethod.GET, RequestMethod.POST}, produces = "application/json")
 	@ResponseBody
 	public Map<String, String> eliminarPromocion(@RequestParam int idPromocion)
@@ -899,7 +904,7 @@ public class WebappController
 		{		
 			String correo = Util.getUserLogged().getUsername();
 			String password = Util.getUserLogged().getPassword();
-			respVO = wsCliente.crearSitioGuardarPromocion(correo, password,"", "", "", "", "", "", idPromocion);
+			respVO = wsCliente.crearSitioGuardarPromocion(correo, password, "", "", "", "", "", "", idPromocion);
 			resultado.put("codeError", respVO.getCodeError());
 			resultado.put("descEror", respVO.getMsgError());
 		}		
@@ -922,7 +927,7 @@ public class WebappController
 	{		
 		RespuestaVO respVO = new RespuestaVO();
 		JSONArray list = new JSONArray();
-		List<OffertRecordVO> wsRespuestas = null;
+
 		try
 		{		
 			String correo = Util.getUserLogged().getUsername();
@@ -962,6 +967,7 @@ public class WebappController
 			resultado.put("codeError", respVO.getCodeError());
 			resultado.put("descEror", respVO.getMsgError());
 			resultado.put("urlVistaPreviaPromo", respVO.getUrlPromocion());
+//			resultado.put("idOffer", respVO.geti);
 			logger.info("UrlPromocion: " + respVO.getUrlPromocion());
 		}		
 		catch (Exception e) 
