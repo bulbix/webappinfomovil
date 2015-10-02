@@ -155,7 +155,7 @@
 				  			<div class="form-group">
 				   				<div class="radio">
 									<label for="exampleInputFile" class="text-left">¿Cómo redimir?:</label>
-					  				<label><input type="radio" name="radioPromo" id="r1" value="No especificado" class="radioPromo">No especificado</label>
+					  				<label><input type="radio" name="radioPromo" id="r1" value="No especificado" class="radioPromo" checked="checked">No especificado</label>
 								</div>
 								<div class="radio">
 					  				<label><input type="radio" name="radioPromo" id="r2" value="Llámanos" class="radioPromo">Llámanos</label>
@@ -174,7 +174,7 @@
 					 	 	</div>							
 						</div>
 						
-						<div id="divError" style="color:red"></div>
+						<div id="divError" style="color:red;"></div>
 						<!-- /page header -->
 						<br /> <br />
 					</div>

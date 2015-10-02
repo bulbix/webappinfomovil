@@ -259,7 +259,7 @@ var $verPromocionActiva = function() {
 	
 	$.blockUI.defaults.baseZ = 9000;
 	$.blockUI({
-		message: "Generando vista previa...",
+		message: "Obteniendo promoción...",
 		css: {
 			class:"alertaUI",
 			top:  ($(window).height() - 400) /2 + 'px',
@@ -365,11 +365,11 @@ var $activaRadio  = function(radio){
 
 var $validarCampos  = function() {
 	
-	$nom =$nombrePromo.val().trim();
-	$desc = $descPromo.val().trim();
-	$dp = $datepickerPromo.val();
-	$rp = $('.radioPromo:checked').val();
-	
+	var $nom = $nombrePromo.val().trim();
+	var $desc = $descPromo.val().trim();
+	var $dp = $datepickerPromo.val();
+	var $rp = $('.radioPromo:checked').val();
+
 	if($nom.length <= 0){
 		return "nombre de la promoción";
 	}else if($desc.length <= 0){
@@ -379,7 +379,7 @@ var $validarCampos  = function() {
 		return "vigencia de la promoción";
 		
 	}else if($rp.length <= 0){
-		return "comó redimir";
+		return "cómo redimir";
 	}else{
 		return "datosCompletos";
 	}
@@ -389,14 +389,21 @@ var $validarCampos  = function() {
 $(document).ready(function() {	
 	
 	$btnPublicar.click(function() {
-		console.log("Va a publicar!");
+
 		$resultado = $validarCampos(); 
-		if( $resultado == "datosCompletos") {
+		
+		if( $resultado == "datosCompletos")
+		{
 			console.log("datosCompletos");
+			$divError.css("display", "none");
 			$publicarPromocion();
-		}else{
-			$divError.val("Falta llenar el campo " + $resultado);
-			$("#divError").css("display", "block");
+		}
+		else
+		{
+			$divError.html("Falta llenar el campo " + $resultado);
+			$divError.css("display", "block");
+		//	$("#divError").css("display", "block");
+			console.log("Falta llenar el campo dfgfabfda" + $resultado);
 		}
 		
 	});
