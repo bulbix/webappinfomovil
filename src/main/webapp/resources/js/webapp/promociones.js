@@ -368,19 +368,19 @@ $(document).ready(function() {
 	});
 	
 	$btnVistaPrevia.click(function() {
-		console.log("Va a vista previa");
+	//	console.log("Va a vista previa");
 		$vistaPrevia();
 	});
 	
 	$btnCompartir.click(function() {
 		var url = $("#urlPromocion").val(); 
-		var lFace = "http://www.facebook.com/sharer/sharer.php?u=" + url + "&t=Sitio%20creado%20con%20www.infomovil.com"; 
+		var lFace = "http://www.facebook.com/sharer/sharer.php?u=" + url + "&t=Checa%20esta%20promo%20"; 
 		$('#Facebook').attr('href', lFace); 
-		var lGoogle = "https://plus.google.com/share?url=http://" + url; 
+		var lGoogle = "https://plus.google.com/share?url=" + url; 
 		$('#Google').attr('href', lGoogle);
-		var lEmail = "mailto:?subject=http://"+ url + "%20Checa%20este%20sitio!&body=Checa%20este%20sitio%20web:%20http://"+ url + "%0A%0ACreado%20con%20www.infomovil.com"; 
+		var lEmail = "mailto:?subject=http://"+ url + "%20Checa%20este%20sitio!&body=Checa%20esta%20promo%20:"+ url + "%0A%0ACreado%20con%20www.infomovil.com"; 
 		$('#Email').attr('href', lEmail); 
-		var lTwitt = "http://www.twitter.com/intent/tweet?text=http://"+ url +"%20%0A%0ACheca%20este%20sitio%20web:"+ url; 
+		var lTwitt = "http://www.twitter.com/intent/tweet?text="+ url +"%20%0A%0ACheca%20esta%20promo:%20"+ url; 
 		$('#Twitter').attr('href', lTwitt);
 		if(navigator.userAgent.match(/Android|BlackBerry|iPhone|iPad|iPod|Opera Mini|IEMobile/i)){ var lWhatsapp = "whatsapp://send?text=Checa%20este%20sitio%20web:" + url; }else{ var lWhatsapp = "javascript:alert('Esta acción no se puede completar en este dispositivo')"; } 
 		$('#WhatsApp').attr('href', lWhatsapp);

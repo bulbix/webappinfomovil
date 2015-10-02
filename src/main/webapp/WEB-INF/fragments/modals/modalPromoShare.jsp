@@ -21,14 +21,11 @@
 			<div class="divider"></div>
 			<div class="col-xs-12">
 			<div class="col-xs-1">&nbsp;</div>
-			<div class="col-xs-2"><a href="" id="Facebook" target="_blank"><img width="50" height="50" alt="Infomovil" src="<c:url value="/resources/webapp/images/face_icn.png"/>" /></a> </div>
-			
-			<div class="col-xs-2"><a href="" id="Google" target="_blank"><img width="50" height="50" alt="Infomovil" src="<c:url value="/resources/webapp/images/twit_icn.png"/>" /> </a></div>
-			
-			<div class="col-xs-2"><a href="" id="Email"><img width="50" height="50" alt="Infomovil" src="<c:url value="/resources/webapp/images/gplus_icn.png"/>" /> </a></div>
-			
-			<div class="col-xs-2"><a href="" id="Twitter" target="_blank"><img width="50" height="50" alt="Infomovil" src="<c:url value="/resources/webapp/images/wapp_icn.png"/>" /></a></div>
-			<div class="col-xs-2"><a href="" id="WhatsApp" target="_blank"><img width="50" height="50" alt="Infomovil" src="<c:url value="/resources/webapp/images/mail_icn.png" />" /> </a></div>
+			<div class="col-xs-2"><a href="" id="Facebook" target="_blank"><img width="50" height="50" alt="Infomovil" src="<c:url value="/resources/webapp/images/face_icn.png"/>" /></a> </div>			
+			<div class="col-xs-2"><a href="" id="Google" target="_blank"><img width="50" height="50" alt="Infomovil" src="<c:url value="/resources/webapp/images/gplus_icn.png"/>" /> </a></div>			
+			<div class="col-xs-2"><a href="" id="Email"><img width="50" height="50" alt="Infomovil" src="<c:url value="/resources/webapp/images/mail_icn.png"/>" /> </a></div>			
+			<div class="col-xs-2"><a href="" id="Twitter" target="_blank"><img width="50" height="50" alt="Infomovil" src="<c:url value="/resources/webapp/images/twit_icn.png"/>" /></a></div>
+			<div class="col-xs-2"><a href="" id="WhatsApp" target="_blank"><img width="50" height="50" alt="Infomovil" src="<c:url value="/resources/webapp/images/wapp_icn.png" />" /> </a></div>
 			<div class="col-xs-1">&nbsp;</div>
 			</div>
 		</div>
