@@ -303,7 +303,7 @@ var $verPromocionActiva = function() {
 		url : contextPath + "/infomovil/verPromo",
 		dataType : "json",
 		data : {	
-			idDominio : parseInt($("#idOffer").val()),
+			idDominio : parseInt($idPromocion.val()),
 			titulo: $nombrePromo.val(),
 			descripcion: $descPromo.val(),
 			fechaVigencia:  $datepickerPromo.val(),
@@ -431,7 +431,6 @@ $(document).ready(function() {
 		{
 			$divError.html("Falta llenar el campo " + $resultado);
 			$divError.css("display", "block");
-		//	$("#divError").css("display", "block");
 			console.log("Falta llenar el campo dfgfabfda" + $resultado);
 		}
 		

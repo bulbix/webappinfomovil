@@ -204,10 +204,11 @@
 							</div>
 							
 							<div class="clear"></div>
+							<div id="divError" style="color:red;"></div>
 	 	 										
 						</div>
 						
-						<div id="divError" style="color:red;"></div>
+						
 						<!-- /page header -->
 						<br /> <br />
 					</div>

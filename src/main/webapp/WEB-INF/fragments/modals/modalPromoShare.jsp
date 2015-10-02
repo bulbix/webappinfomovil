@@ -36,3 +36,6 @@
 	</div>
 	<div class="modal-footer textBlack"></div>
 </div>
+<script>
+var url = $("#urlInput").val(); //Facebook var lFace = "http://www.facebook.com/sharer/sharer.php?u=" + url + "&t=Sitio%20creado%20con%20www.infomovil.com"; $('#Facebook').attr('href', lFace); //Google plus var lGoogle = "https://plus.google.com/share?url=http://" + url; $('#Google').attr('href', lGoogle); //Email var lEmail = "mailto:?subject=http://"+ url + "%20Checa%20este%20sitio!&body=Checa%20este%20sitio%20web:%20http://"+ url + "%0A%0ACreado%20con%20www.infomovil.com"; $('#Email').attr('href', lEmail); //Twitter var lTwitt = "http://www.twitter.com/intent/tweet?text=http://"+ url +"%20%0A%0ACheca%20este%20sitio%20web:"+ url; $('#Twitter').attr('href', lTwitt); //WhatsApp if(navigator.userAgent.match(/Android|BlackBerry|iPhone|iPad|iPod|Opera Mini|IEMobile/i)){ var lWhatsapp = "whatsapp://send?text=Checa%20este%20sitio%20web:" + url; }else{ var lWhatsapp = "javascript:alert('Esta acción no se puede completar en este dispositivo')"; } $('#WhatsApp').attr('href', lWhatsapp);
+</script>
