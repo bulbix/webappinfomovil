@@ -167,10 +167,11 @@ public class ClientWsInfomovilTest {
 	
 	@Test
 	public void testGetPromociones() {
-		RespuestaVO resp = clientWsInfomovil.crearSitioGetPromociones("test@test.com", "rosas111");
+		RespuestaVO resp = clientWsInfomovil.crearSitioGetPromociones("promociones@mail.com", "joseluis1");
 		assertNotNull(resp);
 		assertTrue(resp.getCodeError().equalsIgnoreCase("0"));
 		assertTrue(resp.getListPromocion().size() > 0);
+		System.out.println("urlPromo: " + resp.getListPromocion().get(0).getUrlPromocion());
 	}
 	
 	@Test

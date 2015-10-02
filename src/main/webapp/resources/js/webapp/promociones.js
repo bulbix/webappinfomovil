@@ -6,6 +6,7 @@ var $infoadiPromo =  $("#infoadiPromo");
 var $divPromoPublicada = $("#divPromoPublicada");
 var $divPublicarPromo = $("#divPublicarPromo");
 var $idPromocion = $("#idPromocion");
+var $urlPromocion = $("#urlPromocion");
 // div que muestra que falta un campo por llenar
 var $divError = $("#divError");
 //botones para publicar promocion
@@ -100,7 +101,7 @@ var $publicarPromocion = function() {
 			$divPublicarPromo.hide();
 			$divPromoPublicada.show();
 			$("#idPromocion").val(data.idOffer);
-			console.log("idOffer: " + data.idOffer); 
+			$("#urlPromocion").val(data.urlPromocion);			
 			$.unblockUI();
 		},
 		error : function(json) {
@@ -203,6 +204,7 @@ var $eliminarPromocion = function() {
 						 $infoadiPromo.val("");
 						 $idPromocion.val("");
 						 $datepickerPromo.val("");
+						 $urlPromocion.val("");
 						 $divPublicarPromo.show();
 						 $divPromoPublicada.hide();
 						 $activaRadio("0");
@@ -224,67 +226,12 @@ var $eliminarPromocion = function() {
 var $compartirPromocion = function() {
 	
 	$('#myModalPromoShare').modal();	
-	/*
-	switch(opcion) {
-		case Facebook:
-			lFace = "http://www.facebook.com/sharer/sharer.php?u=" + url + "&t=Site created with www.infomovil.com";
-			if (lenguaje.equalsIgnoreCase("es"))
-			{
-				lFace = "http://www.facebook.com/sharer/sharer.php?u=" + url + "&t=Sitio creado con www.infomovil.com";
-			}
-			window.location.replace(lFace);
-			break;
-		case WhatsApp: 
-			lWhatsapp = "";
-			if (lenguaje.equalsIgnoreCase("es"))
-			{
-				alert('Esta acción no se puede completar en este dispositivo'); 
-			}
-			if(nav.equals("movilMac")){
-				lWhatsapp = "whatsapp://send?text=Checa%20este%20sitio%20web:" + url; 
-			}
-			if(nav.equals("movilAndroid")){ 
-				lWhatsapp = "whatsapp://send?text=Checa%20este%20sitio%20web:" + url; 
-			}
-			if(nav.equals("operamini7")){ 
-				lWhatsapp = "whatsapp://send?text=Checa%20este%20sitio%20web:" + url; 
-			}
-			if(nav.equals("operamini8")){ 
-				lWhatsapp = "whatsapp://send?text=Checa%20este%20sitio%20web:" + url; 
-			}
-			if(lWhatsapp != "")window.location.replace(lWhatsapp);
-			break;
-		case Twitter:
-			lTwitt = "http://www.twitter.com/intent/tweet?text=http://"+ url +"%20%0A%0A Very good site! " + url;
-			if (lenguaje.equalsIgnoreCase("es"))
-			{
-				lTwitt = "http://www.twitter.com/intent/tweet?text=http://"+ url +"%20%0A%0ACheca%20este%20sitio%20web:"+ url;
-			}
-			window.location.replace(lTwitt);
-			break;
-		case Google:
-			lGoogle = "https://plus.google.com/share?url=http://" + url;
-			if (lenguaje.equalsIgnoreCase("es"))
-			{
-				lGoogle = "https://plus.google.com/share?url=http://" + url;
-			}
-			window.location.replace(lGoogle);
-			break;
-		case Email:
-			if(nav.equals("operamini7")){
-				lMail = "mailto:?subject=http://"+ url + "%20Checa%20este%20sitio!&amp;body=Checa%20este%20sitio%20web:%20http://"+ url + "%0A%0ACreado%20con%20www.infomovil.com";
-			}else{
-				lMail = "mailto:?subject=http://"+ url + "%20Checa%20este%20sitio!&amp;body=Checa%20este%20sitio%20web:%20http://"+ url + "%0A%0ACreado%20con%20www.infomovil.com";
-			}
-		 	window.location.replace(lMail);
-			break;
-			
-			
-	}
-	*/
+	
 };
 
 var $verPromocionActiva = function() {
+	
+	var $urlPromo = $("#urlPromocion").val();
 	
 	$.blockUI.defaults.baseZ = 9000;
 	$.blockUI({
@@ -296,36 +243,20 @@ var $verPromocionActiva = function() {
 			width: '400px'
 		}
 	});
+
+	if ($urlPromo.trim().length > 0 && $urlPromo != null)
+	{
+		$("#urlVistaPreviaPromo").attr('src', $("#urlPromocion").val());
+		$("#myModalPromo").modal();
+	}
+	else
+	{
+		console.log("no hay url");
+	}
 	
-	$.ajax({
-		
-		type : "POST",
-		url : contextPath + "/infomovil/verPromo",
-		dataType : "json",
-		data : {	
-			idDominio : parseInt($idPromocion.val()),
-			titulo: $nombrePromo.val(),
-			descripcion: $descPromo.val(),
-			fechaVigencia:  $datepickerPromo.val(),
-			base64Imagen: "",
-			redimir: $('.radioPromo:checked').val(),
-			terminos:$infoadiPromo.val()
-		},
-			success : function(data) {
-				$("#urlVistaPreviaPromo").attr('src', data.urlVistaPreviaPromo);
-				$("#myModalPromo").modal();	
-				$.unblockUI();
-			},
-			error : function(json) {
-				$.unblockUI();
-				console.log("json::: " + json);
-				BootstrapDialog.show({
-					title: "<span class='textBlack' style='font-size:1.15em;'><img alt='' src='../resources/webapp/images/fa-warning-bk.png'  title='Alerta' />No se ha podido obtener la vista previa de la promoción</span>",
-					message: '<div style="display:block; min-height:150px;"><p class="textBlack text-center" style="font-size:1.15em;">Por favor intentalo más tarde.</p><br/>'
-				});
-									
-			}
-		});	
+
+	$.unblockUI();
+
 };
 
 var $vistaPrevia = function() {
