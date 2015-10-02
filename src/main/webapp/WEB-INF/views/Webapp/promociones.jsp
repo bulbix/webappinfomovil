@@ -253,6 +253,13 @@
 				value='"modal-dialog modal-lg"' />
 			<c:set var="fragmentName" value="modalPromoVP" scope="request" />
 		</tiles:insertDefinition>
+		<tiles:insertDefinition name="modalGen">
+			<tiles:putAttribute name="idModal" value="myModalPromoShare" />
+			<tiles:putAttribute name="tamanioModal"
+				value='"modal-dialog modal-md"' />
+			<c:set var="fragmentName" value="modalPromoShare" scope="request" />
+		</tiles:insertDefinition>
+		
 	
 	</body>
 </html>
