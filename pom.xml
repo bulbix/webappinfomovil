@@ -274,7 +274,6 @@
 			<activation>
 				<activeByDefault>true</activeByDefault>
 			</activation>
-
 			<properties>
 				<config.profile>DEV</config.profile>
 			</properties>

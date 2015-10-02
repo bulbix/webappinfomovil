@@ -480,6 +480,7 @@ public class WebappController
 		String colorTexto = "textWhite";
 		String extensionImg = "";
 		String urlPaypal = "";
+		String urlReturn = "";
 		String nombreUsuario = "";
 		int totProductos = 0;
 
@@ -506,9 +507,19 @@ public class WebappController
 
 			/*URL para paypal*/
          	if(Util.getProfile().equals("PROD"))
+         	{
          		urlPaypal = new String("https://www.paypal.com/cgi-bin/webscr");
+         		urlReturn = new String("http://www.infomovil.com/infomovil/miCuenta");
+         	}
          	else
+         	{
          		urlPaypal = new String("https://www.sandbox.paypal.com/cgi-bin/webscr");
+         		urlReturn = new String("http://webapp-qa.mobileinfo.io/infomovil/miCuenta");
+         	}
+         	
+         	if (Util.getProfile().equals("DEV"))
+         		urlReturn = new String("http://localhost:10100/WebAppInfomovil/infomovil/miCuenta");
+         	
          	/*URL para paypal*/
          	
          	if (Util.getCurrentSession().getAttribute("nombreUsuario") != null)
@@ -527,7 +538,7 @@ public class WebappController
 			model.put("paymentStatus", payment_status);
 			model.put("urlPaypal", urlPaypal);
 			model.put("nombreUsuario", nombreUsuario);
-			
+			model.put("urlReturn", urlReturn);
 		}		
 		catch (Exception e) 
 		{
@@ -537,7 +548,7 @@ public class WebappController
 		return new ModelAndView("Webapp/miCta", model);
 	}
 
-	@RequestMapping(value = "/infomovil/editarSitio", method = RequestMethod.GET)
+	@RequestMapping(value = "/infomovil/editarSitio", method = { RequestMethod.GET, RequestMethod.POST })
 	public ModelAndView editarSitio(HttpServletRequest request, HttpServletResponse response, RedirectAttributes redirectAttributes)
 	{		
 		HashMap<String, Object> model = new HashMap<String, Object>();

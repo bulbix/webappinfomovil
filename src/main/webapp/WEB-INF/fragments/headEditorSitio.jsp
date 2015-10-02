@@ -107,8 +107,15 @@
 		  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
 		  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 		  ga('create', 'UA-53077061-1', 'auto');
+		  ga('set', 'dimension1', 'WebApp');
 		 ga('send', 'pageview'); 
 		</script>
+		<script type="text/javascript">
+setTimeout(function(){var a=document.createElement("script");
+var b=document.getElementsByTagName("script")[0];
+a.src=document.location.protocol+"//script.crazyegg.com/pages/scripts/0039/7317.js?"+Math.floor(new Date().getTime()/3600000);
+a.async=true;a.type="text/javascript";b.parentNode.insertBefore(a,b)}, 1);
+</script>
 		<script type="text/javascript">
 				var contextPath='<%=request.getContextPath()%>';
 				console.log("ContextPath: " + contextPath);

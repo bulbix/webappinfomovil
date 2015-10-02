@@ -83,7 +83,6 @@ function comprarPayPal(customId) {
 	$.unblockUI();	
 }
 
-function abrirModalExitoso() {
-//	alert("abrirModalExitoso");
-	$("#myModalCompraExitosa").modal();	
+function abrirModalExitoso(idModal) {
+	$("#" + idModal).modal();	
 }

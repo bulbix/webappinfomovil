@@ -598,7 +598,7 @@ section.bgBlack { /*margin: 0 -5px 0 0; */
 
 .form-control {
 	background: url(../images/lineWht.png) repeat;
-	border-bottom: 2px solid #fff;
+	/*border-bottom: 2px solid #999;*/
 	border-left: none;
 	border-right: none;
 	border-top: none;
@@ -607,6 +607,21 @@ section.bgBlack { /*margin: 0 -5px 0 0; */
 	font-weight: 400 !important;
 	color: #000 !important;
 	height: auto !important;
+	/*margin:5px;*/
+}
+
+.form-controlModal {
+	background: url(../images/lineWht.png) repeat;
+	border: 1px solid #999;
+/* 	border-left: none; */
+/* 	border-right: none; */
+/* 	border-top: none; */
+	border-radius: 8px;
+	font-size: 16px !important;
+	font-weight: 400 !important;
+	color: #000 !important;
+	height: auto !important;
+	margin:5px;
 }
 .form-control3 {
 	background: url(../images/bg_inpt_cal.png) no-repeat top right;
