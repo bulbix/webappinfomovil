@@ -6,6 +6,7 @@ var $infoadiPromo =  $("#infoadiPromo");
 var $divPromoPublicada = $("#divPromoPublicada");
 var $divPublicarPromo = $("#divPublicarPromo");
 var $idPromocion = $("#idPromocion");
+var $urlPromocion = $("#urlPromocion");
 // div que muestra que falta un campo por llenar
 var $divError = $("#divError");
 //botones para publicar promocion
@@ -100,7 +101,7 @@ var $publicarPromocion = function() {
 			$divPublicarPromo.hide();
 			$divPromoPublicada.show();
 			$("#idPromocion").val(data.idOffer);
-			console.log("idOffer: " + data.idOffer); 
+			$("#urlPromocion").val(data.urlPromocion);			
 			$.unblockUI();
 		},
 		error : function(json) {
@@ -203,6 +204,7 @@ var $eliminarPromocion = function() {
 						 $infoadiPromo.val("");
 						 $idPromocion.val("");
 						 $datepickerPromo.val("");
+						 $urlPromocion.val("");
 						 $divPublicarPromo.show();
 						 $divPromoPublicada.hide();
 						 $activaRadio("0");
@@ -283,6 +285,8 @@ var $compartirPromocion = function() {
 
 var $verPromocionActiva = function() {
 	
+	var $urlPromo = $("#urlPromocion").val();
+	
 	$.blockUI.defaults.baseZ = 9000;
 	$.blockUI({
 		message: "Obteniendo promoción...",
@@ -293,36 +297,18 @@ var $verPromocionActiva = function() {
 			width: '400px'
 		}
 	});
+
+	if ($urlPromo.trim().length > 0 && $urlPromo != null)
+	{
+		$("#urlVistaPreviaPromo").attr('src', $("#urlPromocion").val());
+		$("#myModalPromo").modal();
+	}
+	else
+	{
+		console.log("no hay url");
+	}
 	
-	$.ajax({
-		
-		type : "POST",
-		url : contextPath + "/infomovil/verPromo",
-		dataType : "json",
-		data : {	
-			idDominio : parseInt($("#idOffer").val()),
-			titulo: $nombrePromo.val(),
-			descripcion: $descPromo.val(),
-			fechaVigencia:  $datepickerPromo.val(),
-			base64Imagen: "",
-			redimir: $('.radioPromo:checked').val(),
-			terminos:$infoadiPromo.val()
-		},
-			success : function(data) {
-				$("#urlVistaPreviaPromo").attr('src', data.urlVistaPreviaPromo);
-				$("#myModalPromo").modal();	
-				$.unblockUI();
-			},
-			error : function(json) {
-				$.unblockUI();
-				console.log("json::: " + json);
-				BootstrapDialog.show({
-					title: "<span class='textBlack' style='font-size:1.15em;'><img alt='' src='../resources/webapp/images/fa-warning-bk.png'  title='Alerta' />No se ha podido obtener la vista previa de la promoción</span>",
-					message: '<div style="display:block; min-height:150px;"><p class="textBlack text-center" style="font-size:1.15em;">Por favor intentalo más tarde.</p><br/>'
-				});
-									
-			}
-		});	
+	$.unblockUI();
 };
 
 var $vistaPrevia = function() {

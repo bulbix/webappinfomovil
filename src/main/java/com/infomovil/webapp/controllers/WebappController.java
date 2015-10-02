@@ -847,6 +847,7 @@ public class WebappController
 				model.put("redeemOffer", promocion.getRedeemOffer());
 				model.put("idOffer", promocion.getIdOffer());
 				model.put("urlImage", promocion.getUrlImage());
+				model.put("urlPromocion", promocion.getUrlPromocion());
 			}
 			
 		}		
@@ -880,6 +881,7 @@ public class WebappController
 			for (OffertRecordVO promocion : respVO.getListPromocion())
 			{
 				resultado.put("idOffer", promocion.getIdOffer());
+				resultado.put("urlPromocion", promocion.getUrlPromocion());
 			}
 		}		
 		catch (Exception e) 

@@ -49,7 +49,8 @@ import javax.xml.bind.annotation.XmlType;
     "redeemOffer",
     "idOffer",
     "urlImage",
-    "urlSitio"
+    "urlSitio",
+    "urlPromocion"
 })
 public class OffertRecordVO {
 
@@ -65,8 +66,17 @@ public class OffertRecordVO {
     protected String idOffer;
     protected String urlImage;
     protected String urlSitio;
+    protected String urlPromocion;
+    
+    public String getUrlPromocion() {
+		return urlPromocion;
+	}
 
-    /**
+	public void setUrlPromocion(String urlPromocion) {
+		this.urlPromocion = urlPromocion;
+	}
+
+	/**
      * Obtiene el valor de la propiedad titleOffer.
      * 
      * @return

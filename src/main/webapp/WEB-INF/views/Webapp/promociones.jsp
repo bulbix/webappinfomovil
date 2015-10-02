@@ -156,7 +156,7 @@
 						<!-- page header <input type="text" id="checkedRedimir" value=""/>-->
 						<div class="page-header text-center">
 							<input type="hidden" id="idPromocion" value="${idOffer}"/>
-							
+							<input type="hidden" id="urlPromocion" value="${urlPromocion}"/>
 							
 							<div class="col-xs-12 col-sm-6"><div class="form-group text-left textBlack">
 	    						<label for="exampleInputEmail1">Nombre de la promoción:</label>
@@ -284,6 +284,6 @@
 		</tiles:insertDefinition>
 		
 		
-	
+<h1>${urlPromocion}</h1>	
 	</body>
 </html>
