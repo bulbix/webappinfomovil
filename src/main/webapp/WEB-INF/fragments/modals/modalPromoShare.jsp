@@ -12,14 +12,15 @@
 	</div>
 	<div class="modal-body bgWhite ">
 		<div class="col-xs-12">
+		<div class="divider"></div>
 		<div class="textBlack">Comparte tu promoción</div>
 		
 		
 		<div class="divider"></div>
-			<div class="textGreen">http://promo.mobileinfo.io/templates/promo1/index.xml</div>
+			<div class="textGreen text-center">http://promo.mobileinfo.io/templates/promo1/index.xml</div>
 			<div class="divider"></div>
 			<div class="col-xs-12">
-			
+			<div class="col-xs-1">&nbsp;</div>
 			<div class="col-xs-2"><img width="50" height="50" alt="Infomovil" src="<c:url value="/resources/webapp/images/face_icn.png"/>"/> </div>
 			
 			<div class="col-xs-2"><img width="50" height="50" alt="Infomovil" src="<c:url value="/resources/webapp/images/twit_icn.png"/>"/> </div>
@@ -28,7 +29,7 @@
 			
 			<div class="col-xs-2"><img width="50" height="50" alt="Infomovil" src="<c:url value="/resources/webapp/images/wapp_icn.png"/>"/> </div>
 			<div class="col-xs-2"><img width="50" height="50" alt="Infomovil" src="<c:url value="/resources/webapp/images/mail_icn.png"/>"/> </div>
-			
+			<div class="col-xs-1">&nbsp;</div>
 			</div>
 		</div>
 		<div class="clear divider"></div>

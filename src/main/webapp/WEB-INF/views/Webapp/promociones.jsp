@@ -128,11 +128,21 @@
 						<span class="hidden-xs">Compartir</span>
 					</button>
 					
-					<button type="button" class="btn btn-outlineGreen pull-right"  id="btnCompartir" style="margin: 5px 5px 0 0;" data-toggle="modal"
-						data-target="#myModalPromoShare">
-						<img width="20" height="20" alt="Infomovil" src="<c:url value="/resources/webapp/images/fa-compartir.png"/>" /> 
+<!-- 					<button type="button" class="btn btn-outlineGreen pull-right"  id="btnCompartir" style="margin: 5px 5px 0 0;" data-toggle="modal" -->
+<!-- 						data-target="#myModalPromoShare"> -->
+<%-- 						<img width="20" height="20" alt="Infomovil" src="<c:url value="/resources/webapp/images/fa-compartir.png"/>" />  --%>
 						
-					</button>
+<!-- 					</button> -->
+<!-- 					<button type="button" class="btn btn-outlineGreen pull-right"  id="btnCompartir" style="margin: 5px 5px 0 0;" data-toggle="modal" -->
+<!-- 						data-target="#myModalPromoExito"> -->
+<%-- 						<img width="20" height="20" alt="Infomovil" src="<c:url value="/resources/webapp/images/fa-compartir.png"/>" /> exito --%>
+						
+<!-- 					</button> -->
+<!-- 					<button type="button" class="btn btn-outlineGreen pull-right"  id="btnCompartir" style="margin: 5px 5px 0 0;" data-toggle="modal" -->
+<!-- 						data-target="#myModalPromoFallo"> -->
+<%-- 						<img width="20" height="20" alt="Infomovil" src="<c:url value="/resources/webapp/images/fa-compartir.png"/>" /> fallo --%>
+						
+<!-- 					</button> -->
 					
 				</div> 
 				
@@ -259,6 +269,21 @@
 				value='"modal-dialog modal-md"' />
 			<c:set var="fragmentName" value="modalPromoShare" scope="request" />
 		</tiles:insertDefinition>
+		
+		<tiles:insertDefinition name="modalGen">
+			<tiles:putAttribute name="idModal" value="myModalPromoExito" />
+			<tiles:putAttribute name="tamanioModal"
+				value='"modal-dialog modal-md"' />
+			<c:set var="fragmentName" value="modalPromoExito" scope="request" />
+		</tiles:insertDefinition>
+		
+		<tiles:insertDefinition name="modalGen">
+			<tiles:putAttribute name="idModal" value="myModalPromoFallo" />
+			<tiles:putAttribute name="tamanioModal"
+				value='"modal-dialog modal-md"' />
+			<c:set var="fragmentName" value="modalPromoFallo" scope="request" />
+		</tiles:insertDefinition>
+		
 		
 	
 	</body>

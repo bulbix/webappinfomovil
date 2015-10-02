@@ -21,7 +21,7 @@
 
 
 </p>
-			<p class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-center textBlack" >Si tienes dudas contáctanos a: ops@infomovil.com</p>
+			<p class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-center textBlack" >Si tienes dudas contáctanos a: <span class="textPurple">ops@infomovil.com</span></p>
 
 
 		</div>
