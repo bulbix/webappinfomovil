@@ -127,6 +127,13 @@
 						<img width="20" height="20" alt="Infomovil" src="<c:url value="/resources/webapp/images/fa-compartir.png"/>" /> 
 						<span class="hidden-xs">Compartir</span>
 					</button>
+					
+					<button type="button" class="btn btn-outlineGreen pull-right"  id="btnCompartir" style="margin: 5px 5px 0 0;" data-toggle="modal"
+						data-target="#myModalPromoShare">
+						<img width="20" height="20" alt="Infomovil" src="<c:url value="/resources/webapp/images/fa-compartir.png"/>" /> 
+						
+					</button>
+					
 				</div> 
 				
 				<div class="clear"></div>
@@ -141,19 +148,19 @@
 							<input type="hidden" id="idPromocion" value="${idOffer}"/>
 							
 							
-							<div class="col-xs-12 col-sm-6"><div class="form-group text-left">
+							<div class="col-xs-12 col-sm-6"><div class="form-group text-left textBlack">
 	    						<label for="exampleInputEmail1">Nombre de la promoción:</label>
 	    						<input type="text" class="form-control" name="nombrePromo" id="nombrePromo" value="${titleOffer}">
 	 	 					</div>
 	 	 					<div class="divider"></div>
 	 	 					
-	 	 					<div class="form-group text-left">
+	 	 					<div class="form-group text-left textBlack">
 				    			<label for="exampleInputPassword1" class="text-left">Descripción de la promoción:</label>
 				    			<textarea rows="4"  cols="50"  name="descPromo" id="descPromo" class="form-control">${descOffer}</textarea>
 				  			</div>
 				  			
 				  			<div class="divider"></div>
-				  			<div class="form-group text-left">
+				  			<div class="form-group text-left textBlack">
 				     			<label for="exampleInputEmail1" class="text-left">Información adicional:</label>
 				    			<textarea type="textarea" rows="4"  cols="50" class="form-control" name="infoadiPromo" id="infoadiPromo" value="${termsOffer}"></textarea>
 					 	 	</div>	
@@ -161,13 +168,13 @@
 							<div class="col-xs-12 col-sm-6">
 							
 							
-							<div class="form-group text-left">
+							<div class="form-group text-left textBlack">
 				    			<label for="exampleInputEmail1" class="text-left">Vigencia al:</label>
 				    			<input type="text" class="form-control3" id="datepicker" value="${endDateOffer}">
 				  			</div>
 				  			<div class="clearfix"></div>
 				  			<div class="divider"></div>
-							<div class="form-group text-left">
+							<div class="form-group text-left textBlack">
 				  			<label class="text-left">¿Cómo redimir?:</label>
 				   				<div class="radio">
 									
@@ -189,7 +196,7 @@
 							
 							
 							
-							
+							<div class="clear"></div>
 	 	 					
 					  		
 				  			
