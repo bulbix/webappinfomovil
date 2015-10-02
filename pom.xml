@@ -273,7 +273,8 @@
 			<id>dev</id>
 			<activation>
 				<activeByDefault>true</activeByDefault>
-			</activation>				
+			</activation>
+
 			<properties>
 				<config.profile>DEV</config.profile>
 			</properties>

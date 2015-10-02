@@ -203,16 +203,8 @@
 							
 							</div>
 							
-							
-							
 							<div class="clear"></div>
-	 	 					
-					  		
-				  			
-				 			
-				  			
-				
-													
+	 	 										
 						</div>
 						
 						<div id="divError" style="color:red;"></div>

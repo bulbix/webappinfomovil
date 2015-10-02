@@ -225,6 +225,8 @@ var $eliminarPromocion = function() {
 
 var $compartirPromocion = function() {
 	
+	$('#myModalPromoShare').modal();	
+	/*
 	switch(opcion) {
 		case Facebook:
 			lFace = "http://www.facebook.com/sharer/sharer.php?u=" + url + "&t=Site created with www.infomovil.com";
@@ -281,6 +283,7 @@ var $compartirPromocion = function() {
 			
 			
 	}
+	*/
 };
 
 var $verPromocionActiva = function() {
