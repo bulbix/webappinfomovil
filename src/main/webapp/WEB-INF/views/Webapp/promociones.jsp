@@ -172,7 +172,7 @@
 				  			<div class="divider"></div>
 				  			<div class="form-group text-left textBlack">
 				     			<label for="exampleInputEmail1" class="text-left">Información adicional:</label>
-				    			<textarea type="textarea" rows="4"  cols="50" class="form-control" name="infoadiPromo" id="infoadiPromo">${termsOffer}</textarea>
+				    			<textarea rows="4"  cols="50" class="form-control" name="infoadiPromo" id="infoadiPromo" >${termsOffer}</textarea>
 					 	 	</div>	
 	 	 					</div>
 							<div class="col-xs-12 col-sm-6">
