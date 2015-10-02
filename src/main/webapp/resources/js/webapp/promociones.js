@@ -252,6 +252,8 @@ var $compartirPromocion = function() {
 			}
 		 	window.location.replace(lMail);
 			break;
+			
+			
 	}
 };
 

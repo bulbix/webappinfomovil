@@ -28,4 +28,7 @@
 	<definition name="dominioTel" template="/WEB-INF/fragments/productos/dominioTel.jsp"/>
 	<definition name="planPro" template="/WEB-INF/fragments/productos/planPro.jsp"/>
 	<definition name="sinProductos" template="/WEB-INF/fragments/productos/sinProductos.jsp"/>
+	<definition name="modalPromoShare" template="/WEB-INF/fragments/modals/modalPromoShare.jsp" />
+	<definition name="modalPromoExito" template="/WEB-INF/fragments/modals/modalPromoExito.jsp" />
+	<definition name="modalPromoFallo" template="/WEB-INF/fragments/modals/modalPromoFallo.jsp" />
 </tiles-definitions>
