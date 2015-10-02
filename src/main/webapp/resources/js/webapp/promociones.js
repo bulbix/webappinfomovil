@@ -226,64 +226,7 @@ var $eliminarPromocion = function() {
 var $compartirPromocion = function() {
 	
 	$('#myModalPromoShare').modal();	
-	/*
-	switch(opcion) {
-		case Facebook:
-			lFace = "http://www.facebook.com/sharer/sharer.php?u=" + url + "&t=Site created with www.infomovil.com";
-			if (lenguaje.equalsIgnoreCase("es"))
-			{
-				lFace = "http://www.facebook.com/sharer/sharer.php?u=" + url + "&t=Sitio creado con www.infomovil.com";
-			}
-			window.location.replace(lFace);
-			break;
-		case WhatsApp: 
-			lWhatsapp = "";
-			if (lenguaje.equalsIgnoreCase("es"))
-			{
-				alert('Esta acción no se puede completar en este dispositivo'); 
-			}
-			if(nav.equals("movilMac")){
-				lWhatsapp = "whatsapp://send?text=Checa%20este%20sitio%20web:" + url; 
-			}
-			if(nav.equals("movilAndroid")){ 
-				lWhatsapp = "whatsapp://send?text=Checa%20este%20sitio%20web:" + url; 
-			}
-			if(nav.equals("operamini7")){ 
-				lWhatsapp = "whatsapp://send?text=Checa%20este%20sitio%20web:" + url; 
-			}
-			if(nav.equals("operamini8")){ 
-				lWhatsapp = "whatsapp://send?text=Checa%20este%20sitio%20web:" + url; 
-			}
-			if(lWhatsapp != "")window.location.replace(lWhatsapp);
-			break;
-		case Twitter:
-			lTwitt = "http://www.twitter.com/intent/tweet?text=http://"+ url +"%20%0A%0A Very good site! " + url;
-			if (lenguaje.equalsIgnoreCase("es"))
-			{
-				lTwitt = "http://www.twitter.com/intent/tweet?text=http://"+ url +"%20%0A%0ACheca%20este%20sitio%20web:"+ url;
-			}
-			window.location.replace(lTwitt);
-			break;
-		case Google:
-			lGoogle = "https://plus.google.com/share?url=http://" + url;
-			if (lenguaje.equalsIgnoreCase("es"))
-			{
-				lGoogle = "https://plus.google.com/share?url=http://" + url;
-			}
-			window.location.replace(lGoogle);
-			break;
-		case Email:
-			if(nav.equals("operamini7")){
-				lMail = "mailto:?subject=http://"+ url + "%20Checa%20este%20sitio!&amp;body=Checa%20este%20sitio%20web:%20http://"+ url + "%0A%0ACreado%20con%20www.infomovil.com";
-			}else{
-				lMail = "mailto:?subject=http://"+ url + "%20Checa%20este%20sitio!&amp;body=Checa%20este%20sitio%20web:%20http://"+ url + "%0A%0ACreado%20con%20www.infomovil.com";
-			}
-		 	window.location.replace(lMail);
-			break;
-			
-			
-	}
-	*/
+	
 };
 
 var $verPromocionActiva = function() {
@@ -311,7 +254,9 @@ var $verPromocionActiva = function() {
 		console.log("no hay url");
 	}
 	
+
 	$.unblockUI();
+
 };
 
 var $vistaPrevia = function() {
@@ -417,7 +362,6 @@ $(document).ready(function() {
 		{
 			$divError.html("Falta llenar el campo " + $resultado);
 			$divError.css("display", "block");
-		//	$("#divError").css("display", "block");
 			console.log("Falta llenar el campo dfgfabfda" + $resultado);
 		}
 		
@@ -429,7 +373,17 @@ $(document).ready(function() {
 	});
 	
 	$btnCompartir.click(function() {
-		console.log("va a compartir!!");
+		var url = $("#urlPromocion").val(); 
+		var lFace = "http://www.facebook.com/sharer/sharer.php?u=" + url + "&t=Sitio%20creado%20con%20www.infomovil.com"; 
+		$('#Facebook').attr('href', lFace); 
+		var lGoogle = "https://plus.google.com/share?url=http://" + url; 
+		$('#Google').attr('href', lGoogle);
+		var lEmail = "mailto:?subject=http://"+ url + "%20Checa%20este%20sitio!&body=Checa%20este%20sitio%20web:%20http://"+ url + "%0A%0ACreado%20con%20www.infomovil.com"; 
+		$('#Email').attr('href', lEmail); 
+		var lTwitt = "http://www.twitter.com/intent/tweet?text=http://"+ url +"%20%0A%0ACheca%20este%20sitio%20web:"+ url; 
+		$('#Twitter').attr('href', lTwitt);
+		if(navigator.userAgent.match(/Android|BlackBerry|iPhone|iPad|iPod|Opera Mini|IEMobile/i)){ var lWhatsapp = "whatsapp://send?text=Checa%20este%20sitio%20web:" + url; }else{ var lWhatsapp = "javascript:alert('Esta acción no se puede completar en este dispositivo')"; } 
+		$('#WhatsApp').attr('href', lWhatsapp);
 		$compartirPromocion();	
 	});
 	

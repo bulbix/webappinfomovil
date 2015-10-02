@@ -204,10 +204,11 @@
 							</div>
 							
 							<div class="clear"></div>
+							<div id="divError" style="color:red;"></div>
 	 	 										
 						</div>
 						
-						<div id="divError" style="color:red;"></div>
+						
 						<!-- /page header -->
 						<br /> <br />
 					</div>
@@ -216,7 +217,7 @@
 			</div>
 		</div>
 		<!-- /Formulario Promociones -->
-	
+		
 		<!-- Bootstrap core JavaScript
 		    ================================================== -->
 		<!-- Placed at the end of the document so the pages load faster -->
@@ -234,10 +235,10 @@
 				 
 		<script src="<c:url value="/resources/webapp/js/datepicker/jquery.ui.core.js"/>"></script>
 		<script src="<c:url value="/resources/webapp/js/datepicker/jquery.ui.datepicker.js"/>"></script>
-		
 		<script src="<c:url value="/resources/js/webapp/promociones.js"/>"></script>
+		<script src="<c:url value="/resources/js/webapp/compartirPromocion.js"/>"></script>
 		<input type="hidden" id="valRadio" value="${redeemOffer}"/>
-		<input type="hidden" id="idOffer" value="${idOffer}"/>
+	
 		
 		<c:choose>
 			   		<c:when test="${idOffer > 0}">
@@ -276,6 +277,6 @@
 		</tiles:insertDefinition>
 		
 		
-<h1>${urlPromocion}</h1>	
+
 	</body>
 </html>
