@@ -132,7 +132,7 @@
 					<!-- Main jumbotron for a primary marketing message or call to action -->
 					<div>
 						<!-- page header <input type="text" id="checkedRedimir" value=""/>-->
-						<div class="page-header text-center">
+						<div class="page-header text-center" style="border-radius:15px; background:url(<c:url value="/resources/webapp/images/bgWhTra.png"/>); padding:10px;">
 						
 						
 						
