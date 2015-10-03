@@ -164,7 +164,7 @@ var $eliminarPromocion = function() {
 	
 	BootstrapDialog
 	.show({
-		title : '<div class="textBlack">Eliminar Imagen</div>',
+		title : '<div class="textBlack">Eliminar</div>',
 		message : '<div style="display:block; padding: 10px;">¿Seguro que deseas eliminar la promoción?</div>',
 		buttons : [{
 					

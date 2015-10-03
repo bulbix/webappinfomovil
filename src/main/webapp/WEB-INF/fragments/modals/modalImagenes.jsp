@@ -20,7 +20,7 @@
 <!-- 	</div> -->
     	<button type="button" class="btn btn-purple pull-right"  id="regresarSelecImg" style="margin: 5px 0;"><img width="20" height="20" alt="Infomovil" src="<c:url value="/resources/webapp/images/ico_back.png"/>" /> <span class="hidden-xs">Regresar</span></button>
 	
-    	<button type="button" class="btn btn-blueFB pull-right btnsEditor col-xs-12 col-sm-5"  id="btnAlbumsDeFacebook" style="margin:5px 0;"><img width="20" height="20" alt="Infomovil" src="<c:url value="/resources/webapp/images/ico_facebook.png"/>" /> <span class="hidden-sm">Fotos de Facebook</span></button>
+    	<button type="button" class="btn btn-blueFB pull-right btnsEditor col-xs-12 col-sm-5"  id="btnAlbumsDeFacebook" style="margin:5px 0;"><img width="20" height="20" alt="Infomovil" src="<c:url value="/resources/webapp/images/ico_facebook.png"/>" /> <span class="">Fotos de Facebook</span></button>
     	<button type="button" id="regresarDeFace" class="btn btn-purple pull-right" ><img width="20" height="20" alt="Infomovil" src="<c:url value="/resources/webapp/images/ico_back.png"/>" /> <span class="hidden-xs">Regresar</span></button>
     	
 	
