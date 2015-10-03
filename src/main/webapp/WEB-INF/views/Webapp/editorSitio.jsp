@@ -432,6 +432,7 @@
 	<c:set var="claseCss" value="${ claseCss }" scope="session"/>
 	<c:set var="colorTexto" value="${ colorTexto }" scope="session"/>
 	<c:set var="extensionImg" value="${ extensionImg }" scope="session"/>
+	<c:set var="correoElectronico" value="${ correoElectronico }" scope="session"/>
 	
 	<!--  Numero de imagenes MAximo q' puede tener el usuario activas-->
 	<!-- Bootstrap core JavaScript

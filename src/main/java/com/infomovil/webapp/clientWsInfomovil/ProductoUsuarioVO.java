@@ -83,24 +83,24 @@ public class ProductoUsuarioVO {
     protected String urlDominio;
     protected String urlRenovar;
     protected boolean activo;
-    protected String activo;
+    //protected String activo;
 
-    public String getActivo() {
+   /* public String getActivo() {
 		return activo;
 	}
 
 	public void setActivo(String activo) {
 		this.activo = activo;
-	}
+	}*/
 
-	public String getUrlRenovar() {
+/*	public String getUrlRenovar() {
 		return urlRenovar;
 	}
 
 	public void setUrlRenovar(String urlRenovar) {
 		this.urlRenovar = urlRenovar;
 	}
-
+*/
     /**
      * Obtiene el valor de la propiedad email.
      * 

@@ -234,12 +234,11 @@
  
 	<form id="formPaypal" name="formPaypal" method="post" action="${urlPaypal}">
 		<input type="hidden" name="charset" value="utf-8">
-	  	<input type="hidden" value="infomovil.ayf-facilitator@gmail.com" name="business"/>
 	  	<input type="hidden" value="ES" name="country"/>
 	  	<input type="hidden" value="_xclick" name="cmd"/>
 	  	<input type="hidden" value="Renovación de tu Dominio .tel" name="item_name"/>
 	  	<input type="hidden" value="Dominio .tel" name="item_number"/>
-	  	<input type="hidden" value="200.00" name="amount"/>
+	  	<input type="hidden" name="hosted_button_id" value="GVM5RUC45WKJS">
 	  	<input type="hidden" value="1" name="no_shipping"/>
 	  	<input type="hidden" value="2" name="rm"/>
 	  	<input type="hidden" value="1" name="no_note"/>

@@ -683,7 +683,7 @@ public class WebappController
 				model.put("nombreUsuario", wsRespuesta.getDominioCreaSitio().getNombreUsuario().trim());				
 				model.put("nombreEmpresa", wsRespuesta.getDominioCreaSitio().getNombreEmpresa().trim());
 				model.put("descripcionCorta", wsRespuesta.getDominioCreaSitio().getDescripcionCorta().trim());
-				model.put("correoElectronico", wsRespuesta.getDominioCreaSitio().getCorreoElectronico().trim());
+				model.put("correoElectronico", correo);
 				model.put("telefonoUsuario", wsRespuesta.getDominioCreaSitio().getTelefono().trim());			
 				model.put("vistaPrevia", wsRespuesta.getDominioCreaSitio().getUrlVistaPrevia());	
 				model.put("urlVideo", wsRespuesta.getDominioCreaSitio().getVideoUrl());
@@ -859,6 +859,7 @@ public class WebappController
 				model.put("idOffer", promocion.getIdOffer());
 				model.put("urlImage", promocion.getUrlImage());
 				model.put("urlPromocion", promocion.getUrlPromocion());
+				model.put("correoElectronico", correo);
 			}
 			
 		}		

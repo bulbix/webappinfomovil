@@ -378,11 +378,11 @@ $(document).ready(function() {
 		$('#Facebook').attr('href', lFace); 
 		var lGoogle = "https://plus.google.com/share?url=" + url; 
 		$('#Google').attr('href', lGoogle);
-		var lEmail = "mailto:?subject=http://"+ url + "%20Checa%20este%20sitio!&body=Checa%20esta%20promo%20:"+ url + "%0A%0ACreado%20con%20www.infomovil.com"; 
+		var lEmail = "mailto:?subject="+ url + "%20Checa%20esta%20promo!&body=Checa%20esta%20promo:%20"+ url + "%0A%0ACrea%20un%20volante%20digital%20asi%20con%20www.infomovil.com%0A%0A"; 
 		$('#Email').attr('href', lEmail); 
 		var lTwitt = "http://www.twitter.com/intent/tweet?text="+ url +"%20%0A%0ACheca%20esta%20promo:%20"+ url; 
 		$('#Twitter').attr('href', lTwitt);
-		if(navigator.userAgent.match(/Android|BlackBerry|iPhone|iPad|iPod|Opera Mini|IEMobile/i)){ var lWhatsapp = "whatsapp://send?text=Checa%20este%20sitio%20web:" + url; }else{ var lWhatsapp = "javascript:alert('Esta acción no se puede completar en este dispositivo')"; } 
+		if(navigator.userAgent.match(/Android|BlackBerry|iPhone|iPad|iPod|Opera Mini|IEMobile/i)){ var lWhatsapp = "whatsapp://send?text=Checa%20esta%20promo:%20" + url; }else{ var lWhatsapp = "javascript:alert('Esta acción no se puede completar en este dispositivo')"; } 
 		$('#WhatsApp').attr('href', lWhatsapp);
 		$compartirPromocion();	
 	});

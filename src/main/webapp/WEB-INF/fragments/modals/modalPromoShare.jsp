@@ -1,4 +1,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib uri="http://tiles.apache.org/tags-tiles" prefix="tiles"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <div class="modal-content btnsEditor">
 	<div class="modal-header">
 		<button type="button" class="close textBlack" data-dismiss="modal" aria-label="Close">
@@ -13,11 +16,11 @@
 	<div class="modal-body bgWhite ">
 		<div class="col-xs-12">
 		<div class="divider"></div>
-		<div class="textBlack">Comparte tu promoción</div>
+		<div class="textBlack">Comparte tu promociÃ³n</div>
 		
 		
 		<div class="divider"></div>
-			<div class="textGreen text-center">http://promo.mobileinfo.io/templates/promo1/index.xml</div>
+			<div class="textGreen text-center">${sessionScope.urlPromo}</div>
 			<div class="divider"></div>
 			<div class="col-xs-12">
 			<div class="col-xs-1">&nbsp;</div>
