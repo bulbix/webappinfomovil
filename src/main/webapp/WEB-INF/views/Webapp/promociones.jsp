@@ -6,7 +6,7 @@
 <html lang="es">
 
 	<tiles:insertDefinition name="headEditorSitio">
-		<tiles:putAttribute name="template" value="${ sessionScope.plantillaUsuario }" />
+		<tiles:putAttribute name="template" value="${ template }" />
 	</tiles:insertDefinition>
 
 	<link href="<c:url value="/resources/webapp/js/datepicker/datepicker.css"/>" rel="stylesheet" />
@@ -74,24 +74,6 @@
 	
 		<!-- Botón Nuevo Estilo -->
 		<div class="seccTop bgBlack">
-<!-- 			<div class="container"> -->
-			
-<!-- 			<div class="col-xs-12 col-sm-6 hidden-xs"><h3 class="text-left textWhite" style="font-weight: 300;">Mis promociones</h3></div> -->
-<!-- 				<div class="col-xs-12 col-sm-6"> -->
-<!-- 					<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 reset text-right pull-right"> -->
-<%-- 						Nombre ${usuarioLogueado}<img width="30" height="30" alt="Infomovil" --%>
-<%-- 						src="<c:url value="/resources/webapp/images/fa-user.png"/>" />  <br/> ${correoElectronico} <img width="25" height="25" alt="Infomovil" --%>
-<%-- 						src="<c:url value="/resources/webapp/images/fa-mail.png"/>" />  --%>
-<!-- 						<div class="clear"></div> -->
-<%-- 						<a href="<c:url value="/infomovil/editarSitio"></c:url>" --%>
-<!-- 							class="col-xs-4 col-sm-3 col-md-3 col-lg-3 btn btn-default btn-outline navEditor pull-right hidden-sm hidden-md hidden-lg"> -->
-<!-- 							<span id="idOpcionMasCont"><img width="20" height="20" alt="Infomovil" -->
-<%-- 								src="<c:url value="/resources/webapp/images/fa-back.png"/>" /> Editor  --%>
-<!-- 							</span> -->
-<!-- 						</a> -->
-<!-- 					</div>			 -->
-<!-- 				</div> -->
-<!-- 			</div> -->
 
 	<div class="container">
 	
@@ -104,7 +86,7 @@
 						${nombreUsuario} <img width="20" height="20" alt="Infomovil"	src="<c:url value="/resources/webapp/images/fa-user.png"/>"/>
 					</c:if>
 				</span>  
-					<br/> ${sessionScope.correoElectronico} <img width="25" height="25" alt="Infomovil"
+					<br/> ${correoElectronico} <img width="25" height="25" alt="Infomovil"
 					src="<c:url value="/resources/webapp/images/fa-mail.png"/>" /> 
 					<div class="clear"></div>
 					<a href="<c:url value="/infomovil/editarSitio"></c:url>"
@@ -275,6 +257,7 @@
 			<tiles:putAttribute name="tamanioModal"
 				value='"modal-dialog modal-md"' />
 			<c:set var="fragmentName" value="modalPromoShare" scope="request" />
+			<c:set var="urlPromo" value="${urlPromocion}" scope="session"/>
 		</tiles:insertDefinition>
 		
 		<tiles:insertDefinition name="modalGen">

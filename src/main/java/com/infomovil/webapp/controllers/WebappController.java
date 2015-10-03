@@ -714,6 +714,7 @@ public class WebappController
 				model.put("galeriaImagenes", galeriaImagenes);
 				
 			    Util.getCurrentSession().setAttribute("canal", canal);
+			    Util.getCurrentSession().setAttribute("template", template);
 			}
 			else 
 			{
@@ -842,6 +843,11 @@ public class WebappController
 	{		
 		HashMap<String, Object> model = new HashMap<String, Object>();
 		RespuestaVO wsRespuesta = new RespuestaVO();
+		String nombreUsuario = "";
+		String template = "Coverpage1azul";
+		String claseCss = "inverse";
+		String colorTexto = "textWhite";
+		String extensionImg = "";
 //		OffertRecordVO promocion = new OffertRecordVO();
 		
 		try
@@ -850,6 +856,7 @@ public class WebappController
 			String password = Util.getUserLogged().getPassword();
 			
 			wsRespuesta = wsCliente.crearSitioGetPromociones(correo, password);
+         	
 			//model.put("promociones", wsRespuesta.getListPromocion());
 			for (OffertRecordVO promocion : wsRespuesta.getListPromocion())
 			{
@@ -864,9 +871,33 @@ public class WebappController
 				model.put("idOffer", promocion.getIdOffer());
 				model.put("urlImage", promocion.getUrlImage());
 				model.put("urlPromocion", promocion.getUrlPromocion());
-				model.put("correoElectronico", correo);
+			}	
+			
+			if (Util.getCurrentSession().getAttribute("canal") != null)
+			{
+				if (Util.getCurrentSession().getAttribute("canal").toString().startsWith("BAZ"))
+				{
+					claseCss = "default";
+					colorTexto = "textBlack";
+					extensionImg = "-bk";
+				}
 			}
 			
+         	if (Util.getCurrentSession().getAttribute("nombreUsuario") != null)
+         	{
+         		if (!(EmailValidator.getInstance().isValid(Util.getCurrentSession().getAttribute("nombreUsuario").toString())))
+         			nombreUsuario = Util.getCurrentSession().getAttribute("nombreUsuario").toString();
+         	}
+         	
+         	if (Util.getCurrentSession().getAttribute("template") != null)
+         		template = Util.getCurrentSession().getAttribute("template").toString();
+         	
+			model.put("claseCss", claseCss);
+			model.put("colorTexto", colorTexto);
+			model.put("extensionImg", extensionImg);
+			model.put("nombreUsuario", nombreUsuario);
+			model.put("template", template);
+			model.put("correoElectronico", correo);
 		}		
 		catch (Exception e) 
 		{
