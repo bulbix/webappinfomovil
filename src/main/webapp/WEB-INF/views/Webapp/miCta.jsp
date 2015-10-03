@@ -231,25 +231,11 @@
 	<script src="<c:url value="/resources/js/webapp/paypal.js"/>"></script>		 
 	<script src="<c:url value="/resources/webapp/js/si.files.js"/>"></script>
 
- 
-	<form id="formPaypal" name="formPaypal" method="post" action="${urlPaypal}">
-		<input type="hidden" name="charset" value="utf-8">
-	  	<input type="hidden" value="ES" name="country"/>
-	  	<input type="hidden" value="_xclick" name="cmd"/>
-	  	<input type="hidden" value="Renovación de tu Dominio .tel" name="item_name"/>
-	  	<input type="hidden" value="Dominio .tel" name="item_number"/>
-	  	<input type="hidden" name="hosted_button_id" value="GVM5RUC45WKJS">
-	  	<input type="hidden" value="1" name="no_shipping"/>
-	  	<input type="hidden" value="2" name="rm"/>
-	  	<input type="hidden" value="1" name="no_note"/>
-	  	<input type="hidden" value="MXN" name="currency_code"/>
-	  	<input type="hidden" value="PP-BuyNowBF" name="cn"/>
-	  	<input type="hidden" name="custom" id="customPaypal"/>
-	  	<input type="hidden" value="es" name="lc"/>
-	  	<input type="hidden" value="primary" name="page_style"/>
-	  	<input type='hidden' name='return' value="${urlReturn}"/>
+	<form action="${urlPaypal}" method="post" id="formPaypal">
+		<input type="hidden" name="cmd" value="_s-xclick">
+		<input type="hidden" name="hosted_button_id" value="${codigoPayPal}">
 	</form>
-
+	
 	<c:if test="${paymentStatus == 'Completed'}">
 		<script>
 			abrirModalExitoso('myModalCompraExitosa');

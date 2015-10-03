@@ -482,6 +482,8 @@ public class WebappController
 		String urlPaypal = "";
 		String urlReturn = "";
 		String nombreUsuario = "";
+		String codigoPayPal = "";
+		
 		int totProductos = 0;
 
 		try
@@ -510,11 +512,13 @@ public class WebappController
          	{
          		urlPaypal = new String("https://www.paypal.com/cgi-bin/webscr");
          		urlReturn = new String("http://www.infomovil.com/infomovil/miCuenta");
+         		codigoPayPal = "JCLPR45ZL73CU";
          	}
          	else
          	{
          		urlPaypal = new String("https://www.sandbox.paypal.com/cgi-bin/webscr");
          		urlReturn = new String("http://webapp-qa.mobileinfo.io/infomovil/miCuenta");
+         		codigoPayPal = "GVM5RUC45WKJS";
          	}
          	
          	if (Util.getProfile().equals("DEV"))
@@ -539,6 +543,7 @@ public class WebappController
 			model.put("urlPaypal", urlPaypal);
 			model.put("nombreUsuario", nombreUsuario);
 			model.put("urlReturn", urlReturn);
+			model.put("codigoPayPal", codigoPayPal);
 		}		
 		catch (Exception e) 
 		{
