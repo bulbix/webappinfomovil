@@ -124,11 +124,11 @@
 		<div class="">
 			<div class="col-xs-12 col-sm-6 col-sm-offset-3 col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3">
 				<div id="divPublicarPromo" style="display:none">			
-					<button type="button" class="btn btn-outlineGreen pull-right" id="btnPublicar" style="margin: 5px 0;">
+					<button type="button" class="btn btn-outlineGreen pull-right textWhite" id="btnPublicar" style="margin: 5px 0;">
 						<img width="20" height="20" alt="Infomovil" src="<c:url value="/resources/webapp/images/successWhite.png"/>"/> 
 						<span class="hidden-xs">Publicar</span>
 					</button>
-					<button type="button" class="btn btn-outlineGreen pull-right"  id="btnVistaPrevia" style="margin: 5px 8px 0 0;">
+					<button type="button" class="btn btn-outlineGreen pull-right textWhite"  id="btnVistaPrevia" style="margin: 5px 8px 0 0;">
 						<img width="20" height="20" alt="Infomovil"	src="<c:url value="/resources/webapp/images/fa-eye.png"/>"/> 
 						<span class="hidden-xs">Vista Previa</span>
 					</button>
@@ -137,18 +137,18 @@
 				<div class="clear"></div>
 					
 				<div id="divPromoPublicada" style="display:none">	  
-					<button type="button" class="btn btn-outlineGreen pull-right"  id="btnGuardar" style="margin: 5px 0 0 0;">
+					<button type="button" class="btn btn-outlineGreen pull-right textWhite"  id="btnGuardar" style="margin: 5px 0 0 0;">
 					<img width="20" height="20" alt="Infomovil" src="<c:url value="/resources/webapp/images/successWhite.png"/>"/> 
 					<span class="hidden-xs">Guardar</span></button>		 
-					<button type="button" class="btn btn-outlineGreen pull-right" id="btnEliminar" style="margin: 5px 5px 0 0;">
+					<button type="button" class="btn btn-outlineGreen pull-right textWhite" id="btnEliminar" style="margin: 5px 5px 0 0;">
 						<img width="20" height="20" alt="Infomovil" src="<c:url value="/resources/webapp/images/trash.png"/>"/> 
 						<span class="hidden-xs">Eliminar</span>
 					</button> 
-					<button type="button" class="btn btn-outlineGreen pull-right"  id="btnVerPromo" style="margin: 5px 5px 0 0;">
+					<button type="button" class="btn btn-outlineGreen pull-right textWhite"  id="btnVerPromo" style="margin: 5px 5px 0 0;">
 						<img width="20" height="20" alt="Infomovil" src="<c:url value="/resources/webapp/images/fa-eye.png"/>"/> 
 						<span class="hidden-xs">Ver</span>
 					</button>		 
-					<button type="button" class="btn btn-outlineGreen pull-right"  id="btnCompartir" style="margin: 5px 5px 0 0;">
+					<button type="button" class="btn btn-outlineGreen pull-right textWhite"  id="btnCompartir" style="margin: 5px 5px 0 0;">
 						<img width="20" height="20" alt="Infomovil" src="<c:url value="/resources/webapp/images/fa-compartir.png"/>" /> 
 						<span class="hidden-xs">Compartir</span>
 					</button>
