@@ -9,8 +9,6 @@
 	<tiles:putAttribute name="template" value="${ template }" />
 </tiles:insertDefinition>
 
-
-
 <body role="document" data-spy="scroll" data-target=".navbar"
 	data-offset="75" id="page-top" onload="autosave()">
 	<!-- Fixed navbar -->
@@ -96,7 +94,7 @@
 							<!--             <li role="separator" class="divider"></li> -->
 							<!--             <li><a href="#">One more separated link</a></li> -->
 						</ul></li>
-						<li><a href="<c:url value="/infomovil/misPromociones"></c:url>" class="smoothScroll ${colorTexto}"><img
+						<li class="botonDesPublicar" id="btnPromoLi" style="display: none;"><a href="<c:url value="/infomovil/misPromociones"></c:url>" class="smoothScroll ${colorTexto}"><img
 							width="20" height="20" alt="Infomovil"
 							src="<c:url value="/resources/webapp/images/fa-promo${ extensionImg }.png"/>" />
 							Mis Promociones </a></li>	
