@@ -113,7 +113,7 @@
 						<!-- Producto  tel-->	
 						
 						<c:choose> 
-							<c:when test="${totProductos > 0}">							
+							<c:when test="${totProductos > 0}">						
 								<c:forEach items="${productos}" var="item">
 									<tiles:insertDefinition name="prodGen">
 										<c:choose>
@@ -129,9 +129,16 @@
 	
 										<c:choose> 
 											<c:when test="${item.renovable == 'true'}">	
+												
 												<c:set var="imgActivo" value="btn_inactive.png" scope="request" />
-												<c:set var="displayButton" value="display:block" scope="request" />		
 												<c:set var="productoActivo" value="Inactivo" scope="request" />	
+												
+												<c:if test="${item.activo == 'true'}">
+													<c:set var="imgActivo" value="btn_active.png" scope="request" />
+													<c:set var="productoActivo" value="Activo" scope="request" />	
+												</c:if>
+												
+												<c:set var="displayButton" value="display:block" scope="request" />														
 												
 												<c:if test="${item.abc == 'Plan pro'}">
 													<c:set var="displayButton" value="display:none" scope="request" />		
@@ -145,7 +152,7 @@
 												<c:set var="displayButton" value="display:none" scope="request" />		
 												<c:set var="productoActivo" value="Activo" scope="request" />
 												
-												<c:if test="${item.activo == 'false'}">
+							 					<c:if test="${item.activo == 'false'}">
 													<c:set var="displayButton" value="display:none" scope="request" />		
 													<c:set var="productoActivo" value="Inactivo" scope="request" />	
 													<c:set var="imgActivo" value="btn_inactive.png" scope="request" />

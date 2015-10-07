@@ -112,8 +112,7 @@ var $publicarPromocion = function() {
 				message: '<div style="display:block; min-height:150px;"><p class="textBlack text-center" style="font-size:1.15em;">Por favor intentalo más tarde.</p><br/>'
 			});							
 		}
-	});	
-			
+	});				
 };
 
 var $guardarCambiosEnPromocion = function() {
@@ -267,7 +266,8 @@ var $vistaPrevia = function() {
 			terminos:$infoadiPromo.val()
 		},
 			success : function(data) {
-				$("#urlVistaPreviaPromo").attr('src', data.urlVistaPreviaPromo);
+			//	console.log("url vista previa: " + data.urlVistaPreviaPromo + '?vistaPrevia=1');
+				$("#urlVistaPreviaPromo").attr('src', data.urlVistaPreviaPromo + '?vistaPrevia=1');
 				$("#myModalPromo").modal();	
 				$.unblockUI();
 			},
@@ -277,11 +277,10 @@ var $vistaPrevia = function() {
 				BootstrapDialog.show({
 					title: "<span class='textBlack' style='font-size:1.15em;'><img alt='' src='../resources/webapp/images/fa-warning-bk.png'  title='Alerta' />No se ha podido obtener la vista previa de la promoción</span>",
 					message: '<div style="display:block; min-height:150px;"><p class="textBlack text-center" style="font-size:1.15em;">Por favor intentalo más tarde.</p><br/>'
-				});
-									
+				});									
 			}
 		});	
-};
+	};
 
 var $activaRadio  = function(radio){
 		switch(radio){
