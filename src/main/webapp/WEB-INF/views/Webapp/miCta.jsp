@@ -241,6 +241,7 @@
 	<form action="${urlPaypal}" method="post" id="formPaypal">
 		<input type="hidden" name="cmd" value="_s-xclick">
 		<input type="hidden" name="hosted_button_id" value="${codigoPayPal}">
+		<input type="hidden" name="custom" id="customPaypal">
 	</form>
 	
 	<c:if test="${paymentStatus == 'Completed'}">
