@@ -33,8 +33,8 @@
 <br/>
 
 						<ul class="textBlack" style="list-style:none"><li><span class="textBlack _1_1em">1. Entra en la sección Mis Promociones</span></li>
-						<li><span class="textBlack _1_1em">2. Llena los datos de tu promoción en la sección de promociones.</span></li>
-						<li><span class="textBlack _1_1em">3. Compártela por Facebook y WhatsApp.</span></li>
+						<li><span class="textBlack _1_1em">2. Llena los datos de tu promoción</span></li>
+						<li><span class="textBlack _1_1em">3. Compártela por Facebook y WhatsApp</span></li>
 						</ul>
 				<br/>		
 

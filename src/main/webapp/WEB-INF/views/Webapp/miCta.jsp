@@ -111,10 +111,16 @@
 					<h3 class="text-left textBlack " style="font-weight: 300; margin:5px 0 0 0;">Mis productos</h3><hr/>
 					<div>
 						<!-- Producto  tel-->	
+	
+					<c:set var="divSinProductos" scope="request" value="0"/>				
+					<c:forEach items="${productos}" var="item">
 						
-						<c:choose> 
-							<c:when test="${totProductos > 0}">						
-								<c:forEach items="${productos}" var="item">
+						<c:choose>
+							<c:when test="${item.renovable == 'false' and item.activo == 'false'}">	
+								<c:set var="divSinProductos" scope="request" value="0"/>
+							</c:when>
+							<c:otherwise>
+								<c:set var="divSinProductos" scope="request" value="1"/>
 									<tiles:insertDefinition name="prodGen">
 										<c:choose>
 											<c:when test="${item.claveComercial == 'TEL'}">
@@ -175,12 +181,13 @@
 											
 									</tiles:insertDefinition>	
 									<c:set var="urlRenovar" value="${item.urlRenovar}" scope="session" />
-								</c:forEach>		
-							</c:when>
-						<c:otherwise>
-							<tiles:insertDefinition name="sinProductos"></tiles:insertDefinition>
-						</c:otherwise>
-					</c:choose>
+							</c:otherwise>
+						</c:choose>	
+					</c:forEach>		
+					
+					<c:if test="${divSinProductos == '0'}">
+						<tiles:insertDefinition name="sinProductos"></tiles:insertDefinition>
+					</c:if>
 				</div>
 					<div class="clearfix"></div>
 					

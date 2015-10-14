@@ -494,6 +494,15 @@ public class WebappController
 			wsRespuesta = wsCliente.crearSitioGetProductosUsuario(correo, password);
 			totProductos = wsRespuesta.getListProductoUsuarioVO().size();
 			
+			for (ProductoUsuarioVO producto : wsRespuesta.getListProductoUsuarioVO())
+			{
+				if (totProductos == 2)
+				{
+					if (!producto.isActivo() && !producto.isRenovable())
+						totProductos = totProductos - 1;
+				}
+			}
+			
 			if (totProductos == 1)
 				claseProductos = "'col-xs-12 col-sm-6 col-md-6 col-lg-6 dBlock col-sm-offset-3'";
 		
