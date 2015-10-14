@@ -57,7 +57,7 @@
   <div class="form-group">
     <label for="inputEmail3" class="col-sm-2 control-label text-left">Costo</label>
     <div class="col-xs-12 col-sm-10">
-    <label class="control-label text-left" style="font-weight:300;">$199.00mxn</label> 
+    <label class="control-label text-left" style="font-weight:300;">$199.00 MXN</label> 
       
     </div>
   </div>
@@ -76,9 +76,11 @@
 <!-- 	</form> -->
 	
     <button type="button" class="btn btn-outline pull-right" id="btnPagoPaypal" > 
-    <img src="https://www.paypalobjects.com/webstatic/es_MX/mktg/logos-buttons/redesign/btn_11.png" alt="undefined" />
+      <img
+					src="<c:url value="/resources/webapp/images/btn_11.png"/>"
+					 alt="Compra con PayPal" /> 
+<!--     <img src="https://www.paypalobjects.com/webstatic/es_MX/mktg/logos-buttons/redesign/btn_11.png" alt="undefined" /> -->
     
-<%-- 		<img alt="Infomovil" src="<c:url value="/resources/webapp/images/btn_buyPayPayl.gif"/>"/> --%>
     </button>
 
     </div>

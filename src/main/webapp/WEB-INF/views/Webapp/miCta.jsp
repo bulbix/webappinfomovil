@@ -110,7 +110,11 @@
 					<div class="page-header text-center navEditorSFl">
 					<h3 class="text-left textBlack " style="font-weight: 300; margin:5px 0 0 0;">Mis productos</h3><hr/>
 					<div>
-						<!-- Producto  tel-->	
+					
+					
+						
+						
+			
 	
 					<c:set var="divSinProductos" scope="request" value="0"/>				
 					<c:forEach items="${productos}" var="item">
@@ -200,7 +204,7 @@
 		</div>
 	</div>
 
-	<!--MODAL COMPRA EXITOSA-->
+	<!--MODAL RENOVACON EXITOSA .tel-->
 	<tiles:insertDefinition name="modalGen">
 		<tiles:putAttribute name="idModal" value="myModalCompraExitosa" />
 		<tiles:putAttribute name="tamanioModal"
@@ -216,6 +220,15 @@
 		<c:set var="fragmentName" value="modalCompraFallo" scope="request" />
 	</tiles:insertDefinition>
 	<!--/MODAL COMPRA EXITOSA-->
+	
+	<!--MODAL COMPRA PP-->
+	<tiles:insertDefinition name="modalGen">
+		<tiles:putAttribute name="idModal" value="myModalCompraPP" />
+		<tiles:putAttribute name="tamanioModal"
+			value='"modal-dialog modal-md"' />
+		<c:set var="fragmentName" value="modalCompraPP" scope="request" />
+	</tiles:insertDefinition>
+	<!--/MODAL COMPRA PP-->
 	
 	<!--MODAL TEMPLATES-->
 	<div id="modalTemplates"></div>

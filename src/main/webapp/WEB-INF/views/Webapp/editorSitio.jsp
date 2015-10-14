@@ -104,6 +104,14 @@
 								<img width="20" height="20" alt="Infomovil"	src="<c:url value="/resources/webapp/images/ico_mas_cont${ extensionImg }.png"/>" />
 							</a>
 						</li>-->
+						
+						<li class="botonDesPublicar borderFin" id="btnContLi"
+								style="display: none;"><a href="#" data-toggle="modal"
+								data-target="#myModalMoviliza" class="smoothScroll ${colorTexto}">
+ 									Moviliza tu sitio <!--<img -->
+<!-- 									width="20" height="20" alt="Infomovil" -->
+<%-- 									src="<c:url value="/resources/webapp/images/ico_mas_cont${ extensionImg }.png"/>" />--%> </a></li> 
+									
 					<li><a href="<c:url value="/logout"></c:url>"
 						class="smoothScroll ${colorTexto}"><img width="20" height="20"
 							alt="Infomovil"
@@ -393,6 +401,24 @@
 	<!--MODAL PUBLICACION-->
 	<div id="modalPublicacion"></div>
 	<!--MODAL PUBLICACION-->
+	
+	<!-- 		<!--MODAL MOVILIZA-->
+	<tiles:insertDefinition name="modalGen">
+		<tiles:putAttribute name="idModal" value="myModalMoviliza" />
+		<tiles:putAttribute name="tamanioModal"
+			value='"modal-dialog modal-md"' />
+		<c:set var="fragmentName" value="modalMoviliza" scope="request" />
+	</tiles:insertDefinition>
+	<!-- 		<!--/MODAL MOVILIZA-->
+	<!-- 		<!--MODAL MOVILIZA ACT-->
+	<tiles:insertDefinition name="modalGen">
+		<tiles:putAttribute name="idModal" value="myModalMovilizaAct" />
+		<tiles:putAttribute name="tamanioModal"
+			value='"modal-dialog modal-md"' />
+		<c:set var="fragmentName" value="modalMovilizaAct" scope="request" />
+	</tiles:insertDefinition>
+	<!-- 		<!--/MODAL MOVILIZA ACT-->
+	
 	<!-- Scroll to Top Button (Only visible on small and extra-small screen sizes) -->
 	<div class="scroll-top page-scroll visible-xs visble-sm">
 		<a class="btn" href="#page-top"> <img width="20" height="20"
@@ -400,6 +426,7 @@
 			src="http://landing.infomovil.com/webapp/templates/${ template }/images/fa-chevron-up.png" />Subir
 		</a>
 	</div>
+	
 
 	<!-- /container -->
 	<form id="publicarDominio"

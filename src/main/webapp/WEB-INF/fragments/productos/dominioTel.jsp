@@ -19,7 +19,7 @@
 			<p class="reset">12 meses</p>
 			<h3 class="prodPrice">
 				<sup>$</sup><span><strong>199.00</strong><span
-				class="prodNotes"> mxn</span></span>
+				class="prodNotes"> MXN</span></span>
 			</h3>
 		</div>					
 		<div class="clearfix"></div>
