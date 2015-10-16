@@ -227,6 +227,7 @@ var revisarEstado = function checkLoginState() {
 
 
 function getImagenesJQ() {
+	GRADOS = 0;
 	$("#btnGuardarImagen").hide();
 	$('#actualizarTextoFoto').val("");
 	$('#nombreDeImgn').val("");
@@ -444,7 +445,7 @@ function guardarImagenesJQF() {
 									tipoImagen : "IMAGEN",
 									domainId : $('#idDominio').val(),
 									descImagen : textFoto,
-
+									rotacion: GRADOS
 								},
 								success : function(data) {
 									console
@@ -539,8 +540,8 @@ function uploadImage(imageDom, imageUrl, origin, textFoto) {
 								baseImagen : binaryString,
 								tipoImagen : "IMAGEN",
 								domainId : $('#idDominio').val(),
-								descImagen : textFoto
-
+								descImagen : textFoto,
+								rotacion : GRADOS
 							},
 							success : function(data) {
 								weHaveSuccess = true;
@@ -751,6 +752,12 @@ function picChange(evt) {
 				}
 				fotoDeGaleria.src = picURL;
 				console.log(" El pic url es: " + picURL);
+				var reader = new FileReader();
+				reader.onload = function() {
+					fotoDeGaleria.src = reader.result;
+					console.log(" El reader.result es: " + reader.result);
+				}
+				reader.readAsDataURL(file);
 			} catch (err) {
 				console.log("Ocurrio un error con la picURL");
 				var reader = new FileReader();
