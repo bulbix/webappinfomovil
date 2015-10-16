@@ -45,7 +45,7 @@ public class LoginController {
 		
 		if (!email.isEmpty()) {
 			ClientWsInfomovil ws = new ClientWsInfomovil();
-			RespuestaVO resp = ws.crearSitioResetPassword(email);	
+			RespuestaVO resp = ws.crearSitioResetPassword(email.toLowerCase());	
 			
 			if(resp.getCodeError().equals("0")){
 				mensaje = "Se envió un correo a %s para restablecer tu contraseña.";
