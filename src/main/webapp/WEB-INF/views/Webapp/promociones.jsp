@@ -6,7 +6,7 @@
 <html lang="es">
 
 	<tiles:insertDefinition name="headEditorSitio">
-		<tiles:putAttribute name="template" value="${ sessionScope.plantillaUsuario }" />
+		<tiles:putAttribute name="template" value="${ template }" />
 	</tiles:insertDefinition>
 
 	<link href="<c:url value="/resources/webapp/js/datepicker/datepicker.css"/>" rel="stylesheet" />
@@ -74,24 +74,6 @@
 	
 		<!-- Botón Nuevo Estilo -->
 		<div class="seccTop bgBlack">
-<!-- 			<div class="container"> -->
-			
-<!-- 			<div class="col-xs-12 col-sm-6 hidden-xs"><h3 class="text-left textWhite" style="font-weight: 300;">Mis promociones</h3></div> -->
-<!-- 				<div class="col-xs-12 col-sm-6"> -->
-<!-- 					<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 reset text-right pull-right"> -->
-<%-- 						Nombre ${usuarioLogueado}<img width="30" height="30" alt="Infomovil" --%>
-<%-- 						src="<c:url value="/resources/webapp/images/fa-user.png"/>" />  <br/> ${correoElectronico} <img width="25" height="25" alt="Infomovil" --%>
-<%-- 						src="<c:url value="/resources/webapp/images/fa-mail.png"/>" />  --%>
-<!-- 						<div class="clear"></div> -->
-<%-- 						<a href="<c:url value="/infomovil/editarSitio"></c:url>" --%>
-<!-- 							class="col-xs-4 col-sm-3 col-md-3 col-lg-3 btn btn-default btn-outline navEditor pull-right hidden-sm hidden-md hidden-lg"> -->
-<!-- 							<span id="idOpcionMasCont"><img width="20" height="20" alt="Infomovil" -->
-<%-- 								src="<c:url value="/resources/webapp/images/fa-back.png"/>" /> Editor  --%>
-<!-- 							</span> -->
-<!-- 						</a> -->
-<!-- 					</div>			 -->
-<!-- 				</div> -->
-<!-- 			</div> -->
 
 	<div class="container">
 	
@@ -104,7 +86,7 @@
 						${nombreUsuario} <img width="20" height="20" alt="Infomovil"	src="<c:url value="/resources/webapp/images/fa-user.png"/>"/>
 					</c:if>
 				</span>  
-					<br/> ${sessionScope.correoElectronico} <img width="25" height="25" alt="Infomovil"
+					<br/> ${correoElectronico} <img width="25" height="25" alt="Infomovil"
 					src="<c:url value="/resources/webapp/images/fa-mail.png"/>" /> 
 					<div class="clear"></div>
 					<a href="<c:url value="/infomovil/editarSitio"></c:url>"
@@ -123,12 +105,26 @@
 		<!-- Formulario Promociones -->
 		<div class="">
 			<div class="col-xs-12 col-sm-6 col-sm-offset-3 col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3">
-				<div id="divPublicarPromo" style="display:none">			
-					<button type="button" class="btn btn-outlineGreen pull-right" id="btnPublicar" style="margin: 5px 0;">
+				
+				 
+				
+				
+				<!--Theme showcase -->
+				<div class="theme-showcaseApp navEditor" role="main" id="intro">
+					<!-- Main jumbotron for a primary marketing message or call to action -->
+					<div>
+						<!-- page header <input type="text" id="checkedRedimir" value=""/>-->
+						<div class="page-header text-center" style="border-radius:15px; background:url(<c:url value="/resources/webapp/images/bgWhTra.png"/>); padding:10px;">
+						
+						
+						
+						
+						<div id="divPublicarPromo" style="display:none">			
+					<button type="button" class="btn btn-outlineGreen pull-right textWhite navEditorLato" id="btnPublicar" style="margin: 5px 0;">
 						<img width="20" height="20" alt="Infomovil" src="<c:url value="/resources/webapp/images/successWhite.png"/>"/> 
 						<span class="hidden-xs">Publicar</span>
 					</button>
-					<button type="button" class="btn btn-outlineGreen pull-right"  id="btnVistaPrevia" style="margin: 5px 8px 0 0;">
+					<button type="button" class="btn btn-outlineGreen pull-right textWhite navEditorLato"  id="btnVistaPrevia" style="margin: 5px 8px 0 0;">
 						<img width="20" height="20" alt="Infomovil"	src="<c:url value="/resources/webapp/images/fa-eye.png"/>"/> 
 						<span class="hidden-xs">Vista Previa</span>
 					</button>
@@ -136,54 +132,31 @@
 				
 				<div class="clear"></div>
 					
-				<div id="divPromoPublicada" style="display:none">	  
-					<button type="button" class="btn btn-outlineGreen pull-right"  id="btnGuardar" style="margin: 5px 0 0 0;">
+						<div id="divPromoPublicada" style="display:none">	  
+					<button type="button" class="btn btn-outlineGreen pull-right textWhite navEditorLato"  id="btnGuardar" style="margin: 5px 0 0 0;">
 					<img width="20" height="20" alt="Infomovil" src="<c:url value="/resources/webapp/images/successWhite.png"/>"/> 
 					<span class="hidden-xs">Guardar</span></button>		 
-					<button type="button" class="btn btn-outlineGreen pull-right" id="btnEliminar" style="margin: 5px 5px 0 0;">
+					<button type="button" class="btn btn-outlineGreen pull-right textWhite navEditorLato" id="btnEliminar" style="margin: 5px 5px 0 0;">
 						<img width="20" height="20" alt="Infomovil" src="<c:url value="/resources/webapp/images/trash.png"/>"/> 
 						<span class="hidden-xs">Eliminar</span>
 					</button> 
-					<button type="button" class="btn btn-outlineGreen pull-right"  id="btnVerPromo" style="margin: 5px 5px 0 0;">
+					<button type="button" class="btn btn-outlineGreen pull-right textWhite navEditorLato"  id="btnVerPromo" style="margin: 5px 5px 0 0;">
 						<img width="20" height="20" alt="Infomovil" src="<c:url value="/resources/webapp/images/fa-eye.png"/>"/> 
 						<span class="hidden-xs">Ver</span>
 					</button>		 
-					<button type="button" class="btn btn-outlineGreen pull-right"  id="btnCompartir" style="margin: 5px 5px 0 0;">
+					<button type="button" class="btn btn-outlineGreen pull-right textWhite navEditorLato"  id="btnCompartir" style="margin: 5px 5px 0 0;">
 						<img width="20" height="20" alt="Infomovil" src="<c:url value="/resources/webapp/images/fa-compartir.png"/>" /> 
 						<span class="hidden-xs">Compartir</span>
 					</button>
 					
-<!-- 					<button type="button" class="btn btn-outlineGreen pull-right"  id="btnCompartir" style="margin: 5px 5px 0 0;" data-toggle="modal" -->
-<!-- 						data-target="#myModalPromoShare"> -->
-<%-- 						<img width="20" height="20" alt="Infomovil" src="<c:url value="/resources/webapp/images/fa-compartir.png"/>" />  --%>
-						
-<!-- 					</button> -->
-<!-- 					<button type="button" class="btn btn-outlineGreen pull-right"  id="btnCompartir" style="margin: 5px 5px 0 0;" data-toggle="modal" -->
-<!-- 						data-target="#myModalPromoExito"> -->
-<%-- 						<img width="20" height="20" alt="Infomovil" src="<c:url value="/resources/webapp/images/fa-compartir.png"/>" /> exito --%>
-						
-<!-- 					</button> -->
-<!-- 					<button type="button" class="btn btn-outlineGreen pull-right"  id="btnCompartir" style="margin: 5px 5px 0 0;" data-toggle="modal" -->
-<!-- 						data-target="#myModalPromoFallo"> -->
-<%-- 						<img width="20" height="20" alt="Infomovil" src="<c:url value="/resources/webapp/images/fa-compartir.png"/>" /> fallo --%>
-						
-<!-- 					</button> -->
-					
-				</div> 
-				
-				<div class="clear"></div>
+				</div>
+						<div class="clear"></div>
 	
 				<hr/>
-				<!--Theme showcase -->
-				<div class="theme-showcaseApp" role="main" id="intro">
-					<!-- Main jumbotron for a primary marketing message or call to action -->
-					<div class="">
-						<!-- page header <input type="text" id="checkedRedimir" value=""/>-->
-						<div class="page-header text-center">
 							<input type="hidden" id="idPromocion" value="${idOffer}"/>
 							<input type="hidden" id="urlPromocion" value="${urlPromocion}"/>
 							
-							<div class="col-xs-12 col-sm-6"><div class="form-group text-left textBlack">
+							<div class="col-xs-12 col-sm-12 col-md-6"><div class="form-group text-left textBlack">
 	    						<label for="exampleInputEmail1">Nombre de la promoción:</label>
 	    						<input type="text" class="form-control" name="nombrePromo" id="nombrePromo" value="${titleOffer}">
 	 	 					</div>
@@ -202,7 +175,7 @@
 	 	 					</div>
 							<div class="col-xs-12 col-sm-6">
 							
-							
+							<div class="divider hidden-md hidden-lg"></div>
 							<div class="form-group text-left textBlack">
 				    			<label for="exampleInputEmail1" class="text-left">Vigencia al:</label>
 				    			<input type="text" class="form-control3" id="datepicker" value="${endDateOffer}">
@@ -284,6 +257,7 @@
 			<tiles:putAttribute name="tamanioModal"
 				value='"modal-dialog modal-md"' />
 			<c:set var="fragmentName" value="modalPromoShare" scope="request" />
+			<c:set var="urlPromo" value="${urlPromocion}" scope="session"/>
 		</tiles:insertDefinition>
 		
 		<tiles:insertDefinition name="modalGen">

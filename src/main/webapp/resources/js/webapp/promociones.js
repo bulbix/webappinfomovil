@@ -112,8 +112,7 @@ var $publicarPromocion = function() {
 				message: '<div style="display:block; min-height:150px;"><p class="textBlack text-center" style="font-size:1.15em;">Por favor intentalo más tarde.</p><br/>'
 			});							
 		}
-	});	
-			
+	});				
 };
 
 var $guardarCambiosEnPromocion = function() {
@@ -164,7 +163,7 @@ var $eliminarPromocion = function() {
 	
 	BootstrapDialog
 	.show({
-		title : '<div class="textBlack">Eliminar Imagen</div>',
+		title : '<div class="textBlack">Eliminar</div>',
 		message : '<div style="display:block; padding: 10px;">¿Seguro que deseas eliminar la promoción?</div>',
 		buttons : [{
 					
@@ -233,30 +232,10 @@ var $verPromocionActiva = function() {
 	
 	var $urlPromo = $("#urlPromocion").val();
 	
-	$.blockUI.defaults.baseZ = 9000;
-	$.blockUI({
-		message: "Obteniendo promoción...",
-		css: {
-			class:"alertaUI",
-			top:  ($(window).height() - 400) /2 + 'px',
-			left: ($(window).width() - 400) /2 + 'px',
-			width: '400px'
-		}
-	});
-
 	if ($urlPromo.trim().length > 0 && $urlPromo != null)
-	{
-		$("#urlVistaPreviaPromo").attr('src', $("#urlPromocion").val());
-		$("#myModalPromo").modal();
-	}
+		window.open($urlPromo, '_blank');
 	else
-	{
 		console.log("no hay url");
-	}
-	
-
-	$.unblockUI();
-
 };
 
 var $vistaPrevia = function() {
@@ -287,7 +266,8 @@ var $vistaPrevia = function() {
 			terminos:$infoadiPromo.val()
 		},
 			success : function(data) {
-				$("#urlVistaPreviaPromo").attr('src', data.urlVistaPreviaPromo);
+			//	console.log("url vista previa: " + data.urlVistaPreviaPromo + '?vistaPrevia=1');
+				$("#urlVistaPreviaPromo").attr('src', data.urlVistaPreviaPromo + '?vistaPrevia=1');
 				$("#myModalPromo").modal();	
 				$.unblockUI();
 			},
@@ -297,11 +277,10 @@ var $vistaPrevia = function() {
 				BootstrapDialog.show({
 					title: "<span class='textBlack' style='font-size:1.15em;'><img alt='' src='../resources/webapp/images/fa-warning-bk.png'  title='Alerta' />No se ha podido obtener la vista previa de la promoción</span>",
 					message: '<div style="display:block; min-height:150px;"><p class="textBlack text-center" style="font-size:1.15em;">Por favor intentalo más tarde.</p><br/>'
-				});
-									
+				});									
 			}
 		});	
-};
+	};
 
 var $activaRadio  = function(radio){
 		switch(radio){

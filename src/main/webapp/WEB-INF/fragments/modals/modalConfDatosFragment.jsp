@@ -57,7 +57,7 @@
   <div class="form-group">
     <label for="inputEmail3" class="col-sm-2 control-label text-left">Costo</label>
     <div class="col-xs-12 col-sm-10">
-    <label class="control-label text-left" style="font-weight:300;">$200.00mxn</label> 
+    <label class="control-label text-left" style="font-weight:300;">$199.00mxn</label> 
       
     </div>
   </div>

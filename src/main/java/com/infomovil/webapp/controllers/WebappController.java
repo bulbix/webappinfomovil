@@ -482,6 +482,8 @@ public class WebappController
 		String urlPaypal = "";
 		String urlReturn = "";
 		String nombreUsuario = "";
+		String codigoPayPal = "";
+		
 		int totProductos = 0;
 
 		try
@@ -491,6 +493,15 @@ public class WebappController
 			
 			wsRespuesta = wsCliente.crearSitioGetProductosUsuario(correo, password);
 			totProductos = wsRespuesta.getListProductoUsuarioVO().size();
+			
+			for (ProductoUsuarioVO producto : wsRespuesta.getListProductoUsuarioVO())
+			{
+				if (totProductos == 2)
+				{
+					if (!producto.isActivo() && !producto.isRenovable())
+						totProductos = totProductos - 1;
+				}
+			}
 			
 			if (totProductos == 1)
 				claseProductos = "'col-xs-12 col-sm-6 col-md-6 col-lg-6 dBlock col-sm-offset-3'";
@@ -510,11 +521,13 @@ public class WebappController
          	{
          		urlPaypal = new String("https://www.paypal.com/cgi-bin/webscr");
          		urlReturn = new String("http://www.infomovil.com/infomovil/miCuenta");
+         		codigoPayPal = "JCLPR45ZL73CU";
          	}
          	else
          	{
          		urlPaypal = new String("https://www.sandbox.paypal.com/cgi-bin/webscr");
          		urlReturn = new String("http://webapp-qa.mobileinfo.io/infomovil/miCuenta");
+         		codigoPayPal = "GVM5RUC45WKJS";
          	}
          	
          	if (Util.getProfile().equals("DEV"))
@@ -539,6 +552,7 @@ public class WebappController
 			model.put("urlPaypal", urlPaypal);
 			model.put("nombreUsuario", nombreUsuario);
 			model.put("urlReturn", urlReturn);
+			model.put("codigoPayPal", codigoPayPal);
 		}		
 		catch (Exception e) 
 		{
@@ -709,6 +723,7 @@ public class WebappController
 				model.put("galeriaImagenes", galeriaImagenes);
 				
 			    Util.getCurrentSession().setAttribute("canal", canal);
+			    Util.getCurrentSession().setAttribute("template", template);
 			}
 			else 
 			{
@@ -837,6 +852,11 @@ public class WebappController
 	{		
 		HashMap<String, Object> model = new HashMap<String, Object>();
 		RespuestaVO wsRespuesta = new RespuestaVO();
+		String nombreUsuario = "";
+		String template = "Coverpage1azul";
+		String claseCss = "inverse";
+		String colorTexto = "textWhite";
+		String extensionImg = "";
 //		OffertRecordVO promocion = new OffertRecordVO();
 		
 		try
@@ -845,6 +865,7 @@ public class WebappController
 			String password = Util.getUserLogged().getPassword();
 			
 			wsRespuesta = wsCliente.crearSitioGetPromociones(correo, password);
+         	
 			//model.put("promociones", wsRespuesta.getListPromocion());
 			for (OffertRecordVO promocion : wsRespuesta.getListPromocion())
 			{
@@ -859,9 +880,33 @@ public class WebappController
 				model.put("idOffer", promocion.getIdOffer());
 				model.put("urlImage", promocion.getUrlImage());
 				model.put("urlPromocion", promocion.getUrlPromocion());
-				model.put("correoElectronico", correo);
+			}	
+			
+			if (Util.getCurrentSession().getAttribute("canal") != null)
+			{
+				if (Util.getCurrentSession().getAttribute("canal").toString().startsWith("BAZ"))
+				{
+					claseCss = "default";
+					colorTexto = "textBlack";
+					extensionImg = "-bk";
+				}
 			}
 			
+         	if (Util.getCurrentSession().getAttribute("nombreUsuario") != null)
+         	{
+         		if (!(EmailValidator.getInstance().isValid(Util.getCurrentSession().getAttribute("nombreUsuario").toString())))
+         			nombreUsuario = Util.getCurrentSession().getAttribute("nombreUsuario").toString();
+         	}
+         	
+         	if (Util.getCurrentSession().getAttribute("template") != null)
+         		template = Util.getCurrentSession().getAttribute("template").toString();
+         	
+			model.put("claseCss", claseCss);
+			model.put("colorTexto", colorTexto);
+			model.put("extensionImg", extensionImg);
+			model.put("nombreUsuario", nombreUsuario);
+			model.put("template", template);
+			model.put("correoElectronico", correo);
 		}		
 		catch (Exception e) 
 		{
