@@ -174,7 +174,8 @@ public class WebappController
 	public Map<String, String> guardarImagen(@RequestParam String baseImagen, 
 												@RequestParam String tipoImagen,
 												@RequestParam String domainId,
-												 String descImagen) 
+												@RequestParam String descImagen,
+												@RequestParam String rotacion) 
 			throws UnsupportedEncodingException
 	{		
 		Map<String, String> resultMap = new HashMap<String, String>();
@@ -183,7 +184,7 @@ public class WebappController
 		
 		try
 		{	
-			wsRespuesta = wsCliente.crearSitioGuardaImage(domainId, baseImagen, tipoImagen, desc) ;
+			wsRespuesta = wsCliente.crearSitioGuardaImage(domainId, baseImagen, tipoImagen, desc, rotacion) ;
 			resultMap.put("codeError", wsRespuesta.getCodeError());
 		}		
 		catch (Exception e) 
