@@ -6,7 +6,7 @@
 		</button>
 		<p class="modal-title textBlack"><strong>¡Vas muy bien!</strong></p>
 	</div>
-	<div class="modal-body bgWhite ">
+	<div class="modal-body  ">
 	<div class="col-xs-12">
  
 <div class="clear divider"></div>

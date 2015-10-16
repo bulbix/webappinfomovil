@@ -13,7 +13,7 @@
 <!-- 			<strong>Regresar</strong> -->
 <!-- 		</button> -->
 	</div>
-	<div class="modal-body bgWhite ">
+	<div class="modal-body ">
 		<div class="col-xs-12">
 		<div class="divider"></div>
 		<div class="textBlack">Comparte tu promoción</div>

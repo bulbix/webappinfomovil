@@ -6,7 +6,7 @@
 		</button>
 		<p class="modal-title textBlack"></p>
 	</div>
-	<div class="modal-body bgWhite ">
+	<div class="modal-body ">
 	<div class="col-xs-12">
  <p class="textBlack" ><strong>Ya tomaste el primer paso.</strong>
  <strong>Ahora, toma el siguiente.  </strong></p><p class="textPurple"><strong>Utiliza nuestra app móvil para:</strong></p> 

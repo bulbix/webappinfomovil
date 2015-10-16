@@ -7,7 +7,7 @@
 		</button>
 		<p class="modal-title"></p>
 	</div>
-	<div class="modal-body bgWhite">
+	<div class="modal-body">
 		<h2 class="textPurple col-xs-12 col-sm-12 col-md-12 col-lg-12 text-center">&iexcl;Felicidades, ya publicaste tu p&aacute;gina de <strong>Perfil</strong>!</h2>
 		
 		<p  class="textBlack col-xs-12 col-sm-12 col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3 text-left"></p>

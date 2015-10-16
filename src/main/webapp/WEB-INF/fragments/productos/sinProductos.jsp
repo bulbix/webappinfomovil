@@ -9,7 +9,7 @@
 	</div>
 	<div class="prodBody">
 		<div class="col-xs-12 text-center prodPadd10" >
-			<p class="textBlack navEditor">Actualmente no cuentas con productos</p>
+			<p class="textBlack text-center btnsEditor">Actualmente no cuentas con productos</p>
 			<hr/>
 		</div>
 		<div class="col-xs-12 text-center navEditorSFl">
