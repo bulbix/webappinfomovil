@@ -42,20 +42,21 @@ public class LoginController {
 	public String resetPasswordSubmit(@RequestParam String email, ModelMap model, RedirectAttributes redirectAttributes) {	
 		
 		String mensaje;
+		String correo = email.toLowerCase();
 		
 		if (!email.isEmpty()) {
 			ClientWsInfomovil ws = new ClientWsInfomovil();
-			RespuestaVO resp = ws.crearSitioResetPassword(email.toLowerCase());	
+			RespuestaVO resp = ws.crearSitioResetPassword(correo);	
 			
 			if(resp.getCodeError().equals("0")){
 				mensaje = "Se envió un correo a %s para restablecer tu contraseña.";
 				redirectAttributes.addFlashAttribute("ctaCorreo", email);
-				redirectAttributes.addFlashAttribute("errorCta", String.format(mensaje,email));
+				redirectAttributes.addFlashAttribute("errorCta", String.format(mensaje, correo));
 				return "redirect:/login"; 
 			}
 			else if(resp.getCodeError().equals("-1000")){
 				mensaje = "El correo %s no existe en Infomovil.";
-				redirectAttributes.addFlashAttribute("mensaje", String.format(mensaje,email));
+				redirectAttributes.addFlashAttribute("mensaje", String.format(mensaje, correo));
 				return "redirect:/resetpassword"; 
 			}
 			else{
