@@ -14,9 +14,11 @@
 		<tiles:putAttribute name="productoActivo" value="${productoActivo}" />
 		<tiles:putAttribute name="datoUrl" value="${datoUrl}" />
 		<tiles:putAttribute name="fechaInicial" value="${fechaInicial}" />
-		<tiles:putAttribute name="fechaFinal" value="${fechaFin}" />
+		<tiles:putAttribute name="fechaFinal" value="${fechaFinal}" />
 		<tiles:putAttribute name="imgActivo" value="${imgActivo}" />
 		<tiles:putAttribute name="visibleBtnRenueva" value="${displayButton}" />
+		<tiles:putAttribute name="siTienePP" value="${siTienePP}" />
+		<tiles:putAttribute name="noTienePP" value="${noTienePP}" />
 	</tiles:insertDefinition>
 	<!--/ CUERPO -->
 	<!-- PIE -->
@@ -24,5 +26,3 @@
 	<!-- /PIE -->
 </div>
 <!--/ Producto -->
-
-<%-- <h1><tiles:getAsString name="claseProductos"/></h1> --%>

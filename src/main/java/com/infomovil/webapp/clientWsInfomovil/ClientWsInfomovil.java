@@ -285,6 +285,14 @@ public class ClientWsInfomovil {
 		return _crearSitioPrevisualizarPromocion__return.respuestaVO;
 	}
 	
-	
+	public RespuestaVO crearSitioGeneraCodMoviliza(String email)
+	{
+		log.info("Invoking crearSitioGeneraCodMoviliza...");
+        com.infomovil.webapp.clientWsInfomovil.GeneraHashMovilizaSitio _crearSitioGeneraCodMoviliza_parameters = new GeneraHashMovilizaSitio();
+        _crearSitioGeneraCodMoviliza_parameters.email = email;
+        com.infomovil.webapp.clientWsInfomovil.GeneraHashMovilizaSitioResponse _crearSitioPrevisualizarPromocion__return = port.generaHashMovilizaSitio(_crearSitioGeneraCodMoviliza_parameters);
+        log.info("crearSitioGeneraCodMoviliza.result=" + _crearSitioPrevisualizarPromocion__return);
+		return _crearSitioPrevisualizarPromocion__return.respuestaVO;
+	}	
 	
 }

@@ -35,7 +35,7 @@
   <div class="form-group">
     <div class="col-xs-12">
 	
-    <button type="button" class="btn btn-outline pull-right" id="btnPagoPaypal" > 
+    <button type="button" class="btn btn-outline pull-right" id="btnPagoPaypalPP" > 
     
     <img
 					src="<c:url value="/resources/webapp/images/btn_11.png"/>"

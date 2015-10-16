@@ -33,7 +33,6 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import com.infomovil.webapp.clientWsInfomovil.Catalogo;
 import com.infomovil.webapp.clientWsInfomovil.ClientWsInfomovil;
 import com.infomovil.webapp.clientWsInfomovil.ImagenVO;
-import com.infomovil.webapp.clientWsInfomovil.OffertRecordVO;
 import com.infomovil.webapp.clientWsInfomovil.ProductoUsuarioVO;
 import com.infomovil.webapp.clientWsInfomovil.RespuestaVO;
 import com.infomovil.webapp.clientWsInfomovil.StatusDomainVO;
@@ -470,20 +469,24 @@ public class WebappController
 	
 	
 	@RequestMapping(value = "/infomovil/miCuenta", method = {RequestMethod.GET, RequestMethod.POST})
-	public ModelAndView miCuenta(HttpServletRequest request, HttpServletResponse response, RedirectAttributes redirectAttributes, String payment_status)
+	public ModelAndView miCuenta(HttpServletRequest request, HttpServletResponse response, RedirectAttributes redirectAttributes, 
+			String payment_status, String mensajeCompra)
 	{		
 		HashMap<String, Object> model = new HashMap<String, Object>();
 		RespuestaVO wsRespuesta = new RespuestaVO();
+		RespuestaVO wsStatus = new RespuestaVO();
 		
-		String claseProductos = "'col-xs-12 col-sm-6 col-md-6 col-lg-6 dBlock'";
+		String claseProductos = "'col-xs-12 col-sm-6 col-md-6 col-lg-6 dBlock col-sm-offset-3'";
 		String claseCss = "inverse";
 		String colorTexto = "textWhite";
 		String extensionImg = "";
 		String urlPaypal = "";
 		String urlReturn = "";
 		String nombreUsuario = "";
-		String codigoPayPal = "";
-		
+		String codigoPayPalTel = "";
+		String status = "";
+		String planPro = "NO";
+		ProductoUsuarioVO productoVO = null;
 		int totProductos = 0;
 
 		try
@@ -493,6 +496,7 @@ public class WebappController
 			
 			wsRespuesta = wsCliente.crearSitioGetProductosUsuario(correo, password);
 			totProductos = wsRespuesta.getListProductoUsuarioVO().size();
+			modeloWebApp.setListaProductos(wsRespuesta.getListProductoUsuarioVO());
 			
 			for (ProductoUsuarioVO producto : wsRespuesta.getListProductoUsuarioVO())
 			{
@@ -500,11 +504,14 @@ public class WebappController
 				{
 					if (!producto.isActivo() && !producto.isRenovable())
 						totProductos = totProductos - 1;
+					
+					if (producto.getDescripcion().equals("RECURSO"))
+						totProductos = totProductos - 1;
 				}
 			}
 			
-			if (totProductos == 1)
-				claseProductos = "'col-xs-12 col-sm-6 col-md-6 col-lg-6 dBlock col-sm-offset-3'";
+			if (totProductos > 1)
+				claseProductos = "'col-xs-12 col-sm-6 col-md-6 col-lg-6 dBlock'";
 		
 			if (Util.getCurrentSession().getAttribute("canal") != null)
 			{
@@ -516,18 +523,24 @@ public class WebappController
 				}
 			}
 
+			if (Util.getCurrentSession().getAttribute("statusCta") == null)
+			{
+				wsStatus = wsCliente.crearSitioCargar(correo, password);
+				Util.getCurrentSession().setAttribute("statusCta", wsStatus.getDominioCreaSitio().getEstatusCuenta());
+			}
+			
 			/*URL para paypal*/
          	if(Util.getProfile().equals("PROD"))
          	{
          		urlPaypal = new String("https://www.paypal.com/cgi-bin/webscr");
          		urlReturn = new String("http://www.infomovil.com/infomovil/miCuenta");
-         		codigoPayPal = "JCLPR45ZL73CU";
+         		codigoPayPalTel = "JCLPR45ZL73CU";
          	}
          	else
          	{
          		urlPaypal = new String("https://www.sandbox.paypal.com/cgi-bin/webscr");
          		urlReturn = new String("http://webapp-qa.mobileinfo.io/infomovil/miCuenta");
-         		codigoPayPal = "GVM5RUC45WKJS";
+         		codigoPayPalTel = "GVM5RUC45WKJS";
          	}
          	
          	if (Util.getProfile().equals("DEV"))
@@ -540,7 +553,19 @@ public class WebappController
          		if (!(EmailValidator.getInstance().isValid(Util.getCurrentSession().getAttribute("nombreUsuario").toString())))
          			nombreUsuario = Util.getCurrentSession().getAttribute("nombreUsuario").toString();
          	}
-         	
+
+			productoVO = modeloWebApp.getProducto("pp", "pi");
+			
+			if (productoVO != null)
+				planPro = "SI";		
+	
+			if (planPro.equals("NO"))
+			{
+				status = Util.getCurrentSession().getAttribute("statusCta").toString();
+				if (modeloWebApp.getStatus(status))
+					planPro = "SI";
+			}
+		
 			model.put("claseProductos", claseProductos);
 			model.put("claseCss", claseCss);
 			model.put("colorTexto", colorTexto);
@@ -552,7 +577,9 @@ public class WebappController
 			model.put("urlPaypal", urlPaypal);
 			model.put("nombreUsuario", nombreUsuario);
 			model.put("urlReturn", urlReturn);
-			model.put("codigoPayPal", codigoPayPal);
+			model.put("codigoPayPal", codigoPayPalTel);
+			model.put("planPro", planPro);
+			model.put("mensajeCompra", mensajeCompra);
 		}		
 		catch (Exception e) 
 		{
@@ -620,10 +647,10 @@ public class WebappController
 					sitioWeb = "SIN_PUBLICAR";
 				
 				if (!StringUtils.isEmpty(wsRespuesta.getDominioCreaSitio().getTemplate()))
-					template = wsRespuesta.getDominioCreaSitio().getTemplate();
+					template = wsRespuesta.getDominioCreaSitio().getTemplate().trim();
 
 				if (template.equals("Moderno") || template.equals("Creativo") || template.equals("Clasico") 
-						|| template.equals("Divertido") || template.equals("Estandar1"))
+						|| template.equals("Divertido") || template.equals("Estandar1") || template.isEmpty())
 					template = "Coverpage1azul";
 				
 				if (sitioWeb.indexOf("tel") != -1)
@@ -724,6 +751,7 @@ public class WebappController
 				
 			    Util.getCurrentSession().setAttribute("canal", canal);
 			    Util.getCurrentSession().setAttribute("template", template);
+			    Util.getCurrentSession().setAttribute("statusCta", status);
 			}
 			else 
 			{
@@ -813,234 +841,14 @@ public class WebappController
 		return resultMap;
 	}
 	
-	
-	@RequestMapping(value = "/infomovil/crearSitioIntentoPago", method = RequestMethod.POST, produces = "application/json")
-	@ResponseBody
-	public Map<String, String> crearSitioIntentoPago(@RequestParam String nombre, @RequestParam String direccion, @RequestParam String pais)
-	{		
-		Map<String, String> resultMap = new HashMap<String, String>();
-		RespuestaVO wsRespuesta = new RespuestaVO();
-		String correo = Util.getUserLogged().getUsername();
-		String password = Util.getUserLogged().getPassword();
-		try
-		{
-			wsRespuesta = wsCliente.crearSitioIntentoPago(correo, password, "DOMINIO TEL", "PAY PAL", "TEL", "tel",nombre,direccion,pais);
-				
-			resultMap.put("resultado", wsRespuesta.getIdPago());
-		}		
-		catch (Exception e) 
-		{
-			logger.error("existeDominio:::::", e);
-		}	
-		
-		return resultMap;
-	}
-	
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String index(){
 		logger.info("redirect:/infomovil/editarSitio");
 		return "redirect:/infomovil/editarSitio";
-	}
-	
+	}	
+
 	final private String passwordDefault = "banco1";
 	private static final Logger logger = Logger.getLogger(WebappController.class);
 	private ClientWsInfomovil wsCliente = new ClientWsInfomovil();
 	private List<Catalogo> wsCatalogo;
-	
-	@RequestMapping(value = "/infomovil/misPromociones", method = {RequestMethod.GET, RequestMethod.POST})
-	public ModelAndView misPromociones(HttpServletRequest request, HttpServletResponse response, RedirectAttributes redirectAttributes)
-	{		
-		HashMap<String, Object> model = new HashMap<String, Object>();
-		RespuestaVO wsRespuesta = new RespuestaVO();
-		String nombreUsuario = "";
-		String template = "Coverpage1azul";
-		String claseCss = "inverse";
-		String colorTexto = "textWhite";
-		String extensionImg = "";
-//		OffertRecordVO promocion = new OffertRecordVO();
-		
-		try
-		{		
-			String correo = Util.getUserLogged().getUsername();
-			String password = Util.getUserLogged().getPassword();
-			
-			wsRespuesta = wsCliente.crearSitioGetPromociones(correo, password);
-         	
-			//model.put("promociones", wsRespuesta.getListPromocion());
-			for (OffertRecordVO promocion : wsRespuesta.getListPromocion())
-			{
-				model.put("titleOffer", promocion.getTitleOffer());
-				model.put("descOffer", promocion.getDescOffer());
-				model.put("termsOffer", promocion.getTermsOffer());
-				model.put("imageClobOffer", promocion.getImageClobOffer());
-				model.put("endDateOffer", promocion.getEndDateOffer());
-				model.put("promoCodeOffer", promocion.getPromoCodeOffer());
-				model.put("discountOffer", promocion.getDiscountOffer());
-				model.put("redeemOffer", promocion.getRedeemOffer());
-				model.put("idOffer", promocion.getIdOffer());
-				model.put("urlImage", promocion.getUrlImage());
-				model.put("urlPromocion", promocion.getUrlPromocion());
-			}	
-			
-			if (Util.getCurrentSession().getAttribute("canal") != null)
-			{
-				if (Util.getCurrentSession().getAttribute("canal").toString().startsWith("BAZ"))
-				{
-					claseCss = "default";
-					colorTexto = "textBlack";
-					extensionImg = "-bk";
-				}
-			}
-			
-         	if (Util.getCurrentSession().getAttribute("nombreUsuario") != null)
-         	{
-         		if (!(EmailValidator.getInstance().isValid(Util.getCurrentSession().getAttribute("nombreUsuario").toString())))
-         			nombreUsuario = Util.getCurrentSession().getAttribute("nombreUsuario").toString();
-         	}
-         	
-         	if (Util.getCurrentSession().getAttribute("template") != null)
-         		template = Util.getCurrentSession().getAttribute("template").toString();
-         	
-			model.put("claseCss", claseCss);
-			model.put("colorTexto", colorTexto);
-			model.put("extensionImg", extensionImg);
-			model.put("nombreUsuario", nombreUsuario);
-			model.put("template", template);
-			model.put("correoElectronico", correo);
-		}		
-		catch (Exception e) 
-		{
-			logger.error("misPromociones:::::", e);
-			return null;
-		}			
-		
-		return new ModelAndView("Webapp/promociones", model);
-	}
-
-	@RequestMapping(value = "/infomovil/guardarPromocion", method = {RequestMethod.GET, RequestMethod.POST}, produces = "application/json")
-	@ResponseBody
-	public Map<String, String> guardarPromocion(@RequestParam String titulo, @RequestParam String descripcion, @RequestParam String fechaVigencia
-				, String base64Imagen, @RequestParam String redimir, @RequestParam String terminos, Model model)
-	{		
-		int idPromocion = 0; 
-		RespuestaVO respVO = new RespuestaVO();
-		Map<String, String> resultado = new HashMap<String, String>();
-
-		try
-		{		
-			String correo = Util.getUserLogged().getUsername();
-			String password = Util.getUserLogged().getPassword();
-			respVO = wsCliente.crearSitioGuardarPromocion(correo, password, descripcion, fechaVigencia, redimir, terminos, titulo, base64Imagen, idPromocion);
-			resultado.put("codeError", respVO.getCodeError());
-			resultado.put("descEror", respVO.getMsgError());
-			
-			respVO = wsCliente.crearSitioGetPromociones(correo, password);
-			for (OffertRecordVO promocion : respVO.getListPromocion())
-			{
-				resultado.put("idOffer", promocion.getIdOffer());
-				resultado.put("urlPromocion", promocion.getUrlPromocion());
-			}
-		}		
-		catch (Exception e) 
-		{
-			logger.error("guardarPromocion:::::", e);
-			resultado.put("codeError", respVO.getCodeError());
-			resultado.put("descEror", respVO.getMsgError());
-			return null;
-		}			
-		
-		return resultado;
-	}
-	
-	@RequestMapping(value = "/infomovil/eliminarPromocion", method = {RequestMethod.GET, RequestMethod.POST}, produces = "application/json")
-	@ResponseBody
-	public Map<String, String> eliminarPromocion(@RequestParam int idPromocion)
-	{		
-		RespuestaVO respVO = new RespuestaVO();
-		Map<String, String> resultado = new HashMap<String, String>();
-
-		try
-		{		
-			String correo = Util.getUserLogged().getUsername();
-			String password = Util.getUserLogged().getPassword();
-			respVO = wsCliente.crearSitioGuardarPromocion(correo, password, "", "", "", "", "", "", idPromocion);
-			resultado.put("codeError", respVO.getCodeError());
-			resultado.put("descEror", respVO.getMsgError());
-		}		
-		catch (Exception e) 
-		{
-			logger.error("getPromociones:::::", e);
-			resultado.put("codeError", "-1");
-			resultado.put("descEror", "errorEliminarPromocion");
-			return null;
-		}			
-		
-		return resultado;
-	}	
-	
-	
-	@SuppressWarnings("unchecked")
-	@RequestMapping(value = "/infomovil/getPromociones", method = {RequestMethod.GET, RequestMethod.POST}, produces = "application/json")
-	@ResponseBody
-	public JSONArray getPromociones()throws UnsupportedEncodingException
-	{		
-		RespuestaVO respVO = new RespuestaVO();
-		JSONArray list = new JSONArray();
-
-		try
-		{		
-			String correo = Util.getUserLogged().getUsername();
-			String password = Util.getUserLogged().getPassword();
-			
-			respVO =  wsCliente.crearSitioGetPromociones(correo, password);
-			list.addAll(respVO.getListPromocion());
-			logger.info(list);
-		}		
-		catch (Exception e) 
-		{
-			logger.error("getPromociones:::::", e);
-			return null;
-		}			
-		
-		return list;
-	}
-	
-	@RequestMapping(value = "/infomovil/verPromo", method = { RequestMethod.GET , RequestMethod.POST }, produces = "application/json")
-	@ResponseBody
-	public Map<String, String> verPromo(int idDominio, String titulo, String descripcion, String fechaVigencia, String base64Imagen, 
-			String redimir, String terminos)
-	{
-		RespuestaVO respVO = new RespuestaVO();
-		Map<String, String> resultado = new HashMap<String, String>();
-
-		try
-		{		
-			String correo = Util.getUserLogged().getUsername();
-			String password = Util.getUserLogged().getPassword();
-			
-			if (idDominio == 0) /*Vista previa*/
-				respVO = wsCliente.crearSitioPrevisualizarPromocion(correo, password, descripcion, fechaVigencia, redimir, terminos, titulo, base64Imagen);
-			else /*Ver promo guardada*/
-				respVO = wsCliente.crearSitioGuardarPromocion(correo, password, descripcion, fechaVigencia, redimir, terminos, titulo, base64Imagen, idDominio);
-			
-			resultado.put("codeError", respVO.getCodeError());
-			resultado.put("descEror", respVO.getMsgError());
-			resultado.put("urlVistaPreviaPromo", respVO.getUrlPromocion());
-//			resultado.put("idOffer", respVO.geti);
-			logger.info("UrlPromocion: " + respVO.getUrlPromocion());
-		}		
-		catch (Exception e) 
-		{
-			logger.error("verPromo:::::", e);
-			resultado.put("codeError", respVO.getCodeError());
-			resultado.put("descEror", respVO.getMsgError());
-			resultado.put("urlVistaPreviaPromo", "");
-			return null;
-		}			
-		
-		return resultado;
-	}
-	
 }
-
-

@@ -110,88 +110,56 @@
 					<div class="page-header text-center navEditorSFl">
 					<h3 class="text-left textBlack " style="font-weight: 300; margin:5px 0 0 0;">Mis productos</h3><hr/>
 					<div>
-					
-					
+					<h1>${planPro}</h1>
+					<c:choose>
+						<c:when test="${totProductos > 0}">	
 						
-						
-			
-	
-					<c:set var="divSinProductos" scope="request" value="0"/>				
-					<c:forEach items="${productos}" var="item">
-						
-						<c:choose>
-							<c:when test="${item.renovable == 'false' and item.activo == 'false'}">	
-								<c:set var="divSinProductos" scope="request" value="0"/>
-							</c:when>
-							<c:otherwise>
-								<c:set var="divSinProductos" scope="request" value="1"/>
-									<tiles:insertDefinition name="prodGen">
-										<c:choose>
-											<c:when test="${item.claveComercial == 'TEL'}">
-												<c:set var="productoNombre" value="dominioTel" scope="request" />
-												<c:set var="datoUrl" value="${item.urlRenovar}" scope="request" />
-											</c:when>
-											<c:otherwise>
-												<c:set var="productoNombre" value="planPro" scope="request" />
-												<c:set var="datoUrl" value="${item.descripcion}" scope="request" />
-											</c:otherwise>
-										</c:choose>
-	
-										<c:choose> 
-											<c:when test="${item.renovable == 'true'}">	
-												
-												<c:set var="imgActivo" value="btn_inactive.png" scope="request" />
-												<c:set var="productoActivo" value="Inactivo" scope="request" />	
-												
-												<c:if test="${item.activo == 'true'}">
-													<c:set var="imgActivo" value="btn_active.png" scope="request" />
-													<c:set var="productoActivo" value="Activo" scope="request" />	
-												</c:if>
-												
-												<c:set var="displayButton" value="display:block" scope="request" />														
-												
-												<c:if test="${item.abc == 'Plan pro'}">
-													<c:set var="displayButton" value="display:none" scope="request" />		
-													<c:set var="productoActivo" value="Inactivo" scope="request" />	
-												</c:if>	
-															
-											</c:when>
-											<c:otherwise>
-											
-												<c:set var="imgActivo" value="btn_active.png" scope="request" />
-												<c:set var="displayButton" value="display:none" scope="request" />		
-												<c:set var="productoActivo" value="Activo" scope="request" />
-												
-							 					<c:if test="${item.activo == 'false'}">
-													<c:set var="displayButton" value="display:none" scope="request" />		
-													<c:set var="productoActivo" value="Inactivo" scope="request" />	
-													<c:set var="imgActivo" value="btn_inactive.png" scope="request" />
-												</c:if>	
-																								
-											</c:otherwise>
-										</c:choose>
+							<c:forEach items="${productos}" var="item">
 
-										<c:set var="fechaInicial" value="${item.fechaInicio}" scope="request"/>
-										<c:set var="fechaFin" value="${item.fechaFin}" scope="request"/>
-										
-										<c:if test="${item.urlRenovar =='SP'}">
-											<c:set var="fechaInicial" value="----" scope="request"/>
-											<c:set var="fechaFin" value="----" scope="request"/>
-											<c:set var="datoUrl" value="SIN PUBLICAR" scope="request" />			
-										</c:if>
-										
-										<tiles:putAttribute name="productoTitulo" value="${item.abc}"/>	
+								<c:set var="siTienePP" value="display:none;" scope="request" />
+								<c:set var="noTienePP" value="display:block;" scope="request" />	
+																
+								<c:if test="${planPro == 'SI'}">
+									<c:set var="siTienePP" value="display:block;" scope="request" />
+									<c:set var="noTienePP" value="display:none;" scope="request" />									
+								</c:if>
+								
+								<c:if test="${item.descripcion != 'RECURSO'}">	
+																
+									<tiles:insertDefinition name="prodGen">
+										<c:set var="productoNombre" value="planPro" scope="request" />
+										<c:set var="datoUrl" value="${item.descripcion}" scope="request" />
+										<c:set var="imgActivo" value="btn_active.png" scope="request" />
+										<c:set var="displayButton" value="display:none" scope="request" />		
+										<c:set var="productoActivo" value="Activo" scope="request" />									
+										<c:set var="fechaInicial" value="${item.fechaInicio}" scope="request" />
+										<c:set var="fechaFinal" value="${item.fechaFin}" scope="request" />
+										<tiles:putAttribute name="productoTitulo" value="${item.abc}"/>
 										<tiles:putAttribute name="claseProductos" value="${claseProductos}"/>
-											
-									</tiles:insertDefinition>	
-									<c:set var="urlRenovar" value="${item.urlRenovar}" scope="session" />
-							</c:otherwise>
-						</c:choose>	
-					</c:forEach>		
+									</tiles:insertDefinition>
+								</c:if>
+							</c:forEach>
+																
+						</c:when>
+						<c:otherwise>
+							<tiles:insertDefinition name="prodGen">
+							
+								<c:set var="siTienePP" value="display:none;" scope="request" />
+								<c:set var="noTienePP" value="display:block;" scope="request" />
+								<c:set var="productoNombre" value="planPro" scope="request" />
+								<c:set var="datoUrl" value="xxxxxx" scope="request" />
+								<c:set var="imgActivo" value="btn_active.png" scope="request" />
+								<c:set var="displayButton" value="display:none" scope="request" />		
+								<c:set var="productoActivo" value="Activo" scope="request" />									
+								<c:set var="fechaInicial" value="----" scope="request" />
+								<c:set var="fechaFinal" value="----" scope="request" />
+								<tiles:putAttribute name="productoTitulo" value="planPro"/>
+								<tiles:putAttribute name="claseProductos" value="${claseProductos}"/>
+								
+							</tiles:insertDefinition>
+						</c:otherwise>
+					</c:choose>		
 					
-					<c:if test="${divSinProductos == '0'}">
-						<tiles:insertDefinition name="sinProductos"></tiles:insertDefinition>
-					</c:if>
 				</div>
 					<div class="clearfix"></div>
 					
@@ -260,7 +228,7 @@
 
 	<form action="${urlPaypal}" method="post" id="formPaypal">
 		<input type="hidden" name="cmd" value="_s-xclick">
-		<input type="hidden" name="hosted_button_id" value="${codigoPayPal}">
+		<input type="hidden" name="hosted_button_id" value="">
 		<input type="hidden" name="custom" id="customPaypal">
 	</form>
 	

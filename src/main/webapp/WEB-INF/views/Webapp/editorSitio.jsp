@@ -39,19 +39,11 @@
 			</div>
 			<div id="navbar" class="navbar-collapse collapse text-right">
 				<ul class="nav navbar-nav navbar-right">
-					
-<%-- 					<li><a href="#" class="smoothScroll ${colorTexto}"><img width="20" height="20" alt="Infomovil"	src="<c:url value="/resources/webapp/images/fa-user${ extensionImg }.png"/>" /> ${usuarioLogueado}  --%>
-<!-- 											</a>  -->
-<!-- 											</li> -->
-					
+
 					<li><a href="<c:url value="/infomovil/miCuenta"></c:url>" class="smoothScroll ${colorTexto}"><img
 							width="20" height="20" alt="Infomovil"
 							src="<c:url value="/resources/webapp/images/fa-user${ extensionImg }.png"/>" />
 							Mi cuenta </a></li>
-					<!-- 						<li> -->
-					<%-- 							<a href="#" class="smoothScroll ${colorTexto}">${usuarioLogueado} --%>
-					<%-- 							<img width="20" height="20" alt="Infomovil"	src="<c:url value="/resources/webapp/images/fa-user${ extensionImg }.png"/>" /></a> --%>
-					<!-- 						</li> -->
 					<li><a href="#" data-toggle="modal"
 						data-target="#myModalTemplates" class="smoothScroll ${colorTexto}"><img
 							width="20" height="20" alt="Infomovil"
@@ -89,28 +81,17 @@
 									¿Qué sigue? <img
 									width="20" height="20" alt="Infomovil"
 									src="<c:url value="/resources/webapp/images/ico_mas_cont${ extensionImg }.png"/>" /> </a></li>
-							<!--             <li role="separator" class="divider"></li> -->
-							<!--             <li><a href="#">Separated link</a></li> -->
-							<!--             <li role="separator" class="divider"></li> -->
-							<!--             <li><a href="#">One more separated link</a></li> -->
+
 						</ul></li>
 						<li class="botonDesPublicar" id="btnPromoLi" style="display: none;"><a href="<c:url value="/infomovil/misPromociones"></c:url>" class="smoothScroll ${colorTexto}"><img
 							width="20" height="20" alt="Infomovil"
 							src="<c:url value="/resources/webapp/images/fa-promo${ extensionImg }.png"/>" />
 							Mis Promociones </a></li>	
-
-					<!--  <li class="botonDesPublicar" id="btnContLi" style="display:none;">
-							<a href="#" data-toggle="modal" data-target="#myModalDescApp" class="smoothScroll ${colorTexto}">¿Qué sigue? <span class="hidden-sm hidden-md"></span> 
-								<img width="20" height="20" alt="Infomovil"	src="<c:url value="/resources/webapp/images/ico_mas_cont${ extensionImg }.png"/>" />
-							</a>
-						</li>-->
 						
 						<li class="botonDesPublicar borderFin" id="btnContLi"
-								style="display: none;"><a href="#" data-toggle="modal"
-								data-target="#myModalMoviliza" class="smoothScroll ${colorTexto}">
- 									Moviliza tu sitio <!--<img -->
-<!-- 									width="20" height="20" alt="Infomovil" -->
-<%-- 									src="<c:url value="/resources/webapp/images/ico_mas_cont${ extensionImg }.png"/>" />--%> </a></li> 
+								style="display: none;"><a href="#" data-toggle="modal" onClick="ocultaNotaValidaPP()"
+								class="smoothScroll ${colorTexto}">
+ 									Moviliza tu sitio</a></li> 
 									
 					<li><a href="<c:url value="/logout"></c:url>"
 						class="smoothScroll ${colorTexto}"><img width="20" height="20"
@@ -458,7 +439,7 @@
 	<c:set var="colorTexto" value="${ colorTexto }" scope="session"/>
 	<c:set var="extensionImg" value="${ extensionImg }" scope="session"/>
 	<c:set var="correoElectronico" value="${ correoElectronico }" scope="session"/>
-	
+
 	<!--  Numero de imagenes MAximo q' puede tener el usuario activas-->
 	<!-- Bootstrap core JavaScript
 	    ================================================== -->
@@ -486,14 +467,10 @@
 	<script src="<c:url value="/resources/webapp/js/jquery.numeric.js"/>"></script>
 	<script src="<c:url value="/resources/webapp/js/jquery.blockUI.js"/>"></script>
 	<script src="<c:url value="/resources/js/webapp/validaciones.js"/>"></script>
+	<script src="<c:url value="/resources/js/webapp/moviliza.js"/>"></script>
 	<script src="<c:url value="/resources/js/webapp/mapa.js"/>"></script>
 	<script src="<c:url value="/resources/js/webapp/videoYoutube.js"/>"></script>
 	<script src="<c:url value="/resources/js/webapp/imagenes.js"/>"></script>
-	<%-- 		<h1>${ idDominio }</h1> --%>
-	<%-- 		<h1>${ galeriaImagenes }</h1> --%>
-	<%-- 	 	<h1>${ downgrade }</h1> --%>
-	<%-- 	 	<h1>${ sitioWeb }</h1> --%>
-	<%-- 		<h1>${sitioWeb}></h1> --%>
 	<script src="<c:url value="/resources/webapp/js/si.files.js"/>"></script>
 	<script>
 			$(document).ready(function(){
@@ -503,10 +480,6 @@
 		</script>
 
 	<script>
-	
-// 			$('body').scrollspy({
-// 			    target: '.navbar-fixed-top'
-// 			});
 		
 		$('.navbar-collapse ul li ul li a').click(function() {
  			    $('.navbar-toggle:visible').click();
@@ -536,15 +509,11 @@
 		   		 }
 		 	 });
 			
-			
-			
 		</script>
-	<script type="text/javascript" language="javascript">
+	<script type="text/javascript">
 // <![CDATA[
 SI.Files.stylizeAll();
 // ]]>
-
-
 
 </script>
 	<script>

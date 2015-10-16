@@ -9,40 +9,26 @@
 	<div class="modal-body bgWhite ">
 	<div class="col-xs-12">
  
-
- <div class="divider"></div>
-			
-<span class="textBlack _1_1em">Google ahora te penaliza si tu sitio web no se ve bien en móviles. Con Moviliza tu sitio, puedes cumplir facilmente con este nuevo requerimiento sin tener que cambiar tu sitio web actual.
-
- </span>
-<br/>
-<p class="textPurple"><strong>¿Cómo funciona?</strong></p> 
-<br/>
-<img alt="Moviliza tu sitio" src="<c:url value="/resources/webapp/images/moviliza2.png"/>"  style="margin: 0px; padding: 0px; max-width: 550px;" title="Moviliza tu sitio" />
-						
-				<br/>		
-
-<div class="clear"></div><br/>
-<!-- <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 text-center"> -->
-<%-- <a href="https://itunes.apple.com/mx/app/infomovil/id898313250?mt=8" style="margin: 0px; padding: 0px; color: rgb(49, 165, 154);" target="_blank"><img alt="AppStore" src="<c:url value="/resources/webapp/images/appstore_icn.png"/>" style="margin: 0px; padding: 0px; max-width: 200px;" title="AppStore" /></a> --%>
-<!-- </div> -->
-<!-- <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 text-center"> -->
-<%-- <a href="https://play.google.com/store/apps/details?id=com.infomovil.infomovil" style="margin: 0px; padding: 0px; color: rgb(49, 165, 154);" target="_blank"><img alt="Google Play" src="<c:url value="/resources/webapp/images/gstore_icn.png"/>"  style="margin: 0px; padding: 0px; max-width: 200px;" title="Google Play" /></a> --%>
-<!-- </div> -->
-				<div class="clear"></div>
-							<br/>
-							<span class="textBlack"><strong class="text-center">Este servicio requiere que tengas una suscripción vigente al Plan Pro.
-</strong></span>
-<span class="textPurple"><strong class="text-center">¡Adquiérelo ya!
-</strong></span>
-
-							</div>
+		<div class="divider"></div>
+					
+		<span class="textBlack _1_1em">Google ahora te penaliza si tu sitio web no se ve bien en móviles. Con Moviliza tu sitio, puedes cumplir facilmente con este nuevo requerimiento sin tener que cambiar tu sitio web actual.</span>
+		<br/>
+		<p class="textPurple"><strong>¿Cómo funciona?</strong></p> 
+		<br/>
+		<img alt="Moviliza tu sitio" src="<c:url value="/resources/webapp/images/moviliza2.png"/>"  style="margin: 0px; padding: 0px; max-width: 550px;" title="Moviliza tu sitio" />
+		<br/>		
 		
+		<div class="clear"></div><br/>
+		<div class="clear"></div><br/>
+		<span class="textBlack"><strong class="text-center">Este servicio requiere que tengas una suscripción vigente al Plan Pro.</strong></span>
+		<span id="tienePlanProNota" class="textPurple"><strong class="text-center">¡Adquiérelo ya!</strong></span>
+
+	</div>	
+	
 		<div class="clear divider"></div>
 	</div>
 	<div class="modal-footer textBlack">
-		<button type="button" class="btn btn-purple text-center col-xs-12 col-sm-12 col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3"  data-toggle="modal"
-								data-target="#myModalMovilizaAct" >
+		<button type="button" onClick="validaPlanPro()" class="btn btn-purple text-center col-xs-12 col-sm-12 col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3" data-toggle="modal">
 			<strong>¿Quieres continuar?</strong>
 		</button>
 	</div>
