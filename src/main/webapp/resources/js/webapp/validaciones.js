@@ -1,5 +1,5 @@
-var templates = new Array("Coverpage1azul", "Coverpage2", "Coverpage3", "Coverpage4", "Coverpage5", "Coverpage6");
-var nombres = new Array("Portada azul", "Restaurantes", "Belleza", "Reposter&iacute;as", "Automotriz", "Taxistas"); /*Cambiar nombres*/
+var templates = new Array("Coverpage1azul", "Coverpage2", "Coverpage3", "Coverpage4", "Coverpage5", "Coverpage6", "Coverpage7", "Coverpage8");
+var nombres = new Array("Portada azul", "Restaurantes", "Belleza", "Reposter&iacute;as", "Automotriz", "Taxistas", "Fotografía", "Nuevos Negocios"); /*Cambiar nombres*/
 var nombreDominio = "";
 var tipoDominio = "";
 var indice = 0;
@@ -247,7 +247,7 @@ function generarSlider()
 
 			"<div class='modal-header'>" +
 			 	"<button type='button' class='close textBlack pull-left' data-dismiss='modal' aria-label='Close'><span aria-hidden='true'>&times;</span></button> <button type='button' class='btn btn-purple pull-right txtBtnEditor' onClick='actualizaEstilo()'>Aplicar estilo</button>" +
-			        "</div><div class='modal-body bgWhite'>" + slider + "</div><div class='modal-footer'></div></div></div></div>");
+			        "</div><div class='modal-body'>" + slider + "</div><div class='modal-footer'></div></div></div></div>");
 	
 	var slider = $('.bxslider').bxSlider({
 		 moveSlides: 1,
