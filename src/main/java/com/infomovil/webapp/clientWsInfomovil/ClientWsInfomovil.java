@@ -154,7 +154,7 @@ public class ClientWsInfomovil {
 		
 	}
 
-	public RespuestaVO crearSitioGuardaImage(String domainId, String baseImagen, String tipoImagen, String descImagen)
+	public RespuestaVO crearSitioGuardaImage(String domainId, String baseImagen, String tipoImagen, String descImagen, String rotacion)
 	{
 		log.info("Invoking crearSitioInsertImage...");
 	    com.infomovil.webapp.clientWsInfomovil.CrearSitioInsertImage _crearSitioInsertImage_parameters = new CrearSitioInsertImage();
@@ -162,6 +162,7 @@ public class ClientWsInfomovil {
 	    _crearSitioInsertImage_parameters.baseImagen = baseImagen;
 	    _crearSitioInsertImage_parameters.tipoImagen = tipoImagen;
 	    _crearSitioInsertImage_parameters.descImagen = descImagen;
+	    _crearSitioInsertImage_parameters.rotacion = rotacion;
 	    com.infomovil.webapp.clientWsInfomovil.CrearSitioInsertImageResponse _crearSitioInsertImage__return = port.crearSitioInsertImage(_crearSitioInsertImage_parameters);
 	    log.info("crearSitioInsertImage.result=" + _crearSitioInsertImage__return);
 	    return _crearSitioInsertImage__return.respuestaVO;

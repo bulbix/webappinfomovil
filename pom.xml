@@ -271,6 +271,9 @@
 	<profiles>
 		<profile>	
 			<id>dev</id>
+			<activation>
+				<activeByDefault>true</activeByDefault>
+			</activation>	
 			<properties>
 				<config.profile>DEV</config.profile>
 			</properties>
@@ -286,9 +289,7 @@
 			<properties>
 				<config.profile>PROD</config.profile>
 			</properties>
-			<activation>
-				<activeByDefault>true</activeByDefault>
-			</activation>	
+			
 		</profile>
 	</profiles>
 </project>
