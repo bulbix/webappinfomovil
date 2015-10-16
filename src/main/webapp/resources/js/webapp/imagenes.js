@@ -9,7 +9,7 @@ var siHayImagen = 0;
 var noEsDispositivo = false;
 var ORIGIN_USER = 1;
 var ORIGIN_FACEBOOK = 2;
-
+var GRADOS = 0;
 $(document).ready(function() {
 
 	isDevice();
@@ -65,7 +65,7 @@ $(document).ready(function() {
 		$("#facebookDiv").hide();
 		$("#actualizarImagenes").hide();
 		$('#myModalImagenes').modal();
-		if (noEsDispositivo)
+		//if (noEsDispositivo)
 			$("#btnSeleccionaImagen2").show();
 		$("#btnAlbumsDeFacebook").show();
 	});
@@ -90,7 +90,7 @@ $(document).ready(function() {
 		$(".photoDinamico").remove();
 		$("#galeriaImagenes").show();
 		$("#btnAlbumsDeFacebook").show();
-		if (noEsDispositivo)
+		//if (noEsDispositivo)
 			$("#btnSeleccionaImagen2").show();
 		$("#regresarDeFace").hide();
 		$("#msjEligeAlbumFoto").hide();
@@ -115,9 +115,10 @@ $(document).ready(function() {
 });
 
 function isDevice() {
+	$("#btnSeleccionaImagen2").show();
 	if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i
 			.test(navigator.userAgent)) {
-		$("#btnSeleccionaImagen2").hide();
+		//$("#btnSeleccionaImagen2").hide();
 		noEsDispositivo = false;
 		$('.modal').on('show.bs.modal', function() {
 			$(this).css({
@@ -223,46 +224,7 @@ var revisarEstado = function checkLoginState() {
 	});
 }
 
-function picChange(evt) {
-	var fileInput = evt.target.files;
-	if (fileInput.length > 0) {
-		var file = fileInput[0];
-		if (file) {
 
-			var picURL;
-			$("#facebookDiv").hide();
-			$("#galeriaImagenes").hide();
-			$("#galeriaVacia").hide();
-			$("#imgSeleccionadaDeGaleria").show();
-			$("#regresarSelecImg").show();
-			$("#btnGuardarImagen").show();
-			$("#btnAlbumsDeFacebook").hide();
-
-			try {
-				if (window.webkitURL) {
-					picURL = window.webkitURL.createObjectURL(file);
-				} else if (window.URL && window.URL.createObjectURL) {
-					picURL = window.URL.createObjectURL(file);
-				} else {
-					picURL = null;
-				}
-				fotoDeGaleria.src = picURL;
-			} catch (err) {
-				alert("Ocurrio un error!!");
-				return false;
-			}
-			var reader = new FileReader();
-
-			reader.onload = function() {
-				fotoDeGaleria.src = reader.result;
-			}
-
-			reader.readAsDataURL(file);
-
-		}
-	}
-
-}
 
 function getImagenesJQ() {
 	$("#btnGuardarImagen").hide();
@@ -287,7 +249,7 @@ function getImagenesJQ() {
 		$("#facebookDiv").hide();
 		$('#regresarDeFace').hide();
 		$('#idRegresarAlbum').hide();
-		if (noEsDispositivo)
+		//if (noEsDispositivo)
 			$('#btnSeleccionaImagen2').show();
 		$('#btnAlbumsDeFacebook').show();
 		$(".imagenDinamica").remove();
@@ -296,7 +258,7 @@ function getImagenesJQ() {
 		$("#terceroFB").hide();
 		$("#primeroFB").hide();
 		$("#regresarDeFotos").hide();
-		$("#btnGuardarImagenFB").hide();
+		$("#btnGuardarImagenFB").hide();//TODO: IRC
 
 		$("#msjEligeAlbumFoto").hide();
 		var $listaImg = $('#listaImagenes');
@@ -464,7 +426,7 @@ function guardarImagenesJQF() {
 				width : '400px'
 			}
 		});
-
+		
 		convertImgToBase64F(
 				imageUrl,
 				function(base64Img) {
@@ -508,7 +470,7 @@ function guardarImagenesJQF() {
 												title : "<span class='textBlack' style='font-size:1.15em;'><img alt='' src='../resources/webapp/images/fa-warning-bk.png'  title='Alerta' />Imagen demasiado grande</span>",
 												message : '<div style="display:block; min-height:150px;"><p class="textBlack text-center" style="font-size:1.15em;">La imagen ha superado el límite permitido. El límite es de 768x1024 px</p><br/>'
 											});
-
+									weHaveSuccess = true;
 								},
 								complete : function() {
 									if (!weHaveSuccess) {
@@ -626,7 +588,7 @@ function uploadImage(imageDom, imageUrl, origin, textFoto) {
 												message : '<div style="display:block; min-height:150px;"><p class="textBlack text-center" style="font-size:1.15em;">La imagen ha superado el límite permitido. El límite es de 768x1024 px</p><br/>'
 											});
 								}
-
+								weHaveSuccess = true;
 							},
 							complete : function() {
 								if (!weHaveSuccess) {
@@ -697,6 +659,7 @@ function borrarImagenJQ(idImg) {
 															title : "<span class='textBlack' style='font-size:1.15em;'><img alt='' src='../resources/webapp/images/fa-warning-bk.png'  title='Alerta' />No se ha eliminado la imagen</span>",
 															message : '<div style="display:block; min-height:150px;"><p class="textBlack text-center" style="font-size:1.15em;">Intenta eliminar la imagen nuevamente.</p><br/>'
 														});
+												weHaveSuccess = true;
 											},
 											complete : function() {
 												if (!weHaveSuccess) {
@@ -749,6 +712,7 @@ function actualizarImagen(idImg, imgUrl) {
 								title : "<span class='textBlack' style='font-size:1.15em;'><img alt='' src='../resources/webapp/images/fa-warning-bk.png'  title='Alerta' />No se ha actualizado el nombre de la imagen</span>",
 								message : '<div style="display:block; min-height:150px;"><p class="textBlack text-center" style="font-size:1.15em;">Intenta actualizar el nombre de la imagen nuevamente.</p><br/>'
 							});
+					weHaveSuccess = true;
 				},
 				complete : function() {
 					if (!weHaveSuccess) {
@@ -762,22 +726,82 @@ function actualizarImagen(idImg, imgUrl) {
 			});
 }
 
+function picChange(evt) {
+
+	var fileInput = evt.target.files;
+	if (fileInput.length > 0) {
+		var file = fileInput[0];
+		console.log("el fila es: "+file);
+		if (file) {
+			var picURL;
+			$("#facebookDiv").hide();
+			$("#galeriaImagenes").hide();
+			$("#galeriaVacia").hide();
+			$("#imgSeleccionadaDeGaleria").show();
+			$("#regresarSelecImg").show();
+			$("#btnGuardarImagen").show();
+			$("#btnAlbumsDeFacebook").hide();
+			try {
+				if (window.webkitURL) {
+					picURL = window.webkitURL.createObjectURL(file);
+				} else if (window.URL && window.URL.createObjectURL) {
+					picURL = window.URL.createObjectURL(file);
+				} else {
+					picURL = null;
+				}
+				fotoDeGaleria.src = picURL;
+				console.log(" El pic url es: " + picURL);
+			} catch (err) {
+				console.log("Ocurrio un error con la picURL");
+				var reader = new FileReader();
+				reader.onload = function() {
+					fotoDeGaleria.src = reader.result;
+					console.log(" El reader.result es: " + reader.result);
+				}
+				reader.readAsDataURL(file);
+			}
+		}
+	}	
+}
+
+
 function convertImgToBase64(imageDom, url, callback, outputFormat) {
+	
 	var resize1 = function() {
-		var canvas = document.createElement('CANVAS');
-		var ctx = canvas.getContext('2d');
-
-		var targetWidth = 320;
-		var ratio = (targetWidth > imageDom.naturalWidth) ? 1 : targetWidth
-				/ imageDom.naturalWidth;
-		console.log(imageDom.naturalWidth, targetWidth, ratio);
-		canvas.height = imageDom.naturalHeight * ratio;
-		canvas.width = imageDom.naturalWidth * ratio;
-
-		ctx.drawImage(imageDom, 0, 0, imageDom.naturalWidth,
-				imageDom.naturalHeight, 0, 0, canvas.width, canvas.height);
-
-		return canvas.toDataURL(outputFormat || 'image/png');
+			var canvas = document.createElement('CANVAS');
+			var ctx = canvas.getContext('2d');
+			var targetWidth = 500;
+			var ratio = (targetWidth > imageDom.naturalWidth) ? 1 : targetWidth
+					/ imageDom.naturalWidth;
+			var img = new Image();
+			img.src = url;
+            EXIF.getData(img, function() {       
+                    console.log('ExifDentrokt: ', EXIF.getTag(this, "Orientation"));
+            });
+                console.log('ExifFuera: ', parseInt(EXIF.getTag(img, "Orientation")));
+	            switch(parseInt(EXIF.getTag(img, "Orientation"))) {
+			            case 8:
+			            	console.log("ENtro al exif 8 !");
+			            	GRADOS =  270;
+			                break;
+			            case 3:
+			            	console.log("ENtro al exif 3 !");
+			            	GRADOS =  180;
+			                break;
+			            case 6:
+			            	GRADOS =  90;
+			                break;
+			            default: 
+			            		
+			    }  
+			canvas.height = imageDom.naturalHeight * ratio;
+			canvas.width = imageDom.naturalWidth * ratio;
+			ctx.drawImage(imageDom,0,0, imageDom.naturalWidth, imageDom.naturalHeight,  0,0,canvas.width,canvas.height);
+			var dataURLTemp = canvas.toDataURL({format:'image/jpeg'}); 	
+			var peso = 500000; 
+			var calidad = (peso > dataURLTemp.length ) ? 1 : peso/ dataURLTemp.length;
+			return canvas.toDataURL({format: 'jpeg', quality: calidad});
+		
 	};
 
 	var resize2 = function() {
@@ -791,19 +815,18 @@ function convertImgToBase64(imageDom, url, callback, outputFormat) {
 		canvas.width = imageDom.naturalWidth * ratio;
 		ctx.drawImage(imageDom, 0, 0, imageDom.naturalWidth,
 				imageDom.naturalHeight, 0, 0, canvas.width, canvas.height);
-
 		return canvas.toDataURL(outputFormat || 'image/png');
 	};
 
 	if (url.substring(0, 5) == 'data:') {
 		var dataURL = resize1();
 		console.log('guardar imagen Tamaños (original, redimensionado)',
-				url.length, dataURL.length);
+				url.length, dataURL.length );
 		imageDom.src = dataURL;
 		callback(dataURL);
 		canvas = null;
 	} else {
-		console.log("entro pr facebook");
+		console.log("entro por facebook llamara a resize 2");
 		var img = new Image();
 		img.crossOrigin = 'Anonymous';
 		img.onload = function() {
@@ -989,3 +1012,5 @@ function logueoFacebook2() {
 		$photosList.append($li);
 	}
 }
+
+
