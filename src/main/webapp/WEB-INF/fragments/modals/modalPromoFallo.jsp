@@ -10,7 +10,7 @@
 <!-- 			<strong>Regresar</strong> -->
 <!-- 		</button> -->
 	</div>
-	<div class="modal-body bgWhite ">
+	<div class="modal-body ">
 	
 	<h2 class="textPurple col-xs-12 col-sm-12 col-md-12 col-lg-12 text-center">&iexcl;Oops!</h2>
 	

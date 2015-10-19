@@ -7,7 +7,7 @@
 		</button>
 		<p class="modal-title"></p>
 	</div>
-	<div class="modal-body bgWhite">
+	<div class="modal-body">
 		<h2 class="textPurple col-xs-12 col-sm-12 col-md-12 col-lg-12 text-center"></h2>
 		
 		<div  class="textBlack col-xs-12 col-sm-12 col-md-12 col-lg-12 text-center"><!-- <p>Tu dominio ha sido renovado</p> -->

@@ -35,7 +35,7 @@
 	        	<div class="control-group">
 	            <label class="control-label">Ingresa tu e-mail y te enviaremos una liga para restablecer tu contraseña</label>
 	            <div class="controls">
-	            	<input type="email" class="form-control" placeholder="Email" required="required" name="email"/>
+	            	<input type="email" class="form-control lowCase" placeholder="Email" required="required" name="email"/>
 	                	<p class="help-block"></p>
 	            </div>
 	          </div>

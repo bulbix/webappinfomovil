@@ -98,7 +98,7 @@
 	<link href="<c:url value="/resources/webapp/css/themeEditor.css"/>"	rel="stylesheet" />
 	<link href="<c:url value="/resources/webapp/css/jquery.bxslider.css"/>" rel="stylesheet" /> 
 	<link href="<c:url value="/resources/webapp/fonts/font-awesome.min.css"/>" rel="stylesheet" />
-	<link href="https://s3.amazonaws.com/landing.infomovil.com/webapp-qa/templates/<tiles:getAsString name="template"/>/css/info.css" rel="stylesheet" />	
+	<link href="https://s3.amazonaws.com/landing.infomovil.com/webapp/templates/<tiles:getAsString name="template"/>/css/info.css" rel="stylesheet" />	
 		
 		<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=places&signed_in=false"></script> 
 		<script>

@@ -157,7 +157,7 @@
 				<strong><span class="text-center btnsEditor _1_1em"
 					id="urlSitio" style="display: none;"> <a
 						href="http://${sitioWeb}" target="_blank"
-						class="col-xs-12 col-sm-12  col-md-12 col-lg-12 textBlack navEditor">Ver mi página: <strong>${sitioWeb}</strong><img width="20" height="20" alt="Infomovil"
+						class="col-xs-12 col-sm-12  col-md-12 col-lg-12 textBlack navEditor bgLinkWhite">Ver mi página: <strong>${sitioWeb}</strong><img width="20" height="20" alt="Infomovil"
 				src="<c:url value="/resources/webapp/images/ir-bk.png"/>" /> </a>
 				</span></strong>
 				<div>

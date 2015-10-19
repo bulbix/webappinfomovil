@@ -6,7 +6,7 @@
         		<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
         		<p class="modal-title" ><tiles:getAsString name="tituloModal"/></p>
       		</div>
-	    	<div class="modal-body bgWhite">
+	    	<div class="modal-body">
 	    		<iframe class="legales" src=<tiles:getAsString name="urlSrc"/> frameborder="0"></iframe>
 	    	</div>
 	        <div class="modal-footer">

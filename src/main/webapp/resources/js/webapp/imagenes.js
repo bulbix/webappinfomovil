@@ -745,7 +745,6 @@ function picChange(evt) {
 			$("#btnGuardarImagen").show();
 			$("#btnAlbumsDeFacebook").hide();
 			
-			
 			var reader = new FileReader();
 			reader.onload = function() {
 				fotoDeGaleria.src = reader.result;
@@ -844,8 +843,7 @@ function convertImgToBase64(imageDom, url, callback, outputFormat) {
 		var canvas = document.createElement('CANVAS');
 		var ctx = canvas.getContext('2d');
 		var targetWidth = 420;
-		var ratio = (targetWidth > imageDom.naturalWidth) ? 1 : targetWidth
-				/ imageDom.naturalWidth;
+		var ratio = (targetWidth > imageDom.naturalWidth) ? 1 : targetWidth / imageDom.naturalWidth;
 		console.log(imageDom.naturalWidth, targetWidth, ratio);
 		canvas.height = imageDom.naturalHeight * ratio;
 		canvas.width = imageDom.naturalWidth * ratio;

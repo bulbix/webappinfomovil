@@ -16,7 +16,7 @@
    		<img width="20" height="20" alt="Infomovil" src="<c:url value="/resources/webapp/images/trash.png"/>"/>
    	</button>
 </div>
-<div class="modal-body bgWhite">
+<div class="modal-body">
 	
 	<div style="background:url(<c:url value="/resources/webapp/images/ubicacion.png"/>) center center no-repeat; position:absolute; top: 43%; left:47.2%; width:50px; height:50px; z-index: 999" class="hidden-xs hidden-sm"></div>
 	<div id="map-canvas"></div>
