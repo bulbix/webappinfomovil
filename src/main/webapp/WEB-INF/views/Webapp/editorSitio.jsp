@@ -440,6 +440,7 @@
 	<script src="<c:url value="/resources/webapp/js/bootstrap.js"/>"></script>
 	<script src="<c:url value="/resources/webapp/js/docs.min.js"/>"></script>
 	<script src="<c:url value="/resources/webapp/js/smoothscroll.js"/>"></script>
+	<script src="<c:url value="/resources/webapp/js/exif.js"/>"></script>
 	<%-- 		<script src="<c:url value="/resources/webapp/js/bootbox.min.js"/>"></script> --%>
 	<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
 	<script

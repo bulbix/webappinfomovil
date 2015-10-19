@@ -176,7 +176,7 @@ public class WebappController
 												@RequestParam String domainId,
 												@RequestParam String descImagen,
 												@RequestParam String rotacion) 
->>>>>>> 2b4ba917be2c802e1091046fb302432673a2d9cf
+
 			throws UnsupportedEncodingException
 	{		
 		Map<String, String> resultMap = new HashMap<String, String>();
