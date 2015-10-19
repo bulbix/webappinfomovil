@@ -444,6 +444,7 @@ function guardarImagenesJQF() {
 									tipoImagen : "IMAGEN",
 									domainId : $('#idDominio').val(),
 									descImagen : textFoto,
+									rotacion: "wc_0"
 
 								},
 								success : function(data) {
@@ -753,13 +754,15 @@ function picChange(evt) {
 				console.log(" El pic url es: " + picURL);
 			} catch (err) {
 				console.log("Ocurrio un error con la picURL");
-				var reader = new FileReader();
-				reader.onload = function() {
-					fotoDeGaleria.src = reader.result;
-					console.log(" El reader.result es: " + reader.result);
-				}
-				reader.readAsDataURL(file);
+				
 			}
+			console.log("Ocurrio un error con la picURL");
+			var reader = new FileReader();
+			reader.onload = function() {
+				fotoDeGaleria.src = reader.result;
+				console.log(" El reader.result es: " + reader.result);
+			}
+			reader.readAsDataURL(file);
 		}
 	}	
 }
@@ -815,7 +818,13 @@ function convertImgToBase64(imageDom, url, callback, outputFormat) {
 		canvas.width = imageDom.naturalWidth * ratio;
 		ctx.drawImage(imageDom, 0, 0, imageDom.naturalWidth,
 				imageDom.naturalHeight, 0, 0, canvas.width, canvas.height);
-		return canvas.toDataURL(outputFormat || 'image/png');
+		
+		var dataURLTemp = canvas.toDataURL({format:'image/jpeg'}); 	
+		var peso = 500000; 
+		var calidad = (peso > dataURLTemp.length ) ? 1 : peso/ dataURLTemp.length;
+		return canvas.toDataURL({format: 'jpeg', quality: calidad});
+		
+		
 	};
 
 	if (url.substring(0, 5) == 'data:') {
