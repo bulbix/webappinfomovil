@@ -19,13 +19,13 @@
  <div class="form-group">
     <label for="inputEmail3" class="col-sm-2 control-label text-left">Duración</label>
     <div class="col-xs-12 col-sm-10">
-      <label class="ontrol-label text-left" style="font-weight:300;" id="periodoPP">12 meses</label> 
+      <label class="ontrol-label text-left" style="font-weight:300;" id="periodoModalPP"></label> 
     </div>
   </div>
   <div class="form-group">
     <label for="inputEmail3" class="col-sm-2 control-label text-left">Costo</label>
     <div class="col-xs-12 col-sm-10">
-    <label class="control-label text-left" style="font-weight:300;" id="precioPP">$40.00 MXN</label> 
+    <label class="control-label text-left" style="font-weight:300;" id="precioModalPP"></label> 
     </div>
   </div>
   </form>

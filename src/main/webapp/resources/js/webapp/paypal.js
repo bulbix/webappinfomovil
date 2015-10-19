@@ -46,14 +46,18 @@ $("#btnPagoPaypalPP").click(function() {
 	
 	if ($("#tipoPlanPro option:selected").index() == 0)
 	{
+		$("#periodoModalPP").html("1 Mes");
 		$("#precioPP").html("40.00");
+		$("#precioModalPP").html("40.00");
 		var plan = "PLAN PRO 1 MES";
 		var producto = "GJ87DBKRZ956A";
 		var tipoCompra = "PP1";
 	}
 	else
 	{
+		$("#periodoModalPP").html("12 Meses");
 		$("#precioPP").html("400.00");
+		$("#precioModalPP").html("400.00");
 		var plan = "PLAN PRO 12 MESES";
 		var producto = "BFAWPP8D27FAY";
 		var tipoCompra = "PP12";
