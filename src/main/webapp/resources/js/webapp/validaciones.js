@@ -1,5 +1,5 @@
-var templates = new Array("Coverpage1azul", "Coverpage2", "Coverpage3", "Coverpage4", "Coverpage5", "Coverpage6", "Coverpage7", "Coverpage8");
-var nombres = new Array("Portada azul", "Restaurantes", "Belleza", "Reposter&iacute;as", "Automotriz", "Taxistas", "Fotografía", "Nuevos Negocios"); /*Cambiar nombres*/
+var templates = new Array("Coverpage7", "Coverpage8", "Coverpage1azul", "Coverpage2", "Coverpage3", "Coverpage4", "Coverpage5", "Coverpage6");
+var nombres = new Array("Fotografía", "Nuevos Negocios", "Portada azul", "Restaurantes", "Belleza", "Reposter&iacute;as", "Automotriz", "Taxistas"); /*Cambiar nombres*/
 var nombreDominio = "";
 var tipoDominio = "";
 var indice = 0;
@@ -257,8 +257,9 @@ function generarSlider()
 		mode: 'fade',
 		captions: true,
 		pager: true,
-		touchEnabled : false,
+		touchEnabled : true,
 		useCSS:false,
+		onSlideAfter: function() {indice = slider.getCurrentSlide();},
 		onSliderLoad: function(){
 			  if ($("#plantilla").val() == templates[0])
 				  span = "<img src='https://s3.amazonaws.com/landing.infomovil.com/webapp/images/temp_act.png' width='30'/>";

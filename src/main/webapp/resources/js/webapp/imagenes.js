@@ -296,9 +296,9 @@ function getImagenesJQ() {
 								siHayImagen = 1;
 								if (i <= IMAGENESMAX) {
 									var $li = $('<li class="imagenDinamica" style="display:block;height:80px; width:100%; margin:10px 0;"/>')
-										$li.append('<div class="col-xs-3 text-left" style="max-height:45px;"><img src="'
+										$li.append('<div class="col-xs-3 text-left" style="margin:-5px 0 0 0;" ><div class="img-thumbnail"><div style="max-height:38px; overflow:hidden"><img src="'
 													+ imgUrl
-													+ '" onerror="errorPreview(this)" class="ImgDinamica img-thumbnail imgLista"/></div>');
+													+ '" onerror="errorPreview(this)" class="ImgDinamica imgLista"/></div></div></div>');
 										$li.append('<div class="col-xs-9 reset"><input type="text" id="actualizarTexto'
 													+ idImg
 													+ '"  value="'
@@ -319,7 +319,7 @@ function getImagenesJQ() {
 								} else {
 									var $li = $('<li class="imagenDinamica" style="display:block;height:80px; width:100%; margin:10px 0;"/>')
 									$li
-											.append('<div class="col-xs-3 text-center" style="max-height:50px;"><img src="'
+											.append('<div class="col-xs-3 text-left" ><div class="img-thumbnail"><div style="max-height:38px; overflow:hidden"><img src="'
 													+ imgUrl
 													+ '" onerror="errorPreview(this)" class="ImgDinamica img-thumbnail imgLista"/></div>');
 									$li
