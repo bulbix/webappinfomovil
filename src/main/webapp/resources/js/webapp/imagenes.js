@@ -9,7 +9,8 @@ var siHayImagen = 0;
 var noEsDispositivo = false;
 var ORIGIN_USER = 1;
 var ORIGIN_FACEBOOK = 2;
-var GRADOS = 0;
+var GRADOS = "CW_0";
+var PHOTO = "";
 $(document).ready(function() {
 
 	isDevice();
@@ -176,7 +177,7 @@ function generaFotos(idAlbum, p) {
 window.fbAsyncInit = function() {
 
 	FB.init({
-		appId : '346859792130678', //'422690184604551',
+		appId : '422690184604551', //'422690184604551',
 		cookie : true, // enable cookies to allow the server to access
 		xfbml : true, // parse social plugins on this page
 		version : 'v2.0' // use version 2.2
@@ -227,6 +228,7 @@ var revisarEstado = function checkLoginState() {
 
 
 function getImagenesJQ() {
+	GRADOS = "CW_0";
 	$("#btnGuardarImagen").hide();
 	$('#actualizarTextoFoto').val("");
 	$('#nombreDeImgn').val("");
@@ -444,8 +446,7 @@ function guardarImagenesJQF() {
 									tipoImagen : "IMAGEN",
 									domainId : $('#idDominio').val(),
 									descImagen : textFoto,
-									rotacion: "wc_0"
-
+									rotacion: GRADOS
 								},
 								success : function(data) {
 									console
@@ -530,6 +531,7 @@ function uploadImage(imageDom, imageUrl, origin, textFoto) {
 				binaryString = base64Img.replace(
 						/^data:image\/(png|jpeg|jpg);base64,/, "");
 				var weHaveSuccess = false;
+				console.log("Los grados son : " + GRADOS);
 					$.ajax({
 							type : "POST",
 							url : contextPath + "/infomovil/guardarImagen",
@@ -540,8 +542,8 @@ function uploadImage(imageDom, imageUrl, origin, textFoto) {
 								baseImagen : binaryString,
 								tipoImagen : "IMAGEN",
 								domainId : $('#idDominio').val(),
-								descImagen : textFoto
-
+								descImagen : textFoto,
+								rotacion : GRADOS
 							},
 							success : function(data) {
 								weHaveSuccess = true;
@@ -742,27 +744,42 @@ function picChange(evt) {
 			$("#regresarSelecImg").show();
 			$("#btnGuardarImagen").show();
 			$("#btnAlbumsDeFacebook").hide();
-			try {
-				if (window.webkitURL) {
-					picURL = window.webkitURL.createObjectURL(file);
-				} else if (window.URL && window.URL.createObjectURL) {
-					picURL = window.URL.createObjectURL(file);
-				} else {
-					picURL = null;
-				}
-				fotoDeGaleria.src = picURL;
-				console.log(" El pic url es: " + picURL);
-			} catch (err) {
-				console.log("Ocurrio un error con la picURL");
-				
-			}
-			console.log("Ocurrio un error con la picURL");
+			
 			var reader = new FileReader();
 			reader.onload = function() {
 				fotoDeGaleria.src = reader.result;
-				console.log(" El reader.result es: " + reader.result);
+				console.log(" El reader result es: " + reader.result);
+				PHOTO = reader.result;
+				imageDom = document.getElementById("fotoDeGaleria");
+				var img = new Image();
+				img.src = imageDom.src;
+	            EXIF.getData(img, function() {       
+	                    console.log('ExifDentro99: ', EXIF.getTag(this, "Orientation"));
+	            });
+	                console.log('ExifFuera99: ', parseInt(EXIF.getTag(img, "Orientation")));
+		            switch(parseInt(EXIF.getTag(img, "Orientation"))) {
+				            case 8:
+				            	console.log("tre ENtro al exif 8 !");
+				            	
+				            	$('#fotoDeGaleria').css( {'transform': 'rotate(270deg)'});
+				                break;
+				            case 3:
+				            	console.log("tre Entro al exif 3 !");
+				            	
+				            	$('#fotoDeGaleria').css( {'transform': 'rotate(180deg)'});
+				                break;
+				            case 6:
+				            	console.log("tre Entro al exif 6 !");
+				            	
+				            	$('#fotoDeGaleria').css( {'transform': 'rotate(90deg)'});
+				                break;
+				            default: 
+				            	GRADOS =  "CW_0";
+				            		
+				    }
 			}
-			reader.readAsDataURL(file);
+			reader.readAsDataURL(file);	
+			
 		}
 	}	
 }
@@ -771,6 +788,7 @@ function picChange(evt) {
 function convertImgToBase64(imageDom, url, callback, outputFormat) {
 	
 	var resize1 = function() {
+			var dataURLTemp = "";
 			var canvas = document.createElement('CANVAS');
 			var ctx = canvas.getContext('2d');
 			var targetWidth = 500;
@@ -785,25 +803,39 @@ function convertImgToBase64(imageDom, url, callback, outputFormat) {
 	            switch(parseInt(EXIF.getTag(img, "Orientation"))) {
 			            case 8:
 			            	console.log("ENtro al exif 8 !");
-			            	GRADOS =  270;
+			            	GRADOS =  "CW_270";
 			                break;
 			            case 3:
 			            	console.log("ENtro al exif 3 !");
-			            	GRADOS =  180;
+			            	GRADOS =  "CW_180";
 			                break;
 			            case 6:
-			            	GRADOS =  90;
+			            	if (/iPhone|iPad|iPod/i.test(navigator.userAgent)) {
+				            	GRADOS =  "CW_0";
+				            	canvas.height = imageDom.naturalHeight * ratio;  
+					    		canvas.width = imageDom.naturalWidth * ratio;  
+					            ctx.transform(0, 1, -1, 0, canvas.width , 0);
+					            ctx.drawImage(imageDom,0,0, imageDom.naturalWidth, imageDom.naturalHeight,  0,0,canvas.height,canvas.height);
+					            dataURLTemp = canvas.toDataURL({format:'image/png'});
+			            	}else{
+			            		GRADOS =  "CW_90";
+				            	canvas.height = imageDom.naturalHeight * ratio;  
+					    		canvas.width = imageDom.naturalWidth * ratio;  
+					            ctx.drawImage(imageDom,0,0, imageDom.naturalWidth, imageDom.naturalHeight,  0,0,canvas.width,canvas.height);
+					    		dataURLTemp = canvas.toDataURL({format:'image/png'});	
+			            	}
 			                break;
 			            default: 
+			            	canvas.height = imageDom.naturalHeight * ratio;
+		    				canvas.width = imageDom.naturalWidth * ratio;
+		    				ctx.drawImage(imageDom,0,0, imageDom.naturalWidth, imageDom.naturalHeight,  0,0,canvas.width,canvas.height);
+		    					dataURLTemp = canvas.toDataURL({format:'image/png'});
 			            		
 			    }  
-			canvas.height = imageDom.naturalHeight * ratio;
-			canvas.width = imageDom.naturalWidth * ratio;
-			ctx.drawImage(imageDom,0,0, imageDom.naturalWidth, imageDom.naturalHeight,  0,0,canvas.width,canvas.height);
-			var dataURLTemp = canvas.toDataURL({format:'image/jpeg'}); 	
+			 	
 			var peso = 500000; 
 			var calidad = (peso > dataURLTemp.length ) ? 1 : peso/ dataURLTemp.length;
-			return canvas.toDataURL({format: 'jpeg', quality: calidad});
+			return canvas.toDataURL({format: 'png', quality: calidad});
 		
 	};
 
@@ -811,19 +843,16 @@ function convertImgToBase64(imageDom, url, callback, outputFormat) {
 		var canvas = document.createElement('CANVAS');
 		var ctx = canvas.getContext('2d');
 		var targetWidth = 420;
-		var ratio = (targetWidth > imageDom.naturalWidth) ? 1 : targetWidth
-				/ imageDom.naturalWidth;
+		var ratio = (targetWidth > imageDom.naturalWidth) ? 1 : targetWidth / imageDom.naturalWidth;
 		console.log(imageDom.naturalWidth, targetWidth, ratio);
 		canvas.height = imageDom.naturalHeight * ratio;
 		canvas.width = imageDom.naturalWidth * ratio;
 		ctx.drawImage(imageDom, 0, 0, imageDom.naturalWidth,
 				imageDom.naturalHeight, 0, 0, canvas.width, canvas.height);
-		
-		var dataURLTemp = canvas.toDataURL({format:'image/jpeg'}); 	
+		var dataURLTemp = canvas.toDataURL({format:'image/png'});
 		var peso = 500000; 
 		var calidad = (peso > dataURLTemp.length ) ? 1 : peso/ dataURLTemp.length;
-		return canvas.toDataURL({format: 'jpeg', quality: calidad});
-		
+		return canvas.toDataURL({format: 'png', quality: calidad});
 		
 	};
 
@@ -831,7 +860,7 @@ function convertImgToBase64(imageDom, url, callback, outputFormat) {
 		var dataURL = resize1();
 		console.log('guardar imagen Tamaños (original, redimensionado)',
 				url.length, dataURL.length );
-		imageDom.src = dataURL;
+		
 		callback(dataURL);
 		canvas = null;
 	} else {
@@ -842,7 +871,7 @@ function convertImgToBase64(imageDom, url, callback, outputFormat) {
 			var dataURL = resize2();
 			console.log('Tamaños (original, redimensionado)', url.length,
 					dataURL.length);
-			imageDom.src = dataURL;
+			
 			callback(dataURL);
 			canvas = null;
 		};
@@ -937,7 +966,7 @@ function logueoFacebook(response) {
 		if (navigator.userAgent.match('CriOS')) {
 			window
 					.open(
-							'https://www.facebook.com/dialog/oauth?client_id=346859792130678&scope=email,user_photos&redirect_uri='
+							'https://www.facebook.com/dialog/oauth?client_id=422690184604551&scope=email,user_photos&redirect_uri='
 									+ document.location.href + '', '', null);
 		} else {
 			FB.login(function(response) {
