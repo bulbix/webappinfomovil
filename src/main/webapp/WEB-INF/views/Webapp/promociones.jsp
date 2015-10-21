@@ -128,6 +128,12 @@
 						<img width="20" height="20" alt="Infomovil"	src="<c:url value="/resources/webapp/images/fa-eye.png"/>"/> 
 						<span class="hidden-xs">Vista Previa</span>
 					</button>
+					
+					<button type="button" class="btn btn-outlineGreen pull-right textWhite navEditorLato"  id="btnEstiloTemplates" data-toggle="modal"
+						data-target="#myModalTempPromo"  style="margin: 5px 8px 0 0;">
+						<img width="20" height="20" alt="Infomovil"	src="<c:url value="/resources/webapp/images/fa-templates.png"/>"/> 
+						<span class="hidden-xs">Estilo</span>
+					</button>
 				</div>
 				
 				<div class="clear"></div>
@@ -147,6 +153,12 @@
 					<button type="button" class="btn btn-outlineGreen pull-right textWhite navEditorLato"  id="btnCompartir" style="margin: 5px 5px 0 0;">
 						<img width="20" height="20" alt="Infomovil" src="<c:url value="/resources/webapp/images/fa-compartir.png"/>" /> 
 						<span class="hidden-xs">Compartir</span>
+					</button>
+					
+					<button type="button" class="btn btn-outlineGreen pull-right textWhite navEditorLato"  id="btnEstiloTemplates" data-toggle="modal"
+						data-target="#myModalTempPromo" style="margin: 5px 8px 0 0;">
+						<img width="20" height="20" alt="Infomovil"	src="<c:url value="/resources/webapp/images/fa-templates.png"/>"/> 
+						<span class="hidden-xs">Estilo</span>
 					</button>
 					
 				</div>
@@ -215,6 +227,9 @@
 			</div>
 		</div>
 		<!-- /Formulario Promociones -->
+		<!--MODAL TEMPLATES-->
+	<div id="modalTempPromo"></div>
+	<!--/MODAL TEMPLATES-->
 		
 		<!-- Bootstrap core JavaScript
 		    ================================================== -->
@@ -236,7 +251,11 @@
 		<script src="<c:url value="/resources/js/webapp/promociones.js"/>"></script>
 		<input type="hidden" id="valRadio" value="${redeemOffer}"/>
 	
-		
+		<script>
+			$(document).ready(function(){
+				generarSliderPromo();
+				});
+		</script>
 		<c:choose>
 			   		<c:when test="${idOffer > 0}">
 			   				<script>$(document).ready(function() {	$("#divPublicarPromo").hide(); $("#divPromoPublicada").show(); $activaRadio($("#valRadio").val()); }); </script>

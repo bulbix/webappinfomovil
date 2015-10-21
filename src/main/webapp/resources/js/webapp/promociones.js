@@ -17,6 +17,8 @@ var $btnCompartir = $("#btnCompartir");
 var $btnVerPromo = $("#btnVerPromo");
 var $btnEliminar = $("#btnEliminar");
 var $btnGuardar = $("#btnGuardar");
+var templates = new Array("promo1", "promo2", "promo3");
+var nombres = new Array("Bares", "Hipster", "Tecnología"); /*Cambiar nombres*/
 	
 $(function() {
 	$datepickerPromo.datepicker({ dateFormat: 'dd/mm/yy' });	
@@ -391,3 +393,59 @@ $(document).ready(function() {
 	});
 				
 });
+
+function generarSliderPromo()
+{
+	var urlRecurso = "";
+	var slider = "";
+	var span = "";
+	var li = "";
+	var bandera = 0;
+	
+	slider = "<ul class='bxslider'>";
+	
+	for (i = 0; i < templates.length; i = i + 1) 
+	{	
+		urlRecurso = "http://promo.mobileinfo.io/templates/" + templates[i] + "/" + templates[i] + ".png";
+		li = "<li class='text-center'><img style='width:100%; height:auto; min-width:280px!important; max-width:600px !important; max-height:661px!important;min-height:265px!important; display:block;' src='" + urlRecurso + "' title='" + nombres[i] + "'' /></li>";
+		slider = slider + li;
+		urlRecurso = "";
+	}	
+	
+	$('#modalTempPromo').html("<div id='myModalTempPromo' class='modal fade' tabindex='-1' role='dialog' aria-labelledby='myModalLabel' aria-hidden='true'>" +
+			"<div class='modal-dialog modal-md'><div class='modal-content'>" +
+
+			"<div class='modal-header'>" +
+			 	"<button type='button' class='close textBlack pull-left' data-dismiss='modal' aria-label='Close'><span aria-hidden='true'>&times;</span></button> <button type='button' class='btn btn-purple pull-right txtBtnEditor' onClick='actualizaEstilo()'>Aplicar estilo</button>" +
+			        "</div><div class='modal-body'>" + slider + "</div><div class='modal-footer'></div></div></div></div>");
+	
+	var slider = $('.bxslider').bxSlider({
+		 moveSlides: 1,
+		    displaySlideQty: 2,
+		    responsive: false,
+		adaptiveHeight: true,
+		mode: 'fade',
+		captions: true,
+		pager: true,
+		touchEnabled : true,
+		useCSS:false,
+		onSlideAfter: function() {indice = slider.getCurrentSlide();},
+		onSliderLoad: function(){
+			  if ($("#plantilla").val() == templates[0])
+				  span = "<img src='https://s3.amazonaws.com/landing.infomovil.com/webapp/images/temp_act.png' width='30'/>";
+			  }
+		});
+	
+	$(document).on('click','.bx-next', function() {
+		indice = slider.getCurrentSlide();		
+		});
+	
+	$(document).on('click','.bx-prev', function() {
+		indice = slider.getCurrentSlide();
+		});
+
+	$(document).on('click','.bx-pager-link', function() {
+		indice = slider.getCurrentSlide();
+		});
+	
+}

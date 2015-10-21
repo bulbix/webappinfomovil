@@ -249,6 +249,13 @@ function generarSlider()
 			 	"<button type='button' class='close textBlack pull-left' data-dismiss='modal' aria-label='Close'><span aria-hidden='true'>&times;</span></button> <button type='button' class='btn btn-purple pull-right txtBtnEditor' onClick='actualizaEstilo()'>Aplicar estilo</button>" +
 			        "</div><div class='modal-body'>" + slider + "</div><div class='modal-footer'></div></div></div></div>");
 	
+	$('#modalTempPromo').html("<div id='myModalTempPromo' class='modal fade' tabindex='-1' role='dialog' aria-labelledby='myModalLabel' aria-hidden='true'>" +
+			"<div class='modal-dialog modal-md'><div class='modal-content'>" +
+
+			"<div class='modal-header'>" +
+			 	"<button type='button' class='close textBlack pull-left' data-dismiss='modal' aria-label='Close'><span aria-hidden='true'>&times;</span></button> <button type='button' class='btn btn-purple pull-right txtBtnEditor' onClick='actualizaEstilo()'>Aplicar estilo</button>" +
+			        "</div><div class='modal-body'>" + slider + "</div><div class='modal-footer'></div></div></div></div>");
+	
 	var slider = $('.bxslider').bxSlider({
 		 moveSlides: 1,
 		    displaySlideQty: 2,
