@@ -46,18 +46,14 @@ $("#btnPagoPaypalPP").click(function() {
 	
 	if ($("#tipoPlanPro option:selected").index() == 0)
 	{
-		$("#periodoModalPP").html("1 Mes");
 		$("#precioPP").html("40.00");
-		$("#precioModalPP").html("40.00");
 		var plan = "PLAN PRO 1 MES";
 		var producto = "GJ87DBKRZ956A";
 		var tipoCompra = "PP1";
 	}
 	else
-	{
-		$("#periodoModalPP").html("12 Meses");
+	{		
 		$("#precioPP").html("400.00");
-		$("#precioModalPP").html("400.00");
 		var plan = "PLAN PRO 12 MESES";
 		var producto = "BFAWPP8D27FAY";
 		var tipoCompra = "PP12";
@@ -65,7 +61,6 @@ $("#btnPagoPaypalPP").click(function() {
 	
 	$("#hosted_button_id").val(producto);
 	intentoPago("", "", "", "", plan, "", tipoCompra);
-//	console.log("compraPP: " + plan + ", " + tipoCompra);
 });
 
 function intentoPago($nombre, $direccion, $correo, $pais,
@@ -104,7 +99,7 @@ function intentoPago($nombre, $direccion, $correo, $pais,
 				console.log("El resultado es: " + data.resultado);
 				if(data.resultado > 0) {
 					$("#customPaypal").val(data.resultado + ',' + $email);
-//					comprarPayPal(data.resultado);
+					comprarPayPal(data.resultado);
 					
 				}else{
 					$("#datosIncompletos").append( "No se ha podido enviar la petición por favor intentalo nuevamente." );
@@ -131,9 +126,16 @@ function abrirModalExitoso(idModal) {
 function actualizaPrecio(indice) {
 	
 	if (indice == 0)
+	{
 		$("#precioPP").html("40.00");
+		$("#precioModalPP").html("40.00 MNX");
+		$("#periodoModalPP").html("1 Mes");
+	}
 	else
+	{
 		$("#precioPP").html("400.00");
-
+		$("#precioModalPP").html("400.00 MNX");
+		$("#periodoModalPP").html("12 Meses");
+	}
 	console.log("plan: " + plan + ", tipoCompra: " + tipoCompra);
 }
