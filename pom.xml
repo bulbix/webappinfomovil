@@ -288,8 +288,7 @@
 			<id>prod</id>	
 			<properties>
 				<config.profile>PROD</config.profile>
-			</properties>
-			
+			</properties>			
 		</profile>
 	</profiles>
 </project>

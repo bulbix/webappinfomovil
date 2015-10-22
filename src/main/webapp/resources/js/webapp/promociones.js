@@ -74,6 +74,12 @@ var $getPromociones = function() {
 
 
 var $publicarPromocion = function() {
+
+	var plantillaFinalPromo = $("#tempPromocion").val();
+	console.log("plantillaFinalPromo: " + plantillaFinalPromo);
+	
+	if (plantillaFinalPromo.trim().length > 0 && plantillaFinalPromo != null)
+		plantillaPromo = plantillaFinalPromo;
 	
 	$.blockUI.defaults.baseZ = 9000;
 	$.blockUI({
@@ -95,7 +101,8 @@ var $publicarPromocion = function() {
 			fechaVigencia:  $datepickerPromo.val(),
 			base64Imagen: "",
 			redimir: $('.radioPromo:checked').val(),
-			terminos:$infoadiPromo.val()
+			terminos:$infoadiPromo.val(),
+			templatePromo: plantillaFinalPromo
 		},
 		success : function(data) {			
 			$divPublicarPromo.hide();
@@ -468,6 +475,7 @@ function actualizaEstiloPromo() {
 	{
 		console.log("es vista previa");
 		$('#myModalTempPromo').modal('hide');
+		$("#tempPromocion").val(plantillaPromo);
 		$.blockUI.defaults.baseZ = 9000;
 		$.blockUI({
 			message: "Actualizando plantilla promo...",
