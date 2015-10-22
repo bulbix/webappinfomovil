@@ -50,7 +50,8 @@ import javax.xml.bind.annotation.XmlType;
     "idOffer",
     "urlImage",
     "urlSitio",
-    "urlPromocion"
+    "urlPromocion",
+    "template"
 })
 public class OffertRecordVO {
 
@@ -67,8 +68,17 @@ public class OffertRecordVO {
     protected String urlImage;
     protected String urlSitio;
     protected String urlPromocion;
+    protected String template;
     
-    public String getUrlPromocion() {
+    public String getTemplate() {
+		return template;
+	}
+
+	public void setTemplate(String template) {
+		this.template = template;
+	}
+
+	public String getUrlPromocion() {
 		return urlPromocion;
 	}
 

@@ -238,7 +238,7 @@ public class ClientWsInfomovil {
 	}
 	
 	public RespuestaVO crearSitioGuardarPromocion(String email, String password, String descripcion, String fechaVigencia,
-			String redimir, String terminos, String titulo, String base64Imagen, Integer idPromocion)
+			String redimir, String terminos, String titulo, String base64Imagen, Integer idPromocion, String template)
 	{
 		log.info("Invoking crearSitioGuardarPromocion...");
         com.infomovil.webapp.clientWsInfomovil.CrearSitioGuardarPromocion _crearSitioGuardarPromocion_parameters = new CrearSitioGuardarPromocion();
@@ -251,6 +251,7 @@ public class ClientWsInfomovil {
         _crearSitioGuardarPromocion_parameters.titulo = titulo;
         _crearSitioGuardarPromocion_parameters.base64Imagen = base64Imagen;
         _crearSitioGuardarPromocion_parameters.idPromocion = idPromocion;
+        _crearSitioGuardarPromocion_parameters.template = template;
         com.infomovil.webapp.clientWsInfomovil.CrearSitioGuardarPromocionResponse _crearSitioGuardarPromocion__return = port.crearSitioGuardarPromocion(_crearSitioGuardarPromocion_parameters);
         log.info("crearSitioGuardarPromocion.result=" + _crearSitioGuardarPromocion__return);
 		return _crearSitioGuardarPromocion__return.respuestaVO;
@@ -269,7 +270,7 @@ public class ClientWsInfomovil {
 	}
 	
 	public RespuestaVO crearSitioPrevisualizarPromocion(String email, String password, String descripcion, String fechaVigencia,
-			String redimir, String terminos, String titulo, String base64Imagen)
+			String redimir, String terminos, String titulo, String base64Imagen, String template)
 	{
 		log.info("Invoking crearSitioPrevisualizarPromocion...");
         com.infomovil.webapp.clientWsInfomovil.CrearSitioPrevisualizarPromocion _crearSitioPrevisualizarPromocion_parameters = new CrearSitioPrevisualizarPromocion();
@@ -281,6 +282,7 @@ public class ClientWsInfomovil {
         _crearSitioPrevisualizarPromocion_parameters.terminos = terminos;
         _crearSitioPrevisualizarPromocion_parameters.titulo = titulo;
         _crearSitioPrevisualizarPromocion_parameters.base64Imagen = base64Imagen;
+        _crearSitioPrevisualizarPromocion_parameters.template = template;
         com.infomovil.webapp.clientWsInfomovil.CrearSitioPrevisualizarPromocionResponse _crearSitioPrevisualizarPromocion__return = port.crearSitioPrevisualizarPromocion(_crearSitioPrevisualizarPromocion_parameters);
         log.info("crearSitioPrevisualizarPromocion.result=" + _crearSitioPrevisualizarPromocion__return);
 		return _crearSitioPrevisualizarPromocion__return.respuestaVO;

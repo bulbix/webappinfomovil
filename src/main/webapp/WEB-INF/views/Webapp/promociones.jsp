@@ -129,8 +129,7 @@
 						<span class="hidden-xs">Vista Previa</span>
 					</button>
 					
-					<button type="button" class="btn btn-outlineGreen pull-right textWhite navEditorLato"  id="btnEstiloTemplates" data-toggle="modal"
-						data-target="#myModalTempPromo"  style="margin: 5px 8px 0 0;">
+					<button type="button" class="btn btn-outlineGreen pull-right textWhite navEditorLato" id="btnEstiloTemplates" onClick="muestraTemplatePromo()" style="margin: 5px 8px 0 0;">
 						<img width="20" height="20" alt="Infomovil"	src="<c:url value="/resources/webapp/images/fa-templates.png"/>"/> 
 						<span class="hidden-xs">Estilo</span>
 					</button>
@@ -250,7 +249,8 @@
 		<script src="<c:url value="/resources/webapp/js/datepicker/jquery.ui.datepicker.js"/>"></script>
 		<script src="<c:url value="/resources/js/webapp/promociones.js"/>"></script>
 		<input type="hidden" id="valRadio" value="${redeemOffer}"/>
-	
+		<input type="hidden" id="tempPromocion" value="${templatePromo}">
+		<h1>${templatePromo}</h1>
 		<script>
 			$(document).ready(function(){
 				generarSliderPromo();
@@ -293,7 +293,7 @@
 			<c:set var="fragmentName" value="modalPromoFallo" scope="request" />
 		</tiles:insertDefinition>
 		<c:set var="urlPromo" value="${ urlPromocion }" scope="session"/>
-
+		
 		<script>
 			<c:choose> 
 				<c:when test="${sessionScope.canalUsuario == 'BAZ'}">

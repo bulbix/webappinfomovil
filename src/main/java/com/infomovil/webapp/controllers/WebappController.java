@@ -882,6 +882,7 @@ public class WebappController
 				model.put("idOffer", promocion.getIdOffer());
 				model.put("urlImage", promocion.getUrlImage());
 				model.put("urlPromocion", promocion.getUrlPromocion());
+				model.put("templatePromo", promocion.getTemplate());
 			}	
 			
 			if (Util.getCurrentSession().getAttribute("canal") != null)
@@ -922,7 +923,7 @@ public class WebappController
 	@RequestMapping(value = "/infomovil/guardarPromocion", method = {RequestMethod.GET, RequestMethod.POST}, produces = "application/json")
 	@ResponseBody
 	public Map<String, String> guardarPromocion(@RequestParam String titulo, @RequestParam String descripcion, @RequestParam String fechaVigencia
-				, String base64Imagen, @RequestParam String redimir, @RequestParam String terminos, Model model)
+				, String base64Imagen, @RequestParam String redimir, @RequestParam String terminos, String templatePromo, Model model)
 	{		
 		int idPromocion = 0; 
 		RespuestaVO respVO = new RespuestaVO();
@@ -932,7 +933,7 @@ public class WebappController
 		{		
 			String correo = Util.getUserLogged().getUsername();
 			String password = Util.getUserLogged().getPassword();
-			respVO = wsCliente.crearSitioGuardarPromocion(correo, password, descripcion, fechaVigencia, redimir, terminos, titulo, base64Imagen, idPromocion);
+			respVO = wsCliente.crearSitioGuardarPromocion(correo, password, descripcion, fechaVigencia, redimir, terminos, titulo, base64Imagen, idPromocion, templatePromo);
 			resultado.put("codeError", respVO.getCodeError());
 			resultado.put("descEror", respVO.getMsgError());
 			
@@ -941,6 +942,7 @@ public class WebappController
 			{
 				resultado.put("idOffer", promocion.getIdOffer());
 				resultado.put("urlPromocion", promocion.getUrlPromocion());
+				resultado.put("templatePromo", promocion.getTemplate());
 			}
 		}		
 		catch (Exception e) 
@@ -965,7 +967,7 @@ public class WebappController
 		{		
 			String correo = Util.getUserLogged().getUsername();
 			String password = Util.getUserLogged().getPassword();
-			respVO = wsCliente.crearSitioGuardarPromocion(correo, password, "", "", "", "", "", "", idPromocion);
+			respVO = wsCliente.crearSitioGuardarPromocion(correo, password, "", "", "", "", "", "", idPromocion, "");
 			resultado.put("codeError", respVO.getCodeError());
 			resultado.put("descEror", respVO.getMsgError());
 		}		
@@ -1010,7 +1012,7 @@ public class WebappController
 	@RequestMapping(value = "/infomovil/verPromo", method = { RequestMethod.GET , RequestMethod.POST }, produces = "application/json")
 	@ResponseBody
 	public Map<String, String> verPromo(int idDominio, String titulo, String descripcion, String fechaVigencia, String base64Imagen, 
-			String redimir, String terminos)
+			String redimir, String terminos, String templatePromo)
 	{
 		RespuestaVO respVO = new RespuestaVO();
 		Map<String, String> resultado = new HashMap<String, String>();
@@ -1021,9 +1023,9 @@ public class WebappController
 			String password = Util.getUserLogged().getPassword();
 			
 			if (idDominio == 0) /*Vista previa*/
-				respVO = wsCliente.crearSitioPrevisualizarPromocion(correo, password, descripcion, fechaVigencia, redimir, terminos, titulo, base64Imagen);
+				respVO = wsCliente.crearSitioPrevisualizarPromocion(correo, password, descripcion, fechaVigencia, redimir, terminos, titulo, base64Imagen, templatePromo);
 			else /*Ver promo guardada*/
-				respVO = wsCliente.crearSitioGuardarPromocion(correo, password, descripcion, fechaVigencia, redimir, terminos, titulo, base64Imagen, idDominio);
+				respVO = wsCliente.crearSitioGuardarPromocion(correo, password, descripcion, fechaVigencia, redimir, terminos, titulo, base64Imagen, idDominio, templatePromo);
 			
 			resultado.put("codeError", respVO.getCodeError());
 			resultado.put("descEror", respVO.getMsgError());
@@ -1044,5 +1046,3 @@ public class WebappController
 	}
 	
 }
-
-
