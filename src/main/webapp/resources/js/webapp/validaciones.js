@@ -1,5 +1,5 @@
 var templates = new Array("Coverpage7", "Coverpage8", "Coverpage1azul", "Coverpage2", "Coverpage3", "Coverpage4", "Coverpage5", "Coverpage6");
-var nombres = new Array("Fotografía", "Nuevos Negocios", "Portada azul", "Restaurantes", "Belleza", "Reposter&iacute;as", "Automotriz", "Taxistas"); /*Cambiar nombres*/
+var nombres = new Array("Otoño", "Vanguardia", "Portada azul", "Restaurantes", "Belleza", "Reposter&iacute;as", "Automotriz", "Taxistas"); /*Cambiar nombres*/
 var nombreDominio = "";
 var tipoDominio = "";
 var indice = 0;
