@@ -250,7 +250,7 @@
 		<script src="<c:url value="/resources/js/webapp/promociones.js"/>"></script>
 		<input type="hidden" id="valRadio" value="${redeemOffer}"/>
 		<input type="hidden" id="tempPromocion" value="${templatePromo}">
-		<h1>${templatePromo}</h1>
+
 		<script>
 			$(document).ready(function(){
 				generarSliderPromo();
