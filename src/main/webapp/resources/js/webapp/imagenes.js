@@ -67,7 +67,7 @@ $(document).ready(function() {
 		$("#actualizarImagenes").hide();
 		$('#myModalImagenes').modal();
 		//if (noEsDispositivo)
-//			$("#btnSeleccionaImagen2").show();
+			$("#btnSeleccionaImagen2").show();
 		$("#btnAlbumsDeFacebook").show();
 	});
 	$("#closemyModalImagenes").click(function() {
@@ -92,7 +92,7 @@ $(document).ready(function() {
 		$("#galeriaImagenes").show();
 		$("#btnAlbumsDeFacebook").show();
 		//if (noEsDispositivo)
-//			$("#btnSeleccionaImagen2").show();
+			$("#btnSeleccionaImagen2").show();
 		$("#regresarDeFace").hide();
 		$("#msjEligeAlbumFoto").hide();
 		if (siHayImagen == 1) {
@@ -116,10 +116,10 @@ $(document).ready(function() {
 });
 
 function isDevice() {
-//	$("#btnSeleccionaImagen2").show();
+	$("#btnSeleccionaImagen2").show();
 	if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i
 			.test(navigator.userAgent)) {
-		//$("#btnSeleccionaImagen2").hide();
+		$("#btnSeleccionaImagen2").hide();
 		noEsDispositivo = false;
 		$('.modal').on('show.bs.modal', function() {
 			$(this).css({
@@ -129,7 +129,7 @@ function isDevice() {
 			});
 		});
 	} else {
-//		$("#btnSeleccionaImagen2").show();
+		$("#btnSeleccionaImagen2").show();
 		noEsDispositivo = true;
 	}
 }
@@ -252,7 +252,7 @@ function getImagenesJQ() {
 		$('#regresarDeFace').hide();
 		$('#idRegresarAlbum').hide();
 		//if (noEsDispositivo)
-//			$('#btnSeleccionaImagen2').show();
+			$('#btnSeleccionaImagen2').show();
 		$('#btnAlbumsDeFacebook').show();
 		$(".imagenDinamica").remove();
 		$("#imgSeleccionadaDeGaleria").hide();
@@ -456,7 +456,7 @@ function guardarImagenesJQF() {
 									$("#imgSeleccionadaDeGaleria").hide();
 									$("#regresarSelecImg").hide();
 //									if (noEsDispositivo)
-//										$("#btnSeleccionaImagen2").show();
+										$("#btnSeleccionaImagen2").show();
 									$("#btnAlbumsDeFacebook").show();
 									getImagenesJQ();
 									$("#galeriaImagenes").show();
@@ -555,7 +555,7 @@ function uploadImage(imageDom, imageUrl, origin, textFoto) {
 									$("#imgSeleccionadaDeGaleria").hide();
 									$("#regresarSelecImg").hide();
 //									if (noEsDispositivo)
-//										$("#btnSeleccionaImagen2").show();
+										$("#btnSeleccionaImagen2").show();
 									$("#btnAlbumsDeFacebook").show();
 									getImagenesJQ();
 									$("#galeriaImagenes").show();
@@ -567,7 +567,7 @@ function uploadImage(imageDom, imageUrl, origin, textFoto) {
 									$("#imgSeleccionadaDeGaleria").hide();
 									$("#regresarSelecImg").hide();
 //									if (noEsDispositivo)
-//										$("#btnSeleccionaImagen2").show();
+										$("#btnSeleccionaImagen2").show();
 									$("#btnAlbumsDeFacebook").show();
 									$("#btnSeleccionaImagen").val("");
 									$("#actualizarTextoFoto").val("");
