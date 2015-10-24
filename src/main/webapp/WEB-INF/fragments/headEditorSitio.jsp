@@ -56,8 +56,8 @@
 
 .SI-FILES-STYLIZED label.cabinet
 {
-	width: 100%;
-	min-width:250px;
+	width: 250px;
+    min-width: 150px;
 	height: 18px;
 	background: url(<c:url value="/resources/webapp/images/btn-choose-file.png"/>) center center no-repeat;
 	background-size:136px;
