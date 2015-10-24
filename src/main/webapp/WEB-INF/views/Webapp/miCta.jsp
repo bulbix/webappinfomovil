@@ -110,56 +110,86 @@
 					<div class="page-header text-center navEditorSFl">
 					<h3 class="text-left textBlack " style="font-weight: 300; margin:5px 0 0 0;">Mis productos</h3><hr/>
 					<div>
-					<h1>${planPro}</h1>
+					<h1>PP: ${planPro}, TotProd: ${totProductos}</h1>
+		
 					<c:choose>
-						<c:when test="${totProductos > 0}">	
-						
+						<c:when test="${totProductos > 0}">
 							<c:forEach items="${productos}" var="item">
-
-								<c:set var="siTienePP" value="display:none;" scope="request" />
-								<c:set var="noTienePP" value="display:block;" scope="request" />	
+								
+<%-- 								<h1>Abc: ${item.abc} - Desc: ${item.descripcion} - Activo: ${item.activo} - urlRenovar: ${item.urlRenovar}</h1> --%>
+		<%-- 							<h1>${item.fechaInicio} - ${item.fechaFin} - renovable: ${item.abc}</h1>		 --%>
+		
+								<c:set var="imgActivo" value="btn_inactive.png" scope="request"/>
+								<c:set var="productoActivo" value="Inactivo" scope="request"/>
+								<c:set var="displayButton" value="display:none" scope="request"/>
 																
-								<c:if test="${planPro == 'SI'}">
-									<c:set var="siTienePP" value="display:block;" scope="request" />
-									<c:set var="noTienePP" value="display:none;" scope="request" />									
+								<c:if test="${item.activo}"> 
+									<c:set var="imgActivo" value="btn_active.png" scope="request"/>	
+									<c:set var="productoActivo" value="Activo" scope="request"/>	
+								</c:if>	
+		
+								<c:if test="${item.renovable == 'true'}">		
+									<c:set var="displayButton" value="display:block" scope="request"/>
+								</c:if>															
+								
+								<c:if test="${item.abc == 'Plan pro'}">	
+		
+									<c:set var="siTienePP" value="display:none;" scope="request"/>
+									<c:set var="noTienePP" value="display:block;" scope="request"/>	
+															
+									<c:if test="${planPro == 'SI'}">							
+										<c:set var="siTienePP" value="display:block;" scope="request"/>
+										<c:set var="noTienePP" value="display:none;" scope="request"/>	
+									</c:if>
+										
+									<tiles:insertDefinition name="prodGen">
+										<c:set var="productoNombre" value="planPro" scope="request"/>
+										<c:set var="datoUrl" value="${item.descripcion}" scope="request"/>									
+										<c:set var="fechaInicial" value="${item.fechaInicio}" scope="request"/>
+										<c:set var="fechaFinal" value="${item.fechaFin}" scope="request"/>
+										<tiles:putAttribute name="productoTitulo" value="${item.abc}"/>
+										<tiles:putAttribute name="claseProductos" value="${claseProductos}"/>
+									</tiles:insertDefinition>
+																	
 								</c:if>
 								
-								<c:if test="${item.descripcion != 'RECURSO'}">	
-																
-									<tiles:insertDefinition name="prodGen">
-										<c:set var="productoNombre" value="planPro" scope="request" />
-										<c:set var="datoUrl" value="${item.descripcion}" scope="request" />
-										<c:set var="imgActivo" value="btn_active.png" scope="request" />
-										<c:set var="displayButton" value="display:none" scope="request" />		
-										<c:set var="productoActivo" value="Activo" scope="request" />									
+								<c:if test="${item.claveComercial == 'TEL'}">
+								
+									<tiles:insertDefinition name="prodGen">	
+																		
+										<c:set var="productoNombre" value="dominioTel" scope="request" />
+										<c:set var="datoUrl" value="${item.urlRenovar}" scope="request" />								
 										<c:set var="fechaInicial" value="${item.fechaInicio}" scope="request" />
 										<c:set var="fechaFinal" value="${item.fechaFin}" scope="request" />
 										<tiles:putAttribute name="productoTitulo" value="${item.abc}"/>
 										<tiles:putAttribute name="claseProductos" value="${claseProductos}"/>
+										
+										<c:if test="${item.urlRenovar =='SP'}">
+											<c:set var="fechaInicial" value="----" scope="request"/>
+											<c:set var="fechaFinal" value="----" scope="request"/>
+											<c:set var="datoUrl" value="SIN PUBLICAR" scope="request" />			
+										</c:if>	
+																	
 									</tiles:insertDefinition>
+									
 								</c:if>
-							</c:forEach>
-																
-						</c:when>
-						<c:otherwise>
-							<tiles:insertDefinition name="prodGen">
-							
-								<c:set var="siTienePP" value="display:none;" scope="request" />
-								<c:set var="noTienePP" value="display:block;" scope="request" />
-								<c:set var="productoNombre" value="planPro" scope="request" />
-								<c:set var="datoUrl" value="xxxxxx" scope="request" />
-								<c:set var="imgActivo" value="btn_active.png" scope="request" />
-								<c:set var="displayButton" value="display:none" scope="request" />		
-								<c:set var="productoActivo" value="Activo" scope="request" />									
-								<c:set var="fechaInicial" value="----" scope="request" />
-								<c:set var="fechaFinal" value="----" scope="request" />
-								<tiles:putAttribute name="productoTitulo" value="planPro"/>
-								<tiles:putAttribute name="claseProductos" value="${claseProductos}"/>
 								
-							</tiles:insertDefinition>
-						</c:otherwise>
-					</c:choose>		
-					
+							</c:forEach>
+						</c:when>
+					<c:otherwise>
+						<tiles:insertDefinition name="prodGen">
+							<c:set var="productoNombre" value="planPro" scope="request"/>
+							<c:set var="datoUrl" value="Plan pro" scope="request"/>									
+							<c:set var="fechaInicial" value="" scope="request"/>
+							<c:set var="fechaFinal" value="" scope="request"/>
+							<c:set var="siTienePP" value="display:none;" scope="request"/>
+							<c:set var="noTienePP" value="display:block;" scope="request"/>	
+							<tiles:putAttribute name="productoTitulo" value="Plan pro"/>
+							<tiles:putAttribute name="claseProductos" value="'col-xs-12 col-sm-6 col-md-6 col-lg-6 dBlock col-sm-offset-3'"/>
+						</tiles:insertDefinition>
+					</c:otherwise>
+				</c:choose>	
+								
 				</div>
 					<div class="clearfix"></div>
 					

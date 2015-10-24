@@ -470,7 +470,7 @@ public class WebappController
 	
 	@RequestMapping(value = "/infomovil/miCuenta", method = {RequestMethod.GET, RequestMethod.POST})
 	public ModelAndView miCuenta(HttpServletRequest request, HttpServletResponse response, RedirectAttributes redirectAttributes, 
-			String payment_status, String mensajeCompra)
+			String payment_status)
 	{		
 		HashMap<String, Object> model = new HashMap<String, Object>();
 		RespuestaVO wsRespuesta = new RespuestaVO();
@@ -498,7 +498,7 @@ public class WebappController
 			totProductos = wsRespuesta.getListProductoUsuarioVO().size();
 			modeloWebApp.setListaProductos(wsRespuesta.getListProductoUsuarioVO());
 			
-			for (ProductoUsuarioVO producto : wsRespuesta.getListProductoUsuarioVO())
+			/*for (ProductoUsuarioVO producto : wsRespuesta.getListProductoUsuarioVO())
 			{
 				if (totProductos == 2)
 				{
@@ -508,7 +508,7 @@ public class WebappController
 					if (producto.getDescripcion().equals("RECURSO"))
 						totProductos = totProductos - 1;
 				}
-			}
+			}*/
 			
 			if (totProductos > 1)
 				claseProductos = "'col-xs-12 col-sm-6 col-md-6 col-lg-6 dBlock'";
@@ -579,7 +579,6 @@ public class WebappController
 			model.put("urlReturn", urlReturn);
 			model.put("codigoPayPal", codigoPayPalTel);
 			model.put("planPro", planPro);
-			model.put("mensajeCompra", mensajeCompra);
 		}		
 		catch (Exception e) 
 		{

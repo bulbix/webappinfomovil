@@ -53,7 +53,7 @@ $("#btnPagoPaypalPP").click(function() {
 	}
 	else
 	{		
-		$("#precioPP").html("400.00");
+		$("#precioPP").html("440.00");
 		var plan = "PLAN PRO 12 MESES";
 		var producto = "BFAWPP8D27FAY";
 		var tipoCompra = "PP12";
@@ -133,8 +133,8 @@ function actualizaPrecio(indice) {
 	}
 	else
 	{
-		$("#precioPP").html("400.00");
-		$("#precioModalPP").html("400.00 MNX");
+		$("#precioPP").html("440.00");
+		$("#precioModalPP").html("440.00 MNX");
 		$("#periodoModalPP").html("12 Meses");
 	}
 	console.log("plan: " + plan + ", tipoCompra: " + tipoCompra);

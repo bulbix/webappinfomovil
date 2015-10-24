@@ -3,7 +3,7 @@
 
 <div class="prodBody">
 	<div class="col-xs-12 text-center prodPadd10 navEditorSFl textBlack cuandoSiTienePP" style=<tiles:getAsString name="siTienePP"/>>
-		<p class="textGreen"><tiles:getAsString name="datoUrl"/></p>
+		<p class="textGreen"><%--<tiles:getAsString name="datoUrl"/>--%></p>
 		<p class="textGreen">
 			<img width="25" height="25" alt="Infomovil"
 				src="<c:url value="/resources/webapp/images/"/><tiles:getAsString name="imgActivo"/>" />
@@ -11,11 +11,11 @@
 		</p>
 	</div>
 	<div class="col-xs-12 text-center textBlack cuandoSiTienePP" style=<tiles:getAsString name="siTienePP"/>>
-		<span>Vigencia del:<br/> <strong><tiles:getAsString name="fechaInicial"/></strong> <br/>a <br/><strong><tiles:getAsString name="fechaFinal"/></strong></span>
+ 		<span>Vigencia:<br/> <%--<strong><tiles:getAsString name="fechaInicial"/></strong>--%> <br/><strong><tiles:getAsString name="fechaFinal"/></strong></span> <br/><br/>
 	</div>
-	<div class="clearfix"></div>
+<!-- 	<div class="clearfix"></div> -->
+	<br/><br/>
 	<div class="divider"></div>
-<!-- 	<div style=<tiles:getAsString name="visibleBtnRenueva"/>> -->
 	<div>
 	
 	<div class="col-xs-12 text-center cuandoNoTienePP" style=<tiles:getAsString name="noTienePP"/>><p ><strong class="textGreen">¡Adquiere Plan Pro!</strong><strong class="textBlack"> Y obtén:</strong></p>

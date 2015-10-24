@@ -9,7 +9,7 @@
 	</div>
 	<div class="modal-body bgWhite">
 		<h2 class="textPurple col-xs-12 col-sm-12 col-md-12 col-lg-12 text-center">&iexcl;Felicidades!</h2>		
-		<div  class="textBlack col-xs-12 col-sm-12 col-md-12 col-lg-12 text-center"><p>${mensajeCompra}</p>
+		<div  class="textBlack col-xs-12 col-sm-12 col-md-12 col-lg-12 text-center"><p></p>
 			<div class="clear"></div>
 			<h3><img width="100" height="100" alt="Infomovil" src="<c:url value="/resources/webapp/images/fa-purchase-bk.png"/>" /> Gracias por tu compra</h3>
 			<span>En breve recibirás un correo con tu ticket de pago</span>					
