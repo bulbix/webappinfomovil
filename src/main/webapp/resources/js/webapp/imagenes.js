@@ -67,7 +67,7 @@ $(document).ready(function() {
 		$("#actualizarImagenes").hide();
 		$('#myModalImagenes').modal();
 		//if (noEsDispositivo)
-			$("#btnSeleccionaImagen2").show();
+		$("#btnSeleccionaImagen2").show();
 		$("#btnAlbumsDeFacebook").show();
 	});
 	$("#closemyModalImagenes").click(function() {
@@ -82,6 +82,7 @@ $(document).ready(function() {
 		$("#btnGuardarImagen").hide();
 		$("#btnAlbumsDeFacebook").show();
 		$("#btnSeleccionaImagen").val("");
+		$("#btnSeleccionaImagen2").show();
 		$("#actualizarTextoFoto").val("");
 	});
 	$("#regresarDeFace").click(function() {
@@ -92,7 +93,7 @@ $(document).ready(function() {
 		$("#galeriaImagenes").show();
 		$("#btnAlbumsDeFacebook").show();
 		//if (noEsDispositivo)
-			$("#btnSeleccionaImagen2").show();
+		$("#btnSeleccionaImagen2").show();
 		$("#regresarDeFace").hide();
 		$("#msjEligeAlbumFoto").hide();
 		if (siHayImagen == 1) {
@@ -747,6 +748,7 @@ function picChange(evt) {
 			$("#regresarSelecImg").show();
 			$("#btnGuardarImagen").show();
 			$("#btnAlbumsDeFacebook").hide();
+			$("#btnSeleccionaImagen2").hide();
 			
 			var reader = new FileReader();
 			reader.onload = function() {

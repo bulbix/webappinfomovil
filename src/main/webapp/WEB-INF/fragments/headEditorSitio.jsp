@@ -56,19 +56,19 @@
 
 .SI-FILES-STYLIZED label.cabinet
 {
-	width: 136px;
-	height: 19px;
-	background: url(<c:url value="/resources/webapp/images/btn-choose-file.png"/>) 0 0 no-repeat;
+	width: 100%;
+	min-width:250px;
+	height: 18px;
+	background: url(<c:url value="/resources/webapp/images/btn-choose-file.png"/>) center center no-repeat;
 	background-size:136px;
 
 	display: inline-block;
 	overflow: hidden;
 	cursor: pointer;
 }
-
 .SI-FILES-STYLIZED label.cabinet input.file
 {
-	position: relative;
+	/*position: relative;*/
 	height: 100%;
 	width: auto;
 	opacity: 0;
