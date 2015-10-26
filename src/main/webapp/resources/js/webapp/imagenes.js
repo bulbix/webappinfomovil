@@ -820,7 +820,7 @@ function convertImgToBase64(imageDom, url, callback, outputFormat) {
 				            	canvas.height = imageDom.naturalHeight * ratio;  
 					    		canvas.width = imageDom.naturalWidth * ratio;  
 					            ctx.transform(0, 1, -1, 0, canvas.width , 0);
-					            ctx.drawImage(imageDom,0,0, imageDom.naturalWidth, imageDom.naturalHeight,  0,0,canvas.height,canvas.height);
+					            ctx.drawImage(imageDom,0,0, imageDom.naturalWidth, imageDom.naturalHeight,  0,0,canvas.width,canvas.height);
 					            dataURLTemp = canvas.toDataURL({format:'image/png'});
 			            	}else{
 			            		GRADOS =  "CW_90";
