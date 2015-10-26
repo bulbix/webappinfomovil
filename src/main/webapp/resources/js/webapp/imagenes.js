@@ -10,7 +10,7 @@ var noEsDispositivo = false;
 var ORIGIN_USER = 1;
 var ORIGIN_FACEBOOK = 2;
 var GRADOS = "CW_0";
-var PHOTO = "";
+
 $(document).ready(function() {
 
 	isDevice();
@@ -750,11 +750,27 @@ function picChange(evt) {
 			$("#btnAlbumsDeFacebook").hide();
 			$("#btnSeleccionaImagen2").hide();
 			
+			try {
+				if (window.webkitURL) {
+					picURL = window.webkitURL.createObjectURL(file);
+				} else if (window.URL && window.URL.createObjectURL) {
+					picURL = window.URL.createObjectURL(file);
+				} else {
+					picURL = null;
+				}
+				fotoDeGaleria.src = picURL;
+
+			} catch (err) {
+				console.log("Ocurrio un error con la picURL");
+				var reader = new FileReader();
+				reader.onload = function() {
+					fotoDeGaleria.src = reader.result;
+				}
+				reader.readAsDataURL(file);
+			}
+		
 			var reader = new FileReader();
 			reader.onload = function() {
-				fotoDeGaleria.src = reader.result;
-				console.log(" El reader result es: " + reader.result);
-				PHOTO = reader.result;
 				imageDom = document.getElementById("fotoDeGaleria");
 				var img = new Image();
 				img.src = imageDom.src;
@@ -762,26 +778,38 @@ function picChange(evt) {
 	                    console.log('ExifDentro99: ', EXIF.getTag(this, "Orientation"));
 	            });
 	                console.log('ExifFuera99: ', parseInt(EXIF.getTag(img, "Orientation")));
-		            switch(parseInt(EXIF.getTag(img, "Orientation"))) {
-				            case 8:
-				            	console.log("tre ENtro al exif 8 !");
-				            	
-				            	$('#fotoDeGaleria').css( {'transform': 'rotate(270deg)'});
-				                break;
-				            case 3:
-				            	console.log("tre Entro al exif 3 !");
-				            	
-				            	$('#fotoDeGaleria').css( {'transform': 'rotate(180deg)'});
-				                break;
-				            case 6:
-				            	console.log("tre Entro al exif 6 !");
-				            	
-				            	$('#fotoDeGaleria').css( {'transform': 'rotate(90deg)'});
-				                break;
-				            default: 
-				            	GRADOS =  "CW_0";
-				            		
-				    }
+	                switch(parseInt(EXIF.getTag(img, "Orientation"))) {
+		            case 8:
+		            	console.log("tre ENtro al exif 8 !");
+		            	$('#fotoDeGaleria').css( {'transform': 'rotate(270deg)',
+		            		'-ms-transform': 'rotate(90deg)', 
+		            		'-webkit-transform': 'rotate(90deg)', 
+		            		'-o-transform': 'rotate(90deg)', 
+		            		'-moz-transform': 'rotate(90deg)' 
+		            	});
+		                break;
+		            case 3:
+		            	console.log("tre Entro al exif 3 !");
+		            	$('#fotoDeGaleria').css( {'transform': 'rotate(180deg)',
+		            		'-ms-transform': 'rotate(90deg)', 
+			            	'-webkit-transform': 'rotate(90deg)', 
+			            	'-o-transform': 'rotate(90deg)', 
+			            	'-moz-transform': 'rotate(90deg)' 
+			            });
+		                break;
+		            case 6:
+		            	console.log("tre Entro al exif 6 !");
+		            	$('#fotoDeGaleria').css( {'transform': 'rotate(90deg)',
+		            		'-ms-transform': 'rotate(90deg)', 
+			            	'-webkit-transform': 'rotate(90deg)', 
+			            	'-o-transform': 'rotate(90deg)', 
+			            	'-moz-transform': 'rotate(90deg)'
+		            	});
+		                break;
+		            default: 
+		            	GRADOS =  "CW_0";
+		            		
+		    }
 			}
 			reader.readAsDataURL(file);	
 			
