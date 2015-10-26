@@ -116,7 +116,7 @@
 						<c:when test="${totProductos > 0}">
 							<c:forEach items="${productos}" var="item">
 								
-<%-- 								<h1>Abc: ${item.abc} - Desc: ${item.descripcion} - Activo: ${item.activo} - urlRenovar: ${item.urlRenovar}</h1> --%>
+								<h1>Abc: ${item.abc} - Desc: ${item.descripcion} - Activo: ${item.activo} - urlRenovar: ${item.urlRenovar}</h1>
 		<%-- 							<h1>${item.fechaInicio} - ${item.fechaFin} - renovable: ${item.abc}</h1>		 --%>
 		
 								<c:set var="imgActivo" value="btn_inactive.png" scope="request"/>
