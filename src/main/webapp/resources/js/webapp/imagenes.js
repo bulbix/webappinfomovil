@@ -6,7 +6,6 @@ var IMAGENESDELUSUARIO = 0;
 var infoAlbumes = [];
 var photosDelAlbum = [];
 var siHayImagen = 0;
-var noEsDispositivo = false;
 var ORIGIN_USER = 1;
 var ORIGIN_FACEBOOK = 2;
 var GRADOS = "CW_0";
@@ -66,7 +65,6 @@ $(document).ready(function() {
 		$("#facebookDiv").hide();
 		$("#actualizarImagenes").hide();
 		$('#myModalImagenes').modal();
-		//if (noEsDispositivo)
 		$("#btnSeleccionaImagen2").show();
 		$("#btnAlbumsDeFacebook").show();
 	});
@@ -92,7 +90,6 @@ $(document).ready(function() {
 		$(".photoDinamico").remove();
 		$("#galeriaImagenes").show();
 		$("#btnAlbumsDeFacebook").show();
-		//if (noEsDispositivo)
 		$("#btnSeleccionaImagen2").show();
 		$("#regresarDeFace").hide();
 		$("#msjEligeAlbumFoto").hide();
@@ -120,8 +117,6 @@ function isDevice() {
 	$("#btnSeleccionaImagen2").show();
 	if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i
 			.test(navigator.userAgent)) {
-		$("#btnSeleccionaImagen2").hide();
-		noEsDispositivo = false;
 		$('.modal').on('show.bs.modal', function() {
 			$(this).css({
 				position : 'fixed',
@@ -129,10 +124,7 @@ function isDevice() {
 				bottom : document.documentElement.scrollHeigh + 'px'
 			});
 		});
-	} else {
-		$("#btnSeleccionaImagen2").show();
-		noEsDispositivo = true;
-	}
+	} 
 }
 
 function testapiFacebook() {
@@ -252,8 +244,7 @@ function getImagenesJQ() {
 		$("#facebookDiv").hide();
 		$('#regresarDeFace').hide();
 		$('#idRegresarAlbum').hide();
-		//if (noEsDispositivo)
-			$('#btnSeleccionaImagen2').show();
+		$('#btnSeleccionaImagen2').show();
 		$('#btnAlbumsDeFacebook').show();
 		$(".imagenDinamica").remove();
 		$("#imgSeleccionadaDeGaleria").hide();
@@ -456,8 +447,7 @@ function guardarImagenesJQF() {
 									$("#facebookDiv").hide();
 									$("#imgSeleccionadaDeGaleria").hide();
 									$("#regresarSelecImg").hide();
-//									if (noEsDispositivo)
-										$("#btnSeleccionaImagen2").show();
+									$("#btnSeleccionaImagen2").show();
 									$("#btnAlbumsDeFacebook").show();
 									getImagenesJQ();
 									$("#galeriaImagenes").show();
@@ -555,8 +545,7 @@ function uploadImage(imageDom, imageUrl, origin, textFoto) {
 									$("#facebookDiv").hide();
 									$("#imgSeleccionadaDeGaleria").hide();
 									$("#regresarSelecImg").hide();
-//									if (noEsDispositivo)
-										$("#btnSeleccionaImagen2").show();
+									$("#btnSeleccionaImagen2").show();
 									$("#btnAlbumsDeFacebook").show();
 									getImagenesJQ();
 									$("#galeriaImagenes").show();
@@ -567,8 +556,7 @@ function uploadImage(imageDom, imageUrl, origin, textFoto) {
 									$("#facebookDiv").hide();
 									$("#imgSeleccionadaDeGaleria").hide();
 									$("#regresarSelecImg").hide();
-//									if (noEsDispositivo)
-										$("#btnSeleccionaImagen2").show();
+									$("#btnSeleccionaImagen2").show();
 									$("#btnAlbumsDeFacebook").show();
 									$("#btnSeleccionaImagen").val("");
 									$("#actualizarTextoFoto").val("");
@@ -734,7 +722,7 @@ function actualizarImagen(idImg, imgUrl) {
 }
 
 function picChange(evt) {
-
+	var $imageDomFotoDeGaleria = document.getElementById("fotoDeGaleria");
 	var fileInput = evt.target.files;
 	if (fileInput.length > 0) {
 		var file = fileInput[0];
@@ -751,8 +739,27 @@ function picChange(evt) {
 			$("#btnSeleccionaImagen2").hide();
 			
 			var reader = new FileReader();
+			
+			try {
+				console.log("Ocurrio un error con la picURL");
+				reader.onload = function() {
+					$imageDomFotoDeGaleria.src = reader.result;
+				}
+				reader.readAsDataURL(file);	
+				
+			} catch (err) {
+				if (window.webkitURL) {
+					picURL = window.webkitURL.createObjectURL(file);
+				} else if (window.URL && window.URL.createObjectURL) {
+					picURL = window.URL.createObjectURL(file);
+				} else {
+					picURL = null;
+				}
+				$imageDomFotoDeGaleria.src = picURL;
+			}
+			
 			reader.onload = function() {
-				fotoDeGaleria.src = reader.result;
+				$imageDomFotoDeGaleria.src = reader.result;
 				console.log(" El reader result es: " + reader.result);
 				PHOTO = reader.result;
 				imageDom = document.getElementById("fotoDeGaleria");
@@ -762,28 +769,40 @@ function picChange(evt) {
 	                    console.log('ExifDentro99: ', EXIF.getTag(this, "Orientation"));
 	            });
 	                console.log('ExifFuera99: ', parseInt(EXIF.getTag(img, "Orientation")));
-		            switch(parseInt(EXIF.getTag(img, "Orientation"))) {
+	                switch(parseInt(EXIF.getTag(img, "Orientation"))) {
 				            case 8:
 				            	console.log("tre ENtro al exif 8 !");
-				            	
-				            	$('#fotoDeGaleria').css( {'transform': 'rotate(270deg)'});
+				            	$imageDomFotoDeGaleria.css( {'transform': 'rotate(270deg)',
+				            		'-ms-transform': 'rotate(270deg)', 
+					            	'-webkit-transform': 'rotate(270deg)', 
+					            	'-o-transform': 'rotate(270deg)', 
+					            	'-moz-transform': 'rotate(270deg)'
+				            	});
 				                break;
 				            case 3:
 				            	console.log("tre Entro al exif 3 !");
-				            	
-				            	$('#fotoDeGaleria').css( {'transform': 'rotate(180deg)'});
+				            	$imageDomFotoDeGaleria.css( {'transform': 'rotate(180deg)',
+				            		'-ms-transform': 'rotate(180deg)', 
+					            	'-webkit-transform': 'rotate(180deg)', 
+					            	'-o-transform': 'rotate(180deg)', 
+					            	'-moz-transform': 'rotate(180deg)'
+					            });
 				                break;
 				            case 6:
 				            	console.log("tre Entro al exif 6 !");
-				            	
-				            	$('#fotoDeGaleria').css( {'transform': 'rotate(90deg)'});
+				            	$imageDomFotoDeGaleria.css( {'transform': 'rotate(90deg)',
+				            		'-ms-transform': 'rotate(90deg)', 
+					            	'-webkit-transform': 'rotate(90deg)', 
+					            	'-o-transform': 'rotate(90deg)', 
+					            	'-moz-transform': 'rotate(90deg)'	
+				            	});
 				                break;
 				            default: 
 				            	GRADOS =  "CW_0";
 				            		
-				    }
+	                }
 			}
-			reader.readAsDataURL(file);	
+		
 			
 		}
 	}	
@@ -797,6 +816,10 @@ function convertImgToBase64(imageDom, url, callback, outputFormat) {
 			var canvas = document.createElement('CANVAS');
 			var ctx = canvas.getContext('2d');
 			var targetWidth = 500;
+			if(url.length <= 0 ){
+				imageDom.src = $imageDomFotoDeGaleria.src;
+				
+			}
 			var ratio = (targetWidth > imageDom.naturalWidth) ? 1 : targetWidth
 					/ imageDom.naturalWidth;
 			var img = new Image();
@@ -809,10 +832,18 @@ function convertImgToBase64(imageDom, url, callback, outputFormat) {
 			            case 8:
 			            	console.log("ENtro al exif 8 !");
 			            	GRADOS =  "CW_270";
+			            	canvas.height = imageDom.naturalHeight * ratio;  
+				    		canvas.width = imageDom.naturalWidth * ratio;  
+				            ctx.drawImage(imageDom,0,0, imageDom.naturalWidth, imageDom.naturalHeight,  0,0,canvas.width,canvas.height);
+				    		dataURLTemp = canvas.toDataURL({format:'image/png'});
 			                break;
 			            case 3:
 			            	console.log("ENtro al exif 3 !");
 			            	GRADOS =  "CW_180";
+			            	canvas.height = imageDom.naturalHeight * ratio;  
+				    		canvas.width = imageDom.naturalWidth * ratio;  
+				            ctx.drawImage(imageDom,0,0, imageDom.naturalWidth, imageDom.naturalHeight,  0,0,canvas.width,canvas.height);
+				    		dataURLTemp = canvas.toDataURL({format:'image/png'});
 			                break;
 			            case 6:
 			            	if (/iPhone|iPad|iPod/i.test(navigator.userAgent)) {
@@ -1055,5 +1086,3 @@ function logueoFacebook2() {
 		$photosList.append($li);
 	}
 }
-
-
