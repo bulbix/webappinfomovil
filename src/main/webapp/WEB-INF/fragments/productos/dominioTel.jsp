@@ -11,12 +11,12 @@
 	<div class="col-xs-12 text-center textBlack">
 		<span>Vigencia del:<br/> <strong><tiles:getAsString name="fechaInicial"/></strong> <br/>a <br/><strong><tiles:getAsString name="fechaFinal"/></strong></span>
 	</div>
-	<div class="clearfix"></div>
+	<br/> <br/>
 	<div class="divider"></div>
 	<div style=<tiles:getAsString name="visibleBtnRenueva"/>>
 		<hr/>
 		<div class="col-xs-12 text-center textBlack">
-			<p class="reset">12 meses</p>
+			<p class="reset textBlack">12 meses</p>
 			<h3 class="prodPrice">
 				<sup>$</sup><span><strong>199.00</strong><span
 				class="prodNotes"> MXN</span></span>
