@@ -1,7 +1,3 @@
-var plan = "PLAN PRO 1 MES";
-var producto = "GJ87DBKRZ956A";
-var tipoCompra = "PP1";
-
 $("#btnPagoPaypal").click(function() {
 	
 	var $nombre  = $("#nombreUser").val();
@@ -20,11 +16,10 @@ $("#btnPagoPaypal").click(function() {
 	
 	if(falta == 0) 
 	{	
+		var producto = payPal.arrayProductos["TEL"];
+		var tipoCompra = "DOMINIO TEL";
 		$( "#datosIncompletos" ).empty();
-		producto = "JCLPR45ZL73CU";
-		tipoCompra = "DOMINIO TEL";
-		$("#hosted_button_id").val(producto);
-		intentoPago($nombre, $direccion, $correo, $pais, $tipoPlan, $titulo, $tipoCompra);
+		intentoPago($nombre, $direccion, $correo, $pais, $tipoPlan, $titulo, $tipoCompra, producto);
 	}
 	else
 	{
@@ -48,28 +43,29 @@ $("#btnPagoPaypalPP").click(function() {
 	{
 		$("#precioPP").html("40.00");
 		var plan = "PLAN PRO 1 MES";
-		var producto = "GJ87DBKRZ956A";
 		var tipoCompra = "PP1";
+		var producto = payPal.arrayProductos[tipoCompra];
 	}
 	else
 	{		
 		$("#precioPP").html("440.00");
 		var plan = "PLAN PRO 12 MESES";
-		var producto = "BFAWPP8D27FAY";
 		var tipoCompra = "PP12";
+		var producto = payPal.arrayProductos[tipoCompra];
 	}
 	
-	$("#hosted_button_id").val(producto);
-	intentoPago("", "", "", "", plan, "", tipoCompra);
+	intentoPago("", "", "", "", plan, "", tipoCompra, producto);
 });
 
 function intentoPago($nombre, $direccion, $correo, $pais,
-		$tipoPlan, $titulo, $tipoCompra) {
+		$tipoPlan, $titulo, $tipoCompra, $producto) {
 	
 	var $nombre  = $("#nombreUser").val();
 	var $direccion = $("#direccionUser").val();
 	var $pais = "MX";
 	var $email = $("#emailUser").val();
+
+	console.log("producto: " + $producto);
 	
 	$.blockUI.defaults.baseZ = 9000;
 	$.blockUI({
@@ -81,12 +77,11 @@ function intentoPago($nombre, $direccion, $correo, $pais,
 			width: '400px'
 		}
 	});
-	console.log("Entro a intento Pago" + $tipoPlan + ', ' + $tipoCompra);
+
 	$.ajax({
 			type : "POST",
 			url : contextPath + "/infomovil/crearSitioIntentoPago",
 				dataType : "json",
-				//contentType: "text/plain",
 				data : {
 					nombre: $nombre,
 					direccion: $direccion,
@@ -96,8 +91,9 @@ function intentoPago($nombre, $direccion, $correo, $pais,
 					tipoCompra: $tipoCompra					
 				},
 			success : function(data) {
-				console.log("El resultado es: " + data.resultado);
+
 				if(data.resultado > 0) {
+					$("#hosted_button_id").val($producto);
 					$("#customPaypal").val(data.resultado + ',' + $email);
 					comprarPayPal(data.resultado);
 					
@@ -137,5 +133,4 @@ function actualizaPrecio(indice) {
 		$("#precioModalPP").html("440.00 MNX");
 		$("#periodoModalPP").html("12 Meses");
 	}
-	console.log("plan: " + plan + ", tipoCompra: " + tipoCompra);
 }

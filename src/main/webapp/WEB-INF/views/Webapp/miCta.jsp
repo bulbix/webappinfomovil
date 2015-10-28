@@ -110,14 +110,10 @@
 					<div class="page-header text-center navEditorSFl">
 					<h3 class="text-left textBlack " style="font-weight: 300; margin:5px 0 0 0;">Mis productos</h3><hr/>
 					<div>
-<%-- 					<h1>PP: ${planPro}, TotProd: ${totProductos}</h1> --%>
 		
 					<c:choose>
 						<c:when test="${totProductos > 0}">
 							<c:forEach items="${productos}" var="item">
-								
-<%-- 								<h1>Abc: ${item.abc} - Desc: ${item.descripcion} - Activo: ${item.activo} - urlRenovar: ${item.urlRenovar}</h1> --%>
-		<%-- 							<h1>${item.fechaInicio} - ${item.fechaFin} - renovable: ${item.abc}</h1>		 --%>
 		
 								<c:set var="imgActivo" value="btn_inactive.png" scope="request"/>
 								<c:set var="productoActivo" value="Inactivo" scope="request"/>
@@ -191,6 +187,17 @@
 				</c:choose>	
 								
 				</div>
+				
+				<script>
+					var payPal = { };
+					payPal.arrayProductos = [];
+				</script>
+				
+				<c:forEach items="${productosInfo}" var="itemProd">
+					<script>
+						payPal.arrayProductos["${itemProd.key}"] = "${itemProd.value}";
+  					</script>
+				</c:forEach>
 					<div class="clearfix"></div>
 					
 					</div>
@@ -289,6 +296,5 @@
 	</c:choose>
 </script>
 
-<%-- <h1>${paymentStatus}</h1> --%>
 </body>
 </html>

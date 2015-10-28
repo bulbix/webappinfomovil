@@ -473,8 +473,10 @@ public class WebappController
 			String payment_status)
 	{		
 		HashMap<String, Object> model = new HashMap<String, Object>();
+		HashMap<String, String> productos = new HashMap<String, String>();
 		RespuestaVO wsRespuesta = new RespuestaVO();
 		RespuestaVO wsStatus = new RespuestaVO();
+		ProductoUsuarioVO productoVO = null;
 		
 		String claseProductos = "'col-xs-12 col-sm-6 col-md-6 col-lg-6 dBlock col-sm-offset-3'";
 		String claseCss = "inverse";
@@ -483,32 +485,17 @@ public class WebappController
 		String urlPaypal = "";
 		String urlReturn = "";
 		String nombreUsuario = "";
-		String codigoPayPalTel = "";
 		String status = "";
 		String planPro = "NO";
-		ProductoUsuarioVO productoVO = null;
 		int totProductos = 0;
 
 		try
 		{		
 			String correo = Util.getUserLogged().getUsername();
-			String password = Util.getUserLogged().getPassword();
-			
+			String password = Util.getUserLogged().getPassword();		
 			wsRespuesta = wsCliente.crearSitioGetProductosUsuario(correo, password);
 			totProductos = wsRespuesta.getListProductoUsuarioVO().size();
 			modeloWebApp.setListaProductos(wsRespuesta.getListProductoUsuarioVO());
-			
-			/*for (ProductoUsuarioVO producto : wsRespuesta.getListProductoUsuarioVO())
-			{
-				if (totProductos == 2)
-				{
-					if (!producto.isActivo() && !producto.isRenovable())
-						totProductos = totProductos - 1;
-					
-					if (producto.getDescripcion().equals("RECURSO"))
-						totProductos = totProductos - 1;
-				}
-			}*/
 			
 			if (totProductos > 1)
 				claseProductos = "'col-xs-12 col-sm-6 col-md-6 col-lg-6 dBlock'";
@@ -534,13 +521,17 @@ public class WebappController
          	{
          		urlPaypal = new String("https://www.paypal.com/cgi-bin/webscr");
          		urlReturn = new String("http://www.infomovil.com/infomovil/miCuenta");
-         		codigoPayPalTel = "JCLPR45ZL73CU";
+         		productos.put("TEL", "JCLPR45ZL73CU");
+         		productos.put("PP1", "EHZXCWQ55K7FJ");
+         		productos.put("PP12", "4N89BBTUYR79U");	
          	}
          	else
          	{
          		urlPaypal = new String("https://www.sandbox.paypal.com/cgi-bin/webscr");
          		urlReturn = new String("http://webapp-qa.mobileinfo.io/infomovil/miCuenta");
-         		codigoPayPalTel = "GVM5RUC45WKJS";
+         		productos.put("TEL", "GVM5RUC45WKJS");
+         		productos.put("PP1", "GJ87DBKRZ956A");
+         		productos.put("PP12", "BFAWPP8D27FAY");
          	}
          	
          	if (Util.getProfile().equals("DEV"))
@@ -577,8 +568,8 @@ public class WebappController
 			model.put("urlPaypal", urlPaypal);
 			model.put("nombreUsuario", nombreUsuario);
 			model.put("urlReturn", urlReturn);
-			model.put("codigoPayPal", codigoPayPalTel);
 			model.put("planPro", planPro);
+			model.put("productosInfo", productos);
 		}		
 		catch (Exception e) 
 		{
