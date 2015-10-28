@@ -20,12 +20,12 @@
 	
 	<!-- /BOTON PRUEBA -->
     	
-    <div class="btn btn-purple pull-right btnsEditor col-xs-12 col-sm-5" id="btnSeleccionaImagen2" style="overflow-x:hidden; margin:5px 0 5px 5px;"> 
- <label class="cabinet" >  
-		<input type="file" class="file" accept="image/*" onchange="picChange(event)" id="btnSeleccionaImagen"/>		<input style="display:inline" type="file" accept="image/*" onClick="validaImg()" onchange="picChange(event)" id="btnSeleccionaImagen"  /> 
-	</label> 
+<!--     <div class="btn btn-purple pull-right btnsEditor col-xs-12 col-sm-5" id="btnSeleccionaImagen2" style="overflow-x:hidden; margin:5px 0 5px 5px;">  -->
+<!--  <label class="cabinet" >   -->
+<!-- 		<input type="file" class="file" accept="image/*" onchange="picChange(event)" id="btnSeleccionaImagen"/>		<input style="display:inline" type="file" accept="image/*" onClick="validaImg()" onchange="picChange(event)" id="btnSeleccionaImagen"  />  -->
+<!-- 	</label>  -->
 
-	</div>
+<!-- 	</div> -->
     	<button type="button" class="btn btn-purple pull-right"  id="regresarSelecImg" style="margin: 5px 5px 0 0;"><img width="20" height="20" alt="Infomovil" src="<c:url value="/resources/webapp/images/ico_back.png"/>" /> <span class="hidden-xs">Regresar</span></button>
 	
     	<button type="button" class="btn btn-blueFB pull-right btnsEditor col-xs-12 col-sm-5"  id="btnAlbumsDeFacebook" style="margin:5px 0;"><img width="20" height="20" alt="Infomovil" src="<c:url value="/resources/webapp/images/ico_facebook.png"/>" /> <span class="">Fotos de Facebook</span></button>
