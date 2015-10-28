@@ -13,8 +13,8 @@ var $btnCompartir = $("#btnCompartir");
 var $btnVerPromo = $("#btnVerPromo");
 var $btnEliminar = $("#btnEliminar");
 var $btnGuardar = $("#btnGuardar");
-var templatesPromo = new Array("promo4", "promo1", "promo2", "promo3");
-var nombresPromo = new Array("Tecnología 2", "Bares", "Hipster", "Tecnología"); /*Cambiar nombres*/
+var templatesPromo = new Array("promo5", "promo4", "promo1", "promo2", "promo3");
+var nombresPromo = new Array("Floral", "Tecnología 2", "Bares", "Hipster", "Tecnología"); /*Cambiar nombres*/
 var plantillaPromo = "promo1";
 var indicePromocion = 0;
 
