@@ -1116,6 +1116,16 @@ textarea {
 	font-size: 1.1em !important;
 }
 
+._1_0em {
+	font-size: 1em !important;
+}
+._09em {
+	font-size: .9em !important;
+}
+._08em {
+	font-size: .8em !important;
+}
+
 
 .pac-input::-webkit-input-placeholder {
 	color: #000 !important;

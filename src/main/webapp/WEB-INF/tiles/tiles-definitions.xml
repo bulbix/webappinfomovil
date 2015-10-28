@@ -33,5 +33,6 @@
 	<definition name="modalPromoFallo" template="/WEB-INF/fragments/modals/modalPromoFallo.jsp" />
 	<definition name="modalMoviliza" template="/WEB-INF/fragments/modals/modalMoviliza.jsp" />
 	<definition name="modalMovilizaAct" template="/WEB-INF/fragments/modals/modalMovilizaAct.jsp" />
+	<definition name="modalMovilizaCode" template="/WEB-INF/fragments/modals/modalMovilizaCode.jsp" />
 	<definition name="modalCompraPP" template="/WEB-INF/fragments/modals/modalCompraPP.jsp" />
 </tiles-definitions>

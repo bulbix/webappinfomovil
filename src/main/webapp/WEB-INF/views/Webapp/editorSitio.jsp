@@ -399,6 +399,14 @@
 		<c:set var="fragmentName" value="modalMovilizaAct" scope="request" />
 	</tiles:insertDefinition>
 	<!-- 		<!--/MODAL MOVILIZA ACT-->
+	<!-- 		<!--MODAL MOVILIZA CODE-->
+	<tiles:insertDefinition name="modalGen">
+		<tiles:putAttribute name="idModal" value="myModalMovilizaCode" />
+		<tiles:putAttribute name="tamanioModal"
+			value='"modal-dialog modal-lg"' />
+		<c:set var="fragmentName" value="modalMovilizaCode" scope="request" />
+	</tiles:insertDefinition>
+	<!-- 		<!--/MODAL MOVILIZA CODE-->
 	
 	<!-- Scroll to Top Button (Only visible on small and extra-small screen sizes) -->
 	<div class="scroll-top page-scroll visible-xs visble-sm">
