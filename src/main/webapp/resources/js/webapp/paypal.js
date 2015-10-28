@@ -17,16 +17,14 @@ $("#btnPagoPaypal").click(function() {
 		intentoPago($nombre, $direccion, $correo, $pais);
 	}else{
 		$( "#datosIncompletos" ).empty();
-		switch(falta){
+		switch(falta) {
 			case 1:
 				$( "#datosIncompletos" ).append( "Falta completar el dato Nombre" );
 				break;
 			case 2:
 				$( "#datosIncompletos" ).append( "Falta completar el dato Dirección" );
 				break;
-			
-		}	
-		
+		}			
 	}
 });
 
