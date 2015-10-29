@@ -2,7 +2,6 @@
 package com.infomovil.webapp.controllers;
 
 import java.io.UnsupportedEncodingException;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.List;
@@ -16,7 +15,6 @@ import org.apache.log4j.Logger;
 import org.json.simple.JSONArray;
 import org.springframework.stereotype.Controller;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler;
