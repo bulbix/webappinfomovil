@@ -11,7 +11,7 @@
 	<button type="button" class="close textBlack pull-left btnsEditor"  aria-label="Close" id="closemyModalImagenes"><span aria-hidden="true"><strong>&times;</strong></span></button>
 	
 	
-<!-- 	<!-- BOTON PRUEBA --> -->
+<!-- 	<!-- BOTON PRUEBA -->
 	
 <!--  <label class=" col-xs-12 col-sm-5  btn btn-purple" id="btnSeleccionaImagen2">   -->
 <!-- 		<input type="file" class="file cabinet" accept="image/*" onchange="picChange(event)" id="btnSeleccionaImagen"/>		<input style="display:inline" type="file" accept="image/*" onClick="validaImg()" onchange="picChange(event)" id="btnSeleccionaImagen"  />  -->

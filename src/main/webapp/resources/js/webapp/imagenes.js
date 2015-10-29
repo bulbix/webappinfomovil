@@ -170,7 +170,7 @@ function generaFotos(idAlbum, p) {
 window.fbAsyncInit = function() {
 
 	FB.init({
-		appId : '346859792130678', //'QA: 422690184604551 PROD: ',
+		appId : '422690184604551', //'QA: 422690184604551 PROD: 346859792130678',
 		cookie : true, // enable cookies to allow the server to access
 		xfbml : true, // parse social plugins on this page
 		version : 'v2.0' // use version 2.2
@@ -402,6 +402,7 @@ function guardarImagenesJQ() {
 		$("#regresarSelecImg").hide();
 		$("#btnGuardarImagen").hide();
 		$("#btnAlbumsDeFacebook").show();
+		$("#btnSeleccionaImagen2").show();
 		$("#btnSeleccionaImagen").val("");
 		$("#actualizarTextoFoto").val("");
 	}
@@ -830,11 +831,23 @@ function convertImgToBase64(imageDom, url, callback, outputFormat) {
 	            switch(parseInt(EXIF.getTag(img, "Orientation"))) {
 			            case 8:
 			            	console.log("ENtro al exif 8 !");
-			            	GRADOS =  "CW_270";
-			            	canvas.height = imageDom.naturalHeight * ratio;  
-				    		canvas.width = imageDom.naturalWidth * ratio;  
-				            ctx.drawImage(imageDom,0,0, imageDom.naturalWidth, imageDom.naturalHeight,  0,0,canvas.width,canvas.height);
-				    		dataURLTemp = canvas.toDataURL({format:'image/png'});
+			            	if (/iPhone|iPad|iPod/i.test(navigator.userAgent)) {
+			            		console.log("Si entro en el case exif8 mac H y W", imageDom.height,imageDom.width,imageDom.naturalWidth * ratio);
+			            		GRADOS =  "CW_0";
+			            		canvas.height = imageDom.naturalHeight * ratio;  
+					    		canvas.width = imageDom.naturalWidth * ratio;  
+					    		ctx.transform(0, 1, -1, 0, canvas.height , 0);
+					    		ctx.transform(0, 1, -1, 0, canvas.width , 0);
+					    		ctx.transform(0, 1, -1, 0, canvas.height , 0);
+					            ctx.drawImage(imageDom,0,0, imageDom.naturalWidth, imageDom.naturalHeight,  0,0,canvas.height,canvas.height);
+					            dataURLTemp = canvas.toDataURL({format:'image/png'});
+			            	}else{
+			            		GRADOS =  "CW_270";
+				            	canvas.height = imageDom.naturalHeight * ratio;  
+					    		canvas.width = imageDom.naturalWidth * ratio;  
+					            ctx.drawImage(imageDom,0,0, imageDom.naturalWidth, imageDom.naturalHeight,  0,0,canvas.width,canvas.height);
+					    		dataURLTemp = canvas.toDataURL({format:'image/png'});	
+			            	}
 			                break;
 			            case 3:
 			            	console.log("ENtro al exif 3 !");
@@ -1005,7 +1018,7 @@ function logueoFacebook(response) {
 		if (navigator.userAgent.match('CriOS')) {
 			window
 					.open(
-							'https://www.facebook.com/dialog/oauth?client_id=346859792130678&scope=email,user_photos&redirect_uri='
+							'https://www.facebook.com/dialog/oauth?client_id=422690184604551&scope=email,user_photos&redirect_uri='
 									+ document.location.href + '', '', null);
 		} else {
 			FB.login(function(response) {
