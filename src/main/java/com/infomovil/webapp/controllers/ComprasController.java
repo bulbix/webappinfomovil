@@ -49,6 +49,7 @@ public class ComprasController
 	{
 		Map<String, String> resultMap = new HashMap<String, String>();
 		RespuestaVO wsRespuesta = new RespuestaVO();
+		String scriptMoviliza = "";
 		
 		try
 		{
@@ -57,8 +58,15 @@ public class ComprasController
 			
 			if (!wsRespuesta.getResultado().equals("SIN_HASH"))
 			{
+				scriptMoviliza = wsRespuesta.getScriptMovilizaSitio();
+				scriptMoviliza = scriptMoviliza.replaceAll("<", "&lt;");
+				scriptMoviliza = scriptMoviliza.replaceAll(">", "&gt;");
+				
+	         	if(!Util.getProfile().equals("PROD"))
+	         		scriptMoviliza = scriptMoviliza.replaceAll("infomovil.com", "infodev.mobileinfo.io");
+	         	
 				resultMap.put("hashMoviliza", wsRespuesta.getResultado());
-				resultMap.put("scriptMoviliza", wsRespuesta.getScriptMovilizaSitio());
+				resultMap.put("scriptMoviliza", scriptMoviliza);
 			}
 			else
 			{

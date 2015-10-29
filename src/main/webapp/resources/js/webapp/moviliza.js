@@ -49,7 +49,9 @@ function generaCodigoMoviliza() {
 				dataType : "json",
 				
 			success : function(data) {
-				console.log("scriptMoviliza: " + data.scriptMoviliza);
+				console.log("hashMoviliza: " + data.scriptMoviliza);
+				$("#codigoMoviliza").html(data.scriptMoviliza);
+				$("#myModalMovilizaCode").modal();
 				$.unblockUI();
 			},
 			error : function(json) {
