@@ -9,7 +9,7 @@ var siHayImagen = 0;
 var ORIGIN_USER = 1;
 var ORIGIN_FACEBOOK = 2;
 var GRADOS = "CW_0";
-var PHOTO = "";
+
 $(document).ready(function() {
 
 	isDevice();
@@ -65,7 +65,7 @@ $(document).ready(function() {
 		$("#facebookDiv").hide();
 		$("#actualizarImagenes").hide();
 		$('#myModalImagenes').modal();
-//		$("#btnSeleccionaImagen2").show();
+		$("#btnSeleccionaImagen2").show();
 		$("#btnAlbumsDeFacebook").show();
 	});
 	$("#closemyModalImagenes").click(function() {
@@ -80,7 +80,7 @@ $(document).ready(function() {
 		$("#btnGuardarImagen").hide();
 		$("#btnAlbumsDeFacebook").show();
 		$("#btnSeleccionaImagen").val("");
-//		$("#btnSeleccionaImagen2").show();
+		$("#btnSeleccionaImagen2").show();
 		$("#actualizarTextoFoto").val("");
 	});
 	$("#regresarDeFace").click(function() {
@@ -90,7 +90,7 @@ $(document).ready(function() {
 		$(".photoDinamico").remove();
 		$("#galeriaImagenes").show();
 		$("#btnAlbumsDeFacebook").show();
-//		$("#btnSeleccionaImagen2").show();
+		$("#btnSeleccionaImagen2").show();
 		$("#regresarDeFace").hide();
 		$("#msjEligeAlbumFoto").hide();
 		if (siHayImagen == 1) {
@@ -114,7 +114,7 @@ $(document).ready(function() {
 });
 
 function isDevice() {
-//	$("#btnSeleccionaImagen2").show();
+	$("#btnSeleccionaImagen2").show();
 	if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i
 			.test(navigator.userAgent)) {
 		$('.modal').on('show.bs.modal', function() {
@@ -244,7 +244,7 @@ function getImagenesJQ() {
 		$("#facebookDiv").hide();
 		$('#regresarDeFace').hide();
 		$('#idRegresarAlbum').hide();
-//		$('#btnSeleccionaImagen2').show();
+		$('#btnSeleccionaImagen2').show();
 		$('#btnAlbumsDeFacebook').show();
 		$(".imagenDinamica").remove();
 		$("#imgSeleccionadaDeGaleria").hide();
@@ -447,7 +447,7 @@ function guardarImagenesJQF() {
 									$("#facebookDiv").hide();
 									$("#imgSeleccionadaDeGaleria").hide();
 									$("#regresarSelecImg").hide();
-//									$("#btnSeleccionaImagen2").show();
+									$("#btnSeleccionaImagen2").show();
 									$("#btnAlbumsDeFacebook").show();
 									getImagenesJQ();
 									$("#galeriaImagenes").show();
@@ -545,7 +545,7 @@ function uploadImage(imageDom, imageUrl, origin, textFoto) {
 									$("#facebookDiv").hide();
 									$("#imgSeleccionadaDeGaleria").hide();
 									$("#regresarSelecImg").hide();
-//									$("#btnSeleccionaImagen2").show();
+									$("#btnSeleccionaImagen2").show();
 									$("#btnAlbumsDeFacebook").show();
 									getImagenesJQ();
 									$("#galeriaImagenes").show();
@@ -556,7 +556,7 @@ function uploadImage(imageDom, imageUrl, origin, textFoto) {
 									$("#facebookDiv").hide();
 									$("#imgSeleccionadaDeGaleria").hide();
 									$("#regresarSelecImg").hide();
-//									$("#btnSeleccionaImagen2").show();
+									$("#btnSeleccionaImagen2").show();
 									$("#btnAlbumsDeFacebook").show();
 									$("#btnSeleccionaImagen").val("");
 									$("#actualizarTextoFoto").val("");
@@ -760,8 +760,7 @@ function picChange(evt) {
 			
 			reader.onload = function() {
 				$imageDomFotoDeGaleria.src = reader.result;
-				console.log(" El reader result es: " + reader.result);
-				PHOTO = reader.result;
+			
 				imageDom = document.getElementById("fotoDeGaleria");
 				var img = new Image();
 				img.src = imageDom.src;
@@ -847,11 +846,12 @@ function convertImgToBase64(imageDom, url, callback, outputFormat) {
 			                break;
 			            case 6:
 			            	if (/iPhone|iPad|iPod/i.test(navigator.userAgent)) {
-				            	GRADOS =  "CW_0";
-				            	canvas.height = imageDom.naturalHeight * ratio;  
+			            		console.log("Si entro en el case 57 mac H y W", imageDom.height,imageDom.width,imageDom.naturalWidth * ratio);
+			            		GRADOS =  "CW_0";
+			            		canvas.height = imageDom.naturalHeight * ratio;  
 					    		canvas.width = imageDom.naturalWidth * ratio;  
 					            ctx.transform(0, 1, -1, 0, canvas.width , 0);
-					            ctx.drawImage(imageDom,0,0, imageDom.naturalWidth, imageDom.naturalHeight,  0,0,canvas.width,canvas.height);
+					            ctx.drawImage(imageDom,0,0, imageDom.naturalWidth, imageDom.naturalHeight,  0,0,canvas.height,canvas.height);
 					            dataURLTemp = canvas.toDataURL({format:'image/png'});
 			            	}else{
 			            		GRADOS =  "CW_90";
@@ -862,10 +862,13 @@ function convertImgToBase64(imageDom, url, callback, outputFormat) {
 			            	}
 			                break;
 			            default: 
-			            	canvas.height = imageDom.naturalHeight * ratio;
-		    				canvas.width = imageDom.naturalWidth * ratio;
-		    				ctx.drawImage(imageDom,0,0, imageDom.naturalWidth, imageDom.naturalHeight,  0,0,canvas.width,canvas.height);
-		    					dataURLTemp = canvas.toDataURL({format:'image/png'});
+			            	console.log("Entro prueba 21 y los valores H y W son : ",imageDom.height,imageDom.width);
+			            		GRADOS =  "CW_0";
+			            		canvas.height = 540 * imageDom.height / imageDom.width;  
+			    				canvas.width = 560 ;
+			    				ctx.drawImage(imageDom, 0, 0, 560, 540 * imageDom.height / imageDom.width);
+			    				dataURLTemp = canvas.toDataURL({format:'image/png'});
+			            	
 			            		
 			    }  
 			 	
