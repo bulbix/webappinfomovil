@@ -10,7 +10,7 @@
 		<div class="col-xs-12">
 			<div class="divider"></div>
 			<div class="col-xs-12 textBlack _1_1em">
-				<span class="js-emaillink">
+				<span id="textCopyMoviliza"class="js-emaillink">
 					<strong>¡Hola!</strong><br/><br/>
 					Es muy importante para mi negocio que mi sitio web se vea bien en smartphones. Por ello, quiero ligar mi dominio actual con el nuevo sitio móvil que acabo de crear con Infomovil.
 					<br/><br/>
@@ -19,7 +19,7 @@
 					Coloca el siguiente código entre las etiquetas <code>&lt;header&gt;&lt;/header&gt;</code> del archivo principal (index)
 					<br/><br/>
 					<code id="codigoMoviliza" class="text-left col-xs-12 _08em" style="overflow-x:scroll; "></code>
-					<div class="clear divider"></div><br/>
+					<br/><br/><br/>
 					Muchas gracias!
 				</span>
 			</div>
