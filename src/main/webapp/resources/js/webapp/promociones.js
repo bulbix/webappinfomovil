@@ -469,11 +469,11 @@ function generarSliderPromo()
 function actualizaEstiloPromo() {
 
 	plantillaPromo = templatesPromo[indicePromocion];
-	console.log("actualizaEstiloPromo indice: " + plantillaPromo);
+//	console.log("actualizaEstiloPromo indice: " + plantillaPromo);
 	
 	if ($('#btnVistaPrevia').is(':visible'))
 	{
-		console.log("es vista previa");
+//		console.log("es vista previa");
 		$('#myModalTempPromo').modal('hide');
 		$("#tempPromocion").val(plantillaPromo);
 		$.blockUI.defaults.baseZ = 9000;

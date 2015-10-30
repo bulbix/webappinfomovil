@@ -65,7 +65,7 @@ $(document).ready(function() {
 		$("#facebookDiv").hide();
 		$("#actualizarImagenes").hide();
 		$('#myModalImagenes').modal();
-		$("#btnSeleccionaImagen2").show();
+		//$("#btnSeleccionaImagen2").show();
 		$("#btnAlbumsDeFacebook").show();
 	});
 	$("#closemyModalImagenes").click(function() {
@@ -80,7 +80,7 @@ $(document).ready(function() {
 		$("#btnGuardarImagen").hide();
 		$("#btnAlbumsDeFacebook").show();
 		$("#btnSeleccionaImagen").val("");
-		$("#btnSeleccionaImagen2").show();
+		//$("#btnSeleccionaImagen2").show();
 		$("#actualizarTextoFoto").val("");
 	});
 	$("#regresarDeFace").click(function() {
@@ -90,7 +90,7 @@ $(document).ready(function() {
 		$(".photoDinamico").remove();
 		$("#galeriaImagenes").show();
 		$("#btnAlbumsDeFacebook").show();
-		$("#btnSeleccionaImagen2").show();
+		//$("#btnSeleccionaImagen2").show();
 		$("#regresarDeFace").hide();
 		$("#msjEligeAlbumFoto").hide();
 		if (siHayImagen == 1) {
@@ -114,9 +114,10 @@ $(document).ready(function() {
 });
 
 function isDevice() {
-	$("#btnSeleccionaImagen2").show();
+	//$("#btnSeleccionaImagen2").show();
 	if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i
 			.test(navigator.userAgent)) {
+		
 		$('.modal').on('show.bs.modal', function() {
 			$(this).css({
 				position : 'fixed',
@@ -170,7 +171,7 @@ function generaFotos(idAlbum, p) {
 window.fbAsyncInit = function() {
 
 	FB.init({
-		appId : '422690184604551', //'QA: 422690184604551 PROD: 346859792130678',
+		appId : '346859792130678', //'QA: 422690184604551 PROD: 346859792130678',
 		cookie : true, // enable cookies to allow the server to access
 		xfbml : true, // parse social plugins on this page
 		version : 'v2.0' // use version 2.2
@@ -402,7 +403,6 @@ function guardarImagenesJQ() {
 		$("#regresarSelecImg").hide();
 		$("#btnGuardarImagen").hide();
 		$("#btnAlbumsDeFacebook").show();
-		$("#btnSeleccionaImagen2").show();
 		$("#btnSeleccionaImagen").val("");
 		$("#actualizarTextoFoto").val("");
 	}
@@ -448,7 +448,7 @@ function guardarImagenesJQF() {
 									$("#facebookDiv").hide();
 									$("#imgSeleccionadaDeGaleria").hide();
 									$("#regresarSelecImg").hide();
-									$("#btnSeleccionaImagen2").show();
+									//$("#btnSeleccionaImagen2").show();
 									$("#btnAlbumsDeFacebook").show();
 									getImagenesJQ();
 									$("#galeriaImagenes").show();
@@ -546,7 +546,7 @@ function uploadImage(imageDom, imageUrl, origin, textFoto) {
 									$("#facebookDiv").hide();
 									$("#imgSeleccionadaDeGaleria").hide();
 									$("#regresarSelecImg").hide();
-									$("#btnSeleccionaImagen2").show();
+									//$("#btnSeleccionaImagen2").show();
 									$("#btnAlbumsDeFacebook").show();
 									getImagenesJQ();
 									$("#galeriaImagenes").show();
@@ -557,7 +557,7 @@ function uploadImage(imageDom, imageUrl, origin, textFoto) {
 									$("#facebookDiv").hide();
 									$("#imgSeleccionadaDeGaleria").hide();
 									$("#regresarSelecImg").hide();
-									$("#btnSeleccionaImagen2").show();
+									//$("#btnSeleccionaImagen2").show();
 									$("#btnAlbumsDeFacebook").show();
 									$("#btnSeleccionaImagen").val("");
 									$("#actualizarTextoFoto").val("");
@@ -801,6 +801,7 @@ function picChange(evt) {
 				            	GRADOS =  "CW_0";
 				            		
 	                }
+	               
 			}
 		
 			
@@ -815,7 +816,7 @@ function convertImgToBase64(imageDom, url, callback, outputFormat) {
 			var dataURLTemp = "";
 			var canvas = document.createElement('CANVAS');
 			var ctx = canvas.getContext('2d');
-			var targetWidth = 500;
+			var targetWidth = 420;
 			if(url.length <= 0 ){
 				imageDom.src = $imageDomFotoDeGaleria.src;
 				
@@ -1018,7 +1019,7 @@ function logueoFacebook(response) {
 		if (navigator.userAgent.match('CriOS')) {
 			window
 					.open(
-							'https://www.facebook.com/dialog/oauth?client_id=422690184604551&scope=email,user_photos&redirect_uri='
+							'https://www.facebook.com/dialog/oauth?client_id=346859792130678&scope=email,user_photos&redirect_uri='
 									+ document.location.href + '', '', null);
 		} else {
 			FB.login(function(response) {
