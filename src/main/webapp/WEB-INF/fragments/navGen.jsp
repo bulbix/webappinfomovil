@@ -13,7 +13,7 @@
           <ul class="nav navbar-nav navbar-right">
         <li><a href="http://infomovil.com" class="smoothScroll">Inicio</a></li>
         <li><a href="<c:url value="/registrar"/>" class="smoothScroll">Regístrate</a></li>
-        <li><a href="<c:url value="/login"/>" class="smoothScroll">Iniciar sesión</a></li>
+        <li><a href="<c:url value="/login"/>" class="smoothScroll">Inicia sesión</a></li>
       </ul>
     </div>
   </div>

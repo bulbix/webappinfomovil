@@ -79,6 +79,7 @@
   m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
   })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
   ga('create', 'UA-53077061-1', 'auto');
+  ga('set', 'dimension1', 'WebApp');
  ga('send', 'pageview'); 
     </script>
      <!-- / CODIGO SEGUIMIENTO ANALYTICS -->

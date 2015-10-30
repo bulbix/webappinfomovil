@@ -103,8 +103,8 @@
 		 
 		<!-- /Botón Nuevo Estilo -->
 		<!-- Formulario Promociones -->
-		<div class="">
-			<div class="col-xs-12 col-sm-6 col-sm-offset-3 col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3">
+		<div class="container">
+			<div class="col-xs-12 reset">
 				
 				 
 				
@@ -128,6 +128,11 @@
 						<img width="20" height="20" alt="Infomovil"	src="<c:url value="/resources/webapp/images/fa-eye.png"/>"/> 
 						<span class="hidden-xs">Vista Previa</span>
 					</button>
+					
+					<button type="button" class="btn btn-outlineGreen pull-right textWhite navEditorLato" id="btnEstiloTemplates" onClick="muestraTemplatePromo()" style="margin: 5px 8px 0 0;">
+						<img width="20" height="20" alt="Infomovil"	src="<c:url value="/resources/webapp/images/fa-templates.png"/>"/> 
+						<span class="hidden-xs">Estilo</span>
+					</button>
 				</div>
 				
 				<div class="clear"></div>
@@ -147,6 +152,12 @@
 					<button type="button" class="btn btn-outlineGreen pull-right textWhite navEditorLato"  id="btnCompartir" style="margin: 5px 5px 0 0;">
 						<img width="20" height="20" alt="Infomovil" src="<c:url value="/resources/webapp/images/fa-compartir.png"/>" /> 
 						<span class="hidden-xs">Compartir</span>
+					</button>
+					
+					<button type="button" class="btn btn-outlineGreen pull-right textWhite navEditorLato"  id="btnEstiloTemplates" data-toggle="modal"
+						data-target="#myModalTempPromo" style="margin: 5px 8px 0 0;">
+						<img width="20" height="20" alt="Infomovil"	src="<c:url value="/resources/webapp/images/fa-templates.png"/>"/> 
+						<span class="hidden-xs">Estilo</span>
 					</button>
 					
 				</div>
@@ -215,6 +226,9 @@
 			</div>
 		</div>
 		<!-- /Formulario Promociones -->
+		<!--MODAL TEMPLATES-->
+	<div id="modalTempPromo"></div>
+	<!--/MODAL TEMPLATES-->
 		
 		<!-- Bootstrap core JavaScript
 		    ================================================== -->
@@ -235,8 +249,13 @@
 		<script src="<c:url value="/resources/webapp/js/datepicker/jquery.ui.datepicker.js"/>"></script>
 		<script src="<c:url value="/resources/js/webapp/promociones.js"/>"></script>
 		<input type="hidden" id="valRadio" value="${redeemOffer}"/>
-	
-		
+		<input type="hidden" id="tempPromocion" value="${templatePromo}">
+
+		<script>
+			$(document).ready(function(){
+				generarSliderPromo();
+				});
+		</script>
 		<c:choose>
 			   		<c:when test="${idOffer > 0}">
 			   				<script>$(document).ready(function() {	$("#divPublicarPromo").hide(); $("#divPromoPublicada").show(); $activaRadio($("#valRadio").val()); }); </script>
@@ -274,7 +293,7 @@
 			<c:set var="fragmentName" value="modalPromoFallo" scope="request" />
 		</tiles:insertDefinition>
 		<c:set var="urlPromo" value="${ urlPromocion }" scope="session"/>
-
+		
 		<script>
 			<c:choose> 
 				<c:when test="${sessionScope.canalUsuario == 'BAZ'}">

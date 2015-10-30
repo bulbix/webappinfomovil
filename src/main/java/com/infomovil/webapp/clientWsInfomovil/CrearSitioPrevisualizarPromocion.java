@@ -42,7 +42,8 @@ import javax.xml.bind.annotation.XmlType;
     "redimir",
     "terminos",
     "titulo",
-    "base64Imagen"
+    "base64Imagen",
+    "template"
 })
 public class CrearSitioPrevisualizarPromocion {
 
@@ -55,8 +56,17 @@ public class CrearSitioPrevisualizarPromocion {
     protected String terminos;
     protected String titulo;
     protected String base64Imagen;
+    protected String template;
+    
+    public String getTemplate() {
+		return template;
+	}
 
-    /**
+	public void setTemplate(String template) {
+		this.template = template;
+	}
+
+	/**
      * Obtiene el valor de la propiedad email.
      * 
      * @return

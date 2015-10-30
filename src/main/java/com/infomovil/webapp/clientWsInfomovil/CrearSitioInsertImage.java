@@ -33,7 +33,8 @@ import javax.xml.bind.annotation.XmlType;
     "domainId",
     "baseImagen",
     "tipoImagen",
-    "descImagen"
+    "descImagen",
+    "rotacion"
 })
 public class CrearSitioInsertImage {
 
@@ -41,6 +42,7 @@ public class CrearSitioInsertImage {
     protected String baseImagen;
     protected String tipoImagen;
     protected String descImagen;
+    protected String rotacion;
 
     /**
      * Obtiene el valor de la propiedad domainId.
@@ -137,5 +139,13 @@ public class CrearSitioInsertImage {
     public void setDescImagen(String value) {
         this.descImagen = value;
     }
+
+	public String getRotacion() {
+		return rotacion;
+	}
+
+	public void setRotacion(String rotacion) {
+		this.rotacion = rotacion;
+	}
 
 }

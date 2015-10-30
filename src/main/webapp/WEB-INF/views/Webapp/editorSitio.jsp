@@ -146,7 +146,7 @@
 				<strong><span class="text-center btnsEditor _1_1em"
 					id="urlSitio" style="display: none;"> <a
 						href="http://${sitioWeb}" target="_blank"
-						class="col-xs-12 col-sm-12  col-md-12 col-lg-12 textBlack navEditor">Ver mi página: <strong>${sitioWeb}</strong><img width="20" height="20" alt="Infomovil"
+						class="col-xs-12 col-sm-12  col-md-12 col-lg-12 textBlack navEditor bgLinkWhite">Ver mi página: <strong>${sitioWeb}</strong><img width="20" height="20" alt="Infomovil"
 				src="<c:url value="/resources/webapp/images/ir-bk.png"/>" /> </a>
 				</span></strong>
 				<div>
@@ -456,6 +456,7 @@
 	<script src="<c:url value="/resources/webapp/js/bootstrap.js"/>"></script>
 	<script src="<c:url value="/resources/webapp/js/docs.min.js"/>"></script>
 	<script src="<c:url value="/resources/webapp/js/smoothscroll.js"/>"></script>
+	<script src="<c:url value="/resources/webapp/js/exif.js"/>"></script>
 	<%-- 		<script src="<c:url value="/resources/webapp/js/bootbox.min.js"/>"></script> --%>
 	<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
 	<script

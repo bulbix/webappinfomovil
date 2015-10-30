@@ -11,14 +11,22 @@
 	<button type="button" class="close textBlack pull-left btnsEditor"  aria-label="Close" id="closemyModalImagenes"><span aria-hidden="true"><strong>&times;</strong></span></button>
 	
 	
+<!-- 	<!-- BOTON PRUEBA -->
+	
+<!--  <label class=" col-xs-12 col-sm-5  btn btn-purple" id="btnSeleccionaImagen2">   -->
+<!-- 		<input type="file" class="file cabinet" accept="image/*" onchange="picChange(event)" id="btnSeleccionaImagen"/>		<input style="display:inline" type="file" accept="image/*" onClick="validaImg()" onchange="picChange(event)" id="btnSeleccionaImagen"  />  -->
+<!-- 	</label>  -->
+
+	
+	<!-- /BOTON PRUEBA -->
     	
-<!--     <div class="btn btn-purple pull-right btnsEditor col-xs-12 col-sm-5" id="btnSeleccionaImagen2" style="overflow-x:hidden; margin:5px 5px;"> -->
-<!-- <label class="cabinet" >  -->
-<!-- 		<input type="file" class="file" accept="image/*" onchange="picChange(event)" id="btnSeleccionaImagen"/>		<input style="display:inline" type="file" accept="image/*" onClick="validaImg()" onchange="picChange(event)" id="btnSeleccionaImagen"  /> -->
-<!-- 	</label> -->
+<!--     <div class="btn btn-purple pull-right btnsEditor col-xs-12 col-sm-5" id="btnSeleccionaImagen2" style="overflow-x:hidden; margin:5px 0 5px 5px;">  -->
+<!--  <label class="cabinet" >   -->
+<!-- 		<input type="file" class="file" accept="image/*" onchange="picChange(event)" id="btnSeleccionaImagen"/>		<input style="display:inline" type="file" accept="image/*" onClick="validaImg()" onchange="picChange(event)" id="btnSeleccionaImagen"  />  -->
+<!-- 	</label>  -->
 
 <!-- 	</div> -->
-    	<button type="button" class="btn btn-purple pull-right"  id="regresarSelecImg" style="margin: 5px 0;"><img width="20" height="20" alt="Infomovil" src="<c:url value="/resources/webapp/images/ico_back.png"/>" /> <span class="hidden-xs">Regresar</span></button>
+    	<button type="button" class="btn btn-purple pull-right"  id="regresarSelecImg" style="margin: 5px 5px 0 0;"><img width="20" height="20" alt="Infomovil" src="<c:url value="/resources/webapp/images/ico_back.png"/>" /> <span class="hidden-xs">Regresar</span></button>
 	
     	<button type="button" class="btn btn-blueFB pull-right btnsEditor col-xs-12 col-sm-5"  id="btnAlbumsDeFacebook" style="margin:5px 0;"><img width="20" height="20" alt="Infomovil" src="<c:url value="/resources/webapp/images/ico_facebook.png"/>" /> <span class="">Fotos de Facebook</span></button>
     	<button type="button" id="regresarDeFace" class="btn btn-purple pull-right" ><img width="20" height="20" alt="Infomovil" src="<c:url value="/resources/webapp/images/ico_back.png"/>" /> <span class="hidden-xs">Regresar</span></button>
@@ -58,7 +66,7 @@
     	
     	<div class="col-xs-12"> 
    <div style="display: block; padding: 10px 0 0 0;"></div>
-    	<div class="col-xs-12 col-sm-3 text-center"><img src=""  class="imgActualizar img-thumbnail" id="fotoDeGaleria" style="max-width:100px; max-height:100px;"/></div>
+    	<div class="col-xs-12 col-sm-3 text-left"><img src=""  class="imgActualizar img-thumbnail" id="fotoDeGaleria" style="max-width:100px; max-height:100px;"/></div>
         <div class="col-xs-12 col-sm-9 navEditorSFl">
         <label style="display:inline">Nombre: </label> <input type="text" value="" id="actualizarTextoFoto" style="display:inline" ></input>
         </div>

@@ -459,8 +459,9 @@ section.bgBlack { /*margin: 0 -5px 0 0; */
 }
 
 .imgLista {
-	max-width: 100px;
+	max-width: 60px;
 	max-height: 80px;
+	margin:0 auto;
 }
 
 .imgListaBig {

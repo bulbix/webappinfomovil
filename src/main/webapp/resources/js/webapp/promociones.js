@@ -1,4 +1,3 @@
-//Calores para 
 var $nombrePromo =  $("#nombrePromo");
 var $descPromo =  $("#descPromo");
 var $datepickerPromo =  $("#datepicker");
@@ -7,17 +6,18 @@ var $divPromoPublicada = $("#divPromoPublicada");
 var $divPublicarPromo = $("#divPublicarPromo");
 var $idPromocion = $("#idPromocion");
 var $urlPromocion = $("#urlPromocion");
-// div que muestra que falta un campo por llenar
 var $divError = $("#divError");
-//botones para publicar promocion
 var $btnPublicar = $("#btnPublicar");
 var $btnVistaPrevia = $("#btnVistaPrevia");
-//botones para modificar promocion publicada
 var $btnCompartir = $("#btnCompartir");
 var $btnVerPromo = $("#btnVerPromo");
 var $btnEliminar = $("#btnEliminar");
 var $btnGuardar = $("#btnGuardar");
-	
+var templatesPromo = new Array("promo5", "promo4", "promo1", "promo2", "promo3");
+var nombresPromo = new Array("Floral", "Tecnología 2", "Bares", "Hipster", "Tecnología"); /*Cambiar nombres*/
+var plantillaPromo = "promo1";
+var indicePromocion = 0;
+
 $(function() {
 	$datepickerPromo.datepicker({ dateFormat: 'dd/mm/yy' });	
 });
@@ -74,6 +74,12 @@ var $getPromociones = function() {
 
 
 var $publicarPromocion = function() {
+
+	var plantillaFinalPromo = $("#tempPromocion").val();
+	console.log("plantillaFinalPromo: " + plantillaFinalPromo);
+	
+	if (plantillaFinalPromo.trim().length > 0 && plantillaFinalPromo != null)
+		plantillaPromo = plantillaFinalPromo;
 	
 	$.blockUI.defaults.baseZ = 9000;
 	$.blockUI({
@@ -95,7 +101,8 @@ var $publicarPromocion = function() {
 			fechaVigencia:  $datepickerPromo.val(),
 			base64Imagen: "",
 			redimir: $('.radioPromo:checked').val(),
-			terminos:$infoadiPromo.val()
+			terminos:$infoadiPromo.val(),
+			templatePromo: plantillaFinalPromo
 		},
 		success : function(data) {			
 			$divPublicarPromo.hide();
@@ -116,6 +123,12 @@ var $publicarPromocion = function() {
 };
 
 var $guardarCambiosEnPromocion = function() {
+	
+	var plantillaFinalPromo = $("#tempPromocion").val();
+	console.log("plantillaFinalPromo: " + plantillaFinalPromo);
+	
+	if (plantillaFinalPromo.trim().length > 0 && plantillaFinalPromo != null)
+		plantillaPromo = plantillaFinalPromo;
 	
 	$.blockUI.defaults.baseZ = 9000;
 	$.blockUI({
@@ -138,12 +151,15 @@ var $guardarCambiosEnPromocion = function() {
 			fechaVigencia:  $datepickerPromo.val(),
 			base64Imagen: "",
 			redimir: $('.radioPromo:checked').val(),
-			terminos: $infoadiPromo.val()
+			terminos: $infoadiPromo.val(),
+			templatePromo: plantillaPromo
 			},
 			success : function(data) {
 				$divPublicarPromo.hide();
 				$divPromoPublicada.show();
-				$("#idPromocion").val(data.idOffer);				
+				$("#idPromocion").val(data.idOffer);		
+				$("#tempPromocion").val(data.templatePromo);
+				console.log("template guardado: " + data.templatePromo);
 				$.unblockUI();
 			},
 			error : function(json) {
@@ -207,6 +223,8 @@ var $eliminarPromocion = function() {
 						 $divPublicarPromo.show();
 						 $divPromoPublicada.hide();
 						 $activaRadio("0");
+						 templatePromo = "promo1";
+						 $("#tempPromocion").val("");
 						 $.unblockUI();
 					},
 					error : function(json) {
@@ -263,7 +281,8 @@ var $vistaPrevia = function() {
 			fechaVigencia:  $datepickerPromo.val(),
 			base64Imagen: "",
 			redimir: $('.radioPromo:checked').val(),
-			terminos:$infoadiPromo.val()
+			terminos:$infoadiPromo.val(),
+			templatePromo: plantillaPromo
 		},
 			success : function(data) {
 			//	console.log("url vista previa: " + data.urlVistaPreviaPromo + '?vistaPrevia=1');
@@ -282,25 +301,30 @@ var $vistaPrevia = function() {
 		});	
 	};
 
-var $activaRadio  = function(radio){
-		switch(radio){
-				case 'No especificado':
-					$("#r1").prop('checked', true);
-					break;
-				case 'Llámanos':
-					$("#r2").prop('checked', true);
-					break;
-				case 'Envíanos un e-mail':
-					$("#r3").prop('checked', true);
-					break;
-				case 'Visítanos':
-					$("#r4").prop('checked', true);
-					break;
-			default: $("#r2#r3#r4").prop('checked', false);
-					 $("#r1").prop('checked', true);
+var $activaRadio  = function(radio) {
+	
+	switch(radio) 
+	{
+		case 'No especificado':
+			$("#r1").prop('checked', true);
+		break;
+	
+		case 'Llámanos':
+			$("#r2").prop('checked', true);
+		break;
+		
+		case 'Envíanos un e-mail':
+			$("#r3").prop('checked', true);
+		break;
+		
+		case 'Visítanos':
+			$("#r4").prop('checked', true);
+		break;
+		
+		default: $("#r2#r3#r4").prop('checked', false);
+			$("#r1").prop('checked', true);
 		}
 };
-
 
 var $validarCampos  = function() {
 	
@@ -347,7 +371,6 @@ $(document).ready(function() {
 	});
 	
 	$btnVistaPrevia.click(function() {
-	//	console.log("Va a vista previa");
 		$vistaPrevia();
 	});
 	
@@ -391,3 +414,124 @@ $(document).ready(function() {
 	});
 				
 });
+
+function generarSliderPromo()
+{
+	var urlRecurso = "";
+	var slider = "";
+	var span = "";
+	var li = "";
+	var bandera = 0;
+	
+	slider = "<ul class='bxslider'>";
+	
+	for (i = 0; i < templatesPromo.length; i = i + 1) 
+	{	
+		urlRecurso = "https://s3-us-west-2.amazonaws.com/promo.mobileinfo.io/templates/" + templatesPromo[i] + "/" + templatesPromo[i] + ".png";
+		li = "<li class='text-center'><img style='width:100%; height:auto; min-width:280px!important; max-width:600px !important; max-height:661px!important;min-height:265px!important; display:block;' src='" + urlRecurso + "' title='" + nombresPromo[i] + "'' /></li>";
+		slider = slider + li;
+		urlRecurso = "";
+	}	
+	
+	$('#modalTempPromo').html("<div id='myModalTempPromo' class='modal fade' tabindex='-1' role='dialog' aria-labelledby='myModalLabel' aria-hidden='true'>" +
+			"<div class='modal-dialog modal-md'><div class='modal-content'>" +
+
+			"<div class='modal-header'>" +
+			 	"<button type='button' class='close textBlack pull-left' data-dismiss='modal' aria-label='Close'><span aria-hidden='true'>&times;</span></button> <button type='button' class='btn btn-purple pull-right txtBtnEditor' onClick='actualizaEstiloPromo()'>Aplicar estilo</button>" +
+			        "</div><div class='modal-body'>" + slider + "</div><div class='modal-footer'></div></div></div></div>");
+	
+	var slider = $('.bxslider').bxSlider({
+		 moveSlides: 1,
+		    displaySlideQty: 2,
+		    responsive: false,
+		adaptiveHeight: true,
+		mode: 'fade',
+		captions: true,
+		pager: true,
+		touchEnabled : true,
+		useCSS:false,
+		onSlideAfter: function() { indicePromocion = slider.getCurrentSlide(); },
+		});
+	
+	$(document).on('click','.bx-next', function() {
+		indicePromocion = slider.getCurrentSlide();		
+		});
+	
+	$(document).on('click','.bx-prev', function() {
+		indicePromocion = slider.getCurrentSlide();
+		});
+
+	$(document).on('click','.bx-pager-link', function() {
+		indicePromocion = slider.getCurrentSlide();
+		});	
+}
+
+function actualizaEstiloPromo() {
+
+	plantillaPromo = templatesPromo[indicePromocion];
+//	console.log("actualizaEstiloPromo indice: " + plantillaPromo);
+	
+	if ($('#btnVistaPrevia').is(':visible'))
+	{
+//		console.log("es vista previa");
+		$('#myModalTempPromo').modal('hide');
+		$("#tempPromocion").val(plantillaPromo);
+		$.blockUI.defaults.baseZ = 9000;
+		$.blockUI({
+			message: "Actualizando plantilla promo...",
+			css: {
+				class:"alertaUI",
+				top:  ($(window).height() - 400) /2 + 'px',
+				left: ($(window).width() - 400) /2 + 'px',
+				width: '400px'
+			}
+		});	
+		
+		setTimeout($.unblockUI, 1000);
+	}
+	else
+	{		
+		$.blockUI.defaults.baseZ = 9000;
+		$.blockUI({
+			message: "Actualizando plantilla promo...",
+			css: {
+				class:"alertaUI",
+				top:  ($(window).height() - 400) /2 + 'px',
+				left: ($(window).width() - 400) /2 + 'px',
+				width: '400px'
+				}
+			});	
+			
+		$.ajax({
+			type : "POST",
+			url : contextPath + "/infomovil/guardarPromocion",
+			dataType : "json",
+			data : {
+				titulo: $nombrePromo.val(),
+				descripcion: $descPromo.val(),
+				fechaVigencia:  $datepickerPromo.val(),
+				base64Imagen: "",
+				redimir: $('.radioPromo:checked').val(),
+				terminos: $infoadiPromo.val(),
+				templatePromo: plantillaPromo
+				},
+				success : function(data) {
+					$('#myModalTempPromo').modal('hide');
+					$("#tempPromocion").val(data.templatePromo);
+					console.log("plantilla elegida: " + data.templatePromo);
+					$.unblockUI();
+				},
+				error : function(json) {
+					$.unblockUI();
+					BootstrapDialog.show({
+						title: "<span class='textBlack' style='font-size:1.15em;'><img alt='' src='../resources/webapp/images/fa-warning-bk.png'  title='Alerta' />No se han guardado los cambios</span>",
+						message: '<div style="display:block; min-height:150px;"><p class="textBlack text-center" style="font-size:1.15em;">Por favor intentalo más tarde.</p><br/>'
+					});										
+				}
+			});	
+	}
+}
+
+function muestraTemplatePromo() {
+	$("#myModalTempPromo").modal();
+}

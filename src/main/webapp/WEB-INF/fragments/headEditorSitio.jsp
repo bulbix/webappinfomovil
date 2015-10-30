@@ -56,19 +56,19 @@
 
 .SI-FILES-STYLIZED label.cabinet
 {
-	width: 136px;
-	height: 19px;
-	background: url(<c:url value="/resources/webapp/images/btn-choose-file.png"/>) 0 0 no-repeat;
+	width: 250px;
+    min-width: 150px;
+	height: 18px;
+	background: url(<c:url value="/resources/webapp/images/btn-choose-file.png"/>) center center no-repeat;
 	background-size:136px;
 
 	display: inline-block;
 	overflow: hidden;
 	cursor: pointer;
 }
-
 .SI-FILES-STYLIZED label.cabinet input.file
 {
-	position: relative;
+	/*position: relative;*/
 	height: 100%;
 	width: auto;
 	opacity: 0;
@@ -98,7 +98,7 @@
 	<link href="<c:url value="/resources/webapp/css/themeEditor.css"/>"	rel="stylesheet" />
 	<link href="<c:url value="/resources/webapp/css/jquery.bxslider.css"/>" rel="stylesheet" /> 
 	<link href="<c:url value="/resources/webapp/fonts/font-awesome.min.css"/>" rel="stylesheet" />
-	<link href="https://s3.amazonaws.com/landing.infomovil.com/webapp-qa/templates/<tiles:getAsString name="template"/>/css/info.css" rel="stylesheet" />	
+	<link href="https://s3.amazonaws.com/landing.infomovil.com/webapp/templates/<tiles:getAsString name="template"/>/css/info.css" rel="stylesheet" />	
 		
 		<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=places&signed_in=false"></script> 
 		<script>

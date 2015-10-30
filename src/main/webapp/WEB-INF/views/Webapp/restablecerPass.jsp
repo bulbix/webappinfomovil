@@ -16,10 +16,10 @@
 <div class="theme-showcaseApp" role="main" id="intro"> 
       
       <!-- Main jumbotron for a primary marketing message or call to action -->
-	<div class="container text-center">
+	<div class=" text-center">
     <div class="divider hidden-xs hidden-sm"></div>
-    <h1 class="textBlack hidden">Restablecer tu contraseña</h1>
-    <h3 class="textBlack">Restablecer tu contraseña</h3>
+    <h1 class="textBlack text-center hidden">Restablece tu contraseña</h1>
+    <h5 class="textPurple text-center ">Restablece tu contraseña</h5>
     <div class="container">
     
 		<c:if test="${not empty mensaje}">
@@ -31,19 +31,21 @@
 	    <form name='f' action="<c:url value="/executeResetPassword"/>" method='POST' >
 	        
 	        <!--email-->
-	    	<div class="form-group col-xs-12 col-sm-12 col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3">
+	    	<div class="form-group col-xs-12">
 	        	<div class="control-group">
-	            <label class="control-label">Ingresa tu e-mail y te enviaremos una liga para restablecer tu contraseña</label>
+	            <label class="control-label" style="max-width:280px; margin:0 auto;">Ingresa tu e-mail y te enviaremos una liga para restablecer tu contraseña</label>
+	            <div class="dividerSmall"></div>
 	            <div class="controls">
-	            	<input type="email" class="form-control lowCase" placeholder="Email" required="required" name="email"/>
+	            	<input type="email" class="form-control lowCase" placeholder="Email" required="required" name="email" style="max-width:280px; margin:0 auto;"/>
 	                	<p class="help-block"></p>
 	            </div>
+	            <div class="dividerSmall"></div>
 	          </div>
 	        </div>
 	        <!--email-->
 	        
-	        <div class="form-group col-xs-12 col-sm-12 col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3">
-	        	<input type="submit" value="Enviar por correo" class="btn btn-default btn-outlineGreen col-xs-12 text-center textWhite">
+	        <div class="form-group col-xs-12">
+	        	<input type="submit" value="Enviar por correo" class="btn btn-default btn-outlineGreen text-center textWhite" style="min-width:280px; max-width:280px; margin:0 auto;">
 	        </div>	       
 	        <div class="divider"></div>
 	             

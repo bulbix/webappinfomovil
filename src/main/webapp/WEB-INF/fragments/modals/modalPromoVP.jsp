@@ -10,7 +10,7 @@
 <!-- 			<strong>Regresar</strong> -->
 <!-- 		</button> -->
 	</div>
-	<div class="modal-body bgWhite ">
+	<div class="modal-body ">
 		<div class="col-xs-12">
 			<iframe id="urlVistaPreviaPromo" src="" style="width:100%; min-height:500px; border:none; overflow-y:scroll" frame-border="0"></iframe>	
 		</div>

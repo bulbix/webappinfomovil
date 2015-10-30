@@ -4,7 +4,7 @@
 	<button type="button" class="close textBlack pull-right btnsEditor " data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button> 
   <p class="modal-title textPurple" ><strong>Confirmación de compra</strong></p>
 </div>
-<div class="modal-body bgWhite">
+<div class="modal-body">
 
 	<div class="col-xs-12">
 	

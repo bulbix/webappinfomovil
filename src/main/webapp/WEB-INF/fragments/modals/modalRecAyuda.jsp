@@ -11,7 +11,7 @@
 				</button>
 				<p class="modal-title"></p>
 		</div>
-		<div class="modal-body bgWhite">
+		<div class="modal-body">
 		<div class="textBlack col-xs-12 col-sm-12 col-md-8 col-md-offset-2 col-lg-8 col-lg-offset-2 text-left">
 			<span class="textBlack">&nbsp;</span>
 			
