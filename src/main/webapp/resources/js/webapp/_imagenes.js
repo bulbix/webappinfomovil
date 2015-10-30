@@ -65,7 +65,7 @@ $(document).ready(function() {
 		$("#facebookDiv").hide();
 		$("#actualizarImagenes").hide();
 		$('#myModalImagenes').modal();
-		$("#btnSeleccionaImagen2").show();
+		//$("#btnSeleccionaImagen2").show();
 		$("#btnAlbumsDeFacebook").show();
 	});
 	$("#closemyModalImagenes").click(function() {
@@ -80,7 +80,7 @@ $(document).ready(function() {
 		$("#btnGuardarImagen").hide();
 		$("#btnAlbumsDeFacebook").show();
 		$("#btnSeleccionaImagen").val("");
-		$("#btnSeleccionaImagen2").show();
+		//$("#btnSeleccionaImagen2").show();
 		$("#actualizarTextoFoto").val("");
 	});
 	$("#regresarDeFace").click(function() {
@@ -90,7 +90,7 @@ $(document).ready(function() {
 		$(".photoDinamico").remove();
 		$("#galeriaImagenes").show();
 		$("#btnAlbumsDeFacebook").show();
-		$("#btnSeleccionaImagen2").show();
+		//$("#btnSeleccionaImagen2").show();
 		$("#regresarDeFace").hide();
 		$("#msjEligeAlbumFoto").hide();
 		if (siHayImagen == 1) {
@@ -114,7 +114,7 @@ $(document).ready(function() {
 });
 
 function isDevice() {
-	$("#btnSeleccionaImagen2").show();
+	//$("#btnSeleccionaImagen2").show();
 	if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i
 			.test(navigator.userAgent)) {
 		
@@ -171,7 +171,7 @@ function generaFotos(idAlbum, p) {
 window.fbAsyncInit = function() {
 
 	FB.init({
-		appId : '422690184604551', //'QA: 422690184604551 PROD: ',
+		appId : '346859792130678', //'QA: 422690184604551 PROD: 346859792130678',
 		cookie : true, // enable cookies to allow the server to access
 		xfbml : true, // parse social plugins on this page
 		version : 'v2.0' // use version 2.2
@@ -398,7 +398,6 @@ function guardarImagenesJQ() {
 					message : '<div style="display:block; min-height:150px;"><p class="textBlack text-center" style="font-size:1.15em;">Adquiere <strong>Plan Pro</strong> desde la app para agregar más imágenes </p><br/> <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 text-center"><a href="https://itunes.apple.com/mx/app/infomovil/id898313250?mt=8" style="margin: 0px; padding: 0px; color: rgb(49, 165, 154);" target="_blank"><img alt="AppStore" src="../resources/webapp/images/appstore_icn.png" style="margin: 0px; padding: 0px; max-width: 150px;" title="AppStore" /></a></div><div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 text-center"><a href="https://play.google.com/store/apps/details?id=com.infomovil.infomovil" style="margin: 0px; padding: 0px; color: rgb(49, 165, 154);" target="_blank"><img alt="Google Play" src="../resources/webapp/images/gstore_icn.png"  style="margin: 0px; padding: 0px; max-width: 150px;" title="Google Play" /></a></div></div><div class="clearfix"></div><div style="display:block; height:30px; width:100%;"></div>'
 				});
 
-		$("#btnSeleccionaImagen2").show();
 		$("#galeriaImagenes").show();
 		$("#imgSeleccionadaDeGaleria").hide();
 		$("#regresarSelecImg").hide();
@@ -449,7 +448,7 @@ function guardarImagenesJQF() {
 									$("#facebookDiv").hide();
 									$("#imgSeleccionadaDeGaleria").hide();
 									$("#regresarSelecImg").hide();
-									$("#btnSeleccionaImagen2").show();
+									//$("#btnSeleccionaImagen2").show();
 									$("#btnAlbumsDeFacebook").show();
 									getImagenesJQ();
 									$("#galeriaImagenes").show();
@@ -489,7 +488,7 @@ function guardarImagenesJQF() {
 					title : "<span class='textBlack' style='font-size:1.15em;'><img alt='' src='../resources/webapp/images/fa-warning-bk.png'  title='Alerta' />Alcanzaste el máximo de imágenes permitidas</span>",
 					message : '<div style="display:block; min-height:150px;"><p class="textBlack text-center" style="font-size:1.15em;">Adquiere <strong>Plan Pro</strong> desde la app para agregar más imágenes </p><br/> <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 text-center"><a href="https://itunes.apple.com/mx/app/infomovil/id898313250?mt=8" style="margin: 0px; padding: 0px; color: rgb(49, 165, 154);" target="_blank"><img alt="AppStore" src="../resources/webapp/images/appstore_icn.png" style="margin: 0px; padding: 0px; max-width: 150px;" title="AppStore" /></a></div><div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 text-center"><a href="https://play.google.com/store/apps/details?id=com.infomovil.infomovil" style="margin: 0px; padding: 0px; color: rgb(49, 165, 154);" target="_blank"><img alt="Google Play" src="../resources/webapp/images/gstore_icn.png"  style="margin: 0px; padding: 0px; max-width: 150px;" title="Google Play" /></a></div></div><div class="clearfix"></div><div style="display:block; height:30px; width:100%;"></div>'
 				});
-		
+
 	}
 }
 
@@ -547,7 +546,7 @@ function uploadImage(imageDom, imageUrl, origin, textFoto) {
 									$("#facebookDiv").hide();
 									$("#imgSeleccionadaDeGaleria").hide();
 									$("#regresarSelecImg").hide();
-									$("#btnSeleccionaImagen2").show();
+									//$("#btnSeleccionaImagen2").show();
 									$("#btnAlbumsDeFacebook").show();
 									getImagenesJQ();
 									$("#galeriaImagenes").show();
@@ -558,7 +557,7 @@ function uploadImage(imageDom, imageUrl, origin, textFoto) {
 									$("#facebookDiv").hide();
 									$("#imgSeleccionadaDeGaleria").hide();
 									$("#regresarSelecImg").hide();
-									$("#btnSeleccionaImagen2").show();
+									//$("#btnSeleccionaImagen2").show();
 									$("#btnAlbumsDeFacebook").show();
 									$("#btnSeleccionaImagen").val("");
 									$("#actualizarTextoFoto").val("");
@@ -773,7 +772,7 @@ function picChange(evt) {
 	                switch(parseInt(EXIF.getTag(img, "Orientation"))) {
 				            case 8:
 				            	console.log("tre ENtro al exif 8 !");
-				            	$("#fotoDeGaleria").css( {'transform': 'rotate(270deg)',
+				            	$imageDomFotoDeGaleria.css( {'transform': 'rotate(270deg)',
 				            		'-ms-transform': 'rotate(270deg)', 
 					            	'-webkit-transform': 'rotate(270deg)', 
 					            	'-o-transform': 'rotate(270deg)', 
@@ -782,7 +781,7 @@ function picChange(evt) {
 				                break;
 				            case 3:
 				            	console.log("tre Entro al exif 3 !");
-				            	$("#fotoDeGaleria").css( {'transform': 'rotate(180deg)',
+				            	$imageDomFotoDeGaleria.css( {'transform': 'rotate(180deg)',
 				            		'-ms-transform': 'rotate(180deg)', 
 					            	'-webkit-transform': 'rotate(180deg)', 
 					            	'-o-transform': 'rotate(180deg)', 
@@ -791,7 +790,7 @@ function picChange(evt) {
 				                break;
 				            case 6:
 				            	console.log("tre Entro al exif 6 !");
-				            	$("#fotoDeGaleria").css( {'transform': 'rotate(90deg)',
+				            	$imageDomFotoDeGaleria.css( {'transform': 'rotate(90deg)',
 				            		'-ms-transform': 'rotate(90deg)', 
 					            	'-webkit-transform': 'rotate(90deg)', 
 					            	'-o-transform': 'rotate(90deg)', 
@@ -1020,7 +1019,7 @@ function logueoFacebook(response) {
 		if (navigator.userAgent.match('CriOS')) {
 			window
 					.open(
-							'https://www.facebook.com/dialog/oauth?client_id=422690184604551&scope=email,user_photos&redirect_uri='
+							'https://www.facebook.com/dialog/oauth?client_id=346859792130678&scope=email,user_photos&redirect_uri='
 									+ document.location.href + '', '', null);
 		} else {
 			FB.login(function(response) {
