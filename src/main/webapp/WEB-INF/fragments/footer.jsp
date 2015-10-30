@@ -14,7 +14,7 @@
       </div>
       <div class="dividerSmall"></div>
        <div class="col-xs-12 col-sm-12 col-md-6 col-md-offset-3 ">
-              <p class="helpMx txtWhite reset text-center"><em>Ayudando a construir una economía digital.</em></p>
+              <p class="text-small txtWhite reset text-center"><em>Ayudando a construir una economía digital.</em></p>
             </div>
             <div class="clear"></div>
           <div class="dividerSmall"></div>

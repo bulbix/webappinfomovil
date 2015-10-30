@@ -104,7 +104,7 @@
 		<!-- /Botón Nuevo Estilo -->
 		<!-- Formulario Promociones -->
 		<div class="container">
-			<div class="col-xs-12">
+			<div class="col-xs-12 reset">
 				
 				 
 				
