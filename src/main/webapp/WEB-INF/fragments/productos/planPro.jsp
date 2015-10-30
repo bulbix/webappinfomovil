@@ -16,20 +16,44 @@
 <!-- 	<div class="clearfix"></div> -->
 	<br/><br/>
 	<div class="divider"></div>
+	
+	
+	
+	
+		<div class="clearfix"></div>
+		<div class="divider"></div>
+		<div><span class="textBlack">Ahora cuentas con:</span>
+		<ul class="text-left textBlack"><li>Más imágenes</li>
+<li>
+Video</li>
+<li>
+Sin publicidad</li>
+</ul>
+
+<button type="button" onClick="generaCodigoMoviliza()" data-toggle="modal" class="btn btn-purple text-center col-xs-12 col-sm-12 col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3" data-dismiss="modal">
+			<strong>Moviliza tu sitio</strong>
+		</button>
+		 </div>
+		<div class="clearfix"></div>
+		<div class="divider"></div>
+		<hr/>
+		<span class="textBlack">Ó puedes añadir más tiempo a tu Plan Pro</span>
 	<div>
 	
-	<div class="col-xs-12 text-center cuandoNoTienePP" style=<tiles:getAsString name="noTienePP"/>><p ><strong class="textGreen">¡Adquiere Plan Pro!</strong><strong class="textBlack"> Y obtén:</strong></p>
+	<div class="col-xs-12 text-center cuandoNoTienePP" style=<tiles:getAsString name="noTienePP"/>><p ><strong class="textGreen">¡Adquiere Plan Pro!</strong><br/><strong class="textBlack"> Y obtén:</strong></p>
 <ul class="text-left textBlack"><li>Más imágenes</li>
 <li>
 Video</li>
+<li>
+Sin publicidad</li>
 <li>
 Moviliza tu sitio</li></ul></div>
 		<hr />
 		<div class="col-xs-12 text-center textBlack">
 		<p class="reset">
-			<select class="col-xs-12 textLato" id="tipoPlanPro" onChange="actualizaPrecio(this.selectedIndex)">
-				<option>1 mes</option>
-				<option>12 meses</option>
+			<select class="col-xs-12 textLato textBlack"  id="tipoPlanPro" onChange="actualizaPrecio(this.selectedIndex)">
+				<option class="textBlack">1 mes</option>
+				<option  class="textBlack">12 meses</option>
 			</select>
 		</p>
 	<div class="clearfix"></div>

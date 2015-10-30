@@ -18,8 +18,8 @@
 					<br/><br/>
 					Coloca el siguiente código entre las etiquetas <code>&lt;header&gt;&lt;/header&gt;</code> del archivo principal (index)
 					<br/><br/>
-					<code id="codigoMoviliza" class="text-left col-xs-12 _08em"></code>
-					<br/><br/><br/>
+					<code id="codigoMoviliza" class="text-left col-xs-12 _08em" style="overflow-x:scroll; "></code>
+					<div class="clear divider"></div><br/>
 					Muchas gracias!
 				</span>
 			</div>

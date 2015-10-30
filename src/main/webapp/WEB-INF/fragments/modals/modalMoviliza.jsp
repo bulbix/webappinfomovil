@@ -15,7 +15,7 @@
 		<br/>
 		<p class="textPurple"><strong>¿Cómo funciona?</strong></p> 
 		<br/>
-		<img alt="Moviliza tu sitio" src="<c:url value="/resources/webapp/images/moviliza2.png"/>"  style="margin: 0px; padding: 0px; max-width: 550px;" title="Moviliza tu sitio" />
+		<img alt="Moviliza tu sitio" src="<c:url value="/resources/webapp/images/moviliza2.png"/>"  style="margin: 0px; padding: 0px; max-width: 550px; width:100%;" title="Moviliza tu sitio" />
 		<br/>		
 		
 		<div class="clear"></div><br/>

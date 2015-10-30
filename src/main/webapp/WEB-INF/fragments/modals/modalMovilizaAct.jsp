@@ -11,14 +11,14 @@
 		 	<div class="divider"></div>
 			<span class="textBlack _1_1em">
 		
-				Para habilitar el servicio, tu webmaster necesita hacer unos cambios a la configuración de tu sitio web actual.
+				Para habilitar el servicio, tu webmaster necesita hacer unos cambios a la configuración de tu sitio web actual.<br/><br/>
 		
-				Haz clic para enviarle el correo con las instrucciones necesarias. Ya redactamos el correo, así que no necesitas escribir nada. Simplemente ¡envíale el mensaje!
+				Haz clic para enviarle el correo con las instrucciones necesarias.<br/><br/> Ya redactamos el correo, así que no necesitas escribir nada. <br/><br/>Simplemente ¡envíale el mensaje!
 			</span>
 			<br/>
 		
-			<div class="clear"></div><br/>
-			<div class="clear"></div><br/>
+			<div class="clear"></div>
+	
 								
 		</div>
 			
@@ -26,7 +26,7 @@
 	</div>
 	<div class="modal-footer textBlack">
 		<button type="button" onClick="generaCodigoMoviliza()" data-toggle="modal" class="btn btn-purple text-center col-xs-12 col-sm-12 col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3" data-dismiss="modal">
-			<strong>Envíar código</strong>
+			<strong>Generar mi código</strong>
 		</button>
 	</div>
 </div>

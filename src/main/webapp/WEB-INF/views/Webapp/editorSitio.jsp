@@ -91,6 +91,9 @@
 						<li class="botonDesPublicar borderFin" id="btnContLi"
 								style="display: none;"><a href="#" data-toggle="modal" onClick="ocultaNotaValidaPP()"
 								class="smoothScroll ${colorTexto}">
+								<img
+							width="20" height="20" alt="Infomovil"
+							src="<c:url value="/resources/webapp/images/fa-moviliza${ extensionImg }.png"/>" />
  									Moviliza tu sitio</a></li> 
 									
 					<li><a href="<c:url value="/logout"></c:url>"
