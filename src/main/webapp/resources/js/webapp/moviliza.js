@@ -49,9 +49,11 @@ function generaCodigoMoviliza() {
 				dataType : "json",
 				
 			success : function(data) {
-				console.log("hashMoviliza: " + data.scriptMoviliza);
+				console.log("correoMoviliza: " + data.correoMoviliza);
+				$("#correoMoviliza").attr("href", data.correoMoviliza);
 				$("#codigoMoviliza").html(data.scriptMoviliza);
 				$("#myModalMovilizaCode").modal();
+				
 				$.unblockUI();
 			},
 			error : function(json) {
@@ -65,7 +67,8 @@ function generaCodigoMoviliza() {
 var copyEmailBtn = document.querySelector('.js-emailcopybtn');  
 copyEmailBtn.addEventListener('click', function(event) {  
 
-  var emailLink = document.querySelector('.js-emaillink');  
+	alert("clipboardData: " + window.clipboardData);
+/*  var emailLink = document.querySelector('.js-emaillink');  
   var range = document.createRange();  
   range.selectNode(emailLink);  
   window.getSelection().addRange(range);  
@@ -79,5 +82,5 @@ copyEmailBtn.addEventListener('click', function(event) {
     console.log('Oops, unable to copy');  
   }  
 
-  window.getSelection().removeAllRanges();  
+  window.getSelection().removeAllRanges();  */
 });

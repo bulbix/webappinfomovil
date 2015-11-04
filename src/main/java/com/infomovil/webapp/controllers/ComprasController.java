@@ -3,6 +3,7 @@ package com.infomovil.webapp.controllers;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.apache.commons.lang3.StringEscapeUtils;
 import org.apache.log4j.Logger;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -10,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.amazonaws.util.IOUtils;
 import com.infomovil.webapp.clientWsInfomovil.ClientWsInfomovil;
 import com.infomovil.webapp.clientWsInfomovil.RespuestaVO;
 import com.infomovil.webapp.util.Util;
@@ -50,6 +52,7 @@ public class ComprasController
 		Map<String, String> resultMap = new HashMap<String, String>();
 		RespuestaVO wsRespuesta = new RespuestaVO();
 		String scriptMoviliza = "";
+		String correoMoviliza = "";
 		
 		try
 		{
@@ -58,20 +61,29 @@ public class ComprasController
 			
 			if (!wsRespuesta.getResultado().equals("SIN_HASH"))
 			{
+				correoMoviliza = IOUtils.toString(Util.getFileAmazon("webapp.infomovil.com", "correoMoviliza.txt"));
 				scriptMoviliza = wsRespuesta.getScriptMovilizaSitio();
 				scriptMoviliza = scriptMoviliza.replaceAll("<", "&lt;");
 				scriptMoviliza = scriptMoviliza.replaceAll(">", "&gt;");
+				correoMoviliza = correoMoviliza.replaceAll("llaveMoviliza", wsRespuesta.getResultado());
 				
 	         	if(!Util.getProfile().equals("PROD"))
+	         	{
 	         		scriptMoviliza = scriptMoviliza.replaceAll("infomovil.com", "infodev.mobileinfo.io");
+	         		correoMoviliza = correoMoviliza.replaceAll("infomovil.com", "infodev.mobileinfo.io");
+	         	}
 	         	
+	         	correoMoviliza = new String(correoMoviliza.getBytes("UTF-8"), "UTF-8");
 				resultMap.put("hashMoviliza", wsRespuesta.getResultado());
 				resultMap.put("scriptMoviliza", scriptMoviliza);
+				resultMap.put("correoMoviliza", correoMoviliza);
+				logger.info("correoMoviliza: " + correoMoviliza);
 			}
 			else
 			{
 				resultMap.put("scriptMoviliza", "SinScript");
 				resultMap.put("hashMoviliza", "SIN_HASH");
+				resultMap.put("correoMoviliza", "SIN_CORREO");
 			}
 
 		}
@@ -80,6 +92,7 @@ public class ComprasController
 			logger.error("generaCodigoMoviliza:::::", e);
 			resultMap.put("scriptMoviliza", "SinScript");
 			resultMap.put("hashMoviliza", "SIN_HASH");
+			resultMap.put("correoMoviliza", "SIN_CORREO");
 		}	
 		
 		return resultMap;
