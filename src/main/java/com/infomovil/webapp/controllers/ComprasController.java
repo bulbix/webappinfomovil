@@ -3,8 +3,13 @@ package com.infomovil.webapp.controllers;
 import java.util.HashMap;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.apache.commons.lang3.StringEscapeUtils;
 import org.apache.log4j.Logger;
+import org.infomovil.segmentio.action.Tunnel;
+import org.infomovil.segmentio.dto.DomainDTO;
+import org.infomovil.segmentio.interfaces.AnalyticMailInterface.AnalyticMailInterfaceCode;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -47,13 +52,14 @@ public class ComprasController
 
 	@RequestMapping(value = "/infomovil/generaCodigoMoviliza", method = RequestMethod.POST, produces = "application/json")
 	@ResponseBody
-	public Map<String, String> generaCodigoMoviliza()
+	public Map<String, String> generaCodigoMoviliza(HttpServletRequest request)
 	{
 		Map<String, String> resultMap = new HashMap<String, String>();
 		RespuestaVO wsRespuesta = new RespuestaVO();
 		String scriptMoviliza = "";
-		String correoMoviliza = "";
 		
+		String userAgent = request.getHeader("user-agent"); 
+		logger.info("userAgent: " + userAgent);
 		try
 		{
 			String correo = Util.getUserLogged().getUsername();		
@@ -61,23 +67,15 @@ public class ComprasController
 			
 			if (!wsRespuesta.getResultado().equals("SIN_HASH"))
 			{
-				correoMoviliza = IOUtils.toString(Util.getFileAmazon("webapp.infomovil.com", "correoMoviliza.txt"));
 				scriptMoviliza = wsRespuesta.getScriptMovilizaSitio();
 				scriptMoviliza = scriptMoviliza.replaceAll("<", "&lt;");
 				scriptMoviliza = scriptMoviliza.replaceAll(">", "&gt;");
-				correoMoviliza = correoMoviliza.replaceAll("llaveMoviliza", wsRespuesta.getResultado());
 				
 	         	if(!Util.getProfile().equals("PROD"))
-	         	{
 	         		scriptMoviliza = scriptMoviliza.replaceAll("infomovil.com", "infodev.mobileinfo.io");
-	         		correoMoviliza = correoMoviliza.replaceAll("infomovil.com", "infodev.mobileinfo.io");
-	         	}
 	         	
-	         	correoMoviliza = new String(correoMoviliza.getBytes("UTF-8"), "UTF-8");
-				resultMap.put("hashMoviliza", wsRespuesta.getResultado());
 				resultMap.put("scriptMoviliza", scriptMoviliza);
-				resultMap.put("correoMoviliza", correoMoviliza);
-				logger.info("correoMoviliza: " + correoMoviliza);
+				resultMap.put("hashMoviliza", wsRespuesta.getResultado());
 			}
 			else
 			{
@@ -96,6 +94,18 @@ public class ComprasController
 		}	
 		
 		return resultMap;
+	}
+
+	@RequestMapping(value = "/infomovil/enviarCorreoMoviliza", method = RequestMethod.GET, produces = "application/json")
+	public String enviarCorreoMoviliza(String hash) 
+	{
+		String correo = Util.getUserLogged().getUsername();	
+		Tunnel tunnel = new Tunnel(AnalyticMailInterfaceCode.CUSTOMER_IO_DEV_INTERFACE);
+		DomainDTO domainDTO = new DomainDTO(correo);
+		domainDTO.setHashMoviliza(hash);
+		domainDTO.setEventName("event_MovilizaTuSitio");
+		tunnel.enviarCorreoMoviliza(domainDTO);
+		return "OK";	
 	}
 	
 	private static final Logger logger = Logger.getLogger(ComprasController.class);

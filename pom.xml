@@ -36,11 +36,11 @@
 			<version>3.0</version>
 		</dependency>
 
-		<dependency>
-			<groupId>commons-codec</groupId>
-			<artifactId>commons-codec</artifactId>
-			<version>1.2</version>
-		</dependency>
+<!-- 		<dependency> -->
+<!-- 			<groupId>commons-codec</groupId> -->
+<!-- 			<artifactId>commons-codec</artifactId> -->
+<!-- 			<version>1.2</version> -->
+<!-- 		</dependency> -->
 
 		<!-- Spring -->
 		<dependency>
@@ -211,7 +211,14 @@
 			<artifactId>aws-java-sdk-s3</artifactId>
 			<version>1.10.20</version>
 		</dependency>
-		
+
+<!-- Infomovil Analytics -->
+		<dependency>
+			<groupId>infomovil_analytics_interface</groupId>
+			<artifactId>infomovil_analytics_interface</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
+				
 	</dependencies>
 	<build>
 		<finalName>WebAppInfomovil</finalName>

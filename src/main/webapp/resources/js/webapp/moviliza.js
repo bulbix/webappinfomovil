@@ -1,3 +1,8 @@
+var ak = "";
+var si = "";
+var uid = "";
+var aux = "";
+
 function validaPlanPro() { 
 	
 	var tienePlanPro = $("#planPro").val();
@@ -49,11 +54,13 @@ function generaCodigoMoviliza() {
 				dataType : "json",
 				
 			success : function(data) {
-				console.log("correoMoviliza: " + data.correoMoviliza);
-				$("#correoMoviliza").attr("href", data.correoMoviliza);
+
+				ak = data.auxAK;
+				si = data.auxSI;
+				uid = data.usuario;
+				aux = data.hashMoviliza;
 				$("#codigoMoviliza").html(data.scriptMoviliza);
-				$("#myModalMovilizaCode").modal();
-				
+				$("#myModalMovilizaCode").modal();		
 				$.unblockUI();
 			},
 			error : function(json) {
@@ -64,23 +71,36 @@ function generaCodigoMoviliza() {
 	}
 }
 
-var copyEmailBtn = document.querySelector('.js-emailcopybtn');  
-copyEmailBtn.addEventListener('click', function(event) {  
+$("#enviarCorreoCio").click(function() { 
 
-	alert("clipboardData: " + window.clipboardData);
-/*  var emailLink = document.querySelector('.js-emaillink');  
-  var range = document.createRange();  
-  range.selectNode(emailLink);  
-  window.getSelection().addRange(range);  
-
-  try {  
-
-    var successful = document.execCommand('copy');  
-    var msg = successful ? 'successful' : 'unsuccessful';  
-    console.log('Copy email command was ' + msg);  
-  } catch(err) {  
-    console.log('Oops, unable to copy');  
-  }  
-
-  window.getSelection().removeAllRanges();  */
+	$.blockUI.defaults.baseZ = 9000;
+	$.blockUI({
+		message: "Enviando correo moviliza...",
+		css: {
+			class:"alertaUI",
+			top:  ($(window).height() - 400) /2 + 'px',
+			left: ($(window).width() - 400) /2 + 'px',
+			width: '400px'
+		}
+	});
+	
+	$.ajax({
+		type : "GET",
+		url : contextPath + "/infomovil/enviarCorreoMoviliza",
+		dataType : "json",
+		contentType: "text/plain",
+		data : {
+			hash: aux
+		},	
+		success : function(data) {
+			console.log("después de mandar el correo a customer");
+			$('#myModalMovilizaCode').modal('hide');
+			$.unblockUI();
+		},
+		error : function(json) {
+			console.log("error: " + json);
+			$.unblockUI();
+		}
+	});		
+	
 });
