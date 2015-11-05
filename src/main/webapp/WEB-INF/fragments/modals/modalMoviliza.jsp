@@ -28,7 +28,7 @@
 		<div class="clear divider"></div>
 	</div>
 	<div class="modal-footer textBlack">
-		<button type="button" onClick="validaPlanPro()" class="btn btn-purple text-center col-xs-12 col-sm-12 col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3" data-toggle="modal">
+		<button type="button" id="modalMovilizaPP" class="btn btn-purple text-center col-xs-12 col-sm-12 col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3" data-toggle="modal">
 			<strong>¿Quieres continuar?</strong>
 		</button>
 	</div>

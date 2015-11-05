@@ -25,7 +25,7 @@
 		<div class="clear divider"></div>
 	</div>
 	<div class="modal-footer textBlack">
-		<button type="button" onClick="generaCodigoMoviliza()" data-toggle="modal" class="btn btn-purple text-center col-xs-12 col-sm-12 col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3" data-dismiss="modal">
+		<button type="button" id="modalGeneraCodigoMov" data-toggle="modal" class="btn btn-purple text-center col-xs-12 col-sm-12 col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3" data-dismiss="modal">
 			<strong>Generar mi código</strong>
 		</button>
 	</div>

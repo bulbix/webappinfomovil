@@ -52,14 +52,12 @@ public class ComprasController
 
 	@RequestMapping(value = "/infomovil/generaCodigoMoviliza", method = RequestMethod.POST, produces = "application/json")
 	@ResponseBody
-	public Map<String, String> generaCodigoMoviliza(HttpServletRequest request)
+	public Map<String, String> generaCodigoMoviliza()
 	{
 		Map<String, String> resultMap = new HashMap<String, String>();
 		RespuestaVO wsRespuesta = new RespuestaVO();
 		String scriptMoviliza = "";
 		
-		String userAgent = request.getHeader("user-agent"); 
-		logger.info("userAgent: " + userAgent);
 		try
 		{
 			String correo = Util.getUserLogged().getUsername();		
@@ -81,7 +79,6 @@ public class ComprasController
 			{
 				resultMap.put("scriptMoviliza", "SinScript");
 				resultMap.put("hashMoviliza", "SIN_HASH");
-				resultMap.put("correoMoviliza", "SIN_CORREO");
 			}
 
 		}
@@ -90,22 +87,26 @@ public class ComprasController
 			logger.error("generaCodigoMoviliza:::::", e);
 			resultMap.put("scriptMoviliza", "SinScript");
 			resultMap.put("hashMoviliza", "SIN_HASH");
-			resultMap.put("correoMoviliza", "SIN_CORREO");
 		}	
 		
 		return resultMap;
 	}
 
-	@RequestMapping(value = "/infomovil/enviarCorreoMoviliza", method = RequestMethod.GET, produces = "application/json")
-	public String enviarCorreoMoviliza(String hash) 
+	@RequestMapping(value = "/infomovil/enviarCorreoMoviliza", method = RequestMethod.POST, produces = "application/json")
+	@ResponseBody
+	public Map<String, String> enviarCorreoMoviliza(String hash) 
 	{
+		Map<String, String> resultMap = new HashMap<String, String>();
+		
 		String correo = Util.getUserLogged().getUsername();	
 		Tunnel tunnel = new Tunnel(AnalyticMailInterfaceCode.CUSTOMER_IO_DEV_INTERFACE);
 		DomainDTO domainDTO = new DomainDTO(correo);
 		domainDTO.setHashMoviliza(hash);
 		domainDTO.setEventName("event_MovilizaTuSitio");
 		tunnel.enviarCorreoMoviliza(domainDTO);
-		return "OK";	
+		resultMap.put("envioCorreo", "Ok");
+		
+		return resultMap;	
 	}
 	
 	private static final Logger logger = Logger.getLogger(ComprasController.class);

@@ -3,36 +3,22 @@ var si = "";
 var uid = "";
 var aux = "";
 
-function validaPlanPro() { 
-	
+$("#modalMovilizaPP").click(function() { 
 	var tienePlanPro = $("#planPro").val();
 	
 	if (tienePlanPro == "SI")
 	{
-		$("#myModalMoviliza").hide();
+		$('#myModalMoviliza').modal('hide');
 		$("#myModalMovilizaAct").modal();
 	}
 	else
 	{
 		window.location = contextPath + '/infomovil/miCuenta';
 	}
-}
+});
 
-function ocultaNotaValidaPP() {
-	
-	var tienePlanPro = $("#planPro").val();
-	
-	if (tienePlanPro == "SI") 
-		$("#tienePlanProNota").hide();
-	
-	$("#myModalMoviliza").modal();
-	
-	if ($('#myModalMoviliza').is(':hidden'))
-		   $('#myModalMoviliza').show();
-}
+$("#modalGeneraCodigoMov").click(function() { 
 
-function generaCodigoMoviliza() {
-	
 	var tienePlanPro = $("#planPro").val();
 	
 	if (tienePlanPro == "SI") {
@@ -69,7 +55,8 @@ function generaCodigoMoviliza() {
 			}
 		});		
 	}
-}
+	
+});
 
 $("#enviarCorreoCio").click(function() { 
 
@@ -85,22 +72,45 @@ $("#enviarCorreoCio").click(function() {
 	});
 	
 	$.ajax({
-		type : "GET",
+		type : "POST",
 		url : contextPath + "/infomovil/enviarCorreoMoviliza",
 		dataType : "json",
-		contentType: "text/plain",
 		data : {
 			hash: aux
 		},	
 		success : function(data) {
 			console.log("después de mandar el correo a customer");
 			$('#myModalMovilizaCode').modal('hide');
+			BootstrapDialog
+			.show({
+				title : "<span class='textBlack' style='font-size:1.15em;'><img alt='' src='../resources/webapp/images/fa-informacion.png'  title='Alerta' />Moviliza tu sitio</span>",
+				message : '<div style="display:block; min-height:150px;"><p class="textBlack text-center" style="font-size:1.15em;">El correo se ha enviado con éxito</p><br/>',
+				buttons : [
+							{
+								label : 'Aceptar',
+								action : function(dialog) {
+									dialog.close();
+								}
+							}]
+			});
 			$.unblockUI();
 		},
 		error : function(json) {
 			console.log("error: " + json);
 			$.unblockUI();
 		}
-	});		
-	
+	});			
 });
+
+function ocultaNotaValidaPP() {
+	
+	var tienePlanPro = $("#planPro").val();
+	
+	if (tienePlanPro == "SI") 
+		$("#tienePlanProNota").hide();
+	
+	$("#myModalMoviliza").modal();
+	
+	if ($('#myModalMoviliza').is(':hidden'))
+		   $('#myModalMoviliza').show();
+}
