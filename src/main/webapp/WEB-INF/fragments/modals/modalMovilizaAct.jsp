@@ -10,10 +10,9 @@
 		<div class="col-xs-12">
 		 	<div class="divider"></div>
 			<span class="textBlack _1_1em">
-		
 				Para habilitar el servicio, tu webmaster necesita hacer unos cambios a la configuración de tu sitio web actual.<br/><br/>
 		
-				Haz clic para enviarle el correo con las instrucciones necesarias.<br/><br/> Ya redactamos el correo, así que no necesitas escribir nada. <br/><br/>Simplemente ¡envíale el mensaje!
+				Haz clic para enviarle el correo con las instrucciones necesarias.<br/><br/> Ya redactamos el correo, así que no necesitas escribir nada. <br/>Simplemente ¡envíale el mensaje!
 			</span>
 			<br/>
 		
@@ -22,7 +21,7 @@
 								
 		</div>
 			
-		<div class="clear divider"></div>
+	
 	</div>
 	<div class="modal-footer textBlack">
 		<button type="button" id="modalGeneraCodigoMov" data-toggle="modal" class="btn btn-purple text-center col-xs-12 col-sm-12 col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3" data-dismiss="modal">

@@ -4,6 +4,7 @@ var uid = "";
 var aux = "";
 
 $("#modalMovilizaPP").click(function() { 
+//	console.log("modalMovilizaPP");
 	var tienePlanPro = $("#planPro").val();
 	
 	if (tienePlanPro == "SI")
@@ -14,11 +15,12 @@ $("#modalMovilizaPP").click(function() {
 	else
 	{
 		window.location = contextPath + '/infomovil/miCuenta';
+		console.log("else");
 	}
 });
 
 $("#modalGeneraCodigoMov").click(function() { 
-
+//	console.log("modalGeneraCodigoMov");
 	var tienePlanPro = $("#planPro").val();
 	
 	if (tienePlanPro == "SI") {
@@ -83,8 +85,10 @@ $("#enviarCorreoCio").click(function() {
 			$('#myModalMovilizaCode').modal('hide');
 			BootstrapDialog
 			.show({
-				title : "<span class='textBlack' style='font-size:1.15em;'><img alt='' src='../resources/webapp/images/fa-informacion.png'  title='Alerta' />Moviliza tu sitio</span>",
-				message : '<div style="display:block; min-height:150px;"><p class="textBlack text-center" style="font-size:1.15em;">El correo se ha enviado con éxito</p><br/>',
+				title : "<span class='textBlack' style='font-size:1.15em;'><img alt='' src='../resources/webapp/images/fa-informacion.png' width='20px'  title='Alerta' /> Moviliza tu sitio</span>",
+				message : '<div style="display:block; min-height:150px;"><p class="textBlack text-center" style="font-size:1.15em;">'+
+				'<br/><img width="80" height="80" alt="Infomovil" src="../resources/webapp/images/fa-code-bk.png">'+
+				'El correo se ha enviado con éxito</p><br/>',
 				buttons : [
 							{
 								label : 'Aceptar',
