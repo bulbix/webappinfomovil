@@ -248,6 +248,7 @@
 		<script src="<c:url value="/resources/webapp/js/datepicker/jquery.ui.core.js"/>"></script>
 		<script src="<c:url value="/resources/webapp/js/datepicker/jquery.ui.datepicker.js"/>"></script>
 		<script src="<c:url value="/resources/js/webapp/promociones.js"/>"></script>
+		<script type="text/javascript" src="<c:url value="/resources/js/webapp/imprimirpromo.js"/>"></script>
 		<input type="hidden" id="valRadio" value="${redeemOffer}"/>
 		<input type="hidden" id="tempPromocion" value="${templatePromo}">
 
