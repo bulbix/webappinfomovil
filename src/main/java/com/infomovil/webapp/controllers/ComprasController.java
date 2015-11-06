@@ -85,6 +85,59 @@ public class ComprasController
 		return resultMap;
 	}
 	
+	
+	@RequestMapping(value = "/infomovil/getHTMLPromocion", method = RequestMethod.POST, produces = "application/json")
+	@ResponseBody
+	public Map<String, String> getHTMLPromocion()
+	{
+		Map<String, String> resultMap = new HashMap<String, String>();
+		RespuestaVO wsRespuesta = new RespuestaVO();
+	
+		String correoMoviliza = "";
+		
+		try
+		{
+			String correo = Util.getUserLogged().getUsername();		
+			wsRespuesta = wsCliente.crearSitioGeneraCodMoviliza(correo);
+			
+			if (!wsRespuesta.getResultado().equals("SIN_HASH"))
+			{
+				correoMoviliza = IOUtils.toString(Util.getFileAmazon("promodev.mobileinfo.io", "is_alx20.html"));
+				
+				correoMoviliza = correoMoviliza.replaceAll("llaveMoviliza", wsRespuesta.getResultado());
+				
+	         	if(!Util.getProfile().equals("PROD"))
+	         	{
+	         		
+	         		correoMoviliza = correoMoviliza.replaceAll("promo.mobileinfo.io", "promodev.mobileinfo.io");
+	         	}
+	         	
+	         	correoMoviliza = new String(correoMoviliza.getBytes("UTF-8"), "UTF-8");
+				resultMap.put("correoMoviliza", correoMoviliza);
+				logger.info("correoMoviliza: " + correoMoviliza);
+			}
+			else
+			{
+				resultMap.put("correoMoviliza", "SIN_CORREO");
+			}
+
+		}
+		catch (Exception e) 
+		{
+			logger.error("generaCodigoMoviliza:::::", e);
+			resultMap.put("correoMoviliza", "SIN_CORREO");
+		}	
+		
+		return resultMap;
+	}
+	
+	
+	
+	
+	
+	
+	
+	
 	private static final Logger logger = Logger.getLogger(ComprasController.class);
 	private ClientWsInfomovil wsCliente = new ClientWsInfomovil();
 }
