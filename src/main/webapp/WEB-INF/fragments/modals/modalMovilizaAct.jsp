@@ -24,7 +24,7 @@
 								
 		</div>
 			
-		<div class="clear divider"></div>
+	
 	</div>
 	<div class="modal-footer textBlack">
 		

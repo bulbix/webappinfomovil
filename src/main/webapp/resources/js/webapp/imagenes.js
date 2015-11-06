@@ -171,7 +171,7 @@ function generaFotos(idAlbum, p) {
 window.fbAsyncInit = function() {
 
 	FB.init({
-		appId : '422690184604551', //'QA: 422690184604551 PROD: ',
+		appId : '346859792130678', //'QA: 422690184604551 PROD: 346859792130678',
 		cookie : true, // enable cookies to allow the server to access
 		xfbml : true, // parse social plugins on this page
 		version : 'v2.0' // use version 2.2
@@ -1020,7 +1020,7 @@ function logueoFacebook(response) {
 		if (navigator.userAgent.match('CriOS')) {
 			window
 					.open(
-							'https://www.facebook.com/dialog/oauth?client_id=422690184604551&scope=email,user_photos&redirect_uri='
+							'https://www.facebook.com/dialog/oauth?client_id=346859792130678&scope=email,user_photos&redirect_uri='
 									+ document.location.href + '', '', null);
 		} else {
 			FB.login(function(response) {
