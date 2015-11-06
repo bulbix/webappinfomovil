@@ -120,7 +120,7 @@
 						
 						
 						<div id="divPublicarPromo" style="display:none">			
-					<button type="button" class="btn btn-outlineGreen pull-right textWhite navEditorLato" id="btnPublicar" style="margin: 5px 0;">
+					<button type="button" class="btn btn-outlineGreen pull-right textWhite navEditorLato" id="btnPublicar" style="margin: 5px 0;" onClick="_gaq.push(['_trackEvent', 'promo', 'publicar', $promo_page, $useracc_id, true]);">
 						<img width="20" height="20" alt="Infomovil" src="<c:url value="/resources/webapp/images/successWhite.png"/>"/> 
 						<span class="hidden-xs">Publicar</span>
 					</button>
