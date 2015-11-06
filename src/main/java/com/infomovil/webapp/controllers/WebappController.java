@@ -500,15 +500,12 @@ public class WebappController
 			
 			if (totProductos > 1)
 				claseProductos = "'col-xs-12 col-sm-6 col-md-6 col-lg-6 dBlock'";
-		
-			if (Util.getCurrentSession().getAttribute("canal") != null)
+
+			if (Util.getCurrentSession().getAttribute("canal").toString().startsWith("BAZ"))
 			{
-				if (Util.getCurrentSession().getAttribute("canal").toString().startsWith("BAZ"))
-				{
-					claseCss = "default";
-					colorTexto = "textBlack";
-					extensionImg = "-bk";
-				}
+				claseCss = "default";
+				colorTexto = "textBlack";
+				extensionImg = "-bk";
 			}
 
 			if (Util.getCurrentSession().getAttribute("statusCta") == null)
@@ -604,6 +601,8 @@ public class WebappController
 		String idDominio = "";
 		String downgrade = "";
 		String galeriaImagenes = "";
+		String nombreSitio = "";
+		String banderaCanal = "0";
 		
 		try
 		{
@@ -661,6 +660,7 @@ public class WebappController
 					visibleTel = "display:block;";
 					visibleRecurso = "display:none";
 					urlEjemploSitio = "www.misitio.tel";
+					banderaCanal = "1";
 				}
 				else
 				{
@@ -740,9 +740,12 @@ public class WebappController
 				model.put("downgrade", downgrade);
 				model.put("galeriaImagenes", galeriaImagenes);
 				
+				nombreSitio = Util.getNombreSitio(sitioWeb);
 			    Util.getCurrentSession().setAttribute("canal", canal);
 			    Util.getCurrentSession().setAttribute("template", template);
 			    Util.getCurrentSession().setAttribute("statusCta", status);
+			    Util.getCurrentSession().setAttribute("nombreSitio", nombreSitio);
+			    Util.getCurrentSession().setAttribute("banderaCanal", banderaCanal);
 			}
 			else 
 			{
@@ -837,7 +840,7 @@ public class WebappController
 		logger.info("redirect:/infomovil/editarSitio");
 		return "redirect:/infomovil/editarSitio";
 	}	
-
+	
 	final private String passwordDefault = "banco1";
 	private static final Logger logger = Logger.getLogger(WebappController.class);
 	private ClientWsInfomovil wsCliente = new ClientWsInfomovil();

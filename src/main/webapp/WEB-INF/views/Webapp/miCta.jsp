@@ -273,6 +273,7 @@
 	<!-- 		<!--/MODAL MOVILIZA CODE-->
 	
 	<input type="hidden" id="planPro" name="planPro" value="${ planPro }">
+	
 	<!-- Bootstrap core JavaScript
 	    ================================================== -->
 	<!-- Placed at the end of the document so the pages load faster -->

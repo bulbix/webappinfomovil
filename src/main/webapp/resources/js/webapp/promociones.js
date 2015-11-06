@@ -17,6 +17,8 @@ var templatesPromo = new Array("promo7","promo5", "promo4", "promo1", "promo2", 
 var nombresPromo = new Array("Buen Fin","Floral", "Tecnología 2", "Bares", "Hipster", "Tecnología"); //, "ATT"); /*Cambiar nombres*/
 var plantillaPromo = "promo1";
 var indicePromocion = 0;
+var nombreSitio = "";
+var banderaCanal = "";
 
 $(function() {
 	$datepickerPromo.datepicker({ dateFormat: 'dd/mm/yy' });	
@@ -109,6 +111,10 @@ var $publicarPromocion = function() {
 			$divPromoPublicada.show();
 			$("#idPromocion").val(data.idOffer);
 			$("#urlPromocion").val(data.urlPromocion);			
+			nombreSitio = data.nombreSitio;
+			banderaCanal = data.banderaCanal;
+			guardarEventoGA('promo-publicar');
+			console.log("nombreSitio: " + nombreSitio + ", banderaCanal: " + banderaCanal);
 			$.unblockUI();
 		},
 		error : function(json) {
@@ -159,7 +165,11 @@ var $guardarCambiosEnPromocion = function() {
 				$divPromoPublicada.show();
 				$("#idPromocion").val(data.idOffer);		
 				$("#tempPromocion").val(data.templatePromo);
-				console.log("template guardado: " + data.templatePromo);
+				nombreSitio = data.nombreSitio;
+				banderaCanal = data.banderaCanal;
+				console.log("nombreSitio: " + nombreSitio + ", banderaCanal: " + banderaCanal);
+				guardarEventoGA('promo-guardar');
+				//console.log("template guardado: " + data.templatePromo);
 				$.unblockUI();
 			},
 			error : function(json) {
@@ -225,6 +235,10 @@ var $eliminarPromocion = function() {
 						 $activaRadio("0");
 						 templatePromo = "promo1";
 						 $("#tempPromocion").val("");
+						 nombreSitio = data.nombreSitio;
+						 banderaCanal = data.banderaCanal;
+						 guardarEventoGA('promo-eliminar');
+						 console.log("nombreSitio: " + nombreSitio + ", banderaCanal: " + banderaCanal);
 						 $.unblockUI();
 					},
 					error : function(json) {
@@ -240,10 +254,8 @@ var $eliminarPromocion = function() {
 	});
 };
 
-var $compartirPromocion = function() {
-	
-	$('#myModalPromoShare').modal();	
-	
+var $compartirPromocion = function() {	
+	$('#myModalPromoShare').modal();		
 };
 
 var $verPromocionActiva = function() {
@@ -519,6 +531,9 @@ function actualizaEstiloPromo() {
 					$('#myModalTempPromo').modal('hide');
 					$("#tempPromocion").val(data.templatePromo);
 					console.log("plantilla elegida: " + data.templatePromo);
+					nombreSitio = data.nombreSitio;
+					banderaCanal = data.banderaCanal;
+					guardarEventoGA('promo-plantilla');
 					$.unblockUI();
 				},
 				error : function(json) {
@@ -530,6 +545,15 @@ function actualizaEstiloPromo() {
 				}
 			});	
 	}
+}
+
+function guardarEventoGA(nombreEvento) {
+	
+//	if (nombreEvento == 'promo-plantilla')
+//		nombreSitio = templatesPromo[indicePromocion];
+	
+	console.log("guardarEventoGA: " + nombreEvento + ", nombreSitio: " + nombreSitio + ", banderaCanal: " + banderaCanal);
+	ga('send', 'event', 'promo', nombreEvento, nombreSitio, banderaCanal);
 }
 
 function muestraTemplatePromo() {

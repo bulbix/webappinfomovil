@@ -116,7 +116,27 @@ public class Util {
 		return result;
 		
 	}
-	
+
+	public static String getNombreSitio(String sitioWeb)
+	{
+		String sitio = "";
+		int posWww = 0;
+		sitioWeb = sitioWeb.toLowerCase();
+		
+		if (sitioWeb.indexOf('/') != -1)
+			sitio = sitioWeb.substring(sitioWeb.indexOf('/') + 1, sitioWeb.length());
+		else if (sitioWeb.indexOf(".tel") != -1)
+		{
+			posWww = sitioWeb.indexOf("www.");
+			
+			if (posWww != -1) 
+				sitio = sitioWeb.substring(posWww + 4, sitioWeb.indexOf(".tel"));
+			else
+				sitio = sitioWeb.substring(0, sitioWeb.indexOf(".tel"));
+		}
+		
+		return sitio;
+	}
 	public static final String KEY_AMAZON_S3 = "AKIAJFSG7G2SQDTWMMYA";
 	public static final String SECRET_AMAZON_S3 = "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";
 	private static final Logger logger = Logger.getLogger(Util.class);

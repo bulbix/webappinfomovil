@@ -83,7 +83,7 @@
 			<div class="col-xs-12 reset text-right pull-right navEditor">
 				<span id="muestraNombreUsuario">
 					<c:if test="${not empty nombreUsuario}">
-						${nombreUsuario} <img width="20" height="20" alt="Infomovil"	src="<c:url value="/resources/webapp/images/fa-user.png"/>"/>
+						${nombreUsuario} <img width="20" height="20" alt="Infomovil" src="<c:url value="/resources/webapp/images/fa-user.png"/>"/>
 					</c:if>
 				</span>  
 					<br/> ${correoElectronico} <img width="25" height="25" alt="Infomovil"
@@ -105,23 +105,17 @@
 		<!-- Formulario Promociones -->
 		<div class="container">
 			<div class="col-xs-12 reset">
-				
-				 
-				
-				
+
 				<!--Theme showcase -->
 				<div class="theme-showcaseApp navEditor" role="main" id="intro">
 					<!-- Main jumbotron for a primary marketing message or call to action -->
 					<div>
 						<!-- page header <input type="text" id="checkedRedimir" value=""/>-->
-						<div class="page-header text-center" style="border-radius:15px; background:url(<c:url value="/resources/webapp/images/bgWhTra.png"/>); padding:10px;">
-						
-						
-						
+						<div class="page-header text-center" style="border-radius:15px; background:url(<c:url value="/resources/webapp/images/bgWhTra.png"/>); padding:10px;">						
 						
 						<div id="divPublicarPromo" style="display:none">			
-					<button type="button" class="btn btn-outlineGreen pull-right textWhite navEditorLato" id="btnPublicar" style="margin: 5px 0;" onClick="_gaq.push(['_trackEvent', 'promo', 'publicar', $promo_page, $useracc_id, true]);">
-						<img width="20" height="20" alt="Infomovil" src="<c:url value="/resources/webapp/images/successWhite.png"/>"/> 
+					<button type="button" class="btn btn-outlineGreen pull-right textWhite navEditorLato" id="btnPublicar" style="margin: 5px 0;">
+						<img width="20" height="20" alt="Infomovil" src="<c:url value="/resources/webapp/images/successWhite.png"/>"/>
 						<span class="hidden-xs">Publicar</span>
 					</button>
 					<button type="button" class="btn btn-outlineGreen pull-right textWhite navEditorLato"  id="btnVistaPrevia" style="margin: 5px 8px 0 0;">
@@ -141,7 +135,8 @@
 					<button type="button" class="btn btn-outlineGreen pull-right textWhite navEditorLato"  id="btnGuardar" style="margin: 5px 0 0 0;">
 					<img width="20" height="20" alt="Infomovil" src="<c:url value="/resources/webapp/images/successWhite.png"/>"/> 
 					<span class="hidden-xs">Guardar</span></button>		 
-					<button type="button" class="btn btn-outlineGreen pull-right textWhite navEditorLato" id="btnEliminar" style="margin: 5px 5px 0 0;">
+					<button type="button" class="btn btn-outlineGreen pull-right textWhite navEditorLato" id="btnEliminar" style="margin: 5px 5px 0 0;"
+					onClick="ga('send', 'event', 'promo', 'promo-guardar', '${nombreSitio}', '${banderaCanal}');"">
 						<img width="20" height="20" alt="Infomovil" src="<c:url value="/resources/webapp/images/trash.png"/>"/> 
 						<span class="hidden-xs">Eliminar</span>
 					</button> 
@@ -250,7 +245,7 @@
 		<script src="<c:url value="/resources/js/webapp/promociones.js"/>"></script>
 		<input type="hidden" id="valRadio" value="${redeemOffer}"/>
 		<input type="hidden" id="tempPromocion" value="${templatePromo}">
-
+<%-- 		<h1>${nombreSitio} -- ${banderaCanal}</h1> --%>
 		<script>
 			$(document).ready(function(){
 				generarSliderPromo();
