@@ -23,7 +23,7 @@
 			<div class="col-xs-12 textBlack text-center ">Ahora cuentas con:</div>
 			
 			<div class="col-xs-12 textBlack text-left ">
-			<ul class="col-xs-6 col-xs-offset-3 text-left textBlack"><li>Más imágenes</li>
+			<ul class="col-xs-6 col-xs-offset-3 text-left textBlack"><li>Más Fotos</li>
 			<li>Video</li>
 			<li>Sin publicidad</li>
 			</ul></div>
@@ -39,7 +39,7 @@
 		</div>
 	<div>
 	<div class="col-xs-12 text-center cuandoNoTienePP" style=<tiles:getAsString name="noTienePP"/>><p ><strong class="textGreen">¡Adquiere Plan Pro!</strong><br/><strong class="textBlack"> Y obtén:</strong></p>
-<ul class="text-left textBlack"><li>Más imágenes</li>
+<ul class="text-left textBlack"><li>Más Fotos</li>
 <li>
 Video</li>
 <li>

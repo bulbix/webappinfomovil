@@ -72,7 +72,7 @@
 							<li class="botonDesPublicar" id="btnImgLi" style="display: none;"><a
 								href="#" class="smoothScroll ${colorTexto}"
 								onclick="getImagenesJQ()">
-									Imágenes <img width="20" height="20"
+									Fotos <img width="20" height="20"
 									alt="Infomovil"
 									src="<c:url value="/resources/webapp/images/ico_img${ extensionImg }.png"/>" /></a></li>
 							<li class="botonDesPublicar borderFin" id="btnContLi"
@@ -263,7 +263,7 @@
 				class="col-xs-12 col-sm-6 col-sm-offset-3 col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3 btn btn-default btn-outline navEditor">
 				<img width="30" height="30" alt="Infomovil"
 				src="<c:url value="/resources/webapp/images/ico_img.png"/>" /> <span
-				id="idOpcionUbicacion">Agrega imágenes</span> <br />
+				id="idOpcionUbicacion">Agrega tus fotos</span> <br />
 			<span id="direccionMap" class="directionMap"></span>
 			</a>
 		</div>

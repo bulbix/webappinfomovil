@@ -11,7 +11,7 @@
  <p class="textBlack" ><strong>Ya tomaste el primer paso.</strong>
  <strong>Ahora, toma el siguiente.  </strong></p><p class="textPurple"><strong>Utiliza nuestra app móvil para:</strong></p> 
 <br/>
-						<ul class="textPurple" style="list-style:none"><li><strong>1. Personalizar tu página con imágenes y más contenido.</strong></li>
+						<ul class="textPurple" style="list-style:none"><li><strong>1. Personalizar tu página con fotos y más contenido.</strong></li>
 						<li><strong>2. Armar una promoción y compartirla por Facebook, Whatsapp y correo.</strong></li>
 						<li><strong>3. Ver reportes de uso.</strong></li>
 						</ul>

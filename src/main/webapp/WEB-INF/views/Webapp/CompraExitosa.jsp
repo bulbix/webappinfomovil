@@ -83,7 +83,7 @@
 <!-- 								onclick="getImagenesJQ()"><img width="20" height="20" -->
 <!-- 									alt="Infomovil" -->
 <%-- 									src="<c:url value="/resources/webapp/images/ico_img${ extensionImg }.png"/>" /> --%>
-<!-- 									Imágenes </a></li> -->
+<!-- 									Fotos </a></li> -->
 <!-- 							<li class="botonDesPublicar" id="btnContLi" -->
 <!-- 								style="display: none;"><a href="#" data-toggle="modal" -->
 <%-- 								data-target="#myModalDescApp" class="smoothScroll ${colorTexto}"><img --%>
