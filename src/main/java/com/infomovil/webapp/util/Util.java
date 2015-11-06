@@ -89,5 +89,27 @@ public class Util {
 		System.out.println("Perfil " + getProfile());
 	}
 	
+public static InputStream getFileAmazon(String bucketName, String key){
+		
+		InputStream result = null;
+		try{
+			AmazonS3 s3 = new AmazonS3Client(new BasicAWSCredentials(KEY_AMAZON_S3,SECRET_AMAZON_S3));
+			Region usWest2 = Region.getRegion(Regions.US_WEST_2);
+			s3.setRegion(usWest2);
+			S3Object object = s3.getObject(new GetObjectRequest(bucketName, key));
+			return object.getObjectContent();
+		}
+		catch(Exception e){
+			logger.error("getFileAmazon",e);
+		}
+		
+		return result;
+		
+	}
+	
+	public static final String KEY_AMAZON_S3 = "AKIAJFSG7G2SQDTWMMYA";
+	public static final String SECRET_AMAZON_S3 = "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";
+	private static final Logger logger = Logger.getLogger(Util.class);
+	
 
 }
