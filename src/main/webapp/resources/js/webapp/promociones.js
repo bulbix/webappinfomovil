@@ -32,7 +32,7 @@ var $getPromociones = function() {
 	
 	$.blockUI.defaults.baseZ = 9000;
 	$.blockUI({
-		message: "Obteniendo promoción...",
+		message: "Obteniendo Promoción...",
 		css: {
 			class:"alertaUI",
 			top:  ($(window).height() - 400) /2 + 'px',
@@ -65,7 +65,7 @@ var $getPromociones = function() {
 		error : function(json) {
 			$.unblockUI();
 			BootstrapDialog.show({
-				title: "<span class='textBlack' style='font-size:1.15em;'><img alt='' src='../resources/webapp/images/fa-warning-bk.png'  title='Alerta' />No se ha elimiasdasdasdasdasdasdnado la promoción</span>",
+				title: "<span class='textBlack' style='font-size:1.15em;'><img alt='' src='../resources/webapp/images/fa-warning-bk.png'  title='Alerta' />No se ha eliminado la Promoción</span>",
 				message: '<div style="display:block; min-height:150px;"><p class="textBlack text-center" style="font-size:1.15em;">Por favor intentalo más tarde.</p><br/>'
 			});		
 		
@@ -121,7 +121,7 @@ var $publicarPromocion = function() {
 			$.unblockUI();
 			console.log("ocurrio un error!!");
 			BootstrapDialog.show({
-				title: "<span class='textBlack' style='font-size:1.15em;'><img alt='' src='../resources/webapp/images/fa-warning-bk.png'  title='Alerta' />No se ha publicado la promoción</span>",
+				title: "<span class='textBlack' style='font-size:1.15em;'><img alt='' src='../resources/webapp/images/fa-warning-bk.png'  title='Alerta' />No se ha publicado la Promoción</span>",
 				message: '<div style="display:block; min-height:150px;"><p class="textBlack text-center" style="font-size:1.15em;">Por favor intentalo más tarde.</p><br/>'
 			});							
 		}
@@ -244,7 +244,7 @@ var $eliminarPromocion = function() {
 					error : function(json) {
 						$.unblockUI();
 						BootstrapDialog.show({
-							title: "<span class='textBlack' style='font-size:1.15em;'><img alt='' src='../resources/webapp/images/fa-warning-bk.png'  title='Alerta' />No se ha eliminado la promoción</span>",
+							title: "<span class='textBlack' style='font-size:1.15em;'><img alt='' src='../resources/webapp/images/fa-warning-bk.png'  title='Alerta' />No se ha eliminado la Promoción</span>",
 							message: '<div style="display:block; min-height:150px;"><p class="textBlack text-center" style="font-size:1.15em;">Por favor intentalo más tarde.</p><br/>'
 						});						
 					}
@@ -306,7 +306,7 @@ var $vistaPrevia = function() {
 				$.unblockUI();
 				console.log("json::: " + json);
 				BootstrapDialog.show({
-					title: "<span class='textBlack' style='font-size:1.15em;'><img alt='' src='../resources/webapp/images/fa-warning-bk.png'  title='Alerta' />No se ha podido obtener la vista previa de la promoción</span>",
+					title: "<span class='textBlack' style='font-size:1.15em;'><img alt='' src='../resources/webapp/images/fa-warning-bk.png'  title='Alerta' />No se ha podido obtener la vista previa de la Promoción</span>",
 					message: '<div style="display:block; min-height:150px;"><p class="textBlack text-center" style="font-size:1.15em;">Por favor intentalo más tarde.</p><br/>'
 				});									
 			}

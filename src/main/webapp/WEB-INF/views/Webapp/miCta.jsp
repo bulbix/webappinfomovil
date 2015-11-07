@@ -108,7 +108,7 @@
 				<div class="container">
 					<!-- page header -->
 					<div class="page-header text-center navEditorSFl">
-					<h3 class="text-left textBlack " style="font-weight: 300; margin:5px 0 0 0;">Mis productos</h3><hr/>
+					<h3 class="text-left textBlack " style="font-weight: 300; margin:5px 0 0 0;">Mis Productos</h3><hr/>
 					<div>
 		
 					<c:choose>

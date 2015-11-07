@@ -43,7 +43,7 @@
 					<li><a href="<c:url value="/infomovil/miCuenta"></c:url>" class="smoothScroll ${colorTexto}"><img
 							width="20" height="20" alt="Infomovil"
 							src="<c:url value="/resources/webapp/images/fa-user${ extensionImg }.png"/>" />
-							Mi cuenta </a></li>
+							Mi Cuenta </a></li>
 					<li><a href="#" data-toggle="modal"
 						data-target="#myModalTemplates" class="smoothScroll ${colorTexto}"><img
 							width="20" height="20" alt="Infomovil"
@@ -55,7 +55,7 @@
 						<img width="20" height="20"
 							alt="Infomovil"
 							src="<c:url value="/resources/webapp/images/fa-pencil${ extensionImg }.png"/>" />Mi
-							contenido <span class="caret"></span></a>
+							Contenido <span class="caret"></span></a>
 						<ul class="dropdown-menu navbar-${ claseCss } ${colorTexto} text-right">
 							<li class="botonDesPublicar borderInicial" style="display: none;" ><a
 								href="#" data-toggle="modal" data-target="#myModalMaps"

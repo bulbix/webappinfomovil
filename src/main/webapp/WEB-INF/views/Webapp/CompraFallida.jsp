@@ -44,7 +44,7 @@
 <%-- 					<li><a href="<c:url value="/infomovil/miCuenta"></c:url>" class="smoothScroll ${colorTexto}"><img --%>
 <!-- 							width="20" height="20" alt="Infomovil" -->
 <%-- 							src="<c:url value="/resources/webapp/images/fa-user${ extensionImg }.png"/>" /> --%>
-<!-- 							Mi cuenta </a></li> -->
+<!-- 							Mi Cuenta </a></li> -->
 							
 							<li><a href="<c:url value="/infomovil/editarSitio"></c:url>" class="smoothScroll ${colorTexto}"><img
 							width="20" height="20" alt="Infomovil"
