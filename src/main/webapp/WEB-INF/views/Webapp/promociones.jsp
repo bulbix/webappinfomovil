@@ -161,7 +161,7 @@
 					</button>
 					<button type="button" class="btn btn-outlineGreen pull-right textWhite navEditorLato"  id="btnImprimirPromo" 
 						 style="margin: 5px 8px 0 0;">
-						<img width="20" height="20" alt="Infomovil"	src="<c:url value="/resources/webapp/images/fa-templates.png"/>"/> 
+						<img width="20" height="20" alt="Infomovil"	src="<c:url value="/resources/webapp/images/fa-print.png"/>"/> 
 						<span class="hidden-xs">Imprimir</span>
 					</button>
 					
