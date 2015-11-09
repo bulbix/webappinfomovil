@@ -159,6 +159,11 @@
 						<img width="20" height="20" alt="Infomovil"	src="<c:url value="/resources/webapp/images/fa-templates.png"/>"/> 
 						<span class="hidden-xs">Estilo</span>
 					</button>
+					<button type="button" class="btn btn-outlineGreen pull-right textWhite navEditorLato"  id="btnImprimirPromo" 
+						 style="margin: 5px 8px 0 0;">
+						<img width="20" height="20" alt="Infomovil"	src="<c:url value="/resources/webapp/images/fa-templates.png"/>"/> 
+						<span class="hidden-xs">Imprimir</span>
+					</button>
 					
 				</div>
 						<div class="clear"></div>
@@ -249,6 +254,7 @@
 		<script src="<c:url value="/resources/webapp/js/datepicker/jquery.ui.datepicker.js"/>"></script>
 		<script src="<c:url value="/resources/js/webapp/promociones.js"/>"></script>
 		<script type="text/javascript" src="<c:url value="/resources/js/webapp/imprimirpromo.js"/>"></script>
+		<script type="text/javascript" src="<c:url value="/resources/webapp/js/jspdf.js"/>"></script>
 		<input type="hidden" id="valRadio" value="${redeemOffer}"/>
 		<input type="hidden" id="tempPromocion" value="${templatePromo}">
 

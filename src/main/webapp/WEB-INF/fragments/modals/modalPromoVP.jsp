@@ -19,4 +19,3 @@
 	<div class="modal-footer textBlack"></div>
 </div>
 
-<input type="button" value="Print Div" onclick="PrintElem('#urlVistaPreviaPromo')" />

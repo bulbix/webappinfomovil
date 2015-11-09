@@ -1,41 +1,51 @@
-/**
- * 
- */ 
 
-	function PrintElem(elem)
+	function PrintElem()
     {
+		var oldstr = document.body.innerHTML;
+		$.blockUI.defaults.baseZ = 9000;
+		$.blockUI({
+			message: "Generando código de impresión...",
+			css: {
+				class:"alertaUI",
+				top:  ($(window).height() - 400) /2 + 'px',
+				left: ($(window).width() - 400) /2 + 'px',
+				width: '400px'
+			}
+		});
 		
-	/*	console.log("entro a imprimir la promo en opera! 120");
-		var todo = document.getElementById('urlVistaPreviaPromo').contentWindow.document.body.innerHTML;
-		 console.log("Todito" + todo);
-        var headstr = "<html><head><title></title></head><body>";
-        var footstr = "</body>";
-        var newstr =  document.getElementById('urlVistaPreviaPromo').contentWindow.document.body.innerHTML;
-      
-        *////////
-        /*********
-        var oldstr = document.body.innerHTML;
-        $('#myModalPromo').modal('toggle');
-        document.body.innerHTML = headstr+newstr+footstr;
-        window.print();
-        document.body.innerHTML = oldstr;
-        $('#myModalPromo').modal();
-        *******/
-        //console.log("entro a imprimir la promo en opera! 120 y ek codigo es");
-        
-       /* var gadget = new cloudprint.Gadget();
-        gadget.setPrintDocument("url", $(elem).html(), window.location.href, "utf-8");
-        gadget.openPrintDialog();
-        */
-       
-        
-        //mydiv
-        window.print();
-        
-        
+		$.ajax({
+			type : "POST",
+			
+		    dataType: 'json',
+		    headers: {"Access-Control-Allow-Origin": "*"},
+			url : contextPath + "/infomovil/getHTMLPromocion",
+			
+				
+			success : function(data) {
+				var headstr = "<html><head><title></title></head><body>";
+		        var footstr = "</body>";
+				var cadena = data.elHtmlDePromocion;
+				var posicion = cadena.search("<body>");
+				var sinBody1 =  cadena.substring(posicion+6);
+				var posicion2 = sinBody1.search("</body>");
+				var sinBody2 = sinBody1.substring(0,posicion2);
+				console.log("Solo imprime contenido del body" + sinBody2);
+				
+			    document.body.innerHTML = headstr+sinBody2+footstr;
+			    window.print();
+			    location.reload();
+			    $(document.body).html(oldstr);
+				$.unblockUI();
+			},
+			error : function(json) {
+				console.log("Error descError: " + data.descError);
+				$.unblockUI();
+			}
+		});	
+		
         
         
         return false;
     }
-
-   
+	
+	
