@@ -55,7 +55,7 @@ max-height:568px!important;min-height:265px!important;
 .bx-wrapper .bx-pager,
 .bx-wrapper .bx-controls-auto {
 	position: absolute;
-	bottom: -10px;
+	bottom: -35px;
 	width: 100%;
 }
 

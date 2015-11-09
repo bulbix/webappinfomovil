@@ -29,8 +29,8 @@
 	</div>
 	
 	<div class="modal-footer textBlack">
-		<button type="button" class="btn btn-purple text-center col-xs-12 col-sm-12 col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3 js-emailcopybtn">
-			<strong>Copiar código</strong>
+		<button id="enviarCorreoCio" type="button" class="btn btn-purple text-center col-xs-12 col-sm-12 col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3">
+			<strong>Enviar correo</strong>
 		</button>
 	</div>
 </div>

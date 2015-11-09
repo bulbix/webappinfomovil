@@ -24,7 +24,7 @@
 		     <tr> 
 		    	<td class="text-right"><img width="25" height="25" alt="Infomovil" src="<c:url value="/resources/webapp/images/icn_marc_img-pp.png"/>"></td> 
 		       	<td>&nbsp;</td> 
-		       	<td><strong> Agrega tus imágenes </strong>	</td> 
+		       	<td><strong> Agrega tus fotos </strong>	</td> 
 		     </tr>
 		 	<tr id="imgPlanPro" style="display:none;"> 
 		    	<td class="text-right"><img width="25" height="25" alt="Infomovil" src="<c:url value="/resources/webapp/images/ico_ppp_youtube-pp.png"/>"> </td> 

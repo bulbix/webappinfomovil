@@ -3,8 +3,16 @@ package com.infomovil.webapp.controllers;
 import java.util.HashMap;
 import java.util.Map;
 
+<<<<<<< HEAD
+=======
+import javax.servlet.http.HttpServletRequest;
+
+>>>>>>> origin/WebAppMovilizaTuSitio
 import org.apache.commons.lang3.StringEscapeUtils;
 import org.apache.log4j.Logger;
+import org.infomovil.segmentio.action.Tunnel;
+import org.infomovil.segmentio.dto.DomainDTO;
+import org.infomovil.segmentio.interfaces.AnalyticMailInterface.AnalyticMailInterfaceCode;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -67,8 +75,8 @@ public class ComprasController
 	         	if(!Util.getProfile().equals("PROD"))
 	         		scriptMoviliza = scriptMoviliza.replaceAll("infomovil.com", "infodev.mobileinfo.io");
 	         	
-				resultMap.put("hashMoviliza", wsRespuesta.getResultado());
 				resultMap.put("scriptMoviliza", scriptMoviliza);
+				resultMap.put("hashMoviliza", wsRespuesta.getResultado());
 			}
 			else
 			{
@@ -85,6 +93,23 @@ public class ComprasController
 		}	
 		
 		return resultMap;
+	}
+
+	@RequestMapping(value = "/infomovil/enviarCorreoMoviliza", method = RequestMethod.POST, produces = "application/json")
+	@ResponseBody
+	public Map<String, String> enviarCorreoMoviliza(String hash) 
+	{
+		Map<String, String> resultMap = new HashMap<String, String>();
+		
+		String correo = Util.getUserLogged().getUsername();	
+		Tunnel tunnel = new Tunnel(AnalyticMailInterfaceCode.CUSTOMER_IO_DEV_INTERFACE);
+		DomainDTO domainDTO = new DomainDTO(correo);
+		domainDTO.setHashMoviliza(hash);
+		domainDTO.setEventName("event_MovilizaTuSitio");
+		tunnel.enviarCorreoMoviliza(domainDTO);
+		resultMap.put("envioCorreo", "Ok");
+		
+		return resultMap;	
 	}
 	
 	

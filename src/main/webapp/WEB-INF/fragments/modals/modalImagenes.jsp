@@ -52,7 +52,7 @@
 <div class="modal-body">  
 
 	<div id="galeriaVacia">
-    	<p class="textBlack text-center navEditorSFl" style="display:block; min-height:150px; margin: 50px 0 0 0;"><img width="30" height="30" alt="Infomovil" src="<c:url value="/resources/webapp/images/ico_img-bk.png"/>" />  Ahora agrega imágenes</p>
+    	<p class="textBlack text-center navEditorSFl" style="display:block; min-height:150px; margin: 50px 0 0 0;"><img width="30" height="30" alt="Infomovil" src="<c:url value="/resources/webapp/images/ico_img-bk.png"/>" />  Ahora agrega fotos</p>
     </div>
     
     

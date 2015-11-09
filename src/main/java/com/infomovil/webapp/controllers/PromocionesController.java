@@ -32,12 +32,15 @@ public class PromocionesController
 	{		
 		HashMap<String, Object> model = new HashMap<String, Object>();
 		RespuestaVO wsRespuesta = new RespuestaVO();
+		RespuestaVO wsRpta = new RespuestaVO();
 		String nombreUsuario = "";
 		String template = "Coverpage1azul";
 		String claseCss = "inverse";
 		String colorTexto = "textWhite";
 		String extensionImg = "";
-//		OffertRecordVO promocion = new OffertRecordVO();
+		String nombreSitio = "";
+		String banderaCanal = "0";
+		String sitioWeb = "";
 		
 		try
 		{		
@@ -46,7 +49,6 @@ public class PromocionesController
 			
 			wsRespuesta = wsCliente.crearSitioGetPromociones(correo, password);
          	
-			//model.put("promociones", wsRespuesta.getListPromocion());
 			for (OffertRecordVO promocion : wsRespuesta.getListPromocion())
 			{
 				model.put("titleOffer", promocion.getTitleOffer());
@@ -80,6 +82,26 @@ public class PromocionesController
          	
          	if (Util.getCurrentSession().getAttribute("template") != null)
          		template = Util.getCurrentSession().getAttribute("template").toString();
+
+         	if (Util.getCurrentSession().getAttribute("nombreSitio") == null ||
+         			Util.getCurrentSession().getAttribute("banderaCanal") == null)
+         	{
+         		wsRpta = wsCliente.crearSitioCargar(correo, password);
+      
+         		sitioWeb = wsRpta.getDominioCreaSitio().getSitioWeb();
+         		nombreSitio = Util.getNombreSitio(sitioWeb);
+         		
+         		if (wsRpta.getDominioCreaSitio().getCanal().startsWith("BAZ"))
+         			banderaCanal = "1";
+         		
+    		    Util.getCurrentSession().setAttribute("nombreSitio", nombreSitio);
+    		    Util.getCurrentSession().setAttribute("banderaCanal", banderaCanal);
+         	}
+         	else
+         	{
+         		nombreSitio = Util.getCurrentSession().getAttribute("nombreSitio").toString();
+         		banderaCanal = Util.getCurrentSession().getAttribute("banderaCanal").toString();
+         	}
          	
 			model.put("claseCss", claseCss);
 			model.put("colorTexto", colorTexto);
@@ -87,6 +109,8 @@ public class PromocionesController
 			model.put("nombreUsuario", nombreUsuario);
 			model.put("template", template);
 			model.put("correoElectronico", correo);
+			model.put("nombreSitio", nombreSitio);
+			model.put("banderaCanal", banderaCanal);
 		}		
 		catch (Exception e) 
 		{
@@ -126,8 +150,13 @@ public class PromocionesController
 			logger.error("guardarPromocion:::::", e);
 			resultado.put("codeError", respVO.getCodeError());
 			resultado.put("descEror", respVO.getMsgError());
+			resultado.put("nombreSitio", Util.getCurrentSession().getAttribute("nombreSitio").toString());
+			resultado.put("banderaCanal", Util.getCurrentSession().getAttribute("banderaCanal").toString());
 			return null;
 		}			
+
+		resultado.put("nombreSitio", Util.getCurrentSession().getAttribute("nombreSitio").toString());
+		resultado.put("banderaCanal", Util.getCurrentSession().getAttribute("banderaCanal").toString());
 		
 		return resultado;
 	}
@@ -152,8 +181,13 @@ public class PromocionesController
 			logger.error("getPromociones:::::", e);
 			resultado.put("codeError", "-1");
 			resultado.put("descEror", "errorEliminarPromocion");
+			resultado.put("nombreSitio", Util.getCurrentSession().getAttribute("nombreSitio").toString());
+			resultado.put("banderaCanal", Util.getCurrentSession().getAttribute("banderaCanal").toString());
 			return null;
 		}			
+
+		resultado.put("nombreSitio", Util.getCurrentSession().getAttribute("nombreSitio").toString());
+		resultado.put("banderaCanal", Util.getCurrentSession().getAttribute("banderaCanal").toString());
 		
 		return resultado;
 	}	

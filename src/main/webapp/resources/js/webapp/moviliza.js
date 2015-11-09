@@ -1,33 +1,26 @@
-function validaPlanPro() { 
-	
+var ak = "";
+var si = "";
+var uid = "";
+var aux = "";
+
+$("#modalMovilizaPP").click(function() { 
+//	console.log("modalMovilizaPP");
 	var tienePlanPro = $("#planPro").val();
 	
 	if (tienePlanPro == "SI")
 	{
-		$("#myModalMoviliza").hide();
+		$('#myModalMoviliza').modal('hide');
 		$("#myModalMovilizaAct").modal();
 	}
 	else
 	{
 		window.location = contextPath + '/infomovil/miCuenta';
+		console.log("else");
 	}
-}
+});
 
-function ocultaNotaValidaPP() {
-	
-	var tienePlanPro = $("#planPro").val();
-	
-	if (tienePlanPro == "SI") 
-		$("#tienePlanProNota").hide();
-	
-	$("#myModalMoviliza").modal();
-	
-	if ($('#myModalMoviliza').is(':hidden'))
-		   $('#myModalMoviliza').show();
-}
-
-function generaCodigoMoviliza() {
-	
+$("#modalGeneraCodigoMov").click(function() { 
+//	console.log("modalGeneraCodigoMov");
 	var tienePlanPro = $("#planPro").val();
 	
 	if (tienePlanPro == "SI") {
@@ -49,9 +42,13 @@ function generaCodigoMoviliza() {
 				dataType : "json",
 				
 			success : function(data) {
-				console.log("hashMoviliza: " + data.scriptMoviliza);
+
+				ak = data.auxAK;
+				si = data.auxSI;
+				uid = data.usuario;
+				aux = data.hashMoviliza;
 				$("#codigoMoviliza").html(data.scriptMoviliza);
-				$("#myModalMovilizaCode").modal();
+				$("#myModalMovilizaCode").modal();		
 				$.unblockUI();
 			},
 			error : function(json) {
@@ -60,24 +57,64 @@ function generaCodigoMoviliza() {
 			}
 		});		
 	}
-}
-
-var copyEmailBtn = document.querySelector('.js-emailcopybtn');  
-copyEmailBtn.addEventListener('click', function(event) {  
-
-  var emailLink = document.querySelector('.js-emaillink');  
-  var range = document.createRange();  
-  range.selectNode(emailLink);  
-  window.getSelection().addRange(range);  
-
-  try {  
-
-    var successful = document.execCommand('copy');  
-    var msg = successful ? 'successful' : 'unsuccessful';  
-    console.log('Copy email command was ' + msg);  
-  } catch(err) {  
-    console.log('Oops, unable to copy');  
-  }  
-
-  window.getSelection().removeAllRanges();  
+	
 });
+
+$("#enviarCorreoCio").click(function() { 
+
+	$.blockUI.defaults.baseZ = 9000;
+	$.blockUI({
+		message: "Enviando correo moviliza...",
+		css: {
+			class:"alertaUI",
+			top:  ($(window).height() - 400) /2 + 'px',
+			left: ($(window).width() - 400) /2 + 'px',
+			width: '400px'
+		}
+	});
+	
+	$.ajax({
+		type : "POST",
+		url : contextPath + "/infomovil/enviarCorreoMoviliza",
+		dataType : "json",
+		data : {
+			hash: aux
+		},	
+		success : function(data) {
+			console.log("después de mandar el correo a customer");
+			$('#myModalMovilizaCode').modal('hide');
+			BootstrapDialog
+			.show({
+				title : "<span class='textBlack' style='font-size:1.15em;'><img alt='' src='../resources/webapp/images/fa-informacion.png' width='20px'  title='Alerta' /> Moviliza tu sitio</span>",
+				message : '<div style="display:block; min-height:150px;"><p class="textBlack text-center" style="font-size:1.15em;">'+
+				'<br/><img width="80" height="80" alt="Infomovil" src="../resources/webapp/images/fa-code-bk.png">'+
+				'El correo se ha enviado con éxito</p><br/>',
+				buttons : [
+							{
+								label : 'Aceptar',
+								action : function(dialog) {
+									dialog.close();
+								}
+							}]
+			});
+			$.unblockUI();
+		},
+		error : function(json) {
+			console.log("error: " + json);
+			$.unblockUI();
+		}
+	});			
+});
+
+function ocultaNotaValidaPP() {
+	
+	var tienePlanPro = $("#planPro").val();
+	
+	if (tienePlanPro == "SI") 
+		$("#tienePlanProNota").hide();
+	
+	$("#myModalMoviliza").modal();
+	
+	if ($('#myModalMoviliza').is(':hidden'))
+		   $('#myModalMoviliza').show();
+}

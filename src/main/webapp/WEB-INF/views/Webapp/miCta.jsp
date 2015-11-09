@@ -108,7 +108,7 @@
 				<div class="container">
 					<!-- page header -->
 					<div class="page-header text-center navEditorSFl">
-					<h3 class="text-left textBlack " style="font-weight: 300; margin:5px 0 0 0;">Mis productos</h3><hr/>
+					<h3 class="text-left textBlack " style="font-weight: 300; margin:5px 0 0 0;">Mis Productos</h3><hr/>
 					<div>
 		
 					<c:choose>
@@ -244,9 +244,36 @@
 		<tiles:putAttribute name="idModal" value="myModalConfDatos" />
 		<tiles:putAttribute name="tamanioModal" value='"modal-dialog modal-md"' />
 		<c:set var="fragmentName" value="modalConfDatos" scope="request" />
-	</tiles:insertDefinition>
-	
+	</tiles:insertDefinition>	
 	<!--/MODAL CONFIRMACIÓN DATOS-->
+	
+	<!-- 		<!--MODAL MOVILIZA-->
+	<tiles:insertDefinition name="modalGen">
+		<tiles:putAttribute name="idModal" value="myModalMoviliza" />
+		<tiles:putAttribute name="tamanioModal"
+			value='"modal-dialog modal-md"' />
+		<c:set var="fragmentName" value="modalMoviliza" scope="request" />
+	</tiles:insertDefinition>
+	<!-- 		<!--/MODAL MOVILIZA-->
+	<!-- 		<!--MODAL MOVILIZA ACT-->
+	<tiles:insertDefinition name="modalGen">
+		<tiles:putAttribute name="idModal" value="myModalMovilizaAct" />
+		<tiles:putAttribute name="tamanioModal"
+			value='"modal-dialog modal-md"' />
+		<c:set var="fragmentName" value="modalMovilizaAct" scope="request" />
+	</tiles:insertDefinition>
+	<!-- 		<!--/MODAL MOVILIZA ACT-->
+	<!-- 		<!--MODAL MOVILIZA CODE-->
+	<tiles:insertDefinition name="modalGen">
+		<tiles:putAttribute name="idModal" value="myModalMovilizaCode" />
+		<tiles:putAttribute name="tamanioModal"
+			value='"modal-dialog modal-lg"' />
+		<c:set var="fragmentName" value="modalMovilizaCode" scope="request" />
+	</tiles:insertDefinition>
+	<!-- 		<!--/MODAL MOVILIZA CODE-->
+	
+	<input type="hidden" id="planPro" name="planPro" value="${ planPro }">
+	
 	<!-- Bootstrap core JavaScript
 	    ================================================== -->
 	<!-- Placed at the end of the document so the pages load faster -->
@@ -261,6 +288,7 @@
 	<script src="<c:url value="/resources/webapp/js/jquery.numeric.js"/>"></script>
 	<script src="<c:url value="/resources/webapp/js/jquery.blockUI.js"/>"></script>
 	<script src="<c:url value="/resources/js/webapp/paypal.js"/>"></script>		 
+	<script src="<c:url value="/resources/js/webapp/moviliza.js"/>"></script>
 	<script src="<c:url value="/resources/webapp/js/si.files.js"/>"></script>
 
 	<form action="${urlPaypal}" method="post" id="formPaypal">

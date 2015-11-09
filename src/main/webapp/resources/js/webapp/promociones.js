@@ -13,11 +13,20 @@ var $btnCompartir = $("#btnCompartir");
 var $btnVerPromo = $("#btnVerPromo");
 var $btnEliminar = $("#btnEliminar");
 var $btnGuardar = $("#btnGuardar");
+<<<<<<< HEAD
 var templatesPromo = new Array("promo1-imp","promo5", "promo4", "promo1", "promo2", "promo3");
 var nombresPromo = new Array("Print","Floral", "Tecnología 2", "Bares", "Hipster", "Tecnología"); /*Cambiar nombres*/
 var plantillaPromo = "promo1";
 var indicePromocion = 0;
 var $btnImprimirPromo = $("#btnImprimirPromo");
+=======
+var templatesPromo = new Array("promo7","promo5", "promo4", "promo1", "promo2", "promo3"); //, "promo6");
+var nombresPromo = new Array("Buen Fin","Floral", "Tecnología 2", "Bares", "Hipster", "Tecnología"); //, "ATT"); /*Cambiar nombres*/
+var plantillaPromo = "promo1";
+var indicePromocion = 0;
+var nombreSitio = "";
+var banderaCanal = "";
+>>>>>>> origin/WebAppMovilizaTuSitio
 
 $(function() {
 	$datepickerPromo.datepicker({ dateFormat: 'dd/mm/yy' });	
@@ -31,7 +40,7 @@ var $getPromociones = function() {
 	
 	$.blockUI.defaults.baseZ = 9000;
 	$.blockUI({
-		message: "Obteniendo promoción...",
+		message: "Obteniendo Promoción...",
 		css: {
 			class:"alertaUI",
 			top:  ($(window).height() - 400) /2 + 'px',
@@ -64,7 +73,7 @@ var $getPromociones = function() {
 		error : function(json) {
 			$.unblockUI();
 			BootstrapDialog.show({
-				title: "<span class='textBlack' style='font-size:1.15em;'><img alt='' src='../resources/webapp/images/fa-warning-bk.png'  title='Alerta' />No se ha elimiasdasdasdasdasdasdnado la promoción</span>",
+				title: "<span class='textBlack' style='font-size:1.15em;'><img alt='' src='../resources/webapp/images/fa-warning-bk.png'  title='Alerta' />No se ha eliminado la Promoción</span>",
 				message: '<div style="display:block; min-height:150px;"><p class="textBlack text-center" style="font-size:1.15em;">Por favor intentalo más tarde.</p><br/>'
 			});		
 		
@@ -110,13 +119,17 @@ var $publicarPromocion = function() {
 			$divPromoPublicada.show();
 			$("#idPromocion").val(data.idOffer);
 			$("#urlPromocion").val(data.urlPromocion);			
+			nombreSitio = data.nombreSitio;
+			banderaCanal = data.banderaCanal;
+			guardarEventoGA('promo-publicar');
+			console.log("nombreSitio: " + nombreSitio + ", banderaCanal: " + banderaCanal);
 			$.unblockUI();
 		},
 		error : function(json) {
 			$.unblockUI();
 			console.log("ocurrio un error!!");
 			BootstrapDialog.show({
-				title: "<span class='textBlack' style='font-size:1.15em;'><img alt='' src='../resources/webapp/images/fa-warning-bk.png'  title='Alerta' />No se ha publicado la promoción</span>",
+				title: "<span class='textBlack' style='font-size:1.15em;'><img alt='' src='../resources/webapp/images/fa-warning-bk.png'  title='Alerta' />No se ha publicado la Promoción</span>",
 				message: '<div style="display:block; min-height:150px;"><p class="textBlack text-center" style="font-size:1.15em;">Por favor intentalo más tarde.</p><br/>'
 			});							
 		}
@@ -160,7 +173,11 @@ var $guardarCambiosEnPromocion = function() {
 				$divPromoPublicada.show();
 				$("#idPromocion").val(data.idOffer);		
 				$("#tempPromocion").val(data.templatePromo);
-				console.log("template guardado: " + data.templatePromo);
+				nombreSitio = data.nombreSitio;
+				banderaCanal = data.banderaCanal;
+				console.log("nombreSitio: " + nombreSitio + ", banderaCanal: " + banderaCanal);
+				guardarEventoGA('promo-guardar');
+				//console.log("template guardado: " + data.templatePromo);
 				$.unblockUI();
 			},
 			error : function(json) {
@@ -226,12 +243,16 @@ var $eliminarPromocion = function() {
 						 $activaRadio("0");
 						 templatePromo = "promo1";
 						 $("#tempPromocion").val("");
+						 nombreSitio = data.nombreSitio;
+						 banderaCanal = data.banderaCanal;
+						 guardarEventoGA('promo-eliminar');
+						 console.log("nombreSitio: " + nombreSitio + ", banderaCanal: " + banderaCanal);
 						 $.unblockUI();
 					},
 					error : function(json) {
 						$.unblockUI();
 						BootstrapDialog.show({
-							title: "<span class='textBlack' style='font-size:1.15em;'><img alt='' src='../resources/webapp/images/fa-warning-bk.png'  title='Alerta' />No se ha eliminado la promoción</span>",
+							title: "<span class='textBlack' style='font-size:1.15em;'><img alt='' src='../resources/webapp/images/fa-warning-bk.png'  title='Alerta' />No se ha eliminado la Promoción</span>",
 							message: '<div style="display:block; min-height:150px;"><p class="textBlack text-center" style="font-size:1.15em;">Por favor intentalo más tarde.</p><br/>'
 						});						
 					}
@@ -241,10 +262,8 @@ var $eliminarPromocion = function() {
 	});
 };
 
-var $compartirPromocion = function() {
-	
-	$('#myModalPromoShare').modal();	
-	
+var $compartirPromocion = function() {	
+	$('#myModalPromoShare').modal();		
 };
 
 var $verPromocionActiva = function() {
@@ -295,7 +314,7 @@ var $vistaPrevia = function() {
 				$.unblockUI();
 				console.log("json::: " + json);
 				BootstrapDialog.show({
-					title: "<span class='textBlack' style='font-size:1.15em;'><img alt='' src='../resources/webapp/images/fa-warning-bk.png'  title='Alerta' />No se ha podido obtener la vista previa de la promoción</span>",
+					title: "<span class='textBlack' style='font-size:1.15em;'><img alt='' src='../resources/webapp/images/fa-warning-bk.png'  title='Alerta' />No se ha podido obtener la vista previa de la Promoción</span>",
 					message: '<div style="display:block; min-height:150px;"><p class="textBlack text-center" style="font-size:1.15em;">Por favor intentalo más tarde.</p><br/>'
 				});									
 			}
@@ -524,6 +543,9 @@ function actualizaEstiloPromo() {
 					$('#myModalTempPromo').modal('hide');
 					$("#tempPromocion").val(data.templatePromo);
 					console.log("plantilla elegida: " + data.templatePromo);
+					nombreSitio = data.nombreSitio;
+					banderaCanal = data.banderaCanal;
+					guardarEventoGA('promo-plantilla');
 					$.unblockUI();
 				},
 				error : function(json) {
@@ -535,6 +557,15 @@ function actualizaEstiloPromo() {
 				}
 			});	
 	}
+}
+
+function guardarEventoGA(nombreEvento) {
+	
+//	if (nombreEvento == 'promo-plantilla')
+//		nombreSitio = templatesPromo[indicePromocion];
+	
+	console.log("guardarEventoGA: " + nombreEvento + ", nombreSitio: " + nombreSitio + ", banderaCanal: " + banderaCanal);
+	ga('send', 'event', 'promo', nombreEvento, nombreSitio, banderaCanal);
 }
 
 function muestraTemplatePromo() {

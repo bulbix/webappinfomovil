@@ -11,37 +11,35 @@
 		</p>
 	</div>
 	<div class="col-xs-12 text-center textBlack cuandoSiTienePP" style=<tiles:getAsString name="siTienePP"/>>
- 		<span>Vigencia:<br/> <%--<strong><tiles:getAsString name="fechaInicial"/></strong>--%> <br/><strong><tiles:getAsString name="fechaFinal"/></strong></span> <br/><br/>
+ 		<span>Vigencia: <%--<strong><tiles:getAsString name="fechaInicial"/></strong>--%> <br/><strong><tiles:getAsString name="fechaFinal"/></strong></span> <br/><br/>
+ 			
 	</div>
 <!-- 	<div class="clearfix"></div> -->
-	<br/><br/>
-	<div class="divider"></div>
-	
-	
-	
-	
-		<div class="clearfix"></div>
-		<div class="divider"></div>
-		<div><span class="textBlack">Ahora cuentas con:</span>
-		<ul class="text-left textBlack"><li>Más imágenes</li>
-<li>
-Video</li>
-<li>
-Sin publicidad</li>
-</ul>
 
-<button type="button" onClick="generaCodigoMoviliza()" data-toggle="modal" class="btn btn-purple text-center col-xs-12 col-sm-12 col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3" data-dismiss="modal">
-			<strong>Moviliza tu sitio</strong>
-		</button>
-		 </div>
-		<div class="clearfix"></div>
-		<div class="divider"></div>
-		<hr/>
-		<span class="textBlack">Ó puedes añadir más tiempo a tu Plan Pro</span>
-	<div>
 	
+		
+		<div style=<tiles:getAsString name="siTienePP"/>>
+
+			<div class="col-xs-12 textBlack text-center ">Ahora cuentas con:</div>
+			
+			<div class="col-xs-12 textBlack text-left ">
+			<ul class="col-xs-6 col-xs-offset-3 text-left textBlack"><li>Más Fotos</li>
+			<li>Video</li>
+			<li>Sin publicidad</li>
+			</ul></div>
+
+			<button type="button" onClick="ocultaNotaValidaPP()" data-toggle="modal" class="btn btn-purple text-center col-xs-12 col-sm-12 col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3" data-dismiss="modal">
+				<strong>Moviliza tu sitio</strong>
+			</button>
+		 
+		<div class="clearfix"></div>
+	
+		<hr style="background:#000"/>
+		<span class="textBlack">Ó puedes añadir más tiempo a tu Plan Pro</span>
+		</div>
+	<div>
 	<div class="col-xs-12 text-center cuandoNoTienePP" style=<tiles:getAsString name="noTienePP"/>><p ><strong class="textGreen">¡Adquiere Plan Pro!</strong><br/><strong class="textBlack"> Y obtén:</strong></p>
-<ul class="text-left textBlack"><li>Más imágenes</li>
+<ul class="text-left textBlack"><li>Más Fotos</li>
 <li>
 Video</li>
 <li>

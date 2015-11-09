@@ -1,5 +1,5 @@
-var templates = new Array("Coverpage11", "Coverpage10", "Coverpage9", "Coverpage7", "Coverpage8", "Coverpage1azul", "Coverpage2", "Coverpage3", "Coverpage4", "Coverpage5", "Coverpage6");
-var nombres = new Array("Metrópoli", "Nuevos negocios", "Pr&oacute;ximamente", "Otoño", "Vanguardia", "Portada azul", "Restaurantes", "Belleza", "Reposter&iacute;as", "Automotriz", "Taxistas"); /*Cambiar nombres*/
+var templates = new Array("Coverpage20","Coverpage19","Coverpage18","Coverpage17","Coverpage16","Coverpage15","Coverpage14","Coverpage13","Coverpage12","Coverpage11", "Coverpage10", "Coverpage9", "Coverpage7", "Coverpage8", "Coverpage1azul", "Coverpage2", "Coverpage3", "Coverpage4", "Coverpage5", "Coverpage6");
+var nombres = new Array("Servicios","Salud","Regalos","Música","Educativo","Legal","Café","Deportes","Florerías","Metrópoli", "Nuevos negocios", "Pr&oacute;ximamente", "Otoño", "Vanguardia", "Portada azul", "Restaurantes", "Belleza", "Reposter&iacute;as", "Automotriz", "Taxistas"); /*Cambiar nombres*/
 var nombreDominio = "";
 var tipoDominio = "";
 var indice = 0;
