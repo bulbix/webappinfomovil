@@ -2,6 +2,7 @@
 	function PrintElem()
     {
 		
+		var oldstrInner = document.documentElement.innerHTML;
 		var oldstr = document.body.innerHTML;
 		$.blockUI.defaults.baseZ = 9000;
 		$.blockUI({
@@ -21,7 +22,7 @@
 			data : {nombrePromocion: nombrePromocion},
 		
 			success : function(data) {
-				document.body.innerHTML = data.elHtmlDePromocion;
+				document.documentElement.innerHTML = data.elHtmlDePromocion;
 				imprimirPromocion(data.elHtmlDePromocion);
 				
 			},
@@ -35,8 +36,9 @@
 				setTimeout(function () { window.print(); 
 				window.focus();
 				window.close();
+				document.documentElement.innerHTML = oldstrInner;
 			    $(document.body).html(oldstr);
-				$.unblockUI();}, 5000);
+				$.unblockUI();}, 2500);
 		};
 		
 			

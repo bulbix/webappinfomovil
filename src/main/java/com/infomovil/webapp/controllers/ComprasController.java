@@ -115,7 +115,6 @@ public class ComprasController
 	{
 		Map<String, String> resultMap = new HashMap<String, String>();
 		RespuestaVO wsRespuesta = new RespuestaVO();
-	
 		String elHtmlDePromocion = "";
 		
 		try
@@ -125,16 +124,15 @@ public class ComprasController
 			
 			if (!wsRespuesta.getResultado().equals("SIN_HASH"))
 			{
-				elHtmlDePromocion = IOUtils.toString(Util.getFileAmazon("promodev.mobileinfo.io", nombrePromocion));
-				
-				elHtmlDePromocion = elHtmlDePromocion.replaceAll("llaveMoviliza", wsRespuesta.getResultado());
 				
 	         	if(!Util.getProfile().equals("PROD"))
-	         	{
-	         		
+	         	{	
+	         		elHtmlDePromocion = IOUtils.toString(Util.getFileAmazon("promodev.mobileinfo.io", nombrePromocion));
 	         		elHtmlDePromocion = elHtmlDePromocion.replaceAll("promo.mobileinfo.io", "promodev.mobileinfo.io");
+	         	}else{
+	         		elHtmlDePromocion = IOUtils.toString(Util.getFileAmazon("promo.mobileinfo.io", nombrePromocion));	
 	         	}
-	         	
+	         	elHtmlDePromocion = elHtmlDePromocion.replaceAll("llaveMoviliza", wsRespuesta.getResultado());	
 	         	elHtmlDePromocion = new String(elHtmlDePromocion.getBytes("UTF-8"), "UTF-8");
 				resultMap.put("elHtmlDePromocion", elHtmlDePromocion);
 				logger.info("elHtmlDePromocion: " + elHtmlDePromocion);
