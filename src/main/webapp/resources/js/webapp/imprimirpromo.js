@@ -1,6 +1,7 @@
 
 	function PrintElem()
     {
+		
 		var oldstr = document.body.innerHTML;
 		$.blockUI.defaults.baseZ = 9000;
 		$.blockUI({
@@ -12,30 +13,17 @@
 				width: '400px'
 			}
 		});
-		
+		console.log("El valor enviado es: " + $("#tempNombrePromo").val() + '.html');
+		var nombrePromocion = $("#tempNombrePromo").val() + '.html';
 		$.ajax({
 			type : "POST",
-			
-		    dataType: 'json',
-		    headers: {"Access-Control-Allow-Origin": "*"},
 			url : contextPath + "/infomovil/getHTMLPromocion",
-			
-				
+			data : {nombrePromocion: nombrePromocion},
+		
 			success : function(data) {
-				var headstr = "<html><head><title></title></head><body>";
-		        var footstr = "</body>";
-				var cadena = data.elHtmlDePromocion;
-				var posicion = cadena.search("<body>");
-				var sinBody1 =  cadena.substring(posicion+6);
-				var posicion2 = sinBody1.search("</body>");
-				var sinBody2 = sinBody1.substring(0,posicion2);
-				console.log("Solo imprime contenido del body" + sinBody2);
+				document.body.innerHTML = data.elHtmlDePromocion;
+				imprimirPromocion(data.elHtmlDePromocion);
 				
-			    document.body.innerHTML = headstr+sinBody2+footstr;
-			    window.print();
-			    location.reload();
-			    $(document.body).html(oldstr);
-				$.unblockUI();
 			},
 			error : function(json) {
 				console.log("Error descError: " + data.descError);
@@ -43,7 +31,16 @@
 			}
 		});	
 		
-        
+		var imprimirPromocion = function(datahtml){
+				setTimeout(function () { window.print(); 
+				window.focus();
+				window.close();
+			    $(document.body).html(oldstr);
+				$.unblockUI();}, 5000);
+		};
+		
+			
+			
         
         return false;
     }

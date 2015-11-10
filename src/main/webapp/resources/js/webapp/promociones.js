@@ -13,20 +13,13 @@ var $btnCompartir = $("#btnCompartir");
 var $btnVerPromo = $("#btnVerPromo");
 var $btnEliminar = $("#btnEliminar");
 var $btnGuardar = $("#btnGuardar");
-<<<<<<< HEAD
-var templatesPromo = new Array("promo1-imp","promo5", "promo4", "promo1", "promo2", "promo3");
-var nombresPromo = new Array("Print","Floral", "Tecnología 2", "Bares", "Hipster", "Tecnología"); /*Cambiar nombres*/
-var plantillaPromo = "promo1";
-var indicePromocion = 0;
-var $btnImprimirPromo = $("#btnImprimirPromo");
-=======
-var templatesPromo = new Array("promo7","promo5", "promo4", "promo1", "promo2", "promo3"); //, "promo6");
+var templatesPromo = new Array("promo1-imp","promo5", "promo4", "promo7", "promo2", "promo3"); //, "promo6");
 var nombresPromo = new Array("Buen Fin","Floral", "Tecnología 2", "Bares", "Hipster", "Tecnología"); //, "ATT"); /*Cambiar nombres*/
 var plantillaPromo = "promo1";
 var indicePromocion = 0;
 var nombreSitio = "";
 var banderaCanal = "";
->>>>>>> origin/WebAppMovilizaTuSitio
+var $btnImprimirPromo = $("#btnImprimirPromo");
 
 $(function() {
 	$datepickerPromo.datepicker({ dateFormat: 'dd/mm/yy' });	
@@ -565,7 +558,7 @@ function guardarEventoGA(nombreEvento) {
 //		nombreSitio = templatesPromo[indicePromocion];
 	
 	console.log("guardarEventoGA: " + nombreEvento + ", nombreSitio: " + nombreSitio + ", banderaCanal: " + banderaCanal);
-	ga('send', 'event', 'promo', nombreEvento, nombreSitio, banderaCanal);
+//	ga('send', 'event', 'promo', nombreEvento, nombreSitio, banderaCanal);
 }
 
 function muestraTemplatePromo() {

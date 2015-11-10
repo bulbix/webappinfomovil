@@ -254,6 +254,10 @@ public class PromocionesController
 		return resultado;
 	}
 	
+	
+	
+	
+	
 	private ClientWsInfomovil wsCliente = new ClientWsInfomovil();
 	private static final Logger logger = Logger.getLogger(WebappController.class);
 }

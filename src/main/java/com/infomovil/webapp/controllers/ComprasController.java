@@ -2,12 +2,7 @@ package com.infomovil.webapp.controllers;
 
 import java.util.HashMap;
 import java.util.Map;
-
-<<<<<<< HEAD
-=======
 import javax.servlet.http.HttpServletRequest;
-
->>>>>>> origin/WebAppMovilizaTuSitio
 import org.apache.commons.lang3.StringEscapeUtils;
 import org.apache.log4j.Logger;
 import org.infomovil.segmentio.action.Tunnel;
@@ -99,7 +94,7 @@ public class ComprasController
 	@ResponseBody
 	public Map<String, String> enviarCorreoMoviliza(String hash) 
 	{
-		Map<String, String> resultMap = new HashMap<String, String>();
+		/*Map<String, String> resultMap = new HashMap<String, String>();
 		
 		String correo = Util.getUserLogged().getUsername();	
 		Tunnel tunnel = new Tunnel(AnalyticMailInterfaceCode.CUSTOMER_IO_DEV_INTERFACE);
@@ -107,15 +102,16 @@ public class ComprasController
 		domainDTO.setHashMoviliza(hash);
 		domainDTO.setEventName("event_MovilizaTuSitio");
 		tunnel.enviarCorreoMoviliza(domainDTO);
-		resultMap.put("envioCorreo", "Ok");
+		resultMap.put("envioCorreo", "Ok");*/
 		
-		return resultMap;	
+		return null;	
 	}
+	
 	
 	
 	@RequestMapping(value = "/infomovil/getHTMLPromocion", method = RequestMethod.POST, produces = "application/json")
 	@ResponseBody
-	public Map<String, String> getHTMLPromocion()
+	public Map<String, String> getHTMLPromocion(String nombrePromocion)
 	{
 		Map<String, String> resultMap = new HashMap<String, String>();
 		RespuestaVO wsRespuesta = new RespuestaVO();
@@ -129,7 +125,7 @@ public class ComprasController
 			
 			if (!wsRespuesta.getResultado().equals("SIN_HASH"))
 			{
-				elHtmlDePromocion = IOUtils.toString(Util.getFileAmazon("promodev.mobileinfo.io", "is_alx20.html"));
+				elHtmlDePromocion = IOUtils.toString(Util.getFileAmazon("promodev.mobileinfo.io", nombrePromocion));
 				
 				elHtmlDePromocion = elHtmlDePromocion.replaceAll("llaveMoviliza", wsRespuesta.getResultado());
 				
@@ -156,10 +152,7 @@ public class ComprasController
 		}	
 		
 		return resultMap;
-	}
-	
-	
-	
+	}  
 	
 	
 	

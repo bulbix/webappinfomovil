@@ -116,10 +116,7 @@ public class Util {
 		return result;
 		
 	}
-<<<<<<< HEAD
 	
-=======
-
 	public static String getNombreSitio(String sitioWeb)
 	{
 		String sitio = "";
@@ -140,7 +137,7 @@ public class Util {
 		
 		return sitio;
 	}
->>>>>>> origin/WebAppMovilizaTuSitio
+
 	public static final String KEY_AMAZON_S3 = "AKIAJFSG7G2SQDTWMMYA";
 	public static final String SECRET_AMAZON_S3 = "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";
 	private static final Logger logger = Logger.getLogger(Util.class);

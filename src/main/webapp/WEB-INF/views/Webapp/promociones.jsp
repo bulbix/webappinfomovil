@@ -135,8 +135,7 @@
 					<button type="button" class="btn btn-outlineGreen pull-right textWhite navEditorLato"  id="btnGuardar" style="margin: 5px 0 0 0;">
 					<img width="20" height="20" alt="Infomovil" src="<c:url value="/resources/webapp/images/successWhite.png"/>"/> 
 					<span class="hidden-xs">Guardar</span></button>		 
-					<button type="button" class="btn btn-outlineGreen pull-right textWhite navEditorLato" id="btnEliminar" style="margin: 5px 5px 0 0;"
-					onClick="ga('send', 'event', 'promo', 'promo-guardar', '${nombreSitio}', '${banderaCanal}');"">
+					<button type="button" class="btn btn-outlineGreen pull-right textWhite navEditorLato" id="btnEliminar" style="margin: 5px 5px 0 0;">
 						<img width="20" height="20" alt="Infomovil" src="<c:url value="/resources/webapp/images/trash.png"/>"/> 
 						<span class="hidden-xs">Eliminar</span>
 					</button> 
@@ -249,10 +248,11 @@
 		<script src="<c:url value="/resources/webapp/js/datepicker/jquery.ui.datepicker.js"/>"></script>
 		<script src="<c:url value="/resources/js/webapp/promociones.js"/>"></script>
 		<script type="text/javascript" src="<c:url value="/resources/js/webapp/imprimirpromo.js"/>"></script>
-		<script type="text/javascript" src="<c:url value="/resources/webapp/js/jspdf.js"/>"></script>
 		<input type="hidden" id="valRadio" value="${redeemOffer}"/>
 		<input type="hidden" id="tempPromocion" value="${templatePromo}">
-<%-- 		<h1>${nombreSitio} -- ${banderaCanal}</h1> --%>
+		<input type="hidden" id="tempNombrePromo" value="${nombreSitio}">
+		
+		<h1>${nombreSitio} -- ${banderaCanal}</h1>
 		<script>
 			$(document).ready(function(){
 				generarSliderPromo();
