@@ -19,10 +19,13 @@ var plantillaPromo = "promo1";
 var indicePromocion = 0;
 var nombreSitio = "";
 var banderaCanal = "";
-var $btnImprimirPromo = $("#btnImprimirPromo");
+var $btnVistaPreviaImprimirMovil = $("#btnImprimirPromoMovil");
 var $btnVistaPreviaImprimir = $("#btnImprimirPromo");
 var oldstrInner = "";
 var oldstr = "";
+var pathPDF =  "";
+var pathJPG = "";
+var $urlVPPromoImprimir = $("#urlVistaPreviaPromoImprimir");
 $(function() {
 	$datepickerPromo.datepicker({ dateFormat: 'dd/mm/yy' });	
 });
@@ -113,7 +116,9 @@ var $publicarPromocion = function() {
 			$divPublicarPromo.hide();
 			$divPromoPublicada.show();
 			$("#idPromocion").val(data.idOffer);
-			$("#urlPromocion").val(data.urlPromocion);			
+			$urlPromocion.val(data.urlPromocion);
+			$urlVPPromoImprimir.attr('src' , data.urlPromocion);
+			$("#urlPromo").val(data.urlPromocion);
 			nombreSitio = data.nombreSitio;
 			banderaCanal = data.banderaCanal;
 			guardarEventoGA('promo-publicar');
@@ -393,6 +398,10 @@ $(document).ready(function() {
 		$vistaPreviaImprimir();
 		
 	});
+	$btnVistaPreviaImprimirMovil.click(function(){
+		$vistaPreviaImprimir();
+		
+	});
 	
 	$btnCompartir.click(function() {
 		var url = $("#urlPromocion").val(); 
@@ -602,8 +611,12 @@ var imprimirPromocionWeb = function(){
 			
 		},
 		error : function(json) {
-			console.log("Error descError: " + data.descError);
 			$.unblockUI();
+			BootstrapDialog.show({
+				title: "<span class='textBlack' style='font-size:1.15em;'><img alt='' src='../resources/webapp/images/fa-warning-bk.png'  title='Alerta' />No se ha generado la impresión</span>",
+				message: '<div style="display:block; min-height:150px;"><p class="textBlack text-center" style="font-size:1.15em;">Por favor intentalo más tarde.</p><br/>'
+			});
+									
 		}
 	});	
 };
@@ -617,4 +630,22 @@ var imprimirPromocionEnPantalla = function(datahtml){
     $("#myModalPromoImprimir").modal();	
 	$.unblockUI();}, 2500);
 };
+
+var descargarPDF = function(){
+	console.log("Tengo lagunas mentales : dale!" + $("#urlVistaPreviaPromoImprimir").attr('src'));
+	pathPDF = $("#urlVistaPreviaPromoImprimir").attr('src');
+	pathPDF = pathPDF.replace("html", "pdf");
+	window.open(pathPDF, '_blank', 'fullscreen=yes'); return false;
+	
+};
+
+var descargarJPG = function(){
+	console.log("Tengo lagunas mentales ahora jpg" + $("#urlVistaPreviaPromoImprimir").attr('src'));
+	pathJPG = $("#urlVistaPreviaPromoImprimir").attr('src');
+	pathJPG = pathJPG.replace("html", "jpg");
+	window.open(pathJPG, '_blank', 'fullscreen=yes'); return false;
+	
+};
+
+
 

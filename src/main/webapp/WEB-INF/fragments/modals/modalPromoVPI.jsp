@@ -22,6 +22,18 @@
 						<span><img width="20" height="20" alt="Infomovil"	src="<c:url value="/resources/webapp/images/fa-print.png"/>"/> 
 						Imprimir</span>
 					</button>
+					<button type="button" class="hidden-md hidden-lg btn btn-outlineGreen pull-right textWhite navEditorLato"  id="btnGuardarPDFPromo" 
+						 style="margin: 5px 8px 0 0;" onClick="descargarPDF()">
+						<span><img width="20" height="20" alt="Infomovil"	src="<c:url value="/resources/webapp/images/fa-pdf.png"/>"/> </span>
+						<span class="hidden-xs">Guardar PDF</span>
+						
+					</button>
+					<button type="button" class="hidden-md hidden-lg btn btn-outlineGreen pull-right textWhite navEditorLato"  id="btnGuardarJPGPromo" 
+						 style="margin: 5px 8px 0 0;" onClick="descargarJPG()">
+						<span><img width="20" height="20" alt="Infomovil"	src="<c:url value="/resources/webapp/images/fa-pdf.png"/>"/> </span>
+						<span class="hidden-xs">Guardar Imagen</span>
+						
+					</button>
 	
 	</div>
 	
