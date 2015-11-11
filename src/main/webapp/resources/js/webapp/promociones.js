@@ -615,6 +615,6 @@ var imprimirPromocionEnPantalla = function(datahtml){
 	document.documentElement.innerHTML = oldstrInner;
     $(document.body).html(oldstr);
     $("#myModalPromoImprimir").modal();	
-	$.unblockUI();}, 4000);
+	$.unblockUI();}, 2500);
 };
 
