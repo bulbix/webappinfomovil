@@ -20,7 +20,9 @@ var indicePromocion = 0;
 var nombreSitio = "";
 var banderaCanal = "";
 var $btnImprimirPromo = $("#btnImprimirPromo");
-
+var $btnVistaPreviaImprimir = $("#btnImprimirPromo");
+var oldstrInner = "";
+var oldstr = "";
 $(function() {
 	$datepickerPromo.datepicker({ dateFormat: 'dd/mm/yy' });	
 });
@@ -387,6 +389,11 @@ $(document).ready(function() {
 		$vistaPrevia();
 	});
 	
+	$btnVistaPreviaImprimir.click(function(){
+		$vistaPreviaImprimir();
+		
+	});
+	
 	$btnCompartir.click(function() {
 		var url = $("#urlPromocion").val(); 
 		var lFace = "http://www.facebook.com/sharer/sharer.php?u=" + url + "&t=Checa%20esta%20promo%20"; 
@@ -426,9 +433,7 @@ $(document).ready(function() {
 
 	});
 	
-	$btnImprimirPromo.click(function(){
-		PrintElem();
-	});
+	
 				
 });
 
@@ -559,13 +564,57 @@ function guardarEventoGA(nombreEvento) {
 	
 	console.log("guardarEventoGA: " + nombreEvento + ", nombreSitio: " + nombreSitio + ", banderaCanal: " + banderaCanal);
 //	ga('send', 'event', 'promo', nombreEvento, nombreSitio, banderaCanal);
-}
+};
 
 function muestraTemplatePromo() {
 	$("#myModalTempPromo").modal();
-}
+};
 
 
+var $vistaPreviaImprimir = function() {
+	$("#myModalPromoImprimir").modal();	
+};
 
+var imprimirPromocionWeb = function(){	
+	oldstrInner = document.documentElement.innerHTML;
+	oldstr = document.body.innerHTML;
+	$.blockUI.defaults.baseZ = 9000;
+	$.blockUI({
+		message: "Generando código de impresión...",
+		css: {
+			class:"alertaUI",
+			top:  ($(window).height() - 400) /2 + 'px',
+			left: ($(window).width() - 400) /2 + 'px',
+			width: '400px'
+		}
+	});
+	console.log("El valor enviado es: " + $("#tempNombrePromo").val() + '.html');
+	var nombrePromocion = $("#tempNombrePromo").val() + '.html';
+	$.ajax({
+		type : "POST",
+		url : contextPath + "/infomovil/getHTMLPromocion",
+		data : {nombrePromocion: nombrePromocion},
+	
+		success : function(data) {
+			$("#myModalPromoImprimir").modal('toggle');
+			document.documentElement.innerHTML = data.elHtmlDePromocion;
+			imprimirPromocionEnPantalla(data.elHtmlDePromocion);
+			
+		},
+		error : function(json) {
+			console.log("Error descError: " + data.descError);
+			$.unblockUI();
+		}
+	});	
+};
 
+var imprimirPromocionEnPantalla = function(datahtml){
+	setTimeout(function () { window.print(); 
+	window.focus();
+	window.close();
+	document.documentElement.innerHTML = oldstrInner;
+    $(document.body).html(oldstr);
+    $("#myModalPromoImprimir").modal();	
+	$.unblockUI();}, 4000);
+};
 
