@@ -32,10 +32,11 @@ public class WsInfomovilDomainService extends Service {
          if (url == null) {
              try {
              	if(Util.getProfile().equals("DEV")){
-             		url = new URL("http://192.168.1.213:8080/WsInfomovil/wsInfomovildomain?wsdl");             		
+             		url = new URL("http://192.168.1.213:8081/WsInfomovil/wsInfomovildomain?wsdl");             		
              	}
              	else if(Util.getProfile().equals("QA")){
              		url = new URL("http://infodev.mobileinfo.io/WsInfomovil/wsInfomovildomain?wsdl");
+             		//url = new URL("http://qa.mobileinfo.io:8080/WsInfomovil/wsInfomovildomain?wsdl");
              	}
              	else if(Util.getProfile().equals("PROD")){
              		url = new URL("http://www.infomovil.com/WsInfomovil/wsInfomovildomain?wsdl");

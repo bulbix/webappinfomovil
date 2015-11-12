@@ -294,22 +294,19 @@ function getImagenesJQ() {
 										$li.append('<div class="col-xs-3 text-left" style="margin:-5px 0 0 0;" ><div class="img-thumbnail"><div style="max-height:38px; overflow:hidden"><img src="'
 													+ imgUrl
 													+ '" onerror="errorPreview(this)" class="ImgDinamica imgLista"/></div></div></div>');
-										$li.append('<div class="col-xs-9 reset"><input type="text" id="actualizarTexto'
-													+ idImg
-													+ '"  value="'
-													+ descImg
-													+ '" class="col-xs-5 col-sm-8" style="height:38px"/></input><div class="spaceBtnsMap"></div><button type="button" class="btn btn-purple" class="eliminarImagen" onClick="actualizarImagen('
-													+ idImg
-													+ ', '
-													+ "'"
-													+ imgUrl
-													+ "'"
-													+ ')"><img width="20" height="20" alt="Borrar" src="../resources/webapp/images/ico_actualizar.png" /></button><div class="spaceBtnsMap"></div><button type="button" class="btn btn-purple" class="eliminarImagen" id="'
-													+ idImg
-													+ '"onclick="borrarImagenJQ('
-													+ idImg
-													+ ')"><img width="20" height="20" alt="Borrar" src="../resources/webapp/images/trash.png" /></button><input type="hidden" id="IdImg" value="'
-													+ idImg + '"/></div></li>');
+										$li.append('<div class="col-xs-9 reset"><textarea rows="4" cols="50" maxlength="255" id="actualizarTexto' + idImg
+												+ '" class="col-xs-5 col-sm-8" style="height:38px"> ' + descImg +'</textarea><div class="spaceBtnsMap"></div><button type="button" class="btn btn-purple" class="eliminarImagen" onClick="actualizarImagen('
+												+ idImg
+												+ ', '
+												+ "'"
+												+ imgUrl
+												+ "'"
+												+ ')"><img width="20" height="20" alt="Borrar" src="../resources/webapp/images/ico_actualizar.png" /></button><div class="spaceBtnsMap"></div><button type="button" class="btn btn-purple" class="eliminarImagen" id="'
+												+ idImg
+												+ '"onclick="borrarImagenJQ('
+												+ idImg
+												+ ')"><img width="20" height="20" alt="Borrar" src="../resources/webapp/images/trash.png" /></button><input type="hidden" id="IdImg" value="'
+												+ idImg + '"/></div></li>');
 									$listaImg.append($li);
 								} else {
 									var $li = $('<li class="imagenDinamica" style="display:block;height:80px; width:100%; margin:10px 0;"/>')
@@ -675,6 +672,8 @@ function borrarImagenJQ(idImg) {
 }
 
 function actualizarImagen(idImg, imgUrl) {
+	
+	console.log("texto nuevo: " + $('#actualizarTexto' + idImg).val());
 	$.blockUI.defaults.baseZ = 9000;
 	$.blockUI({
 		message : "Actualizando imagen...",

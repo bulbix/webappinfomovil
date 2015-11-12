@@ -74,11 +74,9 @@ var $getPromociones = function() {
 	});	
 };
 
-
 var $publicarPromocion = function() {
 
 	var plantillaFinalPromo = $("#tempPromocion").val();
-	console.log("plantillaFinalPromo: " + plantillaFinalPromo);
 	
 	if (plantillaFinalPromo.trim().length > 0 && plantillaFinalPromo != null)
 		plantillaPromo = plantillaFinalPromo;
@@ -110,16 +108,15 @@ var $publicarPromocion = function() {
 			$divPublicarPromo.hide();
 			$divPromoPublicada.show();
 			$("#idPromocion").val(data.idOffer);
-			$("#urlPromocion").val(data.urlPromocion);			
+			$("#urlPromocion").val(data.urlPromocion);
+			$("#urlPromo").val(data.urlPromocion);
 			nombreSitio = data.nombreSitio;
 			banderaCanal = data.banderaCanal;
 			guardarEventoGA('promo-publicar');
-			console.log("nombreSitio: " + nombreSitio + ", banderaCanal: " + banderaCanal);
 			$.unblockUI();
 		},
 		error : function(json) {
 			$.unblockUI();
-			console.log("ocurrio un error!!");
 			BootstrapDialog.show({
 				title: "<span class='textBlack' style='font-size:1.15em;'><img alt='' src='../resources/webapp/images/fa-warning-bk.png'  title='Alerta' />No se ha publicado la Promoción</span>",
 				message: '<div style="display:block; min-height:150px;"><p class="textBlack text-center" style="font-size:1.15em;">Por favor intentalo más tarde.</p><br/>'
@@ -131,7 +128,6 @@ var $publicarPromocion = function() {
 var $guardarCambiosEnPromocion = function() {
 	
 	var plantillaFinalPromo = $("#tempPromocion").val();
-	console.log("plantillaFinalPromo: " + plantillaFinalPromo);
 	
 	if (plantillaFinalPromo.trim().length > 0 && plantillaFinalPromo != null)
 		plantillaPromo = plantillaFinalPromo;
@@ -167,9 +163,7 @@ var $guardarCambiosEnPromocion = function() {
 				$("#tempPromocion").val(data.templatePromo);
 				nombreSitio = data.nombreSitio;
 				banderaCanal = data.banderaCanal;
-				console.log("nombreSitio: " + nombreSitio + ", banderaCanal: " + banderaCanal);
 				guardarEventoGA('promo-guardar');
-				//console.log("template guardado: " + data.templatePromo);
 				$.unblockUI();
 			},
 			error : function(json) {
@@ -238,7 +232,6 @@ var $eliminarPromocion = function() {
 						 nombreSitio = data.nombreSitio;
 						 banderaCanal = data.banderaCanal;
 						 guardarEventoGA('promo-eliminar');
-						 console.log("nombreSitio: " + nombreSitio + ", banderaCanal: " + banderaCanal);
 						 $.unblockUI();
 					},
 					error : function(json) {
@@ -264,8 +257,6 @@ var $verPromocionActiva = function() {
 	
 	if ($urlPromo.trim().length > 0 && $urlPromo != null)
 		window.open($urlPromo, '_blank');
-	else
-		console.log("no hay url");
 };
 
 var $vistaPrevia = function() {
@@ -297,14 +288,12 @@ var $vistaPrevia = function() {
 			templatePromo: plantillaPromo
 		},
 			success : function(data) {
-			//	console.log("url vista previa: " + data.urlVistaPreviaPromo + '?vistaPrevia=1');
 				$("#urlVistaPreviaPromo").attr('src', data.urlVistaPreviaPromo + '?vistaPrevia=1');
 				$("#myModalPromo").modal();	
 				$.unblockUI();
 			},
 			error : function(json) {
 				$.unblockUI();
-				console.log("json::: " + json);
 				BootstrapDialog.show({
 					title: "<span class='textBlack' style='font-size:1.15em;'><img alt='' src='../resources/webapp/images/fa-warning-bk.png'  title='Alerta' />No se ha podido obtener la vista previa de la Promoción</span>",
 					message: '<div style="display:block; min-height:150px;"><p class="textBlack text-center" style="font-size:1.15em;">Por favor intentalo más tarde.</p><br/>'
@@ -369,7 +358,6 @@ $(document).ready(function() {
 		
 		if( $resultado == "datosCompletos")
 		{
-			console.log("datosCompletos");
 			$divError.css("display", "none");
 			$publicarPromocion();
 		}
@@ -377,7 +365,6 @@ $(document).ready(function() {
 		{
 			$divError.html("Falta llenar el campo " + $resultado);
 			$divError.css("display", "block");
-			console.log("Falta llenar el campo dfgfabfda" + $resultado);
 		}
 		
 	});
@@ -406,12 +393,10 @@ $(document).ready(function() {
 	});
 	
 	$btnEliminar.click(function() {
-		console.log("va a eliminar promocion");
 		$eliminarPromocion();
 	});
 	
 	$btnGuardar.click(function() {
-		console.log("Va a guardar los cambios");
 
 		$resultado = $validarCampos(); 
 		if( $resultado == "datosCompletos") {
@@ -481,11 +466,9 @@ function generarSliderPromo()
 function actualizaEstiloPromo() {
 
 	plantillaPromo = templatesPromo[indicePromocion];
-//	console.log("actualizaEstiloPromo indice: " + plantillaPromo);
 	
 	if ($('#btnVistaPrevia').is(':visible'))
 	{
-//		console.log("es vista previa");
 		$('#myModalTempPromo').modal('hide');
 		$("#tempPromocion").val(plantillaPromo);
 		$.blockUI.defaults.baseZ = 9000;
@@ -530,7 +513,6 @@ function actualizaEstiloPromo() {
 				success : function(data) {
 					$('#myModalTempPromo').modal('hide');
 					$("#tempPromocion").val(data.templatePromo);
-					console.log("plantilla elegida: " + data.templatePromo);
 					nombreSitio = data.nombreSitio;
 					banderaCanal = data.banderaCanal;
 					guardarEventoGA('promo-plantilla');
@@ -549,10 +531,6 @@ function actualizaEstiloPromo() {
 
 function guardarEventoGA(nombreEvento) {
 	
-//	if (nombreEvento == 'promo-plantilla')
-//		nombreSitio = templatesPromo[indicePromocion];
-	
-	console.log("guardarEventoGA: " + nombreEvento + ", nombreSitio: " + nombreSitio + ", banderaCanal: " + banderaCanal);
 	ga('send', 'event', 'promo', nombreEvento, nombreSitio, banderaCanal);
 }
 

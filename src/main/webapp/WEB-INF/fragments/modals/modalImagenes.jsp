@@ -30,15 +30,10 @@
 	
     	<button type="button" class="btn btn-blueFB pull-right btnsEditor col-xs-12 col-sm-5"  id="btnAlbumsDeFacebook" style="margin:5px 0;"><img width="20" height="20" alt="Infomovil" src="<c:url value="/resources/webapp/images/ico_facebook.png"/>" /> <span class="">Fotos de Facebook</span></button>
     	<button type="button" id="regresarDeFace" class="btn btn-purple pull-right" ><img width="20" height="20" alt="Infomovil" src="<c:url value="/resources/webapp/images/ico_back.png"/>" /> <span class="hidden-xs">Regresar</span></button>
-    	
 	
-
-	
-		
     	<div class="pull-right spaceBtnsMap"></div>
     	<button type="button" id="regresarDeFotos" class="btn btn-purple pull-right" style="margin:5px 0;"><img width="20" height="20" alt="Infomovil" src="<c:url value="/resources/webapp/images/ico_back.png"/>" /> <span class="hidden-xs">Regresar</span></button>
-	
-    	
+	   	
 	<button type="button" id="idRegresarAlbum" class="btn btn-purple pull-right" style="margin:5px 0;"><img width="20" height="20" alt="Infomovil" src="<c:url value="/resources/webapp/images/ico_back.png"/>" /> <span class="hidden-xs">Regresar</span></button>
 	<div class="pull-right spaceBtnsMap"></div>
 	<div class="pull-right spaceBtnsMap"></div>
@@ -68,7 +63,7 @@
    <div style="display: block; padding: 10px 0 0 0;"></div>
     	<div class="col-xs-12 col-sm-3 text-left"><img src=""  class="imgActualizar img-thumbnail" id="fotoDeGaleria" style="max-width:100px; max-height:100px;"/></div>
         <div class="col-xs-12 col-sm-9 navEditorSFl">
-        <label style="display:inline">Nombre: </label> <input type="text" value="" id="actualizarTextoFoto" style="display:inline" ></input>
+        <label style="display:inline">Nombre: </label> <textarea rows="2" cols="50" maxlength="255" id="actualizarTextoFoto" style="display:inline" ></textarea>
         </div>
     </div>
 </div>
