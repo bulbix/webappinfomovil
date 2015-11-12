@@ -257,6 +257,7 @@
 		<input type="hidden" id="valRadio" value="${redeemOffer}"/>
 		<input type="hidden" id="tempPromocion" value="${templatePromo}">
 		<input type="hidden" id="tempNombrePromo" value="${nombreSitio}">
+		<input type="hidden" id="tempBanderaPromo" value="${banderaCanal}">
 		
 		<h1>${nombreSitio} -- ${banderaCanal}</h1>
 		<script>

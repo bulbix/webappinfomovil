@@ -120,7 +120,10 @@ var $publicarPromocion = function() {
 			$urlVPPromoImprimir.attr('src' , data.urlPromocion);
 			$("#urlPromo").val(data.urlPromocion);
 			nombreSitio = data.nombreSitio;
-			banderaCanal = data.banderaCanal;
+			banderaCanal = data.banderaCanal; 
+			$("#tempNombrePromo").val(data.nombreSitio);
+			$("#tempBanderaPromo").val(data.banderaCanal);
+			
 			guardarEventoGA('promo-publicar');
 			console.log("nombreSitio: " + nombreSitio + ", banderaCanal: " + banderaCanal);
 			$.unblockUI();
@@ -572,7 +575,7 @@ function guardarEventoGA(nombreEvento) {
 //		nombreSitio = templatesPromo[indicePromocion];
 	
 	console.log("guardarEventoGA: " + nombreEvento + ", nombreSitio: " + nombreSitio + ", banderaCanal: " + banderaCanal);
-//	ga('send', 'event', 'promo', nombreEvento, nombreSitio, banderaCanal);
+	//ga('send', 'event', 'promo', nombreEvento, nombreSitio, banderaCanal);
 };
 
 function muestraTemplatePromo() {
@@ -629,21 +632,26 @@ var imprimirPromocionEnPantalla = function(datahtml){
     $(document.body).html(oldstr);
     $("#myModalPromoImprimir").modal();	
 	$.unblockUI();}, 2500);
+	console.log("Nombre del evento: mi Evento,   nombreSitio: " + $("#tempNombrePromo").val() + ", banderaCanal: " + $("#tempBanderaPromo").val());
+	ga('send', 'event', 'promo', imprimir, $("#tempNombrePromo").val(), $("#tempBanderaPromo").val());
 };
 
 var descargarPDF = function(){
-	console.log("Tengo lagunas mentales : dale!" + $("#urlVistaPreviaPromoImprimir").attr('src'));
+	
 	pathPDF = $("#urlVistaPreviaPromoImprimir").attr('src');
 	pathPDF = pathPDF.replace("html", "pdf");
 	window.open(pathPDF, '_blank', 'fullscreen=yes'); return false;
-	
+	console.log("guardarEventoGA: " + nombreEvento + ", nombreSitio: " + nombreSitio + ", banderaCanal: " + banderaCanal);
+	ga('send', 'event', 'promo', guardarPDF, $("#tempNombrePromo").val(), $("#tempBanderaPromo").val());
 };
 
 var descargarJPG = function(){
-	console.log("Tengo lagunas mentales ahora jpg" + $("#urlVistaPreviaPromoImprimir").attr('src'));
+	
 	pathJPG = $("#urlVistaPreviaPromoImprimir").attr('src');
 	pathJPG = pathJPG.replace("html", "jpg");
 	window.open(pathJPG, '_blank', 'fullscreen=yes'); return false;
+	console.log("guardarEventoGA: " + nombreEvento + ", nombreSitio: " + nombreSitio + ", banderaCanal: " + banderaCanal);
+	ga('send', 'event', 'promo', guardarJPG, $("#tempNombrePromo").val(), $("#tempBanderaPromo").val());
 	
 };
 
