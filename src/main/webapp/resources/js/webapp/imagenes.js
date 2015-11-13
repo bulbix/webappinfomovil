@@ -529,7 +529,7 @@ function uploadImage(imageDom, imageUrl, origin, textFoto) {
 							type : "POST",
 							url : contextPath + "/infomovil/guardarImagen",
 							dataType : "json",
-							timeout : 25000,
+							timeout : 60000,
 							contentType : "application/x-www-form-urlencoded",
 							data : {
 								baseImagen : binaryString,
@@ -572,8 +572,8 @@ function uploadImage(imageDom, imageUrl, origin, textFoto) {
 								if (t === "timeout") {
 									BootstrapDialog
 											.show({
-												title : "<span class='textBlack' style='font-size:1.15em;'><img alt='' src='../resources/webapp/images/fa-warning-bk.png'  title='Alerta' />Se agoto el tiempo de espera</span>",
-												message : '<div style="display:block; min-height:150px;"><p class="textBlack text-center" style="font-size:1.15em;">Por favor intentalo nuevamente.</p><br/>'
+												title : "<span class='textBlack' style='font-size:1.15em;'><img alt='' src='../resources/webapp/images/fa-warning-bk.png'  title='Alerta' />Tu imagen es muy grande para ser procesada. El límite es de 768x1024 px</span>",
+												message : '<div style="display:block; min-height:150px;"><p class="textBlack text-center" style="font-size:1.15em;">Por favor inténtalo nuevamente.</p><br/>'
 											});
 								} else {
 									BootstrapDialog
@@ -588,7 +588,7 @@ function uploadImage(imageDom, imageUrl, origin, textFoto) {
 								if (!weHaveSuccess) {
 									BootstrapDialog
 											.show({
-												title : "<span class='textBlack' style='font-size:1.15em;'><img alt='' src='../resources/webapp/images/fa-warning-bk.png'  title='Alerta' />Imagen demasiado grande</span>",
+												title : "<span class='textBlack' style='font-size:1.15em;'><img alt='' src='../resources/webapp/images/fa-warning-bk.png'  title='Alerta' />Tu imagen es muy grande para ser procesada</span>",
 												message : '<div style="display:block; min-height:150px;"><p class="textBlack text-center" style="font-size:1.15em;">La imagen ha superado el límite permitido. El límite es de 768x1024 px</p><br/>'
 											});
 								}
