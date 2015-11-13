@@ -75,6 +75,14 @@
 									Fotos <img width="20" height="20"
 									alt="Infomovil"
 									src="<c:url value="/resources/webapp/images/ico_img${ extensionImg }.png"/>" /></a></li>
+									
+							<li class="botonDesPublicar borderFin" id="btnContLi"
+								style="display: none;"><a href="/infomovil/misContactos" data-toggle="modal"
+								data-target="#myModalDescApp" class="smoothScroll ${colorTexto}">
+									Mis Contactos <img
+									width="20" height="20" alt="Infomovil"
+									src="<c:url value="/resources/webapp/images/ico_mas_cont${ extensionImg }.png"/>" /> </a></li>
+									
 							<li class="botonDesPublicar borderFin" id="btnContLi"
 								style="display: none;"><a href="#" data-toggle="modal"
 								data-target="#myModalDescApp" class="smoothScroll ${colorTexto}">
