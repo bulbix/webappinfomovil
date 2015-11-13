@@ -32,7 +32,7 @@ import javax.xml.bind.annotation.XmlType;
 })
 public class InsertKeyWordDataResponse {
 
-    @XmlElement(name = "DominioVO", namespace = "http://ws.webservice.infomovil.org/")
+    @XmlElement(name = "DominioVO")
     protected DominioVO dominioVO;
 
     /**

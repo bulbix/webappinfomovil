@@ -34,7 +34,7 @@ import javax.xml.bind.annotation.XmlType;
 })
 public class GetNumVisitasResponse {
 
-    @XmlElement(name = "VisitasVO", namespace = "http://ws.webservice.infomovil.org/")
+    @XmlElement(name = "VisitasVO")
     protected List<VisitasVO> visitasVO;
 
     /**

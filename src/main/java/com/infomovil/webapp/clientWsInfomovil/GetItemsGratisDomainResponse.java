@@ -34,7 +34,7 @@ import javax.xml.bind.annotation.XmlType;
 })
 public class GetItemsGratisDomainResponse {
 
-    @XmlElement(name = "StatusDomainVO", namespace = "http://ws.webservice.infomovil.org/")
+    @XmlElement(name = "StatusDomainVO")
     protected List<StatusDomainVO> statusDomainVO;
 
     /**

@@ -20,6 +20,7 @@ import javax.xml.bind.annotation.XmlType;
  *         &lt;element name="baseImagen" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="tipoImagen" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="descImagen" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *         &lt;element name="rotacion" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -140,12 +141,28 @@ public class CrearSitioInsertImage {
         this.descImagen = value;
     }
 
-	public String getRotacion() {
-		return rotacion;
-	}
+    /**
+     * Obtiene el valor de la propiedad rotacion.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getRotacion() {
+        return rotacion;
+    }
 
-	public void setRotacion(String rotacion) {
-		this.rotacion = rotacion;
-	}
+    /**
+     * Define el valor de la propiedad rotacion.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setRotacion(String value) {
+        this.rotacion = value;
+    }
 
 }

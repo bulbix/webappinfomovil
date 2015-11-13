@@ -26,6 +26,7 @@ import javax.xml.bind.annotation.XmlType;
  *         &lt;element name="titulo" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="base64Imagen" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="idPromocion" type="{http://www.w3.org/2001/XMLSchema}int" minOccurs="0"/>
+ *         &lt;element name="template" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -61,15 +62,7 @@ public class CrearSitioGuardarPromocion {
     protected Integer idPromocion;
     protected String template;
 
-    public String getTemplate() {
-		return template;
-	}
-
-	public void setTemplate(String template) {
-		this.template = template;
-	}
-
-	/**
+    /**
      * Obtiene el valor de la propiedad email.
      * 
      * @return
@@ -283,6 +276,30 @@ public class CrearSitioGuardarPromocion {
      */
     public void setIdPromocion(Integer value) {
         this.idPromocion = value;
+    }
+
+    /**
+     * Obtiene el valor de la propiedad template.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getTemplate() {
+        return template;
+    }
+
+    /**
+     * Define el valor de la propiedad template.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setTemplate(String value) {
+        this.template = value;
     }
 
 }

@@ -36,7 +36,7 @@ import javax.xml.bind.annotation.XmlType;
 })
 public class UpdateTextRecord {
 
-    @XmlElement(name = "DomainVO", namespace = "http://ws.webservice.infomovil.org/")
+    @XmlElement(name = "DomainVO")
     protected DomainVO domainVO;
     protected String idDomain;
     protected String token;
