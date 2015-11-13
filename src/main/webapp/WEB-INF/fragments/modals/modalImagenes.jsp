@@ -63,7 +63,7 @@
    <div style="display: block; padding: 10px 0 0 0;"></div>
     	<div class="col-xs-12 col-sm-3 text-left"><img src=""  class="imgActualizar img-thumbnail" id="fotoDeGaleria" style="max-width:100px; max-height:100px;"/></div>
         <div class="col-xs-12 col-sm-9 navEditorSFl">
-        <label style="display:inline">Nombre: </label> <textarea rows="2" cols="50" maxlength="255" id="actualizarTextoFoto" style="display:inline" ></textarea>
+        <label style="display:block">Nombre: </label> <textarea rows="4" cols="50" maxlength="255" id="actualizarTextoFoto" style="display:inline" ></textarea>
         </div>
     </div>
 </div>
@@ -88,7 +88,9 @@
             <div class="col-xs-12 col-sm-3 text-left"><img src="" style="max-width:130px; max-height:150px; margin: 0 0 10px 0" id="imgVistaPrevia" class="img-thumbnail"/></div>
            <div class="col-xs-12 col-sm-9">
             
-            	<label style="display:inline">Nombre: </label> <input type="text" name="fname" id="nombreDeImgn" maxlength="50"></input> 
+            	<label style="display:block">Nombre: </label> <textarea rows="4" cols="50" maxlength="255" style="display:inline" name="fname" id="nombreDeImgn" ></textarea>
+            	
+            	
           
             </div>
         </div><!--Fin del div tercero -->
