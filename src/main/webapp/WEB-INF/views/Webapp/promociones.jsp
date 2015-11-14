@@ -78,7 +78,7 @@
 	<div class="container">
 	
 	<div class="col-xs-12 col-sm-6 hidden-xs"><h3 class="text-left textWhite navEditor" style="font-weight: 300;">Mis
-				Promociones</h3></div>
+				Volantes</h3></div>
 		<div class="col-xs-12 col-sm-6">
 			<div class="col-xs-12 reset text-right pull-right navEditor">
 				<span id="muestraNombreUsuario">
