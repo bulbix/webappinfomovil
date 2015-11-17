@@ -37,6 +37,7 @@ import javax.xml.bind.annotation.XmlType;
  *         &lt;element name="idPago" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="downgrade" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="urlPromocion" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *         &lt;element name="keyword" type="{http://ws.webservice.infomovil.org/}keywordVO" minOccurs="0"/>
  *         &lt;element name="listProductoUsuarioVO" type="{http://ws.webservice.infomovil.org/}productoUsuarioVO" maxOccurs="unbounded" minOccurs="0"/>
  *         &lt;element name="listStatusDomainVO" type="{http://ws.webservice.infomovil.org/}statusDomainVO" maxOccurs="unbounded" minOccurs="0"/>
  *         &lt;element name="listUsuarioDominiosVO" type="{http://ws.webservice.infomovil.org/}usuarioDominiosVO" maxOccurs="unbounded" minOccurs="0"/>
@@ -44,6 +45,8 @@ import javax.xml.bind.annotation.XmlType;
  *         &lt;element name="listImagenVO" type="{http://ws.webservice.infomovil.org/}imagenVO" maxOccurs="unbounded" minOccurs="0"/>
  *         &lt;element name="listStatusDomainGratisVO" type="{http://ws.webservice.infomovil.org/}statusDomainVO" maxOccurs="unbounded" minOccurs="0"/>
  *         &lt;element name="listPromocion" type="{http://ws.webservice.infomovil.org/}offertRecordVO" maxOccurs="unbounded" minOccurs="0"/>
+ *         &lt;element name="listContactos" type="{http://ws.webservice.infomovil.org/}recordNaptrVO" maxOccurs="unbounded" minOccurs="0"/>
+ *         &lt;element name="listHorarios" type="{http://ws.webservice.infomovil.org/}horarioVO" maxOccurs="unbounded" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -73,13 +76,16 @@ import javax.xml.bind.annotation.XmlType;
     "idPago",
     "downgrade",
     "urlPromocion",
+    "keyword",
     "listProductoUsuarioVO",
     "listStatusDomainVO",
     "listUsuarioDominiosVO",
     "dominioCreaSitio",
     "listImagenVO",
     "listStatusDomainGratisVO",
-    "listPromocion"
+    "listPromocion",
+    "listContactos",
+    "listHorarios"
 })
 public class RespuestaVO {
 
@@ -102,6 +108,7 @@ public class RespuestaVO {
     protected String idPago;
     protected String downgrade;
     protected String urlPromocion;
+    protected KeywordVO keyword;
     protected List<ProductoUsuarioVO> listProductoUsuarioVO;
     protected List<StatusDomainVO> listStatusDomainVO;
     protected List<UsuarioDominiosVO> listUsuarioDominiosVO;
@@ -109,6 +116,8 @@ public class RespuestaVO {
     protected List<ImagenVO> listImagenVO;
     protected List<StatusDomainVO> listStatusDomainGratisVO;
     protected List<OffertRecordVO> listPromocion;
+    protected List<RecordNaptrVO> listContactos;
+    protected List<HorarioVO> listHorarios;
 
     /**
      * Obtiene el valor de la propiedad resultado.
@@ -567,6 +576,30 @@ public class RespuestaVO {
     }
 
     /**
+     * Obtiene el valor de la propiedad keyword.
+     * 
+     * @return
+     *     possible object is
+     *     {@link KeywordVO }
+     *     
+     */
+    public KeywordVO getKeyword() {
+        return keyword;
+    }
+
+    /**
+     * Define el valor de la propiedad keyword.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link KeywordVO }
+     *     
+     */
+    public void setKeyword(KeywordVO value) {
+        this.keyword = value;
+    }
+
+    /**
      * Gets the value of the listProductoUsuarioVO property.
      * 
      * <p>
@@ -762,6 +795,64 @@ public class RespuestaVO {
             listPromocion = new ArrayList<OffertRecordVO>();
         }
         return this.listPromocion;
+    }
+
+    /**
+     * Gets the value of the listContactos property.
+     * 
+     * <p>
+     * This accessor method returns a reference to the live list,
+     * not a snapshot. Therefore any modification you make to the
+     * returned list will be present inside the JAXB object.
+     * This is why there is not a <CODE>set</CODE> method for the listContactos property.
+     * 
+     * <p>
+     * For example, to add a new item, do as follows:
+     * <pre>
+     *    getListContactos().add(newItem);
+     * </pre>
+     * 
+     * 
+     * <p>
+     * Objects of the following type(s) are allowed in the list
+     * {@link RecordNaptrVO }
+     * 
+     * 
+     */
+    public List<RecordNaptrVO> getListContactos() {
+        if (listContactos == null) {
+            listContactos = new ArrayList<RecordNaptrVO>();
+        }
+        return this.listContactos;
+    }
+
+    /**
+     * Gets the value of the listHorarios property.
+     * 
+     * <p>
+     * This accessor method returns a reference to the live list,
+     * not a snapshot. Therefore any modification you make to the
+     * returned list will be present inside the JAXB object.
+     * This is why there is not a <CODE>set</CODE> method for the listHorarios property.
+     * 
+     * <p>
+     * For example, to add a new item, do as follows:
+     * <pre>
+     *    getListHorarios().add(newItem);
+     * </pre>
+     * 
+     * 
+     * <p>
+     * Objects of the following type(s) are allowed in the list
+     * {@link HorarioVO }
+     * 
+     * 
+     */
+    public List<HorarioVO> getListHorarios() {
+        if (listHorarios == null) {
+            listHorarios = new ArrayList<HorarioVO>();
+        }
+        return this.listHorarios;
     }
 
 }

@@ -8,16 +8,16 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Clase Java para insertUserCam complex type.
+ * <p>Clase Java para crearSitio_guardarContactoResponse complex type.
  * 
  * <p>El siguiente fragmento de esquema especifica el contenido que se espera que haya en esta clase.
  * 
  * <pre>
- * &lt;complexType name="insertUserCam">
+ * &lt;complexType name="crearSitio_guardarContactoResponse">
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element ref="{http://ws.webservice.infomovil.org/}UserDomainVO" minOccurs="0"/>
+ *         &lt;element ref="{http://ws.webservice.infomovil.org/}RespuestaVO" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -27,36 +27,36 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "insertUserCam", propOrder = {
-    "userDomainVO"
+@XmlType(name = "crearSitio_guardarContactoResponse", propOrder = {
+    "respuestaVO"
 })
-public class InsertUserCam {
+public class CrearSitioGuardarContactoResponse {
 
-    @XmlElement(name = "UserDomainVO")
-    protected UserDomainVO userDomainVO;
+    @XmlElement(name = "RespuestaVO")
+    protected RespuestaVO respuestaVO;
 
     /**
-     * Obtiene el valor de la propiedad userDomainVO.
+     * Obtiene el valor de la propiedad respuestaVO.
      * 
      * @return
      *     possible object is
-     *     {@link UserDomainVO }
+     *     {@link RespuestaVO }
      *     
      */
-    public UserDomainVO getUserDomainVO() {
-        return userDomainVO;
+    public RespuestaVO getRespuestaVO() {
+        return respuestaVO;
     }
 
     /**
-     * Define el valor de la propiedad userDomainVO.
+     * Define el valor de la propiedad respuestaVO.
      * 
      * @param value
      *     allowed object is
-     *     {@link UserDomainVO }
+     *     {@link RespuestaVO }
      *     
      */
-    public void setUserDomainVO(UserDomainVO value) {
-        this.userDomainVO = value;
+    public void setRespuestaVO(RespuestaVO value) {
+        this.respuestaVO = value;
     }
 
 }

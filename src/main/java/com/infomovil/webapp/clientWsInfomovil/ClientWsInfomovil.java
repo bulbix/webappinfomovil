@@ -7,6 +7,7 @@ import javax.xml.namespace.QName;
 
 import org.apache.log4j.Logger;
 
+
 public class ClientWsInfomovil {
 
 	private static final Logger log = Logger.getLogger(ClientWsInfomovil.class);
@@ -298,4 +299,71 @@ public class ClientWsInfomovil {
 		return _crearSitioPrevisualizarPromocion__return.respuestaVO;
 	}	
 	
+	public RespuestaVO crearSitioGuardarContacto(String email, String password, RecordNaptrVO contacto){
+		log.info("Invoking crearSitioGuardarContacto...");
+		com.infomovil.webapp.clientWsInfomovil.CrearSitioGuardarContacto _crearSitioGuardarContacto_parameters = new CrearSitioGuardarContacto();
+		_crearSitioGuardarContacto_parameters.email = email;
+		_crearSitioGuardarContacto_parameters.password = password;
+		_crearSitioGuardarContacto_parameters.contacto = contacto;
+		com.infomovil.webapp.clientWsInfomovil.CrearSitioGuardarContactoResponse _crearSitioGuardarContacto__return = port.crearSitioGuardarContacto(_crearSitioGuardarContacto_parameters);
+		log.info("crearSitioGuardarContacto.result=" + _crearSitioGuardarContacto__return);
+		return _crearSitioGuardarContacto__return.respuestaVO;
+	}
+	
+	public RespuestaVO crearSitioOrdenarImagenesContactos(String email, String password, String xml, String tipo){
+		log.info("Invoking crearSitioOrdenarImagenesContactos...");
+		com.infomovil.webapp.clientWsInfomovil.CrearSitioOrdenarImagenesContactos _crearSitioOrdenarImagenesContactos_parameters = new CrearSitioOrdenarImagenesContactos();
+		_crearSitioOrdenarImagenesContactos_parameters.email = email;
+		_crearSitioOrdenarImagenesContactos_parameters.password = password;
+		_crearSitioOrdenarImagenesContactos_parameters.xml = xml;
+		_crearSitioOrdenarImagenesContactos_parameters.tipo = tipo;
+		com.infomovil.webapp.clientWsInfomovil.CrearSitioOrdenarImagenesContactosResponse _crearSitioOrdenarImagenesContactos__return = port.crearSitioOrdenarImagenesContactos(_crearSitioOrdenarImagenesContactos_parameters);
+		log.info("crearSitioOrdenarImagenesContactos.result=" + _crearSitioOrdenarImagenesContactos__return);
+		return _crearSitioOrdenarImagenesContactos__return.respuestaVO;
+	}
+	
+	public RespuestaVO crearSitioGetContactos(String email, String password){
+		log.info("Invoking crearSitioGetContactos...");
+		com.infomovil.webapp.clientWsInfomovil.CrearSitioGetContactos _crearSitioGetContactos_parameters = new CrearSitioGetContactos();
+		_crearSitioGetContactos_parameters.email = email;
+		_crearSitioGetContactos_parameters.password = password;
+		com.infomovil.webapp.clientWsInfomovil.CrearSitioGetContactosResponse _crearSitioGetContactos__return = port.crearSitioGetContactos(_crearSitioGetContactos_parameters);
+		log.info("crearSitioGetContactos.result=" + _crearSitioGetContactos__return);
+		return _crearSitioGetContactos__return.respuestaVO;
+	}
+	
+	public RespuestaVO crearSitioGuardarPerfil(String email, String password, KeywordVO perfil){
+		log.info("Invoking crearSitioGuardarPerfil...");
+		com.infomovil.webapp.clientWsInfomovil.CrearSitioGuardarPerfil _crearSitioGuardarPerfil_parameters = new CrearSitioGuardarPerfil();
+		_crearSitioGuardarPerfil_parameters.email = email;
+		_crearSitioGuardarPerfil_parameters.password = password;
+		_crearSitioGuardarPerfil_parameters.perfil = perfil;
+		com.infomovil.webapp.clientWsInfomovil.CrearSitioGuardarPerfilResponse _crearSitioGuardarPerfil__return = port.crearSitioGuardarPerfil(_crearSitioGuardarPerfil_parameters);
+		log.info("crearSitioGuardarPerfil.result=" + _crearSitioGuardarPerfil__return);
+		return _crearSitioGuardarPerfil__return.respuestaVO;
+	}
+	
+	public RespuestaVO crearSitioGetHorarios(String email, String password){
+		log.info("Invoking crearSitioGetHorarios...");
+		com.infomovil.webapp.clientWsInfomovil.CrearSitioGetHorarios _crearSitioGetHorarios_parameters = new CrearSitioGetHorarios();
+		_crearSitioGetHorarios_parameters.email = email;
+		_crearSitioGetHorarios_parameters.password = password;
+		com.infomovil.webapp.clientWsInfomovil.CrearSitioGetHorariosResponse _crearSitioGetHorarios__return = port.crearSitioGetHorarios(_crearSitioGetHorarios_parameters);
+		log.info("crearSitioGetHorarios.result=" + _crearSitioGetHorarios__return);
+		return _crearSitioGetHorarios__return.respuestaVO;
+	}
+	
+	public RespuestaVO crearSitioHorarios(String email, String password, KeywordVO keyword , List<HorarioVO> horarios, String operacion){
+		log.info("Invoking crearSitioHorarios...");
+		com.infomovil.webapp.clientWsInfomovil.CrearSitioHorarios _crearSitioHorarios_parameters = new CrearSitioHorarios();
+		_crearSitioHorarios_parameters.email = email;
+		_crearSitioHorarios_parameters.password = password;
+		_crearSitioHorarios_parameters.keyword = keyword;
+		_crearSitioHorarios_parameters.horarios = horarios;
+		_crearSitioHorarios_parameters.operacion = operacion;
+		com.infomovil.webapp.clientWsInfomovil.CrearSitioHorariosResponse _crearSitioHorarios__return = port.crearSitioHorarios(_crearSitioHorarios_parameters);
+		log.info("crearSitioHorarios.result=" + _crearSitioHorarios__return);
+		return _crearSitioHorarios__return.respuestaVO;
+	}
+		
 }

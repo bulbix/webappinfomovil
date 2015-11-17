@@ -2,9 +2,12 @@ package com.infomovil.webapp.clientWsInfomovil;
 
 import static org.junit.Assert.*;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import org.apache.commons.collections4.Closure;
+import org.apache.commons.collections4.CollectionUtils;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -205,7 +208,92 @@ public class ClientWsInfomovilTest {
 	}
 	
 	
+	//Prueba de contactos horarios y perfiles
 	
+	
+	@Test
+	public void testCrearSitioGuardarContacto() {
+		RecordNaptrVO contacto = new RecordNaptrVO();
+		contacto.setClaveContacto("");
+		contacto.setLongLabelNaptr("");
+		contacto.setRegExp("!^.*$!mailto:" + "roni@mail.com!");
+		//contacto.setRegExp("");
+		contacto.setServicesNaptr("E2U+email:mailto");
+		contacto.setSubCategory("");
+		contacto.setVisible("1");
+		clientWsInfomovil.crearSitioGuardarContacto("docker6@mail.com", "garbage1", contacto);
+		
+	}
+	
+	@Test
+	public void testCrearSitioOrdenarImagenesContactos() {
+		String xml = "<l><f><i>6208</i><p>0</p></f><f><i>6692</i><p>1</p></f></l>";
+		RespuestaVO resp = clientWsInfomovil.crearSitioOrdenarImagenesContactos("docker6@mail.com", "garbage1", xml, "CONTACTO");
+		System.out.println(resp.getCodeError());
+	}
+	
+	@Test
+	public void testCrearSitioGetContactos() {
+		RespuestaVO resp = clientWsInfomovil.crearSitioGetContactos("docker6@mail.com", "garbage1");
+		assertTrue(resp.getListContactos().size() > 0);
+		System.out.println("Lista Contactos: " + resp.getListContactos().size());
+		CollectionUtils.forAllDo(resp.getListContactos(), new Closure<RecordNaptrVO>(){
+
+			@Override
+			public void execute(RecordNaptrVO input) {
+				System.out.println(input.getClaveContacto() + "--" +  input.getRegExp() + "--" + input.getPreference());
+				
+			}
+			
+		});
+	}
+	
+	static List<HorarioVO> listaHorarios = new ArrayList<HorarioVO>();
+	
+	static{
+	listaHorarios.add(new HorarioVO("Lun", "01:00", "09:00"));
+	listaHorarios.add(new HorarioVO("Mar", "02:00", "09:00"));
+	listaHorarios.add(new HorarioVO("Mié", "03:00", "09:00"));
+	listaHorarios.add(new HorarioVO("Jue", "04:00", "09:00"));
+	listaHorarios.add(new HorarioVO("Vie", "00:00", "00:00"));
+	listaHorarios.add(new HorarioVO("Sáb", "00:00", "08:00"));
+	listaHorarios.add(new HorarioVO("Dom", "00:00", "00:00"));
+	}
+	
+	@Test
+	public void testCrearSitioGetHorarios() {
+		RespuestaVO resp = clientWsInfomovil.crearSitioGetHorarios("docker@mail.com", "garbage1");
+		System.out.println(resp.getCodeError());
+		assertTrue(resp.getListHorarios().size() > 0);
+		System.out.println(resp.getListHorarios());
+		System.out.println(resp.getKeyword());
+	}
+	
+	
+	@Test
+	public void testCrearSitioInsertHorarios() {
+		RespuestaVO resp = clientWsInfomovil.crearSitioHorarios("docker@mail.com", "garbage1",
+				new KeywordVO(),listaHorarios,"insert");
+		System.out.println(resp.getCodeError());
+	}
+	
+	@Test
+	public void testCrearSitioUpdateHorarios() {
+		RespuestaVO respConsulta = clientWsInfomovil.crearSitioGetHorarios("docker@mail.com", "garbage1");
+		
+		RespuestaVO resp = clientWsInfomovil.
+		crearSitioHorarios("docker@mail.com", "garbage1", respConsulta.getKeyword() ,listaHorarios, "update");
+		System.out.println(resp.getCodeError());
+	}
+	
+	@Test
+	public void testCrearSitioDeleteHorarios() {
+		RespuestaVO respConsulta = clientWsInfomovil.crearSitioGetHorarios("docker@mail.com", "garbage1");
+		
+		RespuestaVO resp = clientWsInfomovil.
+		crearSitioHorarios("docker@mail.com", "garbage1", respConsulta.getKeyword(),listaHorarios,"delete");
+		System.out.println(resp.getCodeError());
+	}
 	
 	
 }

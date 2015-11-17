@@ -38,7 +38,7 @@ import javax.xml.bind.annotation.XmlType;
 })
 public class InsertKeyWordData {
 
-    @XmlElement(name = "KeywordVO", namespace = "http://ws.webservice.infomovil.org/")
+    @XmlElement(name = "KeywordVO")
     protected List<KeywordVO> keywordVO;
     protected String domainId;
     protected String token;

@@ -32,7 +32,7 @@ import javax.xml.bind.annotation.XmlType;
 })
 public class InsertUserDomain1 {
 
-    @XmlElement(name = "UserDomainVO", namespace = "http://ws.webservice.infomovil.org/")
+    @XmlElement(name = "UserDomainVO")
     protected UserDomainVO userDomainVO;
 
     /**

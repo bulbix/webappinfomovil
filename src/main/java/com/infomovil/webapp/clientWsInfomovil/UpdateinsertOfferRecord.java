@@ -37,7 +37,7 @@ import javax.xml.bind.annotation.XmlType;
 public class UpdateinsertOfferRecord {
 
     protected String domainid;
-    @XmlElement(name = "OffertRecordVO", namespace = "http://ws.webservice.infomovil.org/")
+    @XmlElement(name = "OffertRecordVO")
     protected OffertRecordVO offertRecordVO;
     protected String token;
 

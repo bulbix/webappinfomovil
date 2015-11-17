@@ -28,6 +28,9 @@ import javax.xml.bind.annotation.XmlType;
  *         &lt;element name="idOffer" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="urlImage" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="urlSitio" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *         &lt;element name="urlPromocion" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *         &lt;element name="template" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *         &lt;element name="dominioCreaSitio" type="{http://ws.webservice.infomovil.org/}dominioCreaSitio" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -51,7 +54,8 @@ import javax.xml.bind.annotation.XmlType;
     "urlImage",
     "urlSitio",
     "urlPromocion",
-    "template"
+    "template",
+    "dominioCreaSitio"
 })
 public class OffertRecordVO {
 
@@ -69,24 +73,9 @@ public class OffertRecordVO {
     protected String urlSitio;
     protected String urlPromocion;
     protected String template;
-    
-    public String getTemplate() {
-		return template;
-	}
+    protected DominioCreaSitio dominioCreaSitio;
 
-	public void setTemplate(String template) {
-		this.template = template;
-	}
-
-	public String getUrlPromocion() {
-		return urlPromocion;
-	}
-
-	public void setUrlPromocion(String urlPromocion) {
-		this.urlPromocion = urlPromocion;
-	}
-
-	/**
+    /**
      * Obtiene el valor de la propiedad titleOffer.
      * 
      * @return
@@ -372,6 +361,78 @@ public class OffertRecordVO {
      */
     public void setUrlSitio(String value) {
         this.urlSitio = value;
+    }
+
+    /**
+     * Obtiene el valor de la propiedad urlPromocion.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getUrlPromocion() {
+        return urlPromocion;
+    }
+
+    /**
+     * Define el valor de la propiedad urlPromocion.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setUrlPromocion(String value) {
+        this.urlPromocion = value;
+    }
+
+    /**
+     * Obtiene el valor de la propiedad template.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getTemplate() {
+        return template;
+    }
+
+    /**
+     * Define el valor de la propiedad template.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setTemplate(String value) {
+        this.template = value;
+    }
+
+    /**
+     * Obtiene el valor de la propiedad dominioCreaSitio.
+     * 
+     * @return
+     *     possible object is
+     *     {@link DominioCreaSitio }
+     *     
+     */
+    public DominioCreaSitio getDominioCreaSitio() {
+        return dominioCreaSitio;
+    }
+
+    /**
+     * Define el valor de la propiedad dominioCreaSitio.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link DominioCreaSitio }
+     *     
+     */
+    public void setDominioCreaSitio(DominioCreaSitio value) {
+        this.dominioCreaSitio = value;
     }
 
 }
