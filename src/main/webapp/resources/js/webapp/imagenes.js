@@ -525,11 +525,18 @@ function uploadImage(imageDom, imageUrl, origin, textFoto) {
 						/^data:image\/(png|jpeg|jpg);base64,/, "");
 				var weHaveSuccess = false;
 				console.log("Los grados son : " + GRADOS);
+				if(binaryString.lenght > 0){
+					BootstrapDialog
+					.show({
+						title : "<span class='textBlack' style='font-size:1.15em;'><img alt='' src='../resources/webapp/images/fa-warning-bk.png'  title='Alerta' />Imagen demasiado grande</span>",
+						message : '<div style="display:block; min-height:150px;"><p class="textBlack text-center" style="font-size:1.15em;">La imagen ha superado el límite permitido. El límite es de 768x1024 px</p><br/>'
+					});
+				}else{
 					$.ajax({
 							type : "POST",
 							url : contextPath + "/infomovil/guardarImagen",
 							dataType : "json",
-							timeout : 25000,
+							timeout : 60000,
 							contentType : "application/x-www-form-urlencoded",
 							data : {
 								baseImagen : binaryString,
@@ -595,8 +602,9 @@ function uploadImage(imageDom, imageUrl, origin, textFoto) {
 							}
 
 						});
-
+				}
 			});
+			
 
 }
 
