@@ -71,13 +71,12 @@
 									src="<c:url value="/resources/webapp/images/ico_ppp_youtube${ extensionImg }.png"/>" /></a></li>
 							<li class="botonDesPublicar" id="btnImgLi" style="display: none;"><a
 								href="#" class="smoothScroll ${colorTexto}"
-								onclick="getImagenesJQ()">
-									Fotos <img width="20" height="20"
+								onclick="getImagenesJQ()">Fotos<img width="20" height="20"
 									alt="Infomovil"
 									src="<c:url value="/resources/webapp/images/ico_img${ extensionImg }.png"/>" /></a></li>
 									
 							<li class="botonDesPublicar borderFin" id="btnContLi"
-								style="display: none;"><a href="/infomovil/misContactos"  class="smoothScroll ${colorTexto}">
+								style="display: none;"><a href="<c:url value="/infomovil/misContactos"></c:url>"  class="smoothScroll ${colorTexto}">
 									Mis Contactos <img
 									width="20" height="20" alt="Infomovil"
 									src="<c:url value="/resources/webapp/images/ico_mas_cont${ extensionImg }.png"/>" /> </a></li>

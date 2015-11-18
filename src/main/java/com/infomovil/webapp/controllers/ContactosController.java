@@ -17,29 +17,32 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import com.infomovil.webapp.clientWsInfomovil.ClientWsInfomovil;
 import com.infomovil.webapp.clientWsInfomovil.OffertRecordVO;
 import com.infomovil.webapp.clientWsInfomovil.ProductoUsuarioVO;
+import com.infomovil.webapp.clientWsInfomovil.RecordNaptrVO;
 import com.infomovil.webapp.clientWsInfomovil.RespuestaVO;
 import com.infomovil.webapp.util.Util;
 
 @Controller
 public class ContactosController {
 
-	@SuppressWarnings("unchecked")
+	
 	@RequestMapping(value = "/infomovil/misContactos", method = {RequestMethod.GET, RequestMethod.POST})
 	@ResponseBody
 	public ModelAndView misContactos()
 	{		
 		HashMap<String, Object> model = new HashMap<String, Object>();
 		RespuestaVO wsRespuesta = new RespuestaVO();
-		RespuestaVO wsRpta = new RespuestaVO();
+		RespuestaVO wsRespuestaContacto = new RespuestaVO();
+		
 		String nombreUsuario = "";
 		String template = "Coverpage1azul";
 		String claseCss = "inverse";
 		String colorTexto = "textWhite";
 		String extensionImg = "";
+		/*
 		String nombreSitio = "";
 		String banderaCanal = "0";
 		String sitioWeb = "";
-		
+		*/
 		try
 		{		
 			String correo = Util.getUserLogged().getUsername();
@@ -80,41 +83,40 @@ public class ContactosController {
          	
          	if (Util.getCurrentSession().getAttribute("template") != null)
          		template = Util.getCurrentSession().getAttribute("template").toString();
-
-         	if (Util.getCurrentSession().getAttribute("nombreSitio") == null ||
-         			Util.getCurrentSession().getAttribute("banderaCanal") == null)
-         	{
-         		wsRpta = wsCliente.crearSitioCargar(correo, password);
-      
-         		sitioWeb = wsRpta.getDominioCreaSitio().getSitioWeb();
-         		nombreSitio = Util.getNombreSitio(sitioWeb);
-         		
-         		if (wsRpta.getDominioCreaSitio().getCanal().startsWith("BAZ"))
-         			banderaCanal = "1";
-         		
-    		    Util.getCurrentSession().setAttribute("nombreSitio", nombreSitio);
-    		    Util.getCurrentSession().setAttribute("banderaCanal", banderaCanal);
-         	}
-         	else
-         	{
-         		nombreSitio = Util.getCurrentSession().getAttribute("nombreSitio").toString();
-         		banderaCanal = Util.getCurrentSession().getAttribute("banderaCanal").toString();
-         	}
-         	
+         
 			model.put("claseCss", claseCss);
 			model.put("colorTexto", colorTexto);
 			model.put("extensionImg", extensionImg);
 			model.put("nombreUsuario", nombreUsuario);
 			model.put("template", template);
 			model.put("correoElectronico", correo);
-			model.put("nombreSitio", nombreSitio);
-			model.put("banderaCanal", banderaCanal);
+			
+			
+			wsRespuestaContacto = wsCliente.crearSitioGetContactos(correo, password);
+			for (RecordNaptrVO contactos : wsRespuestaContacto.getListContactos())
+			{
+				model.put("longLabel", contactos.getLongLabelNaptr());
+				
+				// TEigues!/
+				model.put("categoryContacto", contactos.getCategoryNaptr());       // Sepa su madre!
+				model.put("descripcionContacto", contactos.getLongLabelNaptr() ); // DEscripcion
+				model.put("datoContacto", contactos.getRegExp() );                // Expresion + pais + n umero !(tel-sms)(Celular +521) 
+				model.put("tipoContacto", contactos.getServicesNaptr() );    	 // Tipo de contacto
+				model.put("redSocialContacto", contactos.getSubCategory() );   	//  Linkedin-Twitter-Facebook-Google-Skype-SecureWebsite
+				model.put("visibleContacto", contactos.getVisible() );          // 1 o 0
+				
+			}
+			
 		}		
 		catch (Exception e) 
 		{
-			logger.error("misPromociones:::::", e);
+			logger.error("misContactos:::::", e);
 			return null;
 		}
+		
+		
+		
+		
 		
 		return new ModelAndView("Webapp/misContactos", model);
 	}
