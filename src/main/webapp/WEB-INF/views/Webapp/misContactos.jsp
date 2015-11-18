@@ -3,7 +3,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!doctype html>
-<html lang="es">
+<html lang="es" ng-app = "InfomovilApp">
 
 	<tiles:insertDefinition name="headEditorSitio">
 		<tiles:putAttribute name="template" value="${ template }" />
@@ -121,23 +121,29 @@
 							<div class="clear"></div>
 				
 							<hr/>
-							<div id="contenedorMoverContacto">
-									<img src="<c:url value="/resources/webapp/images/logo_baz.png"/>" width="103" height="47" alt="Infomovil" align="left"/>
-									<label for="exampleInputEmail1" id="idNumeroTelefonico" >+52 62476443</label><br>
-									<label for="exampleInputEmail1" id="idDescripcionTelefonico" >Esta es la descripción del teléfono</label><br>
-									<button type="button" class="btn btn-outlineGreen pull-right textWhite navEditorLato" id="btnContactoActivo" style="margin: 5px 0;">
-										<img width="20" height="20" alt="Infomovil" src="<c:url value="/resources/webapp/images/successWhite.png"/>"/>
-										<span class="hidden-xs">=</span>
-									</button>
-									<button type="button" class="btn btn-outlineGreen pull-right textWhite navEditorLato" id="btnEliminarContacto" style="margin: 5px 0;">
-										<img width="20" height="20" alt="Infomovil" src="<c:url value="/resources/webapp/images/successWhite.png"/>"/>
-										<span class="hidden-xs">X</span>
-									</button>
-									<button type="button" class="btn btn-outlineGreen pull-right textWhite navEditorLato" id="btnMoverContacto" style="margin: 5px 0;">
-										<img width="20" height="20" alt="Infomovil" src="<c:url value="/resources/webapp/images/successWhite.png"/>"/>
-										<span class="hidden-xs">On</span>
-									</button>
-									<div class="clear"></div>
+							<div ng-controller = "ToolBarContactoController as toolbarContacto">             
+							
+									<div id="contenedorMoverContacto">
+									<ul id="sortable">
+        								<li class="ui-state-default">
+											<div ng-click="toolbarContacto.abrirActualizarContacto()">
+												
+												<img src="<c:url value="/resources/webapp/images/logo_baz.png"/>" width="103" height="47" alt="Infomovil" align="left"/>
+												<label for="exampleInputEmail1" id="idNumeroTelefonico" >+52 62476443</label><br>
+												<label for="exampleInputEmail1" id="idDescripcionTelefonico" >Esta es la descripción del teléfono</label><br>
+											</div>
+												<button type="button" class="btn btn-outlineGreen pull-right textWhite navEditorLato" id="btnContactoActivo" style="margin: 5px 0;">
+												<img width="20" height="20" alt="Infomovil" src="<c:url value="/resources/webapp/images/successWhite.png"/>"/>
+												<span class="hidden-xs">=</span>
+												</button>
+												<button type="button" class="btn btn-outlineGreen pull-right textWhite navEditorLato" id="btnEliminarContacto" style="margin: 5px 0;" ng-click="toolbarContacto.eliminarContacto()">
+												<img width="20" height="20" alt="Infomovil" src="<c:url value="/resources/webapp/images/successWhite.png"/>"/>
+												<span class="hidden-xs">X</span>
+												</button>
+											
+										</li>
+									</ul>
+									</div>
 							</div>
 						</div>
 					</div>
@@ -150,6 +156,7 @@
 		<!-- Placed at the end of the document so the pages load faster -->
 		<script src="<c:url value="/resources/webapp/js/datepicker/jquery-1.10.2.js"/>"></script>
 		<script src="<c:url value="/resources/webapp/js/jquery.min.js"/>"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.0-beta.1/angular.min.js"></script>
 		<script src="<c:url value="/resources/webapp/js/bootstrap.js"/>"></script>
 		<script src="<c:url value="/resources/webapp/js/docs.min.js"/>"></script>
 		<script src="<c:url value="/resources/webapp/js/smoothscroll.js"/>"></script>
@@ -159,6 +166,7 @@
 		<script	src="<c:url value="/resources/webapp/js/bootstrap-dialog.min.js"/>"></script>
 		<script src="<c:url value="/resources/webapp/js/jquery.numeric.js"/>"></script>
 		<script src="<c:url value="/resources/webapp/js/jquery.blockUI.js"/>"></script>
+		<script src="<c:url value="/resources/js/webapp/contactos.js"/>"></script>
 		
 	
 	 
