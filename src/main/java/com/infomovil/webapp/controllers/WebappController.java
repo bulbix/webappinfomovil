@@ -604,6 +604,9 @@ public class WebappController
 		String idDominio = "";
 		String downgrade = "";
 		String galeriaImagenes = "";
+		String contacto = "";
+		String infoAdicional = "";
+		String item = "";
 		
 		try
 		{
@@ -621,10 +624,20 @@ public class WebappController
 				
 				for (StatusDomainVO stat : wsRespuesta.getListStatusDomainGratisVO())
 				{
-					if (stat.getDescripcionItem().equalsIgnoreCase("GALERIA DE IMAGENES"))
+					logger.info("stat.getDescripcionItem(): " + stat.getDescripcionItem() + ", total: " + stat.getStatus());
+					item = stat.getDescripcionItem();
+					
+					switch(item)
 					{
-						galeriaImagenes = stat.getStatus();
-						break;
+						case "GALERIA DE IMAGENES" :
+							galeriaImagenes = stat.getStatus();
+							break;
+						case "CONTACTO" :
+							contacto = stat.getStatus();
+							break;
+						case "INFORMACION ADICIONAL" :
+							infoAdicional = stat.getStatus();
+							break;
 					}
 				}
 				
@@ -739,10 +752,15 @@ public class WebappController
 				model.put("idDominio", idDominio);
 				model.put("downgrade", downgrade);
 				model.put("galeriaImagenes", galeriaImagenes);
-				
+				model.put("contacto", contacto);
+				model.put("infoAdicional", infoAdicional);
+
 			    Util.getCurrentSession().setAttribute("canal", canal);
 			    Util.getCurrentSession().setAttribute("template", template);
 			    Util.getCurrentSession().setAttribute("statusCta", status);
+			    Util.getCurrentSession().setAttribute("contacto", contacto);
+			    Util.getCurrentSession().setAttribute("downgrade", downgrade);
+			    Util.getCurrentSession().setAttribute("template", template); 
 			}
 			else 
 			{
