@@ -17,6 +17,7 @@
 	<definition name="modalExitoFragment" template="/WEB-INF/fragments/modals/modalExitoFragment.jsp" />
 	<definition name="modalFalloFragment" template="/WEB-INF/fragments/modals/modalFalloFragment.jsp" />
 	<definition name="modalPromoVP" template="/WEB-INF/fragments/modals/modalPromoVP.jsp" />
+	<definition name="modalPromoVPI" template="/WEB-INF/fragments/modals/modalPromoVPI.jsp" />
 	<definition name="modalRegistroFragment" template="/WEB-INF/fragments/modals/modalRegistroFragment.jsp" />
 	<definition name="modalRecAyuda" template="/WEB-INF/fragments/modals/modalRecAyuda.jsp" />
 	<definition name="modalDescApp" template="/WEB-INF/fragments/modals/modalDescApp.jsp" />
@@ -35,4 +36,5 @@
 	<definition name="modalMovilizaAct" template="/WEB-INF/fragments/modals/modalMovilizaAct.jsp" />
 	<definition name="modalMovilizaCode" template="/WEB-INF/fragments/modals/modalMovilizaCode.jsp" />
 	<definition name="modalCompraPP" template="/WEB-INF/fragments/modals/modalCompraPP.jsp" />
+	
 </tiles-definitions>
