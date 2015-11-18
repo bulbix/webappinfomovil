@@ -8,16 +8,26 @@ import java.util.List;
 import org.apache.commons.collections4.CollectionUtils;
 import org.apache.commons.collections4.Predicate;
 
-import com.infomovil.webapp.clientWsInfomovil.ProductoUsuarioVO;;
+import com.infomovil.webapp.clientWsInfomovil.ProductoUsuarioVO;
+import com.infomovil.webapp.clientWsInfomovil.StatusDomainVO;
 
 
 public class ModeloWebApp 
 {
 	private List<ProductoUsuarioVO> listaProductos;
+	private List<StatusDomainVO> itemsUsuario;
 	private String esquemaProducto;
 	
 	public List<ProductoUsuarioVO> getListaProductos() {
 		return listaProductos;
+	}
+
+	public List<StatusDomainVO> getItemsUsuario() {
+		return itemsUsuario;
+	}
+
+	public void setItemsUsuario(List<StatusDomainVO> itemsUsuario) {
+		this.itemsUsuario = itemsUsuario;
 	}
 
 	public void setListaProductos(List<ProductoUsuarioVO> listaProductos) {
@@ -42,6 +52,22 @@ public class ModeloWebApp
 				
 				for (String llave : llaves)
 					busqueda = busqueda || object.getClaveComercial().toLowerCase().contains(llave);
+				
+				return busqueda;
+			}
+		});
+	}
+
+	public StatusDomainVO getCantidadItem(final String... llaves)
+	{
+		return CollectionUtils.find(getItemsUsuario(), new Predicate<StatusDomainVO>() {
+			@Override
+			public boolean evaluate(StatusDomainVO object) {
+				
+				boolean busqueda = false;
+				
+				for (String llave : llaves)
+					busqueda = busqueda || object.getDescripcionItem().equals(llave);
 				
 				return busqueda;
 			}
