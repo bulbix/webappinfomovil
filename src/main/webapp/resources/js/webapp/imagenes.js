@@ -525,6 +525,15 @@ function uploadImage(imageDom, imageUrl, origin, textFoto) {
 						/^data:image\/(png|jpeg|jpg);base64,/, "");
 				var weHaveSuccess = false;
 				console.log("Los grados son : " + GRADOS);
+				
+				if(binaryString.lenght > 0){
+					BootstrapDialog
+					.show({
+						title : "<span class='textBlack' style='font-size:1.15em;'><img alt='' src='../resources/webapp/images/fa-warning-bk.png'  title='Alerta' />Imagen demasiado grande</span>",
+						message : '<div style="display:block; min-height:150px;"><p class="textBlack text-center" style="font-size:1.15em;">La imagen ha superado el límite permitido. El límite es de 768x1024 px</p><br/>'
+					});
+				}else{
+					
 					$.ajax({
 							type : "POST",
 							url : contextPath + "/infomovil/guardarImagen",
@@ -571,10 +580,10 @@ function uploadImage(imageDom, imageUrl, origin, textFoto) {
 								$.unblockUI();
 								if (t === "timeout") {
 									BootstrapDialog
-											.show({
-												title : "<span class='textBlack' style='font-size:1.15em;'><img alt='' src='../resources/webapp/images/fa-warning-bk.png'  title='Alerta' />Tu imagen es muy grande para ser procesada. El límite es de 768x1024 px</span>",
-												message : '<div style="display:block; min-height:150px;"><p class="textBlack text-center" style="font-size:1.15em;">Por favor inténtalo nuevamente.</p><br/>'
-											});
+									.show({
+										title : "<span class='textBlack' style='font-size:1.15em;'><img alt='' src='../resources/webapp/images/fa-warning-bk.png'  title='Alerta' />Se agoto el tiempo de espera</span>",
+										message : '<div style="display:block; min-height:150px;"><p class="textBlack text-center" style="font-size:1.15em;">Por favor intentalo nuevamente.</p><br/>'
+									});
 								} else {
 									BootstrapDialog
 											.show({
@@ -595,7 +604,7 @@ function uploadImage(imageDom, imageUrl, origin, textFoto) {
 							}
 
 						});
-
+				}
 			});
 
 }
