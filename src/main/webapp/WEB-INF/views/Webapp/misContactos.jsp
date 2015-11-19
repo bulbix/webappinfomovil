@@ -121,50 +121,34 @@
 							<div class="clear"></div>
 				
 							<hr/>
-							<div ng-controller = "ToolBarContactoController as toolbarContacto">             
-							
-									<div id="contenedorMoverContacto">
-										<ul id="sortable">
-	        								<li class="ui-state-default" >
+
+							<div ng-controller = "ToolBarContactoController as toolbarContacto" ng-init="downgrade = '${downgrade}'; contacto = '${contacto}'">
+
+								<h5>{{contacto}} - {{downgrade}}</h5>
+								<div id="contenedorMoverContacto" ng-repeat="item in toolbarContacto.contactos">
+									<ul id="sortable">
+        								<li class="ui-state-default" ng-show="item.visible==1">
+											<div ng-click="toolbarContacto.abrirActualizarContacto(item)">
+
 												
-													<div ng-click="toolbarContacto.abrirActualizarContacto()">
-													<input type="hidden" name="clave" ng-model="toolbarContacto.claveContacto" value="clave1"/>
-													<img src="<c:url value="/resources/webapp/images/logo_baz.png"/>" width="103" height="47" alt="Infomovil" align="left"/>
-													<label for="exampleInputEmail1" id="idNumeroTelefonico" ng-model="toolbarContacto.descripcion">+52 62476443</label><br>
-													<label for="exampleInputEmail1" id="idDescripcionTelefonico" >Esta es la descripción del teléfono</label><br>
-												    </div>
-													<button type="button" class="btn btn-outlineGreen pull-right textWhite navEditorLato" id="btnContactoActivo" style="margin: 5px 0;">
-													<img width="20" height="20" alt="Infomovil" src="<c:url value="/resources/webapp/images/successWhite.png"/>"/>
-													<span class="hidden-xs">=</span>
-													</button>
-													<button type="button" class="btn btn-outlineGreen pull-right textWhite navEditorLato" id="btnEliminarContacto" style="margin: 5px 0;" ng-click="toolbarContacto.eliminarContacto()">
-													<img width="20" height="20" alt="Infomovil" src="<c:url value="/resources/webapp/images/successWhite.png"/>"/>
-													<span class="hidden-xs">X</span>
-													</button>
-												
-											</li>
-											<li class="ui-state-default" >
-												
-													<div ng-click="toolbarContacto.abrirActualizarContacto()">
-													<input type="hidden" name="clave" ng-model="toolbarContacto.claveContacto" value="clave2"/>
-													<img src="<c:url value="/resources/webapp/images/logo_baz.png"/>" width="103" height="47" alt="Infomovil" align="left"/>
-													<label for="exampleInputEmail1" id="idNumeroTelefonico" ng-model="toolbarContacto.descripcion">+52 62476443</label><br>
-													<label for="exampleInputEmail1" id="idDescripcionTelefonico" >Esta es la descripción del teléfono</label><br>
-												    </div>
-													<button type="button" class="btn btn-outlineGreen pull-right textWhite navEditorLato" id="btnContactoActivo" style="margin: 5px 0;">
-													<img width="20" height="20" alt="Infomovil" src="<c:url value="/resources/webapp/images/successWhite.png"/>"/>
-													<span class="hidden-xs">=</span>
-													</button>
-													<button type="button" class="btn btn-outlineGreen pull-right textWhite navEditorLato" id="btnEliminarContacto" style="margin: 5px 0;" ng-click="toolbarContacto.eliminarContacto()">
-													<img width="20" height="20" alt="Infomovil" src="<c:url value="/resources/webapp/images/successWhite.png"/>"/>
-													<span class="hidden-xs">X</span>
-													</button>
-												
-											</li>
-											
-										</ul>
-									</div>
+
+												<img src="<c:url value="/resources/webapp/images/logo_baz.png"/>" width="103" height="47" alt="Infomovil" align="left"/>
+												<label for="exampleInputEmail1" id="idNumeroTelefonico" >{{item.regExp}}</label><br>
+												<label for="exampleInputEmail1" id="idDescripcionTelefonico" >{{item.servicesNaptr}}</label><br>
+											</div>
+												<button type="button" class="btn btn-outlineGreen pull-right textWhite navEditorLato" id="btnContactoActivo" style="margin: 5px 0;">
+												<img width="20" height="20" alt="Infomovil" src="<c:url value="/resources/webapp/images/successWhite.png"/>"/>
+												<span class="hidden-xs">=</span>
+												</button>
+												<button type="button" class="btn btn-outlineGreen pull-right textWhite navEditorLato" id="btnEliminarContacto" style="margin: 5px 0;" ng-click="toolbarContacto.eliminarContacto()">
+												<img width="20" height="20" alt="Infomovil" src="<c:url value="/resources/webapp/images/successWhite.png"/>"/>
+												<span class="hidden-xs">X</span>
+												</button>											
+										</li>
+									</ul>
 									
+								</div>
+
 							</div>
 						</div>
 						
