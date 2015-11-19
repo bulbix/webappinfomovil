@@ -2,6 +2,7 @@ package com.infomovil.webapp.controllers;
 
 import java.io.UnsupportedEncodingException;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
@@ -9,6 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.apache.commons.validator.routines.EmailValidator;
 import org.apache.log4j.Logger;
+import org.json.simple.JSONArray;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -19,6 +21,7 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.infomovil.webapp.clientWsInfomovil.ClientWsInfomovil;
+import com.infomovil.webapp.clientWsInfomovil.ImagenVO;
 import com.infomovil.webapp.clientWsInfomovil.OffertRecordVO;
 import com.infomovil.webapp.clientWsInfomovil.ProductoUsuarioVO;
 import com.infomovil.webapp.clientWsInfomovil.RecordNaptrVO;
@@ -30,7 +33,6 @@ import com.infomovil.webapp.util.Util;
 @Controller
 public class ContactosController
 {
-
 	@Autowired
 	ModeloWebApp modeloWebApp;
 	
@@ -39,7 +41,7 @@ public class ContactosController
 	public ModelAndView misContactos()
 	{		
 		HashMap<String, Object> model = new HashMap<String, Object>();
-		RespuestaVO wsRespuestaContacto = new RespuestaVO();
+		//RespuestaVO wsRespuestaContacto = new RespuestaVO();
 		RespuestaVO wsRpta = new RespuestaVO();
 		
 		String template = "Coverpage1azul";
@@ -54,11 +56,6 @@ public class ContactosController
 			String correo = Util.getUserLogged().getUsername();
 			String password = Util.getUserLogged().getPassword();
 
-			wsRespuestaContacto = wsCliente.crearSitioGetContactos(correo, password);
-			
-			if (wsRespuestaContacto.getCodeError().equals("0"))
-				model.put("listaContactos", wsRespuestaContacto.getListContactos());
-			
 			if (Util.getCurrentSession().getAttribute("canal") != null)
 			{
 				if (Util.getCurrentSession().getAttribute("canal").toString().startsWith("BAZ"))
@@ -120,8 +117,7 @@ public class ContactosController
 		
 		String correo = Util.getUserLogged().getUsername();
 		String password = Util.getUserLogged().getPassword();
-		
-		
+				
 		descripcionContacto = new String(descripcionContacto.getBytes("ISO-8859-1"), "UTF-8");
 		numeroEmailRedSocial = new String(numeroEmailRedSocial.getBytes("ISO-8859-1"), "UTF-8");
 		
@@ -157,8 +153,7 @@ public class ContactosController
 		
 		String correo = Util.getUserLogged().getUsername();
 		String password = Util.getUserLogged().getPassword();
-		
-		
+				
 		try
 		{
 			
@@ -217,9 +212,31 @@ public class ContactosController
 		return resultMap;
 	}
 	
-	
-	
-	
+	@SuppressWarnings("unchecked")
+	@RequestMapping(value = "/infomovil/getContactos", method = RequestMethod.GET, produces = "application/json")
+	@ResponseBody
+	public JSONArray getContactos() 
+			throws UnsupportedEncodingException
+	{		
+		JSONArray list = new JSONArray();
+		List<RecordNaptrVO> wsRespuesta = null;
+		
+		try
+		{	
+			String correo = Util.getUserLogged().getUsername();
+			String password = Util.getUserLogged().getPassword();
+			wsRespuesta = wsCliente.crearSitioGetContactos(correo, password).getListContactos();
+			list.addAll(wsRespuesta);
+			logger.info(list);
+			
+		}		
+		catch (Exception e) 
+		{
+			logger.error("getContactos:::::", e);
+		}	
+
+		return list;
+	}	
 	
 	private ClientWsInfomovil wsCliente = new ClientWsInfomovil();
 	private static final Logger logger = Logger.getLogger(WebappController.class);

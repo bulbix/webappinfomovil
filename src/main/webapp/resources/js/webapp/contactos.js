@@ -3,13 +3,24 @@
  */
 
 angular.module("InfomovilApp", [] )
-.controller("ToolBarContactoController", function ($http){
+.controller("ToolBarContactoController", function ($http) {
 	var toolbarContacto = this;
 	
 	toolbarContacto.mostrarHola = true;
 	toolbarContacto.descripcion = "descrito";
+	toolbarContacto.downgrade = "";
+	toolbarContacto.contacto = "";
 	
-	toolbarContacto.eliminarContacto = function(){
+	$http({
+		  method: 'GET',
+		  url: contextPath + "/infomovil/getContactos",
+		}).then(function successCallback(response) {
+			toolbarContacto.contactos = response.data;
+		  }, function errorCallback(response) {
+			  console.log("El error es: " + response);
+		  });
+	
+	toolbarContacto.eliminarContacto = function() {
 		
 		$http({
 			  method: 'GET',
@@ -25,16 +36,12 @@ angular.module("InfomovilApp", [] )
 				
 			  }, function errorCallback(response) {
 				  console.log("El error es: " + response);
-			  });
-		
-		
-		
-	}
-	toolbarContacto.abrirActualizarContacto = function(){
-		//alert("funcionando angular2");
-		
+			  });		
 	}
 	
-
+	toolbarContacto.abrirActualizarContacto = function(item) {
+		console.log("item abrirActualizarContacto: " + item.regExp)
+		
+	}
 	
 });
