@@ -145,6 +145,18 @@
 									</ul>
 									</div>
 							</div>
+							
+							<c:forEach items="${listaContactos}" var="item">
+								<h1>${item.categoryNaptr} - 
+									${item.longLabelNaptr} -
+								    ${item.regExp} -
+								    ${item.servicesNaptr} - 
+								    ${item.subCategory} - 
+								    ${item.claveContacto} - 
+								    ${item.preference} - 
+								    ${item.visible}
+								</h1>
+							</c:forEach>
 						</div>
 					</div>
 				</div>
