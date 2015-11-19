@@ -108,7 +108,7 @@ public class ComprasController
 	}
 	
 	
-	
+	/*
 	@RequestMapping(value = "/infomovil/getHTMLPromocion", method = RequestMethod.POST, produces = "application/json")
 	@ResponseBody
 	public Map<String, String> getHTMLPromocion(String nombrePromocion)
@@ -150,12 +150,8 @@ public class ComprasController
 		}	
 		
 		return resultMap;
-	}  
-	
-	
-	
-	
-	
+	}  */
+
 	private static final Logger logger = Logger.getLogger(ComprasController.class);
 	private ClientWsInfomovil wsCliente = new ClientWsInfomovil();
 }

@@ -608,25 +608,25 @@ var imprimirPromocionEnPantalla = function(datahtml){
     $(document.body).html(oldstr);
     $("#myModalPromoImprimir").modal();	
 	$.unblockUI();}, 2500);
-	console.log("Nombre del evento: mi Evento,   nombreSitio: " + $("#tempNombrePromo").val() + ", banderaCanal: " + $("#tempBanderaPromo").val());
-	ga('send', 'event', 'promo', imprimir, $("#tempNombrePromo").val(), $("#tempBanderaPromo").val());
+//	console.log("Nombre del evento: mi Evento,   nombreSitio: " + $("#tempNombrePromo").val() + ", banderaCanal: " + $("#tempBanderaPromo").val());
+	ga('send', 'event', 'promo', 'imprimir', $("#tempNombrePromo").val(), $("#tempBanderaPromo").val());
 };
 
 var descargarPDF = function(){
 	
 	pathPDF = $("#urlVistaPreviaPromoImprimir").attr('src');
 	pathPDF = pathPDF.replace("html", "pdf");
-	window.open(pathPDF, '_blank', 'fullscreen=yes'); return false;
-	console.log("guardarEventoGA: " + nombreEvento + ", nombreSitio: " + nombreSitio + ", banderaCanal: " + banderaCanal);
-	ga('send', 'event', 'promo', guardarPDF, $("#tempNombrePromo").val(), $("#tempBanderaPromo").val());
+	window.open(pathPDF, '_blank', 'fullscreen=yes');
+//	console.log("guardarEventoGA: " + nombreEvento + ", nombreSitio: " + nombreSitio + ", banderaCanal: " + banderaCanal);
+	ga('send', 'event', 'promo', 'guardarPDF', $("#tempNombrePromo").val(), $("#tempBanderaPromo").val());
 };
 
 var descargarJPG = function(){
 	
 	pathJPG = $("#urlVistaPreviaPromoImprimir").attr('src');
 	pathJPG = pathJPG.replace("html", "jpg");
-	window.open(pathJPG, '_blank', 'fullscreen=yes'); return false;
-	console.log("guardarEventoGA: " + nombreEvento + ", nombreSitio: " + nombreSitio + ", banderaCanal: " + banderaCanal);
-	ga('send', 'event', 'promo', guardarJPG, $("#tempNombrePromo").val(), $("#tempBanderaPromo").val());
+	window.open(pathJPG, '_blank', 'fullscreen=yes');
+//	console.log("guardarEventoGA: " + nombreEvento + ", nombreSitio: " + nombreSitio + ", banderaCanal: " + banderaCanal);
+	ga('send', 'event', 'promo', 'guardarJPG', $("#tempNombrePromo").val(), $("#tempBanderaPromo").val());
 	
 };

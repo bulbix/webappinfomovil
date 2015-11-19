@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.amazonaws.util.IOUtils;
 import com.infomovil.webapp.clientWsInfomovil.ClientWsInfomovil;
 import com.infomovil.webapp.clientWsInfomovil.OffertRecordVO;
 import com.infomovil.webapp.clientWsInfomovil.RespuestaVO;
@@ -254,10 +255,38 @@ public class PromocionesController
 		return resultado;
 	}
 	
-	
-	
-	
-	
+	@RequestMapping(value = "/infomovil/getHTMLPromocion", method = RequestMethod.POST, produces = "application/json")
+	@ResponseBody
+	public Map<String, String> getHTMLPromocion(String nombrePromocion)
+	{
+		Map<String, String> resultMap = new HashMap<String, String>();
+		String elHtmlDePromocion = "";
+		
+		try
+		{				
+	     	if(!Util.getProfile().equals("PROD"))
+	     	{	
+	     		elHtmlDePromocion = IOUtils.toString(Util.getFileAmazon("promodev.mobileinfo.io", nombrePromocion));
+	     		elHtmlDePromocion = elHtmlDePromocion.replaceAll("promo.mobileinfo.io", "promodev.mobileinfo.io");
+	     	}
+	     	else
+	     	{
+	     		elHtmlDePromocion = IOUtils.toString(Util.getFileAmazon("promo.mobileinfo.io", nombrePromocion));	
+	     	}
+	     	
+	     	elHtmlDePromocion = new String(elHtmlDePromocion.getBytes("UTF-8"), "UTF-8");
+			resultMap.put("elHtmlDePromocion", elHtmlDePromocion);
+			logger.info("elHtmlDePromocion: " + elHtmlDePromocion);
+		}
+		catch (Exception e) 
+		{
+			logger.error("generaHTMLdePromocion:::::", e);
+			resultMap.put("elHtmlDePromocion", "SIN_PROMOCION");
+		}	
+		
+		return resultMap;
+	}  	
+
 	private ClientWsInfomovil wsCliente = new ClientWsInfomovil();
 	private static final Logger logger = Logger.getLogger(WebappController.class);
 }
