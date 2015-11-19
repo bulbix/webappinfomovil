@@ -35,4 +35,6 @@
 	<definition name="modalMovilizaAct" template="/WEB-INF/fragments/modals/modalMovilizaAct.jsp" />
 	<definition name="modalMovilizaCode" template="/WEB-INF/fragments/modals/modalMovilizaCode.jsp" />
 	<definition name="modalCompraPP" template="/WEB-INF/fragments/modals/modalCompraPP.jsp" />
+	<definition name="modalContactos" template="/WEB-INF/fragments/modals/modalContactos.jsp" />
+	<definition name="modalContactosActualizar" template="/WEB-INF/fragments/modals/modalContactosActualizar.jsp" />
 </tiles-definitions>

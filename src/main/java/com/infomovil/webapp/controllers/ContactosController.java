@@ -2,13 +2,17 @@ package com.infomovil.webapp.controllers;
 
 import java.io.UnsupportedEncodingException;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.commons.collections4.Closure;
+import org.apache.commons.collections4.CollectionUtils;
 import org.apache.commons.validator.routines.EmailValidator;
 import org.apache.log4j.Logger;
+import org.json.simple.JSONArray;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -19,6 +23,7 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.infomovil.webapp.clientWsInfomovil.ClientWsInfomovil;
+import com.infomovil.webapp.clientWsInfomovil.ImagenVO;
 import com.infomovil.webapp.clientWsInfomovil.OffertRecordVO;
 import com.infomovil.webapp.clientWsInfomovil.ProductoUsuarioVO;
 import com.infomovil.webapp.clientWsInfomovil.RecordNaptrVO;
@@ -175,7 +180,7 @@ public class ContactosController
 		}		
 		catch (Exception e) 
 		{
-			logger.error("guardarContacto:::::", e);	
+			logger.error("eliminarContacto:::::", e);	
 			resultMap.put("codeError", "-100");
 		}	
 		
@@ -216,6 +221,8 @@ public class ContactosController
 		
 		return resultMap;
 	}
+	
+
 	
 	
 	

@@ -113,7 +113,7 @@
 						<div class="page-header text-center" style="border-radius:15px; background:url(<c:url value="/resources/webapp/images/bgWhTra.png"/>); padding:10px;">						
 						<div class="clear"></div>
 									  
-								<button type="button" class="btn btn-outlineGreen pull-right textWhite navEditorLato"  id="" style="margin: 5px 0 0 0;">
+								<button type="button" class="btn btn-outlineGreen pull-right textWhite navEditorLato"  id="" style="margin: 5px 0 0 0;" data-toggle="modal" data-target="#myModalContactos">
 									<img width="20" height="20" alt="Infomovil" src="<c:url value="/resources/webapp/images/successWhite.png"/>"/> 
 									<span class="hidden-xs">Añadir Contacto</span>
 								</button>	
@@ -124,28 +124,52 @@
 							<div ng-controller = "ToolBarContactoController as toolbarContacto">             
 							
 									<div id="contenedorMoverContacto">
-									<ul id="sortable">
-        								<li class="ui-state-default">
-											<div ng-click="toolbarContacto.abrirActualizarContacto()">
+										<ul id="sortable">
+	        								<li class="ui-state-default" >
 												
-												<img src="<c:url value="/resources/webapp/images/logo_baz.png"/>" width="103" height="47" alt="Infomovil" align="left"/>
-												<label for="exampleInputEmail1" id="idNumeroTelefonico" >+52 62476443</label><br>
-												<label for="exampleInputEmail1" id="idDescripcionTelefonico" >Esta es la descripción del teléfono</label><br>
-											</div>
-												<button type="button" class="btn btn-outlineGreen pull-right textWhite navEditorLato" id="btnContactoActivo" style="margin: 5px 0;">
-												<img width="20" height="20" alt="Infomovil" src="<c:url value="/resources/webapp/images/successWhite.png"/>"/>
-												<span class="hidden-xs">=</span>
-												</button>
-												<button type="button" class="btn btn-outlineGreen pull-right textWhite navEditorLato" id="btnEliminarContacto" style="margin: 5px 0;" ng-click="toolbarContacto.eliminarContacto()">
-												<img width="20" height="20" alt="Infomovil" src="<c:url value="/resources/webapp/images/successWhite.png"/>"/>
-												<span class="hidden-xs">X</span>
-												</button>
+													<div ng-click="toolbarContacto.abrirActualizarContacto()">
+													<input type="hidden" name="clave" ng-model="toolbarContacto.claveContacto" value="clave1"/>
+													<img src="<c:url value="/resources/webapp/images/logo_baz.png"/>" width="103" height="47" alt="Infomovil" align="left"/>
+													<label for="exampleInputEmail1" id="idNumeroTelefonico" ng-model="toolbarContacto.descripcion">+52 62476443</label><br>
+													<label for="exampleInputEmail1" id="idDescripcionTelefonico" >Esta es la descripción del teléfono</label><br>
+												    </div>
+													<button type="button" class="btn btn-outlineGreen pull-right textWhite navEditorLato" id="btnContactoActivo" style="margin: 5px 0;">
+													<img width="20" height="20" alt="Infomovil" src="<c:url value="/resources/webapp/images/successWhite.png"/>"/>
+													<span class="hidden-xs">=</span>
+													</button>
+													<button type="button" class="btn btn-outlineGreen pull-right textWhite navEditorLato" id="btnEliminarContacto" style="margin: 5px 0;" ng-click="toolbarContacto.eliminarContacto()">
+													<img width="20" height="20" alt="Infomovil" src="<c:url value="/resources/webapp/images/successWhite.png"/>"/>
+													<span class="hidden-xs">X</span>
+													</button>
+												
+											</li>
+											<li class="ui-state-default" >
+												
+													<div ng-click="toolbarContacto.abrirActualizarContacto()">
+													<input type="hidden" name="clave" ng-model="toolbarContacto.claveContacto" value="clave2"/>
+													<img src="<c:url value="/resources/webapp/images/logo_baz.png"/>" width="103" height="47" alt="Infomovil" align="left"/>
+													<label for="exampleInputEmail1" id="idNumeroTelefonico" ng-model="toolbarContacto.descripcion">+52 62476443</label><br>
+													<label for="exampleInputEmail1" id="idDescripcionTelefonico" >Esta es la descripción del teléfono</label><br>
+												    </div>
+													<button type="button" class="btn btn-outlineGreen pull-right textWhite navEditorLato" id="btnContactoActivo" style="margin: 5px 0;">
+													<img width="20" height="20" alt="Infomovil" src="<c:url value="/resources/webapp/images/successWhite.png"/>"/>
+													<span class="hidden-xs">=</span>
+													</button>
+													<button type="button" class="btn btn-outlineGreen pull-right textWhite navEditorLato" id="btnEliminarContacto" style="margin: 5px 0;" ng-click="toolbarContacto.eliminarContacto()">
+													<img width="20" height="20" alt="Infomovil" src="<c:url value="/resources/webapp/images/successWhite.png"/>"/>
+													<span class="hidden-xs">X</span>
+													</button>
+												
+											</li>
 											
-										</li>
-									</ul>
+										</ul>
 									</div>
+									
 							</div>
 						</div>
+						
+						
+						
 					</div>
 				</div>
 			</div>
@@ -154,9 +178,8 @@
 		<!-- Bootstrap core JavaScript
 		    ================================================== -->
 		<!-- Placed at the end of the document so the pages load faster -->
-		<script src="<c:url value="/resources/webapp/js/datepicker/jquery-1.10.2.js"/>"></script>
 		<script src="<c:url value="/resources/webapp/js/jquery.min.js"/>"></script>
-		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.0-beta.1/angular.min.js"></script>
+		<script src="<c:url value="/resources/webapp/js/angular.min.js"/>"></script>
 		<script src="<c:url value="/resources/webapp/js/bootstrap.js"/>"></script>
 		<script src="<c:url value="/resources/webapp/js/docs.min.js"/>"></script>
 		<script src="<c:url value="/resources/webapp/js/smoothscroll.js"/>"></script>
@@ -171,33 +194,21 @@
 	
 	 
 		<tiles:insertDefinition name="modalGen">
-			<tiles:putAttribute name="idModal" value="myModalPromo" />
+			<tiles:putAttribute name="idModal" value="myModalContactos" />
 			<tiles:putAttribute name="tamanioModal"
 				value='"modal-dialog modal-lg"' />
-			<c:set var="fragmentName" value="modalPromoVP" scope="request" />
+			<c:set var="fragmentName" value="modalContactos" scope="request" />
 		</tiles:insertDefinition>
 		<tiles:insertDefinition name="modalGen">
-			<tiles:putAttribute name="idModal" value="myModalPromoShare" />
+			<tiles:putAttribute name="idModal" value="myModalContactosActualizar" />
 			<tiles:putAttribute name="tamanioModal"
-				value='"modal-dialog modal-md"' />
-			<c:set var="fragmentName" value="modalPromoShare" scope="request" />
-			<c:set var="urlPromo" value="${urlPromocion}" scope="session"/>
+				value='"modal-dialog modal-lg"' />
+			<c:set var="fragmentName" value="modalContactosActualizar" scope="request" />
 		</tiles:insertDefinition>
 		
-		<tiles:insertDefinition name="modalGen">
-			<tiles:putAttribute name="idModal" value="myModalPromoExito" />
-			<tiles:putAttribute name="tamanioModal"
-				value='"modal-dialog modal-md"' />
-			<c:set var="fragmentName" value="modalPromoExito" scope="request" />
-		</tiles:insertDefinition>
 		
-		<tiles:insertDefinition name="modalGen">
-			<tiles:putAttribute name="idModal" value="myModalPromoFallo" />
-			<tiles:putAttribute name="tamanioModal"
-				value='"modal-dialog modal-md"' />
-			<c:set var="fragmentName" value="modalPromoFallo" scope="request" />
-		</tiles:insertDefinition>
-		<c:set var="urlPromo" value="${ urlPromocion }" scope="session"/>
+		
+		
 		
 		<script>
 			<c:choose> 
