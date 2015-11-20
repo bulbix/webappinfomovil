@@ -2,77 +2,60 @@
  * 
  */
 
-
 var app = angular.module('InfomovilApp', []);
-app.controller('ToolBarContactoController', function($scope,$http){
+app.controller('ToolBarContactoController', function($scope, $http) {
 
 	var toolbarContacto = this;
 	toolbarContacto.descripcion = "descrito";
 	toolbarContacto.downgrade = "";
 	toolbarContacto.contacto = "";
 
-	
-	toolbarContacto.mostrarModalContactos = function(){ 
+	toolbarContacto.mostrarModalContactos = function() { 
 		$myModalContactos.modal();
-		
 	}
 
-
-
-	toolbarContacto.eliminarContacto = function(){
-		console.log(toolbarContacto.claveContacto);
-		eliminarContacto();
+	toolbarContacto.eliminarContacto = function(item) {
+		eliminarContacto(item.claveContacto);
 	}
-
-	$http({
-		  method: 'GET',
-		  url: contextPath + "/infomovil/getContactos",
-		}).then(function successCallback(response) {
-			toolbarContacto.contactos = response.data;
-		  }, function errorCallback(response) {
-			  console.log("El error es: " + response);
-		  });
 	
 
-	toolbarContacto.actualizarContacto = function(tagLi){
-		tagLi.img
+	toolbarContacto.actualizarContacto = function(item) {
 		console.log(toolbarContacto.claveContacto);
 		actualizarContacto();
-		
+	}
+	
+	toolbarContacto.abrirActualizarContacto = function() {
+		console.log('mandar a llamar al modal de actualziar contacto');
 	}
 
-	
-	toolbarContacto.abrirActualizarContacto = function(){
-		console.log('mandar a llamar al modal de actualziar contacto');
-		
-		
+	toolbarContacto.abrirActualizarContacto = function(item) {
+		console.log("item abrirActualizarContacto: " + item.regExp)
 	}
 	
-    
-    var eliminarContacto = function(){
-    		$http({
-			  method: 'POST',
-			  url: contextPath + "/infomovil/eliminarContacto",
-			  params: { 
-				  claveDeContacto: ""
-				  }	  
-				}).then(function successCallback(response) {
-				
-					console.log(response.data.codeError);
-					if(response.data.codeError == 0){
-						console.log("SI ELIMINO CORRECTAMENTE");
-						
-					}else{
-						console.log("EL ERROR ES: " + response.data.codeError );
-						
-					}
-				
-				}, function errorCallback(response) {
-				  console.log("El error es: " + response , response.data.codeError);
-				});
+    var eliminarContacto = function(claveContacto) {
+    	
+    	$http({
+    		method: 'POST',
+    		url: contextPath + "/infomovil/eliminarContacto",
+    		params: { 
+    			claveDeContacto: claveContacto
+    		}	  
+    	}).then(function successCallback(response) {
+    		
+    		if(response.data.codeError == 0) {
+    			console.log("SI ELIMINO CORRECTAMENTE");
+    			getContactos();
+    		}else{
+    			console.log("EL ERROR ES: " + response.data.codeError );			
+    		}
+    		
+    	}, function errorCallback(response) {
+    		console.log("El error es: " + response , response.data.codeError);
+    	});
      };
      
-     var actualizarContacto = function(){
+     var actualizarContacto = function() {
+    	 
  		$http({
 			  method: 'POST',
 			  url: contextPath + "/infomovil/actualizarContacto",
@@ -86,36 +69,34 @@ app.controller('ToolBarContactoController', function($scope,$http){
 					console.log(response.data.codeError);
 					if(response.data.codeError == 0){
 						console.log("SI ACTUALIZO CORRECTAMENTE");
-						
+						getContactos();
 					}else{
 						console.log("EL ERROR ES: " + response.data.codeError );
 						
 					}
-				
-
 				}, function errorCallback(response) {
 					 console.log("El error es: " + response , response.data.codeError);
 				});
      };
-  
-    
-
 	
-	toolbarContacto.abrirActualizarContacto = function(item) {
-		console.log("item abrirActualizarContacto: " + item.regExp)
-		
-	}
+     function getContactos() {
 
-	
+    	 $http({
+    		 method: 'GET',
+    		 url: contextPath + "/infomovil/getContactos",
+    	 }).then(function successCallback(response) {
+    		 toolbarContacto.contactos = response.data;
+    	 }, function errorCallback(response) {
+    		 console.log("El error es: " + response);
+    	 });
+     }
+     
+     /*Obtiene los contactos*/
+     getContactos();
 });
 
-//ng-click="toolbarContacto.eliminarContacto()"
-//toolbarContacto.descripcion = "descrito";
-//toolbarContacto.descripcion
-//<input type="text" ng-model="toolbarContacto.descripcion"/>
-//toolbarContacto.mostrarHola = true;
-//toolbarContacto.mostrarHola = false;
-//<h1 ng-show="toolbarContacto.mostrarHola">Holasadsadasdasdasdas</h1>
+
+
 
 
 app.controller('TipoContacto', function($scope,$http){
@@ -123,13 +104,16 @@ app.controller('TipoContacto', function($scope,$http){
 	
 	datosTipoContacto.mostrarBtnRegresar = false;
 	datosTipoContacto.mostrarBtnGuardar = false;
+
 	datosTipoContacto.menuContactos = true;
 	datosTipoContacto.formTelefonos = false;
 	datosTipoContacto.formRedesSociales = false;
 	
+
 	datosTipoContacto.telefonos = function(tipo){
 		datosTipoContacto.mostrarBtnRegresar = true;
 		datosTipoContacto.mostrarBtnGuardar = true;
+
 		datosTipoContacto.menuContactos = false;
 		datosTipoContacto.formTelefonos = true;
 		datosTipoContacto.formRedesSociales = false;
@@ -142,9 +126,11 @@ app.controller('TipoContacto', function($scope,$http){
 		
 	}
 	
+
 	datosTipoContacto.redesSociales = function(tipo){
 		datosTipoContacto.mostrarBtnRegresar = true;
 		datosTipoContacto.mostrarBtnGuardar = true;
+
 		datosTipoContacto.menuContactos = false;
 		datosTipoContacto.formRedesSociales = true;
 		datosTipoContacto.formTelefonos = false;
@@ -162,6 +148,7 @@ app.controller('TipoContacto', function($scope,$http){
 	
 	datosTipoContacto.guardarContacto = function(){
 		guardarContacto();
+
 		regresarGenerico();
 		
 	}
@@ -207,7 +194,9 @@ app.controller('TipoContacto', function($scope,$http){
 	     	};
 	
 	
-	
+
+	}
+
 	
 	 var objetoTipoContacto = function(tipo){
 		 switch(tipo){
@@ -338,6 +327,7 @@ app.controller('TipoContacto', function($scope,$http){
 			}
 	};
 	
+
 	
 	
 	
@@ -367,65 +357,6 @@ $(function() {
   $( "#sortable" ).sortable();
   $( "#sortable" ).disableSelection();
 });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

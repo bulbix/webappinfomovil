@@ -148,9 +148,8 @@
 										</li>
 									
         								<li class="ui-state-default" ng-show="item.visible==1">
-											<div >
-
-												
+											
+											<div ng-click="toolbarContacto.abrirActualizarContacto(item)">
 
 												<img src="<c:url value="/resources/webapp/images/logo_baz.png"/>" width="103" height="47" alt="Infomovil" align="left"/>
 												<label for="exampleInputEmail1" id="idNumeroTelefonico" >{{item.regExp}}</label><br>
@@ -160,7 +159,7 @@
 												<img width="20" height="20" alt="Infomovil" src="<c:url value="/resources/webapp/images/successWhite.png"/>"/>
 												<span class="hidden-xs">=</span>
 												</button>
-												<button type="button" class="btn btn-outlineGreen pull-right textWhite navEditorLato" id="btnEliminarContacto" style="margin: 5px 0;" ng-click="toolbarContacto.eliminarContacto()">
+												<button type="button" class="btn btn-outlineGreen pull-right textWhite navEditorLato" id="btnEliminarContacto" style="margin: 5px 0;" ng-click="toolbarContacto.eliminarContacto(item)">
 												<img width="20" height="20" alt="Infomovil" src="<c:url value="/resources/webapp/images/successWhite.png"/>"/>
 												<span class="hidden-xs">X</span>
 												</button>											
