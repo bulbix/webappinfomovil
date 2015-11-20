@@ -4,7 +4,7 @@
 		<button type="button" class="close textBlack" data-dismiss="modal" aria-label="Close">
 			<span aria-hidden="true">&times;</span>
 		</button>
-		<p class="modal-title textBlack"><strong>Imprime tu promoción</strong></p>
+		<p class="modal-title textBlack"><strong>Imprime tu Volante digital</strong></p>
 		
 <!-- 		<button type="button" class="btn btn-purple text-center col-xs-12 col-sm-12 col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3" data-dismiss="modal"> -->
 <!-- 			<strong>Regresar</strong> -->
