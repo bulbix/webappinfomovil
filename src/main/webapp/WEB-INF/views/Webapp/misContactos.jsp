@@ -152,8 +152,14 @@
 											<div ng-click="toolbarContacto.abrirActualizarContacto(item)">
 
 												<img src="<c:url value="/resources/webapp/images/logo_baz.png"/>" width="103" height="47" alt="Infomovil" align="left"/>
-												<label for="exampleInputEmail1" id="idNumeroTelefonico" >{{item.regExp}}</label><br>
+												<label for="exampleInputEmail1" id="idNumeroTelefonico" >{{item.categoryNaptr}}</label><br>
+												<label for="exampleInputEmail1" id="idDescripcionTelefonico" >{{item.longLabelNaptr}}</label><br>
+												<label for="exampleInputEmail1" id="idDescripcionTelefonico" >{{item.regExp}}</label><br>
 												<label for="exampleInputEmail1" id="idDescripcionTelefonico" >{{item.servicesNaptr}}</label><br>
+												<label for="exampleInputEmail1" id="idDescripcionTelefonico" >{{item.subCategory}}</label><br>
+												<label for="exampleInputEmail1" id="idDescripcionTelefonico" >{{item.claveContacto}}</label><br>
+												<label for="exampleInputEmail1" id="idDescripcionTelefonico" >{{item.preference}}</label><br>
+												<label for="exampleInputEmail1" id="idDescripcionTelefonico" >{{item.visible}}</label><br>
 											</div>
 												<button type="button" class="btn btn-outlineGreen pull-right textWhite navEditorLato" id="btnContactoActivo" style="margin: 5px 0;">
 												<img width="20" height="20" alt="Infomovil" src="<c:url value="/resources/webapp/images/successWhite.png"/>"/>
