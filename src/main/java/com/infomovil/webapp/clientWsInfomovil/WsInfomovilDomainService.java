@@ -36,7 +36,7 @@ public class WsInfomovilDomainService extends Service {
             	}
             	else if(Util.getProfile().equals("QA")){
             		url = new URL("http://infodev.mobileinfo.io/WsInfomovil/wsInfomovildomain?wsdl");
-            		//url = new URL("http://qa.mobileinfo.io:8080/WsInfomovil/wsInfomovildomain?wsdl");
+            		//url = new URL("http://localhost:8080/WsInfomovil/wsInfomovildomain?wsdl");
             	}
             	else if(Util.getProfile().equals("PROD")){
             		url = new URL("http://www.infomovil.com/WsInfomovil/wsInfomovildomain?wsdl");

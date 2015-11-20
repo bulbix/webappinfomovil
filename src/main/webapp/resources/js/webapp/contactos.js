@@ -12,25 +12,36 @@ app.controller('ToolBarContactoController', function($scope, $http) {
 
 	toolbarContacto.mostrarModalContactos = function() { 
 		$myModalContactos.modal();
-	}
+	};
 
 	toolbarContacto.eliminarContacto = function(item) {
 		eliminarContacto(item.claveContacto);
-	}
+	};
 	
-
 	toolbarContacto.actualizarContacto = function(item) {
-		console.log(toolbarContacto.claveContacto);
-		actualizarContacto();
-	}
+		console.log("actualizarContacto: " + item.claveContacto);
+		//actualizarContacto();
+	};
+
+	toolbarContacto.toggleContacto = function(item) {
+		
+		var visibleContacto = "1";
+		
+		if (item.visible == "1")
+			visibleContacto = "0";
+		
+		item.visible = visibleContacto;
+		
+		actualizarContacto(item);
+	};
 	
 	toolbarContacto.abrirActualizarContacto = function() {
 		console.log('mandar a llamar al modal de actualziar contacto');
-	}
+	};
 
 	toolbarContacto.abrirActualizarContacto = function(item) {
 		console.log("item abrirActualizarContacto: " + item.regExp);
-	}
+	};
 	
     var eliminarContacto = function(claveContacto) {
     	
@@ -54,33 +65,42 @@ app.controller('ToolBarContactoController', function($scope, $http) {
     	});
      };
      
-     var actualizarContacto = function() {
+     var actualizarContacto = function(item) {
     	 
- 		$http({
-			  method: 'POST',
-			  url: contextPath + "/infomovil/actualizarContacto",
-			  params: { 
-				  claveDeContacto: "NumerodelContacto",
-				  descripcionContacto: "descripcion del contacto" ,
-				  numeroEmailRedSocial: "!^.*$!mailto:" + "roni@mail.com!",
-				  constanteContacto: "E2U+email:mailto",
-				  redSocialWebSecure: ""}	  
-				}).then(function successCallback(response) {
-					console.log(response.data.codeError);
-					if(response.data.codeError == 0){
-						console.log("SI ACTUALIZO CORRECTAMENTE");
-						getContactos();
-					}else{
-						console.log("EL ERROR ES: " + response.data.codeError );
-						
-					}
-				}, function errorCallback(response) {
-					 console.log("El error es: " + response , response.data.codeError);
-				});
+    	 console.log("claveDeContacto : " + item.claveContacto +
+ 				" descripcionContacto : " + item.longLabelNaptr +
+ 				" numeroEmailRedSocial : " + item.regExp + 
+ 				" constanteContacto : " + item.servicesNaptr +  
+ 				" redSocialWebSecure : " + item.subCategory + 
+ 				" visible : " + item.visible);
+    	 
+    	 $http({
+    		 method: 'POST',
+    		 url: contextPath + "/infomovil/actualizarContacto",
+    		 params: {
+    			 claveDeContacto : item.claveContacto, 
+ 				 descripcionContacto : item.longLabelNaptr,
+ 				 numeroEmailRedSocial : item.regExp,
+ 				 constanteContacto : item.servicesNaptr, 
+ 				 redSocialWebSecure : item.subCategory,
+ 				 visible : item.visible
+    		 }		  
+    	 }).then(function successCallback(response) {
+    		 console.log(response.data.codeError);
+    		 if(response.data.codeError == 0) {
+    			 console.log("SI ACTUALIZO CORRECTAMENTE");
+ 				 getContactos();
+    		 }else{
+    			 console.log("EL ERROR ES: " + response.data.codeError );
+ 			}
+    	 }, function errorCallback(response) {
+    		 console.log("El error es: " + response , response.data.codeError);
+    	 });
      };
 	
      function getContactos() {
 
+    	 console.log("getContactos");
     	 $http({
     		 method: 'GET',
     		 url: contextPath + "/infomovil/getContactos",
@@ -93,13 +113,13 @@ app.controller('ToolBarContactoController', function($scope, $http) {
      
      /*Obtiene los contactos*/
      getContactos();
+     
+     $("#sortable").sortable();
+     $("#sortable").disableSelection();
 });
 
-
-
-
-
-app.controller('TipoContacto', function($scope,$http){
+app.controller('TipoContacto', function($scope, $http) {
+	
 	var datosTipoContacto = this;
 	
 	datosTipoContacto.mostrarBtnRegresar = false;
@@ -109,8 +129,8 @@ app.controller('TipoContacto', function($scope,$http){
 	datosTipoContacto.formTelefonos = false;
 	datosTipoContacto.formRedesSociales = false;
 	
-
-	datosTipoContacto.telefonos = function(tipo){
+	datosTipoContacto.telefonos = function(tipo) {
+		
 		datosTipoContacto.mostrarBtnRegresar = true;
 		datosTipoContacto.mostrarBtnGuardar = true;
 
@@ -122,12 +142,11 @@ app.controller('TipoContacto', function($scope,$http){
 		$scope.etiqueta = mensajesContacto.etiqueta;
 		$scope.pais = mensajesContacto.pais;
 		$scope.placeholderTelefonos = mensajesContacto.placeholder; 
-		$scope.mensajeTelefonos = mensajesContacto.mensaje;
-		
+		$scope.mensajeTelefonos = mensajesContacto.mensaje;	
 	}
 	
-
-	datosTipoContacto.redesSociales = function(tipo){
+	datosTipoContacto.redesSociales = function(tipo) {
+		
 		datosTipoContacto.mostrarBtnRegresar = true;
 		datosTipoContacto.mostrarBtnGuardar = true;
 
@@ -146,11 +165,10 @@ app.controller('TipoContacto', function($scope,$http){
 		regresarGenerico();
 	}
 	
-	datosTipoContacto.guardarContacto = function(){
+	datosTipoContacto.guardarContacto = function() {
+	
 		guardarContacto();
-
 		regresarGenerico();
-		
 	}
 	
 	datosTipoContacto.closeMyModalContactos = function(){
@@ -167,39 +185,35 @@ app.controller('TipoContacto', function($scope,$http){
 		
 	}
 	
+	 var guardarContacto = function() {
+		 
+		 $http({
+			 method: 'POST',
+			 url: contextPath + "/infomovil/guardarContacto",
+			 params: { 
+				 descripcionContacto: "descripcion del contacto" ,
+				 numeroEmailRedSocial: "!^.*$!mailto:" + "roni@mail.com!",
+				 constanteContacto: "E2U+email:mailto",
+				 redSocialWebSecure: ""}	  
+		 }).then(function successCallback(response) {
+			 console.log(response.data.codeError);
+			 if(response.data.codeError == 0){
+				 console.log("SI ACTUALIZO CORRECTAMENTE");
+				 
+			 }else{
+				 console.log("EL ERROR ES: " + response.data.codeError );
+				 
+			 }
+			 
+		 }, function errorCallback(response) {
+			 console.log("El error es: " + response , response.data.codeError);
+		 });
+	 };
 	
-	
-	 var guardarContacto = function(){
-			$http({
-				  method: 'POST',
-				  url: contextPath + "/infomovil/guardarContacto",
-				  params: { 
-					  descripcionContacto: "descripcion del contacto" ,
-					  numeroEmailRedSocial: "!^.*$!mailto:" + "roni@mail.com!",
-					  constanteContacto: "E2U+email:mailto",
-					  redSocialWebSecure: ""}	  
-					}).then(function successCallback(response) {
-						console.log(response.data.codeError);
-						if(response.data.codeError == 0){
-							console.log("SI ACTUALIZO CORRECTAMENTE");
-							
-						}else{
-							console.log("EL ERROR ES: " + response.data.codeError );
-							
-						}
-					
-					}, function errorCallback(response) {
-						console.log("El error es: " + response , response.data.codeError);
-					});
-	     	};
-	
-	
-
-	
-
-	
-	 var objetoTipoContacto = function(tipo){
-		 switch(tipo){
+	 var objetoTipoContacto = function(tipo) {
+		 
+		 switch(tipo) {
+		 
 			case 'tel':
 				var titulos = {
 					imagen : ' ',
@@ -325,38 +339,15 @@ app.controller('TipoContacto', function($scope,$http){
 			default:
 				console.log("La opcion de contacto no existe: " + tipo);
 			}
-	}
-	
-
-	
-	
-	
-	
+	}	
 });
 
-
-
-
-app.controller('ActualizarContactos', function($scope,$http){
+app.controller('ActualizarContactos', function($scope, $http) {
 	var actualizarTipoContacto = this;
 
 	actualizarTipoContacto.closeMyModalActualizarContactos = function(){
 		$("#myModalContactosActualizar").modal('toggle');
 		
-	}
-	
-	
+	}		
 	
 });
-
-
-
-
-$(function() {
-	console.log("Veamos si se ejecuta esta madre!");
-  $( "#sortable" ).sortable();
-  $( "#sortable" ).disableSelection();
-});
-
-
-
