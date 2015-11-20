@@ -29,7 +29,7 @@ app.controller('ToolBarContactoController', function($scope, $http) {
 	}
 
 	toolbarContacto.abrirActualizarContacto = function(item) {
-		console.log("item abrirActualizarContacto: " + item.regExp)
+		console.log("item abrirActualizarContacto: " + item.regExp);
 	}
 	
     var eliminarContacto = function(claveContacto) {
@@ -195,7 +195,7 @@ app.controller('TipoContacto', function($scope,$http){
 	
 	
 
-	}
+	
 
 	
 	 var objetoTipoContacto = function(tipo){
@@ -325,7 +325,7 @@ app.controller('TipoContacto', function($scope,$http){
 			default:
 				console.log("La opcion de contacto no existe: " + tipo);
 			}
-	};
+	}
 	
 
 	
