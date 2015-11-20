@@ -18,6 +18,7 @@ app.controller('ToolBarContactoController', function($scope, $http) {
 		eliminarContacto(item.claveContacto);
 	}
 	
+
 	toolbarContacto.actualizarContacto = function(item) {
 		console.log(toolbarContacto.claveContacto);
 		actualizarContacto();
@@ -94,16 +95,25 @@ app.controller('ToolBarContactoController', function($scope, $http) {
      getContactos();
 });
 
-app.controller('TipoContacto', function($scope,$http) {
-	
+
+
+
+
+app.controller('TipoContacto', function($scope,$http){
 	var datosTipoContacto = this;
+	
+	datosTipoContacto.mostrarBtnRegresar = false;
+	datosTipoContacto.mostrarBtnGuardar = false;
 
 	datosTipoContacto.menuContactos = true;
 	datosTipoContacto.formTelefonos = false;
 	datosTipoContacto.formRedesSociales = false;
 	
-	datosTipoContacto.telefonos = function(tipo) {
-		
+
+	datosTipoContacto.telefonos = function(tipo){
+		datosTipoContacto.mostrarBtnRegresar = true;
+		datosTipoContacto.mostrarBtnGuardar = true;
+
 		datosTipoContacto.menuContactos = false;
 		datosTipoContacto.formTelefonos = true;
 		datosTipoContacto.formRedesSociales = false;
@@ -116,8 +126,11 @@ app.controller('TipoContacto', function($scope,$http) {
 		
 	}
 	
-	datosTipoContacto.redesSociales = function(tipo) {
-		
+
+	datosTipoContacto.redesSociales = function(tipo){
+		datosTipoContacto.mostrarBtnRegresar = true;
+		datosTipoContacto.mostrarBtnGuardar = true;
+
 		datosTipoContacto.menuContactos = false;
 		datosTipoContacto.formRedesSociales = true;
 		datosTipoContacto.formTelefonos = false;
@@ -130,37 +143,60 @@ app.controller('TipoContacto', function($scope,$http) {
 	}
 	
 	datosTipoContacto.regresarAgregarContacto = function(){
-		datosTipoContacto.menuContactos = true;
-		datosTipoContacto.formRedesSociales = false;
-		datosTipoContacto.formTelefonos = false;
+		regresarGenerico();
 	}
 	
 	datosTipoContacto.guardarContacto = function(){
 		guardarContacto();
+
+		regresarGenerico();
+		
 	}
 	
-	var guardarContacto = function() {
-			
-		$http({
-			method: 'POST',
-			url: contextPath + "/infomovil/guardarContacto",
-			params: { 
-				descripcionContacto: "descripcion del contacto" ,
-				numeroEmailRedSocial: "!^.*$!mailto:" + "roni@mail.com!",
-				constanteContacto: "E2U+email:mailto",
-				redSocialWebSecure: ""}	  
-		}).then(function successCallback(response) {
-			console.log(response.data.codeError);
-			if(response.data.codeError == 0){
-				console.log("SI ACTUALIZO CORRECTAMENTE");
-			}else{
-				console.log("EL ERROR ES: " + response.data.codeError );	
-			}
+	datosTipoContacto.closeMyModalContactos = function(){
+		$("#myModalContactos").modal('toggle');
+		
+	}
+	
+	var regresarGenerico = function(){
+		datosTipoContacto.mostrarBtnRegresar = false;
+		datosTipoContacto.mostrarBtnGuardar = false;
+		datosTipoContacto.menuContactos = true;
+		datosTipoContacto.formRedesSociales = false;
+		datosTipoContacto.formTelefonos = false;
+		
+	}
+	
+	
+	
+	 var guardarContacto = function(){
+			$http({
+				  method: 'POST',
+				  url: contextPath + "/infomovil/guardarContacto",
+				  params: { 
+					  descripcionContacto: "descripcion del contacto" ,
+					  numeroEmailRedSocial: "!^.*$!mailto:" + "roni@mail.com!",
+					  constanteContacto: "E2U+email:mailto",
+					  redSocialWebSecure: ""}	  
+					}).then(function successCallback(response) {
+						console.log(response.data.codeError);
+						if(response.data.codeError == 0){
+							console.log("SI ACTUALIZO CORRECTAMENTE");
+							
+						}else{
+							console.log("EL ERROR ES: " + response.data.codeError );
+							
+						}
 					
-		}, function errorCallback(response) {
-			console.log("El error es: " + response , response.data.codeError);
-		});
-	};
+					}, function errorCallback(response) {
+						console.log("El error es: " + response , response.data.codeError);
+					});
+	     	};
+	
+	
+
+	}
+
 	
 	 var objetoTipoContacto = function(tipo){
 		 switch(tipo){
@@ -291,4 +327,36 @@ app.controller('TipoContacto', function($scope,$http) {
 			}
 	};
 	
+
+	
+	
+	
+	
 });
+
+
+
+
+app.controller('ActualizarContactos', function($scope,$http){
+	var actualizarTipoContacto = this;
+
+	actualizarTipoContacto.closeMyModalActualizarContactos = function(){
+		$("#myModalContactosActualizar").modal('toggle');
+		
+	}
+	
+	
+	
+});
+
+
+
+
+$(function() {
+	console.log("Veamos si se ejecuta esta madre!");
+  $( "#sortable" ).sortable();
+  $( "#sortable" ).disableSelection();
+});
+
+
+

@@ -9,7 +9,7 @@
 		<tiles:putAttribute name="template" value="${ template }" />
 	</tiles:insertDefinition>
 
-	
+
 	<body role="document" data-spy="scroll" data-target=".navbar" data-offset="75" id="page-top" >
 	
 		<!-- Fixed navbar -->
@@ -125,10 +125,32 @@
 							<div ng-controller = "ToolBarContactoController as toolbarContacto" ng-init="downgrade = '${downgrade}'; contacto = '${contacto}'">
 
 								<h5>{{contacto}} - {{downgrade}}</h5>
+								<ul id="sortable">
 								<div id="contenedorMoverContacto" ng-repeat="item in toolbarContacto.contactos">
-									<ul id="sortable">
+									
+										<li class="ui-state-default" ng-show="item.visible==1">
+											<div >
+
+												
+
+												<img src="/WebAppInfomovil/resources/webapp/images/logo_baz.png" alt="Infomovil" height="47" align="left" width="103">
+												<label class="ng-binding" for="exampleInputEmail1" id="idNumeroTelefonico">tel:+525541915685</label><br>
+												<label class="ng-binding" for="exampleInputEmail1" id="idDescripcionTelefonico">E2U+voice:tel</label><br>
+											</div>
+												<button type="button" class="btn btn-outlineGreen pull-right textWhite navEditorLato" id="btnContactoActivo" style="margin: 5px 0;">
+												<img alt="Infomovil" src="/WebAppInfomovil/resources/webapp/images/successWhite.png" height="20" width="20">
+												<span class="hidden-xs">=</span>
+												</button>
+												<button type="button" class="btn btn-outlineGreen pull-right textWhite navEditorLato" id="btnEliminarContacto" style="margin: 5px 0;" ng-click="toolbarContacto.eliminarContacto()">
+												<img alt="Infomovil" src="/WebAppInfomovil/resources/webapp/images/successWhite.png" height="20" width="20">
+												<span class="hidden-xs">X</span>
+												</button>											
+										</li>
+									
         								<li class="ui-state-default" ng-show="item.visible==1">
+											
 											<div ng-click="toolbarContacto.abrirActualizarContacto(item)">
+
 												<img src="<c:url value="/resources/webapp/images/logo_baz.png"/>" width="103" height="47" alt="Infomovil" align="left"/>
 												<label for="exampleInputEmail1" id="idNumeroTelefonico" >{{item.categoryNaptr}}</label><br>
 												<label for="exampleInputEmail1" id="idDescripcionTelefonico" >{{item.longLabelNaptr}}</label><br>
@@ -148,10 +170,10 @@
 												<span class="hidden-xs">X</span>
 												</button>											
 										</li>
-									</ul>
+									
 									
 								</div>
-
+							</ul>
 							</div>
 						</div>
 						
@@ -171,14 +193,17 @@
 		<script src="<c:url value="/resources/webapp/js/docs.min.js"/>"></script>
 		<script src="<c:url value="/resources/webapp/js/smoothscroll.js"/>"></script>
 		<script src="<c:url value="/resources/webapp/js/ie10-viewport-bug-workaround.js"/>"></script>
+		<script src="<c:url value="/resources/webapp/js/jquery.ui.touch-punch.js"/>"></script>
+		<script src="<c:url value="/resources/webapp/js/jquery.ui.touch-punch.min.js"/>"></script>
 		<!-- bxSlider Javascript file -->
 		<script	src="<c:url value="/resources/webapp/js/jquery.bxslider.min.js"/>"></script>
 		<script	src="<c:url value="/resources/webapp/js/bootstrap-dialog.min.js"/>"></script>
 		<script src="<c:url value="/resources/webapp/js/jquery.numeric.js"/>"></script>
 		<script src="<c:url value="/resources/webapp/js/jquery.blockUI.js"/>"></script>
 		<script src="<c:url value="/resources/js/webapp/contactos.js"/>"></script>
-		
-	
+		<script src="<c:url value="/resources/js/webapp/contactos.js"/>"></script>
+		<script src="http://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
+    	<script src="http://cdnjs.cloudflare.com/ajax/libs/jqueryui-touch-punch/0.2.2/jquery.ui.touch-punch.min.js"></script>
 	 
 		<tiles:insertDefinition name="modalGen">
 			<tiles:putAttribute name="idModal" value="myModalContactos" />
