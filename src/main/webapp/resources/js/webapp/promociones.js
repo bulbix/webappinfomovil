@@ -560,6 +560,11 @@ function muestraTemplatePromo() {
 
 
 var $vistaPreviaImprimir = function() {
+	//document.getElementById("urlVistaPreviaPromoImprimir").contentDocument.location.reload(true);
+	var iframe = document.getElementById("urlVistaPreviaPromoImprimir");
+	iframe.src = iframe.src;
+	
+	//$("#urlVistaPreviaPromoImprimir").attr("src","http://promodev.mobileinfo.io/test801.html?vistaPrevia=1");	
 	$("#myModalPromoImprimir").modal();	
 };
 
@@ -568,7 +573,7 @@ var imprimirPromocionWeb = function(){
 	oldstr = document.body.innerHTML;
 	$.blockUI.defaults.baseZ = 9000;
 	$.blockUI({
-		message: "Generando código de impresión...",
+		message: "Generando impresión...",
 		css: {
 			class:"alertaUI",
 			top:  ($(window).height() - 400) /2 + 'px',
@@ -616,17 +621,32 @@ var descargarPDF = function(){
 	
 	pathPDF = $("#urlVistaPreviaPromoImprimir").attr('src');
 	pathPDF = pathPDF.replace("html", "pdf");
-	window.open(pathPDF, '_blank', 'fullscreen=yes');
+	//window.open(pathPDF, '_blank', 'fullscreen=yes');
 //	console.log("guardarEventoGA: " + nombreEvento + ", nombreSitio: " + nombreSitio + ", banderaCanal: " + banderaCanal);
-	ga('send', 'event', 'promo', 'guardarPDF', $("#tempNombrePromo").val(), $("#tempBanderaPromo").val());
+	var link = document.createElement("a");
+    link.download = "promo.pdf";
+    link.href = pathPDF;
+    link.click();
+    ga('send', 'event', 'promo', 'guardarPDF', $("#tempNombrePromo").val(), $("#tempBanderaPromo").val());
+	
+	
+	    
+
+   
+    
 };
 
 var descargarJPG = function(){
 	
 	pathJPG = $("#urlVistaPreviaPromoImprimir").attr('src');
 	pathJPG = pathJPG.replace("html", "jpg");
-	window.open(pathJPG, '_blank', 'fullscreen=yes');
+	//window.open(pathJPG, '_blank', 'fullscreen=yes');
 //	console.log("guardarEventoGA: " + nombreEvento + ", nombreSitio: " + nombreSitio + ", banderaCanal: " + banderaCanal);
+	
+	var link = document.createElement("a");
+    link.download = "promo.jpg";
+    link.href = pathJPG;
+    link.click();
 	ga('send', 'event', 'promo', 'guardarJPG', $("#tempNombrePromo").val(), $("#tempBanderaPromo").val());
 	
 };

@@ -159,9 +159,9 @@
 						Imprimir</span>
 					</button>
 					<button type="button" class="hidden-md hidden-lg btn btn-outlineGreen pull-right textWhite navEditorLato"  id="btnImprimirPromoMovil" 
-						 style="margin: 5px 8px 0 0;">
+						 style="margin: 5px 0 0 0;">
 						<span><img width="20" height="20" alt="Infomovil"	src="<c:url value="/resources/webapp/images/fa-pdf.png"/>"/> </span>
-						<span class="hidden-xs">PDF/Imagen</span>
+						<span >PDF/Imagen</span>
 						
 					</button>
 					
