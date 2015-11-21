@@ -113,7 +113,8 @@ public class ContactosController
 	
 	@RequestMapping(value = "/infomovil/guardarContacto", method = { RequestMethod.GET, RequestMethod.POST })
 	@ResponseBody
-	public Map<String, String> guardarContacto(@RequestParam String descripcionContacto,  @RequestParam String numeroEmailRedSocial,  @RequestParam String constanteContacto,@RequestParam String redSocialWebSecure) throws UnsupportedEncodingException
+	public Map<String, String> guardarContacto(@RequestParam String descripcionContacto, @RequestParam String numeroEmailRedSocial,
+			@RequestParam String constanteContacto, @RequestParam String redSocialWebSecure) throws UnsupportedEncodingException
 	{		
 		Map<String, String> resultMap = new HashMap<String, String>();
 		
@@ -125,7 +126,6 @@ public class ContactosController
 		
 		try
 		{
-			
 			RecordNaptrVO contacto = new RecordNaptrVO();
 			contacto.setClaveContacto("");
 			contacto.setLongLabelNaptr(descripcionContacto);

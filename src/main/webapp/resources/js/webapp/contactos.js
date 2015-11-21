@@ -126,17 +126,15 @@ app.controller('TipoContacto', function($scope, $http) {
 	datosTipoContacto.mostrarBtnGuardar = false;
 
 	datosTipoContacto.menuContactos = true;
-	datosTipoContacto.formTelefonos = false;
-	datosTipoContacto.formRedesSociales = false;
+	datosTipoContacto.formGuardaContacto = false;
 	
 	datosTipoContacto.telefonos = function(tipo) {
 		
+		datosTipoContacto.formGuardaContacto = true;
 		datosTipoContacto.mostrarBtnRegresar = true;
 		datosTipoContacto.mostrarBtnGuardar = true;
-
+		datosTipoContacto.muestraPais = true;
 		datosTipoContacto.menuContactos = false;
-		datosTipoContacto.formTelefonos = true;
-		datosTipoContacto.formRedesSociales = false;
 		var mensajesContacto = objetoTipoContacto(tipo);
 		$scope.nombre = mensajesContacto.nombre;
 		$scope.etiqueta = mensajesContacto.etiqueta;
@@ -147,18 +145,17 @@ app.controller('TipoContacto', function($scope, $http) {
 	
 	datosTipoContacto.redesSociales = function(tipo) {
 		
+		datosTipoContacto.formGuardaContacto = true;
 		datosTipoContacto.mostrarBtnRegresar = true;
-		datosTipoContacto.mostrarBtnGuardar = true;
-
+		datosTipoContacto.mostrarBtnGuardar = true;		
+		datosTipoContacto.muestraPais = false;
 		datosTipoContacto.menuContactos = false;
-		datosTipoContacto.formRedesSociales = true;
-		datosTipoContacto.formTelefonos = false;
 		var mensajesContacto = objetoTipoContacto(tipo);
 		$scope.nombre = mensajesContacto.nombre;
 		$scope.etiqueta = mensajesContacto.etiqueta;
 		$scope.mensajeRedSocial = mensajesContacto.mensaje;
-		$scope.placeholderTelefonos = mensajesContacto.placeholder; 
-		
+		$scope.placeholderRedSocial = mensajesContacto.placeholder; 
+	
 	}
 	
 	datosTipoContacto.regresarAgregarContacto = function(){
@@ -172,29 +169,29 @@ app.controller('TipoContacto', function($scope, $http) {
 	}
 	
 	datosTipoContacto.closeMyModalContactos = function(){
-		$("#myModalContactos").modal('toggle');
-		
+		$("#myModalContactos").modal('toggle');		
 	}
 	
-	var regresarGenerico = function(){
+	var regresarGenerico = function() {
+		
 		datosTipoContacto.mostrarBtnRegresar = false;
 		datosTipoContacto.mostrarBtnGuardar = false;
 		datosTipoContacto.menuContactos = true;
-		datosTipoContacto.formRedesSociales = false;
-		datosTipoContacto.formTelefonos = false;
+		datosTipoContacto.formGuardaContacto = false;
 		
 	}
 	
-	 var guardarContacto = function() {
+	 var guardarContacto = function(contacto) {
 		 
 		 $http({
 			 method: 'POST',
 			 url: contextPath + "/infomovil/guardarContacto",
-			 params: { 
-				 descripcionContacto: "descripcion del contacto" ,
-				 numeroEmailRedSocial: "!^.*$!mailto:" + "roni@mail.com!",
-				 constanteContacto: "E2U+email:mailto",
-				 redSocialWebSecure: ""}	  
+			 params: {
+				 descripcionContacto: contacto.longLabelNaptr ,
+				 numeroEmailRedSocial: contacto.regExp,
+				 constanteContacto: contacto.servicesNaptr,
+				 redSocialWebSecure: contacto.subCategory
+			 }	  
 		 }).then(function successCallback(response) {
 			 console.log(response.data.codeError);
 			 if(response.data.codeError == 0){
@@ -211,134 +208,164 @@ app.controller('TipoContacto', function($scope, $http) {
 	 };
 	
 	 var objetoTipoContacto = function(tipo) {
+
+		 var titulos = { } ;
+		 titulos.servicio = 'E2U+web:http';
 		 
 		 switch(tipo) {
 		 
 			case 'tel':
-				var titulos = {
+				titulos =
+				{
 					imagen : ' ',
 				    nombre : 'Teléfono',
 				    etiqueta : 'Número Telefónico',
 				    pais : '+52',
 				    placeholder : 'Teléfono',
+				    mensaje : '',
+				    servicio : 'E2U+voice:tel'
 				};
-				return titulos;
+				
 				break;
 				
 			case 'movil':
-				var titulos = {
+				var titulos = 
+				{
 					imagen : '',
 				    nombre : 'Móvil',
 				    etiqueta : 'Número Telefónico',
 				    pais : '+521',
 				    placeholder : 'Teléfono',
-				    mensaje : 'Recuerda que para recibir llamadas internacionales el formato es (1)xxx.xxx.xxxx(10digitos)'
+				    mensaje : 'Recuerda que para recibir llamadas internacionales el formato es (1)xxx.xxx.xxxx(10digitos)',
+				    servicio : 'E2U+voice:tel+x-mobile'
 				};
-				return titulos;
+
 				break;
 			
 			case 'telSMS':
-				var titulos = {
+				titulos = 
+				{
 					imagen : '',
 				    nombre : 'Teléfono SMS',
 				    etiqueta : 'Número Telefónico',
 				    pais : '+52',
-				    placeholder : 'Teléfono'
+				    placeholder : 'Teléfono',
+				    mensaje : '',
+				    servicio : 'E2U+sms:tel'
 				};
-				return titulos;
+
 				break;
 				
 			case 'email':
-				var titulos = {
+				titulos = 
+				{
 					imagen : ' ',
 				    nombre : 'E-mail',
 				    etiqueta : 'E-mail',
-				    placeholder : '',
-				    mensaje : ''
+				    placeholder : 'email@email.com',
+				    mensaje : '',
+				    servicio : 'E2U+email:mailto'
 				};
-				return titulos;
+
 				break;
 				
 			case 'fax':
-				var titulos = {
+				titulos = 
+				{
 					imagen : ' ',
 				    nombre : 'Fax',
 				    etiqueta : 'Número Fax',
 				    pais : ' +52',
-				    placeholder : 'Teléfono'
+				    placeholder : 'Teléfono',
+				    mensaje : '',
+				    servicio : 'E2U+fax:tel'
 				};
-				return titulos;
+
 				break;
 				
 			case 'facebook':
-				var titulos = {
+				titulos = 
+				{
 					imagen : '',
 				    nombre : 'Facebook',
 				    etiqueta : 'Liga a tu cuenta de Facebook',
 				    placeholder : 'www.facebook.com/tufanpage',
-				    mensaje : ''
+				    mensaje : '',
+				    subcategoria : 'facebook'
 				};
-				return titulos;
+
 				break;
 				
 			case 'twitter':
-				var titulos = {
+				titulos = 
+				{
 					imagen : ' ',
 				    nombre : 'Twitter',
 				    etiqueta : 'Enlaza tu cuenta de Twitter',
 				    placeholder : 'www.twitter.com/tucuenta',
-				    mensaje : 'Se publicaran tus ultimos Tweets en tu sitio web'
+				    mensaje : 'Se publicaran tus ultimos Tweets en tu sitio web',
+				    subcategoria : 'twitter'
 				};
-				return titulos;
+
 				break;
 				
 			case 'google':
-				var titulos = {
+				titulos = 
+				{
 					imagen : ' ',
 				    nombre : 'Google+',
 				    etiqueta : 'Liga a tu cuenta de Google+',
 				    placeholder : 'plus.google.com/tucuenta',
-				    mensaje : ''
+				    mensaje : '',
+				    subcategoria : ''
 				};
-				return titulos;
+
 				break;
 				
 			case 'skype':
-				var titulos = {
+				titulos = 
+				{
 					imagen : ' ',
 				    nombre : 'Skype',
 				    etiqueta : 'Liga a tu cuenta de Skype',
 				    placeholder : 'tucuenta',
-				    mensaje : ''
+				    mensaje : '',
+				    servicio : 'E2U+x-voice:skype'
 				};
-				return titulos;
+
 				break;
 			
 			case 'linkedin':
-				var titulos = {
+				titulos = 
+				{
 					imagen : ' ',
 				    nombre : 'LinkedIn',
 				    etiqueta : 'Liga a tu cuenta de LinkedIn',
 				    placeholder : 'www.linkedin.com/tuempresa',
-				    mensaje : ''
+				    mensaje : '',
+				    subcategoria : 'linkedin'
 				};
-				return titulos;
+
 				break;
 				
 			case 'web':
-				var titulos = {
+				titulos =
+				{
 					imagen : ' ',
 				    nombre : 'Website',
 				    etiqueta : 'Liga a tu sitio web',
 				    placeholder : 'www.infomovil.com',
-				    mensaje : ''
+				    mensaje : '',
+				    servicio : 'E2U+web:https',
+				    subcategoria : 'securewebsite'
 				};
-				return titulos;
 				break;
 				
 			default:
 				console.log("La opcion de contacto no existe: " + tipo);
 			}
+		 
+		 return titulos; 
 	}	
 });
 
