@@ -128,34 +128,21 @@ app.controller('TipoContacto', function($scope, $http) {
 	datosTipoContacto.menuContactos = true;
 	datosTipoContacto.formGuardaContacto = false;
 	
-	datosTipoContacto.telefonos = function(tipo) {
+	datosTipoContacto.tipo = function(tipo) {
+		
+		var mensajesContacto = objetoTipoContacto(tipo);
 		
 		datosTipoContacto.formGuardaContacto = true;
 		datosTipoContacto.mostrarBtnRegresar = true;
 		datosTipoContacto.mostrarBtnGuardar = true;
-		datosTipoContacto.muestraPais = true;
 		datosTipoContacto.menuContactos = false;
-		var mensajesContacto = objetoTipoContacto(tipo);
+		datosTipoContacto.muestraPais = mensajesContacto.muestraPais;
 		$scope.nombre = mensajesContacto.nombre;
 		$scope.etiqueta = mensajesContacto.etiqueta;
 		$scope.pais = mensajesContacto.pais;
 		$scope.placeholderContenido = mensajesContacto.placeholder; 
 		$scope.mensajeTelefonos = mensajesContacto.mensaje;	
-	}
-	
-	datosTipoContacto.redesSociales = function(tipo) {
-		
-		datosTipoContacto.formGuardaContacto = true;
-		datosTipoContacto.mostrarBtnRegresar = true;
-		datosTipoContacto.mostrarBtnGuardar = true;		
-		datosTipoContacto.muestraPais = false;
-		datosTipoContacto.menuContactos = false;
-		var mensajesContacto = objetoTipoContacto(tipo);
-		$scope.nombre = mensajesContacto.nombre;
-		$scope.etiqueta = mensajesContacto.etiqueta;
-		$scope.mensajeRedSocial = mensajesContacto.mensaje;
-		$scope.placeholderContenido = mensajesContacto.placeholder; 
-	
+		$scope.expRegularValida = mensajesContacto.expRegular;	
 	}
 	
 	datosTipoContacto.regresarAgregarContacto = function(){
@@ -211,6 +198,11 @@ app.controller('TipoContacto', function($scope, $http) {
 
 		 var titulos = { } ;
 		 titulos.servicio = 'E2U+web:http';
+		 titulos.expRegular = "";
+		 titulos.etiqueta = "Número Telefónico";
+		 titulos.subcategoria = "";
+		 titulos.mensaje = "";
+		 titulos.muestraPais = false;
 		 
 		 switch(tipo) {
 		 
@@ -219,11 +211,10 @@ app.controller('TipoContacto', function($scope, $http) {
 				{
 					imagen : ' ',
 				    nombre : 'Teléfono',
-				    etiqueta : 'Número Telefónico',
 				    pais : '+52',
 				    placeholder : 'Teléfono',
-				    mensaje : '',
-				    servicio : 'E2U+voice:tel'
+				    servicio : 'E2U+voice:tel',
+				    muestraPais : true
 				};
 				
 				break;
@@ -233,11 +224,11 @@ app.controller('TipoContacto', function($scope, $http) {
 				{
 					imagen : '',
 				    nombre : 'Móvil',
-				    etiqueta : 'Número Telefónico',
 				    pais : '+521',
 				    placeholder : 'Teléfono',
 				    mensaje : 'Recuerda que para recibir llamadas internacionales el formato es (1)xxx.xxx.xxxx(10digitos)',
-				    servicio : 'E2U+voice:tel+x-mobile'
+				    servicio : 'E2U+voice:tel+x-mobile',
+				    muestraPais : true
 				};
 
 				break;
@@ -247,11 +238,24 @@ app.controller('TipoContacto', function($scope, $http) {
 				{
 					imagen : '',
 				    nombre : 'Teléfono SMS',
-				    etiqueta : 'Número Telefónico',
 				    pais : '+52',
 				    placeholder : 'Teléfono',
-				    mensaje : '',
-				    servicio : 'E2U+sms:tel'
+				    servicio : 'E2U+sms:tel',
+				    muestraPais : true
+				};
+
+				break;
+
+			case 'fax':
+				titulos = 
+				{
+					imagen : ' ',
+				    nombre : 'Fax',
+				    etiqueta : 'Número Fax',
+				    pais : ' +52',
+				    placeholder : 'Teléfono',
+				    servicio : 'E2U+fax:tel',
+				    muestraPais : true
 				};
 
 				break;
@@ -263,22 +267,8 @@ app.controller('TipoContacto', function($scope, $http) {
 				    nombre : 'E-mail',
 				    etiqueta : 'E-mail',
 				    placeholder : 'email@email.com',
-				    mensaje : '',
-				    servicio : 'E2U+email:mailto'
-				};
-
-				break;
-				
-			case 'fax':
-				titulos = 
-				{
-					imagen : ' ',
-				    nombre : 'Fax',
-				    etiqueta : 'Número Fax',
-				    pais : ' +52',
-				    placeholder : 'Teléfono',
-				    mensaje : '',
-				    servicio : 'E2U+fax:tel'
+				    servicio : 'E2U+email:mailto',
+				    expRegular : '^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,4})+$'
 				};
 
 				break;
@@ -290,8 +280,8 @@ app.controller('TipoContacto', function($scope, $http) {
 				    nombre : 'Facebook',
 				    etiqueta : 'Liga a tu cuenta de Facebook',
 				    placeholder : 'www.facebook.com/tufanpage',
-				    mensaje : '',
-				    subcategoria : 'facebook'
+				    subcategoria : 'facebook',
+				    expRegular : ''
 				};
 
 				break;
@@ -303,8 +293,9 @@ app.controller('TipoContacto', function($scope, $http) {
 				    nombre : 'Twitter',
 				    etiqueta : 'Enlaza tu cuenta de Twitter',
 				    placeholder : 'www.twitter.com/tucuenta',
-				    mensaje : 'Se publicaran tus ultimos Tweets en tu página web',
-				    subcategoria : 'twitter'
+				    mensaje : 'Se publicarán tus ultimos Tweets en tu página web',
+				    subcategoria : 'twitter',
+				    expRegular : ''
 				};
 
 				break;
@@ -316,8 +307,7 @@ app.controller('TipoContacto', function($scope, $http) {
 				    nombre : 'Google+',
 				    etiqueta : 'Liga a tu cuenta de Google+',
 				    placeholder : 'plus.google.com/tucuenta',
-				    mensaje : '',
-				    subcategoria : ''
+				    expRegular : ''
 				};
 
 				break;
@@ -329,8 +319,8 @@ app.controller('TipoContacto', function($scope, $http) {
 				    nombre : 'Skype',
 				    etiqueta : 'Liga a tu cuenta de Skype',
 				    placeholder : 'tucuenta',
-				    mensaje : '',
-				    servicio : 'E2U+x-voice:skype'
+				    servicio : 'E2U+x-voice:skype',
+				    expRegular : ''
 				};
 
 				break;
@@ -342,8 +332,8 @@ app.controller('TipoContacto', function($scope, $http) {
 				    nombre : 'LinkedIn',
 				    etiqueta : 'Liga a tu cuenta de LinkedIn',
 				    placeholder : 'www.linkedin.com/tuempresa',
-				    mensaje : '',
-				    subcategoria : 'linkedin'
+				    subcategoria : 'linkedin',
+				    expRegular : ''
 				};
 
 				break;
@@ -355,9 +345,9 @@ app.controller('TipoContacto', function($scope, $http) {
 				    nombre : 'Website',
 				    etiqueta : 'Liga a tu sitio web',
 				    placeholder : 'www.infomovil.com',
-				    mensaje : '',
 				    servicio : 'E2U+web:https',
-				    subcategoria : 'securewebsite'
+				    subcategoria : 'securewebsite',
+				    expRegular : ''
 				};
 				break;
 				
