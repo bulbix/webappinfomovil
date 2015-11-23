@@ -127,7 +127,6 @@
 								<h5>{{contacto}} - {{downgrade}}</h5>
 								<ul id="sortable">
 
-
 								<div id="contenedorMoverContacto" ng-repeat="item in toolbarContacto.contactos">									
         							<li class="ui-state-default">
 										<div ng-click="toolbarContacto.abrirActualizarContacto(item)">

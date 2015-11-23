@@ -256,10 +256,7 @@ app.controller('ToolBarContactoController', function($scope, $http) {
 	 				    mensaje : ''
 	 				};
 	 				return titulos;
-        		 break;
-        	
-        		 
-        		 
+        		 break;     		 
     		 }
     	 }
      };
@@ -290,7 +287,6 @@ app.controller('TipoContacto', function($scope, $http) {
 	
 	datosTipoContacto.mostrarBtnRegresar = false;
 	datosTipoContacto.mostrarBtnGuardar = false;
-
 	datosTipoContacto.menuContactos = true;
 	datosTipoContacto.formGuardaContacto = false;
 	
@@ -309,16 +305,25 @@ app.controller('TipoContacto', function($scope, $http) {
 		$scope.placeholderContenido = mensajesContacto.placeholder; 
 		$scope.mensajeTelefonos = mensajesContacto.mensaje;	
 		$scope.expRegularValida = mensajesContacto.expRegular;	
+		$scope.subCategory = mensajesContacto.subcategoria;
+		$scope.servicio = mensajesContacto.servicio;
+		console.log("subcategoria: " + $scope.subCategory);
 	}
 	
 	datosTipoContacto.regresarAgregarContacto = function(){
 		regresarGenerico();
 	}
 	
-	datosTipoContacto.guardarContacto = function() {
-	
-		guardarContacto();
-		regresarGenerico();
+	datosTipoContacto.guardarContacto = function(numeroEmailRedSocial, longLabelNaptr) {
+		
+		var contacto = { };
+		
+		contacto.longLabelNaptr = longLabelNaptr;
+		contacto.regExp = numeroEmailRedSocial;
+		contacto.servicesNaptr = $scope.servicio;
+		contacto.subCategory = $scope.subCategory;
+		guardarContacto(contacto);
+	//	regresarGenerico();
 	}
 	
 	datosTipoContacto.closeMyModalContactos = function(){
@@ -336,11 +341,14 @@ app.controller('TipoContacto', function($scope, $http) {
 	
 	 var guardarContacto = function(contacto) {
 		 
+		 console.log("contacto => longLabelNaptr: " + contacto.longLabelNaptr + ", regExp: " + contacto.regExp + 
+				 ", servicio: " + contacto.servicesNaptr + ", subcategoria: " + $scope.subCategory);
+		 /*
 		 $http({
 			 method: 'POST',
 			 url: contextPath + "/infomovil/guardarContacto",
 			 params: {
-				 descripcionContacto: contacto.longLabelNaptr ,
+				 descripcionContacto: contacto.longLabelNaptr,
 				 numeroEmailRedSocial: contacto.regExp,
 				 constanteContacto: contacto.servicesNaptr,
 				 redSocialWebSecure: contacto.subCategory
@@ -357,7 +365,7 @@ app.controller('TipoContacto', function($scope, $http) {
 			 
 		 }, function errorCallback(response) {
 			 console.log("El error es: " + response , response.data.codeError);
-		 });
+		 });*/
 	 };
 	
 	 var objetoTipoContacto = function(tipo) {
@@ -366,14 +374,14 @@ app.controller('TipoContacto', function($scope, $http) {
 		 titulos.servicio = 'E2U+web:http';
 		 titulos.expRegular = "";
 		 titulos.etiqueta = "Número Telefónico";
-		 titulos.subcategoria = "";
+		 titulos.subcategoria = "sin";
 		 titulos.mensaje = "";
 		 titulos.muestraPais = false;
 		 
 		 switch(tipo) {
 		 
 			case 'tel':
-				titulos =
+				titulos = titulos +
 				{
 					imagen : ' ',
 				    nombre : 'Teléfono',
@@ -386,7 +394,7 @@ app.controller('TipoContacto', function($scope, $http) {
 				break;
 				
 			case 'movil':
-				var titulos = 
+				var titulos = titulos +
 				{
 					imagen : '',
 				    nombre : 'Móvil',
@@ -400,7 +408,7 @@ app.controller('TipoContacto', function($scope, $http) {
 				break;
 			
 			case 'telSMS':
-				titulos = 
+				titulos = titulos +
 				{
 					imagen : '',
 				    nombre : 'Teléfono SMS',
@@ -413,7 +421,7 @@ app.controller('TipoContacto', function($scope, $http) {
 				break;
 
 			case 'fax':
-				titulos = 
+				titulos = titulos +
 				{
 					imagen : ' ',
 				    nombre : 'Fax',
@@ -427,7 +435,7 @@ app.controller('TipoContacto', function($scope, $http) {
 				break;
 				
 			case 'email':
-				titulos = 
+				titulos = titulos +
 				{
 					imagen : ' ',
 				    nombre : 'E-mail',
@@ -440,7 +448,7 @@ app.controller('TipoContacto', function($scope, $http) {
 				break;
 				
 			case 'facebook':
-				titulos = 
+				titulos = titulos +
 				{
 					imagen : '',
 				    nombre : 'Facebook',
@@ -453,7 +461,7 @@ app.controller('TipoContacto', function($scope, $http) {
 				break;
 				
 			case 'twitter':
-				titulos = 
+				titulos = titulos +
 				{
 					imagen : ' ',
 				    nombre : 'Twitter',
@@ -467,7 +475,7 @@ app.controller('TipoContacto', function($scope, $http) {
 				break;
 				
 			case 'google':
-				titulos = 
+				titulos = titulos +
 				{
 					imagen : ' ',
 				    nombre : 'Google+',
@@ -479,7 +487,7 @@ app.controller('TipoContacto', function($scope, $http) {
 				break;
 				
 			case 'skype':
-				titulos = 
+				titulos = titulos +
 				{
 					imagen : ' ',
 				    nombre : 'Skype',
@@ -492,7 +500,7 @@ app.controller('TipoContacto', function($scope, $http) {
 				break;
 			
 			case 'linkedin':
-				titulos = 
+				titulos = titulos +
 				{
 					imagen : ' ',
 				    nombre : 'LinkedIn',
@@ -505,7 +513,7 @@ app.controller('TipoContacto', function($scope, $http) {
 				break;
 				
 			case 'web':
-				titulos =
+				titulos = titulos +
 				{
 					imagen : ' ',
 				    nombre : 'Website',
@@ -534,4 +542,3 @@ app.controller('ActualizarContactos', function($scope, $http) {
 		
 	}		
 });
-

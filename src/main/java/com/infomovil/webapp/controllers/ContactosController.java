@@ -43,7 +43,6 @@ public class ContactosController
 	public ModelAndView misContactos()
 	{		
 		HashMap<String, Object> model = new HashMap<String, Object>();
-		//RespuestaVO wsRespuestaContacto = new RespuestaVO();
 		RespuestaVO wsRpta = new RespuestaVO();
 		
 		String template = "Coverpage1azul";
@@ -109,12 +108,11 @@ public class ContactosController
 
 		return new ModelAndView("Webapp/misContactos", model);
 	}
-	
-	
+		
 	@RequestMapping(value = "/infomovil/guardarContacto", method = { RequestMethod.GET, RequestMethod.POST })
 	@ResponseBody
 	public Map<String, String> guardarContacto(@RequestParam String descripcionContacto, @RequestParam String numeroEmailRedSocial,
-			@RequestParam String constanteContacto, @RequestParam String redSocialWebSecure) throws UnsupportedEncodingException
+			@RequestParam String constanteContacto, @RequestParam String redSocialWebSecure, String expRegular) throws UnsupportedEncodingException
 	{		
 		Map<String, String> resultMap = new HashMap<String, String>();
 		
@@ -214,7 +212,6 @@ public class ContactosController
 		return resultMap;
 	}
 	
-
 	@SuppressWarnings("unchecked")
 	@RequestMapping(value = "/infomovil/getContactos", method = RequestMethod.GET, produces = "application/json")
 	@ResponseBody
@@ -240,7 +237,6 @@ public class ContactosController
 
 		return list;
 	}	
-
 	
 	private ClientWsInfomovil wsCliente = new ClientWsInfomovil();
 	private static final Logger logger = Logger.getLogger(WebappController.class);

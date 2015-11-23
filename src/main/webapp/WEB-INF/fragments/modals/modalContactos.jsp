@@ -4,8 +4,8 @@
 			<button type="button" class="btn btn-purple pull-right btnsEditor"  id="" ng-click="datosTipoContacto.regresarAgregarContacto()" ng-show="datosTipoContacto.mostrarBtnRegresar" style="margin: 5px 0;"><img width="15" height="15" alt="Infomovil" 
 	    		src="<c:url value="/resources/webapp/images/successWhite.png"/>" /><span class="hidden-xs"> Regresar</span></button>
 			
-			<button type="button" class="btn btn-purple pull-right"  id="" ng-click="datosTipoContacto.guardarContacto()" ng-show="datosTipoContacto.mostrarBtnGuardar" style="margin:5px 0;"><img width="15" height="15" alt="Infomovil" 
-	    		src="<c:url value="/resources/webapp/images/successWhite.png"/>" /><span class="hidden-xs"> Guardar</span></button>
+<!-- 			<button type="button" class="btn btn-purple pull-right"  id="" ng-click="datosTipoContacto.guardarContacto(contacto)" ng-show="datosTipoContacto.mostrarBtnGuardar" style="margin:5px 0;"><img width="15" height="15" alt="Infomovil"  -->
+<%-- 	    		src="<c:url value="/resources/webapp/images/successWhite.png"/>" /><span class="hidden-xs"> Guardar</span></button> --%>
 	    	
 	    	<button type="button" class="close textBlack pull-left btnsEditor"  aria-label="Close" ng-click="datosTipoContacto.closeMyModalContactos()" id="myModalContactos"><span aria-hidden="true"><strong>&times;</strong></span></button>
 	
@@ -30,19 +30,21 @@
 			</ul>
 		</div>
 		<div ng-show="datosTipoContacto.formGuardaContacto">
+			<form name="miFormulario" ng-submit="datosTipoContacto.guardarContacto(numeroEmailRedSocial, longLabelNaptr)" ng-controller="TipoContacto">
 				<img src="" alt="" height="20" width="20">
 				<div>{{nombre}}</div><br>
 				<div>{{etiqueta}}</div><br>
-				<div name = "codigoPaisArea" ng-show="datosTipoContacto.muestraPais">{{pais}}</div><br>
-				<input type="text" name="contenidoContacto" placeholder="{{placeholderContenido}}" ngRequired="true" ng-pattern="{{expRegularValida}}"/><br>
+				<div ng-show="datosTipoContacto.muestraPais">{{pais}}</div><br>
+				<input type="text" ng-model="numeroEmailRedSocial" placeholder="{{placeholderContenido}}" 
+					ngRequired="true" ng-pattern="{{expRegularValida}}"/><br>
 				<div>{{mensajeTelefonos}}</div><br>
 				<div>Descripción</div><br>
-				<textarea name = "datosTipoContacto.longLabelNaptr" ng-maxlength="250"></textarea>
-				<div ng-hide="true" name="servicesNaptr"></div><br>
-				<div ng-hide="true" name="subCategory"></div><br>
+				<textarea ng-maxlength="250" ng-model="longLabelNaptr"></textarea>
+				<input type="submit" class="btn btn-purple pull-right" ng-show="datosTipoContacto.mostrarBtnGuardar" value="Guardar" style="margin:5px 0;"/>
+			</form>
 		</div>
 	</div>  
-       
+<!-- 			@RequestParam String constanteContacto, @RequestParam String redSocialWebSecure, String expRegular -->
 	<div class="clear"></div>
 	
 
