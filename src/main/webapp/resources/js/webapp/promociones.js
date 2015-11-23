@@ -614,7 +614,7 @@ var imprimirPromocionEnPantalla = function(datahtml){
     $("#myModalPromoImprimir").modal();	
 	$.unblockUI();}, 2500);
 //	console.log("Nombre del evento: mi Evento,   nombreSitio: " + $("#tempNombrePromo").val() + ", banderaCanal: " + $("#tempBanderaPromo").val());
-	ga('send', 'event', 'promo', 'imprimir', $("#tempNombrePromo").val(), $("#tempBanderaPromo").val());
+	ga('send', 'event', 'promo', 'promo-imprimir', $("#tempNombrePromo").val(), $("#tempBanderaPromo").val());
 };
 
 var descargarPDF = function(){
@@ -627,7 +627,7 @@ var descargarPDF = function(){
     link.download = "promo.pdf";
     link.href = pathPDF;
     link.click();
-    ga('send', 'event', 'promo', 'guardarPDF', $("#tempNombrePromo").val(), $("#tempBanderaPromo").val());
+    ga('send', 'event', 'promo', 'promo-guardarPDF', $("#tempNombrePromo").val(), $("#tempBanderaPromo").val());
 	
 	
 	    
@@ -647,6 +647,6 @@ var descargarJPG = function(){
     link.download = "promo.jpg";
     link.href = pathJPG;
     link.click();
-	ga('send', 'event', 'promo', 'guardarJPG', $("#tempNombrePromo").val(), $("#tempBanderaPromo").val());
+	ga('send', 'event', 'promo', 'promo-guardarJPG', $("#tempNombrePromo").val(), $("#tempBanderaPromo").val());
 	
 };
