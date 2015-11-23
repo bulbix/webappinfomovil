@@ -14,53 +14,33 @@
 	</div>
 
 	<div class="modal-body">  
-	<div ng-show="datosTipoContacto.menuContactos">
-		<ul>
-			<li ng-click="datosTipoContacto.telefonos('tel')">Teléfono</li>
-			<li ng-click="datosTipoContacto.telefonos('movil')">Móvil</li>
-			<li ng-click="datosTipoContacto.telefonos('telSMS')">Teléfono SMS</li>
-			<li ng-click="datosTipoContacto.redesSociales('email')">E-mail</li>
-			<li ng-click="datosTipoContacto.telefonos('fax')">Fax</li>
-			<li ng-click="datosTipoContacto.redesSociales('facebook')">Facebook</li>
-			<li ng-click="datosTipoContacto.redesSociales('twitter')">Twitter</li>
-			<li ng-click="datosTipoContacto.redesSociales('google')">Google+</li>
-			<li ng-click="datosTipoContacto.redesSociales('skype')">Skype</li>
-			<li ng-click="datosTipoContacto.redesSociales('linkedin')">LinkedIn</li>
-			<li ng-click="datosTipoContacto.redesSociales('web')">Website</li>
-		</ul>
-	</div>
-	<div ng-show="datosTipoContacto.formTelefonos">
-			<img src="" alt="" height="20" width="20">
-			<span >{{nombre}}</span><br>
-			<span >{{etiqueta}}</span><br>
-			<span >{{pais}}</span><br>
-			<input type="text" ng-model="datosTipoContacto.inputTelefonos" placeholder="{{placeholderTelefonos}}" name="inputTelefonos"/><br>
-			<span >{{mensajeTelefonos}}</span><br>
-			<span>Descripción</span><br>
-			<textarea
-				  name = "textareaDescripcion"
-				  ng-model="datosTipoContacto.descripcionContacto"
-				  ng-maxlength="250">
-			</textarea>
-			
-	</div>
-	<div ng-show="datosTipoContacto.formRedesSociales">
-			<img src="" alt="" height="20" width="20">
-			<span >{{nombre}}</span><br>
-			<span >{{etiqueta}}</span><br>
-			<input type="text" ng-model="datosTipoContacto.inputTelefonos" placeholder="{{placeholderRedSocial}}" name="inputRedSocial"/><br>
-			<span>{{mensajeRedSocial}}</span><br>
-			<span>Descripción</span><br>
-			<textarea
-				  name = "textareaDescripcion"
-				  ng-model="datosTipoContacto.descripcionContacto"
-				  ng-maxlength="250">
-			</textarea>
-	</div>
-	
-	
-	
-	
+		<div ng-show="datosTipoContacto.menuContactos">
+			<ul>
+				<li ng-click="datosTipoContacto.tipo('tel')">Teléfono</li>
+				<li ng-click="datosTipoContacto.tipo('movil')">Móvil</li>
+				<li ng-click="datosTipoContacto.tipo('telSMS')">Teléfono SMS</li>
+				<li ng-click="datosTipoContacto.tipo('email')">E-mail</li>
+				<li ng-click="datosTipoContacto.tipo('fax')">Fax</li>
+				<li ng-click="datosTipoContacto.tipo('facebook')">Facebook</li>
+				<li ng-click="datosTipoContacto.tipo('twitter')">Twitter</li>
+				<li ng-click="datosTipoContacto.tipo('google')">Google+</li>
+				<li ng-click="datosTipoContacto.tipo('skype')">Skype</li>
+				<li ng-click="datosTipoContacto.tipo('linkedin')">LinkedIn</li>
+				<li ng-click="datosTipoContacto.tipo('web')">Website</li>
+			</ul>
+		</div>
+		<div ng-show="datosTipoContacto.formGuardaContacto">
+				<img src="" alt="" height="20" width="20">
+				<div>{{nombre}}</div><br>
+				<div>{{etiqueta}}</div><br>
+				<div name = "codigoPaisArea" ng-show="datosTipoContacto.muestraPais">{{pais}}</div><br>
+				<input type="text" name="contenidoContacto" placeholder="{{placeholderContenido}}" ngRequired="true" ng-pattern="{{expRegularValida}}"/><br>
+				<div>{{mensajeTelefonos}}</div><br>
+				<div>Descripción</div><br>
+				<textarea name = "datosTipoContacto.longLabelNaptr" ng-maxlength="250"></textarea>
+				<div ng-hide="true" name="servicesNaptr"></div><br>
+				<div ng-hide="true" name="subCategory"></div><br>
+		</div>
 	</div>  
        
 	<div class="clear"></div>
