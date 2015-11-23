@@ -33,13 +33,13 @@
 				<img src="" alt="" height="20" width="20">
 				<div>{{nombre}}</div><br>
 				<div>{{etiqueta}}</div><br>
-				<div name = "textareaDescripcion" ng-show="datosTipoContacto.muestraPais">{{pais}}</div><br>
-				<input type="text" name = "regExp" placeholder="{{placeholderTelefonos}}" name="inputTelefonos"/><br>
+				<div name = "codigoPaisArea" ng-show="datosTipoContacto.muestraPais">{{pais}}</div><br>
+				<input type="text" name="contenidoContacto" placeholder="{{placeholderContenido}}" ngRequired="true"/><br>
 				<div>{{mensajeTelefonos}}</div><br>
 				<div>Descripción</div><br>
 				<textarea name = "datosTipoContacto.longLabelNaptr" ng-maxlength="250"></textarea>
-				<div ng-hide="true" name="servicesNaptr" ng-model=""></div><br>
-				<div ng-hide="true" name="subCategory" ng-model=""></div><br>
+				<div ng-hide="true" name="servicesNaptr"></div><br>
+				<div ng-hide="true" name="subCategory"></div><br>
 		</div>
 	</div>  
        

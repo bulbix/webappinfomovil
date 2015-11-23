@@ -139,7 +139,7 @@ app.controller('TipoContacto', function($scope, $http) {
 		$scope.nombre = mensajesContacto.nombre;
 		$scope.etiqueta = mensajesContacto.etiqueta;
 		$scope.pais = mensajesContacto.pais;
-		$scope.placeholderTelefonos = mensajesContacto.placeholder; 
+		$scope.placeholderContenido = mensajesContacto.placeholder; 
 		$scope.mensajeTelefonos = mensajesContacto.mensaje;	
 	}
 	
@@ -154,7 +154,7 @@ app.controller('TipoContacto', function($scope, $http) {
 		$scope.nombre = mensajesContacto.nombre;
 		$scope.etiqueta = mensajesContacto.etiqueta;
 		$scope.mensajeRedSocial = mensajesContacto.mensaje;
-		$scope.placeholderRedSocial = mensajesContacto.placeholder; 
+		$scope.placeholderContenido = mensajesContacto.placeholder; 
 	
 	}
 	
@@ -303,7 +303,7 @@ app.controller('TipoContacto', function($scope, $http) {
 				    nombre : 'Twitter',
 				    etiqueta : 'Enlaza tu cuenta de Twitter',
 				    placeholder : 'www.twitter.com/tucuenta',
-				    mensaje : 'Se publicaran tus ultimos Tweets en tu sitio web',
+				    mensaje : 'Se publicaran tus ultimos Tweets en tu página web',
 				    subcategoria : 'twitter'
 				};
 
