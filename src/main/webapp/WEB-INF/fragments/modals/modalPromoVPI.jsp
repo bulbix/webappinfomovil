@@ -12,7 +12,7 @@
 	</div>
 	<div class="modal-body" style="overflow:hidden; max-height:330px;">
 		<div class="col-xs-12 reset">
-			<iframe id="urlVistaPreviaPromoImprimir" src="${ urlPromocion }?vistaPrevia=1" style="width:100%; min-height:500px; border:none; overflow-y:scroll" frameborder="0"></iframe>	
+			<iframe id="urlVistaPreviaPromoImprimir" src="${ urlPromocion }?vistaPrevia=1" style="width:100%; min-height:500px; border:none; overflow-y:scroll !important" frameborder="0"></iframe>	
 		</div>
 		<div class="clear divider"></div>
 	</div>
