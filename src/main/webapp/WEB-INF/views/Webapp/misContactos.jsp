@@ -128,32 +128,29 @@
 								<ul id="sortable">
 
 								<div id="contenedorMoverContacto" ng-repeat="item in toolbarContacto.contactos">
-									
-									
         								<li class="ui-state-default" ng-show="item.visible==1">
-											
-
-											<div ng-click="toolbarContacto.abrirActualizarContacto(item)">
-	
 												<img src="<c:url value="/resources/webapp/images/logo_baz.png"/>" width="103" height="47" alt="Infomovil" align="left"/>
-												<label for="exampleInputEmail1" id="idNumeroTelefonico" >{{item.categoryNaptr}}</label><br>
-												<label for="exampleInputEmail1" id="idDescripcionTelefonico" >{{item.longLabelNaptr}}</label><br>
-												<label for="exampleInputEmail1" id="idDescripcionTelefonico" >{{item.regExp}}</label><br>
-												<label for="exampleInputEmail1" id="idDescripcionTelefonico" >{{item.servicesNaptr}}</label><br>
-												<label for="exampleInputEmail1" id="idDescripcionTelefonico" >{{item.subCategory}}</label><br>
-												<label for="exampleInputEmail1" id="idDescripcionTelefonico" >{{item.claveContacto}}</label><br>
-												<label for="exampleInputEmail1" id="idDescripcionTelefonico" >{{item.preference}}</label><br>
-												<label for="exampleInputEmail1" id="idDescripcionTelefonico" >{{item.visible}}</label><br>
-													
-											</div>
-											<button type="button" class="btn btn-outlineGreen pull-right textWhite navEditorLato" id="btnContactoActivo" style="margin: 5px 0;">
-											<img width="20" height="20" alt="Infomovil" src="<c:url value="/resources/webapp/images/successWhite.png"/>"/>
-											<span class="hidden-xs">=</span>
+												<label for="exampleInputEmail1" id="idNumeroTelefonico" >{{item.categoryNaptr}}8</label><br>
+												<label for="exampleInputEmail1" id="idDescripcionTelefonico" >{{item.longLabelNaptr}}7</label><br>
+												<label for="exampleInputEmail1" id="idDescripcionTelefonico" >{{item.regExp}}1</label><br>
+												<label for="exampleInputEmail1" id="idDescripcionTelefonico" >{{item.servicesNaptr}}2</label><br>
+												<label for="exampleInputEmail1" id="idDescripcionTelefonico" >{{item.subCategory}}3</label><br>
+												<label for="exampleInputEmail1" id="idDescripcionTelefonico" >{{item.claveContacto}}4</label><br>
+												<label for="exampleInputEmail1" id="idDescripcionTelefonico" >{{item.preference}}5</label><br>
+												<label for="exampleInputEmail1" id="idDescripcionTelefonico" >{{item.visible}}6</label><br>
+											
+											<button type="button" class="btn btn-outlineGreen pull-right textWhite navEditorLato" id="" style="margin: 5px 0;" ng-click="toolbarContacto.statusContacto(item)">
+												<img width="20" height="20" alt="Infomovil" src="<c:url value="/resources/webapp/images/successWhite.png"/>"/>
+												<span class="hidden-xs">S</span>
 											</button>
-											<button type="button" class="btn btn-outlineGreen pull-right textWhite navEditorLato" id="btnEliminarContacto" style="margin: 5px 0;" ng-click="toolbarContacto.eliminarContacto(item)">
-											<img width="20" height="20" alt="Infomovil" src="<c:url value="/resources/webapp/images/successWhite.png"/>"/>
-											<span class="hidden-xs">X</span>
-											</button>											
+											<button type="button" class="btn btn-outlineGreen pull-right textWhite navEditorLato" id="" style="margin: 5px 0;" ng-click="toolbarContacto.eliminarContacto(item)">
+												<img width="20" height="20" alt="Infomovil" src="<c:url value="/resources/webapp/images/successWhite.png"/>"/>
+												<span class="hidden-xs">X</span>
+											</button>		
+											<button type="button" class="btn btn-outlineGreen pull-right textWhite navEditorLato" id="" style="margin: 5px 0;" ng-click="toolbarContacto.abrirActualizarContacto(item)">
+												<img width="20" height="20" alt="Infomovil" src="<c:url value="/resources/webapp/images/successWhite.png"/>"/>
+												<span class="hidden-xs">A</span>
+											</button>									
 										</li>									
 									</div>
 								</ul>
@@ -174,8 +171,8 @@
 		<script src="<c:url value="/resources/webapp/js/docs.min.js"/>"></script>
 		<script src="<c:url value="/resources/webapp/js/smoothscroll.js"/>"></script>
 		<script src="<c:url value="/resources/webapp/js/ie10-viewport-bug-workaround.js"/>"></script>
+		<script src="<c:url value="/resources/webapp/js/jquery-ui.min.js"/>"></script>
 		<script src="<c:url value="/resources/webapp/js/jquery.ui.touch-punch.js"/>"></script>
-		<script src="<c:url value="/resources/webapp/js/jquery.ui.touch-punch.min.js"/>"></script>
 		<!-- bxSlider Javascript file -->
 		<script	src="<c:url value="/resources/webapp/js/jquery.bxslider.min.js"/>"></script>
 		<script	src="<c:url value="/resources/webapp/js/bootstrap-dialog.min.js"/>"></script>
@@ -183,8 +180,7 @@
 		<script src="<c:url value="/resources/webapp/js/jquery.blockUI.js"/>"></script>
 		<script src="<c:url value="/resources/js/webapp/contactos.js"/>"></script>
 		<script src="<c:url value="/resources/js/webapp/contactos.js"/>"></script>
-		<script src="http://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
-    	<script src="http://cdnjs.cloudflare.com/ajax/libs/jqueryui-touch-punch/0.2.2/jquery.ui.touch-punch.min.js"></script>
+		
 	 
 		<tiles:insertDefinition name="modalGen">
 			<tiles:putAttribute name="idModal" value="myModalContactos" />
@@ -192,6 +188,7 @@
 				value='"modal-dialog modal-lg"' />
 			<c:set var="fragmentName" value="modalContactos" scope="request" />
 		</tiles:insertDefinition>
+		
 		<tiles:insertDefinition name="modalGen">
 			<tiles:putAttribute name="idModal" value="myModalContactosActualizar" />
 			<tiles:putAttribute name="tamanioModal"

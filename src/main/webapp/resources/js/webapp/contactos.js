@@ -1,8 +1,15 @@
 /**
  * 
  */
+$(function() {
+  $( "#sortable" ).sortable();
+  $( "#sortable" ).disableSelection();
+});
+
+
 
 var app = angular.module('InfomovilApp', []);
+
 app.controller('ToolBarContactoController', function($scope, $http) {
 
 	var toolbarContacto = this;
@@ -24,12 +31,23 @@ app.controller('ToolBarContactoController', function($scope, $http) {
 		actualizarContacto();
 	}
 	
-	toolbarContacto.abrirActualizarContacto = function() {
-		console.log('mandar a llamar al modal de actualziar contacto');
-	}
+	
 
 	toolbarContacto.abrirActualizarContacto = function(item) {
-		console.log("item abrirActualizarContacto: " + item.regExp);
+		console.log("item abrirActualizarContacto: " + item.regExp + item.subCategory);
+		var mensajesContacto = '';
+		if(item.subCategory.length > 0){
+				mensajesContacto = consultarElTipoContacto("redSocial" , item.subCategory);
+					
+		}else{
+				mensajesContacto = consultarElTipoContacto("tel" , item.servicesNaptr);		
+		}
+		$("#nombreActualizarTel").text(mensajesContacto.nombre); 
+		$("#etiquetaActualizarTel").text(mensajesContacto.etiqueta);
+		$("#paisActualizarTel").text(mensajesContacto.pais);
+		$("#inputTelefonosActualizar").val(item.regExp);  
+		$("#textAreaActualizarTel").val(item.longLabelNaptr); 
+		$("#myModalContactosActualizar").modal();
 	}
 	
     var eliminarContacto = function(claveContacto) {
@@ -78,8 +96,157 @@ app.controller('ToolBarContactoController', function($scope, $http) {
 					 console.log("El error es: " + response , response.data.codeError);
 				});
      };
-	
-     function getContactos() {
+     
+     
+     var consultarElTipoContacto = function(tipo, llave){
+    	 llave = angular.uppercase(llave);
+    	 console.log("la llave es: " + llave);
+    	 if(tipo == "redSocial"){
+    		 switch(llave){
+	    		 case "FACEBOOK" :
+	    			 var titulos = {
+		    				imagen : '',
+		 				    nombre : 'Facebook',
+		 				    etiqueta : 'Liga a tu cuenta de Facebook',
+		 				    pais : '',
+		 				    placeholder : 'www.facebook.com/tufanpage',
+		 				    mensaje : ''
+	 				};
+	 				return titulos;
+	    			 break;
+	    		 
+	    		 case "TWITTER" :
+	    			 var titulos = {
+		    				imagen : ' ',
+		 				    nombre : 'Twitter',
+		 				    etiqueta : 'Enlaza tu cuenta de Twitter',
+		 				   pais : '',
+		 				    placeholder : 'www.twitter.com/tucuenta',
+		 				    mensaje : 'Se publicaran tus ultimos Tweets en tu sitio web'
+			 				};
+		 				return titulos;
+	    			 break;
+	    			 
+	    		 case "SECUREWEBSITE" :
+	    			 var titulos = {
+		    				imagen : ' ',
+		 				    nombre : 'Website',
+		 				    etiqueta : 'Liga a tu sitio web',
+		 				   pais : '',
+		 				    placeholder : 'www.infomovil.com',
+		 				    mensaje : ''
+			 				};
+		 				return titulos;
+	    			 break;
+	    			 
+	    		 case "LINKEDIN" :
+	    			 var titulos = {
+	    					 imagen : ' ',
+	    					 nombre : 'LinkedIn',
+	    					 etiqueta : 'Liga a tu cuenta de LinkedIn',
+	    					 pais : '',
+	    					 placeholder : 'www.linkedin.com/tuempresa',
+	    					 mensaje : ''		
+	    					};
+		 				return titulos;
+	    			 break;
+    			 
+    		 }
+    	 }else if(tipo == "tel"){
+    	 
+    		 switch(llave){
+    		 // TElefono normal
+    		 case "E2U+VOICE:TEL" :
+    			 var titulos = {
+	    				imagen : ' ',
+	 				    nombre : 'Teléfono',
+	 				    etiqueta : 'Número Telefónico',
+	 				    pais : '+52',
+	 				    placeholder : 'Teléfono',
+	 				    mensaje : ''
+	 				};
+	 				return titulos;
+	 				break;
+    		 // Celular
+    		 case "E2U+VOICE:TE+X-MOBILE" :
+    			 var titulos = {
+	    				imagen : '',
+	 				    nombre : 'Móvil',
+	 				    etiqueta : 'Número Telefónico',
+	 				    pais : '+521',
+	 				    placeholder : 'Teléfono',
+	 				    mensaje : 'Recuerda que para recibir llamadas internacionales el formato es (1)xxx.xxx.xxxx(10digitos)'   
+	 				};
+	 				return titulos;
+        		 break;
+    		 // Mensaje de celular
+    		 case "E2U+SMS:TEL" :
+    			 var titulos = {
+	    				imagen : '',
+	 				    nombre : 'Teléfono SMS',
+	 				    etiqueta : 'Número Telefónico',
+	 				    pais : '+52',
+	 				    placeholder : 'Teléfono',
+	 				    mensaje : ''
+	 				};
+	 				return titulos;
+        		 break;
+        		// Email
+    		 case "E2U+EMAIL:MAILTO" :
+    			 var titulos = {
+	    				imagen : ' ',
+	 				    nombre : 'E-mail',
+	 				    etiqueta : 'E-mail',
+	 				    placeholder : '',
+	 				    mensaje : ''
+		 			};
+	 				return titulos;
+        		 break;
+        		 
+        		 // Fax
+    		 case "E2U+FAX:TEL" :
+    			 var titulos = {
+	    				imagen : ' ',
+	 				    nombre : 'Fax',
+	 				    etiqueta : 'Número Fax',
+	 				    pais : '+52',
+	 				    placeholder : 'Teléfono',
+	 				    mensaje : ''
+	 				};
+	 				return titulos;
+        		 break;
+        		 // Google+
+    		 case "E2U+WEB:HTTP" :
+    			 var titulos = {
+	    				imagen : ' ',
+	 				    nombre : 'Google+',
+	 				    etiqueta : 'Liga a tu cuenta de Google+',
+	 				    pais : '',
+	 				    placeholder : 'plus.google.com/tucuenta',
+	 				    mensaje : ''
+	 				};
+	 				return titulos;
+        		 break;
+        		// Skype
+    		 case "E2U+X-VOICE:SKYPE" :
+    			 var titulos = {
+	    				imagen : ' ',
+	 				    nombre : 'Skype',
+	 				    etiqueta : 'Liga a tu cuenta de Skype',
+	 				    pais : '',
+	 				    placeholder : 'tucuenta',
+	 				    mensaje : ''
+	 				};
+	 				return titulos;
+        		 break;
+        	
+        		 
+        		 
+    		 }
+    	 }
+     };
+     
+       function getContactos() {
 
     	 $http({
     		 method: 'GET',
@@ -91,7 +258,7 @@ app.controller('ToolBarContactoController', function($scope, $http) {
     	 });
      }
      
-     /*Obtiene los contactos*/
+      /*Obtiene los contactos*/
      getContactos();
 });
 
@@ -138,7 +305,7 @@ app.controller('TipoContacto', function($scope,$http){
 		$scope.nombre = mensajesContacto.nombre;
 		$scope.etiqueta = mensajesContacto.etiqueta;
 		$scope.mensajeRedSocial = mensajesContacto.mensaje;
-		$scope.placeholderTelefonos = mensajesContacto.placeholder; 
+		$scope.placeholderRedSocial = mensajesContacto.placeholder; 
 		
 	}
 	
@@ -206,7 +373,7 @@ app.controller('TipoContacto', function($scope,$http){
 				    nombre : 'Teléfono',
 				    etiqueta : 'Número Telefónico',
 				    pais : '+52',
-				    placeholder : 'Teléfono',
+				    placeholder : 'Teléfono'
 				};
 				return titulos;
 				break;
@@ -339,7 +506,8 @@ app.controller('TipoContacto', function($scope,$http){
 
 app.controller('ActualizarContactos', function($scope,$http){
 	var actualizarTipoContacto = this;
-
+	
+	
 	actualizarTipoContacto.closeMyModalActualizarContactos = function(){
 		$("#myModalContactosActualizar").modal('toggle');
 		
@@ -347,16 +515,13 @@ app.controller('ActualizarContactos', function($scope,$http){
 	
 	
 	
+	
 });
 
 
 
 
-$(function() {
-	console.log("Veamos si se ejecuta esta madre!");
-  $( "#sortable" ).sortable();
-  $( "#sortable" ).disableSelection();
-});
+
 
 
 

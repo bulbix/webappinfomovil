@@ -115,7 +115,7 @@
    * @param {Object} event The document's touchend event
    */
   mouseProto._touchEnd = function (event) {
-
+	  console.log("Aqui ya termino de mover!");
     // Ignore event if not handled
     if (!touchHandled) {
       return;

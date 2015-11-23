@@ -15,36 +15,22 @@
 
 	<div class="modal-body">  
 	
-	<div ng-show="datosTipoContacto.formTelefonos">
-			<img src="" alt="" height="20" width="20">
-			<span >{{nombre}}</span><br>
-			<span >{{etiqueta}}</span><br>
-			<span >{{pais}}</span><br>
-			<input type="text" ng-model="datosTipoContacto.inputTelefonos" placeholder="{{placeholderTelefonos}}" name="inputTelefonos"/><br>
-			<span >{{mensajeTelefonos}}</span><br>
-			<span>Descripción</span><br>
-			<textarea
-				  name = "textareaDescripcion"
-				  ng-model="datosTipoContacto.descripcionContacto"
-				  ng-maxlength="250">
-			</textarea>
-			
-	</div>
-	<div ng-show="datosTipoContacto.formRedesSociales">
-			<img src="" alt="" height="20" width="20">
-			<span >{{nombre}}</span><br>
-			<span >{{etiqueta}}</span><br>
-			<input type="text" ng-model="datosTipoContacto.inputTelefonos" placeholder="{{placeholderRedSocial}}" name="inputRedSocial"/><br>
-			<span>{{mensajeRedSocial}}</span><br>
-			<span>Descripción</span><br>
-			<textarea
-				  name = "textareaDescripcion"
-				  ng-model="datosTipoContacto.descripcionContacto"
-				  ng-maxlength="250">
-			</textarea>
-	</div>
-	
-	
+		<div>
+				<img src="" alt="" height="20" width="20">
+				<span id="nombreActualizarTel"></span><br>
+				<span id="etiquetaActualizarTel"></span><br>
+				<span id="paisActualizarTel"></span><br>
+				<input type="text" id="inputTelefonosActualizar"/><br>
+				<span id="mensajeTelefonosActualizar"></span><br>
+				<span>Descripción</span><br>
+				<textarea
+					  name = "textareaDescripcion"
+					  id="textAreaActualizarTel"
+					  ng-maxlength="250">
+				</textarea>
+				
+		</div>
+		
 	
 	
 	</div>  
