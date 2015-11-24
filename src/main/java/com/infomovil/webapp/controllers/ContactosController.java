@@ -118,7 +118,7 @@ public class ContactosController
 		
 		String correo = Util.getUserLogged().getUsername();
 		String password = Util.getUserLogged().getPassword();
-				
+		String regExp = "!^.*$!";
 		descripcionContacto = new String(descripcionContacto.getBytes("ISO-8859-1"), "UTF-8");
 		numeroEmailRedSocial = new String(numeroEmailRedSocial.getBytes("ISO-8859-1"), "UTF-8");
 		
@@ -127,7 +127,7 @@ public class ContactosController
 			RecordNaptrVO contacto = new RecordNaptrVO();
 			contacto.setClaveContacto("");
 			contacto.setLongLabelNaptr(descripcionContacto);
-			contacto.setRegExp(numeroEmailRedSocial);
+			contacto.setRegExp(regExp + numeroEmailRedSocial + "!");
 			contacto.setServicesNaptr(constanteContacto);
 			contacto.setSubCategory(redSocialWebSecure);// Solo si es red social
 			contacto.setVisible("1");
