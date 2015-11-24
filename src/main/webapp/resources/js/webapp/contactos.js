@@ -7,6 +7,15 @@ app.controller('ToolBarContactoController', function($scope, $http, ContactoServ
 	toolbarContacto.downgrade = "";
 	toolbarContacto.contacto = "";
 
+	
+	
+	
+	toolbarContacto.agregaContacto = function(downgrade, contacto) {
+		ContactoService.setContactosPermitidos(contacto);
+		console.log("agregaContacto: " + downgrade + ", contacto: " + contacto + ", " + toolbarContacto.contactos.length);
+		$("#myModalContactos").modal();
+	}
+
 	toolbarContacto.mostrarModalContactos = function() { 
 		$myModalContactos.modal();
 	};
@@ -249,6 +258,12 @@ app.controller('ToolBarContactoController', function($scope, $http, ContactoServ
      
      $scope.$watch(function () { return ContactoService.contactos(); }, function (value) {
     	 toolbarContacto.contactos = value;
+    	 
+    	 console.log("limite: " + toolbarContacto.contactos + ", " + ContactoService.getContactosPermitidos() + ", " + toolbarContacto.contacto);
+    	 //if(toolbarContacto.contactos.length == ContactoService.getContactosPermitidos()){
+    	//	 console.log('Limite alcanzado')
+    	// }
+    	 
      });
     
      $("#sortable").sortable();
@@ -257,7 +272,7 @@ app.controller('ToolBarContactoController', function($scope, $http, ContactoServ
 
 app.factory('ContactoService', function($http) {
 	
-	var contactos
+	var contactos, contactosPermitidos;
 	
 	function getContactos() {
 		
@@ -276,7 +291,15 @@ app.factory('ContactoService', function($http) {
 	   getContactos : getContactos,
 	   contactos: function(){
 		   return contactos;
+	   },
+	   
+	   setContactosPermitidos : function(value) {
+		   contactosPermitidos = value;
+	   },
+	   getContactosPermitidos : function() {
+		   return contactosPermitidos;
 	   }
+
   }
    
 });
@@ -526,7 +549,8 @@ app.controller('TipoContacto', function($scope, $http, ContactoService) {
 			}
 		 
 		 return titulos; 
-	}	
+	}
+	
 });
 
 app.controller('ActualizarContactos', function($scope, $http) {
