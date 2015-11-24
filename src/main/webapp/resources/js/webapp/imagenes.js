@@ -497,7 +497,7 @@ function convertImgToBase64F(url, callback, outputFormat) {
 		var canvas = document.createElement('CANVAS');
 		var ctx = canvas.getContext('2d');
 
-		var targetWidth = 500;
+		var targetWidth = 560;
 
 		var ratio = (targetWidth > this.width) ? 1 : targetWidth / this.width;
 		canvas.height = this.height * ratio;
@@ -505,7 +505,7 @@ function convertImgToBase64F(url, callback, outputFormat) {
 		ctx.drawImage(this, 0, 0, this.width, this.height, 0, 0, canvas.width,
 				canvas.height);
 		var dataURLTemp = canvas.toDataURL(outputFormat || 'image/png');
-		var peso = 500000; 
+		var peso = 400000; 
 		var calidad = (peso > dataURLTemp.length ) ? 1 : peso/ dataURLTemp.length;
 		var dataURL = canvas.toDataURL({format: 'png', quality: calidad});
 		callback(dataURL);
@@ -825,7 +825,7 @@ function convertImgToBase64(imageDom, url, callback, outputFormat) {
 			var dataURLTemp = "";
 			var canvas = document.createElement('CANVAS');
 			var ctx = canvas.getContext('2d');
-			var targetWidth = 420;
+			var targetWidth = 560;
 			if(url.length <= 0 ){
 				imageDom.src = $imageDomFotoDeGaleria.src;
 				
@@ -895,7 +895,7 @@ function convertImgToBase64(imageDom, url, callback, outputFormat) {
 			            		
 			    }  
 			 	
-			var peso = 500000; 
+			var peso = 400000; 
 			var calidad = (peso > dataURLTemp.length ) ? 1 : peso/ dataURLTemp.length;
 			return canvas.toDataURL({format: 'png', quality: calidad});
 		
@@ -904,7 +904,7 @@ function convertImgToBase64(imageDom, url, callback, outputFormat) {
 	var resize2 = function() {
 		var canvas = document.createElement('CANVAS');
 		var ctx = canvas.getContext('2d');
-		var targetWidth = 420;
+		var targetWidth = 560;
 		var ratio = (targetWidth > imageDom.naturalWidth) ? 1 : targetWidth / imageDom.naturalWidth;
 		console.log(imageDom.naturalWidth, targetWidth, ratio);
 		canvas.height = imageDom.naturalHeight * ratio;
@@ -912,7 +912,7 @@ function convertImgToBase64(imageDom, url, callback, outputFormat) {
 		ctx.drawImage(imageDom, 0, 0, imageDom.naturalWidth,
 				imageDom.naturalHeight, 0, 0, canvas.width, canvas.height);
 		var dataURLTemp = canvas.toDataURL({format:'image/png'});
-		var peso = 500000; 
+		var peso = 400000; 
 		var calidad = (peso > dataURLTemp.length ) ? 1 : peso/ dataURLTemp.length;
 		return canvas.toDataURL({format: 'png', quality: calidad});
 		
