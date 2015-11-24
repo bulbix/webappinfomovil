@@ -29,7 +29,6 @@
    * @param {String} simulatedType The corresponding mouse event
    */
   function simulateMouseEvent (event, simulatedType) {
-
     // Ignore multi-touch events
     if (event.originalEvent.touches.length > 1) {
       return;
@@ -68,7 +67,6 @@
    * @param {Object} event The widget element's touchstart event
    */
   mouseProto._touchStart = function (event) {
-
     var self = this;
 
     // Ignore the event if another widget is already being handled
@@ -97,7 +95,6 @@
    * @param {Object} event The document's touchmove event
    */
   mouseProto._touchMove = function (event) {
-
     // Ignore event if not handled
     if (!touchHandled) {
       return;
@@ -115,7 +112,6 @@
    * @param {Object} event The document's touchend event
    */
   mouseProto._touchEnd = function (event) {
-	  console.log("Aqui ya termino de mover!");
     // Ignore event if not handled
     if (!touchHandled) {
       return;
@@ -145,7 +141,6 @@
    * original mouse event handling methods.
    */
   mouseProto._mouseInit = function () {
-    
     var self = this;
 
     // Delegate the touch handlers to the widget's element

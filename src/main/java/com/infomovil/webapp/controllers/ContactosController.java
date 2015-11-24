@@ -242,6 +242,30 @@ public class ContactosController
 	}	
 
 	
+
+	@RequestMapping(value = "/infomovil/setOrderContacts", method = {RequestMethod.GET, RequestMethod.POST})
+	@ResponseBody
+	public void setOrderContacts(@RequestParam String xml) 
+			throws UnsupportedEncodingException
+	{		
+		
+		logger.info(xml);
+		//String xml = "<l><f><i>6208</i><p>0</p></f></l>";
+		try
+		{	
+			String correo = Util.getUserLogged().getUsername();
+			String password = Util.getUserLogged().getPassword();
+			RespuestaVO resp = wsCliente.crearSitioOrdenarImagenesContactos(correo, password, xml, "CONTACTO");
+						
+		}		
+		catch (Exception e) 
+		{
+			logger.error("getContactos:::::", e);
+		}	
+		
+		return ;
+	}
+	
 	private ClientWsInfomovil wsCliente = new ClientWsInfomovil();
 	private static final Logger logger = Logger.getLogger(WebappController.class);
 	
