@@ -560,12 +560,26 @@ function muestraTemplatePromo() {
 
 
 var $vistaPreviaImprimir = function() {
-	//document.getElementById("urlVistaPreviaPromoImprimir").contentDocument.location.reload(true);
-	var iframe = document.getElementById("urlVistaPreviaPromoImprimir");
-	iframe.src = iframe.src;
 	
-	//$("#urlVistaPreviaPromoImprimir").attr("src","http://promodev.mobileinfo.io/test801.html?vistaPrevia=1");	
-	$("#myModalPromoImprimir").modal();	
+	$.blockUI.defaults.baseZ = 9000;
+	$.blockUI({
+		message: "Actualizando plantilla promo...",
+		css: {
+			class:"alertaUI",
+			top:  ($(window).height() - 400) /2 + 'px',
+			left: ($(window).width() - 400) /2 + 'px',
+			width: '400px'
+			}
+		});	
+	var iframe = document.getElementById("urlVistaPreviaPromoImprimir");
+	iframe.src = iframe.src + (new Date()).getTime() + Math.floor(Math.random() * 1000000);
+	iframe.src = iframe.src;
+	document.getElementById('urlVistaPreviaPromoImprimir').onload= function() {
+		$.unblockUI();
+		$("#myModalPromoImprimir").modal();
+    };
+	
+		
 };
 
 var imprimirPromocionWeb = function(){	

@@ -5,6 +5,9 @@
 <!doctype html>
 <html lang="es">
 
+	<meta HTTP-EQUIV="CACHE-CONTROL" CONTENT="NO-CACHE">
+	<meta HTTP-EQUIV="PRAGMA" CONTENT="NO-CACHE">
+
 	<tiles:insertDefinition name="headEditorSitio">
 		<tiles:putAttribute name="template" value="${ template }" />
 	</tiles:insertDefinition>
