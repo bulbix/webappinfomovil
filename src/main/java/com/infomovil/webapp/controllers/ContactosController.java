@@ -245,25 +245,26 @@ public class ContactosController
 
 	@RequestMapping(value = "/infomovil/setOrderContacts", method = {RequestMethod.GET, RequestMethod.POST})
 	@ResponseBody
-	public void setOrderContacts(@RequestParam String xml) 
+	public Map<String, String> setOrderContacts(@RequestParam String xml) 
 			throws UnsupportedEncodingException
 	{		
-		
+		Map<String, String> resultMap = new HashMap<String, String>();
 		logger.info(xml);
-		//String xml = "<l><f><i>6208</i><p>0</p></f></l>";
 		try
 		{	
 			String correo = Util.getUserLogged().getUsername();
 			String password = Util.getUserLogged().getPassword();
 			RespuestaVO resp = wsCliente.crearSitioOrdenarImagenesContactos(correo, password, xml, "CONTACTO");
+			resultMap.put("codeError", resp.getCodeError());
 						
 		}		
 		catch (Exception e) 
 		{
 			logger.error("getContactos:::::", e);
+			resultMap.put("codeError", "-1");
 		}	
 		
-		return ;
+		return resultMap;
 	}
 	
 	private ClientWsInfomovil wsCliente = new ClientWsInfomovil();

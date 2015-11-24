@@ -1,36 +1,6 @@
 /**
  * 
  */
-var itemsInicio = "";
-var itemsFin = "";
-
-$(function() {
-	 $( "#sortable" ).sortable({
-		  start: function( event, ui ) {
-			  itemsInicio = $( "#sortable" ).sortable( "toArray" );
-			  console.log("Los sortedIDs de Inicio son: " + itemsInicio );  
-		  }
-		});
-  
-  
-  $( "#sortable" ).sortable({
-	  update: function( event, ui ) {		  
-		  itemsFin = $( "#sortable" ).sortable( "toArray" );
-		  console.log("Los sortedIDs es: " + itemsFin );
-		  if( itemsInicio == itemsFin){
-			  console.log("Los items son iguales!");
-			  
-		  }else{
-			  console.log("Aqui hubiera mandado a ordenar!");
-			ordenarContactos(itemsFin);  
-		  }
-	  }
-	});
- 
-	
-  $( "#sortable" ).disableSelection();
-});
-
 
 
 var app = angular.module('InfomovilApp', []);
@@ -140,40 +110,7 @@ app.controller('ToolBarContactoController', function($scope, $http) {
     	 });
      };
      
-   var ordenarContactos = function(itemsFin) {
-    	console.log("Esta variable tiene los ids con comita, : " + itemsFin);
-    	
-    	$.blockUI.defaults.baseZ = 9000;
- 		$.blockUI({
- 			message : "Guardando la imagen...",
- 			css : {
- 				class : "alertaUI",
- 				top : ($(window).height() - 400) / 2 + 'px',
- 				left : ($(window).width() - 400) / 2 + 'px',
- 				width : '400px'
- 			}
- 		});
- 		
-    	 $http({
-    		 method: 'POST',
-    		 url: contextPath + "/infomovil/setOrderContacts",
-    		 params: {
-    			xml: ""
-    		 }		  
-    	 }).then(function successCallback(response) {
-    		 console.log(response.data.codeError);
-    		 if(response.data.codeError == 0) {
-    			 console.log("SI ACTUALIZO CORRECTAMENTE");
- 				 getContactos();
-    		 }else{
-    			 console.log("EL ERROR ES: " + response.data.codeError );
- 			 }
-    		 $.unblockUI();
-    	 }, function errorCallback(response) {
-    		 console.log("El error es: " + response , response.data.codeError);
-    		 $.unblockUI();
-    	 });
-     };
+   
      
      var consultarElTipoContacto = function(tipo, llave){
     	 llave = angular.uppercase(llave);
@@ -323,7 +260,7 @@ app.controller('ToolBarContactoController', function($scope, $http) {
     	 }
      };
      
-       function getContactos() {
+     function getContactos() {
 
     	 console.log("getContactos");
     	 $http({
@@ -339,8 +276,79 @@ app.controller('ToolBarContactoController', function($scope, $http) {
       /*Obtiene los contactos*/
      getContactos();
      
-     $("#sortable").sortable();
-     $("#sortable").disableSelection();
+     var itemsInicio = "";
+     var itemsFin = "";
+     
+     $( "#sortable" ).sortable({
+		  start: function( event, ui ) {
+			  itemsInicio = $( "#sortable" ).sortable( "toArray" );
+			  console.log("Los sortedIDs de Inicio son: " + itemsInicio );  
+		  }
+		});
+ 
+ 
+	 $( "#sortable" ).sortable({
+		  update: function( event, ui ) {		  
+			  itemsFin = $( "#sortable" ).sortable( "toArray" );
+			  console.log("Los sortedIDs es: " + itemsFin );
+			  if( itemsInicio == itemsFin){
+				  console.log("Los items son iguales!");
+				  
+			  }else{
+				  console.log("Aqui mandada a ordenar!");
+				  ordenarContactos(itemsFin);
+				
+			  }
+		  }
+		});
+
+	
+	 $( "#sortable" ).disableSelection();
+ 
+ 
+	 var ordenarContactos = function(itemsFin) {
+		  	console.log("Esta variable tiene los ids con comita, : " + itemsFin);
+		  	var strInicio = "<l>";
+		  	var strFinal = "";
+		  	for(i=0; i<itemsFin.length ; i++){
+		  		strFinal =  strFinal + "<f><i>"+ itemsFin[i] + "</i><p>" + i + "</p></f>";
+		  	}
+		  	strFinal = strInicio + strFinal + "</l>";
+		  	
+		  	console.log("Lo que estoy enviando es: " + strFinal);
+		  	
+		  	$.blockUI.defaults.baseZ = 9000;
+				$.blockUI({
+					message : "Actualizando contactos...",
+					css : {
+						class : "alertaUI",
+						top : ($(window).height() - 400) / 2 + 'px',
+						left : ($(window).width() - 400) / 2 + 'px',
+						width : '400px'
+					}
+				});
+			 $http({
+		  		 method: 'POST',
+		  		 url: contextPath + "/infomovil/setOrderContacts",
+		  		 params: {
+		  			xml: strFinal
+		  		 }		  
+		  	 }).then(function successCallback(response) {
+		  		 console.log(response.data.codeError);
+		  		 if(response.data.codeError == 0) {
+		  			 console.log("SI ACTUALIZO CORRECTAMENTE");
+						 getContactos();
+		  		 }else{
+		  			 console.log("Si me respondio con EL ERROR ES: " + response.data.codeError );
+					 }
+		  		 $.unblockUI();
+		  	 }, function errorCallback(response) {
+		  		 console.log("El error es de que ni fue es: " + response , response.data.codeError);
+		  		 $.unblockUI();
+		  	 });
+	   };
+	   
+	   
 });
 
 app.controller('TipoContacto', function($scope, $http) {
