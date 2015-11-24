@@ -54,8 +54,8 @@ public class WebappController
 	{		
 		Map<String, String> resultMap = new HashMap<String, String>();
 		
-		nombreEmpresa = new String(nombreEmpresa.getBytes("ISO-8859-1"), "UTF-8");
-		descripcionCorta = new String(descripcionCorta.getBytes("ISO-8859-1"), "UTF-8");
+//		nombreEmpresa = new String(nombreEmpresa.getBytes("ISO-8859-1"), "UTF-8");
+//		descripcionCorta = new String(descripcionCorta.getBytes("ISO-8859-1"), "UTF-8");
 		
 		try
 		{
@@ -89,8 +89,8 @@ public class WebappController
 	{		
 		Map<String, String> resultMap = new HashMap<String, String>();
 		RespuestaVO wsRespuesta = new RespuestaVO();
-		nombreEmpresa = new String(nombreEmpresa.getBytes("ISO-8859-1"), "UTF-8");
-		descripcionCorta = new String(descripcionCorta.getBytes("ISO-8859-1"), "UTF-8");
+		//nombreEmpresa = new String(nombreEmpresa.getBytes("ISO-8859-1"), "UTF-8");
+		//descripcionCorta = new String(descripcionCorta.getBytes("ISO-8859-1"), "UTF-8");
 		
 		try
 		{
@@ -123,7 +123,7 @@ public class WebappController
 	{		
 		Map<String, String> resultMap = new HashMap<String, String>();
 		RespuestaVO wsRespuesta = new RespuestaVO();
-		direccion = new String(direccion.getBytes("ISO-8859-1"), "UTF-8");
+		//direccion = new String(direccion.getBytes("ISO-8859-1"), "UTF-8");
 		logger.info("longitud: " + longitud + ", latitud: " + latitud + ", direccion: " + direccion);
 		try
 		{
@@ -179,11 +179,11 @@ public class WebappController
 	{		
 		Map<String, String> resultMap = new HashMap<String, String>();
 		RespuestaVO wsRespuesta = new RespuestaVO();
-		String desc = new String(descImagen.getBytes("ISO-8859-1"), "UTF-8");
+		//String desc = new String(descImagen.getBytes("ISO-8859-1"), "UTF-8");
 		
 		try
 		{	
-			wsRespuesta = wsCliente.crearSitioGuardaImage(domainId, baseImagen, tipoImagen, desc, rotacion) ;
+			wsRespuesta = wsCliente.crearSitioGuardaImage(domainId, baseImagen, tipoImagen, descImagen, rotacion) ;
 			resultMap.put("codeError", wsRespuesta.getCodeError());
 		}		
 		catch (Exception e) 
@@ -251,11 +251,11 @@ public class WebappController
 		Map<String, String> resultMap = new HashMap<String, String>();
 		RespuestaVO wsRespuesta = new RespuestaVO();
 		
-		String desc = new String(descImagen.getBytes("ISO-8859-1"), "UTF-8");
+		//String desc = new String(descImagen.getBytes("ISO-8859-1"), "UTF-8");
 		
 		try
 		{
-			wsRespuesta = wsCliente.crearSitioUpdateImage(domainId, imageId, baseImagen, desc);
+			wsRespuesta = wsCliente.crearSitioUpdateImage(domainId, imageId, baseImagen, descImagen);
 			resultMap.put("codeError", wsRespuesta.getCodeError());
 		}		
 		catch (Exception e) 
