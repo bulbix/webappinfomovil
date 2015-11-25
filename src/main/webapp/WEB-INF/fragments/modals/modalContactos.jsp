@@ -35,11 +35,11 @@
 				<div>{{nombre}}</div><br>
 				<div>{{etiqueta}}</div><br>
 				<div ng-show="datosTipoContacto.muestraPais">{{pais}}</div><br>
-				<input type="text" ng-model="numeroEmailRedSocial" placeholder="{{placeholderContenido}}" 
+				<input type="text" ng-model="numeroEmailRedSocial" id="numeroEmailRedSocial" placeholder="{{placeholderContenido}}" 
 					ngRequired="true" ng-pattern="{{expRegularValida}}"/><br>
 				<div>{{mensajeTelefonos}}</div><br>
 				<div>Descripción</div><br>
-				<textarea ng-maxlength="250" ng-model="longLabelNaptr"></textarea>
+				<textarea ng-maxlength="250" ng-model="longLabelNaptr" id="longLabelNaptr"></textarea>
 				<input type="submit" class="btn btn-purple pull-right" ng-show="datosTipoContacto.mostrarBtnGuardar" value="Guardar" style="margin:5px 0;"/>
 			</form>
 		</div>

@@ -12,7 +12,7 @@ app.controller('ToolBarContactoController', function($scope, $http, ContactoServ
 		ContactoService.setContactosPermitidos(contacto);
 		console.log("agregaContacto: " + downgrade + ", contacto: " + contacto + ", " + toolbarContacto.contactos.length);
 		$("#myModalContactos").modal();
-	}
+	};
 
 	toolbarContacto.mostrarModalContactos = function() { 
 		$myModalContactos.modal();
@@ -43,11 +43,11 @@ app.controller('ToolBarContactoController', function($scope, $http, ContactoServ
 		console.log("item abrirActualizarContacto: " + item.regExp + item.subCategory);
 		var mensajesContacto = '';
 		if(item.subCategory.length > 0){
-				mensajesContacto = consultarElTipoContacto("redSocial" , item.subCategory);
-					
+			mensajesContacto = consultarElTipoContacto("redSocial" , item.subCategory);		
 		}else{
-				mensajesContacto = consultarElTipoContacto("tel" , item.servicesNaptr);		
+			mensajesContacto = consultarElTipoContacto("tel" , item.servicesNaptr);		
 		}
+		
 		$("#nombreActualizarTel").text(mensajesContacto.nombre); 
 		$("#etiquetaActualizarTel").text(mensajesContacto.etiqueta);
 		$("#paisActualizarTel").text(mensajesContacto.pais);
@@ -106,7 +106,6 @@ app.controller('ToolBarContactoController', function($scope, $http, ContactoServ
     	 });
      };
      
-
      var consultarElTipoContacto = function(tipo, llave){
     	 llave = angular.uppercase(llave);
     	 console.log("la llave es: " + llave);
@@ -316,7 +315,7 @@ app.controller('ToolBarContactoController', function($scope, $http, ContactoServ
 		  		 console.log(response.data.codeError);
 		  		 if(response.data.codeError == 0) {
 		  			 console.log("SI ACTUALIZO CORRECTAMENTE");
-						 getContactos();
+		  			 ContactoService.getContactos();
 		  		 }else{
 		  			 console.log("Si me respondio con EL ERROR ES: " + response.data.codeError );
 					 }
@@ -414,6 +413,8 @@ app.controller('TipoContacto', function($scope, $http, ContactoService) {
 		contacto.servicesNaptr = $scope.servicio;
 		contacto.subCategory = $scope.subCategory;
 		guardarContacto(contacto);
+		numeroEmailRedSocial = "";
+		longLabelNaptr = "";
 		regresarGenerico();
 	}
 	
@@ -448,7 +449,8 @@ app.controller('TipoContacto', function($scope, $http, ContactoService) {
 			 console.log(response.data.codeError);
 			 if(response.data.codeError == 0) {
 				 console.log("Contacto guardado correctamente");
-				 
+				 //datosTipoContacto.numeroEmailRedSocial = "";
+				 //datosTipoContacto.longLabelNaptr = "";
 				 /*Obtiene los contactos*/
 			     ContactoService.getContactos();
 			     
