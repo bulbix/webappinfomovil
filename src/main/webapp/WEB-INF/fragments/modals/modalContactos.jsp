@@ -35,8 +35,10 @@
 				<div>{{nombre}}</div><br>
 				<div>{{etiqueta}}</div><br>
 				<div ng-show="datosTipoContacto.muestraPais">{{pais}}</div><br>
-				<input type="text" ng-model="numeroEmailRedSocial" id="numeroEmailRedSocial" placeholder="{{placeholderContenido}}" 
-					ngRequired="true" ng-pattern="{{expRegularValida}}"/><br>
+				<input type="text" ng-model="numeroEmailRedSocial" name="numeroEmailRedSocial" id="numeroEmailRedSocial" placeholder="{{placeholderContenido}}" 
+					ngRequired="true" ng-pattern="{{expRegularValida}}" ng-maxlength="{{maxlength}}" novalidate/>
+				<span ng-show="miFormulario.numeroEmailRedSocial.$error.pattern">{{msjValidacion}}</span>
+				<br>
 				<div>{{mensajeTelefonos}}</div><br>
 				<div>Descripción</div><br>
 				<textarea ng-maxlength="250" ng-model="longLabelNaptr" id="longLabelNaptr"></textarea>
