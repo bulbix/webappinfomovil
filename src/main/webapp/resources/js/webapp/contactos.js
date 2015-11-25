@@ -36,7 +36,7 @@ app.controller('ToolBarContactoController', function($scope, $http, ContactoServ
 		
 		item.visible = visibleContacto;
 		
-		actualizarContacto(item);
+		ContactoService.actualizarContacto(item);
 	};
 	
 	toolbarContacto.abrirActualizarContacto = function(item) {
@@ -79,32 +79,7 @@ app.controller('ToolBarContactoController', function($scope, $http, ContactoServ
     	});
      };
      
-     var actualizarContacto = function(item) {
-    	 
-    	 $http({
-    		 method: 'POST',
-    		 url: contextPath + "/infomovil/actualizarContacto",
-    		 params: {
-    			 claveDeContacto : item.claveContacto, 
- 				 descripcionContacto : item.longLabelNaptr,
- 				 numeroEmailRedSocial : item.regExp,
- 				 constanteContacto : item.servicesNaptr, 
- 				 redSocialWebSecure : item.subCategory,
- 				 visible : item.visible
-    		 }		  
-    	 }).then(function successCallback(response) {
-    		 
-    		 if(response.data.codeError == 0) {
-    			 /*Obtiene los contactos*/
-    		     ContactoService.getContactos();
-			     
-    		 }else{
-    			 console.log("EL ERROR ES: " + response.data.codeError );
- 			}
-    	 }, function errorCallback(response) {
-    		 console.log("El error es: " + response , response.data.codeError);
-    	 });
-     };
+    
      
 
      var consultarElTipoContacto = function(tipo, llave){
@@ -316,7 +291,7 @@ app.controller('ToolBarContactoController', function($scope, $http, ContactoServ
 		  		 console.log(response.data.codeError);
 		  		 if(response.data.codeError == 0) {
 		  			 console.log("SI ACTUALIZO CORRECTAMENTE");
-						 getContactos();
+		  			 ContactoService.getContactos(); 
 		  		 }else{
 		  			 console.log("Si me respondio con EL ERROR ES: " + response.data.codeError );
 					 }
@@ -355,6 +330,34 @@ app.factory('ContactoService', function($http) {
 			console.log("El error es: " + response);
 		});
 	}
+	
+	
+ function actualizarContacto(contacto) {
+    	 
+    	 $http({
+    		 method: 'POST',
+    		 url: contextPath + "/infomovil/actualizarContacto",
+    		 params: {
+    			 claveDeContacto : contacto.claveContacto, 
+ 				 descripcionContacto : contacto.longLabelNaptr,
+ 				 numeroEmailRedSocial : contacto.regExp,
+ 				 constanteContacto : contacto.servicesNaptr, 
+ 				 redSocialWebSecure : contacto.subCategory,
+ 				 visible : contacto.visible
+    		 }		  
+    	 }).then(function successCallback(response) {
+    		 
+    		 if(response.data.codeError == 0) {
+    			getContactos();
+			     
+    		 }else{
+    			 console.log("EL ERROR ES: " + response.data.codeError );
+ 			}
+    	 }, function errorCallback(response) {
+    		 console.log("El error es: " + response , response.data.codeError);
+    	 });
+     };	
+	
 
    return {
 	   getContactos : getContactos,
@@ -367,7 +370,8 @@ app.factory('ContactoService', function($http) {
 	   },
 	   getContactosPermitidos : function() {
 		   return contactosPermitidos;
-	   }
+	   },
+	   actualizarContacto : actualizarContacto
 
   }
    
