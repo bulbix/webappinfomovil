@@ -1,4 +1,3 @@
-
 var app = angular.module('InfomovilApp', []);
 
 app.controller('ToolBarContactoController', function($scope, $http, ContactoService) {
@@ -11,6 +10,12 @@ app.controller('ToolBarContactoController', function($scope, $http, ContactoServ
 	toolbarContacto.agregaContacto = function(downgrade, contacto) {
 		ContactoService.setContactosPermitidos(contacto);
 		console.log("agregaContacto: " + downgrade + ", contacto: " + contacto + ", " + toolbarContacto.contactos.length);
+		if (toolbarContacto.contactos.length == contacto)
+		{
+			console.log("Ya has registrado todos los contactos disponibles")
+			return;
+		}
+		
 		$("#myModalContactos").modal();
 	};
 
@@ -225,40 +230,7 @@ app.controller('ToolBarContactoController', function($scope, $http, ContactoServ
     		 }
     	 }
      };
-     
-      /*Obtiene los contactos*/
-     ContactoService.getContactos();
-     
-     var itemsInicio = "";
-     var itemsFin = "";
-     
-     $( "#sortable" ).sortable({
-		  start: function( event, ui ) {
-			  itemsInicio = $( "#sortable" ).sortable( "toArray" );
-			  console.log("Los sortedIDs de Inicio son: " + itemsInicio );  
-		  }
-		});
- 
- 
-	 $( "#sortable" ).sortable({
-		  update: function( event, ui ) {		  
-			  itemsFin = $( "#sortable" ).sortable( "toArray" );
-			  console.log("Los sortedIDs es: " + itemsFin );
-			  if( itemsInicio == itemsFin){
-				  console.log("Los items son iguales!");
-				  
-			  }else{
-				  console.log("Aqui mandada a ordenar!");
-				  ordenarContactos(itemsFin);
-				
-			  }
-		  }
-		});
-
-	
-	 $( "#sortable" ).disableSelection();
- 
- 
+  
 	 var ordenarContactos = function(itemsFin) {
 		  	console.log("Esta variable tiene los ids con comita, : " + itemsFin);
 		  	var strInicio = "<l>";
@@ -305,13 +277,39 @@ app.controller('ToolBarContactoController', function($scope, $http, ContactoServ
      $scope.$watch(function () { return ContactoService.contactos(); }, function (value) {
     	 toolbarContacto.contactos = value;
     	 
-    	 console.log("limite: " + toolbarContacto.contactos + ", " + ContactoService.getContactosPermitidos() + ", " + toolbarContacto.contacto);
-    	 //if(toolbarContacto.contactos.length == ContactoService.getContactosPermitidos()){
-    	//	 console.log('Limite alcanzado')
-    	// }
+    	 var arr = value instanceof Array ? value : [value];
+    	 
+    	 if(arr.length == ContactoService.getContactosPermitidos()) {
+    		 console.log('Limite alcanzado')
+    	 }
     	 
      });
 
+     var itemsInicio = "";
+     var itemsFin = "";
+     
+     $("#sortable").sortable({
+    	 
+    	 start: function(event, ui) {
+    		 itemsInicio = $("#sortable").sortable("toArray");
+    	 }
+     });
+ 
+	 $("#sortable").sortable({
+		 
+		 update: function(event, ui) {	
+			 
+			 itemsFin = $( "#sortable" ).sortable("toArray");
+			  
+			 if(itemsInicio != itemsFin)
+				 ordenarContactos(itemsFin);
+		 }	
+	 });
+	
+	 $("#sortable").disableSelection();
+
+     /*Obtiene los contactos*/
+     ContactoService.getContactos();
 });
 
 app.factory('ContactoService', function($http) {
@@ -358,17 +356,17 @@ app.factory('ContactoService', function($http) {
      };	
 	
    return {
-	   getContactos : getContactos,
-	   contactos: function(){
-		   return contactos;
-	   },
 	   
+	   getContactos : getContactos,
+	   contactos: function() {
+		   return contactos;
+	   },	   
 	   setContactosPermitidos : function(value) {
 		   contactosPermitidos = value;
 	   },
 	   getContactosPermitidos : function() {
 		   return contactosPermitidos;
-	   },
+	   },	   
 	   actualizarContacto : actualizarContacto
   }
    
@@ -400,6 +398,8 @@ app.controller('TipoContacto', function($scope, $http, ContactoService) {
 		$scope.etiqueta = mensajesContacto.etiqueta != undefined ? mensajesContacto.etiqueta : "Número Telefónico";
 		$scope.subCategory = mensajesContacto.subcategoria != undefined ? mensajesContacto.subcategoria : "";
 		$scope.servicio = mensajesContacto.servicio != undefined ? mensajesContacto.servicio : "E2U+web:http";
+		$scope.msjValidacion = mensajesContacto.msjValidacion != undefined ? mensajesContacto.msjValidacion : "Número Telefónico Inválido";
+		$scope.maxlength = mensajesContacto.maxlength != undefined ? mensajesContacto.maxlength : "255";
 	}
 	
 	datosTipoContacto.regresarAgregarContacto = function(){
@@ -415,9 +415,6 @@ app.controller('TipoContacto', function($scope, $http, ContactoService) {
 		contacto.servicesNaptr = $scope.servicio;
 		contacto.subCategory = $scope.subCategory;
 		guardarContacto(contacto);
-		numeroEmailRedSocial = "";
-		longLabelNaptr = "";
-		regresarGenerico();
 	}
 	
 	datosTipoContacto.closeMyModalContactos = function(){
@@ -429,7 +426,9 @@ app.controller('TipoContacto', function($scope, $http, ContactoService) {
 		datosTipoContacto.mostrarBtnRegresar = false;
 		datosTipoContacto.mostrarBtnGuardar = false;
 		datosTipoContacto.menuContactos = true;
-		datosTipoContacto.formGuardaContacto = false;		
+		datosTipoContacto.formGuardaContacto = false;
+		$("#numeroEmailRedSocial").val("");
+		$("#longLabelNaptr").val("");
 	}
 	
 	 var guardarContacto = function(contacto) {
@@ -451,10 +450,11 @@ app.controller('TipoContacto', function($scope, $http, ContactoService) {
 			 console.log(response.data.codeError);
 			 if(response.data.codeError == 0) {
 				 console.log("Contacto guardado correctamente");
-				 //datosTipoContacto.numeroEmailRedSocial = "";
-				 //datosTipoContacto.longLabelNaptr = "";
+				 $("#numeroEmailRedSocial").val("");
+				 $("#longLabelNaptr").val("");
 				 /*Obtiene los contactos*/
 			     ContactoService.getContactos();
+			     regresarGenerico();
 			     
 			 }else{
 				 console.log("EL ERROR ES: " + response.data.codeError );
@@ -480,7 +480,8 @@ app.controller('TipoContacto', function($scope, $http, ContactoService) {
 				    pais : '+52',
 				    placeholder : 'Teléfono',
 				    servicio : 'E2U+voice:tel',
-				    muestraPais : true
+				    muestraPais : true,
+				    maxlength : "10"
 				};
 				
 				break;
@@ -494,7 +495,8 @@ app.controller('TipoContacto', function($scope, $http, ContactoService) {
 				    placeholder : 'Teléfono',
 				    mensaje : 'Recuerda que para recibir llamadas internacionales el formato es (1)xxx.xxx.xxxx(10digitos)',
 				    servicio : 'E2U+voice:tel+x-mobile',
-				    muestraPais : true
+				    muestraPais : true,
+				    maxlength : "10"
 				};
 
 				break;
@@ -507,7 +509,8 @@ app.controller('TipoContacto', function($scope, $http, ContactoService) {
 				    pais : '+52',
 				    placeholder : 'Teléfono',
 				    servicio : 'E2U+sms:tel',
-				    muestraPais : true
+				    muestraPais : true,
+				    maxlength : "10"
 				};
 
 				break;
@@ -521,7 +524,8 @@ app.controller('TipoContacto', function($scope, $http, ContactoService) {
 				    pais : ' +52',
 				    placeholder : 'Teléfono',
 				    servicio : 'E2U+fax:tel',
-				    muestraPais : true
+				    muestraPais : true,
+				    maxlength : "10"
 				};
 
 				break;
@@ -534,7 +538,8 @@ app.controller('TipoContacto', function($scope, $http, ContactoService) {
 				    etiqueta : 'E-mail',
 				    placeholder : 'email@email.com',
 				    servicio : 'E2U+email:mailto',
-				    expRegular : '^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,4})+$'
+				    expRegular : '^[_a-z0-9]+(\.[_a-z0-9]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,4})$',
+				    msjValidacion : 'Formato incorrecto de email'
 				};
 
 				break;
@@ -547,7 +552,8 @@ app.controller('TipoContacto', function($scope, $http, ContactoService) {
 				    etiqueta : 'Liga a tu cuenta de Facebook',
 				    placeholder : 'www.facebook.com/tufanpage',
 				    subcategoria : 'facebook',
-				    expRegular : '(((www|WWW))\\.)?(facebook|FACEBOOK)\\.(com|COM)\\/[a-zA-Z0-9\\*\\?\\+\\[\\(\\)\\{\\}\\^\\$\\|\\.\\/\\ ]{1,}'
+				    expRegular : '(((www|WWW))\\.)?(facebook|FACEBOOK)\\.(com|COM)\\/[a-zA-Z0-9\\*\\?\\+\\[\\(\\)\\{\\}\\^\\$\\|\\.\\/\\ ]{1,}',
+				    msjValidacion : 'Formato incorrecto para facebook'
 				};
 
 				break;
@@ -561,7 +567,8 @@ app.controller('TipoContacto', function($scope, $http, ContactoService) {
 				    placeholder : 'www.twitter.com/tucuenta',
 				    mensaje : 'Se publicarán tus ultimos Tweets en tu página web',
 				    subcategoria : 'twitter',
-				    expRegular : '(twitter|TWITTER)\\.(com|COM)\\/[a-zA-Z0-9\\*\\?\\+\\[\\(\\)\\{\\}\\^\\$\\|\\.\\/\\ ]{1,}'
+				    expRegular : '(twitter|TWITTER)\\.(com|COM)\\/[a-zA-Z0-9\\*\\?\\+\\[\\(\\)\\{\\}\\^\\$\\|\\.\\/\\ ]{1,}',
+				    msjValidacion : 'Formato incorrecto para twitter'
 				};
 
 				break;
@@ -573,7 +580,8 @@ app.controller('TipoContacto', function($scope, $http, ContactoService) {
 				    nombre : 'Google+',
 				    etiqueta : 'Liga a tu cuenta de Google+',
 				    placeholder : 'plus.google.com/tucuenta',
-				    expRegular : '(plus|PLUS)\\.(google|GOOGLE)\\.(com|COM)\\/[a-zA-Z0-9\\*\\?\\+\\[\\(\\)\\{\\}\\^\\$\\|\\.\\/\\ ]{1,}'
+				    expRegular : '(plus|PLUS)\\.(google|GOOGLE)\\.(com|COM)\\/[a-zA-Z0-9\\*\\?\\+\\[\\(\\)\\{\\}\\^\\$\\|\\.\\/\\ ]{1,}',
+				    msjValidacion : 'Formato incorrecto para google plus'
 				};
 
 				break;
@@ -586,7 +594,8 @@ app.controller('TipoContacto', function($scope, $http, ContactoService) {
 				    etiqueta : 'Liga a tu cuenta de Skype',
 				    placeholder : 'tucuenta',
 				    servicio : 'E2U+x-voice:skype',
-				    expRegular : '[a-zA-Z0-9\\*\\?\\+\\[\\(\\)\\{\\}\\^\\$\\|\\.\\/\\ ]{1,}'
+				    expRegular : '[a-zA-Z0-9\\*\\?\\+\\[\\(\\)\\{\\}\\^\\$\\|\\.\\/\\ ]{1,}',
+				    msjValidacion : 'Formato incorrecto para skype'
 				};
 
 				break;
@@ -599,7 +608,8 @@ app.controller('TipoContacto', function($scope, $http, ContactoService) {
 				    etiqueta : 'Liga a tu cuenta de LinkedIn',
 				    placeholder : 'www.linkedin.com/tuempresa',
 				    subcategoria : 'linkedin',
-				    expRegular : '((WWW|www)\\.){0,1}(linkedin|LINKEDIN)\\.(com|COM)\\/[a-zA-Z0-9\\*\\?\\+\\[\\(\\)\\{\\}\\^\\$\\|\\.\\/\\ ]{1,}'
+				    expRegular : '((WWW|www)\\.){0,1}(linkedin|LINKEDIN)\\.(com|COM)\\/[a-zA-Z0-9\\*\\?\\+\\[\\(\\)\\{\\}\\^\\$\\|\\.\\/\\ ]{1,}',
+				    msjValidacion : 'Formato incorrecto para linkedin'
 				};
 
 				break;
@@ -613,7 +623,8 @@ app.controller('TipoContacto', function($scope, $http, ContactoService) {
 				    placeholder : 'www.infomovil.com',
 				    servicio : 'E2U+web:https',
 				    subcategoria : 'securewebsite',
-				    expRegular : '^([\\w-]+\\.)+[\\w-]+(/[\\w-./?%&=]*)?$'
+				    expRegular : '^([\\w-]+\\.)+[\\w-]+(/[\\w-./?%&=]*)?$',
+				    msjValidacion : 'Formato incorrecto para web'
 				};
 				break;
 				
