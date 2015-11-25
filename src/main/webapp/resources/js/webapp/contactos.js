@@ -48,10 +48,6 @@ app.controller('ToolBarContactoController', function($scope, $http, ContactoServ
 		console.log(" item.servicesNaptr: " + item.servicesNaptr);
 		console.log(" item.visible: " + item.visible);
 		
-		
-		
-		
-		
 		var mensajesContacto = '';
 		if(item.subCategory.length > 0){
 			mensajesContacto = consultarElTipoContacto("redSocial" , item.subCategory);		
@@ -72,7 +68,8 @@ app.controller('ToolBarContactoController', function($scope, $http, ContactoServ
 	}
 	
     var eliminarContacto = function(claveContacto) {
-    	
+    	 var mensaje = "Eliminando contacto...";
+    	 ContactoService.abrirBlockUIGeneral(mensaje);
     	$http({
     		method: 'POST',
     		url: contextPath + "/infomovil/eliminarContacto",
@@ -80,17 +77,20 @@ app.controller('ToolBarContactoController', function($scope, $http, ContactoServ
     			claveDeContacto: claveContacto
     		}	  
     	}).then(function successCallback(response) {
-    		
+    		mensaje="";
     		if(response.data.codeError == 0) {
     			console.log("SI ELIMINO CORRECTAMENTE");
     			 /*Obtiene los contactos*/
     		     ContactoService.getContactos();
     		}else{
-    			console.log("EL ERROR ES: " + response.data.codeError );			
+    			console.log("EL ERROR ES: " + response.data.codeError );
+    			mensaje="No se ha podido eliminar el contacto";
     		}
-    		
+    		ContactoService.cerrarBlockUIGeneral(mensaje);
     	}, function errorCallback(response) {
     		console.log("El error es: " + response , response.data.codeError);
+    		mensaje = "No se ha podido eliminar el contacto";
+    		ContactoService.cerrarBlockUIGeneral(mensaje);
     	});
      };
      
@@ -251,17 +251,9 @@ app.controller('ToolBarContactoController', function($scope, $http, ContactoServ
 		  	strFinal = strInicio + strFinal + "</l>";
 		  	
 		  	console.log("Lo que estoy enviando es: " + strFinal);
-		  	
-		  	$.blockUI.defaults.baseZ = 9000;
-				$.blockUI({
-					message : "Actualizando contactos...",
-					css : {
-						class : "alertaUI",
-						top : ($(window).height() - 400) / 2 + 'px',
-						left : ($(window).width() - 400) / 2 + 'px',
-						width : '400px'
-					}
-				});
+		  
+			 var mensaje="Actualizando contactos...";
+			 ContactoService.abrirBlockUIGeneral(mensaje);
 			 $http({
 		  		 method: 'POST',
 		  		 url: contextPath + "/infomovil/setOrderContacts",
@@ -270,29 +262,30 @@ app.controller('ToolBarContactoController', function($scope, $http, ContactoServ
 		  		 }		  
 		  	 }).then(function successCallback(response) {
 		  		 console.log(response.data.codeError);
+		  		 mensaje = "";
 		  		 if(response.data.codeError == 0) {
 		  			 console.log("SI ACTUALIZO CORRECTAMENTE");
 		  			 ContactoService.getContactos();
 
 		  		 }else{
 		  			 console.log("Si me respondio con EL ERROR ES: " + response.data.codeError );
-					 }
-		  		 $.unblockUI();
+		  			 mensaje = "No se han podido actualizar los contactos";
+				 }
+		  		 
+		  		ContactoService.cerrarBlockUIGeneral(mensaje);
 		  	 }, function errorCallback(response) {
 		  		 console.log("El error es de que ni fue es: " + response , response.data.codeError);
-		  		 $.unblockUI();
+		  		 mensaje = "No se han podido actualizar los contactos";
+		  		ContactoService.cerrarBlockUIGeneral(mensaje);
 		  	 });
 	   };
 
      $scope.$watch(function () { return ContactoService.contactos(); }, function (value) {
     	 toolbarContacto.contactos = value;
-    	 
-    	 var arr = value instanceof Array ? value : [value];
-    	 
+    	 var arr = value instanceof Array ? value : [value]; 
     	 if(arr.length == ContactoService.getContactosPermitidos()) {
     		 console.log('Limite alcanzado')
-    	 }
-    	 
+    	 }	 
      });
 
      var itemsInicio = "";
@@ -333,9 +326,13 @@ app.factory('ContactoService', function($http) {
 			method: 'GET',
 			url: contextPath + "/infomovil/getContactos",
 		}).then(function successCallback(response) {
-			contactos = response.data;
+			
+				 contactos = response.data;
+			
 		}, function errorCallback(response) {
 			console.log("El error es: " + response);
+			var mensaje = "No se ha podido obtener la lista de contactos";
+			cerrarBlockUIGeneral(mensaje);
 		});
 	}
 		
@@ -347,6 +344,8 @@ app.factory('ContactoService', function($http) {
     			 	"subCategory: " + contacto.subCategory +
     			 	"visible: " + contacto.visible 
     	 );
+    	 var mensaje = "Actualizando contacto...";
+    	 abrirBlockUIGeneral(mensaje);
     	 $http({
     		 method: 'POST',
     		 url: contextPath + "/infomovil/actualizarContacto",
@@ -360,17 +359,48 @@ app.factory('ContactoService', function($http) {
     		 }		  
     	 }).then(function successCallback(response) {
     		 console.log("El valore regresado es: " + response.data.codeError , response.codeError);
+    		 mensaje = "";
     		 if(response.data.codeError == 0) {
     			getContactos();
-			     
+    			$("#myModalContactosActualizar").modal('toggle');
     		 }else{
     			 console.log("EL ERROR ES: " + response.codeError );
+    			 mensaje ="No se ha podido actualizar el contacto";
  			}
+    		 cerrarBlockUIGeneral(mensaje);
     	 }, function errorCallback(response) {
     		 console.log("El error es: Peticion incorrecta" + response.codeError);
+    		 mensaje = "No se ha podido actualizar el contacto";
+    		 cerrarBlockUIGeneral(mensaje);
     	 });
      };	
+     
+     
+     function abrirBlockUIGeneral(mensaje){	
+    	 	$.blockUI.defaults.baseZ = 9000;
+			$.blockUI({
+				message : mensaje,
+				css : {
+					class : "alertaUI",
+					top : ($(window).height() - 400) / 2 + 'px',
+					left : ($(window).width() - 400) / 2 + 'px',
+					width : '400px'
+				}
+			});
+     };
 	
+     function cerrarBlockUIGeneral(mensaje){	
+    	 $.unblockUI();
+    	 if(mensaje.length > 0){
+    		 BootstrapDialog
+				.show({
+					title : "<span class='textBlack' style='font-size:1.15em;'><img alt='' src='../resources/webapp/images/fa-warning-bk.png'  title='Alerta' />Imagen demasiado grande</span>",
+					message : '<div style="display:block; min-height:150px;"><p class="textBlack text-center" style="font-size:1.15em;">' + mensaje + '</p><br/>'
+				});
+ 	 		
+ 	 	}
+     };
+  
    return {
 	   
 	   getContactos : getContactos,
@@ -383,7 +413,9 @@ app.factory('ContactoService', function($http) {
 	   getContactosPermitidos : function() {
 		   return contactosPermitidos;
 	   },	   
-	   actualizarContacto : actualizarContacto
+	   actualizarContacto : actualizarContacto,
+	   abrirBlockUIGeneral : abrirBlockUIGeneral,
+	   cerrarBlockUIGeneral : cerrarBlockUIGeneral
   }
    
 });
@@ -448,10 +480,10 @@ app.controller('TipoContacto', function($scope, $http, ContactoService) {
 	}
 	
 	 var guardarContacto = function(contacto) {
-		 
 		 console.log("contacto => longLabelNaptr: " + contacto.longLabelNaptr + ", regExp: " + contacto.regExp + 
 				 ", servicio: " + contacto.servicesNaptr + ", subcategoria: " + $scope.subCategory);
-		 
+		 var mensaje = "Guardando contacto...";
+		 ContactoService.abrirBlockUIGeneral(mensaje);
 		 $http({
 			 method: 'POST',
 			 url: contextPath + "/infomovil/guardarContacto",
@@ -464,6 +496,7 @@ app.controller('TipoContacto', function($scope, $http, ContactoService) {
 			 }	  
 		 }).then(function successCallback(response) {
 			 console.log(response.data.codeError);
+			 mensaje = "";
 			 if(response.data.codeError == 0) {
 				 console.log("Contacto guardado correctamente");
 				 $("#numeroEmailRedSocial").val("");
@@ -471,14 +504,16 @@ app.controller('TipoContacto', function($scope, $http, ContactoService) {
 				 /*Obtiene los contactos*/
 			     ContactoService.getContactos();
 			     regresarGenerico();
-			     
+			     $("#myModalContactosActualizar").modal('toggle');
 			 }else{
 				 console.log("EL ERROR ES: " + response.data.codeError );
-				 
+				 mensaje = "No se ha podido guardar el contacto";
 			 }
-			 
+			 ContactoService.cerrarBlockUIGeneral(mensaje);
 		 }, function errorCallback(response) {
 			 console.log("El error es: " + response , response.data.codeError);
+			 mensaje = "No se ha podido guardar el contacto";
+			 ContactoService.cerrarBlockUIGeneral(mensaje);
 		 });
 	 };
 	
@@ -655,8 +690,6 @@ app.controller('TipoContacto', function($scope, $http, ContactoService) {
 
 app.controller('ActualizarContactos', function($http,ContactoService) {
 	var actualizarTipoContacto = this;
-	
-	
 	actualizarTipoContacto.closeMyModalActualizarContactos = function(){
 			$("#myModalContactosActualizar").modal('toggle');
 			
