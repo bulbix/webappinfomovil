@@ -46,11 +46,7 @@ app.controller('ToolBarContactoController', function($scope, $http, ContactoServ
 		console.log(" item.claveContacto: " + item.claveContacto);
 		console.log(" item.servicesNaptr: " + item.servicesNaptr);
 		console.log(" item.visible: " + item.visible);
-<<<<<<< HEAD
 
-=======
-		
->>>>>>> 3e98b211f818b07db04270ed435d3292e6265bed
 		var mensajesContacto = '';
 		if(item.subCategory.length > 0){
 			mensajesContacto = consultarElTipoContacto("redSocial" , item.subCategory);		
@@ -249,29 +245,6 @@ app.controller('ToolBarContactoController', function($scope, $http, ContactoServ
 		 
 		 for(i = 0; i < itemsFin.length; i++) {
 		  		strFinal =  strFinal + "<f><i>"+ itemsFin[i] + "</i><p>" + i + "</p></f>";
-<<<<<<< HEAD
-		 }
-		 
-		 strFinal = strInicio + strFinal + "</l>";
-		  	
-		 $.blockUI.defaults.baseZ = 9000;
-		 $.blockUI({
-			 message : "Actualizando contactos...",
-			 	css : {
-			 		class : "alertaUI",
-			 		top : ($(window).height() - 400) / 2 + 'px',
-			 		left : ($(window).width() - 400) / 2 + 'px',
-			 		width : '400px'
-				}
-		 });
-		 $http({
-			 method: 'POST',
-			 url: contextPath + "/infomovil/setOrderContacts",
-			 params: {
-				 xml: strFinal
-			 }		  
-		 }).then(function successCallback(response) {
-=======
 		  	}
 		  	strFinal = strInicio + strFinal + "</l>";
 		  	
@@ -286,7 +259,6 @@ app.controller('ToolBarContactoController', function($scope, $http, ContactoServ
 		  			xml: strFinal
 		  		 }		  
 		  	 }).then(function successCallback(response) {
->>>>>>> 3e98b211f818b07db04270ed435d3292e6265bed
 		  		 console.log(response.data.codeError);
 		  		 mensaje = "";
 		  		 if(response.data.codeError == 0) {
@@ -295,15 +267,11 @@ app.controller('ToolBarContactoController', function($scope, $http, ContactoServ
 
 		  		 }else{
 		  			 console.log("Si me respondio con EL ERROR ES: " + response.data.codeError );
-<<<<<<< HEAD
-					}
-		  		 $.unblockUI();
-=======
 		  			 mensaje = "No se han podido actualizar los contactos";
 				 }
 		  		 
 		  		ContactoService.cerrarBlockUIGeneral(mensaje);
->>>>>>> 3e98b211f818b07db04270ed435d3292e6265bed
+
 		  	 }, function errorCallback(response) {
 		  		 console.log("El error es de que ni fue es: " + response , response.data.codeError);
 		  		 mensaje = "No se han podido actualizar los contactos";
@@ -393,7 +361,6 @@ app.factory('ContactoService', function($http) {
     		 mensaje = "";
     		 if(response.data.codeError == 0) {
     			getContactos();
-    			$("#myModalContactosActualizar").modal('toggle');
     		 }else{
     			 console.log("EL ERROR ES: " + response.codeError );
     			 mensaje ="No se ha podido actualizar el contacto";
@@ -721,7 +688,7 @@ app.controller('ActualizarContactos', function($http,ContactoService) {
 	
 	actualizarTipoContacto.closeMyModalActualizarContactos = function() {
 		
-		$("#myModalContactosActualizar").modal('toggle');
+		$("#myModalContactosActualizar").modal('hide');
 			
 	}
 	
