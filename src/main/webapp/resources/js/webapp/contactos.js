@@ -22,10 +22,6 @@ app.controller('ToolBarContactoController', function($scope, $http, ContactoServ
 		eliminarContacto(item.claveContacto);
 	};
 	
-	toolbarContacto.actualizarContacto = function(item) {
-		console.log("actualizarContacto: " + item.claveContacto);
-		//actualizarContacto();
-	};
 
 	toolbarContacto.toggleContacto = function(item) {
 		
@@ -40,7 +36,17 @@ app.controller('ToolBarContactoController', function($scope, $http, ContactoServ
 	};
 	
 	toolbarContacto.abrirActualizarContacto = function(item) {
-		console.log("item abrirActualizarContacto: " + item.regExp + item.subCategory);
+		console.log(" item.regExp: " + item.regExp);
+		console.log(" item.subCategory: " + item.subCategory );
+		console.log(" item.longLabelNaptr: " + item.longLabelNaptr);
+		console.log(" item.claveContacto: " + item.claveContacto);
+		console.log(" item.servicesNaptr: " + item.servicesNaptr);
+		console.log(" item.visible: " + item.visible);
+		
+		
+		
+		
+		
 		var mensajesContacto = '';
 		if(item.subCategory.length > 0){
 			mensajesContacto = consultarElTipoContacto("redSocial" , item.subCategory);		
@@ -53,6 +59,10 @@ app.controller('ToolBarContactoController', function($scope, $http, ContactoServ
 		$("#paisActualizarTel").text(mensajesContacto.pais);
 		$("#inputTelefonosActualizar").val(item.regExp);  
 		$("#textAreaActualizarTel").val(item.longLabelNaptr); 
+		$("#claveContactoC").val(item.claveContacto); 
+		$("#servicesNaptrC").val(item.servicesNaptr); 
+		$("#subCategoryC").val(item.subCategory); 
+		$("#visibleC").val(item.visible); 
 		$("#myModalContactosActualizar").modal();
 	}
 	
@@ -332,7 +342,13 @@ app.factory('ContactoService', function($http) {
 	}
 		
     function actualizarContacto(contacto) {
-    	 
+    	 console.log("claveContacto: " + contacto.claveContacto +
+    			 	"longLabelNaptr" + contacto.longLabelNaptr +  
+    			 	"regExp: " + contacto.regExp +
+    			 	"servicesNaptr: " + contacto.servicesNaptr +
+    			 	"subCategory: " + contacto.subCategory +
+    			 	"visible: " + contacto.visible 
+    	 );
     	 $http({
     		 method: 'POST',
     		 url: contextPath + "/infomovil/actualizarContacto",
@@ -345,15 +361,15 @@ app.factory('ContactoService', function($http) {
  				 visible : contacto.visible
     		 }		  
     	 }).then(function successCallback(response) {
-    		 
+    		 console.log("El valore regresado es: " + response.data.codeError , response.codeError);
     		 if(response.data.codeError == 0) {
     			getContactos();
 			     
     		 }else{
-    			 console.log("EL ERROR ES: " + response.data.codeError );
+    			 console.log("EL ERROR ES: " + response.codeError );
  			}
     	 }, function errorCallback(response) {
-    		 console.log("El error es: " + response , response.data.codeError);
+    		 console.log("El error es: Peticion incorrecta" + response.codeError);
     	 });
      };	
 	
@@ -626,12 +642,29 @@ app.controller('TipoContacto', function($scope, $http, ContactoService) {
 	
 });
 
-app.controller('ActualizarContactos', function($scope, $http) {
+app.controller('ActualizarContactos', function($http,ContactoService) {
 	var actualizarTipoContacto = this;
 	
 	
 	actualizarTipoContacto.closeMyModalActualizarContactos = function(){
-		$("#myModalContactosActualizar").modal('toggle');
-		
-	}		
+			$("#myModalContactosActualizar").modal('toggle');
+			
+		}		
+	actualizarTipoContacto.guardarDatosContacto = function(){
+			console.log("Entro al boton de actualizar los datos!");
+		   var contacto = {
+				 claveContacto : $("#claveContactoC").val(), 
+				 longLabelNaptr : $("#textAreaActualizarTel").val(),
+				 regExp : $("#inputTelefonosActualizar").val(),
+				 servicesNaptr : $("#servicesNaptrC").val(),
+				 subCategory : $("#subCategoryC").val(),
+				 visible : $("#visibleC").val()
+		};
+		 
+	   ContactoService.actualizarContacto(contacto);
+	}
+	
+	 
+	
+	
 });

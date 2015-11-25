@@ -1,7 +1,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <div ng-controller = "ActualizarContactos as actualizarTipoContacto">
 	<div class="modal-header navEditorSFl">
-			<button type="button" class="btn btn-purple pull-right"  id="" ng-click="actualizarTipoContacto.guardarContacto()" style="margin:5px 0;"><img width="15" height="15" alt="Infomovil" 
+			<button type="button" class="btn btn-purple pull-right"  id="" ng-click="actualizarTipoContacto.guardarDatosContacto()" style="margin:5px 0;"><img width="15" height="15" alt="Infomovil" 
 	    		src="<c:url value="/resources/webapp/images/successWhite.png"/>" /><span class="hidden-xs"> Actualizar</span></button>
 			<button type="button" class="btn btn-purple pull-right btnsEditor"  id="" ng-click="actualizarTipoContacto.closeMyModalActualizarContactos()"  style="margin: 5px 0;"><img width="15" height="15" alt="Infomovil" 
 	    		src="<c:url value="/resources/webapp/images/successWhite.png" />" /><span class="hidden-xs"> Cancelar</span></button>
@@ -15,10 +15,14 @@
 	
 		<div>
 				<img src="" alt="" height="20" width="20">
+				<input type="hidden" name="clave" id="claveContactoC"/>
+				<input type="hidden" name="servicesNaptr" id="servicesNaptrC"/>
+				<input type="hidden" name="subCategory" id="subCategoryC"/>
+				<input type="hidden" name="visible" id="visibleC"/>
 				<span id="nombreActualizarTel"></span><br>
 				<span id="etiquetaActualizarTel"></span><br>
 				<span id="paisActualizarTel"></span><br>
-				<input type="text" id="inputTelefonosActualizar"/><br>
+				<input type="text" id="inputTelefonosActualizar" placeholder=""/><br>
 				<span id="mensajeTelefonosActualizar"></span><br>
 				<span>Descripción</span><br>
 				<textarea
