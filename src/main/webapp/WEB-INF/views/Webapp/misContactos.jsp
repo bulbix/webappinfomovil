@@ -112,23 +112,25 @@
 						
 						<div class="page-header text-center" style="border-radius:15px; background:url(<c:url value="/resources/webapp/images/bgWhTra.png"/>); padding:10px;">						
 						<div class="clear"></div>
-									  
-								<button type="button" class="btn btn-outlineGreen pull-right textWhite navEditorLato"  id="" style="margin: 5px 0 0 0;" data-toggle="modal" data-target="#myModalContactos">
+						<div ng-controller = "ToolBarContactoController as toolbarContacto" ng-init="downgrade = '${downgrade}'; contacto = '${contacto}'">			
+						  
+								<button type="button" class="btn btn-outlineGreen pull-right textWhite navEditorLato" style="margin: 5px 0 0 0;" ng-controller = "ToolBarContactoController as toolbarContacto"
+									ng-click="toolbarContacto.agregaContacto(downgrade, contacto)" data-toggle="modal">
 									<img width="20" height="20" alt="Infomovil" src="<c:url value="/resources/webapp/images/successWhite.png"/>"/> 
 									<span class="hidden-xs">Añadir Contacto</span>
+									
 								</button>	
 
 							<div class="clear"></div>
 				
-							<hr/>
-
-							<div ng-controller = "ToolBarContactoController as toolbarContacto" ng-init="downgrade = '${downgrade}'; contacto = '${contacto}'">
+							<hr/>							
 
 								<h5>{{contacto}} - {{downgrade}}</h5>
 								<ul id="sortable">
 
 
-								<div id="{{item.claveContacto}}" ng-repeat="item in toolbarContacto.contactos">									
+
+								<div id="{{item.claveContacto}}" ng-repeat="item in toolbarContacto.contactos">						
         							<li class="ui-state-default">
 										<div ng-click="toolbarContacto.abrirActualizarContacto(item)">
 
