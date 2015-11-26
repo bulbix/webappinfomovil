@@ -111,14 +111,14 @@ public class ContactosController
 		
 	@RequestMapping(value = "/infomovil/guardarContacto", method = { RequestMethod.GET, RequestMethod.POST })
 	@ResponseBody
-	public Map<String, String> guardarContacto(@RequestParam String descripcionContacto, @RequestParam String numeroEmailRedSocial,
-			@RequestParam String constanteContacto, @RequestParam String redSocialWebSecure, String expRegular) throws UnsupportedEncodingException
+	public Map<String, String> guardarContacto(@RequestParam String descripcionContacto, @RequestParam String numeroEmailRedSocial, @RequestParam String constanteContacto, 
+			@RequestParam String redSocialWebSecure, @RequestParam String tipoContacto, @RequestParam String codigoPais, String expRegular) throws UnsupportedEncodingException
 	{		
 		Map<String, String> resultMap = new HashMap<String, String>();
 		
 		String correo = Util.getUserLogged().getUsername();
 		String password = Util.getUserLogged().getPassword();
-		String regExp = "!^.*$!";
+		String regExp = "!^.*$!" + tipoContacto + codigoPais;
 		descripcionContacto = new String(descripcionContacto.getBytes("ISO-8859-1"), "UTF-8");
 		numeroEmailRedSocial = new String(numeroEmailRedSocial.getBytes("ISO-8859-1"), "UTF-8");
 		
@@ -199,6 +199,7 @@ public class ContactosController
 			contacto.setServicesNaptr(constanteContacto);
 			contacto.setSubCategory(redSocialWebSecure);// Solo si es red social
 			contacto.setVisible(visible);
+			contacto.setPreference("");
 			RespuestaVO wsRespuesta =  wsCliente.crearSitioGuardarContacto(correo, password, contacto);
 			
 			resultMap.put("codeError", wsRespuesta.getCodeError());
