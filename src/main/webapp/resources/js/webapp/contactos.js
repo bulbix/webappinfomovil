@@ -10,7 +10,7 @@ app.controller('ToolBarContactoController', function($scope, $http, ContactoServ
 	toolbarContacto.agregaContacto = function(downgrade, contacto) {
 		
 		ContactoService.setContactosPermitidos(contacto);
-		console.log("agregaContacto: " + downgrade + ", contacto: " + contacto + ", " + toolbarContacto.contactos.length);
+
 		if (toolbarContacto.contactos.length == contacto)
 		{
 			var mensaje = "Ya has registrado todos los contactos disponibles";
@@ -44,7 +44,6 @@ app.controller('ToolBarContactoController', function($scope, $http, ContactoServ
 							dialog.close();
 							eliminarContacto(item.claveContacto);
 						}
-
 					} ]
 		});
 	};
@@ -56,8 +55,7 @@ app.controller('ToolBarContactoController', function($scope, $http, ContactoServ
 		if (item.visible == "1")
 			visibleContacto = "0";
 		
-		item.visible = visibleContacto;
-		
+		item.visible = visibleContacto;		
 		ContactoService.actualizarContacto(item);
 	};
 	
@@ -101,11 +99,8 @@ app.controller('ToolBarContactoController', function($scope, $http, ContactoServ
     		mensaje = "";
     		
     		if(response.data.codeError == 0) {
-    			console.log("SI ELIMINO CORRECTAMENTE");
-    			 
     		    ContactoService.getContactos();
     		}else{
-    			console.log("EL ERROR ES: " + response.data.codeError );
     			mensaje = "No se ha podido eliminar el contacto";
     		}
     		
@@ -120,10 +115,9 @@ app.controller('ToolBarContactoController', function($scope, $http, ContactoServ
      
      var consultarElTipoContacto = function(tipo, llave) {
     	 
-    	 var tipoContactoConsulta = "";
-    	 
+    	 var tipoContactoConsulta = "";    	 
     	 llave = angular.uppercase(llave);
-    	 console.log("llave: " + llave + ", tipo: " + tipo);
+
     	 if(tipo == "redSocial")  
     		 tipoContactoConsulta = llave;
     	 else if(tipo == "tel") {
@@ -134,7 +128,6 @@ app.controller('ToolBarContactoController', function($scope, $http, ContactoServ
     		 		tipoContactoConsulta = "tel";
     		 		break;
     		 	case "E2U+VOICE:TEL+X-MOBILE" :
-    		 	//	  E2U+voice:tel+x-mobile
     		 		tipoContactoConsulta = "movil";
 	    			break;
     		 	case "E2U+SMS:TEL" :
@@ -160,19 +153,16 @@ app.controller('ToolBarContactoController', function($scope, $http, ContactoServ
   
 	 var ordenarContactos = function(itemsFin) {
 		 
+		 var mensaje = "Actualizando contactos...";
 		 var strInicio = "<l>";
 		 var strFinal = "";
 		 
-		 for(i = 0; i < itemsFin.length; i++) {
-		  		strFinal =  strFinal + "<f><i>"+ itemsFin[i] + "</i><p>" + i + "</p></f>";
-		 }
+		 for(i = 0; i < itemsFin.length; i++)
+			 strFinal =  strFinal + "<f><i>"+ itemsFin[i] + "</i><p>" + i + "</p></f>";
 		 
-		 strFinal = strInicio + strFinal + "</l>";
-		  	
-		 console.log("Lo que estoy enviando es: " + strFinal);
-		  
-		 var mensaje="Actualizando contactos...";
+		 strFinal = strInicio + strFinal + "</l>"; 
 		 ContactoService.abrirBlockUIGeneral(mensaje);
+		 
 		 $http({
 			 method: 'POST',
 			 url: contextPath + "/infomovil/setOrderContacts",
@@ -370,5 +360,4 @@ app.controller('ActualizarContactos', function($http,ContactoService) {
 	   ContactoService.actualizarContacto(contacto);
 	   $("#myModalContactosActualizar").modal('toggle');
 	}
-	
 });
