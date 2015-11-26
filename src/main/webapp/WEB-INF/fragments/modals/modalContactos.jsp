@@ -30,18 +30,18 @@
 			</ul>
 		</div>
 		<div ng-show="datosTipoContacto.formGuardaContacto">
-			<form name="miFormulario" ng-submit="datosTipoContacto.guardarContacto(numeroEmailRedSocial, longLabelNaptr)" ng-controller="TipoContacto">
+			<form name="miFormulario" ng-submit="datosTipoContacto.guardarContacto(contacto, miFormulario)" ng-controller="TipoContacto" novalidate>
 				<img src="" alt="" height="20" width="20">
 				<div>{{nombre}}</div><br>
 				<div>{{etiqueta}}</div><br>
 				<div ng-show="datosTipoContacto.muestraPais">{{pais}}</div><br>
-				<input type="text" ng-model="numeroEmailRedSocial" name="numeroEmailRedSocial" id="numeroEmailRedSocial" placeholder="{{placeholderContenido}}" 
-					ngRequired="true" ng-pattern="{{expRegularValida}}" ng-maxlength="{{maxlength}}" novalidate/>
+				<input type="text" ng-model="contacto.numeroEmailRedSocial" name="numeroEmailRedSocial" id="numeroEmailRedSocial" placeholder="{{placeholderContenido}}" 
+					ngRequired="true" ng-pattern="{{expRegularValida}}" ng-maxlength="{{maxlength}}"/>
 				<span ng-show="miFormulario.numeroEmailRedSocial.$error.pattern">{{msjValidacion}}</span>
 				<br>
 				<div>{{mensajeTelefonos}}</div><br>
 				<div>Descripción</div><br>
-				<textarea ng-maxlength="250" ng-model="longLabelNaptr" id="longLabelNaptr"></textarea>
+				<textarea ng-maxlength="250" ng-model="contacto.longLabelNaptr" id="longLabelNaptr"></textarea>
 				<input type="submit" class="btn btn-purple pull-right" ng-show="datosTipoContacto.mostrarBtnGuardar" value="Guardar" style="margin:5px 0;"/>
 			</form>
 		</div>
