@@ -325,6 +325,13 @@ app.controller('TipoContacto', function($scope, $http, ContactoService) {
 				 $("#longLabelNaptr").val("");
 			     ContactoService.getContactos();
 			     regresarGenerico();
+			     if($('#myModalContactosActualizar').is(':visible')){
+	    				$("#myModalContactosActualizar").modal('toggle');
+	    			}
+			     if($('#myModalContactos').is(':visible')){
+	    				$("#myModalContactos").modal('toggle');
+	    			}
+
 			 }else{
 				 console.log("EL ERROR ES: " + response.data.codeError );
 				 mensaje = "No se ha podido guardar el contacto";
