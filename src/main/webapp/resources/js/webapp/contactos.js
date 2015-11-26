@@ -8,11 +8,13 @@ app.controller('ToolBarContactoController', function($scope, $http, ContactoServ
 	toolbarContacto.contacto = "";
 
 	toolbarContacto.agregaContacto = function(downgrade, contacto) {
+		
 		ContactoService.setContactosPermitidos(contacto);
 		console.log("agregaContacto: " + downgrade + ", contacto: " + contacto + ", " + toolbarContacto.contactos.length);
 		if (toolbarContacto.contactos.length == contacto)
 		{
-			console.log("Ya has registrado todos los contactos disponibles")
+			var mensaje = "Ya has registrado todos los contactos disponibles";
+			ContactoService.cerrarBlockUIGeneral(mensaje)
 			return;
 		}
 		
@@ -40,14 +42,9 @@ app.controller('ToolBarContactoController', function($scope, $http, ContactoServ
 	};
 	
 	toolbarContacto.abrirActualizarContacto = function(item) {
-		console.log(" item.regExp: " + item.regExp);
-		console.log(" item.subCategory: " + item.subCategory );
-		console.log(" item.longLabelNaptr: " + item.longLabelNaptr);
-		console.log(" item.claveContacto: " + item.claveContacto);
-		console.log(" item.servicesNaptr: " + item.servicesNaptr);
-		console.log(" item.visible: " + item.visible);
 
 		var mensajesContacto = '';
+		
 		if(item.subCategory.length > 0){
 			mensajesContacto = consultarElTipoContacto("redSocial" , item.subCategory);		
 		}else{
@@ -280,11 +277,10 @@ app.controller('ToolBarContactoController', function($scope, $http, ContactoServ
 	   };
 
      $scope.$watch(function () { return ContactoService.contactos(); }, function (value) {
+    	 
     	 toolbarContacto.contactos = value;
     	 var arr = value instanceof Array ? value : [value]; 
-    	 if(arr.length == ContactoService.getContactosPermitidos()) {
-    		 console.log('Limite alcanzado')
-    	 }	 
+    	 ContactoService.setContactosGuardados(arr.length);
      });
 
      var itemsInicio = "";
@@ -316,7 +312,7 @@ app.controller('ToolBarContactoController', function($scope, $http, ContactoServ
 
 app.factory('ContactoService', function($http) {
 	
-	var contactos, contactosPermitidos;
+	var contactos, contactosPermitidos, contactosGuardados;
 	
 	function getContactos() {
 		
@@ -336,15 +332,10 @@ app.factory('ContactoService', function($http) {
 	}
 		
     function actualizarContacto(contacto) {
-    	 console.log("claveContacto: " + contacto.claveContacto +
-    			 	"longLabelNaptr" + contacto.longLabelNaptr +  
-    			 	"regExp: " + contacto.regExp +
-    			 	"servicesNaptr: " + contacto.servicesNaptr +
-    			 	"subCategory: " + contacto.subCategory +
-    			 	"visible: " + contacto.visible 
-    	 );
+
     	 var mensaje = "Actualizando contacto...";
     	 abrirBlockUIGeneral(mensaje);
+    	 
     	 $http({
     		 method: 'POST',
     		 url: contextPath + "/infomovil/actualizarContacto",
@@ -372,9 +363,8 @@ app.factory('ContactoService', function($http) {
     		 cerrarBlockUIGeneral(mensaje);
     	 });
      };	
-     
-     
-     function abrirBlockUIGeneral(mensaje){	
+          
+     function abrirBlockUIGeneral(mensaje) {	
     	 	$.blockUI.defaults.baseZ = 9000;
 			$.blockUI({
 				message : mensaje,
@@ -392,7 +382,7 @@ app.factory('ContactoService', function($http) {
     	 if(mensaje.length > 0){
     		 BootstrapDialog
 				.show({
-					title : "<span class='textBlack' style='font-size:1.15em;'><img alt='' src='../resources/webapp/images/fa-warning-bk.png'  title='Alerta' />Imagen demasiado grande</span>",
+					title : "<span class='textBlack' style='font-size:1.15em;'><img alt='' src='../resources/webapp/images/fa-warning-bk.png'  title='Alerta' />Contactos</span>",
 					message : '<div style="display:block; min-height:150px;"><p class="textBlack text-center" style="font-size:1.15em;">' + mensaje + '</p><br/>'
 				});
  	 		
@@ -410,7 +400,13 @@ app.factory('ContactoService', function($http) {
 	   },
 	   getContactosPermitidos : function() {
 		   return contactosPermitidos;
-	   },	   
+	   },
+	   setContactosGuardados : function(value) {
+		   contactosGuardados = value;
+	   },
+	   getContactosGuardados : function() {
+		   return contactosGuardados;
+	   },
 	   actualizarContacto : actualizarContacto,
 	   abrirBlockUIGeneral : abrirBlockUIGeneral,
 	   cerrarBlockUIGeneral : cerrarBlockUIGeneral
@@ -454,8 +450,18 @@ app.controller('TipoContacto', function($scope, $http, ContactoService) {
 	
 	datosTipoContacto.guardarContacto = function(contacto, formulario) {
 		
+		console.log("contactos guardados: " + ContactoService.getContactosGuardados());
+		
 		if (formulario.$valid)
+		{
+			if (ContactoService.getContactosGuardados() == ContactoService.getContactosPermitidos())
+			{
+				var mensaje = "Ya has registrado todos los contactos disponibles";
+				ContactoService.cerrarBlockUIGeneral(mensaje)
+				return;
+			}
 			guardarContacto(contacto);
+		}
 	}
 	
 	datosTipoContacto.closeMyModalContactos = function(){
@@ -473,6 +479,7 @@ app.controller('TipoContacto', function($scope, $http, ContactoService) {
 	
 	 var guardarContacto = function(contacto) {
 
+		 console.log("contactos permitidos: " + ContactoService.getContactosPermitidos());
 		 console.log("contacto => longLabelNaptr: " + contacto.longLabelNaptr + ", regExp: " + contacto.regExp + 
 				 ", servicio: " + contacto.servicesNaptr + ", subcategoria: " + $scope.subCategory);
 		 var mensaje = "Guardando contacto...";
@@ -498,7 +505,6 @@ app.controller('TipoContacto', function($scope, $http, ContactoService) {
 				 $("#longLabelNaptr").val("");
 			     ContactoService.getContactos();
 			     regresarGenerico();
-			     $("#myModalContactosActualizar").modal('toggle');
 			 }else{
 				 console.log("EL ERROR ES: " + response.data.codeError );
 				 mensaje = "No se ha podido guardar el contacto";
