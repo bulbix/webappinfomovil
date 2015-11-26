@@ -181,7 +181,7 @@
 		<script src="<c:url value="/resources/webapp/js/jquery.numeric.js"/>"></script>
 		<script src="<c:url value="/resources/webapp/js/jquery.blockUI.js"/>"></script>
 		<script src="<c:url value="/resources/js/webapp/contactos.js"/>"></script>
-		<script src="<c:url value="/resources/js/webapp/contactos.js"/>"></script>
+		<script src="<c:url value="/resources/js/webapp/contactosService.js"/>"></script>
 		
 	 
 		<tiles:insertDefinition name="modalGen">
@@ -197,10 +197,6 @@
 				value='"modal-dialog modal-lg"' />
 			<c:set var="fragmentName" value="modalContactosActualizar" scope="request" />
 		</tiles:insertDefinition>
-		
-		
-		
-		
 		
 		<script>
 			<c:choose> 

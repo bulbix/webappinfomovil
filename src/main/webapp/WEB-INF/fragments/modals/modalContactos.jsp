@@ -46,9 +46,8 @@
 			</form>
 		</div>
 	</div>  
-<!-- 			@RequestParam String constanteContacto, @RequestParam String redSocialWebSecure, String expRegular -->
-	<div class="clear"></div>
 	
+	<div class="clear"></div>
 
 	<div class="modal-footer"></div>
 </div>

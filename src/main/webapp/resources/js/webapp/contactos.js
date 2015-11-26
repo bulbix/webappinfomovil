@@ -26,7 +26,27 @@ app.controller('ToolBarContactoController', function($scope, $http, ContactoServ
 	};
 
 	toolbarContacto.eliminarContacto = function(item) {
-		eliminarContacto(item.claveContacto);
+		
+    	BootstrapDialog
+		.show({
+			title : '<div class="textBlack">Borrar Imagen</div>',
+			message : '<div style="display:block; padding: 10px;">¿Seguro que deseas eliminar el contacto?</div>',
+			buttons : [
+					{
+						label : 'Cancelar',
+						action : function(dialog) {
+							dialog.close();
+						}
+					},
+					{
+						label : 'Aceptar',
+						action : function(dialog) {
+							dialog.close();
+							eliminarContacto(item.claveContacto);
+						}
+
+					} ]
+		});
 	};
 	
 	toolbarContacto.toggleContacto = function(item) {
@@ -43,13 +63,15 @@ app.controller('ToolBarContactoController', function($scope, $http, ContactoServ
 	
 	toolbarContacto.abrirActualizarContacto = function(item) {
 
-		var mensajesContacto = '';
-		
-		if(item.subCategory.length > 0){
-			mensajesContacto = consultarElTipoContacto("redSocial" , item.subCategory);		
-		}else{
-			mensajesContacto = consultarElTipoContacto("tel" , item.servicesNaptr);		
-		}
+		var mensajesContacto = "";
+		var tipoContactoAct = "";
+
+		if(item.subCategory.trim().length > 0)
+			tipoContactoAct = consultarElTipoContacto("redSocial" , item.subCategory);
+		else
+			tipoContactoAct = consultarElTipoContacto("tel" , item.servicesNaptr);
+
+		mensajesContacto = ContactoService.getObjetoTipoContacto(tipoContactoAct);
 		
 		$("#nombreActualizarTel").text(mensajesContacto.nombre); 
 		$("#etiquetaActualizarTel").text(mensajesContacto.etiqueta);
@@ -64,8 +86,10 @@ app.controller('ToolBarContactoController', function($scope, $http, ContactoServ
 	}
 	
     var eliminarContacto = function(claveContacto) {
-    	 var mensaje = "Eliminando contacto...";
-    	 ContactoService.abrirBlockUIGeneral(mensaje);
+	
+    	var mensaje = "Eliminando contacto...";
+    	ContactoService.abrirBlockUIGeneral(mensaje);
+    	
     	$http({
     		method: 'POST',
     		url: contextPath + "/infomovil/eliminarContacto",
@@ -73,16 +97,20 @@ app.controller('ToolBarContactoController', function($scope, $http, ContactoServ
     			claveDeContacto: claveContacto
     		}	  
     	}).then(function successCallback(response) {
-    		mensaje="";
+    		
+    		mensaje = "";
+    		
     		if(response.data.codeError == 0) {
     			console.log("SI ELIMINO CORRECTAMENTE");
-    			 /*Obtiene los contactos*/
-    		     ContactoService.getContactos();
+    			 
+    		    ContactoService.getContactos();
     		}else{
     			console.log("EL ERROR ES: " + response.data.codeError );
-    			mensaje="No se ha podido eliminar el contacto";
+    			mensaje = "No se ha podido eliminar el contacto";
     		}
+    		
     		ContactoService.cerrarBlockUIGeneral(mensaje);
+    		
     	}, function errorCallback(response) {
     		console.log("El error es: " + response , response.data.codeError);
     		mensaje = "No se ha podido eliminar el contacto";
@@ -90,149 +118,44 @@ app.controller('ToolBarContactoController', function($scope, $http, ContactoServ
     	});
      };    
      
-     var consultarElTipoContacto = function(tipo, llave){
-    	 llave = angular.uppercase(llave);
-    	 console.log("la llave es: " + llave);
-    	 if(tipo == "redSocial"){
-    		 switch(llave){
-	    		 case "FACEBOOK" :
-	    			 var titulos = {
-		    				imagen : '',
-		 				    nombre : 'Facebook',
-		 				    etiqueta : 'Liga a tu cuenta de Facebook',
-		 				    pais : '',
-		 				    placeholder : 'www.facebook.com/tufanpage',
-		 				    mensaje : ''
-	 				};
-	 				return titulos;
-	    			 break;
-	    		 
-	    		 case "TWITTER" :
-	    			 var titulos = {
-		    				imagen : ' ',
-		 				    nombre : 'Twitter',
-		 				    etiqueta : 'Enlaza tu cuenta de Twitter',
-		 				   pais : '',
-		 				    placeholder : 'www.twitter.com/tucuenta',
-		 				    mensaje : 'Se publicaran tus ultimos Tweets en tu sitio web'
-			 				};
-		 				return titulos;
-	    			 break;
-	    			 
-	    		 case "SECUREWEBSITE" :
-	    			 var titulos = {
-		    				imagen : ' ',
-		 				    nombre : 'Website',
-		 				    etiqueta : 'Liga a tu sitio web',
-		 				   pais : '',
-		 				    placeholder : 'www.infomovil.com',
-		 				    mensaje : ''
-			 				};
-		 				return titulos;
-	    			 break;
-	    			 
-	    		 case "LINKEDIN" :
-	    			 var titulos = {
-	    					 imagen : ' ',
-	    					 nombre : 'LinkedIn',
-	    					 etiqueta : 'Liga a tu cuenta de LinkedIn',
-	    					 pais : '',
-	    					 placeholder : 'www.linkedin.com/tuempresa',
-	    					 mensaje : ''		
-	    					};
-		 				return titulos;
-	    			 break;
-    			 
-    		 }
-    	 }else if(tipo == "tel"){
+     var consultarElTipoContacto = function(tipo, llave) {
     	 
-    		 switch(llave){
-    		 // TElefono normal
-    		 case "E2U+VOICE:TEL" :
-    			 var titulos = {
-	    				imagen : ' ',
-	 				    nombre : 'Teléfono',
-	 				    etiqueta : 'Número Telefónico',
-	 				    pais : '+52',
-	 				    placeholder : 'Teléfono',
-	 				    mensaje : ''
-	 				};
-	 				return titulos;
-	 				break;
-    		 // Celular
-    		 case "E2U+VOICE:TE+X-MOBILE" :
-    			 var titulos = {
-	    				imagen : '',
-	 				    nombre : 'Móvil',
-	 				    etiqueta : 'Número Telefónico',
-	 				    pais : '+521',
-	 				    placeholder : 'Teléfono',
-	 				    mensaje : 'Recuerda que para recibir llamadas internacionales el formato es (1)xxx.xxx.xxxx(10digitos)'   
-	 				};
-	 				return titulos;
-        		 break;
-    		 // Mensaje de celular
-    		 case "E2U+SMS:TEL" :
-    			 var titulos = {
-	    				imagen : '',
-	 				    nombre : 'Teléfono SMS',
-	 				    etiqueta : 'Número Telefónico',
-	 				    pais : '+52',
-	 				    placeholder : 'Teléfono',
-	 				    mensaje : ''
-	 				};
-	 				return titulos;
-        		 break;
-        		// Email
-    		 case "E2U+EMAIL:MAILTO" :
-    			 var titulos = {
-	    				imagen : ' ',
-	 				    nombre : 'E-mail',
-	 				    etiqueta : 'E-mail',
-	 				    placeholder : '',
-	 				    mensaje : ''
-		 			};
-	 				return titulos;
-        		 break;
-        		 
-        		 // Fax
-    		 case "E2U+FAX:TEL" :
-    			 var titulos = {
-	    				imagen : ' ',
-	 				    nombre : 'Fax',
-	 				    etiqueta : 'Número Fax',
-	 				    pais : '+52',
-	 				    placeholder : 'Teléfono',
-	 				    mensaje : ''
-	 				};
-	 				return titulos;
-        		 break;
-        		 // Google+
-    		 case "E2U+WEB:HTTP" :
-    			 var titulos = {
-	    				imagen : ' ',
-	 				    nombre : 'Google+',
-	 				    etiqueta : 'Liga a tu cuenta de Google+',
-	 				    pais : '',
-	 				    placeholder : 'plus.google.com/tucuenta',
-	 				    mensaje : ''
-	 				};
-	 				return titulos;
-        		 break;
-        		// Skype
-    		 case "E2U+X-VOICE:SKYPE" :
-    			 var titulos = {
-	    				imagen : ' ',
-	 				    nombre : 'Skype',
-	 				    etiqueta : 'Liga a tu cuenta de Skype',
-	 				    pais : '',
-	 				    placeholder : 'tucuenta',
-	 				    mensaje : ''
-	 				};
-	 				return titulos;
-        		 break;     		 
+    	 var tipoContactoConsulta = "";
+    	 
+    	 llave = angular.uppercase(llave);
+    	 console.log("llave: " + llave + ", tipo: " + tipo);
+    	 if(tipo == "redSocial")  
+    		 tipoContactoConsulta = llave;
+    	 else if(tipo == "tel") {
+    	 
+    		 switch(llave) {
+
+    		 	case "E2U+VOICE:TEL" :
+    		 		tipoContactoConsulta = "tel";
+    		 		break;
+    		 	case "E2U+VOICE:TEL+X-MOBILE" :
+    		 	//	  E2U+voice:tel+x-mobile
+    		 		tipoContactoConsulta = "movil";
+	    			break;
+    		 	case "E2U+SMS:TEL" :
+    		 		tipoContactoConsulta = "telSMS";
+    		 		break;   		 		
+    		 	case "E2U+EMAIL:MAILTO" :
+    		 		tipoContactoConsulta = "email";
+    		 		break;
+    		 	case "E2U+FAX:TEL" :
+    		 		tipoContactoConsulta = "fax";
+    		 		break;
+    		 	case "E2U+WEB:HTTP" :
+    		 		tipoContactoConsulta = "google";
+    		 		break;
+    		 	case "E2U+X-VOICE:SKYPE" :
+    		 		tipoContactoConsulta = "skype";
+    		 		break;     		 
     		 }
     	 }
+    	 
+    	 return angular.lowercase(tipoContactoConsulta);
      };
   
 	 var ordenarContactos = function(itemsFin) {
@@ -242,39 +165,41 @@ app.controller('ToolBarContactoController', function($scope, $http, ContactoServ
 		 
 		 for(i = 0; i < itemsFin.length; i++) {
 		  		strFinal =  strFinal + "<f><i>"+ itemsFin[i] + "</i><p>" + i + "</p></f>";
-		  	}
-		  	strFinal = strInicio + strFinal + "</l>";
+		 }
+		 
+		 strFinal = strInicio + strFinal + "</l>";
 		  	
-		  	console.log("Lo que estoy enviando es: " + strFinal);
+		 console.log("Lo que estoy enviando es: " + strFinal);
 		  
-			 var mensaje="Actualizando contactos...";
-			 ContactoService.abrirBlockUIGeneral(mensaje);
-			 $http({
-		  		 method: 'POST',
-		  		 url: contextPath + "/infomovil/setOrderContacts",
-		  		 params: {
-		  			xml: strFinal
-		  		 }		  
-		  	 }).then(function successCallback(response) {
-		  		 console.log(response.data.codeError);
-		  		 mensaje = "";
-		  		 if(response.data.codeError == 0) {
-		  			 console.log("SI ACTUALIZO CORRECTAMENTE");
-		  			 ContactoService.getContactos();
+		 var mensaje="Actualizando contactos...";
+		 ContactoService.abrirBlockUIGeneral(mensaje);
+		 $http({
+			 method: 'POST',
+			 url: contextPath + "/infomovil/setOrderContacts",
+			 params: {
+				 xml: strFinal
+		  		 	}		  
+		 }).then(function successCallback(response) {
+			 console.log(response.data.codeError);
+			 mensaje = "";
+			 
+			 if(response.data.codeError == 0) {
+				 console.log("SI ACTUALIZO CORRECTAMENTE");
+				 ContactoService.getContactos();
 
-		  		 }else{
-		  			 console.log("Si me respondio con EL ERROR ES: " + response.data.codeError );
-		  			 mensaje = "No se han podido actualizar los contactos";
-				 }
+			 }else{
+				 console.log("Si me respondio con EL ERROR ES: " + response.data.codeError );
+				 mensaje = "No se han podido actualizar los contactos";
+			 }
 		  		 
-		  		ContactoService.cerrarBlockUIGeneral(mensaje);
+			 ContactoService.cerrarBlockUIGeneral(mensaje);
 
-		  	 }, function errorCallback(response) {
-		  		 console.log("El error es de que ni fue es: " + response , response.data.codeError);
-		  		 mensaje = "No se han podido actualizar los contactos";
-		  		ContactoService.cerrarBlockUIGeneral(mensaje);
-		  	 });
-	   };
+		 }, function errorCallback(response) {
+			 console.log("El error es de que ni fue es: " + response , response.data.codeError);
+			 mensaje = "No se han podido actualizar los contactos";
+			 ContactoService.cerrarBlockUIGeneral(mensaje);
+		 });
+	 };
 
      $scope.$watch(function () { return ContactoService.contactos(); }, function (value) {
     	 
@@ -310,110 +235,6 @@ app.controller('ToolBarContactoController', function($scope, $http, ContactoServ
      ContactoService.getContactos();
 });
 
-app.factory('ContactoService', function($http) {
-	
-	var contactos, contactosPermitidos, contactosGuardados;
-	
-	function getContactos() {
-		
-		console.log("getContactos");
-		$http({
-			method: 'GET',
-			url: contextPath + "/infomovil/getContactos",
-		}).then(function successCallback(response) {
-			
-				 contactos = response.data;
-			
-		}, function errorCallback(response) {
-			console.log("El error es: " + response);
-			var mensaje = "No se ha podido obtener la lista de contactos";
-			cerrarBlockUIGeneral(mensaje);
-		});
-	}
-		
-    function actualizarContacto(contacto) {
-
-    	 var mensaje = "Actualizando contacto...";
-    	 abrirBlockUIGeneral(mensaje);
-    	 
-    	 $http({
-    		 method: 'POST',
-    		 url: contextPath + "/infomovil/actualizarContacto",
-    		 params: {
-    			 claveDeContacto : contacto.claveContacto, 
- 				 descripcionContacto : contacto.longLabelNaptr,
- 				 numeroEmailRedSocial : contacto.regExp,
- 				 constanteContacto : contacto.servicesNaptr, 
- 				 redSocialWebSecure : contacto.subCategory,
- 				 visible : contacto.visible
-    		 }		  
-    	 }).then(function successCallback(response) {
-    		 console.log("El valore regresado es: " + response.data.codeError , response.codeError);
-    		 mensaje = "";
-    		 if(response.data.codeError == 0) {
-    			getContactos();
-    		 }else{
-    			 console.log("EL ERROR ES: " + response.codeError );
-    			 mensaje ="No se ha podido actualizar el contacto";
- 			}
-    		 cerrarBlockUIGeneral(mensaje);
-    	 }, function errorCallback(response) {
-    		 console.log("El error es: Peticion incorrecta" + response.codeError);
-    		 mensaje = "No se ha podido actualizar el contacto";
-    		 cerrarBlockUIGeneral(mensaje);
-    	 });
-     };	
-          
-     function abrirBlockUIGeneral(mensaje) {	
-    	 	$.blockUI.defaults.baseZ = 9000;
-			$.blockUI({
-				message : mensaje,
-				css : {
-					class : "alertaUI",
-					top : ($(window).height() - 400) / 2 + 'px',
-					left : ($(window).width() - 400) / 2 + 'px',
-					width : '400px'
-				}
-			});
-     };
-	
-     function cerrarBlockUIGeneral(mensaje){	
-    	 $.unblockUI();
-    	 if(mensaje.length > 0){
-    		 BootstrapDialog
-				.show({
-					title : "<span class='textBlack' style='font-size:1.15em;'><img alt='' src='../resources/webapp/images/fa-warning-bk.png'  title='Alerta' />Contactos</span>",
-					message : '<div style="display:block; min-height:150px;"><p class="textBlack text-center" style="font-size:1.15em;">' + mensaje + '</p><br/>'
-				});
- 	 		
- 	 	}
-     };
-  
-   return {
-	   
-	   getContactos : getContactos,
-	   contactos: function() {
-		   return contactos;
-	   },	   
-	   setContactosPermitidos : function(value) {
-		   contactosPermitidos = value;
-	   },
-	   getContactosPermitidos : function() {
-		   return contactosPermitidos;
-	   },
-	   setContactosGuardados : function(value) {
-		   contactosGuardados = value;
-	   },
-	   getContactosGuardados : function() {
-		   return contactosGuardados;
-	   },
-	   actualizarContacto : actualizarContacto,
-	   abrirBlockUIGeneral : abrirBlockUIGeneral,
-	   cerrarBlockUIGeneral : cerrarBlockUIGeneral
-  }
-   
-});
-
 app.controller('TipoContacto', function($scope, $http, ContactoService) {
 	 
 	var datosTipoContacto = this;
@@ -425,7 +246,7 @@ app.controller('TipoContacto', function($scope, $http, ContactoService) {
 	
 	datosTipoContacto.tipo = function(tipo) {
 		
-		var mensajesContacto = objetoTipoContacto(tipo);
+		var mensajesContacto = ContactoService.getObjetoTipoContacto(tipo);
 		
 		datosTipoContacto.formGuardaContacto = true;
 		datosTipoContacto.mostrarBtnRegresar = true;
@@ -436,12 +257,13 @@ app.controller('TipoContacto', function($scope, $http, ContactoService) {
 		$scope.placeholderContenido = mensajesContacto.placeholder; 
 		$scope.mensajeTelefonos = mensajesContacto.mensaje != undefined ? mensajesContacto.mensaje : "";
 		$scope.expRegularValida = mensajesContacto.expRegular != undefined ? mensajesContacto.expRegular : "^\\d{10}$";
-		$scope.pais = mensajesContacto.pais != undefined ? mensajesContacto.pais : false;
+		$scope.pais = mensajesContacto.pais != undefined ? mensajesContacto.pais : "";
 		$scope.etiqueta = mensajesContacto.etiqueta != undefined ? mensajesContacto.etiqueta : "Número Telefónico";
 		$scope.subCategory = mensajesContacto.subcategoria != undefined ? mensajesContacto.subcategoria : "";
 		$scope.servicio = mensajesContacto.servicio != undefined ? mensajesContacto.servicio : "E2U+web:http";
 		$scope.msjValidacion = mensajesContacto.msjValidacion != undefined ? mensajesContacto.msjValidacion : "Número Telefónico Inválido";
 		$scope.maxlength = mensajesContacto.maxlength != undefined ? mensajesContacto.maxlength : "255";
+		$scope.tipoContacto = mensajesContacto.tipo != undefined ? mensajesContacto.tipo : "";
 	}
 	
 	datosTipoContacto.regresarAgregarContacto = function(){
@@ -449,8 +271,6 @@ app.controller('TipoContacto', function($scope, $http, ContactoService) {
 	}
 	
 	datosTipoContacto.guardarContacto = function(contacto, formulario) {
-		
-		console.log("contactos guardados: " + ContactoService.getContactosGuardados());
 		
 		if (formulario.$valid)
 		{
@@ -460,6 +280,7 @@ app.controller('TipoContacto', function($scope, $http, ContactoService) {
 				ContactoService.cerrarBlockUIGeneral(mensaje)
 				return;
 			}
+			
 			guardarContacto(contacto);
 		}
 	}
@@ -479,9 +300,6 @@ app.controller('TipoContacto', function($scope, $http, ContactoService) {
 	
 	 var guardarContacto = function(contacto) {
 
-		 console.log("contactos permitidos: " + ContactoService.getContactosPermitidos());
-		 console.log("contacto => longLabelNaptr: " + contacto.longLabelNaptr + ", regExp: " + contacto.regExp + 
-				 ", servicio: " + contacto.servicesNaptr + ", subcategoria: " + $scope.subCategory);
 		 var mensaje = "Guardando contacto...";
 		 ContactoService.abrirBlockUIGeneral(mensaje);
 
@@ -492,7 +310,9 @@ app.controller('TipoContacto', function($scope, $http, ContactoService) {
 				 descripcionContacto: contacto.longLabelNaptr != undefined ? contacto.longLabelNaptr : "",
 				 numeroEmailRedSocial: contacto.numeroEmailRedSocial,
 				 constanteContacto: $scope.servicio,
-				 redSocialWebSecure: $scope.subCategory
+				 redSocialWebSecure: $scope.subCategory,
+				 tipoContacto: $scope.tipoContacto,
+				 codigoPais: $scope.pais
 			 }	  
 		 }).then(function successCallback(response) {
 
@@ -515,177 +335,7 @@ app.controller('TipoContacto', function($scope, $http, ContactoService) {
 			 mensaje = "No se ha podido guardar el contacto";
 			 ContactoService.cerrarBlockUIGeneral(mensaje);
 		 });
-	 };
-	
-	 var objetoTipoContacto = function(tipo) {
-		 
-		 var titulos = { } ;
-		 
-		 switch(tipo) {
-		 
-			case 'tel':
-				titulos =
-				{
-					imagen : ' ',
-				    nombre : 'Teléfono',
-				    pais : '+52',
-				    placeholder : 'Teléfono',
-				    servicio : 'E2U+voice:tel',
-				    muestraPais : true,
-				    maxlength : "10"
-				};
-				
-				break;
-				
-			case 'movil':
-				titulos =
-				{
-					imagen : '',
-				    nombre : 'Móvil',
-				    pais : '+521',
-				    placeholder : 'Teléfono',
-				    mensaje : 'Recuerda que para recibir llamadas internacionales el formato es (1)xxx.xxx.xxxx(10digitos)',
-				    servicio : 'E2U+voice:tel+x-mobile',
-				    muestraPais : true,
-				    maxlength : "10"
-				};
-
-				break;
-			
-			case 'telSMS':
-				titulos =
-				{
-					imagen : '',
-				    nombre : 'Teléfono SMS',
-				    pais : '+52',
-				    placeholder : 'Teléfono',
-				    servicio : 'E2U+sms:tel',
-				    muestraPais : true,
-				    maxlength : "10"
-				};
-
-				break;
-
-			case 'fax':
-				titulos =
-				{
-					imagen : ' ',
-				    nombre : 'Fax',
-				    etiqueta : 'Número Fax',
-				    pais : ' +52',
-				    placeholder : 'Teléfono',
-				    servicio : 'E2U+fax:tel',
-				    muestraPais : true,
-				    maxlength : "10"
-				};
-
-				break;
-				
-			case 'email':
-				titulos =
-				{
-					imagen : ' ',
-				    nombre : 'E-mail',
-				    etiqueta : 'E-mail',
-				    placeholder : 'email@email.com',
-				    servicio : 'E2U+email:mailto',
-				    expRegular : '^[_a-z0-9]+(\.[_a-z0-9]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,4})$',
-				    msjValidacion : 'Formato incorrecto de email'
-				};
-
-				break;
-				
-			case 'facebook':
-				titulos =
-				{
-					imagen : '',
-				    nombre : 'Facebook',
-				    etiqueta : 'Liga a tu cuenta de Facebook',
-				    placeholder : 'www.facebook.com/tufanpage',
-				    subcategoria : 'facebook',
-				    expRegular : '(((www|WWW))\\.)?(facebook|FACEBOOK)\\.(com|COM)\\/[a-zA-Z0-9\\*\\?\\+\\[\\(\\)\\{\\}\\^\\$\\|\\.\\/\\ ]{1,}',
-				    msjValidacion : 'Formato incorrecto para facebook'
-				};
-
-				break;
-				
-			case 'twitter':
-				titulos =
-				{
-					imagen : ' ',
-				    nombre : 'Twitter',
-				    etiqueta : 'Enlaza tu cuenta de Twitter',
-				    placeholder : 'www.twitter.com/tucuenta',
-				    mensaje : 'Se publicarán tus ultimos Tweets en tu página web',
-				    subcategoria : 'twitter',
-				    expRegular : '(twitter|TWITTER)\\.(com|COM)\\/[a-zA-Z0-9\\*\\?\\+\\[\\(\\)\\{\\}\\^\\$\\|\\.\\/\\ ]{1,}',
-				    msjValidacion : 'Formato incorrecto para twitter'
-				};
-
-				break;
-				
-			case 'google':
-				titulos =
-				{
-					imagen : ' ',
-				    nombre : 'Google+',
-				    etiqueta : 'Liga a tu cuenta de Google+',
-				    placeholder : 'plus.google.com/tucuenta',
-				    expRegular : '(plus|PLUS)\\.(google|GOOGLE)\\.(com|COM)\\/[a-zA-Z0-9\\*\\?\\+\\[\\(\\)\\{\\}\\^\\$\\|\\.\\/\\ ]{1,}',
-				    msjValidacion : 'Formato incorrecto para google plus'
-				};
-
-				break;
-				
-			case 'skype':
-				titulos =
-				{
-					imagen : ' ',
-				    nombre : 'Skype',
-				    etiqueta : 'Liga a tu cuenta de Skype',
-				    placeholder : 'tucuenta',
-				    servicio : 'E2U+x-voice:skype',
-				    expRegular : '[a-zA-Z0-9\\*\\?\\+\\[\\(\\)\\{\\}\\^\\$\\|\\.\\/\\ ]{1,}',
-				    msjValidacion : 'Formato incorrecto para skype'
-				};
-
-				break;
-			
-			case 'linkedin':
-				titulos =
-				{
-					imagen : ' ',
-				    nombre : 'LinkedIn',
-				    etiqueta : 'Liga a tu cuenta de LinkedIn',
-				    placeholder : 'www.linkedin.com/tuempresa',
-				    subcategoria : 'linkedin',
-				    expRegular : '((WWW|www)\\.){0,1}(linkedin|LINKEDIN)\\.(com|COM)\\/[a-zA-Z0-9\\*\\?\\+\\[\\(\\)\\{\\}\\^\\$\\|\\.\\/\\ ]{1,}',
-				    msjValidacion : 'Formato incorrecto para linkedin'
-				};
-
-				break;
-				
-			case 'web':
-				titulos =
-				{
-					imagen : ' ',
-				    nombre : 'Website',
-				    etiqueta : 'Liga a tu sitio web',
-				    placeholder : 'www.infomovil.com',
-				    servicio : 'E2U+web:https',
-				    subcategoria : 'securewebsite',
-				    expRegular : '^([\\w-]+\\.)+[\\w-]+(/[\\w-./?%&=]*)?$',
-				    msjValidacion : 'Formato incorrecto para web'
-				};
-				break;
-				
-			default:
-				console.log("La opcion de contacto no existe: " + tipo);
-			}
-		 
-		 return titulos; 
-	}
-	
+	 };	
 });
 
 app.controller('ActualizarContactos', function($http,ContactoService) {
@@ -699,7 +349,7 @@ app.controller('ActualizarContactos', function($http,ContactoService) {
 	}
 	
 	actualizarTipoContacto.guardarDatosContacto = function() {
-		
+		 
 		console.log("Entro al boton de actualizar los datos!");
 		var contacto = {
 				claveContacto : $("#claveContactoC").val(), 

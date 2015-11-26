@@ -224,6 +224,23 @@ public class ClientWsInfomovilTest {
 		clientWsInfomovil.crearSitioGuardarContacto("docker6@mail.com", "garbage1", contacto);
 		
 	}
+
+	@Test
+	public void testCrearSitioActualizarContacto()
+	{
+		String regExp = "!^.*$!";
+		String numeroEmailRedSocial = "numeroEmailRedSocial!";
+		
+		RecordNaptrVO contacto = new RecordNaptrVO();
+		contacto.setClaveContacto("8002");
+		contacto.setLongLabelNaptr("adfedfggrgdsvdsvdsgdrwerw");
+		contacto.setRegExp(regExp + numeroEmailRedSocial);
+		contacto.setServicesNaptr("numeroEmailRedSocial");
+		contacto.setSubCategory("");// Solo si es red social
+		contacto.setVisible("0");
+		RespuestaVO resp = clientWsInfomovil.crearSitioGuardarContacto("amylee@mail.com", "joseluis1", contacto);
+		System.out.println("resultado actualizar: " + resp.getMsgError() + ", " + resp.getCodeError());
+	}
 	
 	@Test
 	public void testCrearSitioOrdenarImagenesContactos() {
