@@ -325,6 +325,7 @@ app.factory('ContactoService', function($http) {
 		$http({
 			method: 'GET',
 			url: contextPath + "/infomovil/getContactos",
+			
 		}).then(function successCallback(response) {
 			
 				 contactos = response.data;
@@ -362,7 +363,9 @@ app.factory('ContactoService', function($http) {
     		 mensaje = "";
     		 if(response.data.codeError == 0) {
     			getContactos();
-    			$("#myModalContactosActualizar").modal('toggle');
+    			if($('#myModalContactosActualizar').is(':visible')){
+    				$("#myModalContactosActualizar").modal('toggle');
+    			}
     		 }else{
     			 console.log("EL ERROR ES: " + response.codeError );
     			 mensaje ="No se ha podido actualizar el contacto";
@@ -394,7 +397,7 @@ app.factory('ContactoService', function($http) {
     	 if(mensaje.length > 0){
     		 BootstrapDialog
 				.show({
-					title : "<span class='textBlack' style='font-size:1.15em;'><img alt='' src='../resources/webapp/images/fa-warning-bk.png'  title='Alerta' />Imagen demasiado grande</span>",
+					title : "<span class='textBlack' style='font-size:1.15em;'><img alt='' src='../resources/webapp/images/fa-warning-bk.png'  title='Alerta' />Contactos</span>",
 					message : '<div style="display:block; min-height:150px;"><p class="textBlack text-center" style="font-size:1.15em;">' + mensaje + '</p><br/>'
 				});
  	 		
@@ -504,7 +507,14 @@ app.controller('TipoContacto', function($scope, $http, ContactoService) {
 				 /*Obtiene los contactos*/
 			     ContactoService.getContactos();
 			     regresarGenerico();
-			     $("#myModalContactosActualizar").modal('toggle');
+			 
+			     if($('#myModalContactosActualizar').is(':visible')){
+	    				$("#myModalContactosActualizar").modal('toggle');
+	    			}
+			     if($('#myModalContactos').is(':visible')){
+	    				$("#myModalContactos").modal('toggle');
+	    			}
+			     
 			 }else{
 				 console.log("EL ERROR ES: " + response.data.codeError );
 				 mensaje = "No se ha podido guardar el contacto";
