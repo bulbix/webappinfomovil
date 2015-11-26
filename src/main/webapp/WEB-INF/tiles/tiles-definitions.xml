@@ -37,4 +37,5 @@
 	<definition name="modalCompraPP" template="/WEB-INF/fragments/modals/modalCompraPP.jsp" />
 	<definition name="modalContactos" template="/WEB-INF/fragments/modals/modalContactos.jsp" />
 	<definition name="modalContactosActualizar" template="/WEB-INF/fragments/modals/modalContactosActualizar.jsp" />
+	<definition name="modalHorarios" template="/WEB-INF/fragments/modals/modalHorarios.jsp" />
 </tiles-definitions>

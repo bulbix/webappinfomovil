@@ -268,7 +268,7 @@ public class ClientWsInfomovilTest {
 	static List<HorarioVO> listaHorarios = new ArrayList<HorarioVO>();
 	
 	static{
-	listaHorarios.add(new HorarioVO("Lun", "01:00", "09:00"));
+	listaHorarios.add(new HorarioVO("Lun", "01:00", "08:00"));
 	listaHorarios.add(new HorarioVO("Mar", "02:00", "09:00"));
 	listaHorarios.add(new HorarioVO("Mié", "03:00", "09:00"));
 	listaHorarios.add(new HorarioVO("Jue", "04:00", "09:00"));
