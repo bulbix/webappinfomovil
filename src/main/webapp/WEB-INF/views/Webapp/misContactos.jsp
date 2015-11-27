@@ -106,7 +106,7 @@
 			<div class="col-xs-12 reset">
 
 				<!--Theme showcase -->
-				<div class="theme-showcaseApp navEditor" role="main" id="intro">
+				<div class="col-xs-12 navEditor" role="main" id="intro">
 					<!-- Main jumbotron for a primary marketing message or call to action -->
 					<div>
 						
@@ -122,28 +122,30 @@
 								</button>	
 
 							<div class="clear"></div>
-				
-							<hr/>							
+				<hr/>	
+				<p>Ahora agrega contactos</p>
+													
 
-								<h5>{{contacto}} - {{downgrade}}</h5>
+								<!-- <h5>{{contacto}} - {{downgrade}}</h5> -->
 								<ul id="sortable">
 
 
 
 								<div id="{{item.claveContacto}}" ng-repeat="item in toolbarContacto.contactos">						
-        							<li class="ui-state-default">
-										<div ng-click="toolbarContacto.abrirActualizarContacto(item)">
+        							<li class="ui-state-default" style="list-style:none;">
+									<div class="col-xs-12" style="border-bottom:1px solid #000; padding:10px 0 10px 0">	
+									<div class="col-xs-4 text-left" ng-click="toolbarContacto.abrirActualizarContacto(item)">
 
-											<div id="regExpContacto" ng-hide="false">regExp: {{item.regExp}}</div>
-											<div id="servicesNaptrContacto" ng-hide="false">servicesNaptr: {{item.servicesNaptr}}</div>																																
+											<div id="regExpContacto" ng-hide="false"><!--regExp:--> {{item.regExp}}</div>
+											<div id="servicesNaptrContacto" ng-hide="true">servicesNaptr: {{item.servicesNaptr}}</div>																																
 											<div id="categoryNaptrContacto" ng-hide="true">categoryNaptr: {{item.categoryNaptr}}</div>
-											<div id="longLabelNaptrContacto" ng-hide="false">longLabelNaptr: {{item.longLabelNaptr}}</div>
-											<div id="subCategoryContacto" ng-hide="false">subCategory: {{item.subCategory}}</div>
+											<div id="longLabelNaptrContacto" ng-hide="true">longLabelNaptr: {{item.longLabelNaptr}}</div>
+											<div id="subCategoryContacto" ng-hide="true">subCategory: {{item.subCategory}}</div>
 											<div id="preferenciaContacto" ng-hide="true">preference: {{item.preference}}</div>
 											<div id="idContacto" ng-hide="true">claveContacto: {{item.claveContacto}}</div>
 											<div id="visibleContacto" ng-hide="true">visible: {{item.visible}}</div>
 										</div>
-											<input type="checkbox" id="checkContactoActivo" ng-checked="item.visible==1" ng-click="toolbarContacto.toggleContacto(item)"> Visible <br/>
+										<div class="col-xs-8 text-left"><input type="checkbox" id="checkContactoActivo" ng-checked="item.visible==1" ng-click="toolbarContacto.toggleContacto(item)"> Visible <br/>
 											<button type="button" class="btn btn-outlineGreen pull-right textWhite navEditorLato" id="btnEliminarContacto" style="margin: 5px 0;" 
 												ng-click="toolbarContacto.eliminarContacto(item)">
 												<img width="20" height="20" alt="Infomovil" src="<c:url value="/resources/webapp/images/successWhite.png"/>"/>
@@ -152,7 +154,10 @@
 											<button type="button" class="btn btn-outlineGreen pull-right textWhite navEditorLato" id="" style="margin: 5px 0;" ng-click="toolbarContacto.abrirActualizarContacto(item)">
 												<img width="20" height="20" alt="Infomovil" src="<c:url value="/resources/webapp/images/successWhite.png"/>"/>
 												<span class="hidden-xs">A</span>
-											</button>									
+											</button>							</div>
+											
+											</div>		
+											<div class="clearfix"></div>
 										</li>									
 									</div>
 								</ul>
