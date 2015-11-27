@@ -145,15 +145,15 @@
 											<div id="idContacto" ng-hide="true">claveContacto: {{item.claveContacto}}</div>
 											<div id="visibleContacto" ng-hide="true">visible: {{item.visible}}</div>
 										</div>
-										<div class="col-xs-8 text-left"><input type="checkbox" id="checkContactoActivo" ng-checked="item.visible==1" ng-click="toolbarContacto.toggleContacto(item)"> Visible <br/>
+										<div class="col-xs-8 text-left"><input type="checkbox" id="checkContactoActivo" ng-checked="item.visible==1" ng-click="toolbarContacto.toggleContacto(item)"> Visible 
 											<button type="button" class="btn btn-outlineGreen pull-right textWhite navEditorLato" id="btnEliminarContacto" style="margin: 5px 0;" 
 												ng-click="toolbarContacto.eliminarContacto(item)">
-												<img width="20" height="20" alt="Infomovil" src="<c:url value="/resources/webapp/images/successWhite.png"/>"/>
-												<span class="hidden-xs">X</span>
+												<img width="20" height="20" alt="Infomovil" src="<c:url value="/resources/webapp/images/trash.png"/>"/>
+												<span class="hidden-xs">Eliminar</span>
 											</button>		
 											<button type="button" class="btn btn-outlineGreen pull-right textWhite navEditorLato" id="" style="margin: 5px 0;" ng-click="toolbarContacto.abrirActualizarContacto(item)">
-												<img width="20" height="20" alt="Infomovil" src="<c:url value="/resources/webapp/images/successWhite.png"/>"/>
-												<span class="hidden-xs">A</span>
+												<img width="20" height="20" alt="Infomovil" src="<c:url value="/resources/webapp/images/ico_actualizar.png"/>"/>
+												<span class="hidden-xs">Actualizar</span>
 											</button>							</div>
 											
 											</div>		
