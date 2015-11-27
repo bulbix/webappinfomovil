@@ -1,6 +1,6 @@
 app.factory('ContactoService', function($http) {
 	
-	var contactos, contactosPermitidos, contactosGuardados;
+	var contactos, contactosPermitidos, contactosGuardados, validacionRegEx;
 	
 	function getContactos() {
 		
@@ -233,7 +233,7 @@ app.factory('ContactoService', function($http) {
 
 				break;
 				
-			case 'web':
+			case 'securewebsite':
 				titulos =
 				{
 					imagen : ' ',
@@ -270,6 +270,12 @@ app.factory('ContactoService', function($http) {
 	   },
 	   getContactosGuardados : function() {
 		   return contactosGuardados;
+	   },
+	   setValidacionRegEx : function(value) {
+		   validacionRegEx = value;
+	   },
+	   getValidacionRegEx : function() {
+		   return validacionRegEx;
 	   },
 	   actualizarContacto : actualizarContacto,
 	   abrirBlockUIGeneral : abrirBlockUIGeneral,
