@@ -274,7 +274,7 @@ app.controller('TipoContacto', function($scope, $http, ContactoService) {
 		$scope.tipoContacto = mensajesContacto.tipo != undefined ? mensajesContacto.tipo : "";
 	}
 	
-	datosTipoContacto.regresarAgregarContacto = function(){
+	datosTipoContacto.regresarAgregarContacto = function() {
 		regresarGenerico();
 	}
 	
@@ -293,7 +293,7 @@ app.controller('TipoContacto', function($scope, $http, ContactoService) {
 		}
 	}
 	
-	datosTipoContacto.closeMyModalContactos = function(){
+	datosTipoContacto.closeMyModalContactos = function() {
 		$("#myModalContactos").modal('toggle');		
 	}
 	

@@ -9,69 +9,64 @@
 	<tiles:putAttribute name="template" value="${ template }" />
 </tiles:insertDefinition>
 
-
-<body role="document" data-spy="scroll" data-target=".navbar"
-	data-offset="75" id="page-top">
-
-	<!-- Fixed navbar -->
-	<nav class="navbar navbar-${ claseCss } navbar-static-top">
-		<div class="container-fluid">
-			<div class="navbar-header">
-				<button type="button" class="navbar-toggle collapsed"
-					data-toggle="collapse" data-target="#navbar" aria-expanded="false"
-					aria-controls="navbar">
-					<span class="sr-only">Toggle navigation</span> <span
-						class="icon-bar"></span> <span class="icon-bar"></span> <span
-						class="icon-bar"></span>
-				</button>
-
-				<!-- LOGO BANCO AZTECA - BAZ-->
-				<span class="navbar-brand" id="logoBAZ" style="display: none;">
-					<img src="<c:url value="/resources/webapp/images/logo_baz.png"/>"
-					width="103" height="47" alt="Infomovil" />
-				</span>
-				<!-- /LOGO BANCO AZTECA - BAZ-->
-
-				<!-- LOGO INFOMOVIL - REGISTRO GENERAL-->
-				<span class="navbar-brand" id="logoGral" style="display: none;">
-					<img
-					src="<c:url value="/resources/webapp/images/apple-touch-icon-57x57.png"/>"
-					width="50" height="50" alt="Infomovil" />
-				</span> <span class="marLeft navEditor ${colorTexto}">Modo edición</span>
-				<!-- /LOGO INFOMOVIL - REGISTRO GENERAL-->
-			</div>
-			<div id="navbar" class="navbar-collapse collapse text-right">
-				<ul class="nav navbar-nav navbar-right">
-					<li><a href="<c:url value="/infomovil/editarSitio"></c:url>"
-						class="smoothScroll ${colorTexto}"> <img width="20"
-							height="20" alt="Infomovil"
-							src="<c:url value="/resources/webapp/images/fa-back${ extensionImg }.png"/>" />Editor
-					</a></li>
-					<li><a href="<c:url value="/logout"></c:url>"
-						class="smoothScroll ${colorTexto}"> <img width="20"
-							height="20" alt="Infomovil"
-							src="<c:url value="/resources/webapp/images/fa-sign-out${ extensionImg }.png"/>" />Cerrar
-							<span class="hidden-sm hidden-md">sesión</span>
-					</a></li>
-
-					<!--  Mostrar para BAZ -->
-					<li class="hidden-xs" id="idRegBAZ" style="display: none;"><a
-						href="#" class="smoothScroll"><img width="30" height="30"
-							alt="Infomovil"
-							src="<c:url value="/resources/webapp/images/apple-touch-icon-57x57.png"/>" /></a>
-					</li>
-					<!--  /Mostrar para BAZ -->
-
-					<li id="idRegGral" style="display: none" class="hidden-xs"><a
-						href="#" class="smoothScroll"> <img width="30" height="30"
-							alt="Infomovil"
-							src="<c:url value="/resources/webapp/images/apple-touch-icon-57x57.png"/>" /></a>
-					</li>
-					<!--/ OCULTAR CUÁNDO SEA - REGISTRO GENERAL-->
-
-				</ul>
-			</div>
-			<!--/.nav-collapse -->
+	<body role="document" data-spy="scroll" data-target=".navbar" data-offset="75" id="page-top" >
+	
+		<!-- Fixed navbar -->
+		<nav class="navbar navbar-${ claseCss } navbar-static-top">
+			<div class="container-fluid">
+				<div class="navbar-header">
+					<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+						<span class="sr-only">Toggle navigation</span> 
+						<span class="icon-bar"></span> 
+						<span class="icon-bar"></span> 
+						<span class="icon-bar"></span>
+					</button>
+	
+					<!-- LOGO BANCO AZTECA - BAZ-->
+					<span class="navbar-brand" id="logoBAZ" style="display: none;">
+						<img src="<c:url value="/resources/webapp/images/logo_baz.png"/>" width="103" height="47" alt="Infomovil" />
+					</span>
+					<!-- /LOGO BANCO AZTECA - BAZ-->
+	
+					<!-- LOGO INFOMOVIL - REGISTRO GENERAL-->
+					<span class="navbar-brand" id="logoGral" style="display: none;">
+						<img src="<c:url value="/resources/webapp/images/apple-touch-icon-57x57.png"/>" width="50" height="50" alt="Infomovil" />
+					</span> 
+					<span class="marLeft navEditor ${colorTexto}">Modo edición</span>
+					<!-- /LOGO INFOMOVIL - REGISTRO GENERAL-->
+				</div>
+				<div id="navbar" class="navbar-collapse collapse text-right">
+					<ul class="nav navbar-nav navbar-right">							
+						<li>
+							<a href="<c:url value="/infomovil/editarSitio"></c:url>" class="smoothScroll ${colorTexto}">
+								<img width="20" height="20" alt="Infomovil" src="<c:url value="/resources/webapp/images/fa-back${ extensionImg }.png"/>"/>Editor								 
+							</a>
+						</li>
+						<li>
+							<a href="<c:url value="/logout"></c:url>" class="smoothScroll ${colorTexto}">
+								<img width="20" height="20" alt="Infomovil" src="<c:url value="/resources/webapp/images/fa-sign-out${ extensionImg }.png"/>"/>Cerrar 
+								<span class="hidden-sm hidden-md">sesión</span> 
+							</a>
+						</li>
+	
+						<!--  Mostrar para BAZ -->
+						<li class="hidden-xs" id="idRegBAZ" style="display: none;"><a
+							href="#" class="smoothScroll"><img width="30" height="30"
+								alt="Infomovil"
+								src="<c:url value="/resources/webapp/images/apple-touch-icon-57x57.png"/>" /></a>
+						</li>
+						<!--  /Mostrar para BAZ -->
+	
+						<li id="idRegGral" style="display: none" class="hidden-xs"><a
+							href="#" class="smoothScroll"> <img width="30" height="30"
+								alt="Infomovil"
+								src="<c:url value="/resources/webapp/images/apple-touch-icon-57x57.png"/>" /></a>
+						</li>
+						<!--/ OCULTAR CUÁNDO SEA - REGISTRO GENERAL-->
+	
+					</ul>
+				</div>
+				<!--/.nav-collapse -->
 		</div>
 	</nav>
 	<!-- / Fixed navbar -->
@@ -164,7 +159,6 @@
 								<div class="col-xs-2 text-left reset">
 									<strong>Ordenar</strong>
 								</div>
-
 							</div>
 							<!-- <h5>{{contacto}} - {{downgrade}}</h5> -->
 							<ul id="sortable" class="reset">
