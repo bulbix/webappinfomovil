@@ -9,7 +9,6 @@
 		<tiles:putAttribute name="template" value="${ template }" />
 	</tiles:insertDefinition>
 
-
 	<body role="document" data-spy="scroll" data-target=".navbar" data-offset="75" id="page-top" >
 	
 		<!-- Fixed navbar -->
@@ -134,16 +133,16 @@
 									<div class="col-xs-12" style="border-bottom:1px solid #000; padding:10px 0 10px 0">	
 									<div class="col-xs-4 text-left" ng-click="toolbarContacto.abrirActualizarContacto(item)">
 
-											<div id="regExpContacto" ng-hide="false"><!--regExp:--> {{item.regExp}}</div>
-											<div id="servicesNaptrContacto" ng-hide="true">servicesNaptr: {{item.servicesNaptr}}</div>																																
-											<div id="categoryNaptrContacto" ng-hide="true">categoryNaptr: {{item.categoryNaptr}}</div>
-											<div id="longLabelNaptrContacto" ng-hide="true">longLabelNaptr: {{item.longLabelNaptr}}</div>
-											<div id="subCategoryContacto" ng-hide="true">subCategory: {{item.subCategory}}</div>
-											<div id="preferenciaContacto" ng-hide="true">preference: {{item.preference}}</div>
-											<div id="idContacto" ng-hide="true">claveContacto: {{item.claveContacto}}</div>
-											<div id="visibleContacto" ng-hide="true">visible: {{item.visible}}</div>
+											<div id="regExpContacto" ng-hide="false">{{item.regExp}}</div>
+											<div id="servicesNaptrContacto" ng-hide="true">{{item.servicesNaptr}}</div>																																
+											<div id="categoryNaptrContacto" ng-hide="true">{{item.categoryNaptr}}</div>
+											<div id="longLabelNaptrContacto" ng-hide="true">{{item.longLabelNaptr}}</div>
+											<div id="subCategoryContacto" ng-hide="true">{{item.subCategory}}</div>
+											<div id="preferenciaContacto" ng-hide="true">{{item.preference}}</div>
+											<div id="idContacto" ng-hide="true">{{item.claveContacto}}</div>
+											<div id="visibleContacto" ng-hide="true">{{item.visible}}</div>
 										</div>
-										<div class="col-xs-8 text-left"><input type="checkbox" id="checkContactoActivo" ng-checked="item.visible==1" ng-click="toolbarContacto.toggleContacto(item)"> Visible 
+										<div class="col-xs-8 text-left"><input type="checkbox" id="checkContactoActivo" ng-checked="item.visible==1" ng-click="toolbarContacto.toggleContacto(item)"> Activo 
 											<button type="button" class="btn btn-outlineGreen pull-right textWhite navEditorLato" id="btnEliminarContacto" style="margin: 5px 0;" 
 												ng-click="toolbarContacto.eliminarContacto(item)">
 												<img width="20" height="20" alt="Infomovil" src="<c:url value="/resources/webapp/images/trash.png"/>"/>
