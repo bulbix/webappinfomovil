@@ -21,7 +21,7 @@ app.controller('ToolBarContactoController', function($scope, $http, ContactoServ
 		$("#myModalContactos").modal();
 	};
 
-	toolbarContacto.mostrarModalContactos = function() { 
+	toolbarContacto.mostrarModalContactos = function() {
 		$myModalContactos.modal();
 	};
 
@@ -29,7 +29,7 @@ app.controller('ToolBarContactoController', function($scope, $http, ContactoServ
 		
     	BootstrapDialog
 		.show({
-			title : '<div class="textBlack">Borrar Imagen</div>',
+			title : '<div class="textBlack">Eliminar Contacto</div>',
 			message : '<div style="display:block; padding: 10px;">¿Seguro que deseas eliminar el contacto?</div>',
 			buttons : [
 					{
@@ -61,26 +61,44 @@ app.controller('ToolBarContactoController', function($scope, $http, ContactoServ
 	
 	toolbarContacto.abrirActualizarContacto = function(item) {
 
+		var regex = null;
 		var mensajesContacto = "";
 		var tipoContactoAct = "";
-
+		var expReg = "";
+		var placeHolder = "";
+		var contenidoContacto = "";
+		
 		if(item.subCategory.trim().length > 0)
 			tipoContactoAct = consultarElTipoContacto("redSocial" , item.subCategory);
 		else
 			tipoContactoAct = consultarElTipoContacto("tel" , item.servicesNaptr);
 
 		mensajesContacto = ContactoService.getObjetoTipoContacto(tipoContactoAct);
+		expReg = mensajesContacto.expRegular != undefined ? mensajesContacto.expRegular : "^\\d{10}$";
+		placeHolder = mensajesContacto.placeholder != undefined ? mensajesContacto.placeholder : "Número Telefónico Inválido";
+		contenidoContacto = item.regExp;
+		
+		regex = new RegExp(expReg);
+		
+		if (mensajesContacto.tipo != undefined)
+			contenidoContacto = item.regExp.substring(mensajesContacto.tipo.length, item.regExp.length);
 		
 		$("#nombreActualizarTel").text(mensajesContacto.nombre); 
 		$("#etiquetaActualizarTel").text(mensajesContacto.etiqueta);
 		$("#paisActualizarTel").text(mensajesContacto.pais);
-		$("#inputTelefonosActualizar").val(item.regExp);  
+		$("#inputTelefonosActualizar").val(contenidoContacto);  
 		$("#textAreaActualizarTel").val(item.longLabelNaptr); 
 		$("#claveContactoC").val(item.claveContacto); 
 		$("#servicesNaptrC").val(item.servicesNaptr); 
 		$("#subCategoryC").val(item.subCategory); 
-		$("#visibleC").val(item.visible); 
+		$("#visibleC").val(item.visible);
+		$("#inputTelefonosActualizar" ).attr("pattern", expReg);
+		$("#inputTelefonosActualizar").attr("placeholder", placeHolder);
 		$("#myModalContactosActualizar").modal();
+		
+		$("#inputTelefonosActualizar").keydown(function(e) { 
+			ContactoService.setValidacionRegEx(regex.test($("#inputTelefonosActualizar").val()));
+		});
 	}
 	
     var eliminarContacto = function(claveContacto) {
@@ -256,7 +274,7 @@ app.controller('TipoContacto', function($scope, $http, ContactoService) {
 		$scope.tipoContacto = mensajesContacto.tipo != undefined ? mensajesContacto.tipo : "";
 	}
 	
-	datosTipoContacto.regresarAgregarContacto = function(){
+	datosTipoContacto.regresarAgregarContacto = function() {
 		regresarGenerico();
 	}
 	
@@ -275,7 +293,7 @@ app.controller('TipoContacto', function($scope, $http, ContactoService) {
 		}
 	}
 	
-	datosTipoContacto.closeMyModalContactos = function(){
+	datosTipoContacto.closeMyModalContactos = function() {
 		$("#myModalContactos").modal('toggle');		
 	}
 	
@@ -315,12 +333,12 @@ app.controller('TipoContacto', function($scope, $http, ContactoService) {
 				 $("#longLabelNaptr").val("");
 			     ContactoService.getContactos();
 			     regresarGenerico();
-			     if($('#myModalContactosActualizar').is(':visible')){
+			     
+			     if($('#myModalContactosActualizar').is(':visible'))
 	    				$("#myModalContactosActualizar").modal('toggle');
-	    			}
-			     if($('#myModalContactos').is(':visible')){
-	    				$("#myModalContactos").modal('toggle');
-	    			}
+			     
+			     if($('#myModalContactos').is(':visible'))
+	    				$("#myModalContactos").modal('hide');
 
 			 }else{
 				 console.log("EL ERROR ES: " + response.data.codeError );
@@ -335,9 +353,9 @@ app.controller('TipoContacto', function($scope, $http, ContactoService) {
 	 };	
 });
 
-app.controller('ActualizarContactos', function($http,ContactoService) {
+app.controller('ActualizarContactos', function($scope, $http, ContactoService) {
 	
-	var actualizarTipoContacto = this;	
+	var actualizarTipoContacto = this;
 	
 	actualizarTipoContacto.closeMyModalActualizarContactos = function() {
 		
@@ -346,8 +364,8 @@ app.controller('ActualizarContactos', function($http,ContactoService) {
 	}
 	
 	actualizarTipoContacto.guardarDatosContacto = function() {
-		 
-		console.log("Entro al boton de actualizar los datos!");
+		
+		console.log("validación: " + ContactoService.getValidacionRegEx());
 		var contacto = {
 				claveContacto : $("#claveContactoC").val(), 
 				longLabelNaptr : $("#textAreaActualizarTel").val(),

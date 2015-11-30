@@ -199,7 +199,7 @@ public class ContactosController
 			contacto.setServicesNaptr(constanteContacto);
 			contacto.setSubCategory(redSocialWebSecure);// Solo si es red social
 			contacto.setVisible(visible);
-			contacto.setPreference("");
+			contacto.setPreference("100");
 			RespuestaVO wsRespuesta =  wsCliente.crearSitioGuardarContacto(correo, password, contacto);
 			
 			resultMap.put("codeError", wsRespuesta.getCodeError());
@@ -239,7 +239,6 @@ public class ContactosController
 		return list;
 	}	
 	
-
 	@RequestMapping(value = "/infomovil/setOrderContacts", method = {RequestMethod.GET, RequestMethod.POST})
 	@ResponseBody
 	public Map<String, String> setOrderContacts(@RequestParam String xml) 

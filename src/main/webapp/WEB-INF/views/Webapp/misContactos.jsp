@@ -3,12 +3,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!doctype html>
-<html lang="es" ng-app = "InfomovilApp">
+<html lang="es" ng-app="InfomovilApp">
 
-	<tiles:insertDefinition name="headEditorSitio">
-		<tiles:putAttribute name="template" value="${ template }" />
-	</tiles:insertDefinition>
-
+<tiles:insertDefinition name="headEditorSitio">
+	<tiles:putAttribute name="template" value="${ template }" />
+</tiles:insertDefinition>
 
 	<body role="document" data-spy="scroll" data-target=".navbar" data-offset="75" id="page-top" >
 	
@@ -68,151 +67,316 @@
 					</ul>
 				</div>
 				<!--/.nav-collapse -->
-			</div>
-		</nav>
-		<!-- / Fixed navbar -->
-	
-		<!-- Botón Nuevo Estilo -->
-		<div class="seccTop bgBlack">
+		</div>
+	</nav>
+	<!-- / Fixed navbar -->
 
-	<div class="container">
-		<div class="col-xs-12 col-sm-6 hidden-xs"><h3 class="text-left textWhite navEditor" style="font-weight: 300;">Mis
-					Contactos</h3></div>
+	<!-- Botón Nuevo Estilo -->
+	<div class="seccTop bgBlack">
+
+		<div class="container">
+			<div class="col-xs-12 col-sm-6 hidden-xs">
+				<h3 class="text-left textWhite navEditor" style="font-weight: 300;">Mis
+					Contactos</h3>
+			</div>
 			<div class="col-xs-12 col-sm-6">
 				<div class="col-xs-12 reset text-right pull-right navEditor">
-					<span id="muestraNombreUsuario">
-						<c:if test="${not empty nombreUsuario}">
-							${nombreUsuario} <img width="20" height="20" alt="Infomovil" src="<c:url value="/resources/webapp/images/fa-user.png"/>"/>
+					<span id="muestraNombreUsuario"> <c:if
+							test="${not empty nombreUsuario}">
+							${nombreUsuario} <img width="20" height="20" alt="Infomovil"
+								src="<c:url value="/resources/webapp/images/fa-user.png"/>" />
 						</c:if>
-					</span>  
-						<br/> ${correoElectronico} <img width="25" height="25" alt="Infomovil"
-						src="<c:url value="/resources/webapp/images/fa-mail.png"/>" /> 
-						<div class="clear"></div>
-						<a href="<c:url value="/infomovil/editarSitio"></c:url>"
+					</span> <br /> ${correoElectronico} <img width="25" height="25"
+						alt="Infomovil"
+						src="<c:url value="/resources/webapp/images/fa-mail.png"/>" />
+					<div class="clear"></div>
+					<a href="<c:url value="/infomovil/editarSitio"></c:url>"
 						class="col-xs-4 col-sm-3 col-md-3 col-lg-3 btn btn-default btn-outline navEditor pull-right hidden-sm hidden-md hidden-lg">
 
 						<span id="idOpcionMasCont"><img width="20" height="20"
 							alt="Infomovil"
-							src="<c:url value="/resources/webapp/images/fa-back.png"/>" /> Editor </span>
+							src="<c:url value="/resources/webapp/images/fa-back.png"/>" />
+							Editor </span>
 					</a>
-				</div>			
-			</div>
-		</div>
-	</div>
-		 
-		<!-- /Botón Nuevo Estilo -->
-		<!-- Formulario Promociones -->
-		<div class="container">
-			<div class="col-xs-12 reset">
-
-				<!--Theme showcase -->
-				<div class="theme-showcaseApp navEditor" role="main" id="intro">
-					<!-- Main jumbotron for a primary marketing message or call to action -->
-					<div>
-						
-						<div class="page-header text-center" style="border-radius:15px; background:url(<c:url value="/resources/webapp/images/bgWhTra.png"/>); padding:10px;">						
-						<div class="clear"></div>
-						<div ng-controller = "ToolBarContactoController as toolbarContacto" ng-init="downgrade = '${downgrade}'; contacto = '${contacto}'">			
-						  
-								<button type="button" class="btn btn-outlineGreen pull-right textWhite navEditorLato" style="margin: 5px 0 0 0;" ng-controller = "ToolBarContactoController as toolbarContacto"
-									ng-click="toolbarContacto.agregaContacto(downgrade, contacto)" data-toggle="modal">
-									<img width="20" height="20" alt="Infomovil" src="<c:url value="/resources/webapp/images/successWhite.png"/>"/> 
-									<span class="hidden-xs">Añadir Contacto</span>
-									
-								</button>	
-
-							<div class="clear"></div>
-				
-							<hr/>							
-
-								<h5>{{contacto}} - {{downgrade}}</h5>
-								<ul id="sortable">
-
-
-
-								<div id="{{item.claveContacto}}" ng-repeat="item in toolbarContacto.contactos">						
-        							<li class="ui-state-default">
-										<div ng-click="toolbarContacto.abrirActualizarContacto(item)">
-
-											<div id="regExpContacto" ng-hide="false">regExp: {{item.regExp}}</div>
-											<div id="servicesNaptrContacto" ng-hide="false">servicesNaptr: {{item.servicesNaptr}}</div>																																
-											<div id="categoryNaptrContacto" ng-hide="true">categoryNaptr: {{item.categoryNaptr}}</div>
-											<div id="longLabelNaptrContacto" ng-hide="false">longLabelNaptr: {{item.longLabelNaptr}}</div>
-											<div id="subCategoryContacto" ng-hide="false">subCategory: {{item.subCategory}}</div>
-											<div id="preferenciaContacto" ng-hide="true">preference: {{item.preference}}</div>
-											<div id="idContacto" ng-hide="true">claveContacto: {{item.claveContacto}}</div>
-											<div id="visibleContacto" ng-hide="true">visible: {{item.visible}}</div>
-										</div>
-											<input type="checkbox" id="checkContactoActivo" ng-checked="item.visible==1" ng-click="toolbarContacto.toggleContacto(item)"> Visible <br/>
-											<button type="button" class="btn btn-outlineGreen pull-right textWhite navEditorLato" id="btnEliminarContacto" style="margin: 5px 0;" 
-												ng-click="toolbarContacto.eliminarContacto(item)">
-												<img width="20" height="20" alt="Infomovil" src="<c:url value="/resources/webapp/images/successWhite.png"/>"/>
-												<span class="hidden-xs">X</span>
-											</button>		
-											<button type="button" class="btn btn-outlineGreen pull-right textWhite navEditorLato" id="" style="margin: 5px 0;" ng-click="toolbarContacto.abrirActualizarContacto(item)">
-												<img width="20" height="20" alt="Infomovil" src="<c:url value="/resources/webapp/images/successWhite.png"/>"/>
-												<span class="hidden-xs">A</span>
-											</button>									
-										</li>									
-									</div>
-								</ul>
-							</div>
-						</div>
-		
-					</div>
 				</div>
 			</div>
 		</div>
-		
-		<!-- Bootstrap core JavaScript
+	</div>
+
+	<!-- /Botón Nuevo Estilo -->
+	<!-- Formulario Promociones -->
+	<div class="container">
+		<div class="col-xs-12 reset">
+
+			<!--Theme showcase -->
+			<div class="col-xs-12 navEditor" role="main" id="intro">
+				<!-- Main jumbotron for a primary marketing message or call to action -->
+				<div>
+
+					<div class="page-header text-center"
+						style="border-radius:15px; background:url(<c:url value="/resources/webapp/images/bgWhTra.png"/>); padding:10px;">
+						<div class="clear"></div>
+						<div ng-controller="ToolBarContactoController as toolbarContacto"
+							ng-init="downgrade = '${downgrade}'; contacto = '${contacto}'">
+
+							<button type="button"
+								class="btn btn-outlineGreen pull-right textWhite navEditorLato"
+								style="margin: 5px 0 0 0;"
+								ng-controller="ToolBarContactoController as toolbarContacto"
+								ng-click="toolbarContacto.agregaContacto(downgrade, contacto)"
+								data-toggle="modal">
+								<img width="30" height="30" alt="Infomovil"
+									src="<c:url value="/resources/webapp/images/ico_mas_cont.png"/>" />
+								<span class="hidden-xs">Añadir Contacto</span>
+
+							</button>
+
+							<div class="clear"></div>
+							<hr />
+							<p class="textBlack">
+								<img alt="Infomovil"
+									src="<c:url value="/resources/webapp/images/fa-contactos-bk.png"/>" />
+								Ahora agrega contactos
+							</p>
+
+
+
+							<div class="col-xs-12 hidden-xs textBlack" style="border-bottom: 1px solid #000; padding: 8px 0">
+
+								
+								<div class="col-xs-4 text-left reset">
+									<strong>Contacto</strong>
+								</div>
+								<div class="col-xs-2 text-left reset">
+									<strong>Visible</strong>
+								</div>
+								<div class="col-xs-2 text-left reset">
+									<strong>Actualizar</strong>
+								</div>
+								<div class="col-xs-2 text-left reset">
+									<strong>Eliminar</strong>
+								</div>
+								<div class="col-xs-2 text-left reset">
+									<strong>Ordenar</strong>
+								</div>
+							</div>
+							<!-- <h5>{{contacto}} - {{downgrade}}</h5> -->
+							<ul id="sortable" class="reset">
+
+								<div id="{{item.claveContacto}}"
+									ng-repeat="item in toolbarContacto.contactos">
+									<li class="ui-state-default textBlack"
+										style="list-style: none;">
+										<div class="col-xs-12 reset"
+											style="border-bottom: 1px solid #000; padding: 8px 0">
+											
+											<div class="col-xs-12 col-sm-4  text-left" style="overflow:hidden"
+												ng-click="toolbarContacto.abrirActualizarContacto(item)">
+<img width="30" height="30" alt="Infomovil"
+													src="<c:url value="/resources/webapp/images/fa-twitter-bk.png"/>" />
+												<span id="regExpContacto" ng-hide="false">
+													<!--regExp:-->
+													{{item.regExp}}
+												</span>
+												<div id="servicesNaptrContacto" ng-hide="true">servicesNaptr:
+													{{item.servicesNaptr}}</div>
+												<div id="categoryNaptrContacto" ng-hide="true">categoryNaptr:
+													{{item.categoryNaptr}}</div>
+												<div id="longLabelNaptrContacto" ng-hide="true">longLabelNaptr:
+													{{item.longLabelNaptr}}</div>
+												<div id="subCategoryContacto" ng-hide="true">subCategory:
+													{{item.subCategory}}</div>
+												<div id="preferenciaContacto" ng-hide="true">preference:
+													{{item.preference}}</div>
+												<div id="idContacto" ng-hide="true">claveContacto:
+													{{item.claveContacto}}</div>
+												<div id="visibleContacto" ng-hide="true">visible:
+													{{item.visible}}</div>
+											</div>
+											<div class="col-xs-3 col-sm-2 text-left">
+												<div class="onoffswitch" id="checkContactoActivo"
+													ng-checked="item.visible==1"
+													ng-click="toolbarContacto.toggleContacto(item)"
+													style="display: block-inline">
+													<input type="checkbox" name="onoffswitch"
+														class="onoffswitch-checkbox" id="myonoffswitch" checked>
+													<label class="onoffswitch-label" for="myonoffswitch"></label>
+												</div>
+											</div>
+											<div class="col-xs-3 col-sm-2 text-left">
+												<button type="button"
+													class="btn btn-outlineGreen textWhite navEditorLato" id=""
+													ng-click="toolbarContacto.abrirActualizarContacto(item)">
+													<img width="20" height="20" alt="Infomovil"
+														src="<c:url value="/resources/webapp/images/ico_actualizar.png"/>" />
+													<span class="hidden-xs"></span>
+												</button>
+											</div>
+											<div class="col-xs-3 col-sm-2 text-left">
+												<button type="button"
+													class="btn btn-outlineGreen textWhite navEditorLato"
+													id="btnEliminarContacto"
+													ng-click="toolbarContacto.eliminarContacto(item)">
+													<img width="20" height="20" alt="Infomovil"
+														src="<c:url value="/resources/webapp/images/trash.png"/>" />
+													<span class="hidden-xs"></span>
+												</button>
+											</div>
+											<div class="col-xs-3 col-sm-2 text-left">
+												<div type="button"
+													class="btn btn-outlineGreen  textWhite navEditorLato" id="">
+													<img width="20" height="20" alt="Infomovil"
+														src="<c:url value="/resources/webapp/images/fa-order.png"/>" />
+													<span class="hidden-xs"></span>
+												</div>
+											</div>
+											<!-- <input type="checkbox" id="checkContactoActivo" ng-checked="item.visible==1" ng-click="toolbarContacto.toggleContacto(item)"> Visible  -->
+
+										</div>
+									</li>
+									
+								
+								</div>
+								<div class="clearfix"></div>
+						</div>
+						</ul>
+						
+						<ul class="reset">
+						<li style="list-style:none; cursor: no-drop; " >
+						
+						<div class="col-xs-12 reset"
+											style="border-bottom: 1px solid #000; padding: 8px 0">
+											
+											<div class="col-xs-12 col-sm-4  text-left"
+												ng-click="toolbarContacto.abrirActualizarContacto(item)">
+<img width="30" height="30" alt="Infomovil"
+													src="<c:url value="/resources/webapp/images/fa-twitter.png"/>" />
+												<span id="regExpContacto" ng-hide="false">
+													<!--regExp:-->
+													tel
+												</span>
+												<div id="servicesNaptrContacto" ng-hide="true">servicesNaptr:
+													{{item.servicesNaptr}}</div>
+												<div id="categoryNaptrContacto" ng-hide="true">categoryNaptr:
+													{{item.categoryNaptr}}</div>
+												<div id="longLabelNaptrContacto" ng-hide="true">longLabelNaptr:
+													{{item.longLabelNaptr}}</div>
+												<div id="subCategoryContacto" ng-hide="true">subCategory:
+													{{item.subCategory}}</div>
+												<div id="preferenciaContacto" ng-hide="true">preference:
+													{{item.preference}}</div>
+												<div id="idContacto" ng-hide="true">claveContacto:
+													{{item.claveContacto}}</div>
+												<div id="visibleContacto" ng-hide="true">visible:
+													{{item.visible}}</div>
+											</div>
+											<div class="col-xs-3 col-sm-2 text-left">
+												<div class="onoffswitch" id="checkContactoInactivo"
+													style="display: block-inline">
+													<input disabled type="checkbox" name="onoffswitch"
+														class="onoffswitch-checkbox" id="myonoffswitch">
+													<label class="onoffswitch-label" for="myonoffswitch"></label>
+												</div>
+											</div>
+											<div class="col-xs-3 col-sm-2 text-left">
+												<button type="button" disabled
+													class="btn btn-outlineDisable textWhite navEditorLato" id=""
+													ng-click="toolbarContacto.abrirActualizarContacto(item)">
+													<img width="20" height="20" alt="Infomovil"
+														src="<c:url value="/resources/webapp/images/ico_actualizar.png"/>" />
+													<span class="hidden-xs"></span>
+												</button>
+											</div>
+											<div class="col-xs-3 col-sm-2 text-left">
+												<button type="button"
+													class="btn btn-outlineDisable textWhite navEditorLato"
+													id="btnEliminarContacto"
+													ng-click="toolbarContacto.eliminarContacto(item)" disabled>
+													<img width="20" height="20" alt="Infomovil"
+														src="<c:url value="/resources/webapp/images/trash.png"/>" />
+													<span class="hidden-xs"></span>
+												</button>
+											</div>
+											<div class="col-xs-3 col-sm-2 text-left">
+												<button type="button" disabled
+													class="btn btn-outlineDisable  textWhite navEditorLato" id="">
+													<img width="20" height="20" alt="Infomovil"
+														src="<c:url value="/resources/webapp/images/fa-order.png"/>" />
+													<span class="hidden-xs"></span>
+												</button>
+											</div>
+											<!-- <input type="checkbox" id="checkContactoActivo" ng-checked="item.visible==1" ng-click="toolbarContacto.toggleContacto(item)"> Visible  -->
+
+										</div>
+						
+						</li>
+						<div class="clearfix"></div>
+						</ul>
+						
+					</div>
+				</div>
+
+			</div>
+		</div>
+	</div>
+	</div>
+
+	<!-- Bootstrap core JavaScript
 		    ================================================== -->
-		<!-- Placed at the end of the document so the pages load faster -->
-		<script src="<c:url value="/resources/webapp/js/jquery.min.js"/>"></script>
-		<script src="<c:url value="/resources/webapp/js/angular.min.js"/>"></script>
-		<script src="<c:url value="/resources/webapp/js/bootstrap.js"/>"></script>
-		<script src="<c:url value="/resources/webapp/js/docs.min.js"/>"></script>
-		<script src="<c:url value="/resources/webapp/js/smoothscroll.js"/>"></script>
-		<script src="<c:url value="/resources/webapp/js/ie10-viewport-bug-workaround.js"/>"></script>
-		<script src="<c:url value="/resources/webapp/js/jquery-ui.min.js"/>"></script>
-		<script src="<c:url value="/resources/webapp/js/jquery.ui.touch-punch.js"/>"></script>
-		<!-- bxSlider Javascript file -->
-		<script	src="<c:url value="/resources/webapp/js/jquery.bxslider.min.js"/>"></script>
-		<script	src="<c:url value="/resources/webapp/js/bootstrap-dialog.min.js"/>"></script>
-		<script src="<c:url value="/resources/webapp/js/jquery.numeric.js"/>"></script>
-		<script src="<c:url value="/resources/webapp/js/jquery.blockUI.js"/>"></script>
-		<script src="<c:url value="/resources/js/webapp/contactos.js"/>"></script>
-		<script src="<c:url value="/resources/js/webapp/InfomovilServices/contactosService.js"/>"></script>
-		
-	 
-		<tiles:insertDefinition name="modalGen">
-			<tiles:putAttribute name="idModal" value="myModalContactos" />
-			<tiles:putAttribute name="tamanioModal"
-				value='"modal-dialog modal-lg"' />
-			<c:set var="fragmentName" value="modalContactos" scope="request" />
-		</tiles:insertDefinition>
-		
-		<tiles:insertDefinition name="modalGen">
-			<tiles:putAttribute name="idModal" value="myModalContactosActualizar" />
-			<tiles:putAttribute name="tamanioModal"
-				value='"modal-dialog modal-lg"' />
-			<c:set var="fragmentName" value="modalContactosActualizar" scope="request" />
-		</tiles:insertDefinition>
-		
-		<script>
-			<c:choose> 
-				<c:when test="${sessionScope.canalUsuario == 'BAZ'}">
-					$("#logoBAZ").css("display", "block");
-					$("#idRegBAZ").css("display", "block");			
-					$("#logoGral").css("display", "none");					
-				</c:when>
-				<c:otherwise>
-					$("#logoBAZ").css("display", "none");
-					$("#idRegBAZ").css("display", "none");	
-					$("#logoGral").css("display", "block");	
-				</c:otherwise>
-			</c:choose>
-		</script>
-	</body>
+
+	<!-- Placed at the end of the document so the pages load faster -->
+	<script src="<c:url value="/resources/webapp/js/jquery.min.js"/>"></script>
+	<script src="<c:url value="/resources/webapp/js/angular.min.js"/>"></script>
+	<script src="<c:url value="/resources/webapp/js/bootstrap.js"/>"></script>
+	<script src="<c:url value="/resources/webapp/js/docs.min.js"/>"></script>
+	<script src="<c:url value="/resources/webapp/js/smoothscroll.js"/>"></script>
+	<script
+		src="<c:url value="/resources/webapp/js/ie10-viewport-bug-workaround.js"/>"></script>
+	<script src="<c:url value="/resources/webapp/js/jquery-ui.min.js"/>"></script>
+	<script
+		src="<c:url value="/resources/webapp/js/jquery.ui.touch-punch.js"/>"></script>
+	<!-- bxSlider Javascript file -->
+	<script
+		src="<c:url value="/resources/webapp/js/jquery.bxslider.min.js"/>"></script>
+	<script
+		src="<c:url value="/resources/webapp/js/bootstrap-dialog.min.js"/>"></script>
+	<script src="<c:url value="/resources/webapp/js/jquery.numeric.js"/>"></script>
+	<script src="<c:url value="/resources/webapp/js/jquery.blockUI.js"/>"></script>
+	<script src="<c:url value="/resources/js/webapp/contactos.js"/>"></script>
+	<script src="<c:url value="/resources/js/webapp/contactosService.js"/>"></script>
+
+
+	<tiles:insertDefinition name="modalGen">
+		<tiles:putAttribute name="idModal" value="myModalContactos" />
+		<tiles:putAttribute name="tamanioModal"
+			value='"modal-dialog modal-lg"' />
+		<c:set var="fragmentName" value="modalContactos" scope="request" />
+	</tiles:insertDefinition>
+
+	<tiles:insertDefinition name="modalGen">
+		<tiles:putAttribute name="idModal" value="myModalContactosActualizar" />
+		<tiles:putAttribute name="tamanioModal"
+			value='"modal-dialog modal-lg"' />
+		<c:set var="fragmentName" value="modalContactosActualizar"
+			scope="request" />
+	</tiles:insertDefinition>
+
+	<script>
+		<c:choose>
+		<c:when test="${sessionScope.canalUsuario == 'BAZ'}">
+		$("#logoBAZ").css("display", "block");
+		$("#idRegBAZ").css("display", "block");
+		$("#logoGral").css("display", "none");
+		</c:when>
+		<c:otherwise>
+		$("#logoBAZ").css("display", "none");
+		$("#idRegBAZ").css("display", "none");
+		$("#logoGral").css("display", "block");
+		</c:otherwise>
+		</c:choose>
+	</script>
+</body>
+
 </html>
 
 

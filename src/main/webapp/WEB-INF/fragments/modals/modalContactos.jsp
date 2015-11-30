@@ -26,7 +26,7 @@
 				<li ng-click="datosTipoContacto.tipo('google')">Google+</li>
 				<li ng-click="datosTipoContacto.tipo('skype')">Skype</li>
 				<li ng-click="datosTipoContacto.tipo('linkedin')">LinkedIn</li>
-				<li ng-click="datosTipoContacto.tipo('web')">Website</li>
+				<li ng-click="datosTipoContacto.tipo('securewebsite')">Website</li>
 			</ul>
 		</div>
 		<div ng-show="datosTipoContacto.formGuardaContacto">

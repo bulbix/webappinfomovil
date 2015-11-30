@@ -36,11 +36,11 @@
 			<version>3.0</version>
 		</dependency>
 
-<!-- 		<dependency> -->
-<!-- 			<groupId>commons-codec</groupId> -->
-<!-- 			<artifactId>commons-codec</artifactId> -->
-<!-- 			<version>1.2</version> -->
-<!-- 		</dependency> -->
+		<!-- <dependency> -->
+		<!-- <groupId>commons-codec</groupId> -->
+		<!-- <artifactId>commons-codec</artifactId> -->
+		<!-- <version>1.2</version> -->
+		<!-- </dependency> -->
 
 		<!-- Spring -->
 		<dependency>
@@ -212,13 +212,13 @@
 			<version>1.10.20</version>
 		</dependency>
 
-<!-- Infomovil Analytics -->
+		<!-- Infomovil Analytics -->
 		<dependency>
 			<groupId>infomovil_analytics_interface</groupId>
 			<artifactId>infomovil_analytics_interface</artifactId>
 			<version>0.0.1-SNAPSHOT</version>
 		</dependency>
-				
+
 	</dependencies>
 	<build>
 		<finalName>WebAppInfomovil</finalName>
@@ -279,29 +279,29 @@
 				<filtering>true</filtering>
 			</resource>
 		</resources>
-    </build>
-   
+	</build>
+
 	<profiles>
-		<profile>	
+		<profile>
 			<id>dev</id>
 			<properties>
 				<config.profile>DEV</config.profile>
 			</properties>
 		</profile>
 		<profile>
-			<id>qa</id>	
+			<id>qa</id>
 			<properties>
 				<config.profile>QA</config.profile>
 			</properties>
 			<activation>
 				<activeByDefault>true</activeByDefault>
-			</activation>	
+			</activation>
 		</profile>
 		<profile>
-			<id>prod</id>	
+			<id>prod</id>
 			<properties>
 				<config.profile>PROD</config.profile>
-			</properties>			
+			</properties>
 		</profile>
 	</profiles>
 </project>
