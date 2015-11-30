@@ -5,7 +5,7 @@ app.controller('ToolBarContactoController', function($scope, $http, ContactoServ
 	var toolbarContacto = this;
 	toolbarContacto.descripcion = "descrito";
 	toolbarContacto.downgrade = "";
-	toolbarContacto.contacto = "";
+	toolbarContacto.contactos = "";
 
 	toolbarContacto.agregaContacto = function(downgrade, contacto) {
 		

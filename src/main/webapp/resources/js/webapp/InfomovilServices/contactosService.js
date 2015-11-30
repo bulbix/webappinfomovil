@@ -253,6 +253,8 @@ app.factory('ContactoService', function($http) {
 		 
 		 return titulos; 
 	}
+     
+     
    return {
 	   
 	   getContactos : getContactos,
@@ -274,7 +276,8 @@ app.factory('ContactoService', function($http) {
 	   actualizarContacto : actualizarContacto,
 	   abrirBlockUIGeneral : abrirBlockUIGeneral,
 	   cerrarBlockUIGeneral : cerrarBlockUIGeneral,
-	   getObjetoTipoContacto : getObjetoTipoContacto
+	   getObjetoTipoContacto : getObjetoTipoContacto,
+	  
   }
    
 });
