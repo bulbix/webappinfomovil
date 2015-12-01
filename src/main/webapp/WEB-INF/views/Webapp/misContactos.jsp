@@ -266,14 +266,14 @@
 	<tiles:insertDefinition name="modalGen">
 		<tiles:putAttribute name="idModal" value="myModalContactos" />
 		<tiles:putAttribute name="tamanioModal"
-			value='"modal-dialog modal-lg"' />
+			value='"modal-dialog modal-md"' />
 		<c:set var="fragmentName" value="modalContactos" scope="request" />
 	</tiles:insertDefinition>
 
 	<tiles:insertDefinition name="modalGen">
 		<tiles:putAttribute name="idModal" value="myModalContactosActualizar" />
 		<tiles:putAttribute name="tamanioModal"
-			value='"modal-dialog modal-lg"' />
+			value='"modal-dialog modal-md"' />
 		<c:set var="fragmentName" value="modalContactosActualizar"
 			scope="request" />
 	</tiles:insertDefinition>
