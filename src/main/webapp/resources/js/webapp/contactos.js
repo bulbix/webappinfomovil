@@ -5,8 +5,10 @@ app.controller('ToolBarContactoController', function($scope, $http, ContactoServ
 	var toolbarContacto = this;
 	toolbarContacto.descripcion = "descrito";
 	toolbarContacto.downgrade = "";
+	toolbarContacto.contacto = "";
+	toolbarContacto.claseLi = "";
 	toolbarContacto.contactos = "";
-
+    
 	toolbarContacto.agregaContacto = function(downgrade, contacto) {
 		
 		ContactoService.setContactosPermitidos(contacto);
@@ -25,6 +27,39 @@ app.controller('ToolBarContactoController', function($scope, $http, ContactoServ
 		$myModalContactos.modal();
 	};
 
+	toolbarContacto.getContenidoDowngrade = function(downgrade, index, contacto, item) {
+		
+		var tipoContactoLista = "";
+		var mensajesContactoLista = "";
+		var contenidoFinalContacto = item.regExp;
+
+		toolbarContacto.claseBoton = "btn btn-outlineGreen textWhite navEditorLato";
+		toolbarContacto.claseLi = "ui-state-default textBlack claseCursorLi";
+		$scope.contenidoContacto = "";
+		
+		if (downgrade == 'DOWNGRADE' && index > contacto)
+		{
+			toolbarContacto.claseBoton = "btn btn-outlineDisable textWhite navEditorLato";
+			toolbarContacto.claseLi = "ui-state-default textBlack claseCursorLiDowngrade";
+		}
+		
+		if(item.servicesNaptr.trim().length > 0)
+		{
+			tipoContactoLista = ContactoService.getTipoContacto("tel" , item.servicesNaptr);
+			mensajesContactoLista = ContactoService.getObjetoTipoContacto(tipoContactoLista);
+		
+			if (mensajesContactoLista.tipo != undefined)
+			{
+				contenidoFinalContacto = item.regExp.substring(mensajesContactoLista.tipo.length, item.regExp.length);
+				
+				if (mensajesContactoLista.tipo.indexOf("tel") != -1)
+					contenidoFinalContacto = item.regExp.substring(mensajesContactoLista.tipo.indexOf("tel") + 5, item.regExp.length);
+			}
+		}
+		
+		$scope.contenidoContacto = contenidoFinalContacto;
+	};
+	
 	toolbarContacto.eliminarContacto = function(item) {
 		
     	BootstrapDialog
@@ -49,7 +84,7 @@ app.controller('ToolBarContactoController', function($scope, $http, ContactoServ
 	};
 	
 	toolbarContacto.toggleContacto = function(item) {
-		
+		console.log("toggleContacto");
 		var visibleContacto = "1";
 		
 		if (item.visible == "1")
@@ -69,9 +104,9 @@ app.controller('ToolBarContactoController', function($scope, $http, ContactoServ
 		var contenidoContacto = "";
 		
 		if(item.subCategory.trim().length > 0)
-			tipoContactoAct = consultarElTipoContacto("redSocial" , item.subCategory);
+			tipoContactoAct = ContactoService.getTipoContacto("redSocial" , item.subCategory);
 		else
-			tipoContactoAct = consultarElTipoContacto("tel" , item.servicesNaptr);
+			tipoContactoAct = ContactoService.getTipoContacto("tel" , item.servicesNaptr);
 
 		mensajesContacto = ContactoService.getObjetoTipoContacto(tipoContactoAct);
 		expReg = mensajesContacto.expRegular != undefined ? mensajesContacto.expRegular : "^\\d{10}$";
@@ -81,8 +116,14 @@ app.controller('ToolBarContactoController', function($scope, $http, ContactoServ
 		regex = new RegExp(expReg);
 		
 		if (mensajesContacto.tipo != undefined)
+		{
 			contenidoContacto = item.regExp.substring(mensajesContacto.tipo.length, item.regExp.length);
-		
+			
+			if (mensajesContacto.tipo.indexOf("tel") != -1)
+				contenidoContacto = item.regExp.substring(mensajesContacto.tipo.indexOf("tel") + 5, item.regExp.length);
+		}
+
+		$("#paisActualizarTel").text("");
 		$("#nombreActualizarTel").text(mensajesContacto.nombre); 
 		$("#etiquetaActualizarTel").text(mensajesContacto.etiqueta);
 		$("#paisActualizarTel").text(mensajesContacto.pais);
@@ -130,45 +171,7 @@ app.controller('ToolBarContactoController', function($scope, $http, ContactoServ
     		ContactoService.cerrarBlockUIGeneral(mensaje);
     	});
      };    
-     
-     var consultarElTipoContacto = function(tipo, llave) {
-    	 
-    	 var tipoContactoConsulta = "";    	 
-    	 llave = angular.uppercase(llave);
-
-    	 if(tipo == "redSocial")  
-    		 tipoContactoConsulta = llave;
-    	 else if(tipo == "tel") {
-    	 
-    		 switch(llave) {
-
-    		 	case "E2U+VOICE:TEL" :
-    		 		tipoContactoConsulta = "tel";
-    		 		break;
-    		 	case "E2U+VOICE:TEL+X-MOBILE" :
-    		 		tipoContactoConsulta = "movil";
-	    			break;
-    		 	case "E2U+SMS:TEL" :
-    		 		tipoContactoConsulta = "telSMS";
-    		 		break;   		 		
-    		 	case "E2U+EMAIL:MAILTO" :
-    		 		tipoContactoConsulta = "email";
-    		 		break;
-    		 	case "E2U+FAX:TEL" :
-    		 		tipoContactoConsulta = "fax";
-    		 		break;
-    		 	case "E2U+WEB:HTTP" :
-    		 		tipoContactoConsulta = "google";
-    		 		break;
-    		 	case "E2U+X-VOICE:SKYPE" :
-    		 		tipoContactoConsulta = "skype";
-    		 		break;     		 
-    		 }
-    	 }
-    	 
-    	 return angular.lowercase(tipoContactoConsulta);
-     };
-  
+ 
 	 var ordenarContactos = function(itemsFin) {
 		 
 		 var mensaje = "Actualizando contactos...";
@@ -358,14 +361,11 @@ app.controller('ActualizarContactos', function($scope, $http, ContactoService) {
 	var actualizarTipoContacto = this;
 	
 	actualizarTipoContacto.closeMyModalActualizarContactos = function() {
-		
-		$("#myModalContactosActualizar").modal('hide');
-			
+		$("#myModalContactosActualizar").modal('hide');			
 	}
 	
 	actualizarTipoContacto.guardarDatosContacto = function() {
-		
-		console.log("validación: " + ContactoService.getValidacionRegEx());
+
 		var contacto = {
 				claveContacto : $("#claveContactoC").val(), 
 				longLabelNaptr : $("#textAreaActualizarTel").val(),
