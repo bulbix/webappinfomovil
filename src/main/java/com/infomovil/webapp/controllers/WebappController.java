@@ -59,9 +59,6 @@ public class WebappController
 	{		
 		Map<String, String> resultMap = new HashMap<String, String>();
 		
-		//nombreEmpresa = new String(nombreEmpresa.getBytes("ISO-8859-1"), "UTF-8");
-		//descripcionCorta = new String(descripcionCorta.getBytes("ISO-8859-1"), "UTF-8");
-		
 		try
 		{
 			String correo = Util.getUserLogged().getUsername();
@@ -916,8 +913,7 @@ public class WebappController
 			}else{
 				resultMap.put("codeError", "-100");
 				
-			}
-			
+			}			
 			
 		}		
 		catch (Exception e) 
@@ -929,8 +925,6 @@ public class WebappController
 		return resultMap;
 	}
 	
-	
-
 	final private String passwordDefault = "banco1";
 	private static final Logger logger = Logger.getLogger(WebappController.class);
 	private ClientWsInfomovil wsCliente = new ClientWsInfomovil();

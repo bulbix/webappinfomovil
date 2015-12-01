@@ -835,7 +835,9 @@ textarea:-ms-input-placeholder {
 
 textarea {
 	/*padding: 10px;*/
-	width: 300px;
+	/*width: 100%;
+	max-width: 300px;*/
+	width:300px;
 	line-height: 1em;
 }
 
