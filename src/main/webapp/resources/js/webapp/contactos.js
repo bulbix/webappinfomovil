@@ -1,6 +1,6 @@
 var app = angular.module('InfomovilApp', []);
 
-app.controller('ToolBarContactoController', function($scope, $http, ContactoService) {
+app.controller('ToolBarContactoController', function($scope, $http, ContactoService,MensajesService) {
 
 	var toolbarContacto = this;
 	toolbarContacto.descripcion = "descrito";
@@ -16,7 +16,7 @@ app.controller('ToolBarContactoController', function($scope, $http, ContactoServ
 		if (toolbarContacto.contactos.length == contacto)
 		{
 			var mensaje = "Ya has registrado todos los contactos disponibles";
-			ContactoService.cerrarBlockUIGeneral(mensaje)
+			MensajesService.cerrarBlockUIGeneral("Contactos",mensaje)
 			return;
 		}
 		
@@ -145,7 +145,7 @@ app.controller('ToolBarContactoController', function($scope, $http, ContactoServ
     var eliminarContacto = function(claveContacto) {
 	
     	var mensaje = "Eliminando contacto...";
-    	ContactoService.abrirBlockUIGeneral(mensaje);
+    	MensajesService.abrirBlockUIGeneral(mensaje);
     	
     	$http({
     		method: 'POST',
@@ -163,12 +163,12 @@ app.controller('ToolBarContactoController', function($scope, $http, ContactoServ
     			mensaje = "No se ha podido eliminar el contacto";
     		}
     		
-    		ContactoService.cerrarBlockUIGeneral(mensaje);
+    		MensajesService.cerrarBlockUIGeneral("Contactos",mensaje);
     		
     	}, function errorCallback(response) {
     		console.log("El error es: " + response , response.data.codeError);
     		mensaje = "No se ha podido eliminar el contacto";
-    		ContactoService.cerrarBlockUIGeneral(mensaje);
+    		MensajesService.cerrarBlockUIGeneral("Contactos",mensaje);
     	});
      };    
  
@@ -182,7 +182,7 @@ app.controller('ToolBarContactoController', function($scope, $http, ContactoServ
 			 strFinal =  strFinal + "<f><i>"+ itemsFin[i] + "</i><p>" + i + "</p></f>";
 		 
 		 strFinal = strInicio + strFinal + "</l>"; 
-		 ContactoService.abrirBlockUIGeneral(mensaje);
+		 MensajesService.abrirBlockUIGeneral(mensaje);
 		 
 		 $http({
 			 method: 'POST',
@@ -203,12 +203,12 @@ app.controller('ToolBarContactoController', function($scope, $http, ContactoServ
 				 mensaje = "No se han podido actualizar los contactos";
 			 }
 		  		 
-			 ContactoService.cerrarBlockUIGeneral(mensaje);
+			 MensajesService.cerrarBlockUIGeneral("Contactos",mensaje);
 
 		 }, function errorCallback(response) {
 			 console.log("El error es de que ni fue es: " + response , response.data.codeError);
 			 mensaje = "No se han podido actualizar los contactos";
-			 ContactoService.cerrarBlockUIGeneral(mensaje);
+			 MensajesService.cerrarBlockUIGeneral("Contactos" ,mensaje);
 		 });
 	 };
 
@@ -246,7 +246,7 @@ app.controller('ToolBarContactoController', function($scope, $http, ContactoServ
      ContactoService.getContactos();
 });
 
-app.controller('TipoContacto', function($scope, $http, ContactoService) {
+app.controller('TipoContacto', function($scope, $http, ContactoService,MensajesService) {
 	 
 	var datosTipoContacto = this;
 	
@@ -288,7 +288,7 @@ app.controller('TipoContacto', function($scope, $http, ContactoService) {
 			if (ContactoService.getContactosGuardados() == ContactoService.getContactosPermitidos())
 			{
 				var mensaje = "Ya has registrado todos los contactos disponibles";
-				ContactoService.cerrarBlockUIGeneral(mensaje)
+				MensajesService.cerrarBlockUIGeneral("Contactos",mensaje)
 				return;
 			}
 			
@@ -312,7 +312,7 @@ app.controller('TipoContacto', function($scope, $http, ContactoService) {
 	 var guardarContacto = function(contacto) {
 
 		 var mensaje = "Guardando contacto...";
-		 ContactoService.abrirBlockUIGeneral(mensaje);
+		 MensajesService.abrirBlockUIGeneral(mensaje);
 
 		 $http({
 			 method: 'POST',
@@ -347,16 +347,16 @@ app.controller('TipoContacto', function($scope, $http, ContactoService) {
 				 console.log("EL ERROR ES: " + response.data.codeError );
 				 mensaje = "No se ha podido guardar el contacto";
 			 }
-			 ContactoService.cerrarBlockUIGeneral(mensaje);
+			 MensajesService.cerrarBlockUIGeneral("Contactos",mensaje);
 		 }, function errorCallback(response) {
 			 console.log("El error es: " + response , response.data.codeError);
 			 mensaje = "No se ha podido guardar el contacto";
-			 ContactoService.cerrarBlockUIGeneral(mensaje);
+			 MensajesService.cerrarBlockUIGeneral("Contactos",mensaje);
 		 });
 	 };	
 });
 
-app.controller('ActualizarContactos', function($scope, $http, ContactoService) {
+app.controller('ActualizarContactos', function($scope, $http, ContactoService,MensajesService) {
 	
 	var actualizarTipoContacto = this;
 	
