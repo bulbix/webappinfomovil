@@ -1,6 +1,9 @@
 app.factory('ContactoService', function($http) {
 	
-	var contactos, contactosPermitidos, contactosGuardados, validacionRegEx;
+	var contactos;
+	var contactosPermitidos;
+	var contactosGuardados;
+	var validacionRegEx;
 	
 	function getContactos() {
 		
@@ -116,7 +119,7 @@ app.factory('ContactoService', function($http) {
 
 				break;
 			
-			case 'telSMS':
+			case 'telsms':
 				titulos =
 				{
 					imagen : '',
@@ -253,6 +256,45 @@ app.factory('ContactoService', function($http) {
 		 
 		 return titulos; 
 	}
+     
+   function getTipoContacto(tipo, llave) {
+	   
+    	 var tipoContactoConsulta = "";
+    	 llave = angular.uppercase(llave);
+
+    	 if(tipo == "redSocial")  
+    		 tipoContactoConsulta = llave;
+    	 else if(tipo == "tel") {
+    	 
+    		 switch(llave) {
+
+    		 	case "E2U+VOICE:TEL" :
+    		 		tipoContactoConsulta = "tel";
+    		 		break;
+    		 	case "E2U+VOICE:TEL+X-MOBILE" :
+    		 		tipoContactoConsulta = "movil";
+	    			break;
+    		 	case "E2U+SMS:TEL" :
+    		 		tipoContactoConsulta = "telSMS";
+    		 		break;   		 		
+    		 	case "E2U+EMAIL:MAILTO" :
+    		 		tipoContactoConsulta = "email";
+    		 		break;
+    		 	case "E2U+FAX:TEL" :
+    		 		tipoContactoConsulta = "fax";
+    		 		break;
+    		 	case "E2U+WEB:HTTP" :
+    		 		tipoContactoConsulta = "google";
+    		 		break;
+    		 	case "E2U+X-VOICE:SKYPE" :
+    		 		tipoContactoConsulta = "skype";
+    		 		break;     		 
+    		 }
+    	 }
+    	 
+    	 return angular.lowercase(tipoContactoConsulta);
+     };
+     
    return {
 	   
 	   getContactos : getContactos,
@@ -277,6 +319,7 @@ app.factory('ContactoService', function($http) {
 	   getValidacionRegEx : function() {
 		   return validacionRegEx;
 	   },
+	   getTipoContacto : getTipoContacto,
 	   actualizarContacto : actualizarContacto,
 	   abrirBlockUIGeneral : abrirBlockUIGeneral,
 	   cerrarBlockUIGeneral : cerrarBlockUIGeneral,
