@@ -7,7 +7,8 @@ app.controller('ToolBarContactoController', function($scope, $http, ContactoServ
 	toolbarContacto.downgrade = "";
 	toolbarContacto.contacto = "";
 	toolbarContacto.claseLi = "";
-	
+	toolbarContacto.contactos = "";
+    
 	toolbarContacto.agregaContacto = function(downgrade, contacto) {
 		
 		ContactoService.setContactosPermitidos(contacto);

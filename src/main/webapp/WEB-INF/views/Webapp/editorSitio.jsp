@@ -3,7 +3,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!doctype html>
-<html lang="es">
+<html lang="es" ng-app = "InfomovilAppEditor">
 
 <tiles:insertDefinition name="headEditorSitio">
 	<tiles:putAttribute name="template" value="${ template }" />
@@ -38,7 +38,7 @@
 
 			</div>
 			<div id="navbar" class="navbar-collapse collapse text-right">
-				<ul class="nav navbar-nav navbar-right">
+				<ul class="nav navbar-nav navbar-right" ng-controller = "HorariosControllerLlamarModal as llamarModalhorarios"   >
 
 					<li><a href="<c:url value="/infomovil/miCuenta"></c:url>" class="smoothScroll ${colorTexto}"><img
 							width="20" height="20" alt="Infomovil"
@@ -77,9 +77,11 @@
 									
 							<li class="botonDesPublicar borderFin" id="btnContLi"
 								style="display: none;"><a href="<c:url value="/infomovil/misContactos"></c:url>"  class="smoothScroll ${colorTexto}">
+
 									Contactos <img
 									width="15" height="15" alt="Infomovil"
 									src="<c:url value="/resources/webapp/images/fa-contactos${ extensionImg }.png"/>" /> </a></li>
+
 									
 							<li class="botonDesPublicar borderFin" id="btnContLi"
 								style="display: none;"><a href="#" data-toggle="modal"
@@ -416,6 +418,14 @@
 		<c:set var="fragmentName" value="modalMovilizaCode" scope="request" />
 	</tiles:insertDefinition>
 	<!-- 		<!--/MODAL MOVILIZA CODE-->
+	<!-- 		<!--MODAL HORARIOS-->
+	<tiles:insertDefinition name="modalGen">
+		<tiles:putAttribute name="idModal" value="myModalHorarios" />
+		<tiles:putAttribute name="tamanioModal"
+			value='"modal-dialog modal-lg"' />
+		<c:set var="fragmentName" value="modalHorarios" scope="request" />
+	</tiles:insertDefinition>
+	<!-- 		<!--/MODAL HORARIOSE-->
 	
 	<!-- Scroll to Top Button (Only visible on small and extra-small screen sizes) -->
 	<div class="scroll-top page-scroll visible-xs visble-sm">
@@ -489,6 +499,10 @@
 	<script src="<c:url value="/resources/js/webapp/mapa.js"/>"></script>
 	<script src="<c:url value="/resources/js/webapp/videoYoutube.js"/>"></script>
 	<script src="<c:url value="/resources/js/webapp/imagenes.js"/>"></script>
+	<script src="<c:url value="/resources/webapp/js/angular.min.js"/>"></script>
+	<script src="<c:url value="/resources/js/webapp/horarios.js"/>"></script>
+	<script src="<c:url value="/resources/js/webapp/InfomovilServices/horariosService.js"/>"></script>
+	<script src="<c:url value="/resources/js/webapp/InfomovilServices/contactosService.js"/>"></script>
 	<script src="<c:url value="/resources/webapp/js/si.files.js"/>"></script>
 	<script>
 			$(document).ready(function(){

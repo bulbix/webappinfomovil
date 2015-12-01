@@ -294,7 +294,7 @@ app.factory('ContactoService', function($http) {
     	 
     	 return angular.lowercase(tipoContactoConsulta);
      };
-     
+   
    return {
 	   
 	   getContactos : getContactos,
@@ -323,7 +323,8 @@ app.factory('ContactoService', function($http) {
 	   actualizarContacto : actualizarContacto,
 	   abrirBlockUIGeneral : abrirBlockUIGeneral,
 	   cerrarBlockUIGeneral : cerrarBlockUIGeneral,
-	   getObjetoTipoContacto : getObjetoTipoContacto
+	   getObjetoTipoContacto : getObjetoTipoContacto,
+	  
   }
    
 });

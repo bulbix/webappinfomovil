@@ -240,6 +240,7 @@
 
 	<!-- Bootstrap core JavaScript
 		    ================================================== -->
+
 	<!-- Placed at the end of the document so the pages load faster -->
 	<script src="<c:url value="/resources/webapp/js/jquery.min.js"/>"></script>
 	<script src="<c:url value="/resources/webapp/js/angular.min.js"/>"></script>
@@ -292,6 +293,7 @@
 		</c:choose>
 	</script>
 </body>
+
 </html>
 
 
