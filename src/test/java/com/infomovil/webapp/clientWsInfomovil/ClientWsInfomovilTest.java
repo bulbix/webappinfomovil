@@ -280,7 +280,7 @@ public class ClientWsInfomovilTest {
 	
 	@Test
 	public void testCrearSitioGetHorarios() {
-		RespuestaVO resp = clientWsInfomovil.crearSitioGetHorarios("docker@mail.com", "garbage1");
+		RespuestaVO resp = clientWsInfomovil.crearSitioGetHorarios("is.rosas@yahoo.com.mx", "rosas111");
 		
 		if(resp.getListHorarios().size() > 0){
 			System.out.println(resp.getListHorarios());
@@ -293,7 +293,7 @@ public class ClientWsInfomovilTest {
 	
 	@Test
 	public void testCrearSitioInsertHorarios() {
-		RespuestaVO resp = clientWsInfomovil.crearSitioHorarios("docker@mail.com", "garbage1",
+		RespuestaVO resp = clientWsInfomovil.crearSitioHorarios("is.rosas@yahoo.com.mx", "rosas111",
 				new KeywordVO(),listaHorarios,"insert");
 		System.out.println(resp.getCodeError());
 	}
@@ -309,10 +309,11 @@ public class ClientWsInfomovilTest {
 	
 	@Test
 	public void testCrearSitioDeleteHorarios() {
-		RespuestaVO respConsulta = clientWsInfomovil.crearSitioGetHorarios("docker@mail.com", "garbage1");
-		
+		RespuestaVO respConsulta = clientWsInfomovil.crearSitioGetHorarios("is.rosas@yahoo.com.mx", "rosas111");
+		respConsulta.getKeyword().setKeywordValue("");
+		respConsulta.getKeyword().setKeywordField("");
 		RespuestaVO resp = clientWsInfomovil.
-		crearSitioHorarios("docker@mail.com", "garbage1", respConsulta.getKeyword(),listaHorarios,"delete");
+		crearSitioHorarios("is.rosas@yahoo.com.mx", "rosas111",respConsulta.getKeyword(),listaHorarios,"delete");
 		System.out.println(resp.getCodeError());
 	}
 	

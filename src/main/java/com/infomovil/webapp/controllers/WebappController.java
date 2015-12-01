@@ -907,6 +907,7 @@ public class WebappController
 			String correo = Util.getUserLogged().getUsername();
 			String password = Util.getUserLogged().getPassword();	
 			RespuestaVO resp = wsCliente.crearSitioGetHorarios(correo,password);
+			
 			if(resp.getListHorarios().size() > 0){
 				resultMap.put("codeError", resp.getCodeError());
 				resultMap.put("keyword", resp.getKeyword());

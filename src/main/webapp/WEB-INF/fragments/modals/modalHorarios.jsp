@@ -12,9 +12,9 @@
 		<p class="modal-title textBlack"><strong>Horarios</strong></p>
 		
 	</div>
-	<div class="modal-body" ng-repeat="itemHra in combosModalHorarios.horario">
+	<div class="modal-body" >
 		  <div class="col-xs-12">
-				Lunes: De  	<select name="Lunes1" id="Lunes1" ng-change="" ng-model="combosModalHorarios.Lunes1"  >99:99</select> a <select name="Lunes2" id="Lunes2" ng-change="" ng-model="combosModalHorarios.Lunes2">{{itemHra.idKeyword}}</select><br>
+				Lunes: De  	<select name="Lunes1" id="Lunes1" ng-change="" ng-model="combosModalHorarios.Lunes1"  ></select> a <select name="Lunes2" id="Lunes2" ng-change="" ng-model="combosModalHorarios.Lunes2"></select><br>
 				
 				Martes: De	<select name="Martes1" id="Martes1" ng-change="" ng-model="combosModalHorarios.Martes1"></select> a <select name="Martes2" id="Martes2" ng-change="" ng-model="combosModalHorarios.Martes2"></select><br>
 		     				
