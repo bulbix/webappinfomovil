@@ -3,24 +3,27 @@ var app = angular.module('InfomovilAppEditor', []);
 app.controller('HorariosControllerLlamarModal', function($scope, $http, HorarioService,ContactoService) {
 	
 	var llamarModalhorarios = this;
+	var resphoras = HorarioService.getHoras();
+	$("#Lunes1").append( resphoras );
+	$("#Lunes2").append( resphoras );
+	$("#Martes1").append( resphoras );
+	$("#Martes2").append( resphoras );
+	$("#Miercoles1").append( resphoras );
+	$("#Miercoles2").append( resphoras );
+	$("#Jueves1").append( resphoras );
+	$("#Jueves2").append( resphoras );
+	$("#Viernes1").append( resphoras );
+	$("#Viernes2").append( resphoras );
+	$("#Sabado1").append( resphoras );
+	$("#Sabado2").append( resphoras );
+	$("#Domingo1").append( resphoras );
+	$("#Domingo2").append( resphoras );
+	
+	
 	llamarModalhorarios.abrirModalHorarios = function(){
-		var resphoras = HorarioService.getHoras();
-	/*	$("#Lunes1").append( resphoras );
-		$("#Lunes2").append( resphoras );
-		$("#Martes1").append( resphoras );
-		$("#Martes2").append( resphoras );
-		$("#Miercoles1").append( resphoras );
-		$("#Miercoles2").append( resphoras );
-		$("#Jueves1").append( resphoras );
-		$("#Jueves2").append( resphoras );
-		$("#Viernes1").append( resphoras );
-		$("#Viernes2").append( resphoras );
-		$("#Sabado1").append( resphoras );
-		$("#Sabado2").append( resphoras );
-		$("#Domingo1").append( resphoras );
-		$("#Domingo2").append( resphoras );
-		*/
-		$("#myModalHorarios").modal();
+		console.log("LLama a  abrirModalHorarios");
+		
+		HorarioService.getHorarios();
 	};
 	
 });
@@ -28,9 +31,7 @@ app.controller('HorariosControllerLlamarModal', function($scope, $http, HorarioS
 app.controller('ModalHorarios', function($scope, $http, HorarioService, ContactoService) {
 	var combosModalHorarios = this;
 	var horas = new Array();
-	HorarioService.getHorarios();
-	combosModalHorarios.horario = HorarioService.horario();
-	console.log("Controller ModalHorarios");
+	
 	
 	
 	/*combosModalHorarios.Lunes1 = "00:00";

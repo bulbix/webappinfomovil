@@ -1,4 +1,4 @@
-app.factory('ContactoService', function($http) {
+app.factory('ContactoService', function($http, MensajesService) {
 	
 	var contactos;
 	var contactosPermitidos;
@@ -18,14 +18,14 @@ app.factory('ContactoService', function($http) {
 		}, function errorCallback(response) {
 			console.log("El error es: " + response);
 			var mensaje = "No se ha podido obtener la lista de contactos";
-			cerrarBlockUIGeneral(mensaje);
+			MensajesService.cerrarBlockUIGeneral("Contactos",mensaje);
 		});
 	}
 		
     function actualizarContacto(contacto) {
 
     	 var mensaje = "Actualizando contacto...";
-    	 abrirBlockUIGeneral(mensaje);
+    	 MensajesService.abrirBlockUIGeneral(mensaje);
     	 
     	 $http({
     		 method: 'POST',
@@ -47,40 +47,14 @@ app.factory('ContactoService', function($http) {
     			 console.log("EL ERROR ES: " + response.codeError );
     			 mensaje ="No se ha podido actualizar el contacto";
  			}
-    		 cerrarBlockUIGeneral(mensaje);
+    		 MensajesService.cerrarBlockUIGeneral("Contactos",mensaje);
     	 }, function errorCallback(response) {
     		 console.log("El error es: Peticion incorrecta" + response.codeError);
     		 mensaje = "No se ha podido actualizar el contacto";
-    		 cerrarBlockUIGeneral(mensaje);
+    		 MensajesService.cerrarBlockUIGeneral("Contactos",mensaje);
     	 });
      };	
-          
-     function abrirBlockUIGeneral(mensaje) {	
-    	 	$.blockUI.defaults.baseZ = 9000;
-			$.blockUI({
-				message : mensaje,
-				css : {
-					class : "alertaUI",
-					top : ($(window).height() - 400) / 2 + 'px',
-					left : ($(window).width() - 400) / 2 + 'px',
-					width : '400px'
-				}
-			});
-     };
-	
-     function cerrarBlockUIGeneral(mensaje) {
-    	 
-    	 $.unblockUI();
-    	 
-    	 if(mensaje.length > 0) {
-    		 BootstrapDialog
-				.show({
-					title : "<span class='textBlack' style='font-size:1.15em;'><img alt='' src='../resources/webapp/images/fa-warning-bk.png'  title='Alerta' />Contactos</span>",
-					message : '<div style="display:block; min-height:150px;"><p class="textBlack text-center" style="font-size:1.15em;">' + mensaje + '</p><br/>'
-				});
- 	 			
-    	 }
-     };
+           
 
      function getObjetoTipoContacto(tipo) {
 		 
@@ -321,8 +295,6 @@ app.factory('ContactoService', function($http) {
 	   },
 	   getTipoContacto : getTipoContacto,
 	   actualizarContacto : actualizarContacto,
-	   abrirBlockUIGeneral : abrirBlockUIGeneral,
-	   cerrarBlockUIGeneral : cerrarBlockUIGeneral,
 	   getObjetoTipoContacto : getObjetoTipoContacto,
 	  
   }

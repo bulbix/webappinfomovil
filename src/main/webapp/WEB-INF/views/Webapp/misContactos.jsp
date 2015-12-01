@@ -261,7 +261,7 @@
 	<script src="<c:url value="/resources/webapp/js/jquery.blockUI.js"/>"></script>
 	<script src="<c:url value="/resources/js/webapp/contactos.js"/>"></script>
 	<script src="<c:url value="/resources/js/webapp/InfomovilServices/contactosService.js"/>"></script>
-
+	<script src="<c:url value="/resources/js/webapp/InfomovilServices/mensajesService.js"/>"></script>
 
 	<tiles:insertDefinition name="modalGen">
 		<tiles:putAttribute name="idModal" value="myModalContactos" />

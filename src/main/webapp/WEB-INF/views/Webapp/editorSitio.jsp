@@ -77,11 +77,16 @@
 									
 							<li class="botonDesPublicar borderFin" id="btnContLi"
 								style="display: none;"><a href="<c:url value="/infomovil/misContactos"></c:url>"  class="smoothScroll ${colorTexto}">
-
-									Contactos <img
-									width="15" height="15" alt="Infomovil"
-									src="<c:url value="/resources/webapp/images/fa-contactos${ extensionImg }.png"/>" /> </a></li>
-
+									Mis Contactos <img
+									width="20" height="20" alt="Infomovil"
+									src="<c:url value="/resources/webapp/images/ico_mas_cont${ extensionImg }.png"/>" /> </a></li>
+							
+							<li class="botonDesPublicar" id="btnImgLi" style="display: none;"><a
+								href="#" class="smoothScroll ${colorTexto}"
+								ng-click="llamarModalhorarios.abrirModalHorarios()">Horarios<img width="20" height="20"
+									alt="Infomovil"
+									src="<c:url value="/resources/webapp/images/ico_img${ extensionImg }.png"/>" /></a></li>
+								
 									
 							<li class="botonDesPublicar borderFin" id="btnContLi"
 								style="display: none;"><a href="#" data-toggle="modal"
@@ -502,7 +507,8 @@
 	<script src="<c:url value="/resources/webapp/js/angular.min.js"/>"></script>
 	<script src="<c:url value="/resources/js/webapp/horarios.js"/>"></script>
 	<script src="<c:url value="/resources/js/webapp/InfomovilServices/horariosService.js"/>"></script>
-	<script src="<c:url value="/resources/js/webapp/InfomovilServices/contactosService.js"/>"></script>
+	<script src="<c:url value="/resources/js/webapp/InfomovilServices/mensajesService.js"/>"></script>
+
 	<script src="<c:url value="/resources/webapp/js/si.files.js"/>"></script>
 	<script>
 			$(document).ready(function(){
