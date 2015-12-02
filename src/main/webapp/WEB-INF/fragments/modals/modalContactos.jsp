@@ -1,16 +1,9 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <div ng-controller = "TipoContacto as datosTipoContacto">
-	<div class="modal-header navEditorSFl">
-	
-	 <!--<button type="submit" class="btn btn-purple pull-right btnsEditor" ng-show="datosTipoContacto.mostrarBtnGuardar" style="margin: 5px 0;"><img width="15" height="15" alt="Infomovil" 
-    	src="<c:url value="/resources/webapp/images/successWhite.png"/>" /><span class="hidden-xs"> Guardar</span></button>
-    	
-    	
-  <input type="submit" class="btn btn-purple pull-right" ng-show="datosTipoContacto.mostrarBtnGuardar" value="Guardar" style="margin:5px 0;"/> -->
-  
+	<div class="modal-header navEditorSFl">  
 			
-		<button type="submit" class="btn btn-purple pull-right btnsEditor" ng-show="datosTipoContacto.mostrarBtnGuardar" ng-click="datosTipoContacto.guardarContacto(contacto, miFormulario)" 
+		<button type="submit" class="btn btn-purple pull-right btnsEditor" ng-show="datosTipoContacto.mostrarBtnGuardar" ng-click="datosTipoContacto.guardarContacto()" 
 			style="margin: 5px 0 0 5px;"><img width="15" height="15" alt="Infomovil" 
     		src="<c:url value="/resources/webapp/images/successWhite.png"/>" /><span class="hidden-xs"> Guardar</span></button>
     	
@@ -77,47 +70,37 @@
 			</ul>
 		</div>
 		<div ng-show="datosTipoContacto.formGuardaContacto">
-			<form name="miFormulario" ng-submit="datosTipoContacto.guardarContacto(contacto, miFormulario)" ng-controller="TipoContacto" novalidate>
+
 			<div class="dividerSmall"></div>
-				<div class="col-xs-12"><img src="{{imagenIco}}" alt="{{nombre}}" height="30" width="30" >
-				<span><strong>{{nombre}}</strong></span><br/>
-				<span class="text-small textGreen">{{mensajeTelefonos}}</span>
-				</div>
-				<div class="clearfix"></div>
-				<div class="dividerSmall"></div>
-				<div class="col-xs-12">
-				
-				<div class="form-group">
-    <label >{{etiqueta}}</label>
-    	<div ng-show="datosTipoContacto.muestraPais">Clave Lada {{pais}}</div>
-    	
-    	<input type="text" ng-model="contacto.numeroEmailRedSocial" name="numeroEmailRedSocial" id="numeroEmailRedSocial" placeholder="{{placeholderContenido}}" 
-					ngRequired="true" ng-pattern="{{expRegularValida}}" ng-maxlength="{{maxlength}}" class="form-control"/>
-					<span ng-show="miFormulario.numeroEmailRedSocial.$error.pattern" class="textRed"><img width="20" height="20"
-									alt="Infomovil"
-									src="<c:url value="/resources/webapp/images/fa-warning-red.png"/>" /> {{msjValidacion}}</span>
-  </div>
-				
-				<div class="dividerSmall"></div>
-				 <div class="form-group">
-    <label>Descripción</label>
-    <textarea ng-maxlength="250" ng-model="contacto.longLabelNaptr" id="longLabelNaptr"  class="form-control"></textarea>
-   
-  </div>
-				
-				</div>
-				
-				
-				
-  
-  
-			</form>
+			<div class="col-xs-12"><img src="{{imagenIco}}" alt="{{nombre}}" height="30" width="30" >
+			<span><strong>{{nombre}}</strong></span><br/>
+			<span class="text-small textGreen">{{mensajeTelefonos}}</span>
+			</div>
+			<div class="clearfix"></div>
+			<div class="dividerSmall"></div>
+			<div class="col-xs-12">
 			
+				<div class="form-group">
+		   			<label >{{etiqueta}}</label>
+		    		<div ng-show="datosTipoContacto.muestraPais">Clave Lada {{pais}}</div>
+		    	
+		    		<input type="text" ng-model="contacto.numeroEmailRedSocial" name="contacto.numeroEmailRedSocial" class="form-control" 
+		    			placeholder="{{placeholderContenido}}" id="numeroEmailRedSocial" required="required" data-validation-regex-regex="(?!^[0-9]*$)(?!^[a-zA-Z]*$)^([a-zA-Z0-9]{8,15})$" 
+		        		data-validation-regex-message="Contraseña debe ser de 8 a 15 caracteres (letras y números)"/>
+					<span style="display:none;" id="msgValidaRegExp" class="textRed"><img width="20" height="20"
+						alt="Infomovil" src="<c:url value="/resources/webapp/images/fa-warning-red.png"/>" /> {{msjValidacion}}</span>
+	  			</div>
+					
+				<div class="dividerSmall"></div>
+				<div class="form-group">
+	    			<label>Descripción</label>
+	    			<textarea ng-maxlength="250" ng-model="contacto.longLabelNaptr" class="form-control"></textarea> 
+	  			</div>
+			</div>	
 		</div>
 	</div>  
 	
 	<div class="clear"></div>
-
 	<div class="modal-footer"></div>
 </div>
 

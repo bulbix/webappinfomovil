@@ -14,7 +14,7 @@
 
 	<div class="modal-body">  
 		<form name="miFormularioActualizar" novalidate>
-			<img src="" alt="" height="20" width="20" id="imagenIco">
+			<img src="<c:url value="/resources/webapp/images/{{imagenIco}}"/>" alt="" height="20" width="20" id="imagenIco">
 			<input type="hidden" name="clave" id="claveContactoC"/>
 			<input type="hidden" name="servicesNaptr" id="servicesNaptrC"/>
 			<input type="hidden" name="subCategory" id="subCategoryC"/>

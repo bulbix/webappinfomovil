@@ -157,7 +157,7 @@
 									<strong>Ordenar</strong>
 								</div>
 							</div>
-							<h5>{{contacto}} - {{downgrade}}</h5>
+
 							<ul id="sortable" class="reset">
 
 								<div id="{{item.claveContacto}}" ng-repeat="item in toolbarContacto.contactos">

@@ -21,6 +21,10 @@ app.controller('ToolBarContactoController', function($scope, $http, ContactoServ
 			return;
 		}
 		
+		$("#numeroEmailRedSocial").keydown(function(e) {
+			$("#msgValidaRegExp").css("display", "none");
+		});
+		
 		$("#myModalContactos").modal();
 	};
 
@@ -119,6 +123,7 @@ app.controller('ToolBarContactoController', function($scope, $http, ContactoServ
 		expReg = mensajesContacto.expRegular != undefined ? mensajesContacto.expRegular : "^\\d{10}$";
 		placeHolder = mensajesContacto.placeholder != undefined ? mensajesContacto.placeholder : "Número Telefónico Inválido";
 		contenidoContacto = item.regExp;
+		$scope.imagenIco = mensajesContacto.imagenIco;
 		
 		regex = new RegExp(expReg);
 		
@@ -144,7 +149,6 @@ app.controller('ToolBarContactoController', function($scope, $http, ContactoServ
 		$("#inputTelefonosActualizar" ).attr("pattern", expReg);
 		$("#inputTelefonosActualizar").attr("placeholder", placeHolder);
 		$("#imagenIco").attr("src", mensajesContacto.imagenIco);
-		console.log("imagenIco:"+ mensajesContacto.imagenIco);
 		$("#myModalContactosActualizar").modal();
 		
 		$("#inputTelefonosActualizar").keydown(function(e) { 
@@ -256,7 +260,7 @@ app.controller('ToolBarContactoController', function($scope, $http, ContactoServ
      ContactoService.getContactos();
 });
 
-app.controller('TipoContacto', function($scope, $http, ContactoService,MensajesService) {
+app.controller('TipoContacto', function($scope, $http, ContactoService, MensajesService) {
 	 
 	var datosTipoContacto = this;
 	
@@ -264,6 +268,7 @@ app.controller('TipoContacto', function($scope, $http, ContactoService,MensajesS
 	datosTipoContacto.mostrarBtnGuardar = false;
 	datosTipoContacto.menuContactos = true;
 	datosTipoContacto.formGuardaContacto = false;
+	datosTipoContacto.muestraMsjValidacion = false;
 	
 	datosTipoContacto.tipo = function(tipo) {
 		
@@ -292,20 +297,35 @@ app.controller('TipoContacto', function($scope, $http, ContactoService,MensajesS
 		regresarGenerico();
 	}
 	
-	datosTipoContacto.guardarContacto = function(contacto, formulario) {
+	datosTipoContacto.guardarContacto = function() {
+
+		var regex = null;
 		
-		console.log("guardarContacto");
-		if (formulario.$valid)
+		if (ContactoService.getContactosGuardados() == ContactoService.getContactosPermitidos())
 		{
-			if (ContactoService.getContactosGuardados() == ContactoService.getContactosPermitidos())
-			{
-				var mensaje = "Ya has registrado todos los contactos disponibles";
-				MensajesService.cerrarBlockUIGeneral("Contactos",mensaje)
-				return;
-			}
-			
-			//guardarContacto(contacto);
+			var mensaje = "Ya has registrado todos los contactos disponibles";
+			MensajesService.cerrarBlockUIGeneral("Contactos", mensaje)
+			return;
 		}
+
+		regex = new RegExp($scope.expRegularValida);
+		
+		if (!regex.test($scope.contacto.numeroEmailRedSocial))
+		{
+			$("#msgValidaRegExp").css("display", "block");
+			return;
+		}
+		
+		$("#msgValidaRegExp").css("display", "none");
+		
+		var contacto = {
+			longLabelNaptr : $scope.contacto.longLabelNaptr != undefined ? $scope.contacto.longLabelNaptr : "", 
+			numeroEmailRedSocial: $scope.contacto.numeroEmailRedSocial
+		};
+		
+		console.log("Contacto: " + $scope.contacto.numeroEmailRedSocial + ", " + $scope.contacto.longLabelNaptr);
+	//	guardarContacto(contacto);
+		
 	}
 	
 	datosTipoContacto.closeMyModalContactos = function() {
@@ -330,7 +350,7 @@ app.controller('TipoContacto', function($scope, $http, ContactoService,MensajesS
 			 method: 'POST',
 			 url: contextPath + "/infomovil/guardarContacto",
 			 params: {
-				 descripcionContacto: contacto.longLabelNaptr != undefined ? contacto.longLabelNaptr : "",
+				 descripcionContacto: contacto.longLabelNaptr,
 				 numeroEmailRedSocial: contacto.numeroEmailRedSocial,
 				 constanteContacto: $scope.servicio,
 				 redSocialWebSecure: $scope.subCategory,
@@ -389,9 +409,6 @@ app.controller('ActualizarContactos', function($scope, $http, ContactoService,Me
 			tipoContacto : $("#tipoContactoActualizar").val(),
 			codigoPais : $("#paisActualizarTel").val()
 		};
-		
-		console.log("claveContacto: " + contacto.claveContacto + ", longLabelNaptr: " + contacto.longLabelNaptr + ", regExp: " + contacto.regExp + 
-				", servicesNaptr: " + contacto.servicesNaptr + ", subCategory: " + contacto.subCategory + ", visible: " + contacto.visible);
 		
 		ContactoService.actualizarContacto(contacto);
 		$("#myModalContactosActualizar").modal('toggle');
