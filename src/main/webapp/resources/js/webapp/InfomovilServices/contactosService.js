@@ -36,7 +36,9 @@ app.factory('ContactoService', function($http, MensajesService) {
  				 numeroEmailRedSocial : contacto.regExp,
  				 constanteContacto : contacto.servicesNaptr, 
  				 redSocialWebSecure : contacto.subCategory,
- 				 visible : contacto.visible
+ 				 visible : contacto.visible,
+ 				 tipoContacto : contacto.tipoContacto,
+ 				 codigoPais : contacto.codigoPais
     		 }		  
     	 }).then(function successCallback(response) {
     		 console.log("El valore regresado es: " + response.data.codeError , response.codeError);
@@ -54,7 +56,6 @@ app.factory('ContactoService', function($http, MensajesService) {
     		 MensajesService.cerrarBlockUIGeneral("Contactos",mensaje);
     	 });
      };	
-           
 
      function getObjetoTipoContacto(tipo) {
 		 

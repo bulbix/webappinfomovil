@@ -19,6 +19,7 @@
 			<input type="hidden" name="servicesNaptr" id="servicesNaptrC"/>
 			<input type="hidden" name="subCategory" id="subCategoryC"/>
 			<input type="hidden" name="visible" id="visibleC"/>
+			<input type="hidden" name="tipoContactoActualizar" id="tipoContactoActualizar"/>
 			<span id="nombreActualizarTel"></span><br>
 			<span id="etiquetaActualizarTel"></span><br>
 			<span id="paisActualizarTel"></span><br>
