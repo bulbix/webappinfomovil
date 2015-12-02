@@ -31,6 +31,8 @@ app.controller('ToolBarContactoController', function($scope, $http, ContactoServ
 		
 		var tipoContactoLista = "";
 		var mensajesContactoLista = "";
+		var tipoBusqueda = "redSocial";
+		var llaveBusqueda = item.subCategory;
 		var contenidoFinalContacto = item.regExp;
 
 		toolbarContacto.claseBoton = "btn btn-outlineGreen textWhite navEditorLato";
@@ -45,16 +47,19 @@ app.controller('ToolBarContactoController', function($scope, $http, ContactoServ
 		
 		if(item.servicesNaptr.trim().length > 0)
 		{
-			tipoContactoLista = ContactoService.getTipoContacto("tel" , item.servicesNaptr);
-			mensajesContactoLista = ContactoService.getObjetoTipoContacto(tipoContactoLista);
-		
-			if (mensajesContactoLista.tipo != undefined)
-			{
-				contenidoFinalContacto = item.regExp.substring(mensajesContactoLista.tipo.length, item.regExp.length);
-				
-				if (mensajesContactoLista.tipo.indexOf("tel") != -1)
-					contenidoFinalContacto = item.regExp.substring(mensajesContactoLista.tipo.indexOf("tel") + 5, item.regExp.length);
-			}
+			tipoBusqueda = "tel";
+			llaveBusqueda = item.servicesNaptr;
+		}
+
+		tipoContactoLista = ContactoService.getTipoContacto(tipoBusqueda , llaveBusqueda);
+		mensajesContactoLista = ContactoService.getObjetoTipoContacto(tipoContactoLista);
+	
+		if (mensajesContactoLista.tipo != undefined)
+		{
+			contenidoFinalContacto = item.regExp.substring(mensajesContactoLista.tipo.length, item.regExp.length);
+			
+			if (mensajesContactoLista.tipo.indexOf("tel") != -1)
+				contenidoFinalContacto = item.regExp.substring(mensajesContactoLista.tipo.length + mensajesContactoLista.pais.length, item.regExp.length);
 		}
 		
 		$scope.contenidoContacto = contenidoFinalContacto;
@@ -120,7 +125,7 @@ app.controller('ToolBarContactoController', function($scope, $http, ContactoServ
 			contenidoContacto = item.regExp.substring(mensajesContacto.tipo.length, item.regExp.length);
 			
 			if (mensajesContacto.tipo.indexOf("tel") != -1)
-				contenidoContacto = item.regExp.substring(mensajesContacto.tipo.indexOf("tel") + 5, item.regExp.length);
+				contenidoContacto = item.regExp.substring(mensajesContacto.tipo.length + mensajesContacto.pais.length, item.regExp.length);
 		}
 
 		$("#paisActualizarTel").text("");
@@ -136,8 +141,8 @@ app.controller('ToolBarContactoController', function($scope, $http, ContactoServ
 		$("#tipoContactoActualizar").val(mensajesContacto.tipo);
 		$("#inputTelefonosActualizar" ).attr("pattern", expReg);
 		$("#inputTelefonosActualizar").attr("placeholder", placeHolder);
-		$("#imagenIco").attr("src", item.imagenIco);
-		console.log("imagenIco:"+ item.imagenIco);
+		$("#imagenIco").attr("src", mensajesContacto.imagenIco);
+		console.log("imagenIco:"+ mensajesContacto.imagenIco);
 		$("#myModalContactosActualizar").modal();
 		
 		$("#inputTelefonosActualizar").keydown(function(e) { 
