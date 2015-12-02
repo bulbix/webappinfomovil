@@ -79,7 +79,7 @@
 								style="display: none;"><a href="<c:url value="/infomovil/misContactos"></c:url>"  class="smoothScroll ${colorTexto}">
 									Contactos <img
 									width="20" height="20" alt="Infomovil"
-									src="<c:url value="/resources/webapp/images/ico_mas_cont${ extensionImg }.png"/>" /> </a></li>
+									src="<c:url value="/resources/webapp/images/fa-contactos${ extensionImg }.png"/>" /> </a></li>
 							
 							<li class="botonDesPublicar" id="btnImgLi" style="display: none;"><a
 								href="#" class="smoothScroll ${colorTexto}"
