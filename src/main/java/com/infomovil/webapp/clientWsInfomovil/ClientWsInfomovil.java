@@ -1,6 +1,7 @@
 package com.infomovil.webapp.clientWsInfomovil;
 
 import java.net.URL;
+import java.util.Date;
 import java.util.List;
 
 import javax.xml.namespace.QName;
@@ -364,6 +365,19 @@ public class ClientWsInfomovil {
 		com.infomovil.webapp.clientWsInfomovil.CrearSitioHorariosResponse _crearSitioHorarios__return = port.crearSitioHorarios(_crearSitioHorarios_parameters);
 		log.info("crearSitioHorarios.result=" + _crearSitioHorarios__return);
 		return _crearSitioHorarios__return.respuestaVO;
+	}
+	
+	public RespuestaVO crearSitioReporteUsuario(String email, String password, String cual, String fechaInicial, String fechaFinal){
+		log.info("Invoking crearSitioReporteUsuario...");
+		com.infomovil.webapp.clientWsInfomovil.CrearSitioReporteUsuario _crearSitioReporteUsuario_parameters = new CrearSitioReporteUsuario();
+		_crearSitioReporteUsuario_parameters.email = email;
+		_crearSitioReporteUsuario_parameters.password = password;
+		_crearSitioReporteUsuario_parameters.cual = cual;
+		_crearSitioReporteUsuario_parameters.fechaInicial = fechaInicial;
+		_crearSitioReporteUsuario_parameters.fechaFinal = fechaFinal;
+		com.infomovil.webapp.clientWsInfomovil.CrearSitioReporteUsuarioResponse _crearSitioReporteUsuario__return = port.crearSitioReporteUsuario(_crearSitioReporteUsuario_parameters);
+		log.info("crearSitioReporteUsuario.result=" + _crearSitioReporteUsuario__return);
+		return _crearSitioReporteUsuario__return.respuestaVO;
 	}
 		
 }

@@ -39,10 +39,6 @@ public class HorarioVO {
     protected String inicio;
     protected String cierre;
     
-    public HorarioVO(){
-    	
-    }
-    
     
 
     public HorarioVO(String dia, String inicio, String cierre) {
@@ -51,8 +47,10 @@ public class HorarioVO {
 		this.inicio = inicio;
 		this.cierre = cierre;
 	}
-
-
+    
+    public HorarioVO(){
+    	
+    }
 
 	/**
      * Obtiene el valor de la propiedad dia.
@@ -125,14 +123,5 @@ public class HorarioVO {
     public void setCierre(String value) {
         this.cierre = value;
     }
-
-
-
-	@Override
-	public String toString() {
-		return "HorarioVO [dia=" + dia + ", inicio=" + inicio + ", cierre=" + cierre + "]";
-	}
-    
-    
 
 }

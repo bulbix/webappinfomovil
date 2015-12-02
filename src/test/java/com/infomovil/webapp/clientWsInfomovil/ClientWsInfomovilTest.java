@@ -316,5 +316,12 @@ public class ClientWsInfomovilTest {
 		System.out.println(resp.getCodeError());
 	}
 	
+	@Test
+	public void testCrearSitioReporteUsuario() {
+		RespuestaVO resp = clientWsInfomovil.crearSitioReporteUsuario("docker@mail.com", "garbage1","personalizado","01/01/2015","31/12/2015");
+		System.out.println(resp.getListVisitas());
+		System.out.println(resp.getCodeError());
+	}
+	
 	
 }

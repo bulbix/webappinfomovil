@@ -47,6 +47,7 @@ import javax.xml.bind.annotation.XmlType;
  *         &lt;element name="listPromocion" type="{http://ws.webservice.infomovil.org/}offertRecordVO" maxOccurs="unbounded" minOccurs="0"/>
  *         &lt;element name="listContactos" type="{http://ws.webservice.infomovil.org/}recordNaptrVO" maxOccurs="unbounded" minOccurs="0"/>
  *         &lt;element name="listHorarios" type="{http://ws.webservice.infomovil.org/}horarioVO" maxOccurs="unbounded" minOccurs="0"/>
+ *         &lt;element name="listVisitas" type="{http://jaxb.dev.java.net/array}anyTypeArray" maxOccurs="unbounded" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -85,7 +86,8 @@ import javax.xml.bind.annotation.XmlType;
     "listStatusDomainGratisVO",
     "listPromocion",
     "listContactos",
-    "listHorarios"
+    "listHorarios",
+    "listVisitas"
 })
 public class RespuestaVO {
 
@@ -118,6 +120,7 @@ public class RespuestaVO {
     protected List<OffertRecordVO> listPromocion;
     protected List<RecordNaptrVO> listContactos;
     protected List<HorarioVO> listHorarios;
+    protected List<AnyTypeArray> listVisitas;
 
     /**
      * Obtiene el valor de la propiedad resultado.
@@ -853,6 +856,35 @@ public class RespuestaVO {
             listHorarios = new ArrayList<HorarioVO>();
         }
         return this.listHorarios;
+    }
+
+    /**
+     * Gets the value of the listVisitas property.
+     * 
+     * <p>
+     * This accessor method returns a reference to the live list,
+     * not a snapshot. Therefore any modification you make to the
+     * returned list will be present inside the JAXB object.
+     * This is why there is not a <CODE>set</CODE> method for the listVisitas property.
+     * 
+     * <p>
+     * For example, to add a new item, do as follows:
+     * <pre>
+     *    getListVisitas().add(newItem);
+     * </pre>
+     * 
+     * 
+     * <p>
+     * Objects of the following type(s) are allowed in the list
+     * {@link AnyTypeArray }
+     * 
+     * 
+     */
+    public List<AnyTypeArray> getListVisitas() {
+        if (listVisitas == null) {
+            listVisitas = new ArrayList<AnyTypeArray>();
+        }
+        return this.listVisitas;
     }
 
 }

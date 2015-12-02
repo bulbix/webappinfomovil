@@ -42,12 +42,13 @@ public class ObjectFactory {
     private final static QName _CambiaNombreRecurso_QNAME = new QName("http://ws.webservice.infomovil.org/", "cambiaNombreRecurso");
     private final static QName _CrearSitioGetWebHash_QNAME = new QName("http://ws.webservice.infomovil.org/", "crearSitio_getWebHash");
     private final static QName _GetExistDomainResponse_QNAME = new QName("http://ws.webservice.infomovil.org/", "getExistDomainResponse");
+    private final static QName _CrearSitioReporteUsuarioResponse_QNAME = new QName("http://ws.webservice.infomovil.org/", "crearSitio_reporteUsuarioResponse");
     private final static QName _SessionActiva_QNAME = new QName("http://ws.webservice.infomovil.org/", "sessionActiva");
     private final static QName _CrearSitioGuardarResponse_QNAME = new QName("http://ws.webservice.infomovil.org/", "crearSitio_guardarResponse");
     private final static QName _UpdateDomainResponse_QNAME = new QName("http://ws.webservice.infomovil.org/", "updateDomainResponse");
     private final static QName _InsertRecordNaptr_QNAME = new QName("http://ws.webservice.infomovil.org/", "insertRecordNaptr");
-    private final static QName _GeneraHashCambioPassword_QNAME = new QName("http://ws.webservice.infomovil.org/", "generaHashCambioPassword");
     private final static QName _CrearSitioGuardarVideoResponse_QNAME = new QName("http://ws.webservice.infomovil.org/", "crearSitio_guardarVideoResponse");
+    private final static QName _GeneraHashCambioPassword_QNAME = new QName("http://ws.webservice.infomovil.org/", "generaHashCambioPassword");
     private final static QName _CrearSitioLoginResponse_QNAME = new QName("http://ws.webservice.infomovil.org/", "crearSitio_loginResponse");
     private final static QName _VisitasVO_QNAME = new QName("http://ws.webservice.infomovil.org/", "VisitasVO");
     private final static QName _UpdateTextRecordResponse_QNAME = new QName("http://ws.webservice.infomovil.org/", "updateTextRecordResponse");
@@ -100,6 +101,7 @@ public class ObjectFactory {
     private final static QName _CreateDomainResponse_QNAME = new QName("http://ws.webservice.infomovil.org/", "createDomainResponse");
     private final static QName _GetNumVisitasResponse_QNAME = new QName("http://ws.webservice.infomovil.org/", "getNumVisitasResponse");
     private final static QName _DeleteOfferRecordResponse_QNAME = new QName("http://ws.webservice.infomovil.org/", "deleteOfferRecordResponse");
+    private final static QName _CrearSitioBorarImagenesHuerfanas_QNAME = new QName("http://ws.webservice.infomovil.org/", "crearSitio_borarImagenesHuerfanas");
     private final static QName _StatusDominioResponse_QNAME = new QName("http://ws.webservice.infomovil.org/", "statusDominioResponse");
     private final static QName _GetItemsGratisDomainResponse_QNAME = new QName("http://ws.webservice.infomovil.org/", "getItemsGratisDomainResponse");
     private final static QName _DeleteImage_QNAME = new QName("http://ws.webservice.infomovil.org/", "deleteImage");
@@ -108,6 +110,7 @@ public class ObjectFactory {
     private final static QName _GetExistUser_QNAME = new QName("http://ws.webservice.infomovil.org/", "getExistUser");
     private final static QName _GetImagenes_QNAME = new QName("http://ws.webservice.infomovil.org/", "getImagenes");
     private final static QName _CatalogoDominios_QNAME = new QName("http://ws.webservice.infomovil.org/", "catalogoDominios");
+    private final static QName _CrearSitioBorarImagenesHuerfanasResponse_QNAME = new QName("http://ws.webservice.infomovil.org/", "crearSitio_borarImagenesHuerfanasResponse");
     private final static QName _GeneraHashMovilizaSitioResponse_QNAME = new QName("http://ws.webservice.infomovil.org/", "generaHashMovilizaSitioResponse");
     private final static QName _GetFechaExpiracion_QNAME = new QName("http://ws.webservice.infomovil.org/", "getFechaExpiracion");
     private final static QName _CrearSitioIntentoPagoResponse_QNAME = new QName("http://ws.webservice.infomovil.org/", "crearSitio_intentoPagoResponse");
@@ -155,6 +158,7 @@ public class ObjectFactory {
     private final static QName _CrearSitioGetWebHashResponse_QNAME = new QName("http://ws.webservice.infomovil.org/", "crearSitio_getWebHashResponse");
     private final static QName _CrearSitioGetContactos_QNAME = new QName("http://ws.webservice.infomovil.org/", "crearSitio_getContactos");
     private final static QName _CrearSitioGuardarContactoResponse_QNAME = new QName("http://ws.webservice.infomovil.org/", "crearSitio_guardarContactoResponse");
+    private final static QName _CrearSitioReporteUsuario_QNAME = new QName("http://ws.webservice.infomovil.org/", "crearSitio_reporteUsuario");
     private final static QName _GetExistDomain_QNAME = new QName("http://ws.webservice.infomovil.org/", "getExistDomain");
     private final static QName _CrearSitioGetProductosUsuario_QNAME = new QName("http://ws.webservice.infomovil.org/", "crearSitio_getProductosUsuario");
     private final static QName _InsertKeyWordData_QNAME = new QName("http://ws.webservice.infomovil.org/", "insertKeyWordData");
@@ -196,6 +200,14 @@ public class ObjectFactory {
      */
     public GeneraHashMovilizaSitioResponse createGeneraHashMovilizaSitioResponse() {
         return new GeneraHashMovilizaSitioResponse();
+    }
+
+    /**
+     * Create an instance of {@link CrearSitioBorarImagenesHuerfanasResponse }
+     * 
+     */
+    public CrearSitioBorarImagenesHuerfanasResponse createCrearSitioBorarImagenesHuerfanasResponse() {
+        return new CrearSitioBorarImagenesHuerfanasResponse();
     }
 
     /**
@@ -631,6 +643,14 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link CrearSitioReporteUsuario }
+     * 
+     */
+    public CrearSitioReporteUsuario createCrearSitioReporteUsuario() {
+        return new CrearSitioReporteUsuario();
+    }
+
+    /**
      * Create an instance of {@link GetImagenesResponse }
      * 
      */
@@ -943,6 +963,14 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link CrearSitioReporteUsuarioResponse }
+     * 
+     */
+    public CrearSitioReporteUsuarioResponse createCrearSitioReporteUsuarioResponse() {
+        return new CrearSitioReporteUsuarioResponse();
+    }
+
+    /**
      * Create an instance of {@link CrearSitioGetWebHash }
      * 
      */
@@ -1015,19 +1043,19 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link CrearSitioGuardarVideoResponse }
-     * 
-     */
-    public CrearSitioGuardarVideoResponse createCrearSitioGuardarVideoResponse() {
-        return new CrearSitioGuardarVideoResponse();
-    }
-
-    /**
      * Create an instance of {@link GeneraHashCambioPassword }
      * 
      */
     public GeneraHashCambioPassword createGeneraHashCambioPassword() {
         return new GeneraHashCambioPassword();
+    }
+
+    /**
+     * Create an instance of {@link CrearSitioGuardarVideoResponse }
+     * 
+     */
+    public CrearSitioGuardarVideoResponse createCrearSitioGuardarVideoResponse() {
+        return new CrearSitioGuardarVideoResponse();
     }
 
     /**
@@ -1367,6 +1395,14 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link CrearSitioBorarImagenesHuerfanas }
+     * 
+     */
+    public CrearSitioBorarImagenesHuerfanas createCrearSitioBorarImagenesHuerfanas() {
+        return new CrearSitioBorarImagenesHuerfanas();
+    }
+
+    /**
      * Create an instance of {@link DeleteOfferRecordResponse }
      * 
      */
@@ -1452,6 +1488,14 @@ public class ObjectFactory {
      */
     public DeleteLocRecordResponse createDeleteLocRecordResponse() {
         return new DeleteLocRecordResponse();
+    }
+
+    /**
+     * Create an instance of {@link AnyTypeArray }
+     * 
+     */
+    public AnyTypeArray createAnyTypeArray() {
+        return new AnyTypeArray();
     }
 
     /**
@@ -1617,6 +1661,15 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link CrearSitioReporteUsuarioResponse }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://ws.webservice.infomovil.org/", name = "crearSitio_reporteUsuarioResponse")
+    public JAXBElement<CrearSitioReporteUsuarioResponse> createCrearSitioReporteUsuarioResponse(CrearSitioReporteUsuarioResponse value) {
+        return new JAXBElement<CrearSitioReporteUsuarioResponse>(_CrearSitioReporteUsuarioResponse_QNAME, CrearSitioReporteUsuarioResponse.class, null, value);
+    }
+
+    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link SessionActiva }{@code >}}
      * 
      */
@@ -1653,21 +1706,21 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link GeneraHashCambioPassword }{@code >}}
-     * 
-     */
-    @XmlElementDecl(namespace = "http://ws.webservice.infomovil.org/", name = "generaHashCambioPassword")
-    public JAXBElement<GeneraHashCambioPassword> createGeneraHashCambioPassword(GeneraHashCambioPassword value) {
-        return new JAXBElement<GeneraHashCambioPassword>(_GeneraHashCambioPassword_QNAME, GeneraHashCambioPassword.class, null, value);
-    }
-
-    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link CrearSitioGuardarVideoResponse }{@code >}}
      * 
      */
     @XmlElementDecl(namespace = "http://ws.webservice.infomovil.org/", name = "crearSitio_guardarVideoResponse")
     public JAXBElement<CrearSitioGuardarVideoResponse> createCrearSitioGuardarVideoResponse(CrearSitioGuardarVideoResponse value) {
         return new JAXBElement<CrearSitioGuardarVideoResponse>(_CrearSitioGuardarVideoResponse_QNAME, CrearSitioGuardarVideoResponse.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link GeneraHashCambioPassword }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://ws.webservice.infomovil.org/", name = "generaHashCambioPassword")
+    public JAXBElement<GeneraHashCambioPassword> createGeneraHashCambioPassword(GeneraHashCambioPassword value) {
+        return new JAXBElement<GeneraHashCambioPassword>(_GeneraHashCambioPassword_QNAME, GeneraHashCambioPassword.class, null, value);
     }
 
     /**
@@ -2139,6 +2192,15 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link CrearSitioBorarImagenesHuerfanas }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://ws.webservice.infomovil.org/", name = "crearSitio_borarImagenesHuerfanas")
+    public JAXBElement<CrearSitioBorarImagenesHuerfanas> createCrearSitioBorarImagenesHuerfanas(CrearSitioBorarImagenesHuerfanas value) {
+        return new JAXBElement<CrearSitioBorarImagenesHuerfanas>(_CrearSitioBorarImagenesHuerfanas_QNAME, CrearSitioBorarImagenesHuerfanas.class, null, value);
+    }
+
+    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link StatusDominioResponse }{@code >}}
      * 
      */
@@ -2208,6 +2270,15 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "http://ws.webservice.infomovil.org/", name = "catalogoDominios")
     public JAXBElement<CatalogoDominios> createCatalogoDominios(CatalogoDominios value) {
         return new JAXBElement<CatalogoDominios>(_CatalogoDominios_QNAME, CatalogoDominios.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link CrearSitioBorarImagenesHuerfanasResponse }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://ws.webservice.infomovil.org/", name = "crearSitio_borarImagenesHuerfanasResponse")
+    public JAXBElement<CrearSitioBorarImagenesHuerfanasResponse> createCrearSitioBorarImagenesHuerfanasResponse(CrearSitioBorarImagenesHuerfanasResponse value) {
+        return new JAXBElement<CrearSitioBorarImagenesHuerfanasResponse>(_CrearSitioBorarImagenesHuerfanasResponse_QNAME, CrearSitioBorarImagenesHuerfanasResponse.class, null, value);
     }
 
     /**
@@ -2631,6 +2702,15 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "http://ws.webservice.infomovil.org/", name = "crearSitio_guardarContactoResponse")
     public JAXBElement<CrearSitioGuardarContactoResponse> createCrearSitioGuardarContactoResponse(CrearSitioGuardarContactoResponse value) {
         return new JAXBElement<CrearSitioGuardarContactoResponse>(_CrearSitioGuardarContactoResponse_QNAME, CrearSitioGuardarContactoResponse.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link CrearSitioReporteUsuario }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://ws.webservice.infomovil.org/", name = "crearSitio_reporteUsuario")
+    public JAXBElement<CrearSitioReporteUsuario> createCrearSitioReporteUsuario(CrearSitioReporteUsuario value) {
+        return new JAXBElement<CrearSitioReporteUsuario>(_CrearSitioReporteUsuario_QNAME, CrearSitioReporteUsuario.class, null, value);
     }
 
     /**
