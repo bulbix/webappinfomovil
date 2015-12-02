@@ -169,7 +169,7 @@
 											<div class="col-xs-12 col-sm-4  text-left" style="overflow:hidden"
 												ng-click="toolbarContacto.abrirActualizarContacto(item)">
 													<img width="30" height="30" alt="Infomovil"
-													src="<c:url value="/resources/webapp/images/fa-twitter-bk.png"/>" />
+													src="<c:url value="/resources/webapp/images/{{imagenIco}}"/>" />
 												<span id="regExpContacto" ng-hide="false">
 													{{contenidoContacto}}
 												</span>

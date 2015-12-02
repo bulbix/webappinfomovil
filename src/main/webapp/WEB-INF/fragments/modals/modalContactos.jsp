@@ -2,18 +2,14 @@
 <div ng-controller = "TipoContacto as datosTipoContacto">
 	<div class="modal-header navEditorSFl">
 			
-			<button type="submit" class="btn btn-purple pull-right btnsEditor" ng-show="datosTipoContacto.mostrarBtnGuardar" style="margin: 5px 0 0 5px;"><img width="15" height="15" alt="Infomovil" 
-    	src="<c:url value="/resources/webapp/images/successWhite.png"/>" /><span class="hidden-xs"> Guardar</span></button>
+		<button type="submit" class="btn btn-purple pull-right btnsEditor" ng-show="datosTipoContacto.mostrarBtnGuardar" ng-click="datosTipoContacto.guardarContacto(contacto, miFormulario)" 
+			style="margin: 5px 0 0 5px;"><img width="15" height="15" alt="Infomovil" 
+    		src="<c:url value="/resources/webapp/images/successWhite.png"/>" /><span class="hidden-xs"> Guardar</span></button>
     	
     	<button type="button" class="btn btn-purple pull-right btnsEditor"  id="" ng-click="datosTipoContacto.regresarAgregarContacto()" ng-show="datosTipoContacto.mostrarBtnRegresar" style="margin: 5px 0;"><img width="20" height="20" alt="Infomovil" 
-	    		src="<c:url value="/resources/webapp/images/ico_back.png"/>" /><span class="hidden-xs"> Regresar</span></button>
-	    		
-	    		
-			
-<!-- 			<button type="button" class="btn btn-purple pull-right"  id="" ng-click="datosTipoContacto.guardarContacto(contacto)" ng-show="datosTipoContacto.mostrarBtnGuardar" style="margin:5px 0;"><img width="15" height="15" alt="Infomovil"  -->
-<%-- 	    		src="<c:url value="/resources/webapp/images/successWhite.png"/>" /><span class="hidden-xs"> Guardar</span></button> --%>
-	    	
-	    	<button type="button" class="close textBlack pull-left btnsEditor"  aria-label="Close" ng-click="datosTipoContacto.closeMyModalContactos()" id="myModalContactos"><span aria-hidden="true"><strong>&times;</strong></span></button>
+	    	src="<c:url value="/resources/webapp/images/ico_back.png"/>" /><span class="hidden-xs"> Regresar</span></button>
+
+	   	<button type="button" class="close textBlack pull-left btnsEditor"  aria-label="Close" ng-click="datosTipoContacto.closeMyModalContactos()" id="myModalContactos"><span aria-hidden="true"><strong>&times;</strong></span></button>
 	
 	    <div class="clear"></div>
 	</div>
@@ -73,7 +69,7 @@
 			</ul>
 		</div>
 		<div ng-show="datosTipoContacto.formGuardaContacto">
-			<form name="miFormulario" ng-submit="datosTipoContacto.guardarContacto(contacto, miFormulario)" ng-controller="TipoContacto" novalidate>
+			<form name="miFormulario" ng-controller="TipoContacto" novalidate>
 			<div class="divider hidden-xs"></div>
 				<div class="col-xs-12"><img src="{{imagenIco}}" alt="" height="30" width="30" id="imagenIco">
 				<span><strong>{{nombre}}</strong></span><br/>
@@ -100,12 +96,6 @@
     <textarea ng-maxlength="250" ng-model="contacto.longLabelNaptr" id="longLabelNaptr"  class="form-control"></textarea>
    
   </div>
-  
-   <!--<button type="submit" class="btn btn-purple pull-right btnsEditor" ng-show="datosTipoContacto.mostrarBtnGuardar" style="margin: 5px 0;"><img width="15" height="15" alt="Infomovil" 
-    	src="<c:url value="/resources/webapp/images/successWhite.png"/>" /><span class="hidden-xs"> Guardar</span></button>
-    	
-    	
-  <input type="submit" class="btn btn-purple pull-right" ng-show="datosTipoContacto.mostrarBtnGuardar" value="Guardar" style="margin:5px 0;"/> -->
 				
 				</div>
 				

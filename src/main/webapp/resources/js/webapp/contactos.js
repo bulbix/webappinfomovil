@@ -1,6 +1,6 @@
 var app = angular.module('InfomovilApp', []);
 
-app.controller('ToolBarContactoController', function($scope, $http, ContactoService,MensajesService) {
+app.controller('ToolBarContactoController', function($scope, $http, ContactoService, MensajesService) {
 
 	var toolbarContacto = this;
 	toolbarContacto.descripcion = "descrito";
@@ -8,7 +8,8 @@ app.controller('ToolBarContactoController', function($scope, $http, ContactoServ
 	toolbarContacto.contacto = "";
 	toolbarContacto.claseLi = "";
 	toolbarContacto.contactos = "";
-    
+	toolbarContacto.imagenIco = "";
+	
 	toolbarContacto.agregaContacto = function(downgrade, contacto) {
 		
 		ContactoService.setContactosPermitidos(contacto);
@@ -34,7 +35,7 @@ app.controller('ToolBarContactoController', function($scope, $http, ContactoServ
 		var tipoBusqueda = "redSocial";
 		var llaveBusqueda = item.subCategory;
 		var contenidoFinalContacto = item.regExp;
-
+		
 		toolbarContacto.claseBoton = "btn btn-outlineGreen textWhite navEditorLato";
 		toolbarContacto.claseLi = "ui-state-default textBlack claseCursorLi";
 		$scope.contenidoContacto = "";
@@ -53,7 +54,8 @@ app.controller('ToolBarContactoController', function($scope, $http, ContactoServ
 
 		tipoContactoLista = ContactoService.getTipoContacto(tipoBusqueda , llaveBusqueda);
 		mensajesContactoLista = ContactoService.getObjetoTipoContacto(tipoContactoLista);
-	
+		$scope.imagenIco = mensajesContactoLista.imagenIco;
+
 		if (mensajesContactoLista.tipo != undefined)
 		{
 			contenidoFinalContacto = item.regExp.substring(mensajesContactoLista.tipo.length, item.regExp.length);
@@ -292,6 +294,7 @@ app.controller('TipoContacto', function($scope, $http, ContactoService,MensajesS
 	
 	datosTipoContacto.guardarContacto = function(contacto, formulario) {
 		
+		console.log("guardarContacto");
 		if (formulario.$valid)
 		{
 			if (ContactoService.getContactosGuardados() == ContactoService.getContactosPermitidos())
@@ -301,7 +304,7 @@ app.controller('TipoContacto', function($scope, $http, ContactoService,MensajesS
 				return;
 			}
 			
-			guardarContacto(contacto);
+			//guardarContacto(contacto);
 		}
 	}
 	
