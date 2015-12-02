@@ -170,13 +170,14 @@ public class ContactosController
 	@RequestMapping(value = "/infomovil/actualizarContacto", method = { RequestMethod.GET, RequestMethod.POST })
 	@ResponseBody
 	public Map<String, String> actualizarContacto(@RequestParam String claveDeContacto, @RequestParam String descripcionContacto,  @RequestParam String numeroEmailRedSocial,  
-			@RequestParam String constanteContacto, @RequestParam String redSocialWebSecure, @RequestParam String visible) throws UnsupportedEncodingException
+			@RequestParam String constanteContacto, @RequestParam String redSocialWebSecure, @RequestParam String visible, @RequestParam String tipoContacto, @RequestParam String codigoPais) 
+					throws UnsupportedEncodingException
 	{		
 		Map<String, String> resultMap = new HashMap<String, String>();
 		
 		String correo = Util.getUserLogged().getUsername();
 		String password = Util.getUserLogged().getPassword();
-		String regExp = "!^.*$!";
+		String regExp = "!^.*$!" + tipoContacto + codigoPais;
 		descripcionContacto = new String(descripcionContacto.getBytes("ISO-8859-1"), "UTF-8");
 		numeroEmailRedSocial = new String(numeroEmailRedSocial.getBytes("ISO-8859-1"), "UTF-8");
 		
