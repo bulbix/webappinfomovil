@@ -66,7 +66,7 @@ app.factory('ContactoService', function($http, MensajesService) {
 			case 'tel':
 				titulos =
 				{
-					imagen : ' ',
+					imagenIco : '/WebAppInfomovil/resources/webapp/images/fa-tel-bk.png',
 				    nombre : 'Teléfono',
 				    pais : '+52',
 				    placeholder : 'Teléfono',
@@ -81,7 +81,7 @@ app.factory('ContactoService', function($http, MensajesService) {
 			case 'movil':
 				titulos =
 				{
-					imagen : '',
+					imagenIco : '/WebAppInfomovil/resources/webapp/images/',
 				    nombre : 'Móvil',
 				    pais : '+521',
 				    placeholder : 'Teléfono',
@@ -97,7 +97,7 @@ app.factory('ContactoService', function($http, MensajesService) {
 			case 'telsms':
 				titulos =
 				{
-					imagen : '',
+					imagenIco : '',
 				    nombre : 'Teléfono SMS',
 				    pais : '+52',
 				    placeholder : 'Teléfono',
@@ -112,7 +112,7 @@ app.factory('ContactoService', function($http, MensajesService) {
 			case 'fax':
 				titulos =
 				{
-					imagen : ' ',
+					imagenIco : ' ',
 				    nombre : 'Fax',
 				    etiqueta : 'Número Fax',
 				    pais : ' +52',
@@ -128,7 +128,7 @@ app.factory('ContactoService', function($http, MensajesService) {
 			case 'email':
 				titulos =
 				{
-					imagen : ' ',
+					imagenIco : ' ',
 				    nombre : 'E-mail',
 				    etiqueta : 'E-mail',
 				    placeholder : 'email@email.com',
@@ -143,7 +143,7 @@ app.factory('ContactoService', function($http, MensajesService) {
 			case 'facebook':
 				titulos =
 				{
-					imagen : '',
+					imagenIco : '',
 				    nombre : 'Facebook',
 				    etiqueta : 'Liga a tu cuenta de Facebook',
 				    placeholder : 'www.facebook.com/tufanpage',
@@ -157,7 +157,7 @@ app.factory('ContactoService', function($http, MensajesService) {
 			case 'twitter':
 				titulos =
 				{
-					imagen : ' ',
+					imagenIco : ' ',
 				    nombre : 'Twitter',
 				    etiqueta : 'Enlaza tu cuenta de Twitter',
 				    placeholder : 'www.twitter.com/tucuenta',
@@ -172,7 +172,7 @@ app.factory('ContactoService', function($http, MensajesService) {
 			case 'google':
 				titulos =
 				{
-					imagen : ' ',
+					imagenIco : ' ',
 				    nombre : 'Google+',
 				    etiqueta : 'Liga a tu cuenta de Google+',
 				    placeholder : 'plus.google.com/tucuenta',
@@ -185,7 +185,7 @@ app.factory('ContactoService', function($http, MensajesService) {
 			case 'skype':
 				titulos =
 				{
-					imagen : ' ',
+					imagenIco : ' ',
 				    nombre : 'Skype',
 				    etiqueta : 'Liga a tu cuenta de Skype',
 				    placeholder : 'tucuenta',
@@ -200,7 +200,7 @@ app.factory('ContactoService', function($http, MensajesService) {
 			case 'linkedin':
 				titulos =
 				{
-					imagen : ' ',
+					imagenIco : ' ',
 				    nombre : 'LinkedIn',
 				    etiqueta : 'Liga a tu cuenta de LinkedIn',
 				    placeholder : 'www.linkedin.com/tuempresa',
@@ -214,7 +214,7 @@ app.factory('ContactoService', function($http, MensajesService) {
 			case 'securewebsite':
 				titulos =
 				{
-					imagen : ' ',
+					imagenIco : ' ',
 				    nombre : 'Website',
 				    etiqueta : 'Liga a tu sitio web',
 				    placeholder : 'www.infomovil.com',

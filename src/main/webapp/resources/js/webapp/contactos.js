@@ -136,6 +136,8 @@ app.controller('ToolBarContactoController', function($scope, $http, ContactoServ
 		$("#tipoContactoActualizar").val(mensajesContacto.tipo);
 		$("#inputTelefonosActualizar" ).attr("pattern", expReg);
 		$("#inputTelefonosActualizar").attr("placeholder", placeHolder);
+		$("#imagenIco").attr("src", item.imagenIco);
+		console.log("imagenIco:"+ item.imagenIco);
 		$("#myModalContactosActualizar").modal();
 		
 		$("#inputTelefonosActualizar").keydown(function(e) { 
@@ -276,6 +278,7 @@ app.controller('TipoContacto', function($scope, $http, ContactoService,MensajesS
 		$scope.msjValidacion = mensajesContacto.msjValidacion != undefined ? mensajesContacto.msjValidacion : "Número Telefónico Inválido";
 		$scope.maxlength = mensajesContacto.maxlength != undefined ? mensajesContacto.maxlength : "255";
 		$scope.tipoContacto = mensajesContacto.tipo != undefined ? mensajesContacto.tipo : "";
+		$scope.imagenIco = mensajesContacto.imagenIco;
 	}
 	
 	datosTipoContacto.regresarAgregarContacto = function() {
