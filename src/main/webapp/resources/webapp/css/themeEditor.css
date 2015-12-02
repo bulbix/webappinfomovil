@@ -170,7 +170,9 @@ theme-showcaseApp>p>.btn {
 .textBlack {
 	color: #000 !important;
 }
-
+.textRed {
+	color: #ff3300 !important;
+}
 .textPurple {
 	color: #7c41bc !important;
 }

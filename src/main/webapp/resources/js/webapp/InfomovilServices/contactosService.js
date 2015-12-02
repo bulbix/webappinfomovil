@@ -80,11 +80,11 @@ app.factory('ContactoService', function($http, MensajesService) {
 			case 'movil':
 				titulos =
 				{
-					imagenIco : '/WebAppInfomovil/resources/webapp/images/',
+					imagenIco : '/WebAppInfomovil/resources/webapp/images/fa-movil-bk.png',
 				    nombre : 'Móvil',
 				    pais : '+521',
 				    placeholder : 'Teléfono',
-				    mensaje : 'Recuerda que para recibir llamadas internacionales el formato es (1)xxx.xxx.xxxx(10digitos)',
+				    mensaje : 'Recuerda que para recibir llamadas internacionales el formato es (1) xxx.xxx.xxxx (10 dígitos)',
 				    servicio : 'E2U+voice:tel+x-mobile',
 				    muestraPais : true,
 				    maxlength : "10",
@@ -96,7 +96,7 @@ app.factory('ContactoService', function($http, MensajesService) {
 			case 'telsms':
 				titulos =
 				{
-					imagenIco : '',
+					imagenIco : '/WebAppInfomovil/resources/webapp/images/fa-sms-bk.png',
 				    nombre : 'Teléfono SMS',
 				    pais : '+52',
 				    placeholder : 'Teléfono',
@@ -111,7 +111,7 @@ app.factory('ContactoService', function($http, MensajesService) {
 			case 'fax':
 				titulos =
 				{
-					imagenIco : ' ',
+					imagenIco : '/WebAppInfomovil/resources/webapp/images/fa-fax-bk.png',
 				    nombre : 'Fax',
 				    etiqueta : 'Número Fax',
 				    pais : ' +52',
@@ -127,13 +127,13 @@ app.factory('ContactoService', function($http, MensajesService) {
 			case 'email':
 				titulos =
 				{
-					imagenIco : ' ',
+					imagenIco : '/WebAppInfomovil/resources/webapp/images/fa-mail-bk.png',
 				    nombre : 'E-mail',
 				    etiqueta : 'E-mail',
 				    placeholder : 'email@email.com',
 				    servicio : 'E2U+email:mailto',
 				    expRegular : '^[_a-z0-9]+(\.[_a-z0-9]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,4})$',
-				    msjValidacion : 'Formato incorrecto de email',
+				    msjValidacion : 'Formato incorrecto de E-mail',
 				    tipo : 'mailto:'
 				};
 
@@ -142,13 +142,13 @@ app.factory('ContactoService', function($http, MensajesService) {
 			case 'facebook':
 				titulos =
 				{
-					imagenIco : '',
+					imagenIco : '/WebAppInfomovil/resources/webapp/images/fa-fb-bk.png',
 				    nombre : 'Facebook',
 				    etiqueta : 'Liga a tu cuenta de Facebook',
 				    placeholder : 'www.facebook.com/tufanpage',
 				    subcategoria : 'facebook',
 				    expRegular : '(((www|WWW))\\.)?(facebook|FACEBOOK)\\.(com|COM)\\/[a-zA-Z0-9\\*\\?\\+\\[\\(\\)\\{\\}\\^\\$\\|\\.\\/\\ ]{1,}',
-				    msjValidacion : 'Formato incorrecto para facebook'
+				    msjValidacion : 'Formato incorrecto para Facebook'
 				};
 
 				break;
@@ -156,14 +156,14 @@ app.factory('ContactoService', function($http, MensajesService) {
 			case 'twitter':
 				titulos =
 				{
-					imagenIco : ' ',
+					imagenIco : '/WebAppInfomovil/resources/webapp/images/fa-twitter-bk.png',
 				    nombre : 'Twitter',
 				    etiqueta : 'Enlaza tu cuenta de Twitter',
 				    placeholder : 'www.twitter.com/tucuenta',
 				    mensaje : 'Se publicarán tus ultimos Tweets en tu página web',
 				    subcategoria : 'twitter',
 				    expRegular : '(twitter|TWITTER)\\.(com|COM)\\/[a-zA-Z0-9\\*\\?\\+\\[\\(\\)\\{\\}\\^\\$\\|\\.\\/\\ ]{1,}',
-				    msjValidacion : 'Formato incorrecto para twitter'
+				    msjValidacion : 'Formato incorrecto para Twitter'
 				};
 
 				break;
@@ -171,12 +171,12 @@ app.factory('ContactoService', function($http, MensajesService) {
 			case 'google':
 				titulos =
 				{
-					imagenIco : ' ',
+					imagenIco : '/WebAppInfomovil/resources/webapp/images/fa-gplus-bk.png',
 				    nombre : 'Google+',
 				    etiqueta : 'Liga a tu cuenta de Google+',
 				    placeholder : 'plus.google.com/tucuenta',
 				    expRegular : '(plus|PLUS)\\.(google|GOOGLE)\\.(com|COM)\\/[a-zA-Z0-9\\*\\?\\+\\[\\(\\)\\{\\}\\^\\$\\|\\.\\/\\ ]{1,}',
-				    msjValidacion : 'Formato incorrecto para google plus'
+				    msjValidacion : 'Formato incorrecto para Google+'
 				};
 
 				break;
@@ -184,13 +184,13 @@ app.factory('ContactoService', function($http, MensajesService) {
 			case 'skype':
 				titulos =
 				{
-					imagenIco : ' ',
+					imagenIco : '/WebAppInfomovil/resources/webapp/images/fa-skype-bk.png',
 				    nombre : 'Skype',
 				    etiqueta : 'Liga a tu cuenta de Skype',
 				    placeholder : 'tucuenta',
 				    servicio : 'E2U+x-voice:skype',
 				    expRegular : '[a-zA-Z0-9\\*\\?\\+\\[\\(\\)\\{\\}\\^\\$\\|\\.\\/\\ ]{1,}',
-				    msjValidacion : 'Formato incorrecto para skype',
+				    msjValidacion : 'Formato incorrecto para Skype',
 				    tipo : 'skype:'
 				};
 
@@ -199,13 +199,13 @@ app.factory('ContactoService', function($http, MensajesService) {
 			case 'linkedin':
 				titulos =
 				{
-					imagenIco : ' ',
+					imagenIco : '/WebAppInfomovil/resources/webapp/images/fa-linkedin-bk.png',
 				    nombre : 'LinkedIn',
 				    etiqueta : 'Liga a tu cuenta de LinkedIn',
 				    placeholder : 'www.linkedin.com/tuempresa',
 				    subcategoria : 'linkedin',
 				    expRegular : '((WWW|www)\\.){0,1}(linkedin|LINKEDIN)\\.(com|COM)\\/[a-zA-Z0-9\\*\\?\\+\\[\\(\\)\\{\\}\\^\\$\\|\\.\\/\\ ]{1,}',
-				    msjValidacion : 'Formato incorrecto para linkedin'
+				    msjValidacion : 'Formato incorrecto para LinkedIn'
 				};
 
 				break;
@@ -213,14 +213,14 @@ app.factory('ContactoService', function($http, MensajesService) {
 			case 'securewebsite':
 				titulos =
 				{
-					imagenIco : ' ',
+					imagenIco : '/WebAppInfomovil/resources/webapp/images/fa-secweb-bk.png',
 				    nombre : 'Website',
 				    etiqueta : 'Liga a tu sitio web',
 				    placeholder : 'www.infomovil.com',
 				    servicio : 'E2U+web:https',
 				    subcategoria : 'securewebsite',
 				    expRegular : '^([\\w-]+\\.)+[\\w-]+(/[\\w-./?%&=]*)?$',
-				    msjValidacion : 'Formato incorrecto para web'
+				    msjValidacion : 'Formato incorrecto para Web'
 				};
 				break;
 				
