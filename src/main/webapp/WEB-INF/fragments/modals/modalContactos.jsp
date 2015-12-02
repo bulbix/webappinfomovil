@@ -72,7 +72,7 @@
 		<div ng-show="datosTipoContacto.formGuardaContacto">
 
 			<div class="dividerSmall"></div>
-			<div class="col-xs-12"><img src="{{imagenIco}}" alt="{{nombre}}" height="30" width="30" >
+			<div class="col-xs-12"><img src="<c:url value="/resources/webapp/images/{{imagenIco}}"/>" alt="{{nombre}}" height="30" width="30" >
 			<span><strong>{{nombre}}</strong></span><br/>
 			<span class="text-small textGreen">{{mensajeTelefonos}}</span>
 			</div>
@@ -85,8 +85,7 @@
 		    		<div ng-show="datosTipoContacto.muestraPais">Clave Lada {{pais}}</div>
 		    	
 		    		<input type="text" ng-model="contacto.numeroEmailRedSocial" name="contacto.numeroEmailRedSocial" class="form-control" 
-		    			placeholder="{{placeholderContenido}}" id="numeroEmailRedSocial" required="required" data-validation-regex-regex="(?!^[0-9]*$)(?!^[a-zA-Z]*$)^([a-zA-Z0-9]{8,15})$" 
-		        		data-validation-regex-message="Contraseña debe ser de 8 a 15 caracteres (letras y números)"/>
+		    			placeholder="{{placeholderContenido}}" id="numeroEmailRedSocial" required="required"/>
 					<span style="display:none;" id="msgValidaRegExp" class="textRed"><img width="20" height="20"
 						alt="Infomovil" src="<c:url value="/resources/webapp/images/fa-warning-red.png"/>" /> {{msjValidacion}}</span>
 	  			</div>
