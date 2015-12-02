@@ -1,14 +1,14 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <div class="modal-content btnsEditor" ng-controller = "ModalHorarios as combosModalHorarios">
 	<div class="modal-header">
-		<button type="button" class="close textBlack" data-dismiss="modal" aria-label="Close">
-			<span aria-hidden="true">&times;</span>
-		</button>
+		
 		<button type="button" class="btn btn-purple pull-right"  id="" ng-click="combosModalHorarios.guardarHorario()" style="margin:5px 0;"><img width="15" height="15" alt="Infomovil" 
 	    		src="<c:url value="/resources/webapp/images/successWhite.png"/>" /><span class="hidden-xs">Guardar</span></button>
-			<button type="button" class="btn btn-purple pull-right btnsEditor"  id="" ng-click="combosModalHorarios.closeMyModalHorarios()"  style="margin: 5px 0;"><img width="15" height="15" alt="Infomovil" 
+	    		<button type="button" class="btn btn-purple pull-right"  id="" ng-click="combosModalHorarios.eliminarHorario()" style="margin:5px 0;"><img width="15" height="15" alt="Infomovil" 
+	    		src="<c:url value="/resources/webapp/images/successWhite.png"/>" /><span class="hidden-xs">Eliminar</span></button>
+		<button type="button" class="btn btn-purple pull-right btnsEditor"  id="" ng-click="combosModalHorarios.closeMyModalHorarios()"  style="margin: 5px 0;"><img width="15" height="15" alt="Infomovil" 
 	    		src="<c:url value="/resources/webapp/images/successWhite.png" />" /><span class="hidden-xs"> Cancelar</span></button>
-			<button type="button" class="close textBlack pull-left btnsEditor"  aria-label="Close" ng-click="combosModalHorarios.closeMyModalHorarios()" ><span aria-hidden="true"><strong>&times;</strong></span></button>
+		<button type="button" class="close textBlack pull-left btnsEditor"  aria-label="Close" ng-click="combosModalHorarios.closeMyModalHorarios()" ><span aria-hidden="true"><strong>&times;</strong></span></button>
 		<p class="modal-title textBlack"><strong>Horarios</strong></p>
 		
 	</div>
