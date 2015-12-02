@@ -133,6 +133,7 @@ app.controller('ToolBarContactoController', function($scope, $http, ContactoServ
 		$("#servicesNaptrC").val(item.servicesNaptr); 
 		$("#subCategoryC").val(item.subCategory); 
 		$("#visibleC").val(item.visible);
+		$("#tipoContactoActualizar").val(mensajesContacto.tipo);
 		$("#inputTelefonosActualizar" ).attr("pattern", expReg);
 		$("#inputTelefonosActualizar").attr("placeholder", placeHolder);
 		$("#myModalContactosActualizar").modal();
@@ -365,17 +366,23 @@ app.controller('ActualizarContactos', function($scope, $http, ContactoService,Me
 	}
 	
 	actualizarTipoContacto.guardarDatosContacto = function() {
-
+		
 		var contacto = {
-				claveContacto : $("#claveContactoC").val(), 
-				longLabelNaptr : $("#textAreaActualizarTel").val(),
-				regExp : $("#inputTelefonosActualizar").val(),
-				servicesNaptr : $("#servicesNaptrC").val(),
-				subCategory : $("#subCategoryC").val(),
-				visible : $("#visibleC").val()
+					
+			claveContacto : $("#claveContactoC").val(), 
+			longLabelNaptr : $("#textAreaActualizarTel").val(),
+			regExp : $("#inputTelefonosActualizar").val(),
+			servicesNaptr : $("#servicesNaptrC").val(),
+			subCategory : $("#subCategoryC").val(),
+			visible : $("#visibleC").val(),
+			tipoContacto : $("#tipoContactoActualizar").val(),
+			codigoPais : $("#paisActualizarTel").val()
 		};
-		 
-	   ContactoService.actualizarContacto(contacto);
-	   $("#myModalContactosActualizar").modal('toggle');
+		
+		console.log("claveContacto: " + contacto.claveContacto + ", longLabelNaptr: " + contacto.longLabelNaptr + ", regExp: " + contacto.regExp + 
+				", servicesNaptr: " + contacto.servicesNaptr + ", subCategory: " + contacto.subCategory + ", visible: " + contacto.visible);
+		
+		ContactoService.actualizarContacto(contacto);
+		$("#myModalContactosActualizar").modal('toggle');
 	}
 });
