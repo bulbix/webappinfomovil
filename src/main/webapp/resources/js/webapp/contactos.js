@@ -292,6 +292,7 @@ app.controller('TipoContacto', function($scope, $http, ContactoService,MensajesS
 	
 	datosTipoContacto.guardarContacto = function(contacto, formulario) {
 		
+		console.log("guardarContacto");
 		if (formulario.$valid)
 		{
 			if (ContactoService.getContactosGuardados() == ContactoService.getContactosPermitidos())

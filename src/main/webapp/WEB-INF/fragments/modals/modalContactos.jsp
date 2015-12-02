@@ -1,6 +1,14 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
 <div ng-controller = "TipoContacto as datosTipoContacto">
 	<div class="modal-header navEditorSFl">
+	
+	 <!--<button type="submit" class="btn btn-purple pull-right btnsEditor" ng-show="datosTipoContacto.mostrarBtnGuardar" style="margin: 5px 0;"><img width="15" height="15" alt="Infomovil" 
+    	src="<c:url value="/resources/webapp/images/successWhite.png"/>" /><span class="hidden-xs"> Guardar</span></button>
+    	
+    	
+  <input type="submit" class="btn btn-purple pull-right" ng-show="datosTipoContacto.mostrarBtnGuardar" value="Guardar" style="margin:5px 0;"/> -->
+  
 			
 			<button type="submit" class="btn btn-purple pull-right btnsEditor" ng-show="datosTipoContacto.mostrarBtnGuardar" style="margin: 5px 0 0 5px;"><img width="15" height="15" alt="Infomovil" 
     	src="<c:url value="/resources/webapp/images/successWhite.png"/>" /><span class="hidden-xs"> Guardar</span></button>
@@ -28,9 +36,9 @@
 				<li ng-click="datosTipoContacto.tipo('movil')" style="margin:10px 0; border-bottom:1px solid #d9d9d9; padding:5px"> <img width="30" height="30"
 									alt="Infomovil"
 									src="<c:url value="/resources/webapp/images/fa-movil-bk.png"/>" /> Móvil</li>
-				<li ng-click="datosTipoContacto.tipo('telSMS')" style="margin:10px 0; border-bottom:1px solid #d9d9d9; padding:5px"> <img width="30" height="30"
+				<li ng-click="datosTipoContacto.tipo('telsms')" style="margin:10px 0; border-bottom:1px solid #d9d9d9; padding:5px"> <img width="30" height="30"
 									alt="Infomovil"
-									src="<c:url value="/resources/webapp/images/fa-sms-bk.png"/>" /> Teléfono SMS</li>
+									src="<c:url value="/resources/webapp/images/fa-sms-bk.png"/>" /> TeléfoSMS</li>
 				<li ng-click="datosTipoContacto.tipo('email')" style="margin:10px 0; border-bottom:1px solid #d9d9d9; padding:5px"> <img width="30" height="30"
 									alt="Infomovil"
 									src="<c:url value="/resources/webapp/images/fa-email-bk.png"/>" /> E-mail</li>
@@ -74,13 +82,13 @@
 		</div>
 		<div ng-show="datosTipoContacto.formGuardaContacto">
 			<form name="miFormulario" ng-submit="datosTipoContacto.guardarContacto(contacto, miFormulario)" ng-controller="TipoContacto" novalidate>
-			<div class="divider hidden-xs"></div>
-				<div class="col-xs-12"><img src="{{imagenIco}}" alt="" height="30" width="30" id="imagenIco">
+			<div class="dividerSmall"></div>
+				<div class="col-xs-12"><img src="{{imagenIco}}" alt="{{nombre}}" height="30" width="30" >
 				<span><strong>{{nombre}}</strong></span><br/>
-				<span class="text-small">{{mensajeTelefonos}}</span>
+				<span class="text-small textGreen">{{mensajeTelefonos}}</span>
 				</div>
 				<div class="clearfix"></div>
-				<div class="divider hidden-xs"></div>
+				<div class="dividerSmall"></div>
 				<div class="col-xs-12">
 				
 				<div class="form-group">
@@ -94,7 +102,7 @@
 									src="<c:url value="/resources/webapp/images/fa-warning-red.png"/>" /> {{msjValidacion}}</span>
   </div>
 				
-				<div class="divider hidden-xs"></div>
+				<div class="dividerSmall"></div>
 				 <div class="form-group">
     <label>Descripción</label>
     <textarea ng-maxlength="250" ng-model="contacto.longLabelNaptr" id="longLabelNaptr"  class="form-control"></textarea>
@@ -113,8 +121,8 @@
 				
   
   
-			
 			</form>
+			
 		</div>
 	</div>  
 	
@@ -122,3 +130,4 @@
 
 	<div class="modal-footer"></div>
 </div>
+
