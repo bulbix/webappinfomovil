@@ -6,8 +6,6 @@ var indice = 0;
 	
 $(document).ready(function() {
 	$("#txtTelefono").numeric({negative : false} );
-	if(contextPath == "/")
-		contextPath = "";
 });
 
 function validaDominio(tipo)

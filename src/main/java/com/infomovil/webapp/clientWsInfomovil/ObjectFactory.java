@@ -1491,14 +1491,6 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link AnyTypeArray }
-     * 
-     */
-    public AnyTypeArray createAnyTypeArray() {
-        return new AnyTypeArray();
-    }
-
-    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link Catalogo }{@code >}}
      * 
      */

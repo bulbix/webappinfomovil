@@ -47,7 +47,7 @@ import javax.xml.bind.annotation.XmlType;
  *         &lt;element name="listPromocion" type="{http://ws.webservice.infomovil.org/}offertRecordVO" maxOccurs="unbounded" minOccurs="0"/>
  *         &lt;element name="listContactos" type="{http://ws.webservice.infomovil.org/}recordNaptrVO" maxOccurs="unbounded" minOccurs="0"/>
  *         &lt;element name="listHorarios" type="{http://ws.webservice.infomovil.org/}horarioVO" maxOccurs="unbounded" minOccurs="0"/>
- *         &lt;element name="listVisitas" type="{http://jaxb.dev.java.net/array}anyTypeArray" maxOccurs="unbounded" minOccurs="0"/>
+ *         &lt;element name="listVisitas" type="{http://ws.webservice.infomovil.org/}visitasVO" maxOccurs="unbounded" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -120,7 +120,7 @@ public class RespuestaVO {
     protected List<OffertRecordVO> listPromocion;
     protected List<RecordNaptrVO> listContactos;
     protected List<HorarioVO> listHorarios;
-    protected List<AnyTypeArray> listVisitas;
+    protected List<VisitasVO> listVisitas;
 
     /**
      * Obtiene el valor de la propiedad resultado.
@@ -876,13 +876,13 @@ public class RespuestaVO {
      * 
      * <p>
      * Objects of the following type(s) are allowed in the list
-     * {@link AnyTypeArray }
+     * {@link VisitasVO }
      * 
      * 
      */
-    public List<AnyTypeArray> getListVisitas() {
+    public List<VisitasVO> getListVisitas() {
         if (listVisitas == null) {
-            listVisitas = new ArrayList<AnyTypeArray>();
+            listVisitas = new ArrayList<VisitasVO>();
         }
         return this.listVisitas;
     }

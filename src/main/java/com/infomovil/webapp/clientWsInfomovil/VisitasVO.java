@@ -22,6 +22,7 @@ import javax.xml.bind.annotation.XmlType;
  *         &lt;element name="fecha" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="token" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="resultado" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *         &lt;element name="visitasUnicas" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -37,7 +38,10 @@ import javax.xml.bind.annotation.XmlType;
     "visitas",
     "fecha",
     "token",
-    "resultado"
+    "resultado",
+    "visitasUnicas",
+    "fechaInicial",
+    "fechaFinal"
 })
 public class VisitasVO {
 
@@ -47,6 +51,9 @@ public class VisitasVO {
     protected String fecha;
     protected String token;
     protected String resultado;
+    protected String visitasUnicas;
+    protected String fechaInicial;
+    protected String fechaFinal;
 
     /**
      * Obtiene el valor de la propiedad descripcionVisitas.
@@ -191,5 +198,52 @@ public class VisitasVO {
     public void setResultado(String value) {
         this.resultado = value;
     }
+
+    /**
+     * Obtiene el valor de la propiedad visitasUnicas.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getVisitasUnicas() {
+        return visitasUnicas;
+    }
+
+    /**
+     * Define el valor de la propiedad visitasUnicas.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setVisitasUnicas(String value) {
+        this.visitasUnicas = value;
+    }
+
+	public String getFechaInicial() {
+		return fechaInicial;
+	}
+
+	public void setFechaInicial(String fechaInicial) {
+		this.fechaInicial = fechaInicial;
+	}
+
+	public String getFechaFinal() {
+		return fechaFinal;
+	}
+
+	public void setFechaFinal(String fechaFinal) {
+		this.fechaFinal = fechaFinal;
+	}
+
+	@Override
+	public String toString() {
+		return "VisitasVO [visitas=" + visitas + ", fecha=" + fecha + ", visitasUnicas=" + visitasUnicas + "]";
+	}
+    
+    
 
 }

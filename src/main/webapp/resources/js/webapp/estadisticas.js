@@ -2,79 +2,133 @@ angular.module("EstadisticasInfomovilApp",[])
 .controller("EstadisticasCtrl", function($scope, $http) {
 	var estadistica = this;
 	$.jqplot.config.enablePlugins = true;
-
+	$.jqplot._noToImageButton = true;
+	
 	$( ".datepicker" ).datepicker({ dateFormat: 'dd/mm/yy' });
-
+	
+	estadistica.init = function(fechaInicial,fechaFinal){
+		estadistica.fechaInicial= fechaInicial;
+		estadistica.fechaFinal= fechaFinal;
+		cargarGrafica('1semana', fechaInicial, fechaFinal);
+	}
+	
 	estadistica.generarGrafica = function(cual){
-		$("#chart").html('');
-		generarMensaje("Generando Grafica");
 		cargarGrafica(cual, estadistica.fechaInicial, estadistica.fechaFinal);
-		$.unblockUI();
 	}
 
-	function cargarGrafica(cual, fechaInicial, fechaFinal, successCallback){
-
+	function cargarGrafica(cual, fechaInicial, fechaFinal){
 		console.debug("FechaInicial:" + fechaInicial);
 		console.debug("FechaFinal:" + fechaFinal);
 		console.debug("Cual:" + cual);
-
+		
+		$("#chart").html('');
+		generarMensaje("Generando Grafica");
+		
+		var titulos = {
+			'personalizado':'del ' + fechaInicial + ' al ' + fechaFinal,
+			'1semana':'Reporte una semana',
+			'1mes':'Reporte 1 mes',
+			'3meses':'Reporte 3 meses',
+			'6meses':'Reporte 6 meses',
+			'1anio':'Reporte 1 año'}
+		
 		$http({
 			method: 'GET',
-			//url: contextPath + "/infomovil/getDatosEstadistica",
-			url: "/WebAppInfomovil/infomovil/getDatosEstadistica",
+			url: contextPath + "/infomovil/getDatosEstadistica",
 			params: { 
 				fechaInicial:fechaInicial, 
 				fechaFinal:fechaFinal,
 				cual:cual}	  
 		}).then(function successCallback(response) {
-			var plot1 = $.jqplot('chart', [response.data], {
-				title:'Visitas',
-				axes:{
-					xaxis:{
-						renderer:$.jqplot.DateAxisRenderer,
-						tickInterval:'10 day',
-						rendererOptions:{
-							tickRenderer:$.jqplot.CanvasAxisTickRenderer
-						},
-						tickOptions:{formatString:'%d/%m/%Y',  angle:-40}
-					},
-					yaxis:{
-						rendererOptions:{
-							tickRenderer:$.jqplot.CanvasAxisTickRenderer},
-							tickOptions:{
-								angle:30
-							}
-					}
-				},
-				highlighter: {
-                    show: true,
-                    showMarker:true,
-                    showTooltip:true,
-                    sizeAdjust: 5,
-                    tooltipLocation: 'n',
-                    tooltipAxes: 'xy',
-                    yvalues: 2,
-                    formatString:'<table class="jqplot-cursor-tooltip">\
-                    	<tr><td>Fecha: %s</td></tr>\
-                    	<tr><td>Totales: %s</td></tr>\
-                    	<tr><td>Unicas: %s</td></tr>\
-                    	</table>',
-                    useAxesFormatters: true,
-               },
-				cursor: {
-					show: false,
-				},
-				series:[{lineWidth:4, markerOptions:{style:'square'}}]
-			});
+			estadistica.fechaInicial= response.data.fechaInicial;
+			estadistica.fechaFinal= response.data.fechaFinal;
+			
+			var plot1 = $.jqplot("chart", [response.data.arrayVisitas, response.data.arrayVisitasUnicas], {
+		        seriesColors: ["rgba(78, 135, 194, 0.7)", "rgb(211, 235, 59)"],
+		        title: titulos[cual],
+		        highlighter: {
+		            show: true,
+		            sizeAdjust: 1,
+		            tooltipOffset: 9,
+		            formatString:'%s<br/>Visitas: %s'
+		        },
+		        /*grid: {
+		            background: 'rgba(57,57,57,0.0)',
+		            drawBorder: false,
+		            shadow: false,
+		            gridLineColor: '#666666',
+		            gridLineWidth: 2
+		        },*/
+		        legend: {
+		            show: true,
+		            placement: 'inside'
+		        },
+		        seriesDefaults: {
+		            rendererOptions: {
+		                smooth: true,
+		                animation: {
+		                    show: true
+		                }
+		            },
+		            showMarker: false
+		        },
+		        series: [
+		            {
+		                fill: true,
+		                label: 'Totales: ' + response.data.sumVisitasTotales 
+		            },
+		            {
+		                label: 'Unicas: ' + response.data.sumVisitasUnicas
+		            }
+		        ],
+		        axesDefaults: {
+		            rendererOptions: {
+		                baselineWidth: 1.5,
+		                baselineColor: '#444444',
+		                drawBaseline: false
+		            }
+		        },
+		        axes: {
+		            xaxis: {
+		                renderer: $.jqplot.DateAxisRenderer,
+		                tickRenderer: $.jqplot.CanvasAxisTickRenderer,
+		                tickOptions: {
+		                	formatString:'%d/%m/%Y',
+		                    angle: -30,
+		                    textColor: '#dddddd'
+		                },
+		                min: response.data.minFecha,
+		                max: response.data.maxFecha,
+		                //tickInterval: intervalos[cual],
+		                drawMajorGridlines: false
+		            },
+		            yaxis: {
+		            	min:-10,
+		            	max:response.data.maxVisita,
+		                tickOptions: {
+		                    formatString: "%'d",
+		                    showMark: false
+		                }
+		            }
+		        }
+		    });
+			
+			console.debug('maxVisita:' + response.data.maxVisita);
+			console.debug('MinFecha:' + response.data.minFecha);
+			console.debug('MaxFecha:' + response.data.maxFecha);
 
 			//Responsive
 			window.onresize = function(event) {
 				plot1.replot();
 			}
+			$.unblockUI();
 
 		}, function errorCallback(response) {
-			console.error("El error es: " + response , response.data.codeError);
+			console.error("El error es: " + response.data);
+			$.unblockUI();
 		});
+		
+		
 	}
 
 });

@@ -38,8 +38,6 @@ public class HorarioVO {
     protected String dia;
     protected String inicio;
     protected String cierre;
-    
-    
 
     public HorarioVO(String dia, String inicio, String cierre) {
 		super();
@@ -48,9 +46,8 @@ public class HorarioVO {
 		this.cierre = cierre;
 	}
     
-    public HorarioVO(){
-    	
-    }
+    public HorarioVO(){}
+    
 
 	/**
      * Obtiene el valor de la propiedad dia.

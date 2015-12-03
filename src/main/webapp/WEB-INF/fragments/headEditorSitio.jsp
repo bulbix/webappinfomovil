@@ -118,6 +118,8 @@ a.async=true;a.type="text/javascript";b.parentNode.insertBefore(a,b)}, 1);
 </script>
 		<script type="text/javascript">
 				var contextPath='<%=request.getContextPath()%>';
+				if(contextPath == "/")
+					contextPath = "";
 				console.log("ContextPath: " + contextPath);
 		</script>
 		

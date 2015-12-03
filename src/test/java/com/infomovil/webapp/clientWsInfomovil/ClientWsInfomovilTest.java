@@ -2,12 +2,15 @@ package com.infomovil.webapp.clientWsInfomovil;
 
 import static org.junit.Assert.*;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
 import org.apache.commons.collections4.Closure;
 import org.apache.commons.collections4.CollectionUtils;
+import org.apache.commons.io.FileUtils;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -318,9 +321,23 @@ public class ClientWsInfomovilTest {
 	
 	@Test
 	public void testCrearSitioReporteUsuario() {
-		RespuestaVO resp = clientWsInfomovil.crearSitioReporteUsuario("docker@mail.com", "garbage1","personalizado","01/01/2015","31/12/2015");
+		RespuestaVO resp = clientWsInfomovil.crearSitioReporteUsuario("docker6@mail.com", "garbage1","1semana","02/12/2015","02/12/2015");
+		System.out.println(resp.getListVisitas().size());
 		System.out.println(resp.getListVisitas());
 		System.out.println(resp.getCodeError());
+	}
+	
+	@Test
+	public void testEliminarImagenes() throws IOException {
+		List<String> lineas = FileUtils.readLines(new File("/Users/BAZ/Desktop/salidaImagenes.csv"));
+		for(String linea: lineas){
+			String[] tokens = linea.split(",");
+			String idDominio=tokens[0];
+			String idImagen=tokens[1];
+			String ruta = tokens[3];
+			RespuestaVO resp = clientWsInfomovil.crearSitioEliminaImage(idDominio, idImagen);
+			System.out.println(ruta + "--" + resp.getCodeError());
+		}
 	}
 	
 	
