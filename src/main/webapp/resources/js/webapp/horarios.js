@@ -28,24 +28,33 @@ app.controller('HorariosControllerLlamarModal', function($scope, $http, HorarioS
 });
 
 app.controller('ModalHorarios', function($scope, $http, HorarioService, MensajesService) {
+	
 	var combosModalHorarios = this;
 	var horas = new Array();
 	
-	combosModalHorarios.eliminarHorario = function(){
-		MensajesService.abrirBlockUIGeneral("Eliminando horario...");
-		HorarioService.eliminarHorario();
+	combosModalHorarios.eliminarHorario = function() {
+
+		var textos = {
+			titulo : "Eliminar Contacto",
+			mensaje : "¿Seguro que deseas eliminar el contacto?"
+		};
+
+		MensajesService.obtenerConfirmacion(textos, function(confirmarBorrar) {
+			
+			if (confirmarBorrar)
+				HorarioService.eliminarHorario();
+		});
+		
 	};
 	
-	combosModalHorarios.guardarHorario = function(){
+	combosModalHorarios.guardarHorario = function() {
+		
 		MensajesService.abrirBlockUIGeneral("Guardando horario...");
 		console.log("Entro en guardar horarios!!");
 		console.log("Imprime el valor enviado : " + $( "#Lunes1 option:selected" ).text());
 		console.log("Imprime el valor enviado : " + $( "#Lunes2 option:selected" ).text());
 		console.log("Imprime el valor enviado : " + $( "#Martes1 option:selected" ).text());
 		console.log("Imprime el valor enviado : " + $( "#Martes2 option:selected" ).text());
-	
-		
-		
 		
 		horas[0] = $( "#Lunes1 option:selected" ).text();
 		horas[1] = $( "#Lunes2 option:selected" ).text();
@@ -61,25 +70,12 @@ app.controller('ModalHorarios', function($scope, $http, HorarioService, Mensajes
 		horas[11] = $( "#Sabado2 option:selected" ).text();
 		horas[12] = $( "#Domingo1 option:selected" ).text();
 		horas[13] = $( "#Domingo2 option:selected" ).text();
-		
-		
+			
 		HorarioService.guardarHorario(horas);
 	};
 	
-	
-	combosModalHorarios.closeMyModalHorarios = function(){
+	combosModalHorarios.closeMyModalHorarios = function() {
 		$("#myModalHorarios").modal('toggle');
-	};
-	
-	
-	
-	
-	
-
-	
+	};	
 	
 });
-
-
-
-

@@ -25,12 +25,35 @@ app.factory('MensajesService', function($http) {
     	 }
      };
      
+    function obtenerConfirmacion(textos, callback) {
+
+    	BootstrapDialog
+		.show({
+			title : "<div class='textBlack'>" + textos.titulo + "</div>",
+			message : "<div style='display:block; padding: 10px;'>" + textos.mensaje + "</div>",
+			buttons : [
+					{
+						label : 'Cancelar',
+						action : function(dialog) {
+							callback(false);
+							dialog.close();
+						}
+					},
+					{
+						label : 'Aceptar',
+						action : function(dialog) {
+							callback(true);
+							dialog.close();
+						}
+					} ]
+		});
+    }
      
-     
-	return{   	
-		abrirBlockUIGeneral : abrirBlockUIGeneral,
-		cerrarBlockUIGeneral : cerrarBlockUIGeneral
+	return { 
 		
+		abrirBlockUIGeneral : abrirBlockUIGeneral,
+		cerrarBlockUIGeneral : cerrarBlockUIGeneral,
+		obtenerConfirmacion : obtenerConfirmacion
 	}
 	
 });
