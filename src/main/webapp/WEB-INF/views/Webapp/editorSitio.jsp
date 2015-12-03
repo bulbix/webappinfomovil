@@ -83,9 +83,9 @@
 							
 							<li class="botonDesPublicar" id="btnImgLi" style="display: none;"><a
 								href="#" class="smoothScroll ${colorTexto}"
-								ng-click="llamarModalhorarios.abrirModalHorarios()">Horarios<img width="20" height="20"
+								ng-click="llamarModalhorarios.abrirModalHorarios()"> Horarios<img width="20" height="20"
 									alt="Infomovil"
-									src="<c:url value="/resources/webapp/images/ico_img${ extensionImg }.png"/>" /></a></li>
+									src="<c:url value="/resources/webapp/images/fa-time${ extensionImg }.png"/>" /></a></li>
 								
 									
 							<li class="botonDesPublicar borderFin" id="btnContLi"
@@ -427,7 +427,7 @@
 	<tiles:insertDefinition name="modalGen">
 		<tiles:putAttribute name="idModal" value="myModalHorarios" />
 		<tiles:putAttribute name="tamanioModal"
-			value='"modal-dialog modal-lg"' />
+			value='"modal-dialog modal-md"' />
 		<c:set var="fragmentName" value="modalHorarios" scope="request" />
 	</tiles:insertDefinition>
 	<!-- 		<!--/MODAL HORARIOSE-->
