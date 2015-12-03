@@ -137,14 +137,21 @@ public class PerfilController
 	
 		try
 		{	
+			RespuestaVO respConsulta;
+			RespuestaVO resp;
 			String correo = Util.getUserLogged().getUsername();
 			String password = Util.getUserLogged().getPassword();	
-			RespuestaVO resp = wsCliente.crearSitioGetHorarios(correo,password);
-			
-			resp.getKeyword().setKeywordValue("");
-			resp.getKeyword().setKeywordField("");			
-			resp = wsCliente.crearSitioHorarios(correo,password,resp.getKeyword(),null,"delete");
-			resultMap.put("codeError", resp.getCodeError());
+			respConsulta = wsCliente.crearSitioGetHorarios(correo, password);
+			if(respConsulta.getKeyword() == null){
+				System.out.println("No hay horario para eliminar: " + respConsulta.getCodeError());
+				resultMap.put("codeError", "0");
+			}else{
+				System.out.println("Se va a eliminar el horario: " +respConsulta.getCodeError());
+				respConsulta.getKeyword().setKeywordValue("");
+				respConsulta.getKeyword().setKeywordField("");			
+				resp = wsCliente.crearSitioHorarios(correo,password,respConsulta.getKeyword(),null,"delete");
+				resultMap.put("codeError", resp.getCodeError());
+			}
 		}		
 		catch (Exception e) 
 		{

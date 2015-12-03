@@ -218,7 +218,7 @@
 											</div>
 											<div class="col-xs-3 col-sm-2 text-left">
 												<button type="button"
-													ng-class="toolbarContacto.claseBoton">
+													ng-class="toolbarContacto.claseBoton"  ng-click="toolbarContacto.activarSortearContacto()" >
 													<img width="20" height="20" alt="Infomovil"
 														src="<c:url value="/resources/webapp/images/fa-order.png"/>" />
 													<span class="hidden-xs"></span>

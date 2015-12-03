@@ -9,6 +9,34 @@ app.controller('ToolBarContactoController', function($scope, $http, ContactoServ
 	toolbarContacto.claseLi = "";
 	toolbarContacto.contactos = "";
 	toolbarContacto.imagenIco = "";
+	var itemsInicio = "";
+    var itemsFin = "";
+    
+	toolbarContacto.activarSortearContacto = function(){
+		
+		 $("#sortable").sortable();
+		 $("#sortable").sortable( "option", "disabled", false );
+		 $("#sortable").sortable({
+	    	 start: function(event, ui) {
+	    		 itemsInicio = $("#sortable").sortable("toArray");
+	    		 console.log("Unamos los corazones!");
+	    	 }
+	     });
+		 
+		 $("#sortable").sortable({
+			 update: function(event, ui) {	
+				 itemsFin = $( "#sortable" ).sortable("toArray");
+				
+				 if(itemsInicio != itemsFin)
+					 ordenarContactos(itemsFin);
+				 
+				 $("#sortable").disableSelection();
+				 $("#sortable").sortable('disable');
+			 }	
+		 
+		 });
+	};
+	
 	
 	toolbarContacto.agregaContacto = function(downgrade, contacto) {
 		
@@ -214,37 +242,18 @@ app.controller('ToolBarContactoController', function($scope, $http, ContactoServ
 			 mensaje = "No se han podido actualizar los contactos";
 			 MensajesService.cerrarBlockUIGeneral("Contactos" ,mensaje);
 		 });
+		 
 	 };
 
      $scope.$watch(function () { return ContactoService.contactos(); }, function (value) {
-    	 
     	 toolbarContacto.contactos = value;
     	 var arr = value instanceof Array ? value : [value]; 
     	 ContactoService.setContactosGuardados(arr.length);
      });
 
-     var itemsInicio = "";
-     var itemsFin = "";
-     
-     $("#sortable").sortable({
-    	 
-    	 start: function(event, ui) {
-    		 itemsInicio = $("#sortable").sortable("toArray");
-    	 }
-     });
+    
  
-	 $("#sortable").sortable({
-		 
-		 update: function(event, ui) {	
-			 
-			 itemsFin = $( "#sortable" ).sortable("toArray");
-			  
-			 if(itemsInicio != itemsFin)
-				 ordenarContactos(itemsFin);
-		 }	
-	 });
-	
-	 $("#sortable").disableSelection();
+	 
 
      /*Obtiene los contactos*/
      ContactoService.getContactos();
