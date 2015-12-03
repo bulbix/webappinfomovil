@@ -53,7 +53,7 @@ app.factory('ContactoService', function($http, MensajesService) {
     	 }, function errorCallback(response) {
     		 console.log("El error es: Peticion incorrecta" + response.codeError);
     		 mensaje = "No se ha podido actualizar el contacto";
-    		 MensajesService.cerrarBlockUIGeneral("Contactos",mensaje);
+    		 MensajesService.cerrarBlockUIGeneral("Contactos", mensaje);
     	 });
      };	
 

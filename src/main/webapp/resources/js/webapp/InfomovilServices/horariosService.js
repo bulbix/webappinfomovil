@@ -1,4 +1,4 @@
-app.factory('HorarioService', function($http,MensajesService) {
+app.factory('HorarioService', function($http, MensajesService) {
 	
 	function getHoras() {
     	 
@@ -123,8 +123,11 @@ app.factory('HorarioService', function($http,MensajesService) {
     		
     	};
     	
-    	function eliminarHorario(){
-    		var mensaje = "";
+    	function eliminarHorario() {
+    		
+    		var mensaje = "Eliminando horario...";
+    		MensajesService.abrirBlockUIGeneral(mensaje);
+    		
     		$http({
     			method: 'POST',
     			url: contextPath + "/infomovil/eliminarHorarios",

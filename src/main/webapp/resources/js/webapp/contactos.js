@@ -101,24 +101,15 @@ app.controller('ToolBarContactoController', function($scope, $http, ContactoServ
 	
 	toolbarContacto.eliminarContacto = function(item) {
 		
-    	BootstrapDialog
-		.show({
-			title : '<div class="textBlack">Eliminar Contacto</div>',
-			message : '<div style="display:block; padding: 10px;">¿Seguro que deseas eliminar el contacto?</div>',
-			buttons : [
-					{
-						label : 'Cancelar',
-						action : function(dialog) {
-							dialog.close();
-						}
-					},
-					{
-						label : 'Aceptar',
-						action : function(dialog) {
-							dialog.close();
-							eliminarContacto(item.claveContacto);
-						}
-					} ]
+		var textos = {
+			titulo : "Eliminar Contacto",
+			mensaje : "¿Seguro que deseas eliminar el contacto?"
+		};
+
+		MensajesService.obtenerConfirmacion(textos, function(confirmarBorrar) {
+			
+			if (confirmarBorrar)
+				eliminarContacto(item.claveContacto);
 		});
 	};
 	
