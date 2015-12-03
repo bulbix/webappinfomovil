@@ -152,8 +152,6 @@ public class PerfilController
 				resp = wsCliente.crearSitioHorarios(correo,password,respConsulta.getKeyword(),null,"delete");
 				resultMap.put("codeError", resp.getCodeError());
 			}
-			
-			
 		}		
 		catch (Exception e) 
 		{
