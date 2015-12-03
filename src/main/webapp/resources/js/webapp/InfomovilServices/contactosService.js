@@ -94,7 +94,7 @@ app.factory('ContactoService', function($http, MensajesService) {
 
 				break;
 			
-			case 'telsms':
+			case 'telSMS':
 				titulos =
 				{
 					imagenIco : 'fa-sms-bk.png',
