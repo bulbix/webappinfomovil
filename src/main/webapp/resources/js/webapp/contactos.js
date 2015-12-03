@@ -9,6 +9,30 @@ app.controller('ToolBarContactoController', function($scope, $http, ContactoServ
 	toolbarContacto.claseLi = "";
 	toolbarContacto.contactos = "";
 	toolbarContacto.imagenIco = "";
+	var itemsInicio = "";
+    var itemsFin = "";
+    
+	toolbarContacto.activarSortearContacto = function(){
+		 $("#sortable").sortable({
+	    	 start: function(event, ui) {
+	    		 itemsInicio = $("#sortable").sortable("toArray");
+	    	 }
+	     });
+	};
+	
+	$("#sortable").sortable({
+		 
+		 update: function(event, ui) {	
+			 
+			 itemsFin = $( "#sortable" ).sortable("toArray");
+			  
+			 if(itemsInicio != itemsFin)
+				 ordenarContactos(itemsFin);
+		 }	
+	 });
+	
+	 $("#sortable").disableSelection();
+	
 	
 	toolbarContacto.agregaContacto = function(downgrade, contacto) {
 		
@@ -233,28 +257,9 @@ app.controller('ToolBarContactoController', function($scope, $http, ContactoServ
     	 ContactoService.setContactosGuardados(arr.length);
      });
 
-     var itemsInicio = "";
-     var itemsFin = "";
-     
-     $("#sortable").sortable({
-    	 
-    	 start: function(event, ui) {
-    		 itemsInicio = $("#sortable").sortable("toArray");
-    	 }
-     });
+    
  
-	 $("#sortable").sortable({
-		 
-		 update: function(event, ui) {	
-			 
-			 itemsFin = $( "#sortable" ).sortable("toArray");
-			  
-			 if(itemsInicio != itemsFin)
-				 ordenarContactos(itemsFin);
-		 }	
-	 });
-	
-	 $("#sortable").disableSelection();
+	 
 
      /*Obtiene los contactos*/
      ContactoService.getContactos();
