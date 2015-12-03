@@ -35,8 +35,8 @@ app.controller('ModalHorarios', function($scope, $http, HorarioService, Mensajes
 	combosModalHorarios.eliminarHorario = function() {
 
 		var textos = {
-			titulo : "Eliminar Contacto",
-			mensaje : "¿Seguro que deseas eliminar el contacto?"
+			titulo : "Borrar Horario",
+			mensaje : "¿Seguro que deseas borrar el horario?"
 		};
 
 		MensajesService.obtenerConfirmacion(textos, function(confirmarBorrar) {
@@ -50,11 +50,6 @@ app.controller('ModalHorarios', function($scope, $http, HorarioService, Mensajes
 	combosModalHorarios.guardarHorario = function() {
 		
 		MensajesService.abrirBlockUIGeneral("Guardando horario...");
-		console.log("Entro en guardar horarios!!");
-		console.log("Imprime el valor enviado : " + $( "#Lunes1 option:selected" ).text());
-		console.log("Imprime el valor enviado : " + $( "#Lunes2 option:selected" ).text());
-		console.log("Imprime el valor enviado : " + $( "#Martes1 option:selected" ).text());
-		console.log("Imprime el valor enviado : " + $( "#Martes2 option:selected" ).text());
 		
 		horas[0] = $( "#Lunes1 option:selected" ).text();
 		horas[1] = $( "#Lunes2 option:selected" ).text();

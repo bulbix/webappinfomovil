@@ -52,21 +52,6 @@
 				<li ng-click="datosTipoContacto.tipo('securewebsite')" style="margin:10px 0; border-bottom:1px solid #d9d9d9; padding:5px"><img width="30" height="30"
 									alt="Infomovil"
 									src="<c:url value="/resources/webapp/images/fa-secweb-bk.png"/>" /> Secure website</li>
-				<li ng-click="datosTipoContacto.tipo('securewebsite')" style="margin:10px 0; border-bottom:1px solid #d9d9d9; padding:5px"><img width="30" height="30"
-									alt="Infomovil"
-									src="<c:url value="/resources/webapp/images/fa-www-bk.png"/>" /> Website</li>
-				<li ng-click="datosTipoContacto.tipo('securewebsite')" style="margin:10px 0; border-bottom:1px solid #d9d9d9; padding:5px"><img width="30" height="30"
-									alt="Infomovil"
-									src="<c:url value="/resources/webapp/images/fa-apple-bk.png"/>" /> App iOS </li>
-				<li ng-click="datosTipoContacto.tipo('securewebsite')" style="margin:10px 0; border-bottom:1px solid #d9d9d9; padding:5px"><img width="30" height="30"
-									alt="Infomovil"
-									src="<c:url value="/resources/webapp/images/fa-and-bk.png"/>" /> App Android </li>
-				<li ng-click="datosTipoContacto.tipo('securewebsite')" style="margin:10px 0; border-bottom:1px solid #d9d9d9; padding:5px"><img width="30" height="30"
-									alt="Infomovil"
-									src="<c:url value="/resources/webapp/images/fa-blackberry-bk.png"/>" /> App BlackBerry </li>
-				<li ng-click="datosTipoContacto.tipo('securewebsite')" style="margin:10px 0; border-bottom:1px solid #d9d9d9; padding:5px"><img width="30" height="30"
-									alt="Infomovil"
-									src="<c:url value="/resources/webapp/images/fa-winphone-bk.png"/>" /> App WindowsPhone </li>
 			</ul>
 		</div>
 		<div ng-show="datosTipoContacto.formGuardaContacto">

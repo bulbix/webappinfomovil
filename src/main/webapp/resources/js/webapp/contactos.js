@@ -74,8 +74,8 @@ app.controller('ToolBarContactoController', function($scope, $http, ContactoServ
 	toolbarContacto.eliminarContacto = function(item) {
 		
 		var textos = {
-			titulo : "Eliminar Contacto",
-			mensaje : "¿Seguro que deseas eliminar el contacto?"
+			titulo : "Borrar Contacto",
+			mensaje : "¿Seguro que deseas borrar el contacto?"
 		};
 
 		MensajesService.obtenerConfirmacion(textos, function(confirmarBorrar) {
@@ -115,7 +115,7 @@ app.controller('ToolBarContactoController', function($scope, $http, ContactoServ
 		placeHolder = mensajesContacto.placeholder != undefined ? mensajesContacto.placeholder : "Número Telefónico Inválido";
 		contenidoContacto = item.regExp;
 		$scope.imagenIco = mensajesContacto.imagenIco;
-		
+		console.log("$scope.imagenIco: " + $scope.imagenIco);
 		regex = new RegExp(expReg);
 		
 		if (mensajesContacto.tipo != undefined)
@@ -139,7 +139,6 @@ app.controller('ToolBarContactoController', function($scope, $http, ContactoServ
 		$("#tipoContactoActualizar").val(mensajesContacto.tipo);
 		$("#inputTelefonosActualizar" ).attr("pattern", expReg);
 		$("#inputTelefonosActualizar").attr("placeholder", placeHolder);
-		$("#imagenIco").attr("src", mensajesContacto.imagenIco);
 		$("#myModalContactosActualizar").modal();
 		
 		$("#inputTelefonosActualizar").keydown(function(e) { 

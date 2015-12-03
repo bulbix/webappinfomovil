@@ -626,7 +626,6 @@ public class WebappController
 				
 				for (StatusDomainVO stat : wsRespuesta.getListStatusDomainGratisVO())
 				{
-					logger.info("stat.getDescripcionItem(): " + stat.getDescripcionItem() + ", total: " + stat.getStatus());
 					item = stat.getDescripcionItem();
 					
 					switch(item)
