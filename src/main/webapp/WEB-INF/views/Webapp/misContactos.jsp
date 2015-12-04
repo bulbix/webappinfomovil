@@ -119,6 +119,7 @@
 						<div ng-controller="ToolBarContactoController as toolbarContacto"
 							ng-init="downgrade = '${downgrade}'; contacto = '${contacto}'">
 
+	
 							<button type="button"
 								class="btn btn-outlineGreen pull-right textWhite navEditorLato"
 								style="margin: 5px 0 0 0;"
@@ -130,10 +131,21 @@
 								<span class="hidden-xs">Añadir Contacto</span>
 
 							</button>
+<div class="pull-right spaceBtnsMap"></div>
+<button type="button"
+								class="btn btn-outlineGreen pull-right textWhite navEditorLato"
+								style="margin: 5px 0 0 0;"
+								ng-click="toolbarContacto.activarSortearContacto(item)"
+								data-toggle="modal">
+								<img width="30" height="30" alt="Infomovil"
+									src="<c:url value="/resources/webapp/images/fa-order.png"/>" />
+								<span class="hidden-xs">Ordenar contactos</span>
 
+							</button>
+							
 							<div class="clear"></div>
 							<hr />
-							<c:if test="${cantidadContactos >0 }">
+							<c:if test="${cantidadContactos < 0 }">
 									<p class="textBlack" id="tituloAgregarContactos">
 										<img alt="Infomovil"src="<c:url value="/resources/webapp/images/fa-contactos-bk.png"/>" />
 										Ahora agrega contactos
@@ -160,15 +172,14 @@
 								</div>
 							</div>
 
-							<ul id="sortable">
+							<ul id="sortable" style="padding:0px;">
 
 								<div id="{{item.claveContacto}}" ng-repeat="item in toolbarContacto.contactos">
 									{{toolbarContacto.getContenidoDowngrade(downgrade, $index + 1, contacto, item)}}
 										<li class="ui-state-default textBlack" style="list-style: none;" id="contactoId{{$index + 1}}">
 											<div class="col-xs-12 reset" style="border-bottom: 1px solid #000; padding: 8px 0">
 												
-												<div class="col-xs-12 col-sm-4  text-left" style="overflow:hidden"
-													ng-click="toolbarContacto.abrirActualizarContacto(item)">
+												<div class="col-xs-12 col-sm-4  text-left" style="overflow:hidden">
 														<img width="30" height="30" alt="Infomovil"
 														src="<c:url value="/resources/webapp/images/{{imagenIco}}"/>" />
 													<span id="regExpContacto" ng-hide="false">
@@ -222,10 +233,10 @@
 													</button>
 												</div>
 												<div class="col-xs-3 col-sm-2 text-left">
-													<button type="button"
-														ng-class="toolbarContacto.claseBoton"  ng-click="toolbarContacto.activarSortearContacto(item)" >
+													<button type="button" ng-disabled="{{order}}"
+														ng-class="toolbarContacto.claseBoton"   >
 														<img width="20" height="20" alt="Infomovil"
-															src="<c:url value="/resources/webapp/images/fa-order.png"/>" />
+															src="<c:url value="/resources/webapp/images/fa-reorder.png"/>" />
 														<span class="hidden-xs"></span>
 													</button>
 												</div>
