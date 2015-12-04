@@ -78,13 +78,6 @@ app.controller('ToolBarContactoController', function($scope, $http, ContactoServ
 		$scope.contactoDowngrade = "1";
 		$scope.contenidoContacto = "";
 		
-		if (downgrade == 'DOWNGRADE' && index > contacto)
-		{
-			toolbarContacto.claseBoton = "btn btn-outlineDisable textWhite navEditorLato";
-			toolbarContacto.claseLi = "ui-state-default textBlack claseCursorLiDowngrade";
-			$scope.contactoDowngrade = "0";
-		}
-		
 		if(item.servicesNaptr.trim().length > 0)
 		{
 			tipoBusqueda = "tel";
@@ -101,6 +94,14 @@ app.controller('ToolBarContactoController', function($scope, $http, ContactoServ
 			
 			if (mensajesContactoLista.tipo.indexOf("tel") != -1)
 				contenidoFinalContacto = item.regExp.substring(mensajesContactoLista.tipo.length + mensajesContactoLista.pais.length, item.regExp.length);
+		}
+		
+		if (downgrade == 'DOWNGRADE' && index > contacto)
+		{
+			toolbarContacto.claseBoton = "btn btn-outlineDisable textWhite navEditorLato";
+			toolbarContacto.claseLi = "ui-state-default textBlack claseCursorLiDowngrade";
+			$scope.contactoDowngrade = "0";
+			$scope.imagenIco = mensajesContactoLista.imagenIco.replace("-bk", "");
 		}
 		
 		$scope.tipoContactoLis = mensajesContactoLista.tipo != undefined ? mensajesContactoLista.tipo : "";

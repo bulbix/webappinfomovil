@@ -6,8 +6,7 @@ app.factory('ContactoService', function($http, MensajesService) {
 	var validacionRegEx;
 	
 	function getContactos() {
-		
-		console.log("getContactos");
+
 		$http({
 			method: 'GET',
 			url: contextPath + "/infomovil/getContactos",
@@ -23,7 +22,7 @@ app.factory('ContactoService', function($http, MensajesService) {
 	}
 		
     function actualizarContacto(contacto) {
-    	
+
     	var mensaje = "Actualizando contacto...";
     	MensajesService.abrirBlockUIGeneral(mensaje);
     	 
