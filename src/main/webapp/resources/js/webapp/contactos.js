@@ -3,18 +3,18 @@ var app = angular.module('InfomovilApp', []);
 app.controller('ToolBarContactoController', function($scope, $http, ContactoService, MensajesService) {
 
 	var toolbarContacto = this;
+	var itemsInicio = "";
+    var itemsFin = "";
 	toolbarContacto.descripcion = "descrito";
 	toolbarContacto.downgrade = "";
 	toolbarContacto.contacto = "";
 	toolbarContacto.claseLi = "";
 	toolbarContacto.contactos = "";
 	toolbarContacto.imagenIco = "";
-	var itemsInicio = "";
-    var itemsFin = "";
     
-	toolbarContacto.activarSortearContacto = function(index){
-		
-		if ($("#" + index).text().trim() == "0")
+	toolbarContacto.activarSortearContacto = function(item){
+
+		if (item.downgrade == "0")
 			return;
 		
 		$("#sortable").sortable();
@@ -103,12 +103,14 @@ app.controller('ToolBarContactoController', function($scope, $http, ContactoServ
 				contenidoFinalContacto = item.regExp.substring(mensajesContactoLista.tipo.length + mensajesContactoLista.pais.length, item.regExp.length);
 		}
 		
+		$scope.tipoContactoLis = mensajesContactoLista.tipo != undefined ? mensajesContactoLista.tipo : "";
+		$scope.codigoPaisLis = mensajesContactoLista.pais != undefined ? mensajesContactoLista.pais : "";
 		$scope.contenidoContacto = contenidoFinalContacto;
 	};
 	
 	toolbarContacto.eliminarContacto = function(item, index) {
 
-		if ($("#" + index).text().trim() == "0")
+		if (item.downgrade == "0")
 			return;
 		
 		var textos = {
@@ -123,9 +125,9 @@ app.controller('ToolBarContactoController', function($scope, $http, ContactoServ
 		});
 	};
 	
-	toolbarContacto.toggleContacto = function(item, index) {
-		
-		if ($("#" + index).text().trim() == "0")
+	toolbarContacto.toggleContacto = function(item) {
+
+		if (item.downgrade == "0")
 			return;
 		
 		var visibleContacto = "1";
@@ -137,7 +139,7 @@ app.controller('ToolBarContactoController', function($scope, $http, ContactoServ
 		ContactoService.actualizarContacto(item);
 	};
 	
-	toolbarContacto.abrirActualizarContacto = function(item, index) {
+	toolbarContacto.abrirActualizarContacto = function(item) {
 
 		var regex = null;
 		var mensajesContacto = "";
@@ -145,8 +147,8 @@ app.controller('ToolBarContactoController', function($scope, $http, ContactoServ
 		var expReg = "";
 		var placeHolder = "";
 		var contenidoContacto = "";
-		
-		if ($("#" + index).text().trim() == "0")
+
+		if (item.downgrade == "0")
 			return;
 		
 		if(item.subCategory.trim().length > 0)
@@ -333,10 +335,8 @@ app.controller('TipoContacto', function($scope, $http, ContactoService, Mensajes
 			longLabelNaptr : $scope.contacto.longLabelNaptr != undefined ? $scope.contacto.longLabelNaptr : "", 
 			numeroEmailRedSocial: $scope.contacto.numeroEmailRedSocial
 		};
-		
-		console.log("Contacto: " + $scope.contacto.numeroEmailRedSocial + ", " + $scope.contacto.longLabelNaptr);
-	//	guardarContacto(contacto);
-		
+
+		guardarContacto(contacto);		
 	}
 	
 	datosTipoContacto.closeMyModalContactos = function() {

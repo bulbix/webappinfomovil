@@ -23,38 +23,39 @@ app.factory('ContactoService', function($http, MensajesService) {
 	}
 		
     function actualizarContacto(contacto) {
-
-    	 var mensaje = "Actualizando contacto...";
-    	 MensajesService.abrirBlockUIGeneral(mensaje);
+    	
+    	var mensaje = "Actualizando contacto...";
+    	MensajesService.abrirBlockUIGeneral(mensaje);
     	 
-    	 $http({
-    		 method: 'POST',
-    		 url: contextPath + "/infomovil/actualizarContacto",
-    		 params: {
-    			 claveDeContacto : contacto.claveContacto, 
- 				 descripcionContacto : contacto.longLabelNaptr,
- 				 numeroEmailRedSocial : contacto.regExp,
- 				 constanteContacto : contacto.servicesNaptr, 
- 				 redSocialWebSecure : contacto.subCategory,
- 				 visible : contacto.visible,
- 				 tipoContacto : contacto.tipoContacto,
- 				 codigoPais : contacto.codigoPais
-    		 }		  
-    	 }).then(function successCallback(response) {
-    		 console.log("El valore regresado es: " + response.data.codeError , response.codeError);
-    		 mensaje = "";
-    		 if(response.data.codeError == 0) {
+    	$http({
+    		method: 'POST',
+    		url: contextPath + "/infomovil/actualizarContacto",
+    		params: {
+    			claveDeContacto : contacto.claveContacto, 
+    			descripcionContacto : contacto.longLabelNaptr,
+    			numeroEmailRedSocial : contacto.regExp,
+    			constanteContacto : contacto.servicesNaptr, 
+    			redSocialWebSecure : contacto.subCategory,
+    			visible : contacto.visible,
+    			tipoContacto : contacto.tipoContacto,
+    			codigoPais : contacto.codigoPais
+    		}		  
+    	}).then(function successCallback(response) {
+    		console.log("El valore regresado es: " + response.data.codeError , response.codeError);
+    		mensaje = "";
+    		if(response.data.codeError == 0) {
     			getContactos();
-    		 }else{
-    			 console.log("EL ERROR ES: " + response.codeError );
-    			 mensaje ="No se ha podido actualizar el contacto";
- 			}
-    		 MensajesService.cerrarBlockUIGeneral("Contactos",mensaje);
-    	 }, function errorCallback(response) {
-    		 console.log("El error es: Peticion incorrecta" + response.codeError);
-    		 mensaje = "No se ha podido actualizar el contacto";
-    		 MensajesService.cerrarBlockUIGeneral("Contactos", mensaje);
-    	 });
+    		}else{
+    			console.log("EL ERROR ES: " + response.codeError );
+    			mensaje ="No se ha podido actualizar el contacto";
+    		}
+    		
+    		MensajesService.cerrarBlockUIGeneral("Contactos",mensaje);
+    	}, function errorCallback(response) {
+    		console.log("El error es: Peticion incorrecta" + response.codeError);
+    		mensaje = "No se ha podido actualizar el contacto";
+    		MensajesService.cerrarBlockUIGeneral("Contactos", mensaje);
+    	});
      };	
 
      function getObjetoTipoContacto(tipo) {
