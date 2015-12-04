@@ -238,6 +238,10 @@
 									<p class="help-block"></p>
 								</div>
 							</div>
+							
+							
+							
+		
 						</div>
 						<div class="clear"></div>
 						<div class="divider"></div>
@@ -259,7 +263,7 @@
 		<div class="botonDesPublicar " style="display: none;">
 			<a href="#" data-toggle="modal" data-target="#myModalMaps"
 				class="col-xs-12 col-sm-6 col-sm-offset-3 col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3 btn btn-default btn-outline navEditor">
-				<img width="30" height="30" alt="Infomovil"
+				<img width="25" height="25" alt="Infomovil"
 				src="<c:url value="/resources/webapp/images/icn_marc_maps.png"/>" />
 				<span id="idOpcionUbicacion">Coloca tu ubicación</span> <br />
 			<span id="direccionMap" class="directionMap"></span>
@@ -274,7 +278,7 @@
 		<div class="botonDesPublicar" style="display: none;">
 			<a href="#" onclick="getImagenesJQ()"
 				class="col-xs-12 col-sm-6 col-sm-offset-3 col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3 btn btn-default btn-outline navEditor">
-				<img width="30" height="30" alt="Infomovil"
+				<img width="25" height="25" alt="Infomovil"
 				src="<c:url value="/resources/webapp/images/ico_img.png"/>" /> <span
 				id="idOpcionUbicacion">Agrega tus fotos</span> <br />
 			<span id="direccionMap" class="directionMap"></span>
@@ -291,7 +295,7 @@
 			style="display: none;">
 			<a href="#" data-toggle="modal" data-target="#myModalVideo"
 				class="col-xs-12 col-sm-6 col-sm-offset-3 col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3 btn btn-default btn-outline navEditor">
-				<img width="30" height="30" alt="Infomovil"
+				<img width="25" height="25" alt="Infomovil"
 				src="<c:url value="/resources/webapp/images/ico_ppp_youtube.png"/>" />
 				<span id="idOpcionVideo">Agrega un video</span>
 			</a>
@@ -301,16 +305,44 @@
 		<div id="idBtnVideoDivider" class="dividerSmallest"
 			style="display: none;"></div>
 
+<!-- Botón Contactos -->
+
+		<div class="botonDesPublicar" style="display: none;">
+			<a href="<c:url value="/infomovil/misContactos"></c:url>"
+				class="col-xs-12 col-sm-6 col-sm-offset-3 col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3 btn btn-default btn-outline navEditor">
+				<img width="20" height="20" alt="Infomovil"
+				src="<c:url value="/resources/webapp/images/fa-contactos.png"/>" /> <span
+				id="idOpcionUbicacion">Agrega tus contactos</span> <br />
+			<span id="direccionMap" class="directionMap"></span>
+			</a>
+		</div>
+		<!-- /Botón Contactos -->
+		<div class="clearfix"></div>
+		<div class="dividerSmallest"></div>
+<!-- /Botón AGREGAR MAS CONTENIDO -->
+		<div id="idBtnMasCont" class="botonDesPublicar" style="display: none;" ng-click="llamarModalhorarios.abrirModalHorarios()">
+			<a href="#" 
+				class="col-xs-12 col-sm-6 col-sm-offset-3 col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3 btn btn-default btn-outline navEditor">
+				<img width="20" height="20" alt="Infomovil"
+				src="<c:url value="/resources/webapp/images/fa-time.png"/>" />
+				<span id="idOpcionMasCont">Agrega tus horarios</span>
+			</a>
+			
+			
+		</div>
 		<!-- /Botón AGREGAR MAS CONTENIDO -->
+		<div class="clearfix"></div>
+		<div class="dividerSmallest"></div>
+		<!-- /Botón QUE SIGUE -->
 		<div id="idBtnMasCont" class="botonDesPublicar" style="display: none;">
 			<a href="#" data-toggle="modal" data-target="#myModalDescApp"
 				class="col-xs-12 col-sm-6 col-sm-offset-3 col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3 btn btn-default btn-outline navEditor">
-				<img width="30" height="30" alt="Infomovil"
+				<img width="25" height="25" alt="Infomovil"
 				src="<c:url value="/resources/webapp/images/ico_mas_cont.png"/>" />
 				<span id="idOpcionMasCont">¿Qué sigue?</span>
 			</a>
 		</div>
-		<!-- /Botón AGREGAR MAS CONTENIDO -->
+		<!-- /Botón QUE SIGUE -->
 
 		<div class="clearfix"></div>
 		<div class="dividerSmallest"></div>
