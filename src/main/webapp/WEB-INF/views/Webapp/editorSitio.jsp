@@ -265,7 +265,7 @@
 				class="col-xs-12 col-sm-6 col-sm-offset-3 col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3 btn btn-default btn-outline navEditor">
 				<img width="25" height="25" alt="Infomovil"
 				src="<c:url value="/resources/webapp/images/icn_marc_maps.png"/>" />
-				<span id="idOpcionUbicacion">Coloca tu ubicación</span> <br />
+				<span id="idOpcionUbicacion">Colocar mi ubicación</span> <br />
 			<span id="direccionMap" class="directionMap"></span>
 			</a>
 		</div>
@@ -280,7 +280,7 @@
 				class="col-xs-12 col-sm-6 col-sm-offset-3 col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3 btn btn-default btn-outline navEditor">
 				<img width="25" height="25" alt="Infomovil"
 				src="<c:url value="/resources/webapp/images/ico_img.png"/>" /> <span
-				id="idOpcionUbicacion">Agrega tus fotos</span> <br />
+				id="idOpcionUbicacion">Agregar mis fotos</span> <br />
 			<span id="direccionMap" class="directionMap"></span>
 			</a>
 		</div>
@@ -297,7 +297,7 @@
 				class="col-xs-12 col-sm-6 col-sm-offset-3 col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3 btn btn-default btn-outline navEditor">
 				<img width="25" height="25" alt="Infomovil"
 				src="<c:url value="/resources/webapp/images/ico_ppp_youtube.png"/>" />
-				<span id="idOpcionVideo">Agrega un video</span>
+				<span id="idOpcionVideo">Agregar un video</span>
 			</a>
 		</div>
 		<!-- /Botón AGREGAR VIDEO -->
@@ -312,7 +312,7 @@
 				class="col-xs-12 col-sm-6 col-sm-offset-3 col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3 btn btn-default btn-outline navEditor">
 				<img width="20" height="20" alt="Infomovil"
 				src="<c:url value="/resources/webapp/images/fa-contactos.png"/>" /> <span
-				id="idOpcionUbicacion">Agrega tus contactos</span> <br />
+				id="idOpcionUbicacion">Agregar mis contactos</span> <br />
 			<span id="direccionMap" class="directionMap"></span>
 			</a>
 		</div>
@@ -325,7 +325,7 @@
 				class="col-xs-12 col-sm-6 col-sm-offset-3 col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3 btn btn-default btn-outline navEditor">
 				<img width="20" height="20" alt="Infomovil"
 				src="<c:url value="/resources/webapp/images/fa-time.png"/>" />
-				<span id="idOpcionMasCont">Agrega tus horarios</span>
+				<span id="idOpcionMasCont">Agregar mis horarios</span>
 			</a>
 			
 			

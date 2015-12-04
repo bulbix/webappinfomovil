@@ -48,7 +48,7 @@ app.controller('ToolBarContactoController', function($scope, $http, ContactoServ
 		if ((toolbarContacto.contactos.length == contacto) || 
 			(downgrade == "DOWNGRADE" && toolbarContacto.contactos.length > contacto))
 		{
-			var mensaje = "Ya has registrado todos los contactos disponibles";
+			var mensaje = "<div style='display:block; min-height:150px;' class='col-xs-12'><p>Ya has registrado todos los contactos disponibles</p><p class='textBlack text-center' style='font-size:1.15em;'>Adquiere <strong>Plan Pro</strong> en la sección <img alt='' src='../resources/webapp/images/fa-user-bk.png' width='20' title='Mi Cuenta' /> Mi Cuenta para agregar más contactos </p><br/> </div><div class='clearfix'></div><div style='display:block; height:30px; width:100%;'></div>";
 			MensajesService.cerrarBlockUIGeneral("Contactos",mensaje)
 			return;
 		}
@@ -319,7 +319,7 @@ app.controller('TipoContacto', function($scope, $http, ContactoService, Mensajes
 		
 		if (ContactoService.getContactosGuardados() == ContactoService.getContactosPermitidos())
 		{
-			var mensaje = "Ya has registrado todos los contactos disponibles";
+			var mensaje = "<div style='display:block; min-height:150px;' class='col-xs-12'><p>Ya has registrado todos los contactos disponibles</p><p class='textBlack text-center' style='font-size:1.15em;'>Adquiere <strong>Plan Pro</strong> en la sección <img alt='' src='../resources/webapp/images/fa-user-bk.png' width='20' title='Mi Cuenta' /> Mi Cuenta para agregar más contactos </p><br/> </div><div class='clearfix'></div><div style='display:block; height:30px; width:100%;'></div>";
 			MensajesService.cerrarBlockUIGeneral("Contactos", mensaje)
 			return;
 		}
