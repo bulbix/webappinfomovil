@@ -160,15 +160,14 @@
 								</div>
 							</div>
 
-							<ul id="sortable">
+							<ul id="sortable" style="padding:0px;">
 
 								<div id="{{item.claveContacto}}" ng-repeat="item in toolbarContacto.contactos">
 									{{toolbarContacto.getContenidoDowngrade(downgrade, $index + 1, contacto, item)}}
 										<li class="ui-state-default textBlack" style="list-style: none;" id="contactoId{{$index + 1}}">
 											<div class="col-xs-12 reset" style="border-bottom: 1px solid #000; padding: 8px 0">
 												
-												<div class="col-xs-12 col-sm-4  text-left" style="overflow:hidden"
-													ng-click="toolbarContacto.abrirActualizarContacto(item)">
+												<div class="col-xs-12 col-sm-4  text-left" style="overflow:hidden">
 														<img width="30" height="30" alt="Infomovil"
 														src="<c:url value="/resources/webapp/images/{{imagenIco}}"/>" />
 													<span id="regExpContacto" ng-hide="false">

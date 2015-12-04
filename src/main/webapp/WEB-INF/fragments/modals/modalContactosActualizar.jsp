@@ -7,17 +7,17 @@
 			ng-click="actualizarTipoContacto.guardarDatosContacto()"
 			style="margin: 5px 0;">
 			<img width="15" height="15" alt="Infomovil"
-				src="<c:url value="/resources/webapp/images/successWhite.png"/>" /><span
+				src="<c:url value="/resources/webapp/images/ico_actualizar.png"/>" /><span
 				class="hidden-xs"> Actualizar</span>
 		</button>
-		<button type="button" class="btn btn-purple pull-right btnsEditor"
+		<!-- <button type="button" class="btn btn-purple pull-right btnsEditor"
 			id=""
 			ng-click="actualizarTipoContacto.closeMyModalActualizarContactos()"
 			style="margin: 5px 0;">
 			<img width="15" height="15" alt="Infomovil"
 				src="<c:url value="/resources/webapp/images/successWhite.png" />" /><span
 				class="hidden-xs"> Cancelar</span>
-		</button>
+		</button> -->
 		<button type="button" class="close textBlack pull-left btnsEditor"
 			aria-label="Close"
 			ng-click="actualizarTipoContacto.closeMyModalActualizarContactos()"
