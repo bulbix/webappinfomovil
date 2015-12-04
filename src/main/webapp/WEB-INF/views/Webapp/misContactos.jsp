@@ -186,22 +186,24 @@
 														{{item.claveContacto}}</div>
 													<div id="visibleContacto" ng-hide="true">
 														{{item.visible}}</div>
-													<div id="contactoDowngrade{{$index + 1}}" ng-hide="false">
-														{{contactoDowngrade}}</div>
+													<div ng-hide="true">	
+														{{item.downgrade = contactoDowngrade}}
+														{{item.tipoContacto = tipoContactoLis}}
+														{{item.codigoPais = codigoPaisLis}}
+													</div>
 												</div>
 												<div class="col-xs-3 col-sm-2 text-left">
-													<div class="onoffswitch" id="checkContactoActivo"
-														ng-click="toolbarContacto.toggleContacto(item, 'contactoDowngrade' + ($index + 1))"
-														style="display: block-inline" disabled>
-														<input type="checkbox" name="onoffswitch" ng-checked="item.visible==1"
-															class="onoffswitch-checkbox" id="myonoffswitch" checked>
+													<div class="onoffswitch" ng-click="toolbarContacto.toggleContacto(item)"
+														style="display: block-inline">
+														<input type="checkbox" name="onoffswitch" ng-checked="item.visible==1" id="checkContactoActivo{{$index + 1}}" 
+															class="onoffswitch-checkbox" id="myonoffswitch">
 														<label class="onoffswitch-label" for="myonoffswitch"></label>
 													</div>
 												</div>
 												<div class="col-xs-3 col-sm-2 text-left">
 													<button type="button"
 														ng-class="toolbarContacto.claseBoton"
-														ng-click="toolbarContacto.abrirActualizarContacto(item, 'contactoDowngrade' + ($index + 1))">
+														ng-click="toolbarContacto.abrirActualizarContacto(item)">
 														<img width="20" height="20" alt="Infomovil"
 															src="<c:url value="/resources/webapp/images/ico_actualizar.png"/>" />
 														<span class="hidden-xs"></span>
@@ -211,7 +213,7 @@
 													<button type="button"
 														ng-class="toolbarContacto.claseBoton"
 														id="btnEliminarContacto"
-														ng-click="toolbarContacto.eliminarContacto(item, 'contactoDowngrade' + ($index + 1))">
+														ng-click="toolbarContacto.eliminarContacto(item)">
 														<img width="20" height="20" alt="Infomovil"
 															src="<c:url value="/resources/webapp/images/trash.png"/>" />
 														<span class="hidden-xs"></span>
@@ -219,7 +221,7 @@
 												</div>
 												<div class="col-xs-3 col-sm-2 text-left">
 													<button type="button"
-														ng-class="toolbarContacto.claseBoton"  ng-click="toolbarContacto.activarSortearContacto('contactoDowngrade' + ($index + 1))" >
+														ng-class="toolbarContacto.claseBoton"  ng-click="toolbarContacto.activarSortearContacto(item)" >
 														<img width="20" height="20" alt="Infomovil"
 															src="<c:url value="/resources/webapp/images/fa-order.png"/>" />
 														<span class="hidden-xs"></span>
