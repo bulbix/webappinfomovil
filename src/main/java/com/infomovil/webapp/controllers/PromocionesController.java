@@ -7,6 +7,7 @@ import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.validator.routines.EmailValidator;
 import org.apache.log4j.Logger;
 import org.json.simple.JSONArray;
@@ -123,30 +124,29 @@ public class PromocionesController
 
 	@RequestMapping(value = "/infomovil/guardarPromocion", method = {RequestMethod.GET, RequestMethod.POST}, produces = "application/json")
 	@ResponseBody
-	public Map<String, String> guardarPromocion(@RequestParam String titulo, @RequestParam String descripcion, @RequestParam String fechaVigencia
-				, String base64Imagen, @RequestParam String redimir, @RequestParam String terminos, @RequestParam String templatePromo, Model model)
-	{		
-		int idPromocion = 0; 
+	public Map<String, String> guardarPromocion(@RequestParam String titulo, @RequestParam String descripcion,
+			@RequestParam String fechaVigencia, String base64Imagen, @RequestParam String redimir,
+			@RequestParam String terminos, @RequestParam String templatePromo, @RequestParam String idPromocion, Model model) {	
+		
+		int l_idPromocion = !StringUtils.isEmpty(idPromocion)?Integer.parseInt(idPromocion):0;
+		
 		RespuestaVO respVO = new RespuestaVO();
 		Map<String, String> resultado = new HashMap<String, String>();
 
-		try
-		{		
+		try {		
 			String correo = Util.getUserLogged().getUsername();
 			String password = Util.getUserLogged().getPassword();
-			respVO = wsCliente.crearSitioGuardarPromocion(correo, password, descripcion, fechaVigencia, redimir, terminos, titulo, base64Imagen, idPromocion, templatePromo);
+			respVO = wsCliente.crearSitioGuardarPromocion(correo, password, descripcion, fechaVigencia, redimir, terminos, titulo, base64Imagen, l_idPromocion, templatePromo);
 			resultado.put("codeError", respVO.getCodeError());
 			resultado.put("descEror", respVO.getMsgError());
 			
 			respVO = wsCliente.crearSitioGetPromociones(correo, password);
-			for (OffertRecordVO promocion : respVO.getListPromocion())
-			{
+			for (OffertRecordVO promocion : respVO.getListPromocion()) {
 				resultado.put("idOffer", promocion.getIdOffer());
 				resultado.put("urlPromocion", promocion.getUrlPromocion());
 			}
 		}		
-		catch (Exception e) 
-		{
+		catch (Exception e)  {
 			logger.error("guardarPromocion:::::", e);
 			resultado.put("codeError", respVO.getCodeError());
 			resultado.put("descEror", respVO.getMsgError());

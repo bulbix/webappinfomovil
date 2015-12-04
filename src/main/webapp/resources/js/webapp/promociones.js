@@ -102,7 +102,8 @@ var $publicarPromocion = function() {
 			base64Imagen: "",
 			redimir: $('.radioPromo:checked').val(),
 			terminos:$infoadiPromo.val(),
-			templatePromo: plantillaFinalPromo
+			templatePromo: plantillaFinalPromo,
+			idPromocion:$idPromocion.val()
 		},
 		success : function(data) {			
 			$divPublicarPromo.hide();
@@ -154,7 +155,8 @@ var $guardarCambiosEnPromocion = function() {
 			base64Imagen: "",
 			redimir: $('.radioPromo:checked').val(),
 			terminos: $infoadiPromo.val(),
-			templatePromo: plantillaPromo
+			templatePromo: plantillaPromo,
+			idPromocion:$idPromocion.val()
 			},
 			success : function(data) {
 				$divPublicarPromo.hide();
@@ -508,7 +510,8 @@ function actualizaEstiloPromo() {
 				base64Imagen: "",
 				redimir: $('.radioPromo:checked').val(),
 				terminos: $infoadiPromo.val(),
-				templatePromo: plantillaPromo
+				templatePromo: plantillaPromo,
+				idPromocion:$idPromocion.val()
 				},
 				success : function(data) {
 					$('#myModalTempPromo').modal('hide');
