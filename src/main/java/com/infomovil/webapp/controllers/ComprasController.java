@@ -2,9 +2,7 @@ package com.infomovil.webapp.controllers;
 
 import java.util.HashMap;
 import java.util.Map;
-
 import javax.servlet.http.HttpServletRequest;
-
 import org.apache.commons.lang3.StringEscapeUtils;
 import org.apache.log4j.Logger;
 import org.infomovil.segmentio.action.Tunnel;
@@ -96,7 +94,7 @@ public class ComprasController
 	@ResponseBody
 	public Map<String, String> enviarCorreoMoviliza(String hash) 
 	{
-		Map<String, String> resultMap = new HashMap<String, String>();
+		/*Map<String, String> resultMap = new HashMap<String, String>();
 		
 		String correo = Util.getUserLogged().getUsername();	
 		Tunnel tunnel = new Tunnel(AnalyticMailInterfaceCode.CUSTOMER_IO_DEV_INTERFACE);
@@ -104,11 +102,56 @@ public class ComprasController
 		domainDTO.setHashMoviliza(hash);
 		domainDTO.setEventName("event_MovilizaTuSitio");
 		tunnel.enviarCorreoMoviliza(domainDTO);
-		resultMap.put("envioCorreo", "Ok");
+		resultMap.put("envioCorreo", "Ok");*/
 		
-		return resultMap;	
+		return null;	
 	}
 	
+	
+	/*
+	@RequestMapping(value = "/infomovil/getHTMLPromocion", method = RequestMethod.POST, produces = "application/json")
+	@ResponseBody
+	public Map<String, String> getHTMLPromocion(String nombrePromocion)
+	{
+		Map<String, String> resultMap = new HashMap<String, String>();
+		RespuestaVO wsRespuesta = new RespuestaVO();
+		String elHtmlDePromocion = "";
+		
+		try
+		{
+			String correo = Util.getUserLogged().getUsername();		
+			wsRespuesta = wsCliente.crearSitioGeneraCodMoviliza(correo);
+			
+			if (!wsRespuesta.getResultado().equals("SIN_HASH"))
+			{
+				
+	         	if(!Util.getProfile().equals("PROD"))
+	         	{	
+	         		elHtmlDePromocion = IOUtils.toString(Util.getFileAmazon("promodev.mobileinfo.io", nombrePromocion));
+	         		elHtmlDePromocion = elHtmlDePromocion.replaceAll("promo.mobileinfo.io", "promodev.mobileinfo.io");
+	         	}else{
+	         		elHtmlDePromocion = IOUtils.toString(Util.getFileAmazon("promo.mobileinfo.io", nombrePromocion));	
+	         	}
+	         	elHtmlDePromocion = elHtmlDePromocion.replaceAll("llaveMoviliza", wsRespuesta.getResultado());	
+	         	elHtmlDePromocion = new String(elHtmlDePromocion.getBytes("UTF-8"), "UTF-8");
+				resultMap.put("elHtmlDePromocion", elHtmlDePromocion);
+				logger.info("elHtmlDePromocion: " + elHtmlDePromocion);
+			}
+			else
+			{
+				resultMap.put("elHtmlDePromocion", "SIN_PROMOCION");
+			}
+
+		}
+		catch (Exception e) 
+		{
+			logger.error("generaHTMLdePromocion:::::", e);
+			resultMap.put("elHtmlDePromocion", "SIN_PROMOCION");
+		}	
+		
+		return resultMap;
+	}  */
+
 	private static final Logger logger = Logger.getLogger(ComprasController.class);
 	private ClientWsInfomovil wsCliente = new ClientWsInfomovil();
 }

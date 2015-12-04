@@ -59,9 +59,6 @@ public class WebappController
 	{		
 		Map<String, String> resultMap = new HashMap<String, String>();
 		
-		nombreEmpresa = new String(nombreEmpresa.getBytes("ISO-8859-1"), "UTF-8");
-		descripcionCorta = new String(descripcionCorta.getBytes("ISO-8859-1"), "UTF-8");
-		
 		try
 		{
 			String correo = Util.getUserLogged().getUsername();
@@ -94,8 +91,8 @@ public class WebappController
 	{		
 		Map<String, String> resultMap = new HashMap<String, String>();
 		RespuestaVO wsRespuesta = new RespuestaVO();
-		nombreEmpresa = new String(nombreEmpresa.getBytes("ISO-8859-1"), "UTF-8");
-		descripcionCorta = new String(descripcionCorta.getBytes("ISO-8859-1"), "UTF-8");
+		//nombreEmpresa = new String(nombreEmpresa.getBytes("ISO-8859-1"), "UTF-8");
+		//descripcionCorta = new String(descripcionCorta.getBytes("ISO-8859-1"), "UTF-8");
 		
 		try
 		{
@@ -128,7 +125,7 @@ public class WebappController
 	{		
 		Map<String, String> resultMap = new HashMap<String, String>();
 		RespuestaVO wsRespuesta = new RespuestaVO();
-		direccion = new String(direccion.getBytes("ISO-8859-1"), "UTF-8");
+		//direccion = new String(direccion.getBytes("ISO-8859-1"), "UTF-8");
 		logger.info("longitud: " + longitud + ", latitud: " + latitud + ", direccion: " + direccion);
 		try
 		{
@@ -184,11 +181,11 @@ public class WebappController
 	{		
 		Map<String, String> resultMap = new HashMap<String, String>();
 		RespuestaVO wsRespuesta = new RespuestaVO();
-		String desc = new String(descImagen.getBytes("ISO-8859-1"), "UTF-8");
+		//String desc = new String(descImagen.getBytes("ISO-8859-1"), "UTF-8");
 		
 		try
 		{	
-			wsRespuesta = wsCliente.crearSitioGuardaImage(domainId, baseImagen, tipoImagen, desc, rotacion) ;
+			wsRespuesta = wsCliente.crearSitioGuardaImage(domainId, baseImagen, tipoImagen, descImagen, rotacion) ;
 			resultMap.put("codeError", wsRespuesta.getCodeError());
 		}		
 		catch (Exception e) 
@@ -256,11 +253,11 @@ public class WebappController
 		Map<String, String> resultMap = new HashMap<String, String>();
 		RespuestaVO wsRespuesta = new RespuestaVO();
 		
-		String desc = new String(descImagen.getBytes("ISO-8859-1"), "UTF-8");
+		//String desc = new String(descImagen.getBytes("ISO-8859-1"), "UTF-8");
 		
 		try
 		{
-			wsRespuesta = wsCliente.crearSitioUpdateImage(domainId, imageId, baseImagen, desc);
+			wsRespuesta = wsCliente.crearSitioUpdateImage(domainId, imageId, baseImagen, descImagen);
 			resultMap.put("codeError", wsRespuesta.getCodeError());
 		}		
 		catch (Exception e) 
@@ -629,7 +626,6 @@ public class WebappController
 				
 				for (StatusDomainVO stat : wsRespuesta.getListStatusDomainGratisVO())
 				{
-					logger.info("stat.getDescripcionItem(): " + stat.getDescripcionItem() + ", total: " + stat.getStatus());
 					item = stat.getDescripcionItem();
 					
 					switch(item)
@@ -862,74 +858,9 @@ public class WebappController
 	}	
 	
 	
-	@RequestMapping(value = "/infomovil/guardarHorarios", method = {RequestMethod.GET, RequestMethod.POST})
-	@ResponseBody
-	public Map<String, String> guardarHorarios(@RequestParam List<String> dias) 
-			throws UnsupportedEncodingException
-	{		
-		
-		Map<String, String> resultMap = new HashMap<String, String>();
-		List<HorarioVO> listaHorarios = new ArrayList<HorarioVO>();
-		listaHorarios.add(new HorarioVO("Lun", dias.get(0), dias.get(1)));
-		listaHorarios.add(new HorarioVO("Mar", dias.get(2), dias.get(3)));
-		listaHorarios.add(new HorarioVO("Mié", dias.get(4), dias.get(5)));
-		listaHorarios.add(new HorarioVO("Jue", dias.get(6), dias.get(7)));
-		listaHorarios.add(new HorarioVO("Vie", dias.get(8), dias.get(9)));
-		listaHorarios.add(new HorarioVO("Sáb", dias.get(10),dias.get(11)));
-		listaHorarios.add(new HorarioVO("Dom", dias.get(12), dias.get(13)));
-		
-		try
-		{	
-			String correo = Util.getUserLogged().getUsername();
-			String password = Util.getUserLogged().getPassword();	
-			RespuestaVO resp = wsCliente.crearSitioHorarios(correo, password,
-					new KeywordVO(),listaHorarios,"insert");	
-			resultMap.put("codeError", resp.getCodeError());			
-		}		
-		catch (Exception e) 
-		{
-			logger.error("guardarHorarios:::::", e);
-			resultMap.put("codeError", "-1");
-		}	
-		
-		return resultMap;
-	}
-	
-	@RequestMapping(value = "/infomovil/getHorarios", method = {RequestMethod.GET, RequestMethod.POST})
-	@ResponseBody
-	public Map<String, Object> getHorarios()
-	{		
-		
-		Map<String, Object> resultMap = new HashMap<String, Object>();
-	
-		try
-		{	
-			String correo = Util.getUserLogged().getUsername();
-			String password = Util.getUserLogged().getPassword();	
-			RespuestaVO resp = wsCliente.crearSitioGetHorarios(correo,password);
-			if(resp.getListHorarios().size() > 0){
-				resultMap.put("codeError", resp.getCodeError());
-				resultMap.put("keyword", resp.getKeyword());
-				resultMap.put("listaHorario", resp.getListHorarios());
-				
-			}else{
-				resultMap.put("codeError", "-100");
-				
-			}
-			
-			
-		}		
-		catch (Exception e) 
-		{
-			logger.error("guardarHorarios:::::", e);
-			resultMap.put("codeError", "-1");
-		}	
-		
-		return resultMap;
-	}
 	
 	
-
+	
 	final private String passwordDefault = "banco1";
 	private static final Logger logger = Logger.getLogger(WebappController.class);
 	private ClientWsInfomovil wsCliente = new ClientWsInfomovil();
