@@ -145,7 +145,7 @@
 							
 							<div class="clear"></div>
 							<hr />
-							<c:if test="${cantidadContactos >0 }">
+							<c:if test="${cantidadContactos < 0 }">
 									<p class="textBlack" id="tituloAgregarContactos">
 										<img alt="Infomovil"src="<c:url value="/resources/webapp/images/fa-contactos-bk.png"/>" />
 										Ahora agrega contactos

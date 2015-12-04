@@ -50,6 +50,30 @@ body { /*padding-bottom: 30px;*/
 .onoffswitch-checkbox:checked + .onoffswitch-label {
     background-color: #2fa399;
 }
+
+
+
+.offswitch-label {
+    display: block; overflow: hidden; cursor: pointer;
+    height: 26px; padding: 0; line-height: 26px;
+    border: 2px solid #CCCCCC; border-radius: 26px;
+    background-color: #FFFFFF;
+    transition: background-color 0.3s ease-in;
+    margin:8px 0 0 0;
+}
+.offswitch-label:before {
+    content: "";
+    display: block; width: 26px; margin: 0px;
+    background: #FFFFFF;
+    position: absolute; top: 0; bottom: 0;
+    right: 22px;
+    border: 2px solid #CCCCCC; border-radius: 26px;
+    transition: all 0.3s ease-in 0s; 
+}
+.offswitch-checkbox:checked + .onoffswitch-label {
+    background-color: #2fa399;
+}
+
 .onoffswitch-checkbox:checked + .onoffswitch-label, .onoffswitch-checkbox:checked + .onoffswitch-label:before {
    border-color: #2fa399;
 }
