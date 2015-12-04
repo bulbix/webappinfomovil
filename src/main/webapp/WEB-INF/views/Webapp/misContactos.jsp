@@ -158,77 +158,77 @@
 								</div>
 							</div>
 
-							<ul id="sortable" class="reset">
+							<ul id="sortable">
 
 								<div id="{{item.claveContacto}}" ng-repeat="item in toolbarContacto.contactos">
 									{{toolbarContacto.getContenidoDowngrade(downgrade, $index + 1, contacto, item)}}
-
-									<li class="ui-state-default textBlack" style="list-style: none;">
-										<div class="col-xs-12 reset" style="border-bottom: 1px solid #000; padding: 8px 0">
-											
-											<div class="col-xs-12 col-sm-4  text-left" style="overflow:hidden"
-												ng-click="toolbarContacto.abrirActualizarContacto(item)">
-													<img width="30" height="30" alt="Infomovil"
-													src="<c:url value="/resources/webapp/images/{{imagenIco}}"/>" />
-												<span id="regExpContacto" ng-hide="false">
-													{{contenidoContacto}}
-												</span>
-												<div id="servicesNaptrContacto" ng-hide="true">
-													{{item.servicesNaptr}}</div>
-												<div id="categoryNaptrContacto" ng-hide="true">
-													{{item.categoryNaptr}}</div>
-												<div id="longLabelNaptrContacto" ng-hide="true">
-													{{item.longLabelNaptr}}</div>
-												<div id="subCategoryContacto" ng-hide="true">
-													{{item.subCategory}}</div>
-												<div id="preferenciaContacto" ng-hide="true">
-													{{item.preference}}</div>
-												<div id="idContacto" ng-hide="true">
-													{{item.claveContacto}}</div>
-												<div id="visibleContacto" ng-hide="true">
-													{{item.visible}}</div>
-											</div>
-											<div class="col-xs-3 col-sm-2 text-left">
-												<div class="onoffswitch" id="checkContactoActivo"
-													ng-click="toolbarContacto.toggleContacto(item)"
-													style="display: block-inline" disabled>
-													<input type="checkbox" name="onoffswitch" ng-checked="item.visible==1"
-														class="onoffswitch-checkbox" id="myonoffswitch" checked>
-													<label class="onoffswitch-label" for="myonoffswitch"></label>
+										<li class="ui-state-default textBlack" style="list-style: none;" id="contactoId{{$index + 1}}">
+											<div class="col-xs-12 reset" style="border-bottom: 1px solid #000; padding: 8px 0">
+												
+												<div class="col-xs-12 col-sm-4  text-left" style="overflow:hidden"
+													ng-click="toolbarContacto.abrirActualizarContacto(item)">
+														<img width="30" height="30" alt="Infomovil"
+														src="<c:url value="/resources/webapp/images/{{imagenIco}}"/>" />
+													<span id="regExpContacto" ng-hide="false">
+														{{contenidoContacto}}
+													</span>
+													<div id="servicesNaptrContacto" ng-hide="true">
+														{{item.servicesNaptr}}</div>
+													<div id="categoryNaptrContacto" ng-hide="true">
+														{{item.categoryNaptr}}</div>
+													<div id="longLabelNaptrContacto" ng-hide="true">
+														{{item.longLabelNaptr}}</div>
+													<div id="subCategoryContacto" ng-hide="true">
+														{{item.subCategory}}</div>
+													<div id="preferenciaContacto" ng-hide="true">
+														{{item.preference}}</div>
+													<div id="idContacto" ng-hide="true">
+														{{item.claveContacto}}</div>
+													<div id="visibleContacto" ng-hide="true">
+														{{item.visible}}</div>
+													<div id="contactoDowngrade{{$index + 1}}" ng-hide="false">
+														{{contactoDowngrade}}</div>
+												</div>
+												<div class="col-xs-3 col-sm-2 text-left">
+													<div class="onoffswitch" id="checkContactoActivo"
+														ng-click="toolbarContacto.toggleContacto(item, 'contactoDowngrade' + ($index + 1))"
+														style="display: block-inline" disabled>
+														<input type="checkbox" name="onoffswitch" ng-checked="item.visible==1"
+															class="onoffswitch-checkbox" id="myonoffswitch" checked>
+														<label class="onoffswitch-label" for="myonoffswitch"></label>
+													</div>
+												</div>
+												<div class="col-xs-3 col-sm-2 text-left">
+													<button type="button"
+														ng-class="toolbarContacto.claseBoton"
+														ng-click="toolbarContacto.abrirActualizarContacto(item, 'contactoDowngrade' + ($index + 1))">
+														<img width="20" height="20" alt="Infomovil"
+															src="<c:url value="/resources/webapp/images/ico_actualizar.png"/>" />
+														<span class="hidden-xs"></span>
+													</button>
+												</div>
+												<div class="col-xs-3 col-sm-2 text-left">
+													<button type="button"
+														ng-class="toolbarContacto.claseBoton"
+														id="btnEliminarContacto"
+														ng-click="toolbarContacto.eliminarContacto(item, 'contactoDowngrade' + ($index + 1))">
+														<img width="20" height="20" alt="Infomovil"
+															src="<c:url value="/resources/webapp/images/trash.png"/>" />
+														<span class="hidden-xs"></span>
+													</button>
+												</div>
+												<div class="col-xs-3 col-sm-2 text-left">
+													<button type="button"
+														ng-class="toolbarContacto.claseBoton"  ng-click="toolbarContacto.activarSortearContacto('contactoDowngrade' + ($index + 1))" >
+														<img width="20" height="20" alt="Infomovil"
+															src="<c:url value="/resources/webapp/images/fa-order.png"/>" />
+														<span class="hidden-xs"></span>
+													</button>
 												</div>
 											</div>
-											<div class="col-xs-3 col-sm-2 text-left">
-												<button type="button"
-													ng-class="toolbarContacto.claseBoton"
-													ng-click="toolbarContacto.abrirActualizarContacto(item)">
-													<img width="20" height="20" alt="Infomovil"
-														src="<c:url value="/resources/webapp/images/ico_actualizar.png"/>" />
-													<span class="hidden-xs"></span>
-												</button>
-											</div>
-											<div class="col-xs-3 col-sm-2 text-left">
-												<button type="button"
-													ng-class="toolbarContacto.claseBoton"
-													id="btnEliminarContacto"
-													ng-click="toolbarContacto.eliminarContacto(item)">
-													<img width="20" height="20" alt="Infomovil"
-														src="<c:url value="/resources/webapp/images/trash.png"/>" />
-													<span class="hidden-xs"></span>
-												</button>
-											</div>
-											<div class="col-xs-3 col-sm-2 text-left">
-												<button type="button"
-													ng-class="toolbarContacto.claseBoton"  ng-click="toolbarContacto.activarSortearContacto()" >
-													<img width="20" height="20" alt="Infomovil"
-														src="<c:url value="/resources/webapp/images/fa-order.png"/>" />
-													<span class="hidden-xs"></span>
-												</button>
-											</div>
-										</div>
-									</li>								
+										</li>
 								</div>
 								<div class="clearfix"></div>
-					
 						</ul>
 					</div>
 				</div>

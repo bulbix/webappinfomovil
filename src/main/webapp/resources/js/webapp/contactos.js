@@ -12,16 +12,19 @@ app.controller('ToolBarContactoController', function($scope, $http, ContactoServ
 	var itemsInicio = "";
     var itemsFin = "";
     
-	toolbarContacto.activarSortearContacto = function(){
+	toolbarContacto.activarSortearContacto = function(index){
 		
-		 $("#sortable").sortable();
-		 $("#sortable").sortable( "option", "disabled", false );
-		 $("#sortable").sortable({
-	    	 start: function(event, ui) {
+		if ($("#" + index).text().trim() == "0")
+			return;
+		
+		$("#sortable").sortable();
+		$("#sortable").sortable( "option", "disabled", false );
+		$("#sortable").sortable({
+			start: function(event, ui) {
 	    		 itemsInicio = $("#sortable").sortable("toArray");
 	    		 console.log("Unamos los corazones!");
 	    	 }
-	     });
+	    });
 		 
 		 $("#sortable").sortable({
 			 update: function(event, ui) {	
@@ -36,8 +39,7 @@ app.controller('ToolBarContactoController', function($scope, $http, ContactoServ
 		 
 		 });
 	};
-	
-	
+		
 	toolbarContacto.agregaContacto = function(downgrade, contacto) {
 		
 		ContactoService.setContactosPermitidos(contacto);
@@ -59,23 +61,28 @@ app.controller('ToolBarContactoController', function($scope, $http, ContactoServ
 	toolbarContacto.mostrarModalContactos = function() {
 		$myModalContactos.modal();
 	};
-
+	
 	toolbarContacto.getContenidoDowngrade = function(downgrade, index, contacto, item) {
 		
+		var className = "";
+		var idElemento = "contactoId" + index;
 		var tipoContactoLista = "";
 		var mensajesContactoLista = "";
 		var tipoBusqueda = "redSocial";
+		var nombreElemento = "li.contacto" + index;
 		var llaveBusqueda = item.subCategory;
 		var contenidoFinalContacto = item.regExp;
 		
 		toolbarContacto.claseBoton = "btn btn-outlineGreen textWhite navEditorLato";
 		toolbarContacto.claseLi = "ui-state-default textBlack claseCursorLi";
+		$scope.contactoDowngrade = "1";
 		$scope.contenidoContacto = "";
 		
 		if (downgrade == 'DOWNGRADE' && index > contacto)
 		{
 			toolbarContacto.claseBoton = "btn btn-outlineDisable textWhite navEditorLato";
 			toolbarContacto.claseLi = "ui-state-default textBlack claseCursorLiDowngrade";
+			$scope.contactoDowngrade = "0";
 		}
 		
 		if(item.servicesNaptr.trim().length > 0)
@@ -99,7 +106,10 @@ app.controller('ToolBarContactoController', function($scope, $http, ContactoServ
 		$scope.contenidoContacto = contenidoFinalContacto;
 	};
 	
-	toolbarContacto.eliminarContacto = function(item) {
+	toolbarContacto.eliminarContacto = function(item, index) {
+
+		if ($("#" + index).text().trim() == "0")
+			return;
 		
 		var textos = {
 			titulo : "Borrar Contacto",
@@ -113,8 +123,11 @@ app.controller('ToolBarContactoController', function($scope, $http, ContactoServ
 		});
 	};
 	
-	toolbarContacto.toggleContacto = function(item) {
-		console.log("toggleContacto");
+	toolbarContacto.toggleContacto = function(item, index) {
+		
+		if ($("#" + index).text().trim() == "0")
+			return;
+		
 		var visibleContacto = "1";
 		
 		if (item.visible == "1")
@@ -124,7 +137,7 @@ app.controller('ToolBarContactoController', function($scope, $http, ContactoServ
 		ContactoService.actualizarContacto(item);
 	};
 	
-	toolbarContacto.abrirActualizarContacto = function(item) {
+	toolbarContacto.abrirActualizarContacto = function(item, index) {
 
 		var regex = null;
 		var mensajesContacto = "";
@@ -132,6 +145,9 @@ app.controller('ToolBarContactoController', function($scope, $http, ContactoServ
 		var expReg = "";
 		var placeHolder = "";
 		var contenidoContacto = "";
+		
+		if ($("#" + index).text().trim() == "0")
+			return;
 		
 		if(item.subCategory.trim().length > 0)
 			tipoContactoAct = ContactoService.getTipoContacto("redSocial" , item.subCategory);
@@ -250,10 +266,6 @@ app.controller('ToolBarContactoController', function($scope, $http, ContactoServ
     	 var arr = value instanceof Array ? value : [value]; 
     	 ContactoService.setContactosGuardados(arr.length);
      });
-
-    
- 
-	 
 
      /*Obtiene los contactos*/
      ContactoService.getContactos();
