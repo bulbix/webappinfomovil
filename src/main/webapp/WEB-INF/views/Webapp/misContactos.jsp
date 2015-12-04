@@ -119,6 +119,7 @@
 						<div ng-controller="ToolBarContactoController as toolbarContacto"
 							ng-init="downgrade = '${downgrade}'; contacto = '${contacto}'">
 
+	
 							<button type="button"
 								class="btn btn-outlineGreen pull-right textWhite navEditorLato"
 								style="margin: 5px 0 0 0;"
@@ -130,7 +131,18 @@
 								<span class="hidden-xs">Añadir Contacto</span>
 
 							</button>
+<div class="pull-right spaceBtnsMap"></div>
+<button type="button"
+								class="btn btn-outlineGreen pull-right textWhite navEditorLato"
+								style="margin: 5px 0 0 0;"
+								ng-click="toolbarContacto.activarSortearContacto(item)"
+								data-toggle="modal">
+								<img width="30" height="30" alt="Infomovil"
+									src="<c:url value="/resources/webapp/images/fa-order.png"/>" />
+								<span class="hidden-xs">Ordenar contactos</span>
 
+							</button>
+							
 							<div class="clear"></div>
 							<hr />
 							<c:if test="${cantidadContactos >0 }">
@@ -221,10 +233,10 @@
 													</button>
 												</div>
 												<div class="col-xs-3 col-sm-2 text-left">
-													<button type="button"
-														ng-class="toolbarContacto.claseBoton"  ng-click="toolbarContacto.activarSortearContacto(item)" >
+													<button type="button" ng-disabled="{{order}}"
+														ng-class="toolbarContacto.claseBoton"   >
 														<img width="20" height="20" alt="Infomovil"
-															src="<c:url value="/resources/webapp/images/fa-order.png"/>" />
+															src="<c:url value="/resources/webapp/images/fa-reorder.png"/>" />
 														<span class="hidden-xs"></span>
 													</button>
 												</div>
