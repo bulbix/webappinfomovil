@@ -135,7 +135,7 @@
 <button type="button"
 								class="btn btn-outlineGreen pull-right textWhite navEditorLato"
 								style="margin: 5px 0 0 0;"
-								ng-click="toolbarContacto.activarSortearContacto(item)"
+								ng-click="toolbarContacto.activarSortearContacto()"
 								data-toggle="modal">
 								<img width="30" height="30" alt="Infomovil"
 									src="<c:url value="/resources/webapp/images/fa-order.png"/>" />
@@ -210,7 +210,8 @@
 														style="display: block-inline">
 														<input type="checkbox" name="onoffswitch" ng-checked="item.visible==1" id="checkContactoActivo{{$index + 1}}" 
 															class="onoffswitch-checkbox" id="myonoffswitch">
-														<label class="onoffswitch-label" for="myonoffswitch"></label>
+<!-- 														<label class="onoffswitch-label" for="myonoffswitch"></label> -->
+														<label ng-class="toolbarContacto.claseCheck" for="myonoffswitch"></label>
 													</div>
 												</div>
 												<div class="col-xs-3 col-sm-2 text-left">
@@ -233,7 +234,7 @@
 													</button>
 												</div>
 												<div class="col-xs-3 col-sm-2 text-left">
-													<button type="button" ng-disabled="{{order}}"
+													<button type="button" disabled
 														ng-class="toolbarContacto.claseBoton"   >
 														<img width="20" height="20" alt="Infomovil"
 															src="<c:url value="/resources/webapp/images/fa-reorder.png"/>" />

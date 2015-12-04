@@ -11,12 +11,11 @@ app.controller('ToolBarContactoController', function($scope, $http, ContactoServ
 	toolbarContacto.claseLi = "";
 	toolbarContacto.contactos = "";
 	toolbarContacto.imagenIco = "";
-    
-	toolbarContacto.activarSortearContacto = function(item){
-
-		if (item.downgrade == "0")
-			return;
+	$scope.order = false;
+	
+	toolbarContacto.activarSortearContacto = function() {
 		
+		$(".disabledBoton").prop("disabled", false);
 		$("#sortable").sortable();
 		$("#sortable").sortable( "option", "disabled", false );
 		$("#sortable").sortable({
@@ -75,8 +74,9 @@ app.controller('ToolBarContactoController', function($scope, $http, ContactoServ
 		var llaveBusqueda = item.subCategory;
 		var contenidoFinalContacto = item.regExp;
 		
-		toolbarContacto.claseBoton = "btn btn-outlineGreen textWhite navEditorLato";
+		toolbarContacto.claseBoton = "btn btn-outlineGreen textWhite navEditorLato disabledBoton";
 		toolbarContacto.claseLi = "ui-state-default textBlack claseCursorLi";
+		toolbarContacto.claseCheck = "onoffswitch-label";
 		$scope.contactoDowngrade = "1";
 		$scope.contenidoContacto = "";
 		
@@ -102,6 +102,7 @@ app.controller('ToolBarContactoController', function($scope, $http, ContactoServ
 		{
 			toolbarContacto.claseBoton = "btn btn-outlineDisable textWhite navEditorLato";
 			toolbarContacto.claseLi = "ui-state-default textBlack claseCursorLiDowngrade";
+			toolbarContacto.claseCheck = "offswitch-label";
 			$scope.contactoDowngrade = "0";
 			$scope.imagenIco = mensajesContactoLista.imagenIco.replace("-bk", "");
 		}
@@ -216,12 +217,12 @@ app.controller('ToolBarContactoController', function($scope, $http, ContactoServ
     			mensaje = "No se ha podido eliminar el contacto";
     		}
     		
-    		MensajesService.cerrarBlockUIGeneral("Contactos",mensaje);
+    		MensajesService.cerrarBlockUIGeneral("Contactos", mensaje);
     		
     	}, function errorCallback(response) {
     		console.log("El error es: " + response , response.data.codeError);
     		mensaje = "No se ha podido eliminar el contacto";
-    		MensajesService.cerrarBlockUIGeneral("Contactos",mensaje);
+    		MensajesService.cerrarBlockUIGeneral("Contactos", mensaje);
     	});
      };    
  
@@ -393,11 +394,11 @@ app.controller('TipoContacto', function($scope, $http, ContactoService, Mensajes
 				 console.log("EL ERROR ES: " + response.data.codeError );
 				 mensaje = "No se ha podido guardar el contacto";
 			 }
-			 MensajesService.cerrarBlockUIGeneral("Contactos",mensaje);
+			 MensajesService.cerrarBlockUIGeneral("Contactos", mensaje);
 		 }, function errorCallback(response) {
 			 console.log("El error es: " + response , response.data.codeError);
 			 mensaje = "No se ha podido guardar el contacto";
-			 MensajesService.cerrarBlockUIGeneral("Contactos",mensaje);
+			 MensajesService.cerrarBlockUIGeneral("Contactos", mensaje);
 		 });
 	 };	
 });
