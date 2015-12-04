@@ -43,8 +43,10 @@ app.controller('ToolBarContactoController', function($scope, $http, ContactoServ
 	toolbarContacto.agregaContacto = function(downgrade, contacto) {
 		
 		ContactoService.setContactosPermitidos(contacto);
+		console.log("downgrade: " + downgrade + ", permitidos: " + contacto + ", guardados: " + toolbarContacto.contactos.length);
 
-		if (toolbarContacto.contactos.length == contacto)
+		if ((toolbarContacto.contactos.length == contacto) || 
+			(downgrade == "DOWNGRADE" && toolbarContacto.contactos.length > contacto))
 		{
 			var mensaje = "Ya has registrado todos los contactos disponibles";
 			MensajesService.cerrarBlockUIGeneral("Contactos",mensaje)

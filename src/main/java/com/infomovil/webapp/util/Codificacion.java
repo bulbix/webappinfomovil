@@ -1,8 +1,6 @@
 package com.infomovil.webapp.util;
 
 import java.security.Key;
-import java.util.StringTokenizer;
-
 import javax.crypto.Cipher;
 import javax.crypto.spec.SecretKeySpec;
 

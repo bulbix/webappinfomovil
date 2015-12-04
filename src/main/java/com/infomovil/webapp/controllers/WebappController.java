@@ -1,10 +1,7 @@
 
 package com.infomovil.webapp.controllers;
 
-import static org.junit.Assert.assertTrue;
-
 import java.io.UnsupportedEncodingException;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.List;
@@ -33,10 +30,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.infomovil.webapp.clientWsInfomovil.Catalogo;
 import com.infomovil.webapp.clientWsInfomovil.ClientWsInfomovil;
-import com.infomovil.webapp.clientWsInfomovil.HorarioVO;
 import com.infomovil.webapp.clientWsInfomovil.ImagenVO;
-import com.infomovil.webapp.clientWsInfomovil.KeywordVO;
-import com.infomovil.webapp.clientWsInfomovil.OffertRecordVO;
 import com.infomovil.webapp.clientWsInfomovil.ProductoUsuarioVO;
 import com.infomovil.webapp.clientWsInfomovil.RespuestaVO;
 import com.infomovil.webapp.clientWsInfomovil.StatusDomainVO;

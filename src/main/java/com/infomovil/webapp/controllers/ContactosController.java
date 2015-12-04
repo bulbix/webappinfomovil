@@ -182,8 +182,8 @@ public class ContactosController
 		String correo = Util.getUserLogged().getUsername();
 		String password = Util.getUserLogged().getPassword();
 		String regExp = "!^.*$!" + tipoContacto + codigoPais;
-		descripcionContacto = new String(descripcionContacto.getBytes("ISO-8859-1"), "UTF-8");
-		numeroEmailRedSocial = new String(numeroEmailRedSocial.getBytes("ISO-8859-1"), "UTF-8");
+		//descripcionContacto = new String(descripcionContacto.getBytes("ISO-8859-1"), "UTF-8");
+		//numeroEmailRedSocial = new String(numeroEmailRedSocial.getBytes("ISO-8859-1"), "UTF-8");
 		
 		try
 		{			
