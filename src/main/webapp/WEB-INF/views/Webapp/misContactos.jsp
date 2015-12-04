@@ -133,11 +133,13 @@
 
 							<div class="clear"></div>
 							<hr />
-							<p class="textBlack">
-								<img alt="Infomovil"
-									src="<c:url value="/resources/webapp/images/fa-contactos-bk.png"/>" />
-								Ahora agrega contactos
-							</p>
+							<c:if test="${cantidadContactos >0 }">
+									<p class="textBlack" id="tituloAgregarContactos">
+										<img alt="Infomovil"src="<c:url value="/resources/webapp/images/fa-contactos-bk.png"/>" />
+										Ahora agrega contactos
+									</p>
+							</c:if>	
+							
 
 							<div class="col-xs-12 hidden-xs textBlack" style="border-bottom: 1px solid #000; padding: 8px 0">
 								

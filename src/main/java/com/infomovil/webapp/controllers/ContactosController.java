@@ -34,7 +34,7 @@ public class ContactosController
 	{		
 		HashMap<String, Object> model = new HashMap<String, Object>();
 		RespuestaVO wsRpta = new RespuestaVO();
-		
+		List<RecordNaptrVO> wsListResp = null;
 		String template = "Coverpage1azul";
 		String claseCss = "inverse";
 		String colorTexto = "textWhite";
@@ -82,6 +82,10 @@ public class ContactosController
          		downgrade = Util.getCurrentSession().getAttribute("downgrade").toString();
          	}
 			
+         	wsListResp = wsCliente.crearSitioGetContactos(correo, password).getListContactos();
+         	Integer cantidadContactos  = wsListResp.size();
+         	
+         	model.put("cantidadContactos", cantidadContactos);
 			model.put("claseCss", claseCss);
 			model.put("colorTexto", colorTexto);
 			model.put("extensionImg", extensionImg);

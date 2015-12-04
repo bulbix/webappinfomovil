@@ -266,6 +266,7 @@ public class ClientWsInfomovilTest {
 		});
 	}
 	
+	
 	static List<HorarioVO> listaHorarios = new ArrayList<HorarioVO>();
 	
 	static{
