@@ -132,25 +132,26 @@
 
 							</button>
 <div class="pull-right spaceBtnsMap"></div>
-<button type="button"
+						
+							<button type="button"
 								class="btn btn-outlineGreen pull-right textWhite navEditorLato"
 								style="margin: 5px 0 0 0;"
 								ng-click="toolbarContacto.activarSortearContacto()"
-								data-toggle="modal">
+								data-toggle="modal"
+								id="ordenarContactosShow">
 								<img width="30" height="30" alt="Infomovil"
 									src="<c:url value="/resources/webapp/images/fa-order.png"/>" />
 								<span class="hidden-xs">Ordenar contactos</span>
-
 							</button>
 							
 							<div class="clear"></div>
 							<hr />
-							<c:if test="${cantidadContactos < 0 }">
+						
 									<p class="textBlack" id="tituloAgregarContactos">
 										<img alt="Infomovil"src="<c:url value="/resources/webapp/images/fa-contactos-bk.png"/>" />
 										Ahora agrega contactos
 									</p>
-							</c:if>	
+							
 							
 
 							<div class="col-xs-12 hidden-xs textBlack" style="border-bottom: 1px solid #000; padding: 8px 0">

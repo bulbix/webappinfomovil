@@ -13,7 +13,18 @@ app.factory('ContactoService', function($http, MensajesService) {
 		}).then(function successCallback(response) {
 			
 				 contactos = response.data;
-			
+				 if(response.data.length > 0){
+					 $("#tituloAgregarContactos").hide();
+					 if(response.data.length > 1)
+						 $("#ordenarContactosShow").show();
+					 else
+						 $("#ordenarContactosShow").hide();
+				 }else{ 
+					 $("#ordenarContactosShow").hide();
+					 $("#tituloAgregarContactos").show();
+				 }
+				console.log("el response: " + response.data.length);
+					 
 		}, function errorCallback(response) {
 			console.log("El error es: " + response);
 			var mensaje = "No se ha podido obtener la lista de contactos";

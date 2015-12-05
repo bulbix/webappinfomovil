@@ -162,7 +162,7 @@ app.controller('ToolBarContactoController', function($scope, $http, ContactoServ
 
 		mensajesContacto = ContactoService.getObjetoTipoContacto(tipoContactoAct);
 		expReg = mensajesContacto.expRegular != undefined ? mensajesContacto.expRegular : "^\\d{10}$";
-		placeHolder = mensajesContacto.placeholder != undefined ? mensajesContacto.placeholder : "Número Telefónico Inválido";
+		placeHolder = mensajesContacto.placeholder != undefined ? mensajesContacto.placeholder : "Número Telefónico Inválido. Deben ser 10 Digitos";
 		contenidoContacto = item.regExp;
 		$scope.imagenIco = mensajesContacto.imagenIco;
 		console.log("$scope.imagenIco: " + $scope.imagenIco);
@@ -324,7 +324,7 @@ app.controller('TipoContacto', function($scope, $http, ContactoService, Mensajes
 			MensajesService.cerrarBlockUIGeneral("Contactos", mensaje)
 			return;
 		}
-
+		
 		regex = new RegExp($scope.expRegularValida);
 		
 		if (!regex.test($scope.contacto.numeroEmailRedSocial))

@@ -134,7 +134,7 @@ app.factory('HorarioService', function($http, MensajesService) {
     			params: { 
     			}	  
     		}).then(function successCallback(response) {
-    			
+    			mensaje = "";
     			if(response.data.codeError == 0) {
     			    console.log("Me regresa 0 en eliminarHorario");
     			    getHorarios();
