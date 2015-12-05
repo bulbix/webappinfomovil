@@ -210,7 +210,6 @@
 														style="display: block-inline">
 														<input type="checkbox" name="onoffswitch" ng-checked="item.visible==1" id="checkContactoActivo{{$index + 1}}" 
 															class="onoffswitch-checkbox" id="myonoffswitch">
-<!-- 														<label class="onoffswitch-label" for="myonoffswitch"></label> -->
 														<label ng-class="toolbarContacto.claseCheck" for="myonoffswitch"></label>
 													</div>
 												</div>

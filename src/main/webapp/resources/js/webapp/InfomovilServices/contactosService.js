@@ -4,6 +4,7 @@ app.factory('ContactoService', function($http, MensajesService) {
 	var contactosPermitidos;
 	var contactosGuardados;
 	var validacionRegEx;
+	var icono;
 	
 	function getContactos() {
 
@@ -94,7 +95,7 @@ app.factory('ContactoService', function($http, MensajesService) {
 
 				break;
 			
-			case 'telSMS':
+			case 'telsms':
 				titulos =
 				{
 					imagenIco : 'fa-sms-bk.png',
@@ -270,6 +271,10 @@ app.factory('ContactoService', function($http, MensajesService) {
     	 return angular.lowercase(tipoContactoConsulta);
      };
    
+     function getIcono() {
+    	 
+     }
+     
    return {
 	   
 	   getContactos : getContactos,
@@ -293,6 +298,13 @@ app.factory('ContactoService', function($http, MensajesService) {
 	   },
 	   getValidacionRegEx : function() {
 		   return validacionRegEx;
+	   },
+	   setIcono : function(value) {
+		   icono = value;
+		   $("#myModalContactosActualizar").modal();
+	   },
+	   getIcono : function() {
+		   return icono;
 	   },
 	   getTipoContacto : getTipoContacto,
 	   actualizarContacto : actualizarContacto,
