@@ -48,7 +48,7 @@ app.controller('ToolBarContactoController', function($scope, $http, ContactoServ
 			(downgrade == "DOWNGRADE" && toolbarContacto.contactos.length > contacto))
 		{
 			var mensaje = "<div style='display:block; min-height:150px;' class='col-xs-12'><p>Ya has registrado todos los contactos disponibles</p><p class='textBlack text-center' style='font-size:1.15em;'>Adquiere <strong>Plan Pro</strong> en la sección <img alt='' src='../resources/webapp/images/fa-user-bk.png' width='20' title='Mi Cuenta' /> Mi Cuenta para agregar más contactos </p><br/> </div><div class='clearfix'></div><div style='display:block; height:30px; width:100%;'></div>";
-			MensajesService.cerrarBlockUIGeneral("Contactos",mensaje)
+			MensajesService.cerrarBlockUIGeneral("Contactos", mensaje);
 			return;
 		}
 		
@@ -80,10 +80,10 @@ app.controller('ToolBarContactoController', function($scope, $http, ContactoServ
 		$scope.contactoDowngrade = "1";
 		$scope.contenidoContacto = "";
 		
-		if(item.servicesNaptr.trim().length > 0)
+		if(item.servicesNaptr.trim().length > 0 && item.subCategory.trim().length == 0)
 		{
-			tipoBusqueda = "tel";
-			llaveBusqueda = item.servicesNaptr;
+			var tipoBusqueda = "tel";
+			var llaveBusqueda = item.servicesNaptr;
 		}
 
 		tipoContactoLista = ContactoService.getTipoContacto(tipoBusqueda , llaveBusqueda);
@@ -110,6 +110,9 @@ app.controller('ToolBarContactoController', function($scope, $http, ContactoServ
 		$scope.tipoContactoLis = mensajesContactoLista.tipo != undefined ? mensajesContactoLista.tipo : "";
 		$scope.codigoPaisLis = mensajesContactoLista.pais != undefined ? mensajesContactoLista.pais : "";
 		$scope.contenidoContacto = contenidoFinalContacto;
+		
+		var tipoBusqueda = "";
+		var llaveBusqueda = "";
 	};
 	
 	toolbarContacto.eliminarContacto = function(item, index) {
@@ -151,15 +154,19 @@ app.controller('ToolBarContactoController', function($scope, $http, ContactoServ
 		var expReg = "";
 		var placeHolder = "";
 		var contenidoContacto = "";
-
+		var tipoBusqueda = "redSocial";
+		var llaveBusqueda = item.subCategory;
+		
 		if (item.downgrade == "0")
 			return;
-		
-		if(item.subCategory.trim().length > 0)
-			tipoContactoAct = ContactoService.getTipoContacto("redSocial" , item.subCategory);
-		else
-			tipoContactoAct = ContactoService.getTipoContacto("tel" , item.servicesNaptr);
 
+		if(item.servicesNaptr.trim().length > 0 && item.subCategory.trim().length == 0)
+		{
+			var tipoBusqueda = "tel";
+			var llaveBusqueda = item.servicesNaptr;
+		}
+
+		tipoContactoAct = ContactoService.getTipoContacto(tipoBusqueda , llaveBusqueda);
 		mensajesContacto = ContactoService.getObjetoTipoContacto(tipoContactoAct);
 		expReg = mensajesContacto.expRegular != undefined ? mensajesContacto.expRegular : "^\\d{10}$";
 		placeHolder = mensajesContacto.placeholder != undefined ? mensajesContacto.placeholder : "Número Telefónico Inválido. Deben ser 10 Digitos";
@@ -189,11 +196,17 @@ app.controller('ToolBarContactoController', function($scope, $http, ContactoServ
 		$("#tipoContactoActualizar").val(mensajesContacto.tipo);
 		$("#inputTelefonosActualizar" ).attr("pattern", expReg);
 		$("#inputTelefonosActualizar").attr("placeholder", placeHolder);
-		$("#myModalContactosActualizar").modal();
+		$("#imgIcono").val(mensajesContacto.imagenIco);
+		var images = $('#rutaIcono').attr('src');
+		images = images + mensajesContacto.imagenIco;//images.replace("fa.png", mensajesContacto.imagenIco);
+		$('#rutaIcono').attr("src", images);
 		
 		$("#inputTelefonosActualizar").keydown(function(e) { 
 			ContactoService.setValidacionRegEx(regex.test($("#inputTelefonosActualizar").val()));
 		});
+		
+		//ContactoService.setIcono(mensajesContacto.imagenIco);
+		$("#myModalContactosActualizar").modal();
 	}
 	
     var eliminarContacto = function(claveContacto) {
@@ -257,12 +270,12 @@ app.controller('ToolBarContactoController', function($scope, $http, ContactoServ
 				 mensaje = "No se han podido actualizar los contactos";
 			 }
 		  		 
-			 MensajesService.cerrarBlockUIGeneral("Contactos",mensaje);
+			 MensajesService.cerrarBlockUIGeneral("Contactos", mensaje);
 
 		 }, function errorCallback(response) {
 			 console.log("El error es de que ni fue es: " + response , response.data.codeError);
 			 mensaje = "No se han podido actualizar los contactos";
-			 MensajesService.cerrarBlockUIGeneral("Contactos" ,mensaje);
+			 MensajesService.cerrarBlockUIGeneral("Contactos", mensaje);
 		 });
 		 
 	 };
@@ -394,6 +407,7 @@ app.controller('TipoContacto', function($scope, $http, ContactoService, Mensajes
 				 console.log("EL ERROR ES: " + response.data.codeError );
 				 mensaje = "No se ha podido guardar el contacto";
 			 }
+			 
 			 MensajesService.cerrarBlockUIGeneral("Contactos", mensaje);
 		 }, function errorCallback(response) {
 			 console.log("El error es: " + response , response.data.codeError);
@@ -403,9 +417,13 @@ app.controller('TipoContacto', function($scope, $http, ContactoService, Mensajes
 	 };	
 });
 
-app.controller('ActualizarContactos', function($scope, $http, ContactoService,MensajesService) {
+app.controller('ActualizarContactos', function($scope, $http, ContactoService, MensajesService) {
 	
 	var actualizarTipoContacto = this;
+
+	$("#myModalContactosActualizar").on('hidden.bs.modal', function() {
+		$('#rutaIcono').attr("src", '/WebAppInfomovil/resources/webapp/images/');
+	});
 	
 	actualizarTipoContacto.closeMyModalActualizarContactos = function() {
 		$("#myModalContactosActualizar").modal('hide');			
@@ -425,7 +443,9 @@ app.controller('ActualizarContactos', function($scope, $http, ContactoService,Me
 			codigoPais : $("#paisActualizarTel").val()
 		};
 		
+		$scope.imagenIcoActualizar = ContactoService.getIcono();
 		ContactoService.actualizarContacto(contacto);
 		$("#myModalContactosActualizar").modal('toggle');
 	}
+	
 });

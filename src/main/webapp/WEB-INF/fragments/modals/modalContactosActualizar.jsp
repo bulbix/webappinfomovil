@@ -7,17 +7,12 @@
 			ng-click="actualizarTipoContacto.guardarDatosContacto()"
 			style="margin: 5px 0;">
 			<img width="15" height="15" alt="Infomovil"
-				src="<c:url value="/resources/webapp/images/ico_actualizar.png"/>" /><span
+<%-- 				src="<c:url value="/resources/webapp/images/ico_actualizar.png"/>" --%>
+				src="/WebAppInfomovil/resources/webapp/images/"
+				/><span
 				class="hidden-xs"> Actualizar</span>
 		</button>
-		<!-- <button type="button" class="btn btn-purple pull-right btnsEditor"
-			id=""
-			ng-click="actualizarTipoContacto.closeMyModalActualizarContactos()"
-			style="margin: 5px 0;">
-			<img width="15" height="15" alt="Infomovil"
-				src="<c:url value="/resources/webapp/images/successWhite.png" />" /><span
-				class="hidden-xs"> Cancelar</span>
-		</button> -->
+
 		<button type="button" class="close textBlack pull-left btnsEditor"
 			aria-label="Close"
 			ng-click="actualizarTipoContacto.closeMyModalActualizarContactos()"
@@ -30,9 +25,10 @@
 
 	<div class="modal-body">
 		<form name="miFormularioActualizar" novalidate>
+			<input type="hidden" id="imgIcono">
 			<div class="dividerSmall"></div>
 			<div class="col-xs-12">
-				<img src="<c:url value="/resources/webapp/images/{{imagenIco}}"/>"
+				<img src="<c:url value="/resources/webapp/images/"/>" id="rutaIcono"
 					alt="{{nombre}}" height="30" width="30"> <span><strong>{{nombre}}</strong></span><br />
 				<span class="text-small textGreen">{{mensajeTelefonos}}</span>
 			</div>
