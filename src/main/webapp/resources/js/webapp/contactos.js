@@ -17,7 +17,8 @@ app.controller('ToolBarContactoController', function($scope, $http, ContactoServ
 		
 		$("div.btn-ordenar").toggleClass("btn-outlineDisable");
 		$("#sortable").sortable();
-		$("#sortable").sortable( "option", "disabled", false );
+		$("#sortable").sortable("option", "disabled", false);
+
 		$("#sortable").sortable({
 			start: function(event, ui) {
 	    		 itemsInicio = $("#sortable").sortable("toArray");
@@ -183,6 +184,7 @@ app.controller('ToolBarContactoController', function($scope, $http, ContactoServ
 				contenidoContacto = item.regExp.substring(mensajesContacto.tipo.length + mensajesContacto.pais.length, item.regExp.length);
 		}
 
+		console.log("contenidoContacto: " + contenidoContacto + ", tipo: " + mensajesContacto.tipo);
 		$("#paisActualizarTel").text("");
 		$("#nombreActualizarTel").text(mensajesContacto.nombre); 
 		$("#etiquetaActualizarTel").text(mensajesContacto.etiqueta);
