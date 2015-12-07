@@ -21,14 +21,14 @@ app.controller('ToolBarContactoController', function($scope, $http, ContactoServ
 		$("#sortable").sortable({
 			start: function(event, ui) {
 	    		 itemsInicio = $("#sortable").sortable("toArray");
-	    		 console.log("Unamos los corazones!");
+	    		 console.log("Unamos los corazones! dos" + itemsInicio);
 	    	 }
 	    });
 		 
 		 $("#sortable").sortable({
 			 update: function(event, ui) {	
 				 itemsFin = $( "#sortable" ).sortable("toArray");
-				
+				 console.log("Unamos los corazones! tres" + itemsFin);
 				 if(itemsInicio != itemsFin)
 					 ordenarContactos(itemsFin);
 				 
@@ -317,7 +317,7 @@ app.controller('TipoContacto', function($scope, $http, ContactoService, Mensajes
 		$scope.etiqueta = mensajesContacto.etiqueta != undefined ? mensajesContacto.etiqueta : "Número Telefónico";
 		$scope.subCategory = mensajesContacto.subcategoria != undefined ? mensajesContacto.subcategoria : "";
 		$scope.servicio = mensajesContacto.servicio != undefined ? mensajesContacto.servicio : "E2U+web:http";
-		$scope.msjValidacion = mensajesContacto.msjValidacion != undefined ? mensajesContacto.msjValidacion : "Número Telefónico Inválido";
+		$scope.msjValidacion = mensajesContacto.msjValidacion != undefined ? mensajesContacto.msjValidacion : "Número Telefónico Inválido. Deben ser 10 digitos";
 		$scope.maxlength = mensajesContacto.maxlength != undefined ? mensajesContacto.maxlength : "255";
 		$scope.tipoContacto = mensajesContacto.tipo != undefined ? mensajesContacto.tipo : "";
 		$scope.imagenIco = mensajesContacto.imagenIco;
@@ -366,7 +366,10 @@ app.controller('TipoContacto', function($scope, $http, ContactoService, Mensajes
 		datosTipoContacto.mostrarBtnGuardar = false;
 		datosTipoContacto.menuContactos = true;
 		datosTipoContacto.formGuardaContacto = false;
+		$scope.contacto.longLabelNaptr = "";
+		$scope.contacto.numeroEmailRedSocial = "";
 		
+			
 	}
 	
 	 var guardarContacto = function(contacto) {
