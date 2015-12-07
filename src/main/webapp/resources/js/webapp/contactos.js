@@ -17,26 +17,7 @@ app.controller('ToolBarContactoController', function($scope, $http, ContactoServ
 		
 		$("div.btn-ordenar").toggleClass("btn-outlineDisable");
 		$("#sortable").sortable();
-		$("#sortable").sortable( "option", "disabled", false );
-		$("#sortable").sortable({
-			start: function(event, ui) {
-	    		 itemsInicio = $("#sortable").sortable("toArray");
-	    		 console.log("Unamos los corazones!");
-	    	 }
-	    });
-		 
-		 $("#sortable").sortable({
-			 update: function(event, ui) {	
-				 itemsFin = $( "#sortable" ).sortable("toArray");
-				
-				 if(itemsInicio != itemsFin)
-					 ordenarContactos(itemsFin);
-				 
-				 $("#sortable").disableSelection();
-				 $("#sortable").sortable('disable');
-			 }	
-		 
-		 });
+		$("#sortable").sortable("option", "disabled", false);
 	};
 		
 	toolbarContacto.agregaContacto = function(downgrade, contacto) {
@@ -183,6 +164,7 @@ app.controller('ToolBarContactoController', function($scope, $http, ContactoServ
 				contenidoContacto = item.regExp.substring(mensajesContacto.tipo.length + mensajesContacto.pais.length, item.regExp.length);
 		}
 
+		console.log("contenidoContacto: " + contenidoContacto + ", tipo: " + mensajesContacto.tipo);
 		$("#paisActualizarTel").text("");
 		$("#nombreActualizarTel").text(mensajesContacto.nombre); 
 		$("#etiquetaActualizarTel").text(mensajesContacto.etiqueta);
@@ -288,6 +270,44 @@ app.controller('ToolBarContactoController', function($scope, $http, ContactoServ
 
      /*Obtiene los contactos*/
      ContactoService.getContactos();
+     
+     $("#sortable").sortable({
+    	 start: function(event, ui) {
+    		 itemsInicio = $("#sortable").sortable("toArray");
+    		 console.log("itemsInicio: " + itemsInicio);
+    	 },
+     
+		 update: function(event, ui) {	
+			 itemsFin = $("#sortable").sortable("toArray");
+			
+			 if(itemsInicio != itemsFin)
+			 {
+				 console.log("itemsFin: " + itemsFin);
+				 ordenarContactos(itemsFin);
+			 }
+			 
+			// $("#sortable").disableSelection();
+			// $("#sortable").sortable('disable');
+		 }
+     });
+		 
+	/* $("#sortable").sortable({
+		 update: function(event, ui) {	
+			 itemsFin = $( "#sortable" ).sortable("toArray");
+			
+			 if(itemsInicio != itemsFin)
+			 {
+				 console.log("itemsFin: " + itemsFin);
+				 //ordenarContactos(itemsFin);
+			 }
+			 
+	//		 $("#sortable").disableSelection();
+	//		 $("#sortable").sortable('disable');
+		 }	
+	 
+	 });*/
+	 
+	 $("#sortable").sortable();
 });
 
 app.controller('TipoContacto', function($scope, $http, ContactoService, MensajesService) {
