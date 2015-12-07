@@ -15,7 +15,7 @@ app.controller('ToolBarContactoController', function($scope, $http, ContactoServ
 	
 	toolbarContacto.activarSortearContacto = function() {
 		
-		$(".disabledBoton").prop("disabled", false);
+		$("div.btn-ordenar").toggleClass("btn-outlineDisable");
 		$("#sortable").sortable();
 		$("#sortable").sortable( "option", "disabled", false );
 		$("#sortable").sortable({
@@ -42,7 +42,6 @@ app.controller('ToolBarContactoController', function($scope, $http, ContactoServ
 	toolbarContacto.agregaContacto = function(downgrade, contacto) {
 		
 		ContactoService.setContactosPermitidos(contacto);
-		console.log("downgrade: " + downgrade + ", permitidos: " + contacto + ", guardados: " + toolbarContacto.contactos.length);
 
 		if ((toolbarContacto.contactos.length == contacto) || 
 			(downgrade == "DOWNGRADE" && toolbarContacto.contactos.length > contacto))
@@ -74,7 +73,8 @@ app.controller('ToolBarContactoController', function($scope, $http, ContactoServ
 		var llaveBusqueda = item.subCategory;
 		var contenidoFinalContacto = item.regExp;
 		
-		toolbarContacto.claseBoton = "btn btn-outlineGreen textWhite navEditorLato disabledBoton";
+		toolbarContacto.claseBoton = "btn btn-outlineGreen textWhite navEditorLato";
+		toolbarContacto.claseBotonOrd = "btn-outlineDisable";
 		toolbarContacto.claseLi = "ui-state-default textBlack claseCursorLi";
 		toolbarContacto.claseCheck = "onoffswitch-label";
 		$scope.contactoDowngrade = "1";
