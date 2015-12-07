@@ -12,12 +12,12 @@
 <body role="document" data-spy="scroll" data-target=".navbar"
 	data-offset="75" id="page-top" onload="autosave()">
 
-	<div ng-controller="PushNotificationCtrl as push">
-		<h1>Ultimos mensajes</h1>
-		<ul>
-			<li ng-repeat="message in push.messages">{{ message.mensaje}}</li>
-		</ul>
-	</div>
+<!-- 	<div ng-controller="PushNotificationCtrl as push"> -->
+<!-- 		<h1>Ultimos mensajes</h1> -->
+<!-- 		<ul> -->
+<!-- 			<li ng-repeat="message in push.messages">{{ message.mensaje}}</li> -->
+<!-- 		</ul> -->
+<!-- 	</div> -->
 
 	<!-- Fixed navbar -->
 	<nav class="navbar navbar-${ claseCss } navbar-static-top">
@@ -50,6 +50,12 @@
 			<div id="navbar" class="navbar-collapse collapse text-right">
 				<ul class="nav navbar-nav navbar-right" ng-controller = "HorariosControllerLlamarModal as llamarModalhorarios"   >
 
+<li>
+<a href="#" data-toggle="modal" data-target="#myModalMsjPN"
+								class="smoothScroll ${colorTexto}"><img
+							width="20" height="20" alt="Infomovil"
+							src="<c:url value="/resources/webapp/images/fa-messages${ extensionImg }.png"/>" />
+							Mis mensajes  <span class="badge">4</span></a></li>
 					<li><a href="<c:url value="/infomovil/miCuenta"></c:url>" class="smoothScroll ${colorTexto}"><img
 							width="20" height="20" alt="Infomovil"
 							src="<c:url value="/resources/webapp/images/fa-user${ extensionImg }.png"/>" />
@@ -352,6 +358,16 @@
 		<tiles:putAttribute name="tamanioModal"
 			value='"modal-dialog modal-lg"' />
 		<c:set var="fragmentName" value="modalMapFragment" scope="request" />
+	</tiles:insertDefinition>
+	<!--/MODAL MAPA-->
+	
+	
+	<!--MODAL MENSAJES-->
+	<tiles:insertDefinition name="modalGen">
+		<tiles:putAttribute name="idModal" value="myModalMsjPN" />
+		<tiles:putAttribute name="tamanioModal"
+			value='"modal-dialog modal-lg"' />
+		<c:set var="fragmentName" value="modalMsjPN" scope="request" />
 	</tiles:insertDefinition>
 	<!--/MODAL MAPA-->
 

@@ -40,5 +40,6 @@
 	<definition name="modalHorarios" template="/WEB-INF/fragments/modals/modalHorarios.jsp" />
 	
 	<definition name="estadisticas" template="/WEB-INF/fragments/fragment_estadisticas.jsp" />
+	<definition name="modalMsjPN" template="/WEB-INF/fragments/modals/modalMsjPN.jsp" />
 	
 </tiles-definitions>
