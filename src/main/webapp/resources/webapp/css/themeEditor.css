@@ -609,6 +609,10 @@ section.bgBlack { /*margin: 0 -5px 0 0; */
 		padding: 8% 0 8% 0 !important;
 	}
 }
+li.ui-state-default{
+	border-bottom:1px solid #999999;
+	padding-bottom: 5px;
+}
 
 @media only screen and (min-device-width : 768px) and (max-device-width
 	: 1024px) {
