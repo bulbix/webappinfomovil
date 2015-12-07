@@ -11,6 +11,14 @@
 
 <body role="document" data-spy="scroll" data-target=".navbar"
 	data-offset="75" id="page-top" onload="autosave()">
+
+	<div ng-controller="PushNotificationCtrl as push">
+		<h1>Ultimos mensajes</h1>
+		<ul>
+			<li ng-repeat="message in push.messages">{{ message.mensaje}}</li>
+		</ul>
+	</div>
+
 	<!-- Fixed navbar -->
 	<nav class="navbar navbar-${ claseCss } navbar-static-top">
 		<div class="container-fluid">
@@ -37,6 +45,8 @@
 				<!-- /LOGO INFOMOVIL - REGISTRO GENERAL-->
 
 			</div>
+			
+			
 			<div id="navbar" class="navbar-collapse collapse text-right">
 				<ul class="nav navbar-nav navbar-right" ng-controller = "HorariosControllerLlamarModal as llamarModalhorarios"   >
 
@@ -508,10 +518,13 @@
 	<script src="<c:url value="/resources/js/webapp/videoYoutube.js"/>"></script>
 	<script src="<c:url value="/resources/js/webapp/imagenes.js"/>"></script>
 	<script src="<c:url value="/resources/webapp/js/angular.min.js"/>"></script>
+	<script src="<c:url value="/resources/webapp/js/bower_components/firebase/firebase.js"/>"></script>
+	<script src="<c:url value="/resources/webapp/js/bower_components/angularfire/dist/angularfire.min.js"/>"></script>
 	<script src="<c:url value="/resources/js/webapp/horarios.js"/>"></script>
 	<script src="<c:url value="/resources/js/webapp/InfomovilServices/horariosService.js"/>"></script>
 	<script src="<c:url value="/resources/js/webapp/InfomovilServices/contactosService.js"/>"></script>
 	<script src="<c:url value="/resources/webapp/js/si.files.js"/>"></script>
+	<script src="<c:url value="/resources/js/webapp/pushNotification.js"/>"></script>
 	<script>
 			$(document).ready(function(){
 				generarSlider();

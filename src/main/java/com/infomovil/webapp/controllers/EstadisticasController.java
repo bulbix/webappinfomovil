@@ -37,6 +37,11 @@ public class EstadisticasController {
 		return  "Webapp/estadisticas";
 	}
 	
+	@RequestMapping(value = "/infomovil/insertMensaje", method = {RequestMethod.GET})
+	public String insertMensaje(Model model){
+		return  "Webapp/insertMensaje";
+	}
+	
 	@SuppressWarnings("unchecked")
 	@RequestMapping(value = "/infomovil/getDatosEstadistica", method = RequestMethod.GET, produces = "application/json")
 	@ResponseBody
