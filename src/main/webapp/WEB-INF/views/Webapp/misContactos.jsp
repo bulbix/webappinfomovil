@@ -232,12 +232,12 @@
 													</button>
 												</div>
 												<div class="col-xs-3 col-sm-2 text-left">
-													<button type="button" disabled
+													<div
 														ng-class="toolbarContacto.claseBoton"   >
 														<img width="20" height="20" alt="Infomovil"
 															src="<c:url value="/resources/webapp/images/fa-reorder.png"/>" />
 														<span class="hidden-xs"></span>
-													</button>
+													</div>
 												</div>
 											</div>
 										</li>
