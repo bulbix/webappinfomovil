@@ -110,13 +110,13 @@ public class ContactosController
 	@RequestMapping(value = "/infomovil/guardarContacto", method = { RequestMethod.GET, RequestMethod.POST })
 	@ResponseBody
 	public Map<String, String> guardarContacto(@RequestParam String descripcionContacto, @RequestParam String numeroEmailRedSocial, @RequestParam String constanteContacto, 
-			@RequestParam String redSocialWebSecure, @RequestParam String tipoContacto, @RequestParam String codigoPais, String expRegular) throws UnsupportedEncodingException
+			@RequestParam String redSocialWebSecure, @RequestParam String tipoContacto, @RequestParam String codigoPais, String expRegular, @RequestParam String protocolo) throws UnsupportedEncodingException
 	{		
 		Map<String, String> resultMap = new HashMap<String, String>();
 		
 		String correo = Util.getUserLogged().getUsername();
 		String password = Util.getUserLogged().getPassword();
-		String regExp = "!^.*$!" + tipoContacto + codigoPais;
+		String regExp = "!^.*$!" + protocolo + tipoContacto + codigoPais;
 		descripcionContacto = new String(descripcionContacto.getBytes("ISO-8859-1"), "UTF-8");
 		numeroEmailRedSocial = new String(numeroEmailRedSocial.getBytes("ISO-8859-1"), "UTF-8");
 		
@@ -177,8 +177,9 @@ public class ContactosController
 	
 	@RequestMapping(value = "/infomovil/actualizarContacto", method = { RequestMethod.GET, RequestMethod.POST })
 	@ResponseBody
-	public Map<String, String> actualizarContacto(@RequestParam String claveDeContacto, @RequestParam String descripcionContacto,  @RequestParam String numeroEmailRedSocial,  
-			@RequestParam String constanteContacto, @RequestParam String redSocialWebSecure, @RequestParam String visible, @RequestParam String tipoContacto, @RequestParam String codigoPais) 
+	public Map<String, String> actualizarContacto(@RequestParam String claveDeContacto, @RequestParam String descripcionContacto,  
+			@RequestParam String numeroEmailRedSocial, @RequestParam String constanteContacto, @RequestParam String redSocialWebSecure, 
+			@RequestParam String visible, @RequestParam String tipoContacto, @RequestParam String codigoPais) 
 					throws UnsupportedEncodingException
 	{		
 		Map<String, String> resultMap = new HashMap<String, String>();

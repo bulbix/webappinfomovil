@@ -36,11 +36,12 @@
 			<div class="dividerSmall"></div>
 			<div class="col-xs-12">
 
-				<input type="hidden" name="clave" id="claveContactoC" /> <input
-					type="hidden" name="servicesNaptr" id="servicesNaptrC" /> <input
-					type="hidden" name="subCategory" id="subCategoryC" /> <input
-					type="hidden" name="visible" id="visibleC" /> <input type="hidden"
-					name="tipoContactoActualizar" id="tipoContactoActualizar" />
+				<input type="hidden" name="clave" id="claveContactoC"/> 
+				<input type="hidden" name="servicesNaptr" id="servicesNaptrC"/> 
+				<input type="hidden" name="subCategory" id="subCategoryC"/> 
+				<input type="hidden" name="visible" id="visibleC"/>
+				<input type="hidden" name="protocolo" id="protocolo"/>
+				<input type="hidden" name="tipoContactoActualizar" id="tipoContactoActualizar"/>
 
 
 				<div class="form-group">

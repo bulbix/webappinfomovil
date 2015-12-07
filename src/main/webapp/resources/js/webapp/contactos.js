@@ -143,7 +143,7 @@ app.controller('ToolBarContactoController', function($scope, $http, ContactoServ
 		if (item.visible == "1")
 			visibleContacto = "0";
 		
-		item.visible = visibleContacto;		
+		item.visible = visibleContacto;
 		ContactoService.actualizarContacto(item);
 	};
 	
@@ -156,6 +156,7 @@ app.controller('ToolBarContactoController', function($scope, $http, ContactoServ
 		var placeHolder = "";
 		var contenidoContacto = "";
 		var tipoBusqueda = "redSocial";
+		var protocolo = "";
 		var llaveBusqueda = item.subCategory;
 		
 		if (item.downgrade == "0")
@@ -171,6 +172,7 @@ app.controller('ToolBarContactoController', function($scope, $http, ContactoServ
 		mensajesContacto = ContactoService.getObjetoTipoContacto(tipoContactoAct);
 		expReg = mensajesContacto.expRegular != undefined ? mensajesContacto.expRegular : "^\\d{10}$";
 		placeHolder = mensajesContacto.placeholder != undefined ? mensajesContacto.placeholder : "Número Telefónico Inválido. Deben ser 10 Digitos";
+		protocolo = mensajesContacto.protocolo != undefined ? mensajesContacto.protocolo : "";
 		contenidoContacto = item.regExp;
 		$scope.imagenIco = mensajesContacto.imagenIco;
 		console.log("$scope.imagenIco: " + $scope.imagenIco);
@@ -184,7 +186,7 @@ app.controller('ToolBarContactoController', function($scope, $http, ContactoServ
 				contenidoContacto = item.regExp.substring(mensajesContacto.tipo.length + mensajesContacto.pais.length, item.regExp.length);
 		}
 
-		console.log("contenidoContacto: " + contenidoContacto + ", tipo: " + mensajesContacto.tipo);
+		console.log("contenidoContacto: " + contenidoContacto + ", tipo: " + mensajesContacto.tipo + ", codigo: " + mensajesContacto.pais);
 		$("#paisActualizarTel").text("");
 		$("#nombreActualizarTel").text(mensajesContacto.nombre); 
 		$("#etiquetaActualizarTel").text(mensajesContacto.etiqueta);
@@ -196,6 +198,7 @@ app.controller('ToolBarContactoController', function($scope, $http, ContactoServ
 		$("#subCategoryC").val(item.subCategory); 
 		$("#visibleC").val(item.visible);
 		$("#tipoContactoActualizar").val(mensajesContacto.tipo);
+		$("#protocolo").val(protocolo);
 		$("#inputTelefonosActualizar" ).attr("pattern", expReg);
 		$("#inputTelefonosActualizar").attr("placeholder", placeHolder);
 		$("#imgIcono").val(mensajesContacto.imagenIco);
@@ -323,6 +326,8 @@ app.controller('TipoContacto', function($scope, $http, ContactoService, Mensajes
 		$scope.maxlength = mensajesContacto.maxlength != undefined ? mensajesContacto.maxlength : "255";
 		$scope.tipoContacto = mensajesContacto.tipo != undefined ? mensajesContacto.tipo : "";
 		$scope.imagenIco = mensajesContacto.imagenIco;
+		$scope.protocolo = mensajesContacto.protocolo != undefined ? mensajesContacto.protocolo : "";
+		console.log("protocolo: " + $scope.protocolo);
 	}
 	
 	datosTipoContacto.regresarAgregarContacto = function() {
@@ -352,7 +357,8 @@ app.controller('TipoContacto', function($scope, $http, ContactoService, Mensajes
 		
 		var contacto = {
 			longLabelNaptr : $scope.contacto.longLabelNaptr != undefined ? $scope.contacto.longLabelNaptr : "", 
-			numeroEmailRedSocial: $scope.contacto.numeroEmailRedSocial
+			numeroEmailRedSocial: $scope.contacto.numeroEmailRedSocial,
+			protocolo : $scope.protocolo
 		};
 
 		guardarContacto(contacto);		
@@ -369,8 +375,7 @@ app.controller('TipoContacto', function($scope, $http, ContactoService, Mensajes
 		datosTipoContacto.menuContactos = true;
 		datosTipoContacto.formGuardaContacto = false;
 		$scope.contacto.longLabelNaptr = "";
-		$scope.contacto.numeroEmailRedSocial = "";
-		
+		$scope.contacto.numeroEmailRedSocial = "";		
 			
 	}
 	
@@ -388,7 +393,8 @@ app.controller('TipoContacto', function($scope, $http, ContactoService, Mensajes
 				 constanteContacto: $scope.servicio,
 				 redSocialWebSecure: $scope.subCategory,
 				 tipoContacto: $scope.tipoContacto,
-				 codigoPais: $scope.pais
+				 codigoPais: $scope.pais,
+				 protocolo: $scope.protocolo
 			 }	  
 		 }).then(function successCallback(response) {
 
@@ -435,7 +441,7 @@ app.controller('ActualizarContactos', function($scope, $http, ContactoService, M
 	}
 	
 	actualizarTipoContacto.guardarDatosContacto = function() {
-		
+
 		var contacto = {
 					
 			claveContacto : $("#claveContactoC").val(), 
@@ -445,9 +451,10 @@ app.controller('ActualizarContactos', function($scope, $http, ContactoService, M
 			subCategory : $("#subCategoryC").val(),
 			visible : $("#visibleC").val(),
 			tipoContacto : $("#tipoContactoActualizar").val(),
-			codigoPais : $("#paisActualizarTel").val()
+			codigoPais : $("#paisActualizarTel").text(),
+			protocolo : $("#protocolo").val()
 		};
-		
+
 		$scope.imagenIcoActualizar = ContactoService.getIcono();
 		ContactoService.actualizarContacto(contacto);
 		$("#myModalContactosActualizar").modal('toggle');

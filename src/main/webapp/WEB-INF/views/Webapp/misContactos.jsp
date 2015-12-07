@@ -175,49 +175,70 @@
 
 								<div id="{{item.claveContacto}}" ng-repeat="item in toolbarContacto.contactos">
 									{{toolbarContacto.getContenidoDowngrade(downgrade, $index + 1, contacto, item)}}
-									<li class="ui-state-default" id="contactoId{{$index + 1}}">
-										<span id="regExpContacto" ng-hide="false">{{contenidoContacto}}</span>
-										<div id="servicesNaptrContacto" ng-hide="true">{{item.servicesNaptr}}</div>
-										<div id="categoryNaptrContacto" ng-hide="true">{{item.categoryNaptr}}</div>
-										<div id="longLabelNaptrContacto" ng-hide="true">{{item.longLabelNaptr}}</div>
-										<div id="subCategoryContacto" ng-hide="true">{{item.subCategory}}</div>
-										<div id="preferenciaContacto" ng-hide="true">{{item.preference}}</div>
-										<div id="idContacto" ng-hide="true">{{item.claveContacto}}</div>
-										<div id="visibleContacto" ng-hide="true">{{item.visible}}</div>
-										<div ng-hide="true">	
-											{{item.downgrade = contactoDowngrade}}
-											{{item.tipoContacto = tipoContactoLis}}
-											{{item.codigoPais = codigoPaisLis}}
-										</div>
-<!-- 										<div class="col-xs-3 col-sm-2 text-left"> -->
-<!-- 											<div class="onoffswitch" ng-click="toolbarContacto.toggleContacto(item)" style="display: block-inline"> -->
-<!-- 												<input type="checkbox" name="onoffswitch" ng-checked="item.visible==1" id="checkContactoActivo{{$index + 1}}"  -->
-<!-- 													class="onoffswitch-checkbox" id="myonoffswitch"> -->
-<!-- 												<label ng-class="toolbarContacto.claseCheck" for="myonoffswitch"></label> -->
-<!-- 											</div> -->
-<!-- 										</div> -->
-										
-										<div class="col-xs-3 col-sm-2 text-left">
-											<button type="button" ng-class="toolbarContacto.claseBoton" ng-click="toolbarContacto.abrirActualizarContacto(item)">
-												<img width="20" height="20" alt="Infomovil"
-													src="<c:url value="/resources/webapp/images/ico_actualizar.png"/>" />
+										<li class="ui-state-default textBlack" style="list-style: none;" id="contactoId{{$index + 1}}">
+												
+											<div class="col-xs-12 col-sm-4  text-left" style="overflow:hidden">
+													<img width="30" height="30" alt="Infomovil"
+													src="<c:url value="/resources/webapp/images/{{imagenIco}}"/>" />
+												<span id="regExpContacto" ng-hide="false">
+													{{contenidoContacto}}
+												</span>
+												<div id="servicesNaptrContacto" ng-hide="true">
+													{{item.servicesNaptr}}</div>
+												<div id="categoryNaptrContacto" ng-hide="true">
+													{{item.categoryNaptr}}</div>
+												<div id="longLabelNaptrContacto" ng-hide="true">
+													{{item.longLabelNaptr}}</div>
+												<div id="subCategoryContacto" ng-hide="true">
+													{{item.subCategory}}</div>
+												<div id="preferenciaContacto" ng-hide="true">
+													{{item.preference}}</div>
+												<div id="idContacto" ng-hide="true">
+													{{item.claveContacto}}</div>
+												<div id="visibleContacto" ng-hide="true">
+													{{item.visible}}</div>
+												<div ng-hide="true">	
+													{{item.downgrade = contactoDowngrade}}
+													{{item.tipoContacto = tipoContactoLis}}
+													{{item.codigoPais = codigoPaisLis}}
+												</div>
+											</div>
+											<div class="col-xs-3 col-sm-2 text-left">
+												<div class="onoffswitch" ng-click="toolbarContacto.toggleContacto(item)"
+													style="display: block-inline">
+													<input type="checkbox" name="onoffswitch" ng-checked="item.visible==1" id="checkContactoActivo{{$index + 1}}" 
+														class="onoffswitch-checkbox" id="myonoffswitch">
+													<label ng-class="toolbarContacto.claseCheck" for="myonoffswitch"></label>
+												</div>
+											</div>
+											<div class="col-xs-3 col-sm-2 text-left">
+												<button type="button"
+													ng-class="toolbarContacto.claseBoton"
+													ng-click="toolbarContacto.abrirActualizarContacto(item)">
+													<img width="20" height="20" alt="Infomovil"
+														src="<c:url value="/resources/webapp/images/ico_actualizar.png"/>" />
 													<span class="hidden-xs"></span>
-											</button>
-										</div>
-<!-- 										<div class="col-xs-3 col-sm-2 text-left"> -->
-<!-- 											<button type="button" ng-class="toolbarContacto.claseBoton" id="btnEliminarContacto" -->
-<!-- 												ng-click="toolbarContacto.eliminarContacto(item)"> -->
-<%-- 												<img width="20" height="20" alt="Infomovil" src="<c:url value="/resources/webapp/images/trash.png"/>" /> --%>
-<!-- 												<span class="hidden-xs"></span> -->
-<!-- 											</button> -->
-<!-- 										</div> -->
-<!-- 										<div class="col-xs-3 col-sm-2 text-left"> -->
-<!-- 											<div class="btn btn-outlineDisable btn-ordenar btn-outlineGreen"> -->
-<%-- 												<img width="20" height="20" alt="Infomovil"	src="<c:url value="/resources/webapp/images/fa-reorder.png"/>" /> --%>
-<!-- 												<span class="hidden-xs"></span> -->
-<!-- 											</div> -->
-<!-- 										</div> -->
-									</li>
+												</button>
+											</div>
+											<div class="col-xs-3 col-sm-2 text-left">
+												<button type="button"
+													ng-class="toolbarContacto.claseBoton"
+													id="btnEliminarContacto"
+													ng-click="toolbarContacto.eliminarContacto(item)">
+													<img width="20" height="20" alt="Infomovil"
+														src="<c:url value="/resources/webapp/images/trash.png"/>" />
+													<span class="hidden-xs"></span>
+												</button>
+											</div>
+											<div class="col-xs-3 col-sm-2 text-left">
+												<div class="btn btn-outlineDisable btn-ordenar btn-outlineGreen">
+													<img width="20" height="20" alt="Infomovil"
+														src="<c:url value="/resources/webapp/images/fa-reorder.png"/>" />
+													<span class="hidden-xs"></span>
+												</div>
+											</div>
+											<div class="clearfix"></div>
+										</li>
 								</div>
 								<div class="clearfix"></div>
 						</ul>

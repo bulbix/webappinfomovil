@@ -29,7 +29,7 @@ app.factory('ContactoService', function($http, MensajesService) {
 		}, function errorCallback(response) {
 			console.log("El error es: " + response);
 			var mensaje = "No se ha podido obtener la lista de contactos";
-			MensajesService.cerrarBlockUIGeneral("Contactos",mensaje);
+			MensajesService.cerrarBlockUIGeneral("Contactos", mensaje);
 		});
 	}
 		
@@ -49,7 +49,8 @@ app.factory('ContactoService', function($http, MensajesService) {
     			redSocialWebSecure : contacto.subCategory,
     			visible : contacto.visible,
     			tipoContacto : contacto.tipoContacto,
-    			codigoPais : contacto.codigoPais
+    			codigoPais : contacto.codigoPais,
+    			protocolo : contacto.protocolo
     		}		  
     	}).then(function successCallback(response) {
     		console.log("El valore regresado es: " + response.data.codeError , response.codeError);
@@ -61,7 +62,7 @@ app.factory('ContactoService', function($http, MensajesService) {
     			mensaje ="No se ha podido actualizar el contacto";
     		}
     		
-    		MensajesService.cerrarBlockUIGeneral("Contactos",mensaje);
+    		MensajesService.cerrarBlockUIGeneral("Contactos", mensaje);
     	}, function errorCallback(response) {
     		console.log("El error es: Peticion incorrecta" + response.codeError);
     		mensaje = "No se ha podido actualizar el contacto";
@@ -161,7 +162,8 @@ app.factory('ContactoService', function($http, MensajesService) {
 				    placeholder : 'www.facebook.com/tufanpage',
 				    subcategoria : 'facebook',
 				    expRegular : '(((www|WWW))\\.)?(facebook|FACEBOOK)\\.(com|COM)\\/[a-zA-Z0-9\\*\\?\\+\\[\\(\\)\\{\\}\\^\\$\\|\\.\\/\\ ]{1,}',
-				    msjValidacion : 'Formato incorrecto para Facebook'
+				    msjValidacion : 'Formato incorrecto para Facebook',
+				    protocolo : 'http://'
 				};
 
 				break;
@@ -176,7 +178,8 @@ app.factory('ContactoService', function($http, MensajesService) {
 				    mensaje : 'Se publicarán tus ultimos Tweets en tu página web',
 				    subcategoria : 'twitter',
 				    expRegular : '(twitter|TWITTER)\\.(com|COM)\\/[a-zA-Z0-9\\*\\?\\+\\[\\(\\)\\{\\}\\^\\$\\|\\.\\/\\ ]{1,}',
-				    msjValidacion : 'Formato incorrecto para Twitter'
+				    msjValidacion : 'Formato incorrecto para Twitter',
+				    protocolo : 'http://'
 				};
 
 				break;
@@ -189,7 +192,8 @@ app.factory('ContactoService', function($http, MensajesService) {
 				    etiqueta : 'Liga a tu cuenta de Google+',
 				    placeholder : 'plus.google.com/tucuenta',
 				    expRegular : '(plus|PLUS)\\.(google|GOOGLE)\\.(com|COM)\\/[a-zA-Z0-9\\*\\?\\+\\[\\(\\)\\{\\}\\^\\$\\|\\.\\/\\ ]{1,}',
-				    msjValidacion : 'Formato incorrecto para Google+'
+				    msjValidacion : 'Formato incorrecto para Google+',
+				    protocolo : 'http://'
 				};
 
 				break;
@@ -218,7 +222,8 @@ app.factory('ContactoService', function($http, MensajesService) {
 				    placeholder : 'www.linkedin.com/tuempresa',
 				    subcategoria : 'linkedin',
 				    expRegular : '((WWW|www)\\.){0,1}(linkedin|LINKEDIN)\\.(com|COM)\\/[a-zA-Z0-9\\*\\?\\+\\[\\(\\)\\{\\}\\^\\$\\|\\.\\/\\ ]{1,}',
-				    msjValidacion : 'Formato incorrecto para LinkedIn'
+				    msjValidacion : 'Formato incorrecto para LinkedIn',
+				    protocolo : 'http://'
 				};
 
 				break;
@@ -233,7 +238,8 @@ app.factory('ContactoService', function($http, MensajesService) {
 				    servicio : 'E2U+web:https',
 				    subcategoria : 'securewebsite',
 				    expRegular : '^([\\w-]+\\.)+[\\w-]+(/[\\w-./?%&=]*)?$',
-				    msjValidacion : 'Formato incorrecto para Web'
+				    msjValidacion : 'Formato incorrecto para Web',
+				    protocolo : 'https://'
 				};
 				break;
 				
