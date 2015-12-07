@@ -18,6 +18,26 @@ app.controller('ToolBarContactoController', function($scope, $http, ContactoServ
 		$("div.btn-ordenar").toggleClass("btn-outlineDisable");
 		$("#sortable").sortable();
 		$("#sortable").sortable("option", "disabled", false);
+
+		$("#sortable").sortable({
+			start: function(event, ui) {
+	    		 itemsInicio = $("#sortable").sortable("toArray");
+	    		 console.log("Unamos los corazones! dos" + itemsInicio);
+	    	 }
+	    });
+		 
+		 $("#sortable").sortable({
+			 update: function(event, ui) {	
+				 itemsFin = $( "#sortable" ).sortable("toArray");
+				 console.log("Unamos los corazones! tres" + itemsFin);
+				 if(itemsInicio != itemsFin)
+					 ordenarContactos(itemsFin);
+				 
+				 $("#sortable").disableSelection();
+				 $("#sortable").sortable('disable');
+			 }	
+		 
+		 });
 	};
 		
 	toolbarContacto.agregaContacto = function(downgrade, contacto) {
@@ -270,44 +290,6 @@ app.controller('ToolBarContactoController', function($scope, $http, ContactoServ
 
      /*Obtiene los contactos*/
      ContactoService.getContactos();
-     
-     $("#sortable").sortable({
-    	 start: function(event, ui) {
-    		 itemsInicio = $("#sortable").sortable("toArray");
-    		 console.log("itemsInicio: " + itemsInicio);
-    	 },
-     
-		 update: function(event, ui) {	
-			 itemsFin = $("#sortable").sortable("toArray");
-			
-			 if(itemsInicio != itemsFin)
-			 {
-				 console.log("itemsFin: " + itemsFin);
-				 ordenarContactos(itemsFin);
-			 }
-			 
-			// $("#sortable").disableSelection();
-			// $("#sortable").sortable('disable');
-		 }
-     });
-		 
-	/* $("#sortable").sortable({
-		 update: function(event, ui) {	
-			 itemsFin = $( "#sortable" ).sortable("toArray");
-			
-			 if(itemsInicio != itemsFin)
-			 {
-				 console.log("itemsFin: " + itemsFin);
-				 //ordenarContactos(itemsFin);
-			 }
-			 
-	//		 $("#sortable").disableSelection();
-	//		 $("#sortable").sortable('disable');
-		 }	
-	 
-	 });*/
-	 
-	 $("#sortable").sortable();
 });
 
 app.controller('TipoContacto', function($scope, $http, ContactoService, MensajesService) {
@@ -337,7 +319,7 @@ app.controller('TipoContacto', function($scope, $http, ContactoService, Mensajes
 		$scope.etiqueta = mensajesContacto.etiqueta != undefined ? mensajesContacto.etiqueta : "Número Telefónico";
 		$scope.subCategory = mensajesContacto.subcategoria != undefined ? mensajesContacto.subcategoria : "";
 		$scope.servicio = mensajesContacto.servicio != undefined ? mensajesContacto.servicio : "E2U+web:http";
-		$scope.msjValidacion = mensajesContacto.msjValidacion != undefined ? mensajesContacto.msjValidacion : "Número Telefónico Inválido";
+		$scope.msjValidacion = mensajesContacto.msjValidacion != undefined ? mensajesContacto.msjValidacion : "Número Telefónico Inválido. Deben ser 10 digitos";
 		$scope.maxlength = mensajesContacto.maxlength != undefined ? mensajesContacto.maxlength : "255";
 		$scope.tipoContacto = mensajesContacto.tipo != undefined ? mensajesContacto.tipo : "";
 		$scope.imagenIco = mensajesContacto.imagenIco;
@@ -386,7 +368,10 @@ app.controller('TipoContacto', function($scope, $http, ContactoService, Mensajes
 		datosTipoContacto.mostrarBtnGuardar = false;
 		datosTipoContacto.menuContactos = true;
 		datosTipoContacto.formGuardaContacto = false;
+		$scope.contacto.longLabelNaptr = "";
+		$scope.contacto.numeroEmailRedSocial = "";
 		
+			
 	}
 	
 	 var guardarContacto = function(contacto) {
