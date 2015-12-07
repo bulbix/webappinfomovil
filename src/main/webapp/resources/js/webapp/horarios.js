@@ -19,13 +19,19 @@ app.controller('HorariosControllerLlamarModal', function($scope, $http, HorarioS
 	$("#Domingo1").append( resphoras );
 	$("#Domingo2").append( resphoras );
 	
-	
 	llamarModalhorarios.abrirModalHorarios = function(){
-		console.log("LLama a  abrirModalHorarios");
-		HorarioService.getHorarios();
+		HorarioService.abrirModalHorarios();
 	};
 	
 });
+
+app.controller('HorariosControllerLlamarModalDown', function(HorarioService) {
+	var llamarModalhorariosDown = this;
+	llamarModalhorariosDown.abrirModalHorarios = function(){
+		HorarioService.abrirModalHorarios();
+	};
+});
+
 
 app.controller('ModalHorarios', function($scope, $http, HorarioService, MensajesService) {
 	

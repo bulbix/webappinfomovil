@@ -5,6 +5,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.commons.validator.routines.EmailValidator;
 import org.apache.log4j.Logger;
 import org.json.simple.JSONArray;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -40,6 +41,7 @@ public class ContactosController
 		String extensionImg = "";
 		String contacto = "";
 		String downgrade = "";
+		String nombreUsuario = "";
 		
 		try
 		{		
@@ -56,6 +58,12 @@ public class ContactosController
 				}
 			}
          	
+			if (Util.getCurrentSession().getAttribute("nombreUsuario") != null)
+         	{
+         		if (!(EmailValidator.getInstance().isValid(Util.getCurrentSession().getAttribute("nombreUsuario").toString())))
+         			nombreUsuario = Util.getCurrentSession().getAttribute("nombreUsuario").toString();
+         	}
+			
          	if (Util.getCurrentSession().getAttribute("template") != null)
          		template = Util.getCurrentSession().getAttribute("template").toString();
          
@@ -88,7 +96,7 @@ public class ContactosController
 			model.put("template", template);
 			model.put("downgrade", downgrade);
 			model.put("contacto", contacto);
-
+			model.put("nombreUsuario", nombreUsuario);
 		}		
 		catch (Exception e) 
 		{

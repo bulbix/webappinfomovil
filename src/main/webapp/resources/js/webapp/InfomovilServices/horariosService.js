@@ -152,11 +152,20 @@ app.factory('HorarioService', function($http, MensajesService) {
     		
     	};
     	
+    	function abrirModalHorarios(){
+    		console.log("LLama a  abrirModalHorarios");
+    		getHorarios();
+    		
+    	};
+    	
+    	
+    	
 		return{
 			 getHoras : getHoras,
 			 getHorarios : getHorarios,
 			 guardarHorario : guardarHorario,
-			 eliminarHorario : eliminarHorario
+			 eliminarHorario : eliminarHorario,
+			 abrirModalHorarios : abrirModalHorarios
 			   	
 		}
 });
