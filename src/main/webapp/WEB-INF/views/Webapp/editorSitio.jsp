@@ -320,8 +320,8 @@
 		<div class="clearfix"></div>
 		<div class="dividerSmallest"></div>
 <!-- /Botón AGREGAR MAS CONTENIDO -->
-		<div id="idBtnMasCont" class="botonDesPublicar" style="display: none;" ng-click="llamarModalhorarios.abrirModalHorarios()">
-			<a href="#" 
+		<div id="idBtnMasCont" class="botonDesPublicar" style="display: none;" ng-controller = "HorariosControllerLlamarModalDown as llamarModalhorariosDown" ng-click="llamarModalhorariosDown.abrirModalHorarios()">
+			<a  
 				class="col-xs-12 col-sm-6 col-sm-offset-3 col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3 btn btn-default btn-outline navEditor">
 				<img width="20" height="20" alt="Infomovil"
 				src="<c:url value="/resources/webapp/images/fa-time.png"/>" />

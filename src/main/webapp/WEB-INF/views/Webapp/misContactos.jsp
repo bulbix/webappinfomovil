@@ -80,26 +80,24 @@
 					Contactos</h3>
 			</div>
 			<div class="col-xs-12 col-sm-6">
-				<div class="col-xs-12 reset text-right pull-right navEditor">
-					<span id="muestraNombreUsuario"> <c:if
-							test="${not empty nombreUsuario}">
-							${nombreUsuario} <img width="20" height="20" alt="Infomovil"
-								src="<c:url value="/resources/webapp/images/fa-user.png"/>" />
-						</c:if>
-					</span> <br /> ${correoElectronico} <img width="25" height="25"
-						alt="Infomovil"
-						src="<c:url value="/resources/webapp/images/fa-mail.png"/>" />
+			<div class="col-xs-12 reset text-right pull-right navEditor">
+				<span id="muestraNombreUsuario">
+					<c:if test="${not empty nombreUsuario}">
+						${nombreUsuario} <img width="20" height="20" alt="Infomovil" src="<c:url value="/resources/webapp/images/fa-user.png"/>"/>
+					</c:if>
+				</span>  
+					<br/> ${correoElectronico} <img width="25" height="25" alt="Infomovil"
+					src="<c:url value="/resources/webapp/images/fa-mail.png"/>" /> 
 					<div class="clear"></div>
 					<a href="<c:url value="/infomovil/editarSitio"></c:url>"
-						class="col-xs-4 col-sm-3 col-md-3 col-lg-3 btn btn-default btn-outline navEditor pull-right hidden-sm hidden-md hidden-lg">
+					class="col-xs-4 col-sm-3 col-md-3 col-lg-3 btn btn-default btn-outline navEditor pull-right hidden-sm hidden-md hidden-lg">
 
-						<span id="idOpcionMasCont"><img width="20" height="20"
-							alt="Infomovil"
-							src="<c:url value="/resources/webapp/images/fa-back.png"/>" />
-							Editor </span>
-					</a>
-				</div>
-			</div>
+					<span id="idOpcionMasCont"><img width="20" height="20"
+						alt="Infomovil"
+						src="<c:url value="/resources/webapp/images/fa-back.png"/>" /> Editor </span>
+				</a>
+			</div>			
+		</div>
 		</div>
 	</div>
 
