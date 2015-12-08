@@ -63,7 +63,7 @@
    <div style="display: block; padding: 10px 0 0 0;"></div>
     	<div class="col-xs-12 col-sm-3 text-left"><img src=""  class="imgActualizar img-thumbnail" id="fotoDeGaleria" style="max-width:100px; max-height:100px;"/></div>
         <div class="col-xs-12 col-sm-9 navEditorSFl">
-        <label style="display:block">Nombre: </label> <textarea rows="4" cols="50" maxlength="255" id="actualizarTextoFoto" style="display:inline" ></textarea>
+        <label style="display:block">Nombre: </label> <textarea rows="4" cols="50" maxlength="255" id="actualizarTextoFoto" style="display:inline;  min-width:200px; width:100%;" ></textarea>
         </div>
     </div>
 </div>

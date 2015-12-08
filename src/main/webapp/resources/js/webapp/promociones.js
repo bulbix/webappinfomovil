@@ -13,13 +13,19 @@ var $btnCompartir = $("#btnCompartir");
 var $btnVerPromo = $("#btnVerPromo");
 var $btnEliminar = $("#btnEliminar");
 var $btnGuardar = $("#btnGuardar");
-var templatesPromo = new Array("promo7","promo5", "promo4", "promo1", "promo2", "promo3"); //, "promo6");
-var nombresPromo = new Array("Buen Fin","Floral", "Tecnología 2", "Bares", "Hipster", "Tecnología"); //, "ATT"); /*Cambiar nombres*/
+var templatesPromo = new Array("promo8", "promo6",  "promo1","promo5", "promo4", "promo7", "promo2", "promo3"); //, "promo6");
+var nombresPromo = new Array("Navidad", "Cursos",  "Bares","Floral", "Tecnología 2", "Buen Fin", "Hipster", "Tecnología"); //, "ATT"); /*Cambiar nombres*/
 var plantillaPromo = "promo1";
 var indicePromocion = 0;
 var nombreSitio = "";
 var banderaCanal = "";
-
+var $btnVistaPreviaImprimirMovil = $("#btnImprimirPromoMovil");
+var $btnVistaPreviaImprimir = $("#btnImprimirPromo");
+var oldstrInner = "";
+var oldstr = "";
+var pathPDF =  "";
+var pathJPG = "";
+var $urlVPPromoImprimir = $("#urlVistaPreviaPromoImprimir");
 $(function() {
 	$datepickerPromo.datepicker({ dateFormat: 'dd/mm/yy' });	
 });
@@ -102,16 +108,21 @@ var $publicarPromocion = function() {
 			base64Imagen: "",
 			redimir: $('.radioPromo:checked').val(),
 			terminos:$infoadiPromo.val(),
-			templatePromo: plantillaFinalPromo
+			templatePromo: plantillaFinalPromo,
+			idPromocion:$idPromocion.val()
 		},
 		success : function(data) {			
 			$divPublicarPromo.hide();
 			$divPromoPublicada.show();
 			$("#idPromocion").val(data.idOffer);
-			$("#urlPromocion").val(data.urlPromocion);
+			$urlPromocion.val(data.urlPromocion);
+			$urlVPPromoImprimir.attr('src' , data.urlPromocion);
 			$("#urlPromo").val(data.urlPromocion);
 			nombreSitio = data.nombreSitio;
-			banderaCanal = data.banderaCanal;
+			banderaCanal = data.banderaCanal; 
+			$("#tempNombrePromo").val(data.nombreSitio);
+			$("#tempBanderaPromo").val(data.banderaCanal);
+			
 			guardarEventoGA('promo-publicar');
 			$.unblockUI();
 		},
@@ -154,7 +165,8 @@ var $guardarCambiosEnPromocion = function() {
 			base64Imagen: "",
 			redimir: $('.radioPromo:checked').val(),
 			terminos: $infoadiPromo.val(),
-			templatePromo: plantillaPromo
+			templatePromo: plantillaPromo,
+			idPromocion:$idPromocion.val()
 			},
 			success : function(data) {
 				$divPublicarPromo.hide();
@@ -373,6 +385,15 @@ $(document).ready(function() {
 		$vistaPrevia();
 	});
 	
+	$btnVistaPreviaImprimir.click(function(){
+		$vistaPreviaImprimir();
+		
+	});
+	$btnVistaPreviaImprimirMovil.click(function(){
+		$vistaPreviaImprimir();
+		
+	});
+	
 	$btnCompartir.click(function() {
 		var url = $("#urlPromocion").val(); 
 		var lFace = "http://www.facebook.com/sharer/sharer.php?u=" + url + "&t=Checa%20esta%20promo%20"; 
@@ -409,6 +430,8 @@ $(document).ready(function() {
 		}
 
 	});
+	
+	
 				
 });
 
@@ -508,7 +531,8 @@ function actualizaEstiloPromo() {
 				base64Imagen: "",
 				redimir: $('.radioPromo:checked').val(),
 				terminos: $infoadiPromo.val(),
-				templatePromo: plantillaPromo
+				templatePromo: plantillaPromo,
+				idPromocion:$idPromocion.val()
 				},
 				success : function(data) {
 					$('#myModalTempPromo').modal('hide');
@@ -530,10 +554,116 @@ function actualizaEstiloPromo() {
 }
 
 function guardarEventoGA(nombreEvento) {
-	
 	ga('send', 'event', 'promo', nombreEvento, nombreSitio, banderaCanal);
 }
 
 function muestraTemplatePromo() {
 	$("#myModalTempPromo").modal();
-}
+};
+
+
+var $vistaPreviaImprimir = function() {
+	
+	$.blockUI.defaults.baseZ = 9000;
+	$.blockUI({
+		message: "Actualizando plantilla promo...",
+		css: {
+			class:"alertaUI",
+			top:  ($(window).height() - 400) /2 + 'px',
+			left: ($(window).width() - 400) /2 + 'px',
+			width: '400px'
+			}
+		});	
+	var iframe = document.getElementById("urlVistaPreviaPromoImprimir");
+	iframe.src = iframe.src + (new Date()).getTime() + Math.floor(Math.random() * 1000000);
+	iframe.src = iframe.src;
+	document.getElementById('urlVistaPreviaPromoImprimir').onload= function() {
+		$.unblockUI();
+		$("#myModalPromoImprimir").modal();
+    };
+	
+		
+};
+
+var imprimirPromocionWeb = function(){	
+	oldstrInner = document.documentElement.innerHTML;
+	oldstr = document.body.innerHTML;
+	$.blockUI.defaults.baseZ = 9000;
+	$.blockUI({
+		message: "Generando impresión...",
+		css: {
+			class:"alertaUI",
+			top:  ($(window).height() - 400) /2 + 'px',
+			left: ($(window).width() - 400) /2 + 'px',
+			width: '400px'
+		}
+	});
+	console.log("El valor enviado es: " + $("#tempNombrePromo").val() + '.html');
+	var nombrePromocion = $("#tempNombrePromo").val() + '.html';
+	$.ajax({
+		type : "POST",
+		url : contextPath + "/infomovil/getHTMLPromocion",
+		data : {nombrePromocion: nombrePromocion},
+	
+		success : function(data) {
+			$("#myModalPromoImprimir").modal('toggle');
+			document.documentElement.innerHTML = data.elHtmlDePromocion;
+			imprimirPromocionEnPantalla(data.elHtmlDePromocion);
+			
+		},
+		error : function(json) {
+			$.unblockUI();
+			BootstrapDialog.show({
+				title: "<span class='textBlack' style='font-size:1.15em;'><img alt='' src='../resources/webapp/images/fa-warning-bk.png'  title='Alerta' />No se ha generado la impresión</span>",
+				message: '<div style="display:block; min-height:150px;"><p class="textBlack text-center" style="font-size:1.15em;">Por favor intentalo más tarde.</p><br/>'
+			});
+									
+		}
+	});	
+};
+
+var imprimirPromocionEnPantalla = function(datahtml){
+	setTimeout(function () { window.print(); 
+	window.focus();
+	window.close();
+	document.documentElement.innerHTML = oldstrInner;
+    $(document.body).html(oldstr);
+    $("#myModalPromoImprimir").modal();	
+	$.unblockUI();}, 2500);
+//	console.log("Nombre del evento: mi Evento,   nombreSitio: " + $("#tempNombrePromo").val() + ", banderaCanal: " + $("#tempBanderaPromo").val());
+	ga('send', 'event', 'promo', 'promo-imprimir', $("#tempNombrePromo").val(), $("#tempBanderaPromo").val());
+};
+
+var descargarPDF = function(){
+	
+	pathPDF = $("#urlVistaPreviaPromoImprimir").attr('src');
+	pathPDF = pathPDF.replace("html", "pdf");
+	//window.open(pathPDF, '_blank', 'fullscreen=yes');
+//	console.log("guardarEventoGA: " + nombreEvento + ", nombreSitio: " + nombreSitio + ", banderaCanal: " + banderaCanal);
+	var link = document.createElement("a");
+    link.download = "promo.pdf";
+    link.href = pathPDF;
+    link.click();
+    ga('send', 'event', 'promo', 'promo-guardarPDF', $("#tempNombrePromo").val(), $("#tempBanderaPromo").val());
+	
+	
+	    
+
+   
+    
+};
+
+var descargarJPG = function(){
+	
+	pathJPG = $("#urlVistaPreviaPromoImprimir").attr('src');
+	pathJPG = pathJPG.replace("html", "jpg");
+	//window.open(pathJPG, '_blank', 'fullscreen=yes');
+//	console.log("guardarEventoGA: " + nombreEvento + ", nombreSitio: " + nombreSitio + ", banderaCanal: " + banderaCanal);
+	
+	var link = document.createElement("a");
+    link.download = "promo.jpg";
+    link.href = pathJPG;
+    link.click();
+	ga('send', 'event', 'promo', 'promo-guardarJPG', $("#tempNombrePromo").val(), $("#tempBanderaPromo").val());
+	
+};

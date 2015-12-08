@@ -29,11 +29,11 @@
 			 <div class="clear divider"></div>
 <p class="textBlack">Ahora da un paso m&aacute;s: </p>
 
-<p class="textBlack"><strong>¡Arma una promoción y compártelo por Facebook y WhatsApp!</strong></p> 
+<p class="textBlack"><strong>¡Arma una promoción y compártela por Facebook y WhatsApp!</strong></p> 
 <br/>
 
 						<ul class="textBlack" style="list-style:none"><li><span class="textBlack _1_1em">1. Entra en la sección Mis Volantes</span></li>
-						<li><span class="textBlack _1_1em">2. Llena los datos de tu promoción</span></li>
+						<li><span class="textBlack _1_1em">2. Llena los datos de tu volante</span></li>
 						<li><span class="textBlack _1_1em">3. Comparte tu volante digital por Facebook y WhatsApp</span></li>
 						</ul>
 				<br/>		

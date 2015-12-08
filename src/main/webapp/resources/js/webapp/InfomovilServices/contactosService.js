@@ -1,83 +1,74 @@
-app.factory('ContactoService', function($http) {
+app.factory('ContactoService', function($http, MensajesService) {
 	
-	var contactos, contactosPermitidos, contactosGuardados, validacionRegEx;
+	var contactos;
+	var contactosPermitidos;
+	var contactosGuardados;
+	var validacionRegEx;
+	var icono;
 	
 	function getContactos() {
-		
-		console.log("getContactos");
+
 		$http({
 			method: 'GET',
 			url: contextPath + "/infomovil/getContactos",
 		}).then(function successCallback(response) {
 			
 				 contactos = response.data;
-			
+				 if(response.data.length > 0){
+					 $("#tituloAgregarContactos").hide();
+					 if(response.data.length > 1)
+						 $("#ordenarContactosShow").show();
+					 else
+						 $("#ordenarContactosShow").hide();
+				 }else{ 
+					 $("#ordenarContactosShow").hide();
+					 $("#tituloAgregarContactos").show();
+				 }
+				console.log("el response: " + response.data.length);
+					 
 		}, function errorCallback(response) {
 			console.log("El error es: " + response);
 			var mensaje = "No se ha podido obtener la lista de contactos";
-			cerrarBlockUIGeneral(mensaje);
+			MensajesService.cerrarBlockUIGeneral("Contactos", mensaje);
 		});
 	}
 		
     function actualizarContacto(contacto) {
 
-    	 var mensaje = "Actualizando contacto...";
-    	 abrirBlockUIGeneral(mensaje);
+    	var mensaje = "Actualizando contacto...";
+    	MensajesService.abrirBlockUIGeneral(mensaje);
     	 
-    	 $http({
-    		 method: 'POST',
-    		 url: contextPath + "/infomovil/actualizarContacto",
-    		 params: {
-    			 claveDeContacto : contacto.claveContacto, 
- 				 descripcionContacto : contacto.longLabelNaptr,
- 				 numeroEmailRedSocial : contacto.regExp,
- 				 constanteContacto : contacto.servicesNaptr, 
- 				 redSocialWebSecure : contacto.subCategory,
- 				 visible : contacto.visible
-    		 }		  
-    	 }).then(function successCallback(response) {
-    		 console.log("El valore regresado es: " + response.data.codeError , response.codeError);
-    		 mensaje = "";
-    		 if(response.data.codeError == 0) {
+    	$http({
+    		method: 'POST',
+    		url: contextPath + "/infomovil/actualizarContacto",
+    		params: {
+    			claveDeContacto : contacto.claveContacto, 
+    			descripcionContacto : contacto.longLabelNaptr,
+    			numeroEmailRedSocial : contacto.regExp,
+    			constanteContacto : contacto.servicesNaptr, 
+    			redSocialWebSecure : contacto.subCategory,
+    			visible : contacto.visible,
+    			tipoContacto : contacto.tipoContacto,
+    			codigoPais : contacto.codigoPais,
+    			protocolo : contacto.protocolo
+    		}		  
+    	}).then(function successCallback(response) {
+    		console.log("El valore regresado es: " + response.data.codeError , response.codeError);
+    		mensaje = "";
+    		if(response.data.codeError == 0) {
     			getContactos();
-    		 }else{
-    			 console.log("EL ERROR ES: " + response.codeError );
-    			 mensaje ="No se ha podido actualizar el contacto";
- 			}
-    		 cerrarBlockUIGeneral(mensaje);
-    	 }, function errorCallback(response) {
-    		 console.log("El error es: Peticion incorrecta" + response.codeError);
-    		 mensaje = "No se ha podido actualizar el contacto";
-    		 cerrarBlockUIGeneral(mensaje);
-    	 });
+    		}else{
+    			console.log("EL ERROR ES: " + response.codeError );
+    			mensaje ="No se ha podido actualizar el contacto";
+    		}
+    		
+    		MensajesService.cerrarBlockUIGeneral("Contactos", mensaje);
+    	}, function errorCallback(response) {
+    		console.log("El error es: Peticion incorrecta" + response.codeError);
+    		mensaje = "No se ha podido actualizar el contacto";
+    		MensajesService.cerrarBlockUIGeneral("Contactos", mensaje);
+    	});
      };	
-          
-     function abrirBlockUIGeneral(mensaje) {	
-    	 	$.blockUI.defaults.baseZ = 9000;
-			$.blockUI({
-				message : mensaje,
-				css : {
-					class : "alertaUI",
-					top : ($(window).height() - 400) / 2 + 'px',
-					left : ($(window).width() - 400) / 2 + 'px',
-					width : '400px'
-				}
-			});
-     };
-	
-     function cerrarBlockUIGeneral(mensaje) {
-    	 
-    	 $.unblockUI();
-    	 
-    	 if(mensaje.length > 0) {
-    		 BootstrapDialog
-				.show({
-					title : "<span class='textBlack' style='font-size:1.15em;'><img alt='' src='../resources/webapp/images/fa-warning-bk.png'  title='Alerta' />Contactos</span>",
-					message : '<div style="display:block; min-height:150px;"><p class="textBlack text-center" style="font-size:1.15em;">' + mensaje + '</p><br/>'
-				});
- 	 			
-    	 }
-     };
 
      function getObjetoTipoContacto(tipo) {
 		 
@@ -88,7 +79,7 @@ app.factory('ContactoService', function($http) {
 			case 'tel':
 				titulos =
 				{
-					imagen : ' ',
+					imagenIco : 'fa-tel-bk.png',
 				    nombre : 'Teléfono',
 				    pais : '+52',
 				    placeholder : 'Teléfono',
@@ -103,11 +94,11 @@ app.factory('ContactoService', function($http) {
 			case 'movil':
 				titulos =
 				{
-					imagen : '',
+					imagenIco : 'fa-movil-bk.png',
 				    nombre : 'Móvil',
 				    pais : '+521',
 				    placeholder : 'Teléfono',
-				    mensaje : 'Recuerda que para recibir llamadas internacionales el formato es (1)xxx.xxx.xxxx(10digitos)',
+				    mensaje : 'Recuerda que para recibir llamadas internacionales el formato es (1) xxx.xxx.xxxx (10 dígitos)',
 				    servicio : 'E2U+voice:tel+x-mobile',
 				    muestraPais : true,
 				    maxlength : "10",
@@ -116,10 +107,10 @@ app.factory('ContactoService', function($http) {
 
 				break;
 			
-			case 'telSMS':
+			case 'telsms':
 				titulos =
 				{
-					imagen : '',
+					imagenIco : 'fa-sms-bk.png',
 				    nombre : 'Teléfono SMS',
 				    pais : '+52',
 				    placeholder : 'Teléfono',
@@ -134,7 +125,7 @@ app.factory('ContactoService', function($http) {
 			case 'fax':
 				titulos =
 				{
-					imagen : ' ',
+					imagenIco : 'fa-fax-bk.png',
 				    nombre : 'Fax',
 				    etiqueta : 'Número Fax',
 				    pais : ' +52',
@@ -150,13 +141,13 @@ app.factory('ContactoService', function($http) {
 			case 'email':
 				titulos =
 				{
-					imagen : ' ',
+					imagenIco : 'fa-mail-bk.png',
 				    nombre : 'E-mail',
 				    etiqueta : 'E-mail',
 				    placeholder : 'email@email.com',
 				    servicio : 'E2U+email:mailto',
 				    expRegular : '^[_a-z0-9]+(\.[_a-z0-9]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,4})$',
-				    msjValidacion : 'Formato incorrecto de email',
+				    msjValidacion : 'Formato incorrecto de E-mail',
 				    tipo : 'mailto:'
 				};
 
@@ -165,13 +156,14 @@ app.factory('ContactoService', function($http) {
 			case 'facebook':
 				titulos =
 				{
-					imagen : '',
+					imagenIco : 'fa-fb-bk.png',
 				    nombre : 'Facebook',
 				    etiqueta : 'Liga a tu cuenta de Facebook',
 				    placeholder : 'www.facebook.com/tufanpage',
 				    subcategoria : 'facebook',
 				    expRegular : '(((www|WWW))\\.)?(facebook|FACEBOOK)\\.(com|COM)\\/[a-zA-Z0-9\\*\\?\\+\\[\\(\\)\\{\\}\\^\\$\\|\\.\\/\\ ]{1,}',
-				    msjValidacion : 'Formato incorrecto para facebook'
+				    msjValidacion : 'Formato incorrecto para Facebook',
+				    protocolo : 'http://'
 				};
 
 				break;
@@ -179,14 +171,15 @@ app.factory('ContactoService', function($http) {
 			case 'twitter':
 				titulos =
 				{
-					imagen : ' ',
+					imagenIco : 'fa-twitter-bk.png',
 				    nombre : 'Twitter',
 				    etiqueta : 'Enlaza tu cuenta de Twitter',
 				    placeholder : 'www.twitter.com/tucuenta',
 				    mensaje : 'Se publicarán tus ultimos Tweets en tu página web',
 				    subcategoria : 'twitter',
 				    expRegular : '(twitter|TWITTER)\\.(com|COM)\\/[a-zA-Z0-9\\*\\?\\+\\[\\(\\)\\{\\}\\^\\$\\|\\.\\/\\ ]{1,}',
-				    msjValidacion : 'Formato incorrecto para twitter'
+				    msjValidacion : 'Formato incorrecto para Twitter',
+				    protocolo : 'http://'
 				};
 
 				break;
@@ -194,12 +187,13 @@ app.factory('ContactoService', function($http) {
 			case 'google':
 				titulos =
 				{
-					imagen : ' ',
+					imagenIco : 'fa-gplus-bk.png',
 				    nombre : 'Google+',
 				    etiqueta : 'Liga a tu cuenta de Google+',
 				    placeholder : 'plus.google.com/tucuenta',
 				    expRegular : '(plus|PLUS)\\.(google|GOOGLE)\\.(com|COM)\\/[a-zA-Z0-9\\*\\?\\+\\[\\(\\)\\{\\}\\^\\$\\|\\.\\/\\ ]{1,}',
-				    msjValidacion : 'Formato incorrecto para google plus'
+				    msjValidacion : 'Formato incorrecto para Google+',
+				    protocolo : 'http://'
 				};
 
 				break;
@@ -207,13 +201,13 @@ app.factory('ContactoService', function($http) {
 			case 'skype':
 				titulos =
 				{
-					imagen : ' ',
+					imagenIco : 'fa-skype-bk.png',
 				    nombre : 'Skype',
 				    etiqueta : 'Liga a tu cuenta de Skype',
 				    placeholder : 'tucuenta',
 				    servicio : 'E2U+x-voice:skype',
 				    expRegular : '[a-zA-Z0-9\\*\\?\\+\\[\\(\\)\\{\\}\\^\\$\\|\\.\\/\\ ]{1,}',
-				    msjValidacion : 'Formato incorrecto para skype',
+				    msjValidacion : 'Formato incorrecto para Skype',
 				    tipo : 'skype:'
 				};
 
@@ -222,13 +216,14 @@ app.factory('ContactoService', function($http) {
 			case 'linkedin':
 				titulos =
 				{
-					imagen : ' ',
+					imagenIco : 'fa-linkedin-bk.png',
 				    nombre : 'LinkedIn',
 				    etiqueta : 'Liga a tu cuenta de LinkedIn',
 				    placeholder : 'www.linkedin.com/tuempresa',
 				    subcategoria : 'linkedin',
 				    expRegular : '((WWW|www)\\.){0,1}(linkedin|LINKEDIN)\\.(com|COM)\\/[a-zA-Z0-9\\*\\?\\+\\[\\(\\)\\{\\}\\^\\$\\|\\.\\/\\ ]{1,}',
-				    msjValidacion : 'Formato incorrecto para linkedin'
+				    msjValidacion : 'Formato incorrecto para LinkedIn',
+				    protocolo : 'http://'
 				};
 
 				break;
@@ -236,14 +231,15 @@ app.factory('ContactoService', function($http) {
 			case 'securewebsite':
 				titulos =
 				{
-					imagen : ' ',
+					imagenIco : 'fa-secweb-bk.png',
 				    nombre : 'Website',
 				    etiqueta : 'Liga a tu sitio web',
 				    placeholder : 'www.infomovil.com',
 				    servicio : 'E2U+web:https',
 				    subcategoria : 'securewebsite',
 				    expRegular : '^([\\w-]+\\.)+[\\w-]+(/[\\w-./?%&=]*)?$',
-				    msjValidacion : 'Formato incorrecto para web'
+				    msjValidacion : 'Formato incorrecto para Web',
+				    protocolo : 'https://'
 				};
 				break;
 				
@@ -254,6 +250,47 @@ app.factory('ContactoService', function($http) {
 		 return titulos; 
 	}
      
+   function getTipoContacto(tipo, llave) {
+	   
+    	 var tipoContactoConsulta = "";
+    	 llave = angular.uppercase(llave);
+
+    	 if(tipo == "redSocial")  
+    		 tipoContactoConsulta = llave;
+    	 else if(tipo == "tel") {
+    	 
+    		 switch(llave) {
+
+    		 	case "E2U+VOICE:TEL" :
+    		 		tipoContactoConsulta = "tel";
+    		 		break;
+    		 	case "E2U+VOICE:TEL+X-MOBILE" :
+    		 		tipoContactoConsulta = "movil";
+	    			break;
+    		 	case "E2U+SMS:TEL" :
+    		 		tipoContactoConsulta = "telSMS";
+    		 		break;   		 		
+    		 	case "E2U+EMAIL:MAILTO" :
+    		 		tipoContactoConsulta = "email";
+    		 		break;
+    		 	case "E2U+FAX:TEL" :
+    		 		tipoContactoConsulta = "fax";
+    		 		break;
+    		 	case "E2U+WEB:HTTP" :
+    		 		tipoContactoConsulta = "google";
+    		 		break;
+    		 	case "E2U+X-VOICE:SKYPE" :
+    		 		tipoContactoConsulta = "skype";
+    		 		break;     		 
+    		 }
+    	 }
+    	 
+    	 return angular.lowercase(tipoContactoConsulta);
+     };
+   
+     function getIcono() {
+    	 
+     }
      
    return {
 	   
@@ -279,9 +316,15 @@ app.factory('ContactoService', function($http) {
 	   getValidacionRegEx : function() {
 		   return validacionRegEx;
 	   },
+	   setIcono : function(value) {
+		   icono = value;
+		   $("#myModalContactosActualizar").modal();
+	   },
+	   getIcono : function() {
+		   return icono;
+	   },
+	   getTipoContacto : getTipoContacto,
 	   actualizarContacto : actualizarContacto,
-	   abrirBlockUIGeneral : abrirBlockUIGeneral,
-	   cerrarBlockUIGeneral : cerrarBlockUIGeneral,
 	   getObjetoTipoContacto : getObjetoTipoContacto,
 	  
   }

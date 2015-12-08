@@ -7,6 +7,7 @@ import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.validator.routines.EmailValidator;
 import org.apache.log4j.Logger;
 import org.json.simple.JSONArray;
@@ -19,6 +20,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.amazonaws.util.IOUtils;
 import com.infomovil.webapp.clientWsInfomovil.ClientWsInfomovil;
 import com.infomovil.webapp.clientWsInfomovil.OffertRecordVO;
 import com.infomovil.webapp.clientWsInfomovil.RespuestaVO;
@@ -123,30 +125,29 @@ public class PromocionesController
 
 	@RequestMapping(value = "/infomovil/guardarPromocion", method = {RequestMethod.GET, RequestMethod.POST}, produces = "application/json")
 	@ResponseBody
-	public Map<String, String> guardarPromocion(@RequestParam String titulo, @RequestParam String descripcion, @RequestParam String fechaVigencia
-				, String base64Imagen, @RequestParam String redimir, @RequestParam String terminos, @RequestParam String templatePromo, Model model)
-	{		
-		int idPromocion = 0; 
+	public Map<String, String> guardarPromocion(@RequestParam String titulo, @RequestParam String descripcion,
+			@RequestParam String fechaVigencia, String base64Imagen, @RequestParam String redimir,
+			@RequestParam String terminos, @RequestParam String templatePromo, @RequestParam String idPromocion, Model model) {	
+		
+		int l_idPromocion = !StringUtils.isEmpty(idPromocion)?Integer.parseInt(idPromocion):0;
+		
 		RespuestaVO respVO = new RespuestaVO();
 		Map<String, String> resultado = new HashMap<String, String>();
 
-		try
-		{		
+		try {		
 			String correo = Util.getUserLogged().getUsername();
 			String password = Util.getUserLogged().getPassword();
-			respVO = wsCliente.crearSitioGuardarPromocion(correo, password, descripcion, fechaVigencia, redimir, terminos, titulo, base64Imagen, idPromocion, templatePromo);
+			respVO = wsCliente.crearSitioGuardarPromocion(correo, password, descripcion, fechaVigencia, redimir, terminos, titulo, base64Imagen, l_idPromocion, templatePromo);
 			resultado.put("codeError", respVO.getCodeError());
 			resultado.put("descEror", respVO.getMsgError());
 			
 			respVO = wsCliente.crearSitioGetPromociones(correo, password);
-			for (OffertRecordVO promocion : respVO.getListPromocion())
-			{
+			for (OffertRecordVO promocion : respVO.getListPromocion()) {
 				resultado.put("idOffer", promocion.getIdOffer());
 				resultado.put("urlPromocion", promocion.getUrlPromocion());
 			}
 		}		
-		catch (Exception e) 
-		{
+		catch (Exception e)  {
 			logger.error("guardarPromocion:::::", e);
 			resultado.put("codeError", respVO.getCodeError());
 			resultado.put("descEror", respVO.getMsgError());
@@ -254,6 +255,38 @@ public class PromocionesController
 		return resultado;
 	}
 	
+	@RequestMapping(value = "/infomovil/getHTMLPromocion", method = RequestMethod.POST, produces = "application/json")
+	@ResponseBody
+	public Map<String, String> getHTMLPromocion(String nombrePromocion)
+	{
+		Map<String, String> resultMap = new HashMap<String, String>();
+		String elHtmlDePromocion = "";
+		
+		try
+		{				
+	     	if(!Util.getProfile().equals("PROD"))
+	     	{	
+	     		elHtmlDePromocion = IOUtils.toString(Util.getFileAmazon("promodev.mobileinfo.io", nombrePromocion));
+	     		elHtmlDePromocion = elHtmlDePromocion.replaceAll("promo.mobileinfo.io", "promodev.mobileinfo.io");
+	     	}
+	     	else
+	     	{
+	     		elHtmlDePromocion = IOUtils.toString(Util.getFileAmazon("promo.mobileinfo.io", nombrePromocion));	
+	     	}
+	     	
+	     	elHtmlDePromocion = new String(elHtmlDePromocion.getBytes("UTF-8"), "UTF-8");
+			resultMap.put("elHtmlDePromocion", elHtmlDePromocion);
+			logger.info("elHtmlDePromocion: " + elHtmlDePromocion);
+		}
+		catch (Exception e) 
+		{
+			logger.error("generaHTMLdePromocion:::::", e);
+			resultMap.put("elHtmlDePromocion", "SIN_PROMOCION");
+		}	
+		
+		return resultMap;
+	}  	
+
 	private ClientWsInfomovil wsCliente = new ClientWsInfomovil();
 	private static final Logger logger = Logger.getLogger(WebappController.class);
 }

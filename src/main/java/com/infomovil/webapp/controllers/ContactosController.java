@@ -5,11 +5,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-
-import org.apache.commons.collections4.Closure;
-import org.apache.commons.collections4.CollectionUtils;
 import org.apache.commons.validator.routines.EmailValidator;
 import org.apache.log4j.Logger;
 import org.json.simple.JSONArray;
@@ -20,12 +15,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.infomovil.webapp.clientWsInfomovil.ClientWsInfomovil;
-import com.infomovil.webapp.clientWsInfomovil.ImagenVO;
-import com.infomovil.webapp.clientWsInfomovil.OffertRecordVO;
-import com.infomovil.webapp.clientWsInfomovil.ProductoUsuarioVO;
 import com.infomovil.webapp.clientWsInfomovil.RecordNaptrVO;
 import com.infomovil.webapp.clientWsInfomovil.RespuestaVO;
 import com.infomovil.webapp.clientWsInfomovil.StatusDomainVO;
@@ -44,13 +35,13 @@ public class ContactosController
 	{		
 		HashMap<String, Object> model = new HashMap<String, Object>();
 		RespuestaVO wsRpta = new RespuestaVO();
-		
 		String template = "Coverpage1azul";
 		String claseCss = "inverse";
 		String colorTexto = "textWhite";
 		String extensionImg = "";
 		String contacto = "";
 		String downgrade = "";
+		String nombreUsuario = "";
 		
 		try
 		{		
@@ -67,6 +58,12 @@ public class ContactosController
 				}
 			}
          	
+			if (Util.getCurrentSession().getAttribute("nombreUsuario") != null)
+         	{
+         		if (!(EmailValidator.getInstance().isValid(Util.getCurrentSession().getAttribute("nombreUsuario").toString())))
+         			nombreUsuario = Util.getCurrentSession().getAttribute("nombreUsuario").toString();
+         	}
+			
          	if (Util.getCurrentSession().getAttribute("template") != null)
          		template = Util.getCurrentSession().getAttribute("template").toString();
          
@@ -92,13 +89,14 @@ public class ContactosController
          		downgrade = Util.getCurrentSession().getAttribute("downgrade").toString();
          	}
 			
+         	
 			model.put("claseCss", claseCss);
 			model.put("colorTexto", colorTexto);
 			model.put("extensionImg", extensionImg);
 			model.put("template", template);
 			model.put("downgrade", downgrade);
 			model.put("contacto", contacto);
-
+			model.put("nombreUsuario", nombreUsuario);
 		}		
 		catch (Exception e) 
 		{
@@ -112,13 +110,13 @@ public class ContactosController
 	@RequestMapping(value = "/infomovil/guardarContacto", method = { RequestMethod.GET, RequestMethod.POST })
 	@ResponseBody
 	public Map<String, String> guardarContacto(@RequestParam String descripcionContacto, @RequestParam String numeroEmailRedSocial, @RequestParam String constanteContacto, 
-			@RequestParam String redSocialWebSecure, @RequestParam String tipoContacto, @RequestParam String codigoPais, String expRegular) throws UnsupportedEncodingException
+			@RequestParam String redSocialWebSecure, @RequestParam String tipoContacto, @RequestParam String codigoPais, String expRegular, @RequestParam String protocolo) throws UnsupportedEncodingException
 	{		
 		Map<String, String> resultMap = new HashMap<String, String>();
 		
 		String correo = Util.getUserLogged().getUsername();
 		String password = Util.getUserLogged().getPassword();
-		String regExp = "!^.*$!" + tipoContacto + codigoPais;
+		String regExp = "!^.*$!" + protocolo + tipoContacto + codigoPais;
 		descripcionContacto = new String(descripcionContacto.getBytes("ISO-8859-1"), "UTF-8");
 		numeroEmailRedSocial = new String(numeroEmailRedSocial.getBytes("ISO-8859-1"), "UTF-8");
 		
@@ -179,16 +177,18 @@ public class ContactosController
 	
 	@RequestMapping(value = "/infomovil/actualizarContacto", method = { RequestMethod.GET, RequestMethod.POST })
 	@ResponseBody
-	public Map<String, String> actualizarContacto(@RequestParam String claveDeContacto, @RequestParam String descripcionContacto,  @RequestParam String numeroEmailRedSocial,  
-			@RequestParam String constanteContacto, @RequestParam String redSocialWebSecure, @RequestParam String visible) throws UnsupportedEncodingException
+	public Map<String, String> actualizarContacto(@RequestParam String claveDeContacto, @RequestParam String descripcionContacto,  
+			@RequestParam String numeroEmailRedSocial, @RequestParam String constanteContacto, @RequestParam String redSocialWebSecure, 
+			@RequestParam String visible, @RequestParam String tipoContacto, @RequestParam String codigoPais) 
+					throws UnsupportedEncodingException
 	{		
 		Map<String, String> resultMap = new HashMap<String, String>();
 		
 		String correo = Util.getUserLogged().getUsername();
 		String password = Util.getUserLogged().getPassword();
-		String regExp = "!^.*$!";
-		descripcionContacto = new String(descripcionContacto.getBytes("ISO-8859-1"), "UTF-8");
-		numeroEmailRedSocial = new String(numeroEmailRedSocial.getBytes("ISO-8859-1"), "UTF-8");
+		String regExp = "!^.*$!" + tipoContacto + codigoPais;
+		//descripcionContacto = new String(descripcionContacto.getBytes("ISO-8859-1"), "UTF-8");
+		//numeroEmailRedSocial = new String(numeroEmailRedSocial.getBytes("ISO-8859-1"), "UTF-8");
 		
 		try
 		{			

@@ -117,7 +117,7 @@ function isDevice() {
 	$("#btnSeleccionaImagen2").show();
 	if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i
 			.test(navigator.userAgent)) {
-		
+
 		$('.modal').on('show.bs.modal', function() {
 			$(this).css({
 				position : 'fixed',
@@ -125,7 +125,7 @@ function isDevice() {
 				bottom : document.documentElement.scrollHeigh + 'px'
 			});
 		});
-	} 
+	}
 }
 
 function testapiFacebook() {
@@ -171,7 +171,8 @@ function generaFotos(idAlbum, p) {
 window.fbAsyncInit = function() {
 
 	FB.init({
-		appId : '346859792130678', //'QA: 422690184604551 PROD: 346859792130678',
+		appId : '346859792130678', // 'QA: 422690184604551 PROD:
+									// 346859792130678',
 		cookie : true, // enable cookies to allow the server to access
 		xfbml : true, // parse social plugins on this page
 		version : 'v2.0' // use version 2.2
@@ -219,8 +220,6 @@ var revisarEstado = function checkLoginState() {
 	});
 }
 
-
-
 function getImagenesJQ() {
 	GRADOS = "CW_0";
 	$("#btnGuardarImagen").hide();
@@ -253,12 +252,13 @@ function getImagenesJQ() {
 		$("#terceroFB").hide();
 		$("#primeroFB").hide();
 		$("#regresarDeFotos").hide();
-		$("#btnGuardarImagenFB").hide();//TODO: IRC
+		$("#btnGuardarImagenFB").hide();// TODO: IRC
 
 		$("#msjEligeAlbumFoto").hide();
 		var $listaImg = $('#listaImagenes');
 		var weHaveSuccess = false;
-		$.ajax({
+		$
+				.ajax({
 					type : "GET",
 					url : contextPath + "/infomovil/getImagenes",
 					dataType : "json",
@@ -291,22 +291,27 @@ function getImagenesJQ() {
 								siHayImagen = 1;
 								if (i <= IMAGENESMAX) {
 									var $li = $('<li class="imagenDinamica" style="display:block;height:80px; width:100%; margin:10px 0;"/>')
-										$li.append('<div class="col-xs-3 text-left" style="margin:-5px 0 0 0;" ><div class="img-thumbnail"><div style="max-height:38px; overflow:hidden"><img src="'
+									$li
+											.append('<div class="col-xs-3 text-left" style="margin:-5px 0 0 0;" ><div class="img-thumbnail"><div style="max-height:38px; overflow:hidden"><img src="'
 													+ imgUrl
 													+ '" onerror="errorPreview(this)" class="ImgDinamica imgLista"/></div></div></div>');
-										$li.append('<div class="col-xs-9 reset"><textarea rows="4" cols="50" maxlength="255" id="actualizarTexto' + idImg
-												+ '" class="col-xs-5 col-sm-8" style="height:38px"> ' + descImg +'</textarea><div class="spaceBtnsMap"></div><button type="button" class="btn btn-purple" class="eliminarImagen" onClick="actualizarImagen('
-												+ idImg
-												+ ', '
-												+ "'"
-												+ imgUrl
-												+ "'"
-												+ ')"><img width="20" height="20" alt="Borrar" src="../resources/webapp/images/ico_actualizar.png" /></button><div class="spaceBtnsMap"></div><button type="button" class="btn btn-purple" class="eliminarImagen" id="'
-												+ idImg
-												+ '"onclick="borrarImagenJQ('
-												+ idImg
-												+ ')"><img width="20" height="20" alt="Borrar" src="../resources/webapp/images/trash.png" /></button><input type="hidden" id="IdImg" value="'
-												+ idImg + '"/></div></li>');
+									$li
+											.append('<div class="col-xs-9 reset"><textarea rows="4" cols="50" maxlength="255" id="actualizarTexto'
+													+ idImg
+													+ '" class="col-xs-5 col-sm-8" style="height:38px"> '
+													+ descImg
+													+ '</textarea><div class="spaceBtnsMap"></div><button type="button" class="btn btn-purple" class="eliminarImagen" onClick="actualizarImagen('
+													+ idImg
+													+ ', '
+													+ "'"
+													+ imgUrl
+													+ "'"
+													+ ')"><img width="20" height="20" alt="Borrar" src="../resources/webapp/images/ico_actualizar.png" /></button><div class="spaceBtnsMap"></div><button type="button" class="btn btn-purple" class="eliminarImagen" id="'
+													+ idImg
+													+ '"onclick="borrarImagenJQ('
+													+ idImg
+													+ ')"><img width="20" height="20" alt="Borrar" src="../resources/webapp/images/trash.png" /></button><input type="hidden" id="IdImg" value="'
+													+ idImg + '"/></div></li>');
 									$listaImg.append($li);
 								} else {
 									var $li = $('<li class="imagenDinamica" style="display:block;height:80px; width:100%; margin:10px 0;"/>')
@@ -392,7 +397,7 @@ function guardarImagenesJQ() {
 		BootstrapDialog
 				.show({
 					title : "<span class='textBlack' style='font-size:1.15em;'><img alt='' src='../resources/webapp/images/fa-warning-bk.png'  title='Alerta' />Alcanzaste el máximo de fotos permitidas</span>",
-					message : '<div style="display:block; min-height:150px;"><p class="textBlack text-center" style="font-size:1.15em;">Adquiere <strong>Plan Pro</strong> desde la app para agregar más fotos </p><br/> <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 text-center"><a href="https://itunes.apple.com/mx/app/infomovil/id898313250?mt=8" style="margin: 0px; padding: 0px; color: rgb(49, 165, 154);" target="_blank"><img alt="AppStore" src="../resources/webapp/images/appstore_icn.png" style="margin: 0px; padding: 0px; max-width: 150px;" title="AppStore" /></a></div><div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 text-center"><a href="https://play.google.com/store/apps/details?id=com.infomovil.infomovil" style="margin: 0px; padding: 0px; color: rgb(49, 165, 154);" target="_blank"><img alt="Google Play" src="../resources/webapp/images/gstore_icn.png"  style="margin: 0px; padding: 0px; max-width: 150px;" title="Google Play" /></a></div></div><div class="clearfix"></div><div style="display:block; height:30px; width:100%;"></div>'
+					message : '<div class="col-xs-12" style="display:block; min-height:150px;"><p class="textBlack text-center" style="font-size:1.15em;">Adquiere <strong>Plan Pro</strong> en la sección <img alt="" src="../resources/webapp/images/fa-user-bk.png" width="20" title="Mi Cuenta" /> Mi Cuenta para agregar más fotos </p></div><div class="clearfix"></div><div style="display:block; height:30px; width:100%;"></div>'
 				});
 
 		$("#btnSeleccionaImagen2").show();
@@ -419,7 +424,7 @@ function guardarImagenesJQF() {
 				width : '400px'
 			}
 		});
-		
+
 		convertImgToBase64F(
 				imageUrl,
 				function(base64Img) {
@@ -427,7 +432,8 @@ function guardarImagenesJQF() {
 							/^data:image\/(png|jpeg|jpg);base64,/, "");
 					var textFoto = $("#nombreDeImgn").val();
 					var weHaveSuccess = false;
-						$.ajax({
+					$
+							.ajax({
 								type : "POST",
 								url : contextPath + "/infomovil/guardarImagen",
 								dataType : "json",
@@ -437,7 +443,7 @@ function guardarImagenesJQF() {
 									tipoImagen : "IMAGEN",
 									domainId : $('#idDominio').val(),
 									descImagen : textFoto,
-									rotacion: GRADOS
+									rotacion : GRADOS
 								},
 								success : function(data) {
 									console
@@ -484,9 +490,9 @@ function guardarImagenesJQF() {
 		BootstrapDialog
 				.show({
 					title : "<span class='textBlack' style='font-size:1.15em;'><img alt='' src='../resources/webapp/images/fa-warning-bk.png'  title='Alerta' />Alcanzaste el máximo de fotos permitidas</span>",
-					message : '<div style="display:block; min-height:150px;"><p class="textBlack text-center" style="font-size:1.15em;">Adquiere <strong>Plan Pro</strong> desde la app para agregar más fotos </p><br/> <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 text-center"><a href="https://itunes.apple.com/mx/app/infomovil/id898313250?mt=8" style="margin: 0px; padding: 0px; color: rgb(49, 165, 154);" target="_blank"><img alt="AppStore" src="../resources/webapp/images/appstore_icn.png" style="margin: 0px; padding: 0px; max-width: 150px;" title="AppStore" /></a></div><div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 text-center"><a href="https://play.google.com/store/apps/details?id=com.infomovil.infomovil" style="margin: 0px; padding: 0px; color: rgb(49, 165, 154);" target="_blank"><img alt="Google Play" src="../resources/webapp/images/gstore_icn.png"  style="margin: 0px; padding: 0px; max-width: 150px;" title="Google Play" /></a></div></div><div class="clearfix"></div><div style="display:block; height:30px; width:100%;"></div>'
+					message : '<div style="display:block; min-height:150px;" class="col-xs-12"><p class="textBlack text-center" style="font-size:1.15em;">Adquiere <strong>Plan Pro</strong> en la sección <img alt="" src="../resources/webapp/images/fa-user-bk.png" width="20" title="Mi Cuenta" /> Mi Cuenta para agregar más fotos </p><br/> </div><div class="clearfix"></div><div style="display:block; height:30px; width:100%;"></div>'
 				});
-		
+
 	}
 }
 
@@ -497,7 +503,7 @@ function convertImgToBase64F(url, callback, outputFormat) {
 		var canvas = document.createElement('CANVAS');
 		var ctx = canvas.getContext('2d');
 
-		var targetWidth = 500;
+		var targetWidth = 560;
 
 		var ratio = (targetWidth > this.width) ? 1 : targetWidth / this.width;
 		canvas.height = this.height * ratio;
@@ -505,9 +511,13 @@ function convertImgToBase64F(url, callback, outputFormat) {
 		ctx.drawImage(this, 0, 0, this.width, this.height, 0, 0, canvas.width,
 				canvas.height);
 		var dataURLTemp = canvas.toDataURL(outputFormat || 'image/png');
-		var peso = 500000; 
-		var calidad = (peso > dataURLTemp.length ) ? 1 : peso/ dataURLTemp.length;
-		var dataURL = canvas.toDataURL({format: 'png', quality: calidad});
+		var peso = 400000;
+		var calidad = (peso > dataURLTemp.length) ? 1 : peso
+				/ dataURLTemp.length;
+		var dataURL = canvas.toDataURL({
+			format : 'png',
+			quality : calidad
+		});
 		callback(dataURL);
 		canvas = null;
 	};
@@ -524,87 +534,86 @@ function uploadImage(imageDom, imageUrl, origin, textFoto) {
 				binaryString = base64Img.replace(
 						/^data:image\/(png|jpeg|jpg);base64,/, "");
 				var weHaveSuccess = false;
-				console.log("Los grados son : " + GRADOS);
-				if(binaryString.lenght > 0){
+				if (binaryString.lenght > 0) {
 					BootstrapDialog
-					.show({
-						title : "<span class='textBlack' style='font-size:1.15em;'><img alt='' src='../resources/webapp/images/fa-warning-bk.png'  title='Alerta' />Imagen demasiado grande</span>",
-						message : '<div style="display:block; min-height:150px;"><p class="textBlack text-center" style="font-size:1.15em;">La imagen ha superado el límite permitido. El límite es de 768x1024 px</p><br/>'
-					});
-				}else{
-					$.ajax({
-							type : "POST",
-							url : contextPath + "/infomovil/guardarImagen",
-							dataType : "json",
-							timeout : 60000,
-							contentType : "application/x-www-form-urlencoded",
-							data : {
-								baseImagen : binaryString,
-								tipoImagen : "IMAGEN",
-								domainId : $('#idDominio').val(),
-								descImagen : textFoto,
-								rotacion : GRADOS
-							},
-							success : function(data) {
-								weHaveSuccess = true;
-								if (origin == ORIGIN_FACEBOOK) {
-									$("#facebookDiv").hide();
-									$("#imgSeleccionadaDeGaleria").hide();
-									$("#regresarSelecImg").hide();
-									$("#btnSeleccionaImagen2").show();
-									$("#btnAlbumsDeFacebook").show();
-									getImagenesJQ();
-									$("#galeriaImagenes").show();
-									$("#btnGuardarImagen").hide();
-								} else {
-									$("#msjEligeFotoAlbum").hide();
-									$("#msjEligeAlbumFoto").hide();
-									$("#facebookDiv").hide();
-									$("#imgSeleccionadaDeGaleria").hide();
-									$("#regresarSelecImg").hide();
-									$("#btnSeleccionaImagen2").show();
-									$("#btnAlbumsDeFacebook").show();
-									$("#btnSeleccionaImagen").val("");
-									$("#actualizarTextoFoto").val("");
-									getImagenesJQ();
-									$("#galeriaImagenes").show();
-									$("#btnGuardarImagen").hide();
+							.show({
+								title : "<span class='textBlack' style='font-size:1.15em;'><img alt='' src='../resources/webapp/images/fa-warning-bk.png'  title='Alerta' />Imagen demasiado grande</span>",
+								message : '<div style="display:block; min-height:150px;"><p class="textBlack text-center" style="font-size:1.15em;">La imagen ha superado el límite permitido. El límite es de 768x1024 px</p><br/>'
+							});
+				} else {
+					$
+							.ajax({
+								type : "POST",
+								url : contextPath + "/infomovil/guardarImagen",
+								dataType : "json",
+								timeout : 60000,
+								contentType : "application/x-www-form-urlencoded",
+								data : {
+									baseImagen : binaryString,
+									tipoImagen : "IMAGEN",
+									domainId : $('#idDominio').val(),
+									descImagen : textFoto,
+									rotacion : GRADOS
+								},
+								success : function(data) {
+									weHaveSuccess = true;
+									if (origin == ORIGIN_FACEBOOK) {
+										$("#facebookDiv").hide();
+										$("#imgSeleccionadaDeGaleria").hide();
+										$("#regresarSelecImg").hide();
+										$("#btnSeleccionaImagen2").show();
+										$("#btnAlbumsDeFacebook").show();
+										getImagenesJQ();
+										$("#galeriaImagenes").show();
+										$("#btnGuardarImagen").hide();
+									} else {
+										$("#msjEligeFotoAlbum").hide();
+										$("#msjEligeAlbumFoto").hide();
+										$("#facebookDiv").hide();
+										$("#imgSeleccionadaDeGaleria").hide();
+										$("#regresarSelecImg").hide();
+										$("#btnSeleccionaImagen2").show();
+										$("#btnAlbumsDeFacebook").show();
+										$("#btnSeleccionaImagen").val("");
+										$("#actualizarTextoFoto").val("");
+										getImagenesJQ();
+										$("#galeriaImagenes").show();
+										$("#btnGuardarImagen").hide();
+									}
+
+									$.unblockUI();
+
+								},
+								error : function(json, t) {
+									$.unblockUI();
+									if (t === "timeout") {
+										BootstrapDialog
+												.show({
+													title : "<span class='textBlack' style='font-size:1.15em;'><img alt='' src='../resources/webapp/images/fa-warning-bk.png'  title='Alerta' />Se agoto el tiempo de espera</span>",
+													message : '<div style="display:block; min-height:150px;"><p class="textBlack text-center" style="font-size:1.15em;">Por favor intentalo nuevamente.</p><br/>'
+												});
+									} else {
+										BootstrapDialog
+												.show({
+													title : "<span class='textBlack' style='font-size:1.15em;'><img alt='' src='../resources/webapp/images/fa-warning-bk.png'  title='Alerta' />Imagen demasiado grande</span>",
+													message : '<div style="display:block; min-height:150px;"><p class="textBlack text-center" style="font-size:1.15em;">La imagen ha superado el límite permitido. El límite es de 768x1024 px</p><br/>'
+												});
+									}
+									weHaveSuccess = true;
+								},
+								complete : function() {
+									if (!weHaveSuccess) {
+										BootstrapDialog
+												.show({
+													title : "<span class='textBlack' style='font-size:1.15em;'><img alt='' src='../resources/webapp/images/fa-warning-bk.png'  title='Alerta' />Tu imagen es muy grande para ser procesada</span>",
+													message : '<div style="display:block; min-height:150px;"><p class="textBlack text-center" style="font-size:1.15em;">La imagen ha superado el límite permitido. El límite es de 768x1024 px</p><br/>'
+												});
+									}
 								}
 
-								$.unblockUI();
-
-							},
-							error : function(json, t) {
-								$.unblockUI();
-								if (t === "timeout") {
-									BootstrapDialog
-											.show({
-												title : "<span class='textBlack' style='font-size:1.15em;'><img alt='' src='../resources/webapp/images/fa-warning-bk.png'  title='Alerta' />Se agoto el tiempo de espera</span>",
-												message : '<div style="display:block; min-height:150px;"><p class="textBlack text-center" style="font-size:1.15em;">Por favor intentalo nuevamente.</p><br/>'
-											});
-								} else {
-									BootstrapDialog
-											.show({
-												title : "<span class='textBlack' style='font-size:1.15em;'><img alt='' src='../resources/webapp/images/fa-warning-bk.png'  title='Alerta' />Imagen demasiado grande</span>",
-												message : '<div style="display:block; min-height:150px;"><p class="textBlack text-center" style="font-size:1.15em;">La imagen ha superado el límite permitido. El límite es de 768x1024 px</p><br/>'
-											});
-								}
-								weHaveSuccess = true;
-							},
-							complete : function() {
-								if (!weHaveSuccess) {
-									BootstrapDialog
-											.show({
-												title : "<span class='textBlack' style='font-size:1.15em;'><img alt='' src='../resources/webapp/images/fa-warning-bk.png'  title='Alerta' />Imagen demasiado grande</span>",
-												message : '<div style="display:block; min-height:150px;"><p class="textBlack text-center" style="font-size:1.15em;">La imagen ha superado el límite permitido. El límite es de 768x1024 px</p><br/>'
-											});
-								}
-							}
-
-						});
+							});
 				}
 			});
-			
 
 }
 
@@ -637,7 +646,8 @@ function borrarImagenJQ(idImg) {
 									}
 								});
 								var weHaveSuccess = false;
-										$.ajax({
+								$
+										.ajax({
 											type : "GET",
 											url : contextPath
 													+ "/infomovil/borrarImagen",
@@ -680,7 +690,7 @@ function borrarImagenJQ(idImg) {
 }
 
 function actualizarImagen(idImg, imgUrl) {
-	
+
 	console.log("texto nuevo: " + $('#actualizarTexto' + idImg).val());
 	$.blockUI.defaults.baseZ = 9000;
 	$.blockUI({
@@ -693,7 +703,8 @@ function actualizarImagen(idImg, imgUrl) {
 		}
 	});
 	var weHaveSuccess = false;
-			$.ajax({
+	$
+			.ajax({
 				type : "GET",
 				url : contextPath + "/infomovil/actualizarImagen",
 				dataType : "json",
@@ -735,7 +746,7 @@ function picChange(evt) {
 	var fileInput = evt.target.files;
 	if (fileInput.length > 0) {
 		var file = fileInput[0];
-		console.log("el fila es: "+file);
+		console.log("el fila es: " + file);
 		if (file) {
 			var picURL;
 			$("#facebookDiv").hide();
@@ -746,16 +757,16 @@ function picChange(evt) {
 			$("#btnGuardarImagen").show();
 			$("#btnAlbumsDeFacebook").hide();
 			$("#btnSeleccionaImagen2").hide();
-			
+
 			var reader = new FileReader();
-			
+
 			try {
 				console.log("Ocurrio un error con la picURL");
 				reader.onload = function() {
 					$imageDomFotoDeGaleria.src = reader.result;
 				}
-				reader.readAsDataURL(file);	
-				
+				reader.readAsDataURL(file);
+
 			} catch (err) {
 				if (window.webkitURL) {
 					picURL = window.webkitURL.createObjectURL(file);
@@ -766,162 +777,202 @@ function picChange(evt) {
 				}
 				$imageDomFotoDeGaleria.src = picURL;
 			}
-			
+
 			reader.onload = function() {
 				$imageDomFotoDeGaleria.src = reader.result;
-			
+
 				imageDom = document.getElementById("fotoDeGaleria");
 				var img = new Image();
 				img.src = imageDom.src;
-	            EXIF.getData(img, function() {       
-	                    console.log('ExifDentro99: ', EXIF.getTag(this, "Orientation"));
-	            });
-	                console.log('ExifFuera99: ', parseInt(EXIF.getTag(img, "Orientation")));
-	                switch(parseInt(EXIF.getTag(img, "Orientation"))) {
-				            case 8:
-				            	console.log("tre ENtro al exif 8 !");
-				            	$("#fotoDeGaleria").css( {'transform': 'rotate(270deg)',
-				            		'-ms-transform': 'rotate(270deg)', 
-					            	'-webkit-transform': 'rotate(270deg)', 
-					            	'-o-transform': 'rotate(270deg)', 
-					            	'-moz-transform': 'rotate(270deg)'
-				            	});
-				                break;
-				            case 3:
-				            	console.log("tre Entro al exif 3 !");
-				            	$("#fotoDeGaleria").css( {'transform': 'rotate(180deg)',
-				            		'-ms-transform': 'rotate(180deg)', 
-					            	'-webkit-transform': 'rotate(180deg)', 
-					            	'-o-transform': 'rotate(180deg)', 
-					            	'-moz-transform': 'rotate(180deg)'
-					            });
-				                break;
-				            case 6:
-				            	console.log("tre Entro al exif 6 !");
-				            	$("#fotoDeGaleria").css( {'transform': 'rotate(90deg)',
-				            		'-ms-transform': 'rotate(90deg)', 
-					            	'-webkit-transform': 'rotate(90deg)', 
-					            	'-o-transform': 'rotate(90deg)', 
-					            	'-moz-transform': 'rotate(90deg)'	
-				            	});
-				                break;
-				            default: 
-				            	GRADOS =  "CW_0";
-				            		
-	                }
-	               
+				EXIF.getData(img, function() {
+					console.log('ExifDentro99: ', EXIF.getTag(this,
+							"Orientation"));
+				});
+				console.log('ExifFuera99: ', parseInt(EXIF.getTag(img,
+						"Orientation")));
+				switch (parseInt(EXIF.getTag(img, "Orientation"))) {
+				case 8:
+					console.log("tre ENtro al exif 8 !");
+					$("#fotoDeGaleria").css({
+						'transform' : 'rotate(270deg)',
+						'-ms-transform' : 'rotate(270deg)',
+						'-webkit-transform' : 'rotate(270deg)',
+						'-o-transform' : 'rotate(270deg)',
+						'-moz-transform' : 'rotate(270deg)'
+					});
+					break;
+				case 3:
+					console.log("tre Entro al exif 3 !");
+					$("#fotoDeGaleria").css({
+						'transform' : 'rotate(180deg)',
+						'-ms-transform' : 'rotate(180deg)',
+						'-webkit-transform' : 'rotate(180deg)',
+						'-o-transform' : 'rotate(180deg)',
+						'-moz-transform' : 'rotate(180deg)'
+					});
+					break;
+				case 6:
+					console.log("tre Entro al exif 6 !");
+					$("#fotoDeGaleria").css({
+						'transform' : 'rotate(90deg)',
+						'-ms-transform' : 'rotate(90deg)',
+						'-webkit-transform' : 'rotate(90deg)',
+						'-o-transform' : 'rotate(90deg)',
+						'-moz-transform' : 'rotate(90deg)'
+					});
+					break;
+				default:
+					GRADOS = "CW_0";
+
+				}
+
 			}
-		
-			
+
 		}
-	}	
+	}
 }
 
-
 function convertImgToBase64(imageDom, url, callback, outputFormat) {
-	
+
 	var resize1 = function() {
-			var dataURLTemp = "";
-			var canvas = document.createElement('CANVAS');
-			var ctx = canvas.getContext('2d');
-			var targetWidth = 420;
-			if(url.length <= 0 ){
-				imageDom.src = $imageDomFotoDeGaleria.src;
-				
+		var dataURLTemp = "";
+		var canvas = document.createElement('CANVAS');
+		var ctx = canvas.getContext('2d');
+		var targetWidth = 560;
+		if (url.length <= 0) {
+			imageDom.src = $imageDomFotoDeGaleria.src;
+
+		}
+		var ratio = (targetWidth > imageDom.naturalWidth) ? 1 : targetWidth
+				/ imageDom.naturalWidth;
+		var img = new Image();
+		img.src = url;
+		EXIF.getData(img, function() {
+			console.log('ExifDentrokt: ', EXIF.getTag(this, "Orientation"));
+		});
+		console.log('ExifFuera: ', parseInt(EXIF.getTag(img, "Orientation")));
+		switch (parseInt(EXIF.getTag(img, "Orientation"))) {
+		case 8:
+			console.log("ENtro al exif 8 !");
+			if (/iPhone|iPad|iPod/i.test(navigator.userAgent)) {
+				console.log("Si entro en el case exif8 mac H y W",
+						imageDom.height, imageDom.width, imageDom.naturalWidth
+								* ratio);
+				GRADOS = "CW_0";
+				canvas.height = imageDom.naturalHeight * ratio;
+				canvas.width = imageDom.naturalWidth * ratio;
+				ctx.transform(0, 1, -1, 0, canvas.height, 0);
+				ctx.transform(0, 1, -1, 0, canvas.width, 0);
+				ctx.transform(0, 1, -1, 0, canvas.height, 0);
+				ctx.drawImage(imageDom, 0, 0, imageDom.naturalWidth,
+						imageDom.naturalHeight, 0, 0, canvas.height,
+						canvas.height);
+				dataURLTemp = canvas.toDataURL({
+					format : 'image/png'
+				});
+			} else {
+				GRADOS = "CW_270";
+				canvas.height = imageDom.naturalHeight * ratio;
+				canvas.width = imageDom.naturalWidth * ratio;
+				ctx.drawImage(imageDom, 0, 0, imageDom.naturalWidth,
+						imageDom.naturalHeight, 0, 0, canvas.width,
+						canvas.height);
+				dataURLTemp = canvas.toDataURL({
+					format : 'image/png'
+				});
 			}
-			var ratio = (targetWidth > imageDom.naturalWidth) ? 1 : targetWidth
-					/ imageDom.naturalWidth;
-			var img = new Image();
-			img.src = url;
-            EXIF.getData(img, function() {       
-                    console.log('ExifDentrokt: ', EXIF.getTag(this, "Orientation"));
-            });
-                console.log('ExifFuera: ', parseInt(EXIF.getTag(img, "Orientation")));
-	            switch(parseInt(EXIF.getTag(img, "Orientation"))) {
-			            case 8:
-			            	console.log("ENtro al exif 8 !");
-			            	if (/iPhone|iPad|iPod/i.test(navigator.userAgent)) {
-			            		console.log("Si entro en el case exif8 mac H y W", imageDom.height,imageDom.width,imageDom.naturalWidth * ratio);
-			            		GRADOS =  "CW_0";
-			            		canvas.height = imageDom.naturalHeight * ratio;  
-					    		canvas.width = imageDom.naturalWidth * ratio;  
-					    		ctx.transform(0, 1, -1, 0, canvas.height , 0);
-					    		ctx.transform(0, 1, -1, 0, canvas.width , 0);
-					    		ctx.transform(0, 1, -1, 0, canvas.height , 0);
-					            ctx.drawImage(imageDom,0,0, imageDom.naturalWidth, imageDom.naturalHeight,  0,0,canvas.height,canvas.height);
-					            dataURLTemp = canvas.toDataURL({format:'image/png'});
-			            	}else{
-			            		GRADOS =  "CW_270";
-				            	canvas.height = imageDom.naturalHeight * ratio;  
-					    		canvas.width = imageDom.naturalWidth * ratio;  
-					            ctx.drawImage(imageDom,0,0, imageDom.naturalWidth, imageDom.naturalHeight,  0,0,canvas.width,canvas.height);
-					    		dataURLTemp = canvas.toDataURL({format:'image/png'});	
-			            	}
-			                break;
-			            case 3:
-			            	console.log("ENtro al exif 3 !");
-			            	GRADOS =  "CW_180";
-			            	canvas.height = imageDom.naturalHeight * ratio;  
-				    		canvas.width = imageDom.naturalWidth * ratio;  
-				            ctx.drawImage(imageDom,0,0, imageDom.naturalWidth, imageDom.naturalHeight,  0,0,canvas.width,canvas.height);
-				    		dataURLTemp = canvas.toDataURL({format:'image/png'});
-			                break;
-			            case 6:
-			            	if (/iPhone|iPad|iPod/i.test(navigator.userAgent)) {
-			            		console.log("Si entro en el case 57 mac H y W", imageDom.height,imageDom.width,imageDom.naturalWidth * ratio);
-			            		GRADOS =  "CW_0";
-			            		canvas.height = imageDom.naturalHeight * ratio;  
-					    		canvas.width = imageDom.naturalWidth * ratio;  
-					            ctx.transform(0, 1, -1, 0, canvas.width , 0);
-					            ctx.drawImage(imageDom,0,0, imageDom.naturalWidth, imageDom.naturalHeight,  0,0,canvas.height,canvas.height);
-					            dataURLTemp = canvas.toDataURL({format:'image/png'});
-			            	}else{
-			            		GRADOS =  "CW_90";
-				            	canvas.height = imageDom.naturalHeight * ratio;  
-					    		canvas.width = imageDom.naturalWidth * ratio;  
-					            ctx.drawImage(imageDom,0,0, imageDom.naturalWidth, imageDom.naturalHeight,  0,0,canvas.width,canvas.height);
-					    		dataURLTemp = canvas.toDataURL({format:'image/png'});	
-			            	}
-			                break;
-			            default: 
-			            	console.log("Entro prueba 21 y los valores H y W son : ",imageDom.height,imageDom.width);
-			            		GRADOS =  "CW_0";
-			            		canvas.height = 540 * imageDom.height / imageDom.width;  
-			    				canvas.width = 560 ;
-			    				ctx.drawImage(imageDom, 0, 0, 560, 540 * imageDom.height / imageDom.width);
-			    				dataURLTemp = canvas.toDataURL({format:'image/png'});
-			            	
-			            		
-			    }  
-			 	
-			var peso = 500000; 
-			var calidad = (peso > dataURLTemp.length ) ? 1 : peso/ dataURLTemp.length;
-			return canvas.toDataURL({format: 'png', quality: calidad});
-		
+			break;
+		case 3:
+			console.log("ENtro al exif 3 !");
+			GRADOS = "CW_180";
+			canvas.height = imageDom.naturalHeight * ratio;
+			canvas.width = imageDom.naturalWidth * ratio;
+			ctx.drawImage(imageDom, 0, 0, imageDom.naturalWidth,
+					imageDom.naturalHeight, 0, 0, canvas.width, canvas.height);
+			dataURLTemp = canvas.toDataURL({
+				format : 'image/png'
+			});
+			break;
+		case 6:
+			if (/iPhone|iPad|iPod/i.test(navigator.userAgent)) {
+				console.log("Si entro en el case 57 mac H y W",
+						imageDom.height, imageDom.width, imageDom.naturalWidth
+								* ratio);
+				GRADOS = "CW_0";
+				canvas.height = imageDom.naturalHeight * ratio;
+				canvas.width = imageDom.naturalWidth * ratio;
+				ctx.transform(0, 1, -1, 0, canvas.width, 0);
+				ctx.drawImage(imageDom, 0, 0, imageDom.naturalWidth,
+						imageDom.naturalHeight, 0, 0, canvas.height,
+						canvas.height);
+				dataURLTemp = canvas.toDataURL({
+					format : 'image/png'
+				});
+			} else {
+				GRADOS = "CW_90";
+				canvas.height = imageDom.naturalHeight * ratio;
+				canvas.width = imageDom.naturalWidth * ratio;
+				ctx.drawImage(imageDom, 0, 0, imageDom.naturalWidth,
+						imageDom.naturalHeight, 0, 0, canvas.width,
+						canvas.height);
+				dataURLTemp = canvas.toDataURL({
+					format : 'image/png'
+				});
+			}
+			break;
+		default:
+			console.log("Entro prueba 21 y los valores H y W son : ",
+					imageDom.height, imageDom.width);
+			GRADOS = "CW_0";
+			canvas.height = 540 * imageDom.height / imageDom.width;
+			canvas.width = 560;
+			ctx.drawImage(imageDom, 0, 0, 560, 540 * imageDom.height
+					/ imageDom.width);
+			dataURLTemp = canvas.toDataURL({
+				format : 'image/png'
+			});
+
+		}
+
+		var peso = 400000;
+		var calidad = (peso > dataURLTemp.length) ? 1 : peso
+				/ dataURLTemp.length;
+		return canvas.toDataURL({
+			format : 'png',
+			quality : calidad
+		});
+
 	};
 
 	var resize2 = function() {
 		var canvas = document.createElement('CANVAS');
 		var ctx = canvas.getContext('2d');
-		var targetWidth = 420;
-		var ratio = (targetWidth > imageDom.naturalWidth) ? 1 : targetWidth / imageDom.naturalWidth;
+		var targetWidth = 560;
+		var ratio = (targetWidth > imageDom.naturalWidth) ? 1 : targetWidth
+				/ imageDom.naturalWidth;
 		console.log(imageDom.naturalWidth, targetWidth, ratio);
 		canvas.height = imageDom.naturalHeight * ratio;
 		canvas.width = imageDom.naturalWidth * ratio;
 		ctx.drawImage(imageDom, 0, 0, imageDom.naturalWidth,
 				imageDom.naturalHeight, 0, 0, canvas.width, canvas.height);
-		var dataURLTemp = canvas.toDataURL({format:'image/png'});
-		var peso = 500000; 
-		var calidad = (peso > dataURLTemp.length ) ? 1 : peso/ dataURLTemp.length;
-		return canvas.toDataURL({format: 'png', quality: calidad});
-		
+		var dataURLTemp = canvas.toDataURL({
+			format : 'image/png'
+		});
+		var peso = 400000;
+		var calidad = (peso > dataURLTemp.length) ? 1 : peso
+				/ dataURLTemp.length;
+		return canvas.toDataURL({
+			format : 'png',
+			quality : calidad
+		});
+
 	};
 
 	if (url.substring(0, 5) == 'data:') {
 		var dataURL = resize1();
 		console.log('guardar imagen Tamaños (original, redimensionado)',
-				url.length, dataURL.length );
-		
+				url.length, dataURL.length);
+
 		callback(dataURL);
 		canvas = null;
 	} else {
@@ -932,7 +983,7 @@ function convertImgToBase64(imageDom, url, callback, outputFormat) {
 			var dataURL = resize2();
 			console.log('Tamaños (original, redimensionado)', url.length,
 					dataURL.length);
-			
+
 			callback(dataURL);
 			canvas = null;
 		};
@@ -964,14 +1015,16 @@ function logueoFacebook(response) {
 		for ( var p in infoAlbumes) {
 			var $photosList = $('#albumsList');
 			var $li = $('<li class="albumDinamico" style="display:block; height:100px; margin:0 5px 5px 5px;"/>');
-					$li.append('<span class="col-xs-4"><img src="'
-							+ infoAlbumes[p].picture
-							+ '" class="img-thumbnail imgListaBig"/></span>');
-					$li.append('<span class="col-xs-8"><strong style="color:#7c41bc" class="hidden-xs"> Album:</strong> '
+			$li.append('<span class="col-xs-4"><img src="'
+					+ infoAlbumes[p].picture
+					+ '" class="img-thumbnail imgListaBig"/></span>');
+			$li
+					.append('<span class="col-xs-8"><strong style="color:#7c41bc" class="hidden-xs"> Album:</strong> '
 							+ infoAlbumes[p].title
 							+ '<img alt="" src="../resources/webapp/images/ir.png" style="max-width:23px; max-height:23px;" title="Ir" class="pull-right"/></span>');
 
-					$li.click(function() {
+			$li
+					.click(function() {
 
 						$.blockUI.defaults.baseZ = 9000;
 						$.blockUI({
@@ -1061,13 +1114,15 @@ function logueoFacebook2() {
 	for ( var p in infoAlbumes) {
 		var $photosList = $('#albumsList');
 		var $li = $('<li class="albumDinamico" style="display:block; height:100px; margin:0 5px 5px 5px;"/>');
-			$li.append('<span class="col-xs-4"><img src="' + infoAlbumes[p].picture
+		$li.append('<span class="col-xs-4"><img src="' + infoAlbumes[p].picture
 				+ '"  class="img-thumbnail imgListaBig"/></span>');
-			$li.append('<span class="col-xs-8"><strong style="color:#7c41bc" class="hidden-xs"> Album:</strong> '
+		$li
+				.append('<span class="col-xs-8"><strong style="color:#7c41bc" class="hidden-xs"> Album:</strong> '
 						+ infoAlbumes[p].title
 						+ ' <img alt="" src="../resources/webapp/images/ir.png" style="max-width:23px; max-height:23px;" title="Ir" class="pull-right"/></span><br/>');
 
-			$li.click(function() {
+		$li
+				.click(function() {
 
 					var r = $(this).index();
 					$(".photoDinamico").remove();

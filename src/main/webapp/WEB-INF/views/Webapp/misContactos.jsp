@@ -63,7 +63,7 @@
 								src="<c:url value="/resources/webapp/images/apple-touch-icon-57x57.png"/>" /></a>
 						</li>
 						<!--/ OCULTAR CUÁNDO SEA - REGISTRO GENERAL-->
-	
+						<div class="clearfix"></div>
 					</ul>
 				</div>
 				<!--/.nav-collapse -->
@@ -80,26 +80,24 @@
 					Contactos</h3>
 			</div>
 			<div class="col-xs-12 col-sm-6">
-				<div class="col-xs-12 reset text-right pull-right navEditor">
-					<span id="muestraNombreUsuario"> <c:if
-							test="${not empty nombreUsuario}">
-							${nombreUsuario} <img width="20" height="20" alt="Infomovil"
-								src="<c:url value="/resources/webapp/images/fa-user.png"/>" />
-						</c:if>
-					</span> <br /> ${correoElectronico} <img width="25" height="25"
-						alt="Infomovil"
-						src="<c:url value="/resources/webapp/images/fa-mail.png"/>" />
+			<div class="col-xs-12 reset text-right pull-right navEditor">
+				<span id="muestraNombreUsuario">
+					<c:if test="${not empty nombreUsuario}">
+						${nombreUsuario} <img width="20" height="20" alt="Infomovil" src="<c:url value="/resources/webapp/images/fa-user.png"/>"/>
+					</c:if>
+				</span>  
+					<br/> ${correoElectronico} <img width="25" height="25" alt="Infomovil"
+					src="<c:url value="/resources/webapp/images/fa-mail.png"/>" /> 
 					<div class="clear"></div>
 					<a href="<c:url value="/infomovil/editarSitio"></c:url>"
-						class="col-xs-4 col-sm-3 col-md-3 col-lg-3 btn btn-default btn-outline navEditor pull-right hidden-sm hidden-md hidden-lg">
+					class="col-xs-4 col-sm-3 col-md-3 col-lg-3 btn btn-default btn-outline navEditor pull-right hidden-sm hidden-md hidden-lg">
 
-						<span id="idOpcionMasCont"><img width="20" height="20"
-							alt="Infomovil"
-							src="<c:url value="/resources/webapp/images/fa-back.png"/>" />
-							Editor </span>
-					</a>
-				</div>
-			</div>
+					<span id="idOpcionMasCont"><img width="20" height="20"
+						alt="Infomovil"
+						src="<c:url value="/resources/webapp/images/fa-back.png"/>" /> Editor </span>
+				</a>
+			</div>			
+		</div>
 		</div>
 	</div>
 
@@ -119,6 +117,7 @@
 						<div ng-controller="ToolBarContactoController as toolbarContacto"
 							ng-init="downgrade = '${downgrade}'; contacto = '${contacto}'">
 
+	
 							<button type="button"
 								class="btn btn-outlineGreen pull-right textWhite navEditorLato"
 								style="margin: 5px 0 0 0;"
@@ -130,19 +129,30 @@
 								<span class="hidden-xs">Añadir Contacto</span>
 
 							</button>
-
+<div class="pull-right spaceBtnsMap"></div>
+						
+							<button type="button"
+								class="btn btn-outlineGreen pull-right textWhite navEditorLato"
+								style="margin: 5px 0 0 0;"
+								ng-click="toolbarContacto.activarSortearContacto()"
+								data-toggle="modal"
+								id="ordenarContactosShow">
+								<img width="30" height="30" alt="Infomovil"
+									src="<c:url value="/resources/webapp/images/fa-order.png"/>" />
+								<span class="hidden-xs">Ordenar contactos</span>
+							</button>
+							
 							<div class="clear"></div>
 							<hr />
-							<p class="textBlack">
-								<img alt="Infomovil"
-									src="<c:url value="/resources/webapp/images/fa-contactos-bk.png"/>" />
-								Ahora agrega contactos
-							</p>
-
-
+						
+									<p class="textBlack" id="tituloAgregarContactos">
+										<img alt="Infomovil"src="<c:url value="/resources/webapp/images/fa-contactos-bk.png"/>" />
+										Ahora agrega contactos
+									</p>
+							
+							
 
 							<div class="col-xs-12 hidden-xs textBlack" style="border-bottom: 1px solid #000; padding: 8px 0">
-
 								
 								<div class="col-xs-4 text-left reset">
 									<strong>Contacto</strong>
@@ -160,52 +170,50 @@
 									<strong>Ordenar</strong>
 								</div>
 							</div>
-							<!-- <h5>{{contacto}} - {{downgrade}}</h5> -->
-							<ul id="sortable" class="reset">
 
-								<div id="{{item.claveContacto}}"
-									ng-repeat="item in toolbarContacto.contactos">
-									<li class="ui-state-default textBlack"
-										style="list-style: none;">
-										<div class="col-xs-12 reset"
-											style="border-bottom: 1px solid #000; padding: 8px 0">
-											
-											<div class="col-xs-12 col-sm-4  text-left" style="overflow:hidden"
-												ng-click="toolbarContacto.abrirActualizarContacto(item)">
-<img width="30" height="30" alt="Infomovil"
-													src="<c:url value="/resources/webapp/images/fa-twitter-bk.png"/>" />
+							<ul id="sortable" style="padding:0px;">
+
+								<div id="{{item.claveContacto}}" ng-repeat="item in toolbarContacto.contactos">
+									{{toolbarContacto.getContenidoDowngrade(downgrade, $index + 1, contacto, item)}}
+										<li class="ui-state-default textBlack" style="list-style: none;" id="contactoId{{$index + 1}}">
+												
+											<div class="col-xs-12 col-sm-4  text-left" style="overflow:hidden">
+													<img width="30" height="30" alt="Infomovil"
+													src="<c:url value="/resources/webapp/images/{{imagenIco}}"/>" />
 												<span id="regExpContacto" ng-hide="false">
-													<!--regExp:-->
-													{{item.regExp}}
+													{{contenidoContacto}}
 												</span>
-												<div id="servicesNaptrContacto" ng-hide="true">servicesNaptr:
+												<div id="servicesNaptrContacto" ng-hide="true">
 													{{item.servicesNaptr}}</div>
-												<div id="categoryNaptrContacto" ng-hide="true">categoryNaptr:
+												<div id="categoryNaptrContacto" ng-hide="true">
 													{{item.categoryNaptr}}</div>
-												<div id="longLabelNaptrContacto" ng-hide="true">longLabelNaptr:
+												<div id="longLabelNaptrContacto" ng-hide="true">
 													{{item.longLabelNaptr}}</div>
-												<div id="subCategoryContacto" ng-hide="true">subCategory:
+												<div id="subCategoryContacto" ng-hide="true">
 													{{item.subCategory}}</div>
-												<div id="preferenciaContacto" ng-hide="true">preference:
+												<div id="preferenciaContacto" ng-hide="true">
 													{{item.preference}}</div>
-												<div id="idContacto" ng-hide="true">claveContacto:
+												<div id="idContacto" ng-hide="true">
 													{{item.claveContacto}}</div>
-												<div id="visibleContacto" ng-hide="true">visible:
+												<div id="visibleContacto" ng-hide="true">
 													{{item.visible}}</div>
+												<div ng-hide="true">	
+													{{item.downgrade = contactoDowngrade}}
+													{{item.tipoContacto = tipoContactoLis}}
+													{{item.codigoPais = codigoPaisLis}}
+												</div>
 											</div>
 											<div class="col-xs-3 col-sm-2 text-left">
-												<div class="onoffswitch" id="checkContactoActivo"
-													ng-checked="item.visible==1"
-													ng-click="toolbarContacto.toggleContacto(item)"
+												<div class="onoffswitch" ng-click="toolbarContacto.toggleContacto(item)"
 													style="display: block-inline">
-													<input type="checkbox" name="onoffswitch"
-														class="onoffswitch-checkbox" id="myonoffswitch" checked>
-													<label class="onoffswitch-label" for="myonoffswitch"></label>
+													<input type="checkbox" name="onoffswitch" ng-checked="item.visible==1" id="checkContactoActivo{{$index + 1}}" 
+														class="onoffswitch-checkbox" id="myonoffswitch">
+													<label ng-class="toolbarContacto.claseCheck" for="myonoffswitch"></label>
 												</div>
 											</div>
 											<div class="col-xs-3 col-sm-2 text-left">
 												<button type="button"
-													class="btn btn-outlineGreen textWhite navEditorLato" id=""
+													ng-class="toolbarContacto.claseBoton"
 													ng-click="toolbarContacto.abrirActualizarContacto(item)">
 													<img width="20" height="20" alt="Infomovil"
 														src="<c:url value="/resources/webapp/images/ico_actualizar.png"/>" />
@@ -214,7 +222,7 @@
 											</div>
 											<div class="col-xs-3 col-sm-2 text-left">
 												<button type="button"
-													class="btn btn-outlineGreen textWhite navEditorLato"
+													ng-class="toolbarContacto.claseBoton"
 													id="btnEliminarContacto"
 													ng-click="toolbarContacto.eliminarContacto(item)">
 													<img width="20" height="20" alt="Infomovil"
@@ -223,96 +231,18 @@
 												</button>
 											</div>
 											<div class="col-xs-3 col-sm-2 text-left">
-												<div type="button"
-													class="btn btn-outlineGreen  textWhite navEditorLato" id="">
+												<div class="btn btn-outlineDisable btn-ordenar btn-outlineGreen">
 													<img width="20" height="20" alt="Infomovil"
-														src="<c:url value="/resources/webapp/images/fa-order.png"/>" />
+														src="<c:url value="/resources/webapp/images/fa-reorder.png"/>" />
 													<span class="hidden-xs"></span>
 												</div>
 											</div>
-											<!-- <input type="checkbox" id="checkContactoActivo" ng-checked="item.visible==1" ng-click="toolbarContacto.toggleContacto(item)"> Visible  -->
-
-										</div>
-									</li>
-									
-								
+											<div class="clearfix"></div>
+										</li>
 								</div>
 								<div class="clearfix"></div>
-						</div>
 						</ul>
-						
-						<ul class="reset">
-						<li style="list-style:none; cursor: no-drop; " >
-						
-						<div class="col-xs-12 reset"
-											style="border-bottom: 1px solid #000; padding: 8px 0">
-											
-											<div class="col-xs-12 col-sm-4  text-left"
-												ng-click="toolbarContacto.abrirActualizarContacto(item)">
-<img width="30" height="30" alt="Infomovil"
-													src="<c:url value="/resources/webapp/images/fa-twitter.png"/>" />
-												<span id="regExpContacto" ng-hide="false">
-													<!--regExp:-->
-													tel
-												</span>
-												<div id="servicesNaptrContacto" ng-hide="true">servicesNaptr:
-													{{item.servicesNaptr}}</div>
-												<div id="categoryNaptrContacto" ng-hide="true">categoryNaptr:
-													{{item.categoryNaptr}}</div>
-												<div id="longLabelNaptrContacto" ng-hide="true">longLabelNaptr:
-													{{item.longLabelNaptr}}</div>
-												<div id="subCategoryContacto" ng-hide="true">subCategory:
-													{{item.subCategory}}</div>
-												<div id="preferenciaContacto" ng-hide="true">preference:
-													{{item.preference}}</div>
-												<div id="idContacto" ng-hide="true">claveContacto:
-													{{item.claveContacto}}</div>
-												<div id="visibleContacto" ng-hide="true">visible:
-													{{item.visible}}</div>
-											</div>
-											<div class="col-xs-3 col-sm-2 text-left">
-												<div class="onoffswitch" id="checkContactoInactivo"
-													style="display: block-inline">
-													<input disabled type="checkbox" name="onoffswitch"
-														class="onoffswitch-checkbox" id="myonoffswitch">
-													<label class="onoffswitch-label" for="myonoffswitch"></label>
-												</div>
-											</div>
-											<div class="col-xs-3 col-sm-2 text-left">
-												<button type="button" disabled
-													class="btn btn-outlineDisable textWhite navEditorLato" id=""
-													ng-click="toolbarContacto.abrirActualizarContacto(item)">
-													<img width="20" height="20" alt="Infomovil"
-														src="<c:url value="/resources/webapp/images/ico_actualizar.png"/>" />
-													<span class="hidden-xs"></span>
-												</button>
-											</div>
-											<div class="col-xs-3 col-sm-2 text-left">
-												<button type="button"
-													class="btn btn-outlineDisable textWhite navEditorLato"
-													id="btnEliminarContacto"
-													ng-click="toolbarContacto.eliminarContacto(item)" disabled>
-													<img width="20" height="20" alt="Infomovil"
-														src="<c:url value="/resources/webapp/images/trash.png"/>" />
-													<span class="hidden-xs"></span>
-												</button>
-											</div>
-											<div class="col-xs-3 col-sm-2 text-left">
-												<button type="button" disabled
-													class="btn btn-outlineDisable  textWhite navEditorLato" id="">
-													<img width="20" height="20" alt="Infomovil"
-														src="<c:url value="/resources/webapp/images/fa-order.png"/>" />
-													<span class="hidden-xs"></span>
-												</button>
-											</div>
-											<!-- <input type="checkbox" id="checkContactoActivo" ng-checked="item.visible==1" ng-click="toolbarContacto.toggleContacto(item)"> Visible  -->
-
-										</div>
-						
-						</li>
 						<div class="clearfix"></div>
-						</ul>
-						
 					</div>
 				</div>
 
@@ -343,20 +273,20 @@
 	<script src="<c:url value="/resources/webapp/js/jquery.numeric.js"/>"></script>
 	<script src="<c:url value="/resources/webapp/js/jquery.blockUI.js"/>"></script>
 	<script src="<c:url value="/resources/js/webapp/contactos.js"/>"></script>
-	<script src="<c:url value="/resources/js/webapp/contactosService.js"/>"></script>
-
+	<script src="<c:url value="/resources/js/webapp/InfomovilServices/contactosService.js"/>"></script>
+	<script src="<c:url value="/resources/js/webapp/InfomovilServices/mensajesService.js"/>"></script>
 
 	<tiles:insertDefinition name="modalGen">
 		<tiles:putAttribute name="idModal" value="myModalContactos" />
 		<tiles:putAttribute name="tamanioModal"
-			value='"modal-dialog modal-lg"' />
+			value='"modal-dialog modal-md"' />
 		<c:set var="fragmentName" value="modalContactos" scope="request" />
 	</tiles:insertDefinition>
 
 	<tiles:insertDefinition name="modalGen">
 		<tiles:putAttribute name="idModal" value="myModalContactosActualizar" />
 		<tiles:putAttribute name="tamanioModal"
-			value='"modal-dialog modal-lg"' />
+			value='"modal-dialog modal-md"' />
 		<c:set var="fragmentName" value="modalContactosActualizar"
 			scope="request" />
 	</tiles:insertDefinition>
@@ -378,5 +308,3 @@
 </body>
 
 </html>
-
-

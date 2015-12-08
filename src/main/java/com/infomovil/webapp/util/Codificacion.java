@@ -1,8 +1,6 @@
 package com.infomovil.webapp.util;
 
 import java.security.Key;
-import java.util.StringTokenizer;
-
 import javax.crypto.Cipher;
 import javax.crypto.spec.SecretKeySpec;
 
@@ -43,7 +41,7 @@ public class Codificacion {
 //		String passwordEnc = Codificacion.encrypt(password);  
 //		System.out.println("passwordEnc:::" + passwordEnc);
 		//      System.out.println("Plain Text : " + password);
-		System.out.println("Conn: " + Codificacion.decrypt("KHkISWM/3HfzhtC+K3Giog== "));
+		System.out.println("Conn: " + Codificacion.decrypt("ZXIcx/YLfP6YMhwkNMqh/w=="));
 		//        System.out.println("Perfil QA");
 		//        System.out.println("Conn QA:"+ Codificacion.encrypt("jdbc:oracle:thin:@172.24.20.104:1521:IFBDQA")); 
 		//       System.out.println("Pass: "+Codificacion.encrypt("jdbc:oracle:thin:@172.17.3.196:1521:telhosting"));

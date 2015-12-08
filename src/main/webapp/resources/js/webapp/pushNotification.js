@@ -8,11 +8,11 @@ app.controller("PushNotificationCtrl", function($scope, $firebaseArray) {
 	var query = ref.orderByChild("timestamp").limitToLast(5);
 	
 	ref.on('child_added', function(childSnapshot, prevChildKey) {
-		console.debug(childSnapshot.exportVal().mensaje);
+		console.debug(childSnapshot.val().mensaje);
 	});
 	
 	ref.on('child_changed', function(childSnapshot, prevChildKey) {
-		console.debug(childSnapshot.exportVal().mensaje);
+		console.debug(childSnapshot.val().mensaje);
 	});
 	
 	push.messages = $firebaseArray(query);
