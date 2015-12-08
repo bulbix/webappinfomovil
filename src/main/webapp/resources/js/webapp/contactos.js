@@ -416,8 +416,8 @@ app.controller('ActualizarContactos', function($scope, $http, ContactoService, M
      };  
 	
 	actualizarTipoContacto.closeMyModalActualizarContactos = function() {
-		$("#myModalContactosActualizar").modal('hide');			
-	}
+		$("#myModalContactosActualizar").modal('toggle');			
+	};
 	
 	actualizarTipoContacto.guardarDatosContacto = function() {
 
@@ -459,6 +459,5 @@ app.controller('ActualizarContactos', function($scope, $http, ContactoService, M
 			claseCheck = "offswitch-checkbox";
 		
 		$("#checkVisibleLbl").addClass(claseCheck);
-	});
-	
+	});	
 });

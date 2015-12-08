@@ -2,6 +2,7 @@
 
 <div ng-controller="ActualizarContactos as actualizarTipoContacto">
 	<div class="modal-header navEditorSFl">
+	
 		<button type="button" class="btn btn-purple pull-right" style="margin: 5px 0;"
 			ng-click="actualizarTipoContacto.guardarDatosContacto()">
 			<img width="20" height="20" alt="Infomovil" src="<c:url value="/resources/webapp/images/ico_actualizar.png"/>"/> 
