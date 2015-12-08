@@ -117,23 +117,6 @@ app.controller('ToolBarContactoController', function($scope, $http, ContactoServ
 	};
 	
 	
-	
-	toolbarContacto.toggleContacto = function(item) {
-
-		if (item.downgrade == "0")
-			return;
-		
-		var visibleContacto = "1";
-		
-		if (item.visible == "1")
-			visibleContacto = "0";
-		
-		item.visible = visibleContacto;
-		item.tipoContacto = "";
-		item.codigoPais = "";
-		ContactoService.actualizarContacto(item);
-	};
-	
 	toolbarContacto.abrirActualizarContacto = function(item) {
 
 		var mensajesContacto = "";
@@ -194,7 +177,6 @@ app.controller('ToolBarContactoController', function($scope, $http, ContactoServ
 		$("#inputTelefonosActualizar").attr("placeholder", placeHolder);
 		$("#imgIcono").val(mensajesContacto.imagenIco);
 		$('#rutaIcono').attr("src", images);
-		
 		ContactoService.setRegExp(expReg);
 		$("#myModalContactosActualizar").modal();
 	}
@@ -392,6 +374,7 @@ app.controller('ActualizarContactos', function($scope, $http, ContactoService, M
 	actualizarTipoContacto.claseLi = "ui-state-default textBlack claseCursorLi";
 	actualizarTipoContacto.claseCheck = "onoffswitch-label";
 	
+	console.log("El valor del item.visible es: " + item.visible);
 	$("#myModalContactosActualizar").on('hidden.bs.modal', function() {
 		$('#rutaIcono').attr("src", '/resources/webapp/images/');
 	});
@@ -444,6 +427,22 @@ app.controller('ActualizarContactos', function($scope, $http, ContactoService, M
     	});
      };  
 	
+     actualizarTipoContacto.toggleContacto = function() {
+    	var item = ContactoService.getItemGlobal();
+ 		if (item.downgrade == "0")
+ 			return;
+ 		
+ 		var visibleContacto = "1";
+ 		
+ 		if (item.visible == "1")
+ 			visibleContacto = "0";
+ 		
+ 		item.visible = visibleContacto;
+ 		item.tipoContacto = "";
+ 		item.codigoPais = "";
+ 		ContactoService.actualizarContacto(item);
+ 	};
+     
 	actualizarTipoContacto.closeMyModalActualizarContactos = function() {
 		$("#myModalContactosActualizar").modal('hide');			
 	}
