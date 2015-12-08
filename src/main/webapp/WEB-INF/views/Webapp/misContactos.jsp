@@ -231,7 +231,7 @@
 												</button>
 											</div>
 											<div class="col-xs-3 col-sm-2 text-left">
-												<div class="btn btn-outlineDisable btn-ordenar btn-outlineGreen">
+												<div class="btn btn-outlineDisable btn-ordenar btn-outlineGreen handle">
 													<img width="20" height="20" alt="Infomovil"
 														src="<c:url value="/resources/webapp/images/fa-reorder.png"/>" />
 													<span class="hidden-xs"></span>

@@ -43,23 +43,16 @@
 				<input type="hidden" name="protocolo" id="protocolo"/>
 				<input type="hidden" name="tipoContactoActualizar" id="tipoContactoActualizar"/>
 
-
 				<div class="form-group">
 					<label></label> <span id="nombreActualizarTel"></span>
-
-
 				</div>
 
 				<div class="form-group">
 					<label></label> <span id="etiquetaActualizarTel"></span>
-
-
 				</div>
 
 				<div class="form-group">
 					<label></label> <span id="paisActualizarTel"></span>
-
-
 				</div>
 
 				<div class="form-group">
@@ -72,10 +65,17 @@
 						
 				<div class="form-group">
 					<label></label> <span id="mensajeTelefonosActualizar"></span>
-
-
 				</div>
-
+				
+				<div class="col-xs-3 col-sm-2 text-left">
+					<div class="onoffswitch" 
+						style="display: block-inline">
+						<input type="checkbox" name="onoffswitch"
+							class="onoffswitch-checkbox" id="myonoffswitch">
+						<label class="onoffswitch-label" for="myonoffswitch"></label>
+					</div>
+				</div>
+				
 				<div class="form-group">
 					<label>Descripción</label>
 					<div>
