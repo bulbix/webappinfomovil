@@ -433,8 +433,8 @@ app.controller('ActualizarContactos', function($scope, $http, ContactoService, M
  	};
      
 	actualizarTipoContacto.closeMyModalActualizarContactos = function() {
-		$("#myModalContactosActualizar").modal('hide');			
-	}
+		$("#myModalContactosActualizar").modal('toggle');			
+	};
 	
 	actualizarTipoContacto.guardarDatosContacto = function() {
 
@@ -464,6 +464,6 @@ app.controller('ActualizarContactos', function($scope, $http, ContactoService, M
 
 		ContactoService.actualizarContacto(contacto);
 		$("#myModalContactosActualizar").modal('toggle');
-	}
+	};
 	
 });

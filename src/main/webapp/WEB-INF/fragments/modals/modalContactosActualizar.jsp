@@ -6,10 +6,7 @@
 		<button type="button" class="btn btn-purple pull-right" id=""
 			ng-click="actualizarTipoContacto.guardarDatosContacto()"
 			style="margin: 5px 0;">
-			<img width="20" height="20" alt="Infomovil"
-<%-- 				src="<c:url value="/resources/webapp/images/ico_actualizar.png"/>" --%>
-				src="/resources/webapp/images/ico_actualizar.png"
-				/><span
+			<img width="20" height="20" src="/resources/webapp/images/ico_actualizar.png"/><span
 				class="hidden-xs"> Actualizar</span>
 		</button>
 		
