@@ -48,9 +48,9 @@ app.controller('ToolBarContactoController', function($scope, $http, ContactoServ
 		var contenidoFinalContacto = item.regExp;
 		
 		toolbarContacto.claseBoton = "btn btn-outlineGreen textWhite navEditorLato";
-		toolbarContacto.claseBotonOrd = "btn-outlineDisable";
 		toolbarContacto.claseLi = "ui-state-default textBlack claseCursorLi";
 		toolbarContacto.claseCheck = "onoffswitch-label";
+		$scope.claseBotonOrd = "btn btn-outlineGreen btnOrdenar handle";
 		$scope.contactoDowngrade = "1";
 		$scope.contenidoContacto = "";
 		
@@ -79,6 +79,7 @@ app.controller('ToolBarContactoController', function($scope, $http, ContactoServ
 			toolbarContacto.claseCheck = "offswitch-label";
 			$scope.contactoDowngrade = "0";
 			$scope.imagenIco = mensajesContactoLista.imagenIco.replace("-bk", "");
+			$scope.claseBotonOrd = "btn btn-outlineGreen btnOrdenar";
 		}
 		
 		$scope.tipoContactoLis = mensajesContactoLista.tipo != undefined ? mensajesContactoLista.tipo : "";
@@ -199,13 +200,18 @@ app.controller('ToolBarContactoController', function($scope, $http, ContactoServ
     	 toolbarContacto.contactos = value;
     	 var arr = value instanceof Array ? value : [value]; 
     	 ContactoService.setContactosGuardados(arr.length);
+
+    	 if (ContactoService.getContactosGuardados() <= 1)
+    		 $(".btnOrdenar").removeClass("handle");
+    	 else
+    		 $(".btnOrdenar").addClass("handle");
      });
 
      /*Obtiene los contactos*/
      ContactoService.getContactos();
-     
-     $("#sortable").sortable();
+
      $("#sortable").sortable({
+    	 
     	 handle: '.handle', 
     	 start: function(event, ui) {
     		 itemsInicio = $("#sortable").sortable("toArray");
@@ -213,14 +219,13 @@ app.controller('ToolBarContactoController', function($scope, $http, ContactoServ
      });
 	 
 	 $("#sortable").sortable({
-		 update: function(event, ui) {
-			 
+		 
+		 update: function(event, ui) {		 
 			 itemsFin = $( "#sortable" ).sortable("toArray");
 
 			 if (itemsInicio != itemsFin)
 				 ordenarContactos(itemsFin);
-		 }	
-	 
+		 }
 	 });
 });
 
@@ -453,11 +458,10 @@ app.controller('ActualizarContactos', function($scope, $http, ContactoService, M
 	$("#myModalContactosActualizar").on('shown.bs.modal', function() {
 		
 		var item = ContactoService.getItemGlobal();
-		var claseCheck = "onoffswitch-checkbox";
-
-		if (item.visible == "0")
-			claseCheck = "offswitch-checkbox";
 		
-		$("#checkVisibleLbl").addClass(claseCheck);
+		if (item.visible == "1")
+			$("#checkVisible").prop("checked", true);
+		else
+			$("#checkVisible").prop("checked", false);
 	});	
 });

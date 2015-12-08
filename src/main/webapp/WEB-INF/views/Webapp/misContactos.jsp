@@ -138,8 +138,6 @@
 										Ahora agrega contactos
 									</p>
 							
-							
-
 							<div class="col-xs-12 hidden-xs textBlack" style="border-bottom: 1px solid #000; padding: 8px 0">
 								
 								<div class="col-xs-4 text-left reset">
@@ -184,10 +182,8 @@
 												</div>
 											</div>
 
-											
-										
 											<div class="col-xs-3 col-sm-2 text-left">
-												<div class="btn btn-outlineGreen handle">
+												<div class="{{claseBotonOrd}}">
 													<img width="20" height="20" alt="Infomovil"
 														src="<c:url value="/resources/webapp/images/fa-reorder.png"/>" />
 													<span class="hidden-xs"></span>
