@@ -17,7 +17,7 @@
 													style="display: block-inline">
 				<input type="checkbox" name="onoffswitch" ng-checked="" 
 														class="onoffswitch-checkbox" id="myonoffswitch">
-				 <label ng-class="toolbarContacto.claseCheck" for="myonoffswitch"></label>									
+				 <label ng-class="actualizarTipoContacto.claseCheck" for="myonoffswitch"></label>									
 			 </div>									
 		
 		<button type="button"
