@@ -1,5 +1,3 @@
-var app = angular.module('InfomovilAppEditor', []);
-
 app.controller('HorariosControllerLlamarModal', function($scope, $http, HorarioService,MensajesService) {
 	
 	var llamarModalhorarios = this;
