@@ -20,6 +20,7 @@ app.controller('ToolBarContactoController', function($scope, $http, ContactoServ
 		$("#sortable").sortable("option", "disabled", false);
 
 		$("#sortable").sortable({
+			handle: '.handle', 
 			start: function(event, ui) {
 	    		 itemsInicio = $("#sortable").sortable("toArray");
 	    	 }
