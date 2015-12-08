@@ -12,6 +12,14 @@
 				/><span
 				class="hidden-xs"> Actualizar</span>
 		</button>
+		
+			<div class="onoffswitch" ng-click="actualizarTipoContacto.toggleContacto()"
+													style="display: block-inline">
+				<input type="checkbox" name="onoffswitch" ng-checked="" 
+														class="onoffswitch-checkbox" id="myonoffswitch">
+				 <label ng-class="toolbarContacto.claseCheck" for="myonoffswitch"></label>									
+			 </div>									
+		
 		<button type="button"
 													ng-class="actualizarTipoContacto.claseBoton"
 													id="btnEliminarContacto"
