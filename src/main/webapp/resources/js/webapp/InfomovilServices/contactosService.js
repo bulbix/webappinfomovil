@@ -4,6 +4,7 @@ app.factory('ContactoService', function($http, MensajesService) {
 	var contactosPermitidos;
 	var contactosGuardados;
 	var validacionRegEx;
+	var regExp;
 	var icono;
 	
 	function getContactos() {
@@ -315,6 +316,12 @@ app.factory('ContactoService', function($http, MensajesService) {
 	   },
 	   getValidacionRegEx : function() {
 		   return validacionRegEx;
+	   },
+	   setRegExp : function(value) {
+		   regExp = value;
+	   },
+	   getRegExp : function() {
+		   return regExp;
 	   },
 	   setIcono : function(value) {
 		   icono = value;
