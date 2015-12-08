@@ -2,8 +2,7 @@ app.factory('HorarioService', function($http, MensajesService) {
 	
 	function getHoras() {
     	 
-    	 var horas =    '<option value="00:00">00:00</option>'+	 
-    	 				'<option value="00:30">00:30</option>' + '<option value="01:00">01:00</option>'+
+    	 var horas =   	'<option value="00:30">00:30</option>' + '<option value="01:00">01:00</option>'+
     	 				'<option value="01:30">01:30</option>' + '<option value="02:00">02:00</option>'+
     	 				'<option value="02:30">02:30</option>' + '<option value="03:00">03:00</option>'+
     	 				'<option value="03:30">03:30</option>' + '<option value="04:00">04:00</option>'+

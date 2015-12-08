@@ -157,15 +157,7 @@
 								<div class="col-xs-4 text-left reset">
 									<strong>Contacto</strong>
 								</div>
-								<div class="col-xs-2 text-left reset">
-									<strong>Visible</strong>
-								</div>
-								<div class="col-xs-2 text-left reset">
-									<strong>Actualizar</strong>
-								</div>
-								<div class="col-xs-2 text-left reset">
-									<strong>Eliminar</strong>
-								</div>
+								
 								<div class="col-xs-2 text-left reset">
 									<strong>Ordenar</strong>
 								</div>
@@ -180,7 +172,7 @@
 											<div class="col-xs-12 col-sm-4  text-left" style="overflow:hidden">
 													<img width="30" height="30" alt="Infomovil"
 													src="<c:url value="/resources/webapp/images/{{imagenIco}}"/>" />
-												<span id="regExpContacto" ng-hide="false">
+												<span id="regExpContacto" ng-hide="false" ng-click="toolbarContacto.abrirActualizarContacto(item)">
 													{{contenidoContacto}}
 												</span>
 												<div id="servicesNaptrContacto" ng-hide="true">
@@ -203,40 +195,7 @@
 													{{item.codigoPais = codigoPaisLis}}
 												</div>
 											</div>
-											<div class="col-xs-3 col-sm-2 text-left">
-												<div class="onoffswitch" ng-click="toolbarContacto.toggleContacto(item)"
-													style="display: block-inline">
-													<input type="checkbox" name="onoffswitch" ng-checked="item.visible==1" id="checkContactoActivo{{$index + 1}}" 
-														class="onoffswitch-checkbox" id="myonoffswitch">
-													<label ng-class="toolbarContacto.claseCheck" for="myonoffswitch"></label>
-												</div>
-											</div>
-											<div class="col-xs-3 col-sm-2 text-left">
-												<button type="button"
-													ng-class="toolbarContacto.claseBoton"
-													ng-click="toolbarContacto.abrirActualizarContacto(item)">
-													<img width="20" height="20" alt="Infomovil"
-														src="<c:url value="/resources/webapp/images/ico_actualizar.png"/>" />
-													<span class="hidden-xs"></span>
-												</button>
-											</div>
-											<div class="col-xs-3 col-sm-2 text-left">
-												<button type="button"
-													ng-class="toolbarContacto.claseBoton"
-													id="btnEliminarContacto"
-													ng-click="toolbarContacto.eliminarContacto(item)">
-													<img width="20" height="20" alt="Infomovil"
-														src="<c:url value="/resources/webapp/images/trash.png"/>" />
-													<span class="hidden-xs"></span>
-												</button>
-											</div>
-											<div class="col-xs-3 col-sm-2 text-left">
-												<div class="btn btn-outlineDisable btn-ordenar btn-outlineGreen">
-													<img width="20" height="20" alt="Infomovil"
-														src="<c:url value="/resources/webapp/images/fa-reorder.png"/>" />
-													<span class="hidden-xs"></span>
-												</div>
-											</div>
+											
 											<div class="clearfix"></div>
 										</li>
 								</div>

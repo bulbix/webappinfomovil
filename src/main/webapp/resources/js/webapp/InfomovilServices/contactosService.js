@@ -6,6 +6,7 @@ app.factory('ContactoService', function($http, MensajesService) {
 	var validacionRegEx;
 	var regExp;
 	var icono;
+	var itemGlobal;
 	
 	function getContactos() {
 
@@ -329,6 +330,12 @@ app.factory('ContactoService', function($http, MensajesService) {
 	   },
 	   getIcono : function() {
 		   return icono;
+	   },
+	   setItemGlobal : function(value) {
+		   itemGlobal = value;
+	   },
+	   getItemGlobal : function() {
+		   return itemGlobal;
 	   },
 	   getTipoContacto : getTipoContacto,
 	   actualizarContacto : actualizarContacto,

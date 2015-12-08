@@ -12,7 +12,31 @@
 				/><span
 				class="hidden-xs"> Actualizar</span>
 		</button>
-
+		
+		<div class="onoffswitch" ng-click="toolbarContacto.toggleContacto(item)"
+													style="display: block-inline">
+													<input type="checkbox" name="onoffswitch" ng-checked="item.visible==1" id="checkContactoActivo{{$index + 1}}" 
+														class="onoffswitch-checkbox" id="myonoffswitch">
+													<label ng-class="toolbarContacto.claseCheck" for="myonoffswitch"></label>
+		</div>
+		
+		<button type="button"
+													ng-class="toolbarContacto.claseBoton"
+													ng-click="toolbarContacto.abrirActualizarContacto(item)">
+													<img width="20" height="20" alt="Infomovil"
+														src="<c:url value="/resources/webapp/images/ico_actualizar.png"/>" />
+													<span class="hidden-xs"></span>
+		</button>
+		
+		<button type="button"
+													ng-class="toolbarContacto.claseBoton"
+													id="btnEliminarContacto"
+													ng-click="toolbarContacto.eliminarContacto(item)">
+													<img width="20" height="20" alt="Infomovil"
+														src="<c:url value="/resources/webapp/images/trash.png"/>" />
+													<span class="hidden-xs"></span>
+		</button>
+		
 		<button type="button" class="close textBlack pull-left btnsEditor"
 			aria-label="Close"
 			ng-click="actualizarTipoContacto.closeMyModalActualizarContactos()"
