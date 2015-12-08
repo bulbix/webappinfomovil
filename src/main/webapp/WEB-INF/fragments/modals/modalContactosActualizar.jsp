@@ -8,7 +8,7 @@
 			style="margin: 5px 0;">
 			<img width="20" height="20" alt="Infomovil"
 <%-- 				src="<c:url value="/resources/webapp/images/ico_actualizar.png"/>" --%>
-				src="/WebAppInfomovil/resources/webapp/images/ico_actualizar.png"
+				src="/resources/webapp/images/ico_actualizar.png"
 				/><span
 				class="hidden-xs"> Actualizar</span>
 		</button>
@@ -65,10 +65,11 @@
 				<div class="form-group">
 					<label></label> <input type="text" id="inputTelefonosActualizar"
 						placeholder="" />
-
-
 				</div>
-
+				
+				<span id="msgValidaRegExpAct" style="display:none;" class="textRed"><img width="20" height="20"
+						alt="Infomovil" src="<c:url value="/resources/webapp/images/fa-warning-red.png"/>" /></span>
+						
 				<div class="form-group">
 					<label></label> <span id="mensajeTelefonosActualizar"></span>
 

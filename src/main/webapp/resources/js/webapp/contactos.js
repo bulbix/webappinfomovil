@@ -22,7 +22,6 @@ app.controller('ToolBarContactoController', function($scope, $http, ContactoServ
 		$("#sortable").sortable({
 			start: function(event, ui) {
 	    		 itemsInicio = $("#sortable").sortable("toArray");
-	    		 console.log("Unamos los corazones! dos" + itemsInicio);
 	    	 }
 	    });
 		 
@@ -144,12 +143,13 @@ app.controller('ToolBarContactoController', function($scope, $http, ContactoServ
 			visibleContacto = "0";
 		
 		item.visible = visibleContacto;
+		item.tipoContacto = "";
+		item.codigoPais = "";
 		ContactoService.actualizarContacto(item);
 	};
 	
 	toolbarContacto.abrirActualizarContacto = function(item) {
 
-		var regex = null;
 		var mensajesContacto = "";
 		var tipoContactoAct = "";
 		var expReg = "";
@@ -157,6 +157,8 @@ app.controller('ToolBarContactoController', function($scope, $http, ContactoServ
 		var contenidoContacto = "";
 		var tipoBusqueda = "redSocial";
 		var protocolo = "";
+		var images = "";
+		var msjValidacionExp = "";
 		var llaveBusqueda = item.subCategory;
 		
 		if (item.downgrade == "0")
@@ -173,11 +175,10 @@ app.controller('ToolBarContactoController', function($scope, $http, ContactoServ
 		expReg = mensajesContacto.expRegular != undefined ? mensajesContacto.expRegular : "^\\d{10}$";
 		placeHolder = mensajesContacto.placeholder != undefined ? mensajesContacto.placeholder : "Número Telefónico Inválido. Deben ser 10 Digitos";
 		protocolo = mensajesContacto.protocolo != undefined ? mensajesContacto.protocolo : "";
+		msjValidacionExp = mensajesContacto.msjValidacion != undefined ? mensajesContacto.msjValidacion : "Número Telefónico Inválido. Deben ser 10 Digitos";
 		contenidoContacto = item.regExp;
 		$scope.imagenIco = mensajesContacto.imagenIco;
-		console.log("$scope.imagenIco: " + $scope.imagenIco);
-		regex = new RegExp(expReg);
-		
+
 		if (mensajesContacto.tipo != undefined)
 		{
 			contenidoContacto = item.regExp.substring(mensajesContacto.tipo.length, item.regExp.length);
@@ -186,7 +187,8 @@ app.controller('ToolBarContactoController', function($scope, $http, ContactoServ
 				contenidoContacto = item.regExp.substring(mensajesContacto.tipo.length + mensajesContacto.pais.length, item.regExp.length);
 		}
 
-		console.log("contenidoContacto: " + contenidoContacto + ", tipo: " + mensajesContacto.tipo + ", codigo: " + mensajesContacto.pais);
+		images = $('#rutaIcono').attr('src');
+		images = images + mensajesContacto.imagenIco;
 		$("#paisActualizarTel").text("");
 		$("#nombreActualizarTel").text(mensajesContacto.nombre); 
 		$("#etiquetaActualizarTel").text(mensajesContacto.etiqueta);
@@ -199,18 +201,13 @@ app.controller('ToolBarContactoController', function($scope, $http, ContactoServ
 		$("#visibleC").val(item.visible);
 		$("#tipoContactoActualizar").val(mensajesContacto.tipo);
 		$("#protocolo").val(protocolo);
+		$("#msgValidaRegExpAct").text(msjValidacionExp);
 		$("#inputTelefonosActualizar" ).attr("pattern", expReg);
 		$("#inputTelefonosActualizar").attr("placeholder", placeHolder);
 		$("#imgIcono").val(mensajesContacto.imagenIco);
-		var images = $('#rutaIcono').attr('src');
-		images = images + mensajesContacto.imagenIco;//images.replace("fa.png", mensajesContacto.imagenIco);
 		$('#rutaIcono').attr("src", images);
 		
-		$("#inputTelefonosActualizar").keydown(function(e) { 
-			ContactoService.setValidacionRegEx(regex.test($("#inputTelefonosActualizar").val()));
-		});
-		
-		//ContactoService.setIcono(mensajesContacto.imagenIco);
+		ContactoService.setRegExp(expReg);
 		$("#myModalContactosActualizar").modal();
 	}
 	
@@ -327,7 +324,6 @@ app.controller('TipoContacto', function($scope, $http, ContactoService, Mensajes
 		$scope.tipoContacto = mensajesContacto.tipo != undefined ? mensajesContacto.tipo : "";
 		$scope.imagenIco = mensajesContacto.imagenIco;
 		$scope.protocolo = mensajesContacto.protocolo != undefined ? mensajesContacto.protocolo : "";
-		console.log("protocolo: " + $scope.protocolo);
 	}
 	
 	datosTipoContacto.regresarAgregarContacto = function() {
@@ -433,7 +429,7 @@ app.controller('ActualizarContactos', function($scope, $http, ContactoService, M
 	var actualizarTipoContacto = this;
 
 	$("#myModalContactosActualizar").on('hidden.bs.modal', function() {
-		$('#rutaIcono').attr("src", '/WebAppInfomovil/resources/webapp/images/');
+		$('#rutaIcono').attr("src", '/resources/webapp/images/');
 	});
 	
 	actualizarTipoContacto.closeMyModalActualizarContactos = function() {
@@ -442,6 +438,17 @@ app.controller('ActualizarContactos', function($scope, $http, ContactoService, M
 	
 	actualizarTipoContacto.guardarDatosContacto = function() {
 
+		var exp = ContactoService.getRegExp();
+		var regexAct = new RegExp(exp);
+
+		if (!regexAct.test($("#inputTelefonosActualizar").val()))
+		{
+			$("#msgValidaRegExpAct").css("display", "block");
+			return;
+		}
+
+		$("#msgValidaRegExpAct").css("display", "none");
+		
 		var contacto = {
 					
 			claveContacto : $("#claveContactoC").val(), 
@@ -455,7 +462,6 @@ app.controller('ActualizarContactos', function($scope, $http, ContactoService, M
 			protocolo : $("#protocolo").val()
 		};
 
-		$scope.imagenIcoActualizar = ContactoService.getIcono();
 		ContactoService.actualizarContacto(contacto);
 		$("#myModalContactosActualizar").modal('toggle');
 	}
