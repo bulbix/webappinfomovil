@@ -36,7 +36,7 @@ app.factory('ContactoService', function($http, MensajesService) {
 	}
 		
     function actualizarContacto(contacto) {
-
+    	
     	var mensaje = "Actualizando contacto...";
     	MensajesService.abrirBlockUIGeneral(mensaje);
     	 
