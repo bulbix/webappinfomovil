@@ -115,22 +115,7 @@ app.controller('ToolBarContactoController', function($scope, $http, ContactoServ
 		var llaveBusqueda = "";
 	};
 	
-	toolbarContacto.eliminarContacto = function(item, index) {
-
-		if (item.downgrade == "0")
-			return;
-		
-		var textos = {
-			titulo : "Borrar Contacto",
-			mensaje : "¿Seguro que deseas borrar el contacto?"
-		};
-
-		MensajesService.obtenerConfirmacion(textos, function(confirmarBorrar) {
-			
-			if (confirmarBorrar)
-				eliminarContacto(item.claveContacto);
-		});
-	};
+	
 	
 	toolbarContacto.toggleContacto = function(item) {
 
@@ -160,6 +145,8 @@ app.controller('ToolBarContactoController', function($scope, $http, ContactoServ
 		var images = "";
 		var msjValidacionExp = "";
 		var llaveBusqueda = item.subCategory;
+		
+		ContactoService.setItemGlobal(item);
 		
 		if (item.downgrade == "0")
 			return;
@@ -211,35 +198,7 @@ app.controller('ToolBarContactoController', function($scope, $http, ContactoServ
 		$("#myModalContactosActualizar").modal();
 	}
 	
-    var eliminarContacto = function(claveContacto) {
-	
-    	var mensaje = "Eliminando contacto...";
-    	MensajesService.abrirBlockUIGeneral(mensaje);
-    	
-    	$http({
-    		method: 'POST',
-    		url: contextPath + "/infomovil/eliminarContacto",
-    		params: { 
-    			claveDeContacto: claveContacto
-    		}	  
-    	}).then(function successCallback(response) {
-    		
-    		mensaje = "";
-    		
-    		if(response.data.codeError == 0) {
-    		    ContactoService.getContactos();
-    		}else{
-    			mensaje = "No se ha podido eliminar el contacto";
-    		}
-    		
-    		MensajesService.cerrarBlockUIGeneral("Contactos", mensaje);
-    		
-    	}, function errorCallback(response) {
-    		console.log("El error es: " + response , response.data.codeError);
-    		mensaje = "No se ha podido eliminar el contacto";
-    		MensajesService.cerrarBlockUIGeneral("Contactos", mensaje);
-    	});
-     };    
+      
  
 	 var ordenarContactos = function(itemsFin) {
 		 
@@ -427,10 +386,62 @@ app.controller('TipoContacto', function($scope, $http, ContactoService, Mensajes
 app.controller('ActualizarContactos', function($scope, $http, ContactoService, MensajesService) {
 	
 	var actualizarTipoContacto = this;
-
+	actualizarTipoContacto.claseBoton = "btn btn-outlineGreen textWhite navEditorLato";
+	actualizarTipoContacto.claseBotonOrd = "btn-outlineDisable";
+	actualizarTipoContacto.claseLi = "ui-state-default textBlack claseCursorLi";
+	actualizarTipoContacto.claseCheck = "onoffswitch-label";
+	
 	$("#myModalContactosActualizar").on('hidden.bs.modal', function() {
 		$('#rutaIcono').attr("src", '/resources/webapp/images/');
 	});
+	
+	actualizarTipoContacto.eliminarContacto = function(item) {
+		var item = ContactoService.getItemGlobal();
+		if (item.downgrade == "0")
+			return;
+		
+		var textos = {
+			titulo : "Borrar Contacto",
+			mensaje : "¿Seguro que deseas borrar el contacto?"
+		};
+
+		MensajesService.obtenerConfirmacion(textos, function(confirmarBorrar) {
+			
+			if (confirmarBorrar)
+				eliminarContacto(item.claveContacto);
+		});
+	};
+	
+	var eliminarContacto = function(claveContacto) {
+		
+    	var mensaje = "Eliminando contacto...";
+    	MensajesService.abrirBlockUIGeneral(mensaje);
+    	
+    	$http({
+    		method: 'POST',
+    		url: contextPath + "/infomovil/eliminarContacto",
+    		params: { 
+    			claveDeContacto: claveContacto
+    		}	  
+    	}).then(function successCallback(response) {
+    		
+    		mensaje = "";
+    		
+    		if(response.data.codeError == 0) {
+    		    ContactoService.getContactos();
+    		    $("#myModalContactosActualizar").modal('toggle');
+    		}else{
+    			mensaje = "No se ha podido eliminar el contacto";
+    		}
+    		
+    		MensajesService.cerrarBlockUIGeneral("Contactos", mensaje);
+    		
+    	}, function errorCallback(response) {
+    		console.log("El error es: " + response , response.data.codeError);
+    		mensaje = "No se ha podido eliminar el contacto";
+    		MensajesService.cerrarBlockUIGeneral("Contactos", mensaje);
+    	});
+     };  
 	
 	actualizarTipoContacto.closeMyModalActualizarContactos = function() {
 		$("#myModalContactosActualizar").modal('hide');			
