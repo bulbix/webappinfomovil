@@ -12,33 +12,6 @@ app.controller('ToolBarContactoController', function($scope, $http, ContactoServ
 	toolbarContacto.contactos = "";
 	toolbarContacto.imagenIco = "";
 	$scope.order = false;
-	
-	toolbarContacto.activarSortearContacto = function() {
-		
-		$("div.btn-ordenar").toggleClass("btn-outlineDisable");
-		$("#sortable").sortable();
-		$("#sortable").sortable("option", "disabled", false);
-
-		$("#sortable").sortable({
-			handle: '.handle', 
-			start: function(event, ui) {
-	    		 itemsInicio = $("#sortable").sortable("toArray");
-	    	 }
-	    });
-		 
-		 $("#sortable").sortable({
-			 update: function(event, ui) {	
-				 itemsFin = $( "#sortable" ).sortable("toArray");
-				 console.log("Unamos los corazones! tres" + itemsFin);
-				 if(itemsInicio != itemsFin)
-					 ordenarContactos(itemsFin);
-				 
-				 $("#sortable").disableSelection();
-				 $("#sortable").sortable('disable');
-			 }	
-		 
-		 });
-	};
 		
 	toolbarContacto.agregaContacto = function(downgrade, contacto) {
 		
@@ -198,38 +171,35 @@ app.controller('ToolBarContactoController', function($scope, $http, ContactoServ
 		ContactoService.setRegExp(expReg);
 		$("#myModalContactosActualizar").modal();
 	}
-	
-      
  
-	 var ordenarContactos = function(itemsFin) {
+	var ordenarContactos = function(itemsFin) {
 		 
-		 var mensaje = "Actualizando contactos...";
-		 var strInicio = "<l>";
-		 var strFinal = "";
+		var mensaje = "Actualizando contactos...";
+		var strInicio = "<l>";
+		var strFinal = "";
 		 
-		 for(i = 0; i < itemsFin.length; i++)
+		for(i = 0; i < itemsFin.length; i++)
 			 strFinal =  strFinal + "<f><i>"+ itemsFin[i] + "</i><p>" + i + "</p></f>";
 		 
-		 strFinal = strInicio + strFinal + "</l>"; 
-		 MensajesService.abrirBlockUIGeneral(mensaje);
+		strFinal = strInicio + strFinal + "</l>"; 
+		MensajesService.abrirBlockUIGeneral(mensaje);
 		 
-		 $http({
-			 method: 'POST',
-			 url: contextPath + "/infomovil/setOrderContacts",
-			 params: {
-				 xml: strFinal
-		  		 	}		  
-		 }).then(function successCallback(response) {
-			 console.log(response.data.codeError);
-			 mensaje = "";
+		$http({
+			method: 'POST',
+			url: contextPath + "/infomovil/setOrderContacts",
+			params: {
+				xml: strFinal
+			}		  
+		}).then(function successCallback(response) {
+			console.log(response.data.codeError);
+			mensaje = "";
 			 
-			 if(response.data.codeError == 0) {
-				 console.log("SI ACTUALIZO CORRECTAMENTE");
-				 ContactoService.getContactos();
-
-			 }else{
-				 console.log("Si me respondio con EL ERROR ES: " + response.data.codeError );
-				 mensaje = "No se han podido actualizar los contactos";
+			if (response.data.codeError == 0) {
+				console.log("SI ACTUALIZO CORRECTAMENTE");
+				ContactoService.getContactos();
+			}else{
+				console.log("Si me respondio con EL ERROR ES: " + response.data.codeError );
+				mensaje = "No se han podido actualizar los contactos";
 			 }
 		  		 
 			 MensajesService.cerrarBlockUIGeneral("Contactos", mensaje);
@@ -250,6 +220,25 @@ app.controller('ToolBarContactoController', function($scope, $http, ContactoServ
 
      /*Obtiene los contactos*/
      ContactoService.getContactos();
+     
+     $("#sortable").sortable();
+     $("#sortable").sortable({
+    	 handle: '.handle', 
+    	 start: function(event, ui) {
+    		 itemsInicio = $("#sortable").sortable("toArray");
+    	 }
+     });
+	 
+	 $("#sortable").sortable({
+		 update: function(event, ui) {
+			 
+			 itemsFin = $( "#sortable" ).sortable("toArray");
+
+			 if (itemsInicio != itemsFin)
+				 ordenarContactos(itemsFin);
+		 }	
+	 
+	 });
 });
 
 app.controller('TipoContacto', function($scope, $http, ContactoService, MensajesService) {

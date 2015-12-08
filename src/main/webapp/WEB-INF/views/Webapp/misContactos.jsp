@@ -129,21 +129,9 @@
 								<span class="hidden-xs">Añadir Contacto</span>
 
 							</button>
-<div class="pull-right spaceBtnsMap"></div>
-						
-							<button type="button"
-								class="btn btn-outlineGreen pull-right textWhite navEditorLato"
-								style="margin: 5px 0 0 0;"
-								ng-click="toolbarContacto.activarSortearContacto()"
-								data-toggle="modal"
-								id="ordenarContactosShow">
-								<img width="30" height="30" alt="Infomovil"
-									src="<c:url value="/resources/webapp/images/fa-order.png"/>" />
-								<span class="hidden-xs">Ordenar contactos</span>
-							</button>
-							
+							<div class="pull-right spaceBtnsMap"></div>							
 							<div class="clear"></div>
-							<hr />
+							<hr/>
 						
 									<p class="textBlack" id="tituloAgregarContactos">
 										<img alt="Infomovil"src="<c:url value="/resources/webapp/images/fa-contactos-bk.png"/>" />
@@ -224,7 +212,7 @@
 												</button>
 											</div>
 											<div class="col-xs-3 col-sm-2 text-left">
-												<div class="btn btn-outlineDisable btn-ordenar btn-outlineGreen handle">
+												<div class="btn btn-outlineGreen handle">
 													<img width="20" height="20" alt="Infomovil"
 														src="<c:url value="/resources/webapp/images/fa-reorder.png"/>" />
 													<span class="hidden-xs"></span>
