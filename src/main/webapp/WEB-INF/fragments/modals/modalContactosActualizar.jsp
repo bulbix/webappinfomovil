@@ -71,8 +71,8 @@
 					<label></label> <span id="mensajeTelefonosActualizar"></span>
 				</div>
 				
-				<div class="col-xs-12 col-sm-2 text-left reset"><div class="col-xs-3 reset" style="padding: 10px 0 0 0">Visible</div>
-					<div class="col-xs-9"><div class="onoffswitch" style="display: block-inline">
+				<div class="col-xs-12 col-sm-12 text-left reset"><div class="col-xs-3 col-sm-2 reset" style="padding: 10px 0 0 0">Visible</div>
+					<div class="col-xs-9 col-sm-10"><div class="onoffswitch" style="display: block-inline">
 						<input type="checkbox" name="onoffswitch"
 							class="onoffswitch-checkbox" id="checkVisible">
 						<label class="onoffswitch-label" id="checkVisibleLbl" for="checkVisible"></label>
