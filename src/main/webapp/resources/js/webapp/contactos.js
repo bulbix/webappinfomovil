@@ -138,9 +138,6 @@ app.controller('ToolBarContactoController', function($scope, $http, ContactoServ
 		$("#paisActualizarTel").text(mensajesContacto.pais);
 		$("#inputTelefonosActualizar").val(contenidoContacto);  
 		$("#textAreaActualizarTel").val(item.longLabelNaptr); 
-		$("#claveContactoC").val(item.claveContacto); 
-		$("#servicesNaptrC").val(item.servicesNaptr); 
-		$("#subCategoryC").val(item.subCategory); 
 		$("#visibleC").val(item.visible);
 		$("#tipoContactoActualizar").val(mensajesContacto.tipo);
 		$("#protocolo").val(protocolo);
@@ -322,7 +319,7 @@ app.controller('TipoContacto', function($scope, $http, ContactoService, Mensajes
 			 url: contextPath + "/infomovil/guardarContacto",
 			 params: {
 				 descripcionContacto: contacto.longLabelNaptr,
-				 numeroEmailRedSocial: contacto.numeroEmailRedSocial,
+				 numeroEmailRedSocial: contacto.numeroEmailRedSocial.toLowerCase(),
 				 constanteContacto: $scope.servicio,
 				 redSocialWebSecure: $scope.subCategory,
 				 tipoContacto: $scope.tipoContacto,

@@ -46,7 +46,7 @@ app.factory('ContactoService', function($http, MensajesService) {
     		params: {
     			claveDeContacto : contacto.claveContacto, 
     			descripcionContacto : contacto.longLabelNaptr,
-    			numeroEmailRedSocial : contacto.regExp,
+    			numeroEmailRedSocial : contacto.regExp.toLowerCase(),
     			constanteContacto : contacto.servicesNaptr, 
     			redSocialWebSecure : contacto.subCategory,
     			visible : contacto.visible,
@@ -145,7 +145,7 @@ app.factory('ContactoService', function($http, MensajesService) {
 				{
 					imagenIco : 'fa-mail-bk.png',
 				    nombre : 'E-mail',
-				    etiqueta : 'E-mail',
+				    etiqueta : 'Correo electrónico de contacto',
 				    placeholder : 'email@email.com',
 				    servicio : 'E2U+email:mailto',
 				    expRegular : '^[_a-z0-9]+(\.[_a-z0-9]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,4})$',

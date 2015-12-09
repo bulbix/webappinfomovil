@@ -69,7 +69,7 @@
 		   			<label >{{etiqueta}}</label>
 		    		<div ng-show="datosTipoContacto.muestraPais">Clave Lada {{pais}}</div>
 		    	
-		    		<input type="text" ng-model="contacto.numeroEmailRedSocial" name="contacto.numeroEmailRedSocial" class="form-control" 
+		    		<input type="text" ng-model="contacto.numeroEmailRedSocial" name="contacto.numeroEmailRedSocial" class="form-control lowCase" 
 		    			placeholder="{{placeholderContenido}}" id="numeroEmailRedSocial" required="required"/>
 					<span style="display:none;" id="msgValidaRegExp" class="textRed"><img width="20" height="20"
 						alt="Infomovil" src="<c:url value="/resources/webapp/images/fa-warning-red.png"/>" /> {{msjValidacion}}</span>

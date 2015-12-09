@@ -57,7 +57,7 @@
 				</div>
 
 				<div class="form-group">
-					<label></label> <input type="text" id="inputTelefonosActualizar"
+					<label></label> <input type="text" id="inputTelefonosActualizar" class="lowCase"
 						placeholder="" />
 				</div>
 				
