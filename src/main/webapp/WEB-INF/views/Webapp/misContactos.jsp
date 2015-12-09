@@ -138,44 +138,44 @@
 										Ahora agrega contactos
 									</p>
 							
-							<div class="col-xs-12 hidden-xs textBlack" style="border-bottom: 1px solid #000; padding: 8px 0">
+							<div class="col-xs-12 col-sm-8 col-sm-offset-2 hidden-xs textBlack" style="border-bottom: 1px solid #000; padding: 8px 0">
 								
-								<div class="col-xs-4 text-left reset">
+								<div class="col-xs-6 text-left reset">
 									<strong>Contacto</strong>
 								</div>
 								
-								<div class="col-xs-2 text-left reset">
+								<div class="col-xs-6   text-right reset">
 									<strong>Ordenar</strong>
 								</div>
 							</div>
 
-							<ul id="sortable" style="padding:0px;">
+							<ul id="sortable" style="padding:0px;" class="col-xs-12 col-sm-8 col-sm-offset-2">
 
-								<div id="{{item.claveContacto}}" ng-repeat="item in toolbarContacto.contactos">
-									{{toolbarContacto.getContenidoDowngrade(downgrade, $index + 1, contacto, item)}}
+								<div id="{{item.claveContacto}}" ng-repeat="item in toolbarContacto.contactos" style="margin-top:10px;">
+									<span style="display:none">{{toolbarContacto.getContenidoDowngrade(downgrade, $index + 1, contacto, item)}}</span>
 										<li class="ui-state-default textBlack" style="list-style: none;" id="contactoId{{$index + 1}}">
 												
-											<div class="col-xs-12 col-sm-4  text-left" style="overflow:hidden">
+											<div class="col-xs-9 col-sm-10 text-left" style="overflow:hidden">
 													<img width="30" height="30" alt="Infomovil"
 													src="<c:url value="/resources/webapp/images/{{imagenIco}}"/>" />
 												<span id="regExpContacto" ng-hide="false" ng-click="toolbarContacto.abrirActualizarContacto(item)">
 													{{contenidoContacto}}
 												</span>
-												<div id="servicesNaptrContacto" ng-hide="true">
+												<div id="servicesNaptrContacto" ng-hide="true" style="display:none">
 													{{item.servicesNaptr}}</div>
-												<div id="categoryNaptrContacto" ng-hide="true">
+												<div id="categoryNaptrContacto" ng-hide="true" style="display:none">
 													{{item.categoryNaptr}}</div>
-												<div id="longLabelNaptrContacto" ng-hide="true">
+												<div id="longLabelNaptrContacto" ng-hide="true" style="display:none">
 													{{item.longLabelNaptr}}</div>
-												<div id="subCategoryContacto" ng-hide="true">
+												<div id="subCategoryContacto" ng-hide="true" style="display:none">
 													{{item.subCategory}}</div>
-												<div id="preferenciaContacto" ng-hide="true">
+												<div id="preferenciaContacto" ng-hide="true" style="display:none">
 													{{item.preference}}</div>
-												<div id="idContacto" ng-hide="true">
+												<div id="idContacto" ng-hide="true" style="display:none">
 													{{item.claveContacto}}</div>
-												<div id="visibleContacto" ng-hide="true">
+												<div id="visibleContacto" ng-hide="true" style="display:none">
 													{{item.visible}}</div>
-												<div ng-hide="true">	
+												<div ng-hide="true" style="display:none">	
 													{{item.downgrade = contactoDowngrade}}
 													{{item.tipoContacto = tipoContactoLis}}
 													{{item.codigoPais = codigoPaisLis}}

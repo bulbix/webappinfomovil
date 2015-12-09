@@ -3,7 +3,7 @@
 <div ng-controller="ActualizarContactos as actualizarTipoContacto">
 	<div class="modal-header navEditorSFl">
 	
-		<button type="button" class="btn btn-purple pull-right" style="margin: 5px 0;"
+		<button type="button" class="btn btn-purple pull-right" style="margin: 5px 0 0 5px;"
 			ng-click="actualizarTipoContacto.guardarDatosContacto()">
 			<img width="20" height="20" alt="Infomovil" src="<c:url value="/resources/webapp/images/ico_actualizar.png"/>"/> 
 			<span class="hidden-xs">Actualizar</span>
@@ -30,9 +30,7 @@
 			<input type="hidden" id="imgIcono">
 			<div class="dividerSmall"></div>
 			<div class="col-xs-12">
-				<img src="<c:url value="/resources/webapp/images/"/>" id="rutaIcono"
-					alt="{{nombre}}" height="30" width="30"> <span><strong>{{nombre}}</strong></span><br />
-				<span class="text-small textGreen">{{mensajeTelefonos}}</span>
+				
 			</div>
 			<div class="clearfix"></div>
 			<div class="dividerSmall"></div>
@@ -45,11 +43,16 @@
 				<input type="hidden" name="tipoContactoActualizar" id="tipoContactoActualizar"/>
 
 				<div class="form-group">
-					<label></label> <span id="nombreActualizarTel"></span>
+					<label>
+					<img src="<c:url value="/resources/webapp/images/"/>" id="rutaIcono"
+					alt="{{nombre}}" height="30" width="30"> <span><strong>{{nombre}}</strong></span>
+					<br/>
+				<span class="textGreen">{{mensajeTelefonos}}</span>
+					</label> <span id="nombreActualizarTel"></span>
 				</div>
 
 				<div class="form-group">
-					<label></label> <span id="etiquetaActualizarTel"></span>
+					<label></label> <span id="etiquetaActualizarTel" class="textGreen"></span>
 				</div>
 
 				<div class="form-group">
@@ -57,7 +60,7 @@
 				</div>
 
 				<div class="form-group">
-					<label></label> <input type="text" id="inputTelefonosActualizar" class="lowCase"
+					<label></label> <input type="text" id="inputTelefonosActualizar" class="form-control lowCase"
 						placeholder="" />
 				</div>
 				
@@ -68,12 +71,12 @@
 					<label></label> <span id="mensajeTelefonosActualizar"></span>
 				</div>
 				
-				<div class="col-xs-3 col-sm-2 text-left">Visible
-					<div class="onoffswitch" style="display: block-inline">
+				<div class="col-xs-12 col-sm-2 text-left reset"><div class="col-xs-3 reset" style="padding: 10px 0 0 0">Visible</div>
+					<div class="col-xs-9"><div class="onoffswitch" style="display: block-inline">
 						<input type="checkbox" name="onoffswitch"
 							class="onoffswitch-checkbox" id="checkVisible">
 						<label class="onoffswitch-label" id="checkVisibleLbl" for="checkVisible"></label>
-					</div>
+					</div></div>
 				</div>
 				
 				<br/><br/><br/>

@@ -59,23 +59,28 @@
 			<div class="dividerSmall"></div>
 			<div class="col-xs-12"><img src="<c:url value="/resources/webapp/images/{{imagenIco}}"/>" alt="{{nombre}}" height="30" width="30" >
 			<span><strong>{{nombre}}</strong></span><br/>
-			<span class="text-small textGreen">{{mensajeTelefonos}}</span>
+			<span class="textGreen">{{mensajeTelefonos}}</span>
 			</div>
 			<div class="clearfix"></div>
-			<div class="dividerSmall"></div>
+			<div class="divider"></div>
 			<div class="col-xs-12">
 			
 				<div class="form-group">
-		   			<label >{{etiqueta}}</label>
+		   			<label class="textGreen">{{etiqueta}}</label>
 		    		<div ng-show="datosTipoContacto.muestraPais">Clave Lada {{pais}}</div>
-		    	
+		    		</div>
+		    		<div class="clear"></div>
+				<div class="divider"></div>
+		    		
+		    		<div class="form-group">
 		    		<input type="text" ng-model="contacto.numeroEmailRedSocial" name="contacto.numeroEmailRedSocial" class="form-control lowCase" 
 		    			placeholder="{{placeholderContenido}}" id="numeroEmailRedSocial" required="required"/>
 					<span style="display:none;" id="msgValidaRegExp" class="textRed"><img width="20" height="20"
 						alt="Infomovil" src="<c:url value="/resources/webapp/images/fa-warning-red.png"/>" /> {{msjValidacion}}</span>
 	  			</div>
-					
-				<div class="dividerSmall"></div>
+	  			
+	  			<div class="clear"></div>
+				<div class="divider"></div>
 				<div class="form-group">
 	    			<label>Descripción</label>
 	    			<textarea ng-maxlength="250" ng-model="contacto.longLabelNaptr" class="form-control"></textarea> 
