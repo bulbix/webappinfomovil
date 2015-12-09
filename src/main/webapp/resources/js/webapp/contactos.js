@@ -28,12 +28,10 @@ app.controller('ToolBarContactoController', function($scope, $http, ContactoServ
 		$("#numeroEmailRedSocial").keydown(function(e) {
 			$("#msgValidaRegExp").css("display", "none");
 		});
-		
+		$("#menuContactos").show();
+		$("#formGuardaContacto").hide();
 		$("#myModalContactos").modal();
-	};
-
-	toolbarContacto.mostrarModalContactos = function() {
-		$myModalContactos.modal();
+		
 	};
 	
 	toolbarContacto.getContenidoDowngrade = function(downgrade, index, contacto, item) {
@@ -232,18 +230,15 @@ app.controller('TipoContacto', function($scope, $http, ContactoService, Mensajes
 	
 	datosTipoContacto.mostrarBtnRegresar = false;
 	datosTipoContacto.mostrarBtnGuardar = false;
-	datosTipoContacto.menuContactos = true;
-	datosTipoContacto.formGuardaContacto = false;
 	datosTipoContacto.muestraMsjValidacion = false;
 	
 	datosTipoContacto.tipo = function(tipo) {
 		
 		var mensajesContacto = ContactoService.getObjetoTipoContacto(tipo);
-		
-		datosTipoContacto.formGuardaContacto = true;
+		$("#menuContactos").hide();
+		$("#formGuardaContacto").show();
 		datosTipoContacto.mostrarBtnRegresar = true;
 		datosTipoContacto.mostrarBtnGuardar = true;
-		datosTipoContacto.menuContactos = false;
 		datosTipoContacto.muestraPais = mensajesContacto.muestraPais;
 		$scope.nombre = mensajesContacto.nombre;
 		$scope.placeholderContenido = mensajesContacto.placeholder; 
@@ -299,11 +294,10 @@ app.controller('TipoContacto', function($scope, $http, ContactoService, Mensajes
 	}
 	
 	var regresarGenerico = function() {
-		
+		$("#menuContactos").show();
+		$("#formGuardaContacto").hide();
 		datosTipoContacto.mostrarBtnRegresar = false;
 		datosTipoContacto.mostrarBtnGuardar = false;
-		datosTipoContacto.menuContactos = true;
-		datosTipoContacto.formGuardaContacto = false;
 		$scope.contacto.longLabelNaptr = "";
 		$scope.contacto.numeroEmailRedSocial = "";		
 			
