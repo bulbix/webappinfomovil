@@ -28,12 +28,12 @@ app.controller('ToolBarContactoController', function($scope, $http, ContactoServ
 		$("#numeroEmailRedSocial").keydown(function(e) {
 			$("#msgValidaRegExp").css("display", "none");
 		});
-		
+		$("#menuContactos").show();
+		$("#formGuardaContacto").hide();
+		$("#mostrarBtnGuardar").hide();
+		$("#mostrarBtnRegresar").hide();
 		$("#myModalContactos").modal();
-	};
-
-	toolbarContacto.mostrarModalContactos = function() {
-		$myModalContactos.modal();
+		
 	};
 	
 	toolbarContacto.getContenidoDowngrade = function(downgrade, index, contacto, item) {
@@ -230,20 +230,17 @@ app.controller('TipoContacto', function($scope, $http, ContactoService, Mensajes
 	 
 	var datosTipoContacto = this;
 	
-	datosTipoContacto.mostrarBtnRegresar = false;
-	datosTipoContacto.mostrarBtnGuardar = false;
-	datosTipoContacto.menuContactos = true;
-	datosTipoContacto.formGuardaContacto = false;
+	$("#mostrarBtnGuardar").hide();
+	$("#mostrarBtnRegresar").hide();
 	datosTipoContacto.muestraMsjValidacion = false;
 	
 	datosTipoContacto.tipo = function(tipo) {
 		
 		var mensajesContacto = ContactoService.getObjetoTipoContacto(tipo);
-		
-		datosTipoContacto.formGuardaContacto = true;
-		datosTipoContacto.mostrarBtnRegresar = true;
-		datosTipoContacto.mostrarBtnGuardar = true;
-		datosTipoContacto.menuContactos = false;
+		$("#menuContactos").hide();
+		$("#formGuardaContacto").show();
+		$("#mostrarBtnGuardar").show();
+		$("#mostrarBtnRegresar").show();
 		datosTipoContacto.muestraPais = mensajesContacto.muestraPais;
 		$scope.nombre = mensajesContacto.nombre;
 		$scope.placeholderContenido = mensajesContacto.placeholder; 
@@ -299,11 +296,10 @@ app.controller('TipoContacto', function($scope, $http, ContactoService, Mensajes
 	}
 	
 	var regresarGenerico = function() {
-		
-		datosTipoContacto.mostrarBtnRegresar = false;
-		datosTipoContacto.mostrarBtnGuardar = false;
-		datosTipoContacto.menuContactos = true;
-		datosTipoContacto.formGuardaContacto = false;
+		$("#menuContactos").show();
+		$("#formGuardaContacto").hide();
+		$("#mostrarBtnGuardar").hide();
+		$("#mostrarBtnRegresar").hide();
 		$scope.contacto.longLabelNaptr = "";
 		$scope.contacto.numeroEmailRedSocial = "";		
 			

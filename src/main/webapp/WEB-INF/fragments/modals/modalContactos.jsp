@@ -3,11 +3,11 @@
 <div ng-controller = "TipoContacto as datosTipoContacto">
 	<div class="modal-header navEditorSFl">  
 			
-		<button type="submit" class="btn btn-purple pull-right btnsEditor" ng-show="datosTipoContacto.mostrarBtnGuardar" ng-click="datosTipoContacto.guardarContacto()" 
+		<button type="submit" class="btn btn-purple pull-right btnsEditor" id="mostrarBtnGuardar" ng-click="datosTipoContacto.guardarContacto()" 
 			style="margin: 5px 0 0 5px;"><img width="15" height="15" alt="Infomovil" 
     		src="<c:url value="/resources/webapp/images/successWhite.png"/>" /><span class="hidden-xs"> Guardar</span></button>
     	
-    	<button type="button" class="btn btn-purple pull-right btnsEditor"  id="" ng-click="datosTipoContacto.regresarAgregarContacto()" ng-show="datosTipoContacto.mostrarBtnRegresar" style="margin: 5px 0;"><img width="20" height="20" alt="Infomovil" 
+    	<button type="button" class="btn btn-purple pull-right btnsEditor"  id="mostrarBtnRegresar" ng-click="datosTipoContacto.regresarAgregarContacto()"  style="margin: 5px 0;"><img width="20" height="20" alt="Infomovil" 
 	    	src="<c:url value="/resources/webapp/images/ico_back.png"/>" /><span class="hidden-xs"> Regresar</span></button>
 
 	   	<button type="button" class="close textBlack pull-left btnsEditor"  aria-label="Close" ng-click="datosTipoContacto.closeMyModalContactos()" id="myModalContactos"><span aria-hidden="true"><strong>&times;</strong></span></button>
@@ -16,7 +16,7 @@
 	</div>
 
 	<div class="modal-body">  
-		<div ng-show="datosTipoContacto.menuContactos">
+		<div id="menuContactos">
 		<p class="col-xs-12 modal-title textBlack"><strong>Tipo de contacto</strong></p>
 			<ul style="list-style:none; margin:10px 0 0 0;" class="col-xs-12">
 				<li ng-click="datosTipoContacto.tipo('tel')" style="margin:10px 0; border-bottom:1px solid #d9d9d9; padding:5px"><img width="30" height="30"
@@ -54,7 +54,7 @@
 									src="<c:url value="/resources/webapp/images/fa-secweb-bk.png"/>" /> Secure website</li>
 			</ul>
 		</div>
-		<div ng-show="datosTipoContacto.formGuardaContacto">
+		<div id="formGuardaContacto">
 
 			<div class="dividerSmall"></div>
 			<div class="col-xs-12"><img src="<c:url value="/resources/webapp/images/{{imagenIco}}"/>" alt="{{nombre}}" height="30" width="30" >
