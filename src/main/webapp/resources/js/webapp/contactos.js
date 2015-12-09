@@ -30,6 +30,8 @@ app.controller('ToolBarContactoController', function($scope, $http, ContactoServ
 		});
 		$("#menuContactos").show();
 		$("#formGuardaContacto").hide();
+		$("#mostrarBtnGuardar").hide();
+		$("#mostrarBtnRegresar").hide();
 		$("#myModalContactos").modal();
 		
 	};
@@ -228,8 +230,8 @@ app.controller('TipoContacto', function($scope, $http, ContactoService, Mensajes
 	 
 	var datosTipoContacto = this;
 	
-	datosTipoContacto.mostrarBtnRegresar = false;
-	datosTipoContacto.mostrarBtnGuardar = false;
+	$("#mostrarBtnGuardar").hide();
+	$("#mostrarBtnRegresar").hide();
 	datosTipoContacto.muestraMsjValidacion = false;
 	
 	datosTipoContacto.tipo = function(tipo) {
@@ -237,8 +239,8 @@ app.controller('TipoContacto', function($scope, $http, ContactoService, Mensajes
 		var mensajesContacto = ContactoService.getObjetoTipoContacto(tipo);
 		$("#menuContactos").hide();
 		$("#formGuardaContacto").show();
-		datosTipoContacto.mostrarBtnRegresar = true;
-		datosTipoContacto.mostrarBtnGuardar = true;
+		$("#mostrarBtnGuardar").show();
+		$("#mostrarBtnRegresar").show();
 		datosTipoContacto.muestraPais = mensajesContacto.muestraPais;
 		$scope.nombre = mensajesContacto.nombre;
 		$scope.placeholderContenido = mensajesContacto.placeholder; 
@@ -296,8 +298,8 @@ app.controller('TipoContacto', function($scope, $http, ContactoService, Mensajes
 	var regresarGenerico = function() {
 		$("#menuContactos").show();
 		$("#formGuardaContacto").hide();
-		datosTipoContacto.mostrarBtnRegresar = false;
-		datosTipoContacto.mostrarBtnGuardar = false;
+		$("#mostrarBtnGuardar").hide();
+		$("#mostrarBtnRegresar").hide();
 		$scope.contacto.longLabelNaptr = "";
 		$scope.contacto.numeroEmailRedSocial = "";		
 			
