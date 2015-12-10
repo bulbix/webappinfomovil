@@ -45,20 +45,20 @@ app.factory('HorarioService', function($http, MensajesService) {
     				
     				console.log("Esta en el 0 de getHorarios: " +  response.data.codeError);
     				console.log("y el inicio es: " + response.data.listaHorario[0].inicio);
-    				$('#Lunes1').empty().append('<option selected="selected">'+ response.data.listaHorario[0].inicio +'</option>' + resphoras);
-    				$('#Lunes2').empty().append('<option selected="selected">'+ response.data.listaHorario[0].cierre +'</option>' + resphoras);
-    				$('#Martes1').empty().append('<option selected="selected">'+ response.data.listaHorario[1].inicio +'</option>' + resphoras);
-    				$('#Martes2').empty().append('<option selected="selected">'+ response.data.listaHorario[1].cierre +'</option>' + resphoras);
-    				$('#Miercoles1').empty().append('<option selected="selected">'+ response.data.listaHorario[2].inicio +'</option>' + resphoras);
-    				$('#Miercoles2').empty().append('<option selected="selected">'+ response.data.listaHorario[2].cierre +'</option>' + resphoras);
-    				$('#Jueves1').empty().append('<option selected="selected">'+ response.data.listaHorario[3].inicio +'</option>' + resphoras);
-    				$('#Jueves2').empty().append('<option selected="selected">'+ response.data.listaHorario[3].cierre +'</option>' + resphoras);
-    				$('#Viernes1').empty().append('<option selected="selected">'+ response.data.listaHorario[4].inicio +'</option>' + resphoras);
-    				$('#Viernes2').empty().append('<option selected="selected">'+ response.data.listaHorario[4].cierre +'</option>' + resphoras);
-    				$('#Sabado1').empty().append('<option selected="selected">'+ response.data.listaHorario[5].inicio +'</option>' + resphoras);
-    				$('#Sabado2').empty().append('<option selected="selected">'+ response.data.listaHorario[5].cierre +'</option>' + resphoras);
-    				$('#Domingo1').empty().append('<option selected="selected">'+ response.data.listaHorario[6].inicio +'</option>' + resphoras);
-    				$('#Domingo2').empty().append('<option selected="selected">'+ response.data.listaHorario[6].cierre +'</option>' + resphoras);
+    				$('#Lunes1').empty().append('<option selected="selected">'+ response.data.listaHorario[0].inicio +'</option><option value="00:00">00:00</option>' + resphoras);
+    				$('#Lunes2').empty().append('<option selected="selected">'+ response.data.listaHorario[0].cierre +'</option><option value="00:00">00:00</option>' + resphoras);
+    				$('#Martes1').empty().append('<option selected="selected">'+ response.data.listaHorario[1].inicio +'</option><option value="00:00">00:00</option>' + resphoras);
+    				$('#Martes2').empty().append('<option selected="selected">'+ response.data.listaHorario[1].cierre +'</option><option value="00:00">00:00</option>' + resphoras);
+    				$('#Miercoles1').empty().append('<option selected="selected">'+ response.data.listaHorario[2].inicio +'</option><option value="00:00">00:00</option>' + resphoras);
+    				$('#Miercoles2').empty().append('<option selected="selected">'+ response.data.listaHorario[2].cierre +'</option><option value="00:00">00:00</option>' + resphoras);
+    				$('#Jueves1').empty().append('<option selected="selected">'+ response.data.listaHorario[3].inicio +'</option><option value="00:00">00:00</option>' + resphoras);
+    				$('#Jueves2').empty().append('<option selected="selected">'+ response.data.listaHorario[3].cierre +'</option><option value="00:00">00:00</option>' + resphoras);
+    				$('#Viernes1').empty().append('<option selected="selected">'+ response.data.listaHorario[4].inicio +'</option><option value="00:00">00:00</option>' + resphoras);
+    				$('#Viernes2').empty().append('<option selected="selected">'+ response.data.listaHorario[4].cierre +'</option><option value="00:00">00:00</option>' + resphoras);
+    				$('#Sabado1').empty().append('<option selected="selected">'+ response.data.listaHorario[5].inicio +'</option><option value="00:00">00:00</option>' + resphoras);
+    				$('#Sabado2').empty().append('<option selected="selected">'+ response.data.listaHorario[5].cierre +'</option><option value="00:00">00:00</option>' + resphoras);
+    				$('#Domingo1').empty().append('<option selected="selected">'+ response.data.listaHorario[6].inicio +'</option><option value="00:00">00:00</option>' + resphoras);
+    				$('#Domingo2').empty().append('<option selected="selected">'+ response.data.listaHorario[6].cierre +'</option><option value="00:00">00:00</option>' + resphoras);
     				
     			}else if(response.data.codeError == "-100"){
     				console.log("Esta en el -100 de getHorarios: " +  response.data.codeError);
