@@ -67,7 +67,7 @@
 			
 				<div class="form-group">
 		   			<label class="textGreen">{{etiqueta}}</label>
-		    		<div ng-show="datosTipoContacto.muestraPais">Clave Lada {{pais}}</div>
+		    		<div ng-show="datosTipoContacto.muestraPais">Clave País {{pais}}</div>
 		    		</div>
 		    		<div class="clear"></div>
 				<div class="divider"></div>
