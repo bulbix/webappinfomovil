@@ -83,6 +83,7 @@ app.factory('ContactoService', function($http, MensajesService) {
 				{
 					imagenIco : 'fa-tel-bk.png',
 				    nombre : 'Teléfono',
+				    etiqueta : 'Teléfono de contacto',
 				    pais : '+52',
 				    placeholder : 'Teléfono',
 				    servicio : 'E2U+voice:tel',
@@ -98,6 +99,7 @@ app.factory('ContactoService', function($http, MensajesService) {
 				{
 					imagenIco : 'fa-movil-bk.png',
 				    nombre : 'Móvil',
+				    etiqueta : 'Celular de contacto',
 				    pais : '+521',
 				    placeholder : 'Teléfono',
 				    mensaje : 'Recuerda que para recibir llamadas internacionales el formato es (1) xxx.xxx.xxxx (10 dígitos)',
@@ -114,6 +116,7 @@ app.factory('ContactoService', function($http, MensajesService) {
 				{
 					imagenIco : 'fa-sms-bk.png',
 				    nombre : 'Teléfono SMS',
+				    etiqueta : 'Teléfono para mensajes',
 				    pais : '+52',
 				    placeholder : 'Teléfono',
 				    servicio : 'E2U+sms:tel',
