@@ -6,6 +6,7 @@ app.factory('ContactoService', function($http, MensajesService) {
 	var validacionRegEx;
 	var regExp;
 	var icono;
+	var itemGlobal;
 	
 	function getContactos() {
 
@@ -35,7 +36,7 @@ app.factory('ContactoService', function($http, MensajesService) {
 	}
 		
     function actualizarContacto(contacto) {
-
+    	
     	var mensaje = "Actualizando contacto...";
     	MensajesService.abrirBlockUIGeneral(mensaje);
     	 
@@ -45,7 +46,7 @@ app.factory('ContactoService', function($http, MensajesService) {
     		params: {
     			claveDeContacto : contacto.claveContacto, 
     			descripcionContacto : contacto.longLabelNaptr,
-    			numeroEmailRedSocial : contacto.regExp,
+    			numeroEmailRedSocial : contacto.regExp.toLowerCase(),
     			constanteContacto : contacto.servicesNaptr, 
     			redSocialWebSecure : contacto.subCategory,
     			visible : contacto.visible,
@@ -82,6 +83,7 @@ app.factory('ContactoService', function($http, MensajesService) {
 				{
 					imagenIco : 'fa-tel-bk.png',
 				    nombre : 'Teléfono',
+				    etiqueta : 'Teléfono de contacto',
 				    pais : '+52',
 				    placeholder : 'Teléfono',
 				    servicio : 'E2U+voice:tel',
@@ -97,6 +99,7 @@ app.factory('ContactoService', function($http, MensajesService) {
 				{
 					imagenIco : 'fa-movil-bk.png',
 				    nombre : 'Móvil',
+				    etiqueta : 'Celular de contacto',
 				    pais : '+521',
 				    placeholder : 'Teléfono',
 				    mensaje : 'Recuerda que para recibir llamadas internacionales el formato es (1) xxx.xxx.xxxx (10 dígitos)',
@@ -113,6 +116,7 @@ app.factory('ContactoService', function($http, MensajesService) {
 				{
 					imagenIco : 'fa-sms-bk.png',
 				    nombre : 'Teléfono SMS',
+				    etiqueta : 'Teléfono para mensajes',
 				    pais : '+52',
 				    placeholder : 'Teléfono',
 				    servicio : 'E2U+sms:tel',
@@ -144,7 +148,7 @@ app.factory('ContactoService', function($http, MensajesService) {
 				{
 					imagenIco : 'fa-mail-bk.png',
 				    nombre : 'E-mail',
-				    etiqueta : 'E-mail',
+				    etiqueta : 'Correo electrónico de contacto',
 				    placeholder : 'email@email.com',
 				    servicio : 'E2U+email:mailto',
 				    expRegular : '^[_a-z0-9]+(\.[_a-z0-9]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,4})$',
@@ -329,6 +333,12 @@ app.factory('ContactoService', function($http, MensajesService) {
 	   },
 	   getIcono : function() {
 		   return icono;
+	   },
+	   setItemGlobal : function(value) {
+		   itemGlobal = value;
+	   },
+	   getItemGlobal : function() {
+		   return itemGlobal;
 	   },
 	   getTipoContacto : getTipoContacto,
 	   actualizarContacto : actualizarContacto,
