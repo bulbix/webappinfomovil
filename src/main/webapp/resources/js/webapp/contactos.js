@@ -12,32 +12,6 @@ app.controller('ToolBarContactoController', function($scope, $http, ContactoServ
 	toolbarContacto.contactos = "";
 	toolbarContacto.imagenIco = "";
 	$scope.order = false;
-	
-	toolbarContacto.activarSortearContacto = function() {
-		
-		$("div.btn-ordenar").toggleClass("btn-outlineDisable");
-		$("#sortable").sortable();
-		$("#sortable").sortable("option", "disabled", false);
-
-		$("#sortable").sortable({
-			start: function(event, ui) {
-	    		 itemsInicio = $("#sortable").sortable("toArray");
-	    	 }
-	    });
-		 
-		 $("#sortable").sortable({
-			 update: function(event, ui) {	
-				 itemsFin = $( "#sortable" ).sortable("toArray");
-				 console.log("Unamos los corazones! tres" + itemsFin);
-				 if(itemsInicio != itemsFin)
-					 ordenarContactos(itemsFin);
-				 
-				 $("#sortable").disableSelection();
-				 $("#sortable").sortable('disable');
-			 }	
-		 
-		 });
-	};
 		
 	toolbarContacto.agregaContacto = function(downgrade, contacto) {
 		
@@ -54,12 +28,12 @@ app.controller('ToolBarContactoController', function($scope, $http, ContactoServ
 		$("#numeroEmailRedSocial").keydown(function(e) {
 			$("#msgValidaRegExp").css("display", "none");
 		});
-		
+		$("#menuContactos").show();
+		$("#formGuardaContacto").hide();
+		$("#mostrarBtnGuardar").hide();
+		$("#mostrarBtnRegresar").hide();
 		$("#myModalContactos").modal();
-	};
-
-	toolbarContacto.mostrarModalContactos = function() {
-		$myModalContactos.modal();
+		
 	};
 	
 	toolbarContacto.getContenidoDowngrade = function(downgrade, index, contacto, item) {
@@ -74,9 +48,9 @@ app.controller('ToolBarContactoController', function($scope, $http, ContactoServ
 		var contenidoFinalContacto = item.regExp;
 		
 		toolbarContacto.claseBoton = "btn btn-outlineGreen textWhite navEditorLato";
-		toolbarContacto.claseBotonOrd = "btn-outlineDisable";
 		toolbarContacto.claseLi = "ui-state-default textBlack claseCursorLi";
 		toolbarContacto.claseCheck = "onoffswitch-label";
+		$scope.claseBotonOrd = "btn btn-outlineGreen btnOrdenar handle";
 		$scope.contactoDowngrade = "1";
 		$scope.contenidoContacto = "";
 		
@@ -105,6 +79,7 @@ app.controller('ToolBarContactoController', function($scope, $http, ContactoServ
 			toolbarContacto.claseCheck = "offswitch-label";
 			$scope.contactoDowngrade = "0";
 			$scope.imagenIco = mensajesContactoLista.imagenIco.replace("-bk", "");
+			$scope.claseBotonOrd = "btn btn-outlineGreen btnOrdenar";
 		}
 		
 		$scope.tipoContactoLis = mensajesContactoLista.tipo != undefined ? mensajesContactoLista.tipo : "";
@@ -115,38 +90,6 @@ app.controller('ToolBarContactoController', function($scope, $http, ContactoServ
 		var llaveBusqueda = "";
 	};
 	
-	toolbarContacto.eliminarContacto = function(item, index) {
-
-		if (item.downgrade == "0")
-			return;
-		
-		var textos = {
-			titulo : "Borrar Contacto",
-			mensaje : "¿Seguro que deseas borrar el contacto?"
-		};
-
-		MensajesService.obtenerConfirmacion(textos, function(confirmarBorrar) {
-			
-			if (confirmarBorrar)
-				eliminarContacto(item.claveContacto);
-		});
-	};
-	
-	toolbarContacto.toggleContacto = function(item) {
-
-		if (item.downgrade == "0")
-			return;
-		
-		var visibleContacto = "1";
-		
-		if (item.visible == "1")
-			visibleContacto = "0";
-		
-		item.visible = visibleContacto;
-		item.tipoContacto = "";
-		item.codigoPais = "";
-		ContactoService.actualizarContacto(item);
-	};
 	
 	toolbarContacto.abrirActualizarContacto = function(item) {
 
@@ -195,9 +138,6 @@ app.controller('ToolBarContactoController', function($scope, $http, ContactoServ
 		$("#paisActualizarTel").text(mensajesContacto.pais);
 		$("#inputTelefonosActualizar").val(contenidoContacto);  
 		$("#textAreaActualizarTel").val(item.longLabelNaptr); 
-		$("#claveContactoC").val(item.claveContacto); 
-		$("#servicesNaptrC").val(item.servicesNaptr); 
-		$("#subCategoryC").val(item.subCategory); 
 		$("#visibleC").val(item.visible);
 		$("#tipoContactoActualizar").val(mensajesContacto.tipo);
 		$("#protocolo").val(protocolo);
@@ -208,68 +148,39 @@ app.controller('ToolBarContactoController', function($scope, $http, ContactoServ
 		$('#rutaIcono').attr("src", images);
 		
 		ContactoService.setRegExp(expReg);
+		ContactoService.setItemGlobal(item);
+		
 		$("#myModalContactosActualizar").modal();
 	}
-	
-    var eliminarContacto = function(claveContacto) {
-	
-    	var mensaje = "Eliminando contacto...";
-    	MensajesService.abrirBlockUIGeneral(mensaje);
-    	
-    	$http({
-    		method: 'POST',
-    		url: contextPath + "/infomovil/eliminarContacto",
-    		params: { 
-    			claveDeContacto: claveContacto
-    		}	  
-    	}).then(function successCallback(response) {
-    		
-    		mensaje = "";
-    		
-    		if(response.data.codeError == 0) {
-    		    ContactoService.getContactos();
-    		}else{
-    			mensaje = "No se ha podido eliminar el contacto";
-    		}
-    		
-    		MensajesService.cerrarBlockUIGeneral("Contactos", mensaje);
-    		
-    	}, function errorCallback(response) {
-    		console.log("El error es: " + response , response.data.codeError);
-    		mensaje = "No se ha podido eliminar el contacto";
-    		MensajesService.cerrarBlockUIGeneral("Contactos", mensaje);
-    	});
-     };    
  
-	 var ordenarContactos = function(itemsFin) {
+	var ordenarContactos = function(itemsFin) {
 		 
-		 var mensaje = "Actualizando contactos...";
-		 var strInicio = "<l>";
-		 var strFinal = "";
+		var mensaje = "Actualizando contactos...";
+		var strInicio = "<l>";
+		var strFinal = "";
 		 
-		 for(i = 0; i < itemsFin.length; i++)
+		for(i = 0; i < itemsFin.length; i++)
 			 strFinal =  strFinal + "<f><i>"+ itemsFin[i] + "</i><p>" + i + "</p></f>";
 		 
-		 strFinal = strInicio + strFinal + "</l>"; 
-		 MensajesService.abrirBlockUIGeneral(mensaje);
+		strFinal = strInicio + strFinal + "</l>"; 
+		MensajesService.abrirBlockUIGeneral(mensaje);
 		 
-		 $http({
-			 method: 'POST',
-			 url: contextPath + "/infomovil/setOrderContacts",
-			 params: {
-				 xml: strFinal
-		  		 	}		  
-		 }).then(function successCallback(response) {
-			 console.log(response.data.codeError);
-			 mensaje = "";
+		$http({
+			method: 'POST',
+			url: contextPath + "/infomovil/setOrderContacts",
+			params: {
+				xml: strFinal
+			}		  
+		}).then(function successCallback(response) {
+			console.log(response.data.codeError);
+			mensaje = "";
 			 
-			 if(response.data.codeError == 0) {
-				 console.log("SI ACTUALIZO CORRECTAMENTE");
-				 ContactoService.getContactos();
-
-			 }else{
-				 console.log("Si me respondio con EL ERROR ES: " + response.data.codeError );
-				 mensaje = "No se han podido actualizar los contactos";
+			if (response.data.codeError == 0) {
+				console.log("SI ACTUALIZO CORRECTAMENTE");
+				ContactoService.getContactos();
+			}else{
+				console.log("Si me respondio con EL ERROR ES: " + response.data.codeError );
+				mensaje = "No se han podido actualizar los contactos";
 			 }
 		  		 
 			 MensajesService.cerrarBlockUIGeneral("Contactos", mensaje);
@@ -286,30 +197,50 @@ app.controller('ToolBarContactoController', function($scope, $http, ContactoServ
     	 toolbarContacto.contactos = value;
     	 var arr = value instanceof Array ? value : [value]; 
     	 ContactoService.setContactosGuardados(arr.length);
+
+    	 if (ContactoService.getContactosGuardados() <= 1)
+    		 $(".btnOrdenar").removeClass("handle");
+    	 else
+    		 $(".btnOrdenar").addClass("handle");
      });
 
      /*Obtiene los contactos*/
      ContactoService.getContactos();
+
+     $("#sortable").sortable({
+    	 
+    	 handle: '.handle', 
+    	 start: function(event, ui) {
+    		 itemsInicio = $("#sortable").sortable("toArray");
+    	 }
+     });
+	 
+	 $("#sortable").sortable({
+		 
+		 update: function(event, ui) {		 
+			 itemsFin = $( "#sortable" ).sortable("toArray");
+
+			 if (itemsInicio != itemsFin)
+				 ordenarContactos(itemsFin);
+		 }
+	 });
 });
 
 app.controller('TipoContacto', function($scope, $http, ContactoService, MensajesService) {
 	 
 	var datosTipoContacto = this;
 	
-	datosTipoContacto.mostrarBtnRegresar = false;
-	datosTipoContacto.mostrarBtnGuardar = false;
-	datosTipoContacto.menuContactos = true;
-	datosTipoContacto.formGuardaContacto = false;
+	$("#mostrarBtnGuardar").hide();
+	$("#mostrarBtnRegresar").hide();
 	datosTipoContacto.muestraMsjValidacion = false;
 	
 	datosTipoContacto.tipo = function(tipo) {
 		
 		var mensajesContacto = ContactoService.getObjetoTipoContacto(tipo);
-		
-		datosTipoContacto.formGuardaContacto = true;
-		datosTipoContacto.mostrarBtnRegresar = true;
-		datosTipoContacto.mostrarBtnGuardar = true;
-		datosTipoContacto.menuContactos = false;
+		$("#menuContactos").hide();
+		$("#formGuardaContacto").show();
+		$("#mostrarBtnGuardar").show();
+		$("#mostrarBtnRegresar").show();
 		datosTipoContacto.muestraPais = mensajesContacto.muestraPais;
 		$scope.nombre = mensajesContacto.nombre;
 		$scope.placeholderContenido = mensajesContacto.placeholder; 
@@ -365,11 +296,10 @@ app.controller('TipoContacto', function($scope, $http, ContactoService, Mensajes
 	}
 	
 	var regresarGenerico = function() {
-		
-		datosTipoContacto.mostrarBtnRegresar = false;
-		datosTipoContacto.mostrarBtnGuardar = false;
-		datosTipoContacto.menuContactos = true;
-		datosTipoContacto.formGuardaContacto = false;
+		$("#menuContactos").show();
+		$("#formGuardaContacto").hide();
+		$("#mostrarBtnGuardar").hide();
+		$("#mostrarBtnRegresar").hide();
 		$scope.contacto.longLabelNaptr = "";
 		$scope.contacto.numeroEmailRedSocial = "";		
 			
@@ -385,7 +315,7 @@ app.controller('TipoContacto', function($scope, $http, ContactoService, Mensajes
 			 url: contextPath + "/infomovil/guardarContacto",
 			 params: {
 				 descripcionContacto: contacto.longLabelNaptr,
-				 numeroEmailRedSocial: contacto.numeroEmailRedSocial,
+				 numeroEmailRedSocial: contacto.numeroEmailRedSocial.toLowerCase(),
 				 constanteContacto: $scope.servicio,
 				 redSocialWebSecure: $scope.subCategory,
 				 tipoContacto: $scope.tipoContacto,
@@ -427,17 +357,69 @@ app.controller('TipoContacto', function($scope, $http, ContactoService, Mensajes
 app.controller('ActualizarContactos', function($scope, $http, ContactoService, MensajesService) {
 	
 	var actualizarTipoContacto = this;
-
+	actualizarTipoContacto.claseBoton = "btn btn-outlineGreen textWhite navEditorLato";
+	actualizarTipoContacto.claseBotonOrd = "btn-outlineDisable";
+	actualizarTipoContacto.claseLi = "ui-state-default textBlack claseCursorLi";
+	actualizarTipoContacto.claseCheck = "onoffswitch-label";
+	
 	$("#myModalContactosActualizar").on('hidden.bs.modal', function() {
 		$('#rutaIcono').attr("src", '/resources/webapp/images/');
 	});
 	
+	actualizarTipoContacto.eliminarContacto = function(item) {
+		
+		var item = ContactoService.getItemGlobal();
+
+		var textos = {
+			titulo : "Borrar Contacto",
+			mensaje : "¿Seguro que deseas borrar el contacto?"
+		};
+
+		MensajesService.obtenerConfirmacion(textos, function(confirmarBorrar) {
+			
+			if (confirmarBorrar)
+				eliminarContacto(item.claveContacto);
+		});
+	};
+	
+	var eliminarContacto = function(claveContacto) {
+		
+    	var mensaje = "Eliminando contacto...";
+    	MensajesService.abrirBlockUIGeneral(mensaje);
+    	
+    	$http({
+    		method: 'POST',
+    		url: contextPath + "/infomovil/eliminarContacto",
+    		params: { 
+    			claveDeContacto: claveContacto
+    		}	  
+    	}).then(function successCallback(response) {
+    		
+    		mensaje = "";
+    		
+    		if(response.data.codeError == 0) {
+    		    ContactoService.getContactos();
+    		    $("#myModalContactosActualizar").modal('toggle');
+    		}else{
+    			mensaje = "No se ha podido eliminar el contacto";
+    		}
+    		
+    		MensajesService.cerrarBlockUIGeneral("Contactos", mensaje);
+    		
+    	}, function errorCallback(response) {
+    		console.log("El error es: " + response , response.data.codeError);
+    		mensaje = "No se ha podido eliminar el contacto";
+    		MensajesService.cerrarBlockUIGeneral("Contactos", mensaje);
+    	});
+     };  
+	
 	actualizarTipoContacto.closeMyModalActualizarContactos = function() {
-		$("#myModalContactosActualizar").modal('hide');			
-	}
+		$("#myModalContactosActualizar").modal('toggle');			
+	};
 	
 	actualizarTipoContacto.guardarDatosContacto = function() {
 
+		var item = ContactoService.getItemGlobal();
 		var exp = ContactoService.getRegExp();
 		var regexAct = new RegExp(exp);
 
@@ -451,19 +433,28 @@ app.controller('ActualizarContactos', function($scope, $http, ContactoService, M
 		
 		var contacto = {
 					
-			claveContacto : $("#claveContactoC").val(), 
+			claveContacto : item.claveContacto, 
+			servicesNaptr : item.servicesNaptr,
+			subCategory : item.subCategory,
 			longLabelNaptr : $("#textAreaActualizarTel").val(),
 			regExp : $("#inputTelefonosActualizar").val(),
-			servicesNaptr : $("#servicesNaptrC").val(),
-			subCategory : $("#subCategoryC").val(),
-			visible : $("#visibleC").val(),
+			visible : $("#checkVisible").prop("checked") == true ? 1 : 0,
 			tipoContacto : $("#tipoContactoActualizar").val(),
 			codigoPais : $("#paisActualizarTel").text(),
 			protocolo : $("#protocolo").val()
 		};
-
+		
 		ContactoService.actualizarContacto(contacto);
 		$("#myModalContactosActualizar").modal('toggle');
 	}
-	
+
+	$("#myModalContactosActualizar").on('shown.bs.modal', function() {
+		
+		var item = ContactoService.getItemGlobal();
+		
+		if (item.visible == "1")
+			$("#checkVisible").prop("checked", true);
+		else
+			$("#checkVisible").prop("checked", false);
+	});	
 });

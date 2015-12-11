@@ -129,114 +129,67 @@
 								<span class="hidden-xs">Añadir Contacto</span>
 
 							</button>
-<div class="pull-right spaceBtnsMap"></div>
-						
-							<button type="button"
-								class="btn btn-outlineGreen pull-right textWhite navEditorLato"
-								style="margin: 5px 0 0 0;"
-								ng-click="toolbarContacto.activarSortearContacto()"
-								data-toggle="modal"
-								id="ordenarContactosShow">
-								<img width="30" height="30" alt="Infomovil"
-									src="<c:url value="/resources/webapp/images/fa-order.png"/>" />
-								<span class="hidden-xs">Ordenar contactos</span>
-							</button>
-							
+							<div class="pull-right spaceBtnsMap"></div>							
 							<div class="clear"></div>
-							<hr />
+							<hr/>
 						
 									<p class="textBlack" id="tituloAgregarContactos">
 										<img alt="Infomovil"src="<c:url value="/resources/webapp/images/fa-contactos-bk.png"/>" />
 										Ahora agrega contactos
 									</p>
 							
-							
-
-							<div class="col-xs-12 hidden-xs textBlack" style="border-bottom: 1px solid #000; padding: 8px 0">
+							<div class="col-xs-12 col-sm-8 col-sm-offset-2 hidden-xs textBlack" style="border-bottom: 1px solid #000; padding: 8px 0">
 								
-								<div class="col-xs-4 text-left reset">
+								<div class="col-xs-6 text-left reset">
 									<strong>Contacto</strong>
 								</div>
-								<div class="col-xs-2 text-left reset">
-									<strong>Visible</strong>
-								</div>
-								<div class="col-xs-2 text-left reset">
-									<strong>Actualizar</strong>
-								</div>
-								<div class="col-xs-2 text-left reset">
-									<strong>Eliminar</strong>
-								</div>
-								<div class="col-xs-2 text-left reset">
+								
+								<div class="col-xs-6   text-right reset">
 									<strong>Ordenar</strong>
 								</div>
 							</div>
 
-							<ul id="sortable" style="padding:0px;">
+							<ul id="sortable" style="padding:0px;" class="col-xs-12 col-sm-8 col-sm-offset-2">
 
-								<div id="{{item.claveContacto}}" ng-repeat="item in toolbarContacto.contactos">
-									{{toolbarContacto.getContenidoDowngrade(downgrade, $index + 1, contacto, item)}}
+								<div id="{{item.claveContacto}}" ng-repeat="item in toolbarContacto.contactos" style="margin-top:10px;">
+									<span style="display:none">{{toolbarContacto.getContenidoDowngrade(downgrade, $index + 1, contacto, item)}}</span>
 										<li class="ui-state-default textBlack" style="list-style: none;" id="contactoId{{$index + 1}}">
 												
-											<div class="col-xs-12 col-sm-4  text-left" style="overflow:hidden">
+											<div class="col-xs-9 col-sm-10 text-left" style="overflow:hidden">
 													<img width="30" height="30" alt="Infomovil"
 													src="<c:url value="/resources/webapp/images/{{imagenIco}}"/>" />
-												<span id="regExpContacto" ng-hide="false">
+												<span id="regExpContacto" ng-hide="false" ng-click="toolbarContacto.abrirActualizarContacto(item)">
 													{{contenidoContacto}}
 												</span>
-												<div id="servicesNaptrContacto" ng-hide="true">
+												<div id="servicesNaptrContacto" ng-hide="true" style="display:none">
 													{{item.servicesNaptr}}</div>
-												<div id="categoryNaptrContacto" ng-hide="true">
+												<div id="categoryNaptrContacto" ng-hide="true" style="display:none">
 													{{item.categoryNaptr}}</div>
-												<div id="longLabelNaptrContacto" ng-hide="true">
+												<div id="longLabelNaptrContacto" ng-hide="true" style="display:none">
 													{{item.longLabelNaptr}}</div>
-												<div id="subCategoryContacto" ng-hide="true">
+												<div id="subCategoryContacto" ng-hide="true" style="display:none">
 													{{item.subCategory}}</div>
-												<div id="preferenciaContacto" ng-hide="true">
+												<div id="preferenciaContacto" ng-hide="true" style="display:none">
 													{{item.preference}}</div>
-												<div id="idContacto" ng-hide="true">
+												<div id="idContacto" ng-hide="true" style="display:none">
 													{{item.claveContacto}}</div>
-												<div id="visibleContacto" ng-hide="true">
+												<div id="visibleContacto" ng-hide="true" style="display:none">
 													{{item.visible}}</div>
-												<div ng-hide="true">	
+												<div ng-hide="true" style="display:none">	
 													{{item.downgrade = contactoDowngrade}}
 													{{item.tipoContacto = tipoContactoLis}}
 													{{item.codigoPais = codigoPaisLis}}
 												</div>
 											</div>
+
 											<div class="col-xs-3 col-sm-2 text-left">
-												<div class="onoffswitch" ng-click="toolbarContacto.toggleContacto(item)"
-													style="display: block-inline">
-													<input type="checkbox" name="onoffswitch" ng-checked="item.visible==1" id="checkContactoActivo{{$index + 1}}" 
-														class="onoffswitch-checkbox" id="myonoffswitch">
-													<label ng-class="toolbarContacto.claseCheck" for="myonoffswitch"></label>
-												</div>
-											</div>
-											<div class="col-xs-3 col-sm-2 text-left">
-												<button type="button"
-													ng-class="toolbarContacto.claseBoton"
-													ng-click="toolbarContacto.abrirActualizarContacto(item)">
-													<img width="20" height="20" alt="Infomovil"
-														src="<c:url value="/resources/webapp/images/ico_actualizar.png"/>" />
-													<span class="hidden-xs"></span>
-												</button>
-											</div>
-											<div class="col-xs-3 col-sm-2 text-left">
-												<button type="button"
-													ng-class="toolbarContacto.claseBoton"
-													id="btnEliminarContacto"
-													ng-click="toolbarContacto.eliminarContacto(item)">
-													<img width="20" height="20" alt="Infomovil"
-														src="<c:url value="/resources/webapp/images/trash.png"/>" />
-													<span class="hidden-xs"></span>
-												</button>
-											</div>
-											<div class="col-xs-3 col-sm-2 text-left">
-												<div class="btn btn-outlineDisable btn-ordenar btn-outlineGreen">
+												<div class="{{claseBotonOrd}}">
 													<img width="20" height="20" alt="Infomovil"
 														src="<c:url value="/resources/webapp/images/fa-reorder.png"/>" />
 													<span class="hidden-xs"></span>
 												</div>
 											</div>
+                                
 											<div class="clearfix"></div>
 										</li>
 								</div>
