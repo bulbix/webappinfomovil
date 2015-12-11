@@ -24,7 +24,7 @@
 		<beans:property name="suffix" value=".jsp" />
 	</beans:bean>
 
-	<context:component-scan base-package="com.infomovil.webapp" />
+	<context:component-scan base-package="com.infomovil" />
 	
 	<beans:bean id="tilesConfigurer"
         class="org.springframework.web.servlet.view.tiles3.TilesConfigurer">
