@@ -2,27 +2,17 @@
 
 <div class="modal-header" >
 	<button type="button" class="close textBlack pull-left btnsEditor " data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button> 
-  	<input id="pac-input" class="controls textBlack btnsEditor location" type="text" placeholder="Enter a location"/>
-  	<button type="button" class="btn btn-purple pull-right btnsEditor" id="guardarUbicacion"><img width="20" height="20" alt="Infomovil" src="<c:url value="/resources/webapp/images/successWhite.png"/>" /> 
-  		<span class="hidden-xs">Guardar</span>
-  	</button>
-  	<div class="pull-right spaceBtnsMap"></div>
-  	<button type="button" class="btn btn-purple pull-right btnsEditor" id="ubicame">
-  		<img width="20" height="20" alt="Infomovil" src="<c:url value="/resources/webapp/images/btn_ubicame.png"/>" /> 
-  		<span class="hidden-xs">¡Ubícame!</span>
-  	</button>
-  	<div class="pull-right spaceBtnsMap"></div>
-   	<button type="button" class="btn btn-purple pull-right btnsEditor" id="borrarUbicacion">
-   		<img width="20" height="20" alt="Infomovil" src="<c:url value="/resources/webapp/images/trash.png"/>"/>
-   	</button>
+<p class="modal-title textBlack pull-right"><strong>Mis mensajes</strong></p>
 </div>
 <div class="modal-body">
-	
+	<div class="dividerSmall"></div>
 
 	<div ng-controller="PushNotificationCtrl as push">
-		<h1>Ùltimos mensajes</h1>
-		<ul>
-			<li ng-repeat="message in push.messages">{{ message.mensaje}}</li>
+		
+		<ul style="list-style:none" class="col-xs-12">
+			<li ng-repeat="message in push.messages" style="padding:10px; border:#cccccc 1px solid; border-radius:10px; margin:10px 0; background:#f7f7f7; "><img
+					src="<c:url value="/resources/webapp/images/apple-touch-icon-57x57.png"/>"
+					width="20" height="20" alt="Infomovil" /> {{ message.mensaje}} <button type="button" class="close textBlack pull-right btnsEditor"><span aria-hidden="true">&times;</span></button> </li>
 		</ul>
 	</div>
 </div>

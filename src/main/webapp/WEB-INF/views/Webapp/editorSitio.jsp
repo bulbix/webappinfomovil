@@ -74,7 +74,7 @@
  							<li>
 <a href="#" data-toggle="modal" data-target="#myModalMsjPN"
  								class="smoothScroll ${colorTexto}">
- 							Mis mensajes <span class="badge">4</span> <img
+ 							Mis mensajes <!-- <span class="badge">4</span> --> <img
  							width="20" height="20" alt="Infomovil"
  							src="<c:url value="/resources/webapp/images/fa-messages${ extensionImg }.png"/>" /></a></li>
 <!-- 							<li class="botonDesPublicar borderInicial" style="display: none;" ><a -->
