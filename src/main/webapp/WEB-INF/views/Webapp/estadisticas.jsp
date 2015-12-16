@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Estadisticas Infomovil</title>
+<title>Mis Reportes</title>
 </head>
 <body  role="document" data-spy="scroll" data-target=".navbar"
 	data-offset="75" id="page-top" >

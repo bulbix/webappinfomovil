@@ -25,8 +25,34 @@
 <div ng-app="EstadisticasInfomovilApp" ng-controller="EstadisticasCtrl as estadistica" 
 		ng-init="estadistica.init('${fechaInicial}','${fechaFinal}')" style="margin:auto; width:100%;height:100%">
 		
+
+	<div class="col-xs-12 reset">
+	 
+	 <div class="col-xs-4 col-sm-2" style="padding-top:10px;">
+	<button ng-click="estadistica.generarGrafica('1semana')" class="btn  btn-outlineGreen">1 S<span class="hidden-xs">emana</span></button></div>
+	
+	 <div class="col-xs-4 col-sm-2" style="padding-top:10px;">
+	<button ng-click="estadistica.generarGrafica('1mes')" class="btn  btn-outlineGreen">1 M<span class="hidden-xs">es</span></button></div>
+	 <div class="col-xs-4 col-sm-2" style="padding-top:10px;">
+	<button ng-click="estadistica.generarGrafica('3meses')" class="btn  btn-outlineGreen">3 M<span class="hidden-xs">eses</span></button></div>
+	 <div class="col-xs-4 col-sm-2" style="padding-top:10px;">
+	<button ng-click="estadistica.generarGrafica('6meses')" class="btn  btn-outlineGreen">6 M<span class="hidden-xs">eses</span></button></div>
+	 <div class="col-xs-4 col-sm-2" style="padding-top:10px;">
+	<button ng-click="estadistica.generarGrafica('1anio')" class="btn  btn-outlineGreen">1 A<span class="hidden-xs">ño</span></button>
+	</div>
+	 <div class="col-xs-4 col-sm-2" style="padding-top:10px;">
+	<button class="btn  btn-outlineGreen">+ <span class="hidden-xs">Periodo</span></button>
+	</div>
+	
+	</div>
+	  <div class="clearfix"></div>
+  <div class="divider"></div>
+  
+  <div id="personalizado" style="display:none">
+  <hr/>
+		<div class="col-xs-12 text-left textBlack">Reporte personalizado</div>
 		<div class="col-xs-12 reset">
-		<div class="col-xs-12 col-sm-5"><div class="form-group ">
+		<div class="col-xs-12 col-sm-5"><div class="form-group" style="padding-bottom:10px;">
     <label class="sr-only" for="fechaInicial">Del</label>
     <div class="input-group">
       <div class="input-group-addon">Del</div>
@@ -36,7 +62,7 @@
   </div>
   </div>
   <div class="col-xs-12 col-sm-5">
-  <div class="form-group ">
+  <div class="form-group" style="padding-bottom:10px;">
     <label class="sr-only" for="fechaFinal">al</label>
     <div class="input-group">
       <div class="input-group-addon">al</div>
@@ -46,35 +72,14 @@
   </div></div>
   
   <div class="col-xs-12 col-sm-2">
-  <button type="submit" class="btn btn-outlineGreen" ng-click="estadistica.generarGrafica('personalizado')">Generar</button>
+  <button type="submit" class="btn btn-purple txtBtnEditor" ng-click="estadistica.generarGrafica('personalizado')">Generar</button>
   </div></div>
+  </div>
   
   <div class="clearfix"></div>
   <div class="divider"></div>
-	
-	<hr/>
-	<div class="col-xs-12 reset">
-	 <div class="hidden-xs col-sm-1">
-	 </div>
-	 <div class="col-xs-4 col-sm-2">
-	<button ng-click="estadistica.generarGrafica('1semana')" class="btn  btn-outlineGreen">1 S<span class="hidden-xs">emana</span></button></div>
-	
-	 <div class="col-xs-4 col-sm-2">
-	<button ng-click="estadistica.generarGrafica('1mes')" class="btn  btn-outlineGreen">1 M<span class="hidden-xs">es</span></button></div>
-	 <div class="col-xs-4 col-sm-2">
-	<button ng-click="estadistica.generarGrafica('3meses')" class="btn  btn-outlineGreen">3 M<span class="hidden-xs">eses</span></button></div>
-	 <div class="col-xs-4 col-sm-2">
-	<button ng-click="estadistica.generarGrafica('6meses')" class="btn  btn-outlineGreen">6 M<span class="hidden-xs">eses</span></button></div>
-	 <div class="col-xs-4 col-sm-2">
-	<button ng-click="estadistica.generarGrafica('1anio')" class="btn  btn-outlineGreen">1 A<span class="hidden-xs">ño</span></button>
-	</div>
-	<div class="hidden-xs col-sm-1">
-	 </div>
-	</div>
-	  <div class="clearfix"></div>
-  <div class="divider"></div>
-	
-
+  
+  <hr/>
 	<div id="chart" ></div>
 	
 </div>
