@@ -3,7 +3,9 @@ package com.infomovil.webapp.util;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Properties;
 
 import javax.servlet.http.HttpSession;
@@ -21,6 +23,14 @@ import org.springframework.web.context.request.ServletRequestAttributes;
 import com.amazonaws.auth.BasicAWSCredentials;
 import com.amazonaws.regions.Region;
 import com.amazonaws.regions.Regions;
+import com.amazonaws.services.dynamodbv2.AmazonDynamoDBClient;
+import com.amazonaws.services.dynamodbv2.document.DynamoDB;
+import com.amazonaws.services.dynamodbv2.document.Item;
+import com.amazonaws.services.dynamodbv2.document.ItemCollection;
+import com.amazonaws.services.dynamodbv2.document.QueryOutcome;
+import com.amazonaws.services.dynamodbv2.document.Table;
+import com.amazonaws.services.dynamodbv2.document.spec.QuerySpec;
+import com.amazonaws.services.dynamodbv2.document.utils.NameMap;
 import com.amazonaws.services.s3.AmazonS3;
 import com.amazonaws.services.s3.AmazonS3Client;
 import com.amazonaws.services.s3.model.GetObjectRequest;
@@ -93,10 +103,6 @@ public class Util {
 				currentRequestAttributes();
 		HttpSession session = attr.getRequest().getSession();
 		return session;
-	}	
-	
-	public static void main(String[] args) {
-		System.out.println("Perfil " + getProfile());
 	}
 	
 	public static InputStream getFileAmazon(String bucketName, String key){
@@ -137,6 +143,76 @@ public class Util {
 		
 		return sitio;
 	}
+	
+	/***
+	 * Guardar items en la tabla correspondiente
+	 * @param tableName
+	 * @param email
+	 * @param items
+	 * @return
+	 */
+	public static boolean guardarItemsTableDynamo(String tableName, String email, Map<String,Object> items){
+		try{
+			AmazonDynamoDBClient client = new AmazonDynamoDBClient(new BasicAWSCredentials(KEY_AMAZON_S3,SECRET_AMAZON_S3));
+			Region usWest2 = Region.getRegion(Regions.US_WEST_2);
+			client.setRegion(usWest2);
+			DynamoDB dynamoDB = new DynamoDB(client);
+			Table table = dynamoDB.getTable(tableName);
+			Item item = new Item();
+			item.withPrimaryKey("email", email);
+			
+			for(String key: items.keySet()){
+				item.with(key, items.get(key));
+			}
+			
+			table.putItem(item);
+			return true;
+		}
+		catch(Exception e){
+			logger.error(e);
+			return false;
+		}
+	}
+	
+	public static Map<String,Object> getItemsDynamo(String tableName, String email){
+		try{
+			AmazonDynamoDBClient client = new AmazonDynamoDBClient(
+					new BasicAWSCredentials(KEY_AMAZON_S3,SECRET_AMAZON_S3));
+			Region usWest2 = Region.getRegion(Regions.US_WEST_2);
+			client.setRegion(usWest2);
+			DynamoDB dynamoDB = new DynamoDB(client);
+			Table table = dynamoDB.getTable(tableName);
+
+			HashMap<String, Object> valueMap = new HashMap<String, Object>();
+	        valueMap.put(":email", email);
+	        
+	        QuerySpec querySpec = new QuerySpec()
+	            .withKeyConditionExpression("#email = :email")
+	            .withNameMap(new NameMap().with("#email", "email"))
+	            .withValueMap(valueMap);
+
+	        ItemCollection<QueryOutcome> items = table.query(querySpec);
+	        Item item = items.iterator().next();
+	        return item.asMap();
+		}
+        catch(Exception e){
+			logger.error(e);
+			return null;
+		}
+		
+	}
+	
+	public static void main(String[] args) {
+		//Map<String,Object> items = new HashMap<String,Object>();
+		//items.put("seleccion", "web");
+		//System.out.println(guardarItemsTableDynamo("multiproducto_dev", "luis560@mail.com", items));
+		System.out.println(getItemsDynamo("multiproducto_dev", "luis560@mail.com"));
+		
+		
+		
+	}
+	
+	
 
 	public static final String KEY_AMAZON_S3 = "AKIAJFSG7G2SQDTWMMYA";
 	public static final String SECRET_AMAZON_S3 = "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";

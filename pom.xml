@@ -211,6 +211,12 @@
 			<artifactId>aws-java-sdk-s3</artifactId>
 			<version>1.10.20</version>
 		</dependency>
+		
+		<dependency>
+			<groupId>com.amazonaws</groupId>
+			<artifactId>aws-java-sdk-dynamodb</artifactId>
+			<version>1.10.20</version>
+		</dependency>
 
 		<!-- Infomovil Analytics -->
 		<dependency>
