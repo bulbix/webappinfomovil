@@ -22,11 +22,11 @@ angular.module("EstadisticasInfomovilApp",[])
 		console.debug("Cual:" + cual);
 		
 		$("#chart").html('');
-		generarMensaje("Generando Grafica");
+		generarMensaje("Generando Gráfica");
 		
 		var titulos = {
-			'personalizado':'del ' + fechaInicial + ' al ' + fechaFinal,
-			'1semana':'Reporte una semana',
+			'personalizado':'Del ' + fechaInicial + ' al ' + fechaFinal,
+			'1semana':'Reporte 1 semana',
 			'1mes':'Reporte 1 mes',
 			'3meses':'Reporte 3 meses',
 			'6meses':'Reporte 6 meses',
@@ -44,7 +44,7 @@ angular.module("EstadisticasInfomovilApp",[])
 			estadistica.fechaFinal= response.data.fechaFinal;
 			
 			var plot1 = $.jqplot("chart", [response.data.arrayVisitas, response.data.arrayVisitasUnicas], {
-		        seriesColors: ["rgba(78, 135, 194, 0.7)", "rgb(211, 235, 59)"],
+		        seriesColors: ["rgba(47, 163, 153, 0.7)", "rgb(124, 65, 188)"],
 		        title: titulos[cual],
 		        highlighter: {
 		            show: true,
@@ -78,7 +78,7 @@ angular.module("EstadisticasInfomovilApp",[])
 		                label: 'Totales: ' + response.data.sumVisitasTotales 
 		            },
 		            {
-		                label: 'Unicas: ' + response.data.sumVisitasUnicas
+		                label: 'Únicas: ' + response.data.sumVisitasUnicas
 		            }
 		        ],
 		        axesDefaults: {
