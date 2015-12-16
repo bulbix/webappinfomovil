@@ -5,32 +5,89 @@
 <link href="<c:url value="/resources/webapp/js/datepicker/datepicker.css"/>" rel="stylesheet" />
 
 <tiles:insertDefinition name="headEditorSitio">
-	<tiles:putAttribute name="template" value="" />
+	<tiles:putAttribute name="template" value="${sessionScope.plantillaUsuario}" />
 </tiles:insertDefinition>
 
-<div ng-app="EstadisticasInfomovilApp" ng-controller="EstadisticasCtrl as estadistica" 
-		ng-init="estadistica.init('${fechaInicial}','${fechaFinal}')" style="margin:auto; width:85%;height:100%">
-		
-	<label for="fechaInicial">Fecha Inicial</label>
-	<input type="text" ng-model="estadistica.fechaInicial" class="datepicker" size="12">
-	
-	<label for="fechaFinal">Fecha Final</label>
-	<input type="text" ng-model="estadistica.fechaFinal" class="datepicker" size="12">
 
-	<button ng-click="estadistica.generarGrafica('personalizado')">Grafica Personalizada</button>
+<div class="">	
+		<div class="">
+			<!--Theme showcase -->
+			<div class="theme-showcaseApp" role="main" id="intro">
+				<!-- Main jumbotron for a primary marketing message or call to action -->
+				<div class="container">
+					<!-- page header -->
+					<div class="page-header text-center navEditorSFl">
+					<h3 class="text-left textBlack " style="font-weight: 300; margin:5px 0 0 0;">Mis Reportes</h3><hr/>
+					<div>
+					
+					
+									
+<div ng-app="EstadisticasInfomovilApp" ng-controller="EstadisticasCtrl as estadistica" 
+		ng-init="estadistica.init('${fechaInicial}','${fechaFinal}')" style="margin:auto; width:100%;height:100%">
+		
+		<div class="col-xs-12 reset">
+		<div class="col-xs-12 col-sm-5"><div class="form-group ">
+    <label class="sr-only" for="fechaInicial">Del</label>
+    <div class="input-group">
+      <div class="input-group-addon">Del</div>
+      <input type="text" ng-model="estadistica.fechaInicial" class="form-control datepicker" >
+    
+    </div>
+  </div>
+  </div>
+  <div class="col-xs-12 col-sm-5">
+  <div class="form-group ">
+    <label class="sr-only" for="fechaFinal">al</label>
+    <div class="input-group">
+      <div class="input-group-addon">al</div>
+      <input type="text" ng-model="estadistica.fechaFinal" class="form-control datepicker" >
+    
+    </div>
+  </div></div>
+  
+  <div class="col-xs-12 col-sm-2">
+  <button type="submit" class="btn btn-outlineGreen" ng-click="estadistica.generarGrafica('personalizado')">Generar</button>
+  </div></div>
+  
+  <div class="clearfix"></div>
+  <div class="divider"></div>
 	
-	<button ng-click="estadistica.generarGrafica('1semana')">1 Semana</button>
-	<button ng-click="estadistica.generarGrafica('1mes')">1 Mes</button>
-	<button ng-click="estadistica.generarGrafica('3meses')">3 Meses</button>
-	<button ng-click="estadistica.generarGrafica('6meses')">6 Meses</button>
-	<button ng-click="estadistica.generarGrafica('1anio')">1 Año</button>
+	<hr/>
+	<div class="col-xs-12 reset">
+	 <div class="hidden-xs col-sm-1">
+	 </div>
+	 <div class="col-xs-4 col-sm-2">
+	<button ng-click="estadistica.generarGrafica('1semana')" class="btn  btn-outlineGreen">1 S<span class="hidden-xs">emana</span></button></div>
 	
-	<br/><br/>
+	 <div class="col-xs-4 col-sm-2">
+	<button ng-click="estadistica.generarGrafica('1mes')" class="btn  btn-outlineGreen">1 M<span class="hidden-xs">es</span></button></div>
+	 <div class="col-xs-4 col-sm-2">
+	<button ng-click="estadistica.generarGrafica('3meses')" class="btn  btn-outlineGreen">3 M<span class="hidden-xs">eses</span></button></div>
+	 <div class="col-xs-4 col-sm-2">
+	<button ng-click="estadistica.generarGrafica('6meses')" class="btn  btn-outlineGreen">6 M<span class="hidden-xs">eses</span></button></div>
+	 <div class="col-xs-4 col-sm-2">
+	<button ng-click="estadistica.generarGrafica('1anio')" class="btn  btn-outlineGreen">1 A<span class="hidden-xs">ño</span></button>
+	</div>
+	<div class="hidden-xs col-sm-1">
+	 </div>
+	</div>
+	  <div class="clearfix"></div>
+  <div class="divider"></div>
+	
 
 	<div id="chart" ></div>
 	
 </div>
-
+					
+					
+					</div>
+					</div>
+					</div>
+					</div>
+					</div>
+					</div>
+					
+	
 <script src="<c:url value="/resources/webapp/js/jquery.min.js"/>"></script>
 <script src="<c:url value="/resources/webapp/js/datepicker/jquery.ui.core.js"/>"></script>
 <script src="<c:url value="/resources/webapp/js/jquery.blockUI.js"/>"></script>
