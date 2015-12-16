@@ -73,8 +73,6 @@
 	</div>
 	  <div class="clearfix"></div>
   <div class="divider"></div>
-	
-
 	<div id="chart" ></div>
 	
 </div>
