@@ -26,7 +26,6 @@ app.factory('ContactoService', function($http, MensajesService) {
 					 $("#ordenarContactosShow").hide();
 					 $("#tituloAgregarContactos").show();
 				 }
-				console.log("el response: " + response.data.length);
 					 
 		}, function errorCallback(response) {
 			console.log("El error es: " + response);

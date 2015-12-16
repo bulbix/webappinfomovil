@@ -4,22 +4,9 @@
     	src="<c:url value="/resources/webapp/images/successWhite.png"/>" /><span class="hidden-xs"> Guardar</span></button>
 <button type="button" class="btn btn-purple pull-right"  id="btnGuardarImagenFB" onclick="guardarImagenesJQF()" style="margin:5px 0;"><img width="15" height="15" alt="Infomovil" 
     	src="<c:url value="/resources/webapp/images/successWhite.png"/>" /><span class="hidden-xs"> Guardar</span></button>
-    	
-    	
-    	
-    	
+    	    	
 	<button type="button" class="close textBlack pull-left btnsEditor"  aria-label="Close" id="closemyModalImagenes"><span aria-hidden="true"><strong>&times;</strong></span></button>
-	
-	
-<!-- 	<!-- BOTON PRUEBA -->
-	
-<!--  <label class=" col-xs-12 col-sm-5  btn btn-purple" id="btnSeleccionaImagen2">   -->
-<!-- 		<input type="file" class="file cabinet" accept="image/*" onchange="picChange(event)" id="btnSeleccionaImagen"/>		<input style="display:inline" type="file" accept="image/*" onClick="validaImg()" onchange="picChange(event)" id="btnSeleccionaImagen"  />  -->
-<!-- 	</label>  -->
 
-	
-	<!-- /BOTON PRUEBA -->
-    	
     <div class="btn btn-purple pull-right btnsEditor col-xs-12 col-sm-5" id="btnSeleccionaImagen2" style="overflow-x:hidden; margin:5px 0 5px 5px;"> 
  <label class="cabinet" >  
 		<input type="file" class="file" accept="image/*" onchange="picChange(event)" id="btnSeleccionaImagen"/>		<input style="display:inline" type="file" accept="image/*" onClick="validaImg()" onchange="picChange(event)" id="btnSeleccionaImagen"  /> 

@@ -83,7 +83,7 @@
 				<div class="divider"></div>
 				<div class="form-group">
 	    			<label>Descripción</label>
-	    			<textarea ng-maxlength="250" ng-model="contacto.longLabelNaptr" class="form-control"></textarea> 
+	    			<textarea ng-maxlength="250" ng-model="contacto.longLabelNaptr" class="form-control" id="descContacto"></textarea> 
 	  			</div>
 			</div>	
 		</div>

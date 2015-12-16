@@ -8,19 +8,30 @@ app.controller('ToolBarContactoController', function($scope, $http, ContactoServ
 	toolbarContacto.descripcion = "descrito";
 	toolbarContacto.downgrade = "";
 	toolbarContacto.contacto = "";
+	toolbarContacto.tipoPlan = "";
 	toolbarContacto.claseLi = "";
 	toolbarContacto.contactos = "";
 	toolbarContacto.imagenIco = "";
 	$scope.order = false;
 		
-	toolbarContacto.agregaContacto = function(downgrade, contacto) {
+	toolbarContacto.agregaContacto = function(downgrade, contacto, tipoPlan) {
 		
+		var limite = "0";
 		ContactoService.setContactosPermitidos(contacto);
 
-		if ((toolbarContacto.contactos.length == contacto) || 
-			(downgrade == "DOWNGRADE" && toolbarContacto.contactos.length > contacto))
+		if (toolbarContacto.contactos.length >= contacto)
+			limite = "1";
+
+		if (limite == "1")
 		{
-			var mensaje = "<div style='display:block; min-height:150px;' class='col-xs-12'><p>Ya has registrado todos los contactos disponibles</p><p class='textBlack text-center' style='font-size:1.15em;'>Adquiere <strong>Plan Pro</strong> en la sección <img alt='' src='../resources/webapp/images/fa-user-bk.png' width='20' title='Mi Cuenta' /> Mi Cuenta para agregar más contactos </p><br/> </div><div class='clearfix'></div><div style='display:block; height:30px; width:100%;'></div>";
+			var mensaje = "<div style='display:block; min-height:150px;' class='col-xs-12'><p class='textBlack'>Ya has registrado todos los contactos disponibles</p><br/> </div><div class='clearfix'></div><div style='display:block; height:30px; width:100%;'></div>";
+			
+			if ((downgrade == "DOWNGRADE" && toolbarContacto.contactos.length > 
+				contacto) || (tipoPlan == "Gratuito"))
+			{
+				var mensaje = "<div style='display:block; min-height:150px;' class='col-xs-12'><p class='textBlack'>Ya has registrado todos los contactos disponibles</p><p class='textBlack text-center' style='font-size:1.15em;'>Adquiere <strong>Plan Pro</strong> en la sección <img alt='' src='../resources/webapp/images/fa-user-bk.png' width='20' title='Mi Cuenta' /> Mi Cuenta para agregar más contactos </p><br/> </div><div class='clearfix'></div><div style='display:block; height:30px; width:100%;'></div>";
+			}
+	
 			MensajesService.cerrarBlockUIGeneral("Contactos", mensaje);
 			return;
 		}
@@ -28,10 +39,13 @@ app.controller('ToolBarContactoController', function($scope, $http, ContactoServ
 		$("#numeroEmailRedSocial").keydown(function(e) {
 			$("#msgValidaRegExp").css("display", "none");
 		});
+		
 		$("#menuContactos").show();
 		$("#formGuardaContacto").hide();
 		$("#mostrarBtnGuardar").hide();
 		$("#mostrarBtnRegresar").hide();
+		$("#numeroEmailRedSocial").val("");
+		$("#descContacto").val("");
 		$("#myModalContactos").modal();
 		
 	};
@@ -47,9 +61,6 @@ app.controller('ToolBarContactoController', function($scope, $http, ContactoServ
 		var llaveBusqueda = item.subCategory;
 		var contenidoFinalContacto = item.regExp;
 		
-		toolbarContacto.claseBoton = "btn btn-outlineGreen textWhite navEditorLato";
-		toolbarContacto.claseLi = "ui-state-default textBlack claseCursorLi";
-		toolbarContacto.claseCheck = "onoffswitch-label";
 		$scope.claseBotonOrd = "btn btn-outlineGreen btnOrdenar handle";
 		$scope.contactoDowngrade = "1";
 		$scope.contenidoContacto = "";
@@ -74,9 +85,6 @@ app.controller('ToolBarContactoController', function($scope, $http, ContactoServ
 		
 		if (downgrade == 'DOWNGRADE' && index > contacto)
 		{
-			toolbarContacto.claseBoton = "btn btn-outlineDisable textWhite navEditorLato";
-			toolbarContacto.claseLi = "ui-state-default textBlack claseCursorLiDowngrade";
-			toolbarContacto.claseCheck = "offswitch-label";
 			$scope.contactoDowngrade = "0";
 			$scope.imagenIco = mensajesContactoLista.imagenIco.replace("-bk", "");
 			$scope.claseBotonOrd = "btn btn-outlineGreen btnOrdenar";

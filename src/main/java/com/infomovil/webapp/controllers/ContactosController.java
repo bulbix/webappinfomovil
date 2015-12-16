@@ -41,6 +41,7 @@ public class ContactosController
 		String extensionImg = "";
 		String contacto = "";
 		String downgrade = "";
+		String tipoPlan = "";
 		String nombreUsuario = "";
 		
 		try
@@ -68,10 +69,12 @@ public class ContactosController
          		template = Util.getCurrentSession().getAttribute("template").toString();
          
          	if (Util.getCurrentSession().getAttribute("contacto") == null ||
-         			Util.getCurrentSession().getAttribute("downgrade") == null)
+         			Util.getCurrentSession().getAttribute("downgrade") == null ||
+         					Util.getCurrentSession().getAttribute("tipoPlan") == null)
          	{
          		wsRpta = wsCliente.crearSitioCargar(correo, password);
          		downgrade = wsRpta.getDowngrade();
+         		tipoPlan = wsRpta.getDominioCreaSitio().getTipoCuenta();
          		modeloWebApp.setItemsUsuario(wsRpta.getListStatusDomainGratisVO());
          		
          		StatusDomainVO itemDomainVO = null;
@@ -82,11 +85,13 @@ public class ContactosController
 				
 			    Util.getCurrentSession().setAttribute("contacto", contacto);
 			    Util.getCurrentSession().setAttribute("downgrade", downgrade);
+			    Util.getCurrentSession().setAttribute("tipoPlan", tipoPlan);
          	}
          	else
          	{
          		contacto = Util.getCurrentSession().getAttribute("contacto").toString();
          		downgrade = Util.getCurrentSession().getAttribute("downgrade").toString();
+         		tipoPlan = Util.getCurrentSession().getAttribute("tipoPlan").toString();
          	}
 			
          	
@@ -97,6 +102,7 @@ public class ContactosController
 			model.put("downgrade", downgrade);
 			model.put("contacto", contacto);
 			model.put("nombreUsuario", nombreUsuario);
+			model.put("tipoPlan", tipoPlan);
 		}		
 		catch (Exception e) 
 		{

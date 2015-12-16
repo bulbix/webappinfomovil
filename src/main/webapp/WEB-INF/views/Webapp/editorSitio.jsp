@@ -388,8 +388,7 @@
 	<!--MODAL MAPA-->
 	<tiles:insertDefinition name="modalGen">
 		<tiles:putAttribute name="idModal" value="myModalMaps" />
-		<tiles:putAttribute name="tamanioModal"
-			value='"modal-dialog modal-lg"' />
+		<tiles:putAttribute name="tamanioModal" value='"modal-dialog modal-lg"'/>
 		<c:set var="fragmentName" value="modalMapFragment" scope="request" />
 	</tiles:insertDefinition>
 	<!--/MODAL MAPA-->
@@ -398,8 +397,7 @@
 	<!--MODAL MENSAJES-->
 	<tiles:insertDefinition name="modalGen">
 		<tiles:putAttribute name="idModal" value="myModalMsjPN" />
-		<tiles:putAttribute name="tamanioModal"
-			value='"modal-dialog modal-lg"' />
+		<tiles:putAttribute name="tamanioModal" value='"modal-dialog modal-lg"'/>
 		<c:set var="fragmentName" value="modalMsjPN" scope="request" />
 	</tiles:insertDefinition>
 	<!--/MODAL MAPA-->
@@ -407,8 +405,7 @@
 	<!--MODAL VIDEO-->
 	<tiles:insertDefinition name="modalGen">
 		<tiles:putAttribute name="idModal" value="myModalVideo" />
-		<tiles:putAttribute name="tamanioModal"
-			value='"modal-dialog modal-md"' />
+		<tiles:putAttribute name="tamanioModal" value='"modal-dialog modal-md"'/>
 		<c:set var="fragmentName" value="modalVideoFragment" scope="request" />
 	</tiles:insertDefinition>
 	<!--/MODAL VIDEO-->
@@ -416,8 +413,7 @@
 	<!--MODAL EXITO-->
 	<tiles:insertDefinition name="modalGen">
 		<tiles:putAttribute name="idModal" value="myModalExito" />
-		<tiles:putAttribute name="tamanioModal"
-			value='"modal-dialog modal-md"' />
+		<tiles:putAttribute name="tamanioModal" value='"modal-dialog modal-md"'/>
 		<c:set var="fragmentName" value="modalExitoFragment" scope="request" />
 	</tiles:insertDefinition>
 	<!--/MODAL EXITO-->
@@ -425,8 +421,7 @@
 	<!-- 		<!--MODAL FAIL-->
 	<tiles:insertDefinition name="modalGen">
 		<tiles:putAttribute name="idModal" value="myModalFallo" />
-		<tiles:putAttribute name="tamanioModal"
-			value='"modal-dialog modal-md"' />
+		<tiles:putAttribute name="tamanioModal" value='"modal-dialog modal-md"'/>
 		<c:set var="fragmentName" value="modalFalloFragment" scope="request" />
 	</tiles:insertDefinition>
 	<!-- 		<!--/MODAL FAIL-->
@@ -434,18 +429,15 @@
 	<!-- 		<!--MODAL REGISTRO-->
 	<tiles:insertDefinition name="modalGen">
 		<tiles:putAttribute name="idModal" value="myModalRegistro" />
-		<tiles:putAttribute name="tamanioModal"
-			value='"modal-dialog modal-md"' />
-		<c:set var="fragmentName" value="modalRegistroFragment"
-			scope="request" />
+		<tiles:putAttribute name="tamanioModal" value='"modal-dialog modal-md"'/>
+		<c:set var="fragmentName" value="modalRegistroFragment"	scope="request" />
 	</tiles:insertDefinition>
 	<!-- 		<!--/MODAL REGISTRO-->
 
 	<!-- 		<!--MODAL DESCARGA LA APP-->
 	<tiles:insertDefinition name="modalGen">
 		<tiles:putAttribute name="idModal" value="myModalDescApp" />
-		<tiles:putAttribute name="tamanioModal"
-			value='"modal-dialog modal-md"' />
+		<tiles:putAttribute name="tamanioModal" value='"modal-dialog modal-md"'/>
 		<c:set var="fragmentName" value="modalDescApp" scope="request" />
 	</tiles:insertDefinition>
 	<!-- 		<!--/MODAL DESCARGA LA APP-->
@@ -453,7 +445,7 @@
 	<!-- 		<!--MODAL IMAGENES-->
 	<tiles:insertDefinition name="modalGen">
 		<tiles:putAttribute name="idModal" value="myModalImagenes" />
-		<tiles:putAttribute name="tamanioModal" value="modal-dialog modal-md" />
+		<tiles:putAttribute name="tamanioModal" value='"modal-dialog modal-md"'/>
 		<c:set var="fragmentName" value="modalImagenes" scope="request" />
 	</tiles:insertDefinition>
 	<!-- 		<!--/MODAL IMAGENES-->
@@ -464,36 +456,40 @@
 	<!-- 		<!--MODAL MOVILIZA-->
 	<tiles:insertDefinition name="modalGen">
 		<tiles:putAttribute name="idModal" value="myModalMoviliza" />
-		<tiles:putAttribute name="tamanioModal"
-			value='"modal-dialog modal-md"' />
+		<tiles:putAttribute name="tamanioModal" value='"modal-dialog modal-md"'/>
 		<c:set var="fragmentName" value="modalMoviliza" scope="request" />
 	</tiles:insertDefinition>
 	<!-- 		<!--/MODAL MOVILIZA-->
 	<!-- 		<!--MODAL MOVILIZA ACT-->
 	<tiles:insertDefinition name="modalGen">
 		<tiles:putAttribute name="idModal" value="myModalMovilizaAct" />
-		<tiles:putAttribute name="tamanioModal"
-			value='"modal-dialog modal-md"' />
-		<c:set var="fragmentName" value="modalMovilizaAct" scope="request" />
+		<tiles:putAttribute name="tamanioModal"	value='"modal-dialog modal-md"'/>
+		<c:set var="fragmentName" value="modalMovilizaAct" scope="request"/>
 	</tiles:insertDefinition>
 	<!-- 		<!--/MODAL MOVILIZA ACT-->
 	<!-- 		<!--MODAL MOVILIZA CODE-->
 	<tiles:insertDefinition name="modalGen">
 		<tiles:putAttribute name="idModal" value="myModalMovilizaCode" />
-		<tiles:putAttribute name="tamanioModal"
-			value='"modal-dialog modal-lg"' />
-		<c:set var="fragmentName" value="modalMovilizaCode" scope="request" />
+		<tiles:putAttribute name="tamanioModal" value='"modal-dialog modal-lg"'/>
+		<c:set var="fragmentName" value="modalMovilizaCode" scope="request"/>
 	</tiles:insertDefinition>
 	<!-- 		<!--/MODAL MOVILIZA CODE-->
 	<!-- 		<!--MODAL HORARIOS-->
 	<tiles:insertDefinition name="modalGen">
 		<tiles:putAttribute name="idModal" value="myModalHorarios" />
-		<tiles:putAttribute name="tamanioModal"
-			value='"modal-dialog modal-md"' />
+		<tiles:putAttribute name="tamanioModal" value='"modal-dialog modal-md"'/>
 		<c:set var="fragmentName" value="modalHorarios" scope="request" />
 	</tiles:insertDefinition>
-	<!-- 		<!--/MODAL HORARIOSE-->
-	
+	<!-- 		<!--/MODAL HORARIO-->
+
+	<!-- 		<!--MODAL MULTIPRODUCTO-->
+	<tiles:insertDefinition name="modalGen">
+		<tiles:putAttribute name="idModal" value="myModalMultiproducto" />
+		<tiles:putAttribute name="tamanioModal" value='"modal-dialog modal-md"'/>
+		<c:set var="fragmentName" value="modalMultiproducto" scope="request" />
+	</tiles:insertDefinition>
+	<!-- 		<!--/MODAL MULTIPRODUCTO-->
+		
 	<!-- Scroll to Top Button (Only visible on small and extra-small screen sizes) -->
 	<div class="scroll-top page-scroll visible-xs visble-sm">
 		<a class="btn" href="#page-top"> <img width="20" height="20"

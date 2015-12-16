@@ -30,7 +30,7 @@
 	</div>
 	<div class="modal-body">
 
-		<div class="col-xs-12 col-sm-6 col-sm-offset-3" >
+		<div class="col-xs-12 col-sm-8 col-sm-offset-2" >
 			<div class="modal-title textBlack">
 			<div class="dividerSmall"></div>
 				<strong>Horarios</strong>

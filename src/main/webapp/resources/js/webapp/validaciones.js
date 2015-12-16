@@ -5,12 +5,16 @@ var tipoDominio = "";
 var indice = 0;
 	
 $(document).ready(function() {
-	$("#txtTelefono").numeric({negative : false} );
+	$("#txtTelefono").numeric({negative : false});
+	$('#myModalMultiproducto').removeData("modal").modal({ backdrop: 'static', keyboard: false })
+});
+
+$("#btnVolante").on('click', function() {
+	window.location = contextPath + '/infomovil/misPromociones';
 });
 
 function validaDominio(tipo)
 {
-	//console.log("validaDominio::::::");
 	var sitioDisponible = "";
 	var infomovil = "infomovil";
 	var textoBoton = "Aceptar";

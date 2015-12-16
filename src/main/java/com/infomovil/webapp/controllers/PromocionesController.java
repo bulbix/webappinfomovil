@@ -49,23 +49,6 @@ public class PromocionesController
 			String correo = Util.getUserLogged().getUsername();
 			String password = Util.getUserLogged().getPassword();
 			
-			wsRespuesta = wsCliente.crearSitioGetPromociones(correo, password);
-         	
-			for (OffertRecordVO promocion : wsRespuesta.getListPromocion())
-			{
-				model.put("titleOffer", promocion.getTitleOffer());
-				model.put("descOffer", promocion.getDescOffer());
-				model.put("termsOffer", promocion.getTermsOffer());
-				model.put("imageClobOffer", promocion.getImageClobOffer());
-				model.put("endDateOffer", promocion.getEndDateOffer());
-				model.put("promoCodeOffer", promocion.getPromoCodeOffer());
-				model.put("discountOffer", promocion.getDiscountOffer());
-				model.put("redeemOffer", promocion.getRedeemOffer());
-				model.put("idOffer", promocion.getIdOffer());
-				model.put("urlImage", promocion.getUrlImage());
-				model.put("urlPromocion", promocion.getUrlPromocion());
-			}	
-			
 			if (Util.getCurrentSession().getAttribute("canal") != null)
 			{
 				if (Util.getCurrentSession().getAttribute("canal").toString().startsWith("BAZ"))

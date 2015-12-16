@@ -115,14 +115,13 @@
 						style="border-radius:15px; background:url(<c:url value="/resources/webapp/images/bgWhTra.png"/>); padding:10px;">
 						<div class="clear"></div>
 						<div ng-controller="ToolBarContactoController as toolbarContacto"
-							ng-init="downgrade = '${downgrade}'; contacto = '${contacto}'">
+							ng-init="downgrade = '${downgrade}'; contacto = '${contacto}' ; tipoPlan = '${tipoPlan}'">
 
-	
 							<button type="button"
 								class="btn btn-outlineGreen pull-right textWhite navEditorLato"
 								style="margin: 5px 0 0 0;"
 								ng-controller="ToolBarContactoController as toolbarContacto"
-								ng-click="toolbarContacto.agregaContacto(downgrade, contacto)"
+								ng-click="toolbarContacto.agregaContacto(downgrade, contacto, tipoPlan)"
 								data-toggle="modal">
 								<img width="30" height="30" alt="Infomovil"
 									src="<c:url value="/resources/webapp/images/ico_mas_cont.png"/>" />
