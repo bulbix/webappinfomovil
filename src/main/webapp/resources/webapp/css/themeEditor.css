@@ -277,7 +277,10 @@ a.textBlack {
 .borderFin {
 	border: none
 }
-
+.notesTime{
+	font-size:.8em;
+	
+}
 .borderInicial {
 	border: none
 }
