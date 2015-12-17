@@ -24,7 +24,7 @@ app.controller("EstadisticasCtrl", function($scope, $http, MensajesService) {
 	estadistica.generarGrafica = function(cual){
 		$("#dinamicoPersonalizado").hide();
 		if( cual == 'sinplanpro')
-			MensajesService.cerrarBlockUIGeneral("Estadisticas","Necesitas comprar Plan Pro");
+			MensajesService.cerrarBlockUIGeneral("Reportes","Esta opción esta únicamente disponible para el Plan Pro. ¡Adquiérelo ahora desde la sección Mis Productos! ");
 		else
 			cargarDatosGrafica(cual,estadistica.fechaInicial, estadistica.fechaFinal);
 			//cargarGrafica(cual, estadistica.fechaInicial, estadistica.fechaFinal);
@@ -57,8 +57,8 @@ app.controller("EstadisticasCtrl", function($scope, $http, MensajesService) {
 					'6meses':'Reporte 6 meses',
 					'1anio':'Reporte 1 año'}
 			$("#tituloReporte").text(titulos[cual]);
-			$("#numVisitasPagina").text("Visitas totales a mi página: "+ response.data.sumVisitasTotales);
-			$("#numPersonasUnicas").text("Número de personas únicas qué la visitaron:"+ response.data.sumVisitasUnicas);
+			$("#numVisitasPagina").html("Visitas totales a mi página: <strong>"+ response.data.sumVisitasTotales+"</strong>");
+			$("#numPersonasUnicas").html("Número de personas únicas qué la visitaron: <strong>"+ response.data.sumVisitasUnicas+"</strong>");
 		
 			
 			

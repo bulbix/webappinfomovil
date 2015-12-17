@@ -14,9 +14,9 @@
 			<!--Theme showcase -->
 			<div class="theme-showcaseApp" role="main" id="intro">
 				<!-- Main jumbotron for a primary marketing message or call to action -->
-				<div class="container">
+				<div class="container ">
 					<!-- page header -->
-					<div class="page-header text-center navEditorSFl">
+					<div class="page-header text-center navEditorSFl form-control">
 					<h3 class="text-left textBlack" style="font-weight: 300; margin:5px 0 0 0;">Mis Reportes - Visitas de mi página web</h3>
 					
 					<hr/>
@@ -61,7 +61,7 @@
 	  
    	<c:choose>
 		<c:when test="${sessionScope.planProSession == 'SI' }">
-		    <button class="btn  btn-outlineGreen" ng-click="estadistica.ngclick()">+ <span class="hidden-xs">Periodo</span></button>
+		    <button class="btn  btn-outlineGreen" ng-click="estadistica.ngclick()">+ <span class="hidden-xs">Periodos</span></button>
 			</div>
 			</div>
 		  	<div id="personalizado" >
@@ -74,12 +74,14 @@
 	    </c:otherwise>
 	</c:choose>
 	
-  <div class="clearfix"></div>
-  <div class="divider"></div>
+
  
     <div id="dinamicoPersonalizado">
+      <div class="clearfix"></div>
+  <div class="divider"></div>
      <hr/>
 		<div class="col-xs-12 text-left textBlack">Reporte personalizado</div>
+		
 		<div class="col-xs-12 reset">
 			<div class="col-xs-12 col-sm-5"><div class="form-group" style="padding-bottom:10px;">
 				 <label class="sr-only" for="fechaInicial">Del</label>
@@ -108,9 +110,11 @@
   <div class="clearfix"></div>
   
   <hr/>
-  	  <h3 class="col-xs-12 textBlack"><strong id="tituloReporte">Reporte 1 semana</strong></h3> 
- 	  <div class="col-xs-12 textBlack"><strong id="numVisitasPagina"></strong></div> 
- 	  <div class="col-xs-12 textBlack"><strong id="numPersonasUnicas"></strong> </div> 
+  	  <h3 class="col-xs-12 textBlack "><img
+ 							width="30" height="30" alt="Infomovil"
+ 							src="<c:url value="/resources/webapp/images/fa-reportes-bk.png"/>" /><strong id="tituloReporte">Reporte 1 semana</strong></h3> 
+ 	  <div class="col-xs-12 textBlack" id="numVisitasPagina"></div> 
+ 	  <div class="col-xs-12 textBlack" id="numPersonasUnicas"></div> 
  
   <hr/>
 
