@@ -67,7 +67,7 @@
 		  	<div id="personalizado" >
 	    </c:when>    
 	    <c:otherwise>
-		    <button class="btn  btn-outlineDisable" disabled>+ <span class="hidden-xs">Periodo</span></button>
+		    <button class="btn  btn-outlineDisable" ng-click="estadistica.generarGrafica('sinplanpro')">+ <span class="hidden-xs">Periodo</span></button>
 			</div>
 			</div>
 		    <div id="personalizado">
