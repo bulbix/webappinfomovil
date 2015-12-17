@@ -1,5 +1,8 @@
-angular.module("EstadisticasInfomovilApp",[])
-.controller("EstadisticasCtrl", function($scope, $http, MensajesService) {
+var app = angular.module("EstadisticasInfomovilApp",[]);
+
+app.controller("EstadisticasCtrl", function($scope, $http, MensajesService) {
+
+	
 	var estadistica = this;
 	$.jqplot.config.enablePlugins = true;
 	$.jqplot._noToImageButton = true;
@@ -9,20 +12,63 @@ angular.module("EstadisticasInfomovilApp",[])
 	estadistica.init = function(fechaInicial,fechaFinal){
 		estadistica.fechaInicial= fechaInicial;
 		estadistica.fechaFinal= fechaFinal;
-		cargarGrafica('1semana', fechaInicial, fechaFinal);
+		cargarDatosGrafica('1semana', fechaInicial, fechaFinal);
+		$("#dinamicoPersonalizado").hide();
+	}
+	
+	estadistica.ngclick = function(){
+		console.log("Entro a click de personaliddod");
+		$("#dinamicoPersonalizado").show();
 	}
 	
 	estadistica.generarGrafica = function(cual){
+		$("#dinamicoPersonalizado").hide();
 		if( cual == 'sinplanpro')
-			llamarmodalComprar();
+			MensajesService.cerrarBlockUIGeneral("Estadisticas","Necesitas comprar Plan Pro");
 		else
-			cargarGrafica(cual, estadistica.fechaInicial, estadistica.fechaFinal);
+			cargarDatosGrafica(cual,estadistica.fechaInicial, estadistica.fechaFinal);
+			//cargarGrafica(cual, estadistica.fechaInicial, estadistica.fechaFinal);
 	}
 
-	function llamarmodalComprar(){
-		MensajesService.cerrarBlockUIGeneral(Estadisticas , "Compra plan pro") ;
-	};
 	
+	function cargarDatosGrafica(cual, fechaInicial, fechaFinal){
+		console.debug("FechaInicial:" + fechaInicial);
+		console.debug("FechaFinal:" + fechaFinal);
+		console.debug("Cual:" + cual);
+		generarMensaje("Obteniendo datos");
+		
+		$http({
+			method: 'GET',
+			url: contextPath + "/infomovil/getDatosEstadistica",
+			params: { 
+				fechaInicial:fechaInicial, 
+				fechaFinal:fechaFinal,
+				cual:cual}	  
+		}).then(function successCallback(response) {
+			estadistica.fechaInicial= response.data.fechaInicial;
+			estadistica.fechaFinal= response.data.fechaFinal;
+			console.log("las visitas totales son : " + response.data.sumVisitasTotales);
+			console.log("las visitas unicas son : " + response.data.sumVisitasUnicas);
+			var titulos = {
+					'personalizado':'Del ' + fechaInicial + ' al ' + fechaFinal,
+					'1semana':'Reporte 1 semana',
+					'1mes':'Reporte 1 mes',
+					'3meses':'Reporte 3 meses',
+					'6meses':'Reporte 6 meses',
+					'1anio':'Reporte 1 año'}
+			$("#tituloReporte").text(titulos[cual]);
+			$("#numVisitasPagina").text("Visitas totales a mi página: "+ response.data.sumVisitasTotales);
+			$("#numPersonasUnicas").text("Número de personas únicas qué la visitaron:"+ response.data.sumVisitasUnicas);
+		
+			
+			
+			$.unblockUI();
+		}, function errorCallback(response) {
+			console.error("El error es: " + response.data);
+			$.unblockUI();
+		});	
+	}
+	/*
 	function cargarGrafica(cual, fechaInicial, fechaFinal){
 		console.debug("FechaInicial:" + fechaInicial);
 		console.debug("FechaFinal:" + fechaFinal);
@@ -65,7 +111,8 @@ angular.module("EstadisticasInfomovilApp",[])
 		            shadow: false,
 		            gridLineColor: '#666666',
 		            gridLineWidth: 2
-		        },*/
+		        }, // /*//* //
+					
 		        legend: {
 		            show: true,
 		            placement: 'inside'
@@ -133,9 +180,7 @@ angular.module("EstadisticasInfomovilApp",[])
 		}, function errorCallback(response) {
 			console.error("El error es: " + response.data);
 			$.unblockUI();
-		});
-		
-		
+		});	
 	}
-
+    */
 });

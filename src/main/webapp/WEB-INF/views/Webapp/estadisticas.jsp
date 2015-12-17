@@ -100,6 +100,6 @@
 	
 	<!-- /Botón Nuevo Estilo -->
 	<tiles:insertDefinition name="estadisticas"/>
-
+	
 </body>
 </html>

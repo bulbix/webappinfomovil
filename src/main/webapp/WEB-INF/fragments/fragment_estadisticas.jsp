@@ -54,58 +54,70 @@
 	 
 
 	 <div class="col-xs-4 col-sm-2" style="padding-top:10px;">
-	<button ng-click="estadistica.generarGrafica('1anio')" class="btn  btn-outlineDisable">1 A<span class="hidden-xs">ño</span></button>
+	<button ng-click="estadistica.generarGrafica('1anio')" class="btn  btn-outlineGreen">1 A<span class="hidden-xs">ño</span></button>
 	</div>
 	 <div class="col-xs-4 col-sm-2" style="padding-top:10px;">
-	<button class="btn  btn-outlineGreen">+ <span class="hidden-xs">Periodo</span></button>
-	</div>
 	
-	</div>
 	  
-  
-  <div id="personalizado" style="display:none" >
+   	<c:choose>
+		<c:when test="${sessionScope.planProSession == 'SI' }">
+		    <button class="btn  btn-outlineGreen" ng-click="estadistica.ngclick()">+ <span class="hidden-xs">Periodo</span></button>
+			</div>
+			</div>
+		  	<div id="personalizado" >
+	    </c:when>    
+	    <c:otherwise>
+		    <button class="btn  btn-outlineDisable" disabled>+ <span class="hidden-xs">Periodo</span></button>
+			</div>
+			</div>
+		    <div id="personalizado">
+	    </c:otherwise>
+	</c:choose>
+	
   <div class="clearfix"></div>
   <div class="divider"></div>
-  <hr/>
+ 
+    <div id="dinamicoPersonalizado">
+     <hr/>
 		<div class="col-xs-12 text-left textBlack">Reporte personalizado</div>
 		<div class="col-xs-12 reset">
-		<div class="col-xs-12 col-sm-5"><div class="form-group" style="padding-bottom:10px;">
-    <label class="sr-only" for="fechaInicial">Del</label>
-    <div class="input-group">
-      <div class="input-group-addon">Del</div>
-      <input type="text" ng-model="estadistica.fechaInicial" class="form-control datepicker" >
+			<div class="col-xs-12 col-sm-5"><div class="form-group" style="padding-bottom:10px;">
+				 <label class="sr-only" for="fechaInicial">Del</label>
+				 <div class="input-group">
+				 	<div class="input-group-addon">Del</div>
+				      <input type="text" ng-model="estadistica.fechaInicial" class="form-control datepicker" >
+				 </div>
+		    </div>
+	    </div>
+		<div class="col-xs-12 col-sm-5">
+			<div class="form-group" style="padding-bottom:10px;">
+				 <label class="sr-only" for="fechaFinal">al</label>
+				 <div class="input-group">
+				      <div class="input-group-addon">al</div>
+				      <input type="text" ng-model="estadistica.fechaFinal" class="form-control datepicker" >
+				 </div>
+		    </div>
+		</div>
+		<div class="col-xs-12 col-sm-2">
+			<button type="submit" class="btn btn-purple txtBtnEditor" ng-click="estadistica.generarGrafica('personalizado')">Generar</button>
+		</div>
+    </div> <!-- Fin del dinamico personalizado -->
     
-    </div>
-  </div>
-  </div>
-  <div class="col-xs-12 col-sm-5">
-  <div class="form-group" style="padding-bottom:10px;">
-    <label class="sr-only" for="fechaFinal">al</label>
-    <div class="input-group">
-      <div class="input-group-addon">al</div>
-      <input type="text" ng-model="estadistica.fechaFinal" class="form-control datepicker" >
-    
-    </div>
-  </div></div>
-  
-  <div class="col-xs-12 col-sm-2">
-  <button type="submit" class="btn btn-purple txtBtnEditor" ng-click="estadistica.generarGrafica('personalizado')">Generar</button>
-  </div></div>
-  </div>
-  
+ </div>
+ </div>
   <div class="clearfix"></div>
-    <hr/>
-    
-    <h3 class="col-xs-12 textBlack"><strong>Reporte 1 semana</strong></h3> 
-   <div class="col-xs-12 textBlack"><strong>Visitas totales a mi página x</strong></div> 
-  <div class="col-xs-12 textBlack"><strong>Número de personas únicas qué la visitaron x</strong> </div> 
- 
+  
+  <hr/>
+  	  <h3 class="col-xs-12 textBlack"><strong id="tituloReporte">Reporte 1 semana</strong></h3> 
+ 	  <div class="col-xs-12 textBlack"><strong id="numVisitasPagina"></strong></div> 
+ 	  <div class="col-xs-12 textBlack"><strong id="numPersonasUnicas"></strong> </div> 
  
   <hr/>
+
   <!-- se ocultará la gráfica :( -->
   <div class="clearfix"></div>
    <div class="divider"></div>
- 	<div id="chart" ></div> 
+ 	<!--  <div id="chart" ></div>  CON ESTO APARECE LA GRAFICA --> 
 	
 </div>
 					
@@ -115,7 +127,7 @@
 					</div>
 					</div>
 					</div>
-					</div>
+				
 					
 	
 <script src="<c:url value="/resources/webapp/js/jquery.min.js"/>"></script>
@@ -130,8 +142,10 @@
 <script src="<c:url value="/resources/webapp/js/bower_components/jqplot/plugins/jqplot.canvasAxisTickRenderer.min.js"/>"></script>
 <script src="<c:url value="/resources/webapp/js/bower_components/jqplot/plugins/jqplot.highlighter.min.js"/>"></script>
 <script src="<c:url value="/resources/webapp/js/bower_components/jqplot/plugins/jqplot.cursor.min.js"/>"></script>
-
-
-<script src="<c:url value="/resources/js/webapp/util.js"/>"></script>
+<script src="<c:url value="/resources/webapp/js/bootstrap.js"/>"></script>
+<script src="<c:url value="/resources/webapp/js/bootstrap-dialog.min.js"/>"></script>
 <script src="<c:url value="/resources/js/webapp/estadisticas.js"/>"></script>
+<script src="<c:url value="/resources/js/webapp/InfomovilServices/mensajesService.js"/>"></script>
+<script src="<c:url value="/resources/js/webapp/util.js"/>"></script>
+
 

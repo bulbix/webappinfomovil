@@ -9,4 +9,4 @@ function generarMensaje(mensaje){
 			width: '400px'
 		}
 	});	
-}
+};
