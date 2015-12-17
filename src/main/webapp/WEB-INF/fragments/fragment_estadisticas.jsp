@@ -114,7 +114,7 @@
  							width="30" height="30" alt="Infomovil"
  							src="<c:url value="/resources/webapp/images/fa-reportes.png"/>" /><strong id="tituloReporte">Reporte 1 semana</strong></h3> 
  	  <div class="col-xs-12 textWhite" id="numVisitasPagina"></div> 
- 	  <div class="col-xs-12 textWhite" id="numPersonasUnicas"></div> 
+ 	 <!--  <div class="col-xs-12 textWhite" id="numPersonasUnicas"></div>  -->
  
   <hr/>
 
