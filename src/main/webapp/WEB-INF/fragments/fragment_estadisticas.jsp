@@ -17,7 +17,9 @@
 				<div class="container">
 					<!-- page header -->
 					<div class="page-header text-center navEditorSFl">
-					<h3 class="text-left textBlack " style="font-weight: 300; margin:5px 0 0 0;">Mis Reportes</h3><hr/>
+					<h3 class="text-left textBlack" style="font-weight: 300; margin:5px 0 0 0;">Mis Reportes - Visitas de mi página web</h3>
+					
+					<hr/>
 					<div>
 					
 					
@@ -45,10 +47,11 @@
 	</div>
 	
 	</div>
-	  <div class="clearfix"></div>
-  <div class="divider"></div>
+	  
   
-  <div id="personalizado" style="display:none">
+  <div id="personalizado" >
+  <div class="clearfix"></div>
+  <div class="divider"></div>
   <hr/>
 		<div class="col-xs-12 text-left textBlack">Reporte personalizado</div>
 		<div class="col-xs-12 reset">
@@ -77,10 +80,15 @@
   </div>
   
   <div class="clearfix"></div>
+    <hr/>
+   <div class="col-xs-12">Visitas totales a mi página x</div> 
+  <div class="col-xs-12">Número de personas únicas qué la visitaron x </div> 
   <div class="divider"></div>
-  
+ 
   <hr/>
-	<div id="chart" ></div>
+  
+
+ 	<div id="chart" ></div> 
 	
 </div>
 					
