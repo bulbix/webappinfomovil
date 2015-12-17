@@ -113,12 +113,12 @@
 						<!-- page header <input type="text" id="checkedRedimir" value=""/>-->
 						<div class="page-header text-center" style="border-radius:15px; background:url(<c:url value="/resources/webapp/images/bgWhTra.png"/>); padding:10px;">						
 						
-						<div id="divPublicarPromo" style="display:none">			
-							<button type="button" class="btn btn-outlineGreen pull-right textWhite navEditorLato" id="btnPublicar" style="margin: 5px 0;">
+						<div ng-show="volantesCtrl.muestraPublicarPromo">			
+							<button type="button" class="btn btn-outlineGreen pull-right textWhite navEditorLato" ng-click="volantesCtrl.publicarVolante()" style="margin: 5px 0;">
 								<img width="20" height="20" alt="Infomovil" src="<c:url value="/resources/webapp/images/successWhite.png"/>"/>
 								<span class="hidden-xs">Publicar</span>
 							</button>
-							<button type="button" class="btn btn-outlineGreen pull-right textWhite navEditorLato"  id="btnVistaPrevia" style="margin: 5px 8px 0 0;">
+							<button type="button" class="btn btn-outlineGreen pull-right textWhite navEditorLato"  ng-click="volantesCtrl.vistaPrevia()" style="margin: 5px 8px 0 0;">
 								<img width="20" height="20" alt="Infomovil"	src="<c:url value="/resources/webapp/images/fa-eye.png"/>"/> 
 								<span class="hidden-xs">Vista Previa</span>
 							</button>
@@ -131,12 +131,12 @@
 				
 				<div class="clear"></div>
 					
-					<div id="divPromoPublicada" style="display:none">	  
+					<div ng-show="volantesCtrl.muestraPromoPublicada">	  
 					<button type="button" class="btn btn-outlineGreen pull-right textWhite navEditorLato"  id="btnGuardar" style="margin: 5px 0 0 0;">
 						<img width="20" height="20" alt="Infomovil" src="<c:url value="/resources/webapp/images/successWhite.png"/>"/> 
 						<span class="hidden-xs">Guardar</span>
 					</button>		 
-					<button type="button" class="btn btn-outlineGreen pull-right textWhite navEditorLato" id="btnEliminar" style="margin: 5px 5px 0 0;">
+					<button type="button" class="btn btn-outlineGreen pull-right textWhite navEditorLato" ng-click="volantesCtrl.eliminarVolante()" style="margin: 5px 5px 0 0;">
 						<img width="20" height="20" alt="Infomovil" src="<c:url value="/resources/webapp/images/trash.png"/>"/> 
 						<span class="hidden-xs">Eliminar</span>
 					</button> 
@@ -169,17 +169,68 @@
 				<div class="clear"></div>
 	
 				<hr/>
+				<div ng-if="volantesCtrl.volantes.length == 0">
+					<div>
+						<div ng-hide="true" id="idPromocion"></div>
+						<div ng-hide="true" id="urlPromocion"></div>
+								
+						<div class="col-xs-12 col-sm-12 col-md-6">
+							<div class="form-group text-left textBlack">
+			    				<label for="exampleInputEmail1">Nombre de la promoción:</label>
+			    				<input type="text" class="form-control" id="nombrePromo" value="">
+		 	 				</div>
+		 	 				<div class="divider"></div>
+		 	 					
+		 	 				<div class="form-group text-left textBlack">
+					    		<label for="exampleInputPassword1" class="text-left">Descripción de la promoción:</label>
+					    		<textarea rows="4"  cols="50"  name="descPromo" id="descPromo" class="form-control"></textarea>
+					  		</div>
+					  			
+					  		<div class="divider"></div>
+					  		<div class="form-group text-left textBlack">
+					     		<label for="exampleInputEmail1" class="text-left">Información adicional:</label>
+					    		<textarea rows="4"  cols="50" class="form-control" name="infoadiPromo" id="infoadiPromo" ></textarea>
+						 	</div>	
+		 	 			</div>
+						<div class="col-xs-12 col-sm-6">
+								
+							<div class="divider hidden-md hidden-lg"></div>
+								<div class="form-group text-left textBlack">
+					    			<label for="exampleInputEmail1" class="text-left">Vigencia al:</label>
+					    			<input type="text" class="form-control3" id="datepicker" value="">
+					  			</div>
+					  			<div class="clearfix"></div>
+					  			<div class="divider"></div>
+								<div class="form-group text-left textBlack">
+					  				<label class="text-left">¿Cómo redimir?:</label>
+					   				<div class="radio">
+										<div class="clear"></div>
+						  				<label><input type="radio" name="radioPromo" id="r1" value="No especificado" class="radioPromo" ng-checked="volantesCtrl.noEspecificado">No especificado</label>
+									</div>
+									<div class="radio">
+						  				<label><input type="radio" name="radioPromo" id="r2" value="Llámanos" class="radioPromo" ng-checked="volantesCtrl.llamanos">Llámanos</label>
+									</div>		  
+						  			<div class="radio">
+						  				<label><input type="radio" name="radioPromo" id="r3" value="Envíanos un e-mail" class="radioPromo" ng-checked="volantesCtrl.enviaEmail">Envíanos un e-mail</label>
+									</div>		
+						  			<div class="radio">
+						  				<label><input type="radio" name="radioPromo" id="r4" value="Visítanos" class="radioPromo" ng-checked="volantesCtrl.visitanos">Visítanos</label>
+									</div>	    
+					  			</div>	
+							</div>
+						</div>
+				</div>
 				
 				<div ng-repeat="item in volantesCtrl.volantes" style="margin-top:10px;">
 				
-					<div>
+					<div id="volante">
 						<div ng-hide="true" id="idPromocion">{{item.idOffer}}</div>
 						<div ng-hide="true" id="urlPromocion">{{item.urlPromocion}}</div>
 								
 						<div class="col-xs-12 col-sm-12 col-md-6">
 							<div class="form-group text-left textBlack">
 			    				<label for="exampleInputEmail1">Nombre de la promoción:</label>
-			    				<input type="text" class="form-control" name="nombrePromo" id="nombrePromo" value="{{item.titleOffer}}">
+			    				<input type="text" class="form-control" id="nombrePromo" value="{{item.titleOffer}}">
 		 	 				</div>
 		 	 				<div class="divider"></div>
 		 	 					
@@ -207,23 +258,29 @@
 					  				<label class="text-left">¿Cómo redimir?:</label>
 					   				<div class="radio">
 										<div class="clear"></div>
-						  				<label><input type="radio" name="radioPromo" id="r1" value="No especificado" class="radioPromo" checked="checked">No especificado</label>
+						  				<label><input type="radio" name="radioPromo" id="r1" value="No especificado" class="radioPromo" ng-checked="volantesCtrl.noEspecificado">No especificado</label>
 									</div>
 									<div class="radio">
-						  				<label><input type="radio" name="radioPromo" id="r2" value="Llámanos" class="radioPromo">Llámanos</label>
+						  				<label><input type="radio" name="radioPromo" id="r2" value="Llámanos" class="radioPromo" ng-checked="volantesCtrl.llamanos">Llámanos</label>
 									</div>		  
 						  			<div class="radio">
-						  				<label><input type="radio" name="radioPromo" id="r3" value="Envíanos un e-mail" class="radioPromo">Envíanos un e-mail</label>
+						  				<label><input type="radio" name="radioPromo" id="r3" value="Envíanos un e-mail" class="radioPromo" ng-checked="volantesCtrl.enviaEmail">Envíanos un e-mail</label>
 									</div>		
 						  			<div class="radio">
-						  				<label><input type="radio" name="radioPromo" id="r4" value="Visítanos" class="radioPromo">Visítanos</label>
+						  				<label><input type="radio" name="radioPromo" id="r4" value="Visítanos" class="radioPromo" ng-checked="volantesCtrl.visitanos">Visítanos</label>
 									</div>	    
 					  			</div>	
 							</div>
 						</div>
+						
+						<div ng-hide="true" id="valRadio">{{item.redeemOffer}}</div>
+						<div ng-hide="true" id="tempPromocion">{{item.idOffer}}</div>
+						<div ng-hide="true" id="tempNombrePromo">{{item.idOffer}}</div>
+						<div ng-hide="true" id="tempBanderaPromo">{{item.idOffer}}</div>
+
 	 	 		</div>		
 	 	 		<div class="clear"></div>
-				<div id="divError" style="color:red;"></div>			
+				<div id="divError" ng-show="volantesCtrl.muestraDivError" style="color:red;"></div>			
 				</div>
 						
 						
@@ -260,10 +317,6 @@
 		<script src="<c:url value="/resources/js/webapp/promociones.js"/>"></script>
 		<script src="<c:url value="/resources/js/webapp/volantes.js"/>"></script>
 		<script src="<c:url value="/resources/js/webapp/InfomovilServices/mensajesService.js"/>"></script>
-		<input type="hidden" id="valRadio" value="${redeemOffer}"/>
-		<input type="hidden" id="tempPromocion" value="${templatePromo}">
-		<input type="hidden" id="tempNombrePromo" value="${nombreSitio}">
-		<input type="hidden" id="tempBanderaPromo" value="${banderaCanal}">
 
 		<script>
 			$(document).ready(function(){
@@ -272,7 +325,7 @@
 		</script>
 		<c:choose>
 			   		<c:when test="${idOffer > 0}">
-			   				<script>$(document).ready(function() {	$("#divPublicarPromo").hide(); $("#divPromoPublicada").show(); $activaRadio($("#valRadio").val()); }); </script>
+			   				<script>$(document).ready(function() {	$("#divPublicarPromo").hide(); $("#divPromoPublicada").show(); $activaRadio($("#valRadio").text()); }); </script>
 			   		</c:when>
 			  		<c:otherwise>
 				  			<script>$("#divPublicarPromo").show(); $("#divPromoPublicada").hide();  </script>

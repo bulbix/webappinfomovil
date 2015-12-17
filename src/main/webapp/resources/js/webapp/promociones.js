@@ -27,11 +27,13 @@ var pathPDF =  "";
 var pathJPG = "";
 var $urlVPPromoImprimir = $("#urlVistaPreviaPromoImprimir");
 $(function() {
-	$datepickerPromo.datepicker({ dateFormat: 'dd/mm/yy' });	
+	$("#datepicker").datepicker({ dateFormat: 'dd/mm/yy' });
+	console.log("$datepickerPromo");
 });
 	
-$datepickerPromo.click(function() {
+$("#datepicker").click(function() {
 	var date = $datepickerPromo.datepicker({ dateFormat: 'dd/mm/yy' }).val();
+	console.log("click $datepickerPromo");
 });
 
 var $getPromociones = function() {
