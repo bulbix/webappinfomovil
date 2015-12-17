@@ -17,7 +17,7 @@
 				<div class="container ">
 					<!-- page header -->
 					<div class="page-header text-center navEditorSFl form-control">
-					<h3 class="text-left textBlack" style="font-weight: 300; margin:5px 0 0 0;">Mis Reportes - Visitas de mi página web</h3>
+					<h3 class="text-left textWhite" style="font-weight: 300; margin:5px 0 0 0;">Mis Reportes - Visitas de mi página web</h3>
 					
 					<hr/>
 					<div>
@@ -80,7 +80,7 @@
       <div class="clearfix"></div>
   <div class="divider"></div>
      <hr/>
-		<div class="col-xs-12 text-left textBlack">Reporte personalizado</div>
+		<div class="col-xs-12 text-left textWhite">Reporte personalizado</div>
 		
 		<div class="col-xs-12 reset">
 			<div class="col-xs-12 col-sm-5"><div class="form-group" style="padding-bottom:10px;">
@@ -110,11 +110,11 @@
   <div class="clearfix"></div>
   
   <hr/>
-  	  <h3 class="col-xs-12 textBlack "><img
+  	  <h3 class="col-xs-12 textWhite "><img
  							width="30" height="30" alt="Infomovil"
- 							src="<c:url value="/resources/webapp/images/fa-reportes-bk.png"/>" /><strong id="tituloReporte">Reporte 1 semana</strong></h3> 
- 	  <div class="col-xs-12 textBlack" id="numVisitasPagina"></div> 
- 	  <div class="col-xs-12 textBlack" id="numPersonasUnicas"></div> 
+ 							src="<c:url value="/resources/webapp/images/fa-reportes.png"/>" /><strong id="tituloReporte">Reporte 1 semana</strong></h3> 
+ 	  <div class="col-xs-12 textWhite" id="numVisitasPagina"></div> 
+ 	 <!--  <div class="col-xs-12 textWhite" id="numPersonasUnicas"></div>  -->
  
   <hr/>
 

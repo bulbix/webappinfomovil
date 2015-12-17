@@ -674,10 +674,14 @@ li.ui-state-default{
 .btn-outlineDisable {
 	background: #cccccc !important;
 	height: 44px;
+	color:#fff;
 }
 
 .btn-outlineDisable a {
 	color: #fff
+}
+button.btn-outlineDisable {
+	color: #fff!important;
 }
 
 .form-control {
