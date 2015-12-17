@@ -63,13 +63,13 @@
  								class="smoothScroll ${colorTexto}">
  							Mis productos <img
  							width="20" height="20" alt="Infomovil"
- 							src="<c:url value="/resources/webapp/images/fa-messages${ extensionImg }.png"/>" /></a></li>
+ 							src="<c:url value="/resources/webapp/images/fa-products${ extensionImg }.png"/>" /></a></li>
  							<li>
 <a href="<c:url value="/infomovil/estadisticas"></c:url>" 
  								class="smoothScroll ${colorTexto}">
  							Mis reportes <img
  							width="20" height="20" alt="Infomovil"
- 							src="<c:url value="/resources/webapp/images/fa-messages${ extensionImg }.png"/>" /></a></li>
+ 							src="<c:url value="/resources/webapp/images/fa-reportes${ extensionImg }.png"/>" /></a></li>
 									
  							<li>
 <a href="#" data-toggle="modal" data-target="#myModalMsjPN"

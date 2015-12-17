@@ -17,7 +17,9 @@
 				<div class="container">
 					<!-- page header -->
 					<div class="page-header text-center navEditorSFl">
-					<h3 class="text-left textBlack " style="font-weight: 300; margin:5px 0 0 0;">Mis Reportes</h3><hr/>
+					<h3 class="text-left textBlack" style="font-weight: 300; margin:5px 0 0 0;">Mis Reportes - Visitas de mi página web</h3>
+					
+					<hr/>
 					<div>
 					
 					
@@ -30,7 +32,7 @@
 	 
 	 <div class="col-xs-4 col-sm-2" style="padding-top:10px;">
 	<button ng-click="estadistica.generarGrafica('1semana')" class="btn  btn-outlineGreen">1 S<span class="hidden-xs">emana</span></button></div>
-	
+
 	 <c:choose>
     <c:when test="${sessionScope.planProSession == 'SI' }">
     	<div class="col-xs-4 col-sm-2" style="padding-top:10px;">
@@ -42,27 +44,28 @@
     </c:when>    
     <c:otherwise>
        <div class="col-xs-4 col-sm-2" style="padding-top:10px;">
-        <button ng-click="estadistica.generarGrafica('sinplanpro')" class="btn  btn-outlineGreen" >1 M<span class="hidden-xs">es</span></button></div>
+        <button ng-click="estadistica.generarGrafica('sinplanpro')" class="btn  btn-outlineDisable" >1 M<span class="hidden-xs">es</span></button></div>
 		 <div class="col-xs-4 col-sm-2" style="padding-top:10px;">
-		<button ng-click="estadistica.generarGrafica('sinplanpro')" class="btn  btn-outlineGreen" >3 M<span class="hidden-xs">eses</span></button></div>
+		<button ng-click="estadistica.generarGrafica('sinplanpro')" class="btn  btn-outlineDisable" >3 M<span class="hidden-xs">eses</span></button></div>
 		 <div class="col-xs-4 col-sm-2" style="padding-top:10px;">
-		<button ng-click="estadistica.generarGrafica('sinplanpro')" class="btn  btn-outlineGreen" >6 M<span class="hidden-xs">eses</span></button></div>
+		<button ng-click="estadistica.generarGrafica('sinplanpro')" class="btn  btn-outlineDisable" >6 M<span class="hidden-xs">eses</span></button></div>
     </c:otherwise>
 </c:choose>
 	 
-	
+
 	 <div class="col-xs-4 col-sm-2" style="padding-top:10px;">
-	<button ng-click="estadistica.generarGrafica('1anio')" class="btn  btn-outlineGreen">1 A<span class="hidden-xs">ño</span></button>
+	<button ng-click="estadistica.generarGrafica('1anio')" class="btn  btn-outlineDisable">1 A<span class="hidden-xs">ño</span></button>
 	</div>
 	 <div class="col-xs-4 col-sm-2" style="padding-top:10px;">
 	<button class="btn  btn-outlineGreen">+ <span class="hidden-xs">Periodo</span></button>
 	</div>
 	
 	</div>
-	  <div class="clearfix"></div>
-  <div class="divider"></div>
+	  
   
-  <div id="personalizado" style="display:none">
+  <div id="personalizado" style="display:none" >
+  <div class="clearfix"></div>
+  <div class="divider"></div>
   <hr/>
 		<div class="col-xs-12 text-left textBlack">Reporte personalizado</div>
 		<div class="col-xs-12 reset">
@@ -91,10 +94,18 @@
   </div>
   
   <div class="clearfix"></div>
-  <div class="divider"></div>
-  
+    <hr/>
+    
+    <h3 class="col-xs-12 textBlack"><strong>Reporte 1 semana</strong></h3> 
+   <div class="col-xs-12 textBlack"><strong>Visitas totales a mi página x</strong></div> 
+  <div class="col-xs-12 textBlack"><strong>Número de personas únicas qué la visitaron x</strong> </div> 
+ 
+ 
   <hr/>
-	<div id="chart" ></div>
+  <!-- se ocultará la gráfica :( -->
+  <div class="clearfix"></div>
+   <div class="divider"></div>
+ 	<div id="chart" ></div> 
 	
 </div>
 					
