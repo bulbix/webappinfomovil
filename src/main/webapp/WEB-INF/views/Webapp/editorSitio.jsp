@@ -64,6 +64,8 @@
  							Mis productos <img
  							width="20" height="20" alt="Infomovil"
  							src="<c:url value="/resources/webapp/images/fa-products${ extensionImg }.png"/>" /></a></li>
+ 							
+ 							<c:if test="${sitioWeb != 'SIN_PUBLICAR'}">
  							<li>
 <a href="<c:url value="/infomovil/estadisticas"></c:url>" 
  								class="smoothScroll ${colorTexto}">
@@ -77,6 +79,9 @@
  							Mis mensajes <!-- <span class="badge">4</span> --> <img
  							width="20" height="20" alt="Infomovil"
  							src="<c:url value="/resources/webapp/images/fa-messages${ extensionImg }.png"/>" /></a></li>
+ 							</c:if>
+ 							
+ 							
 <!-- 							<li class="botonDesPublicar borderInicial" style="display: none;" ><a -->
 <!-- 								href="#" data-toggle="modal" data-target="#myModalMaps" -->
 <%-- 								class="smoothScroll ${colorTexto}"> --%>
