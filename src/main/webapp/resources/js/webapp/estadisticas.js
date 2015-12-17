@@ -1,5 +1,5 @@
 angular.module("EstadisticasInfomovilApp",[])
-.controller("EstadisticasCtrl", function($scope, $http) {
+.controller("EstadisticasCtrl", function($scope, $http, MensajesService) {
 	var estadistica = this;
 	$.jqplot.config.enablePlugins = true;
 	$.jqplot._noToImageButton = true;
@@ -13,9 +13,16 @@ angular.module("EstadisticasInfomovilApp",[])
 	}
 	
 	estadistica.generarGrafica = function(cual){
-		cargarGrafica(cual, estadistica.fechaInicial, estadistica.fechaFinal);
+		if( cual == 'sinplanpro')
+			llamarmodalComprar();
+		else
+			cargarGrafica(cual, estadistica.fechaInicial, estadistica.fechaFinal);
 	}
 
+	function llamarmodalComprar(){
+		MensajesService.cerrarBlockUIGeneral(Estadisticas , "Compra plan pro") ;
+	};
+	
 	function cargarGrafica(cual, fechaInicial, fechaFinal){
 		console.debug("FechaInicial:" + fechaInicial);
 		console.debug("FechaFinal:" + fechaFinal);

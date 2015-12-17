@@ -31,12 +31,26 @@
 	 <div class="col-xs-4 col-sm-2" style="padding-top:10px;">
 	<button ng-click="estadistica.generarGrafica('1semana')" class="btn  btn-outlineGreen">1 S<span class="hidden-xs">emana</span></button></div>
 	
-	 <div class="col-xs-4 col-sm-2" style="padding-top:10px;">
-	<button ng-click="estadistica.generarGrafica('1mes')" class="btn  btn-outlineGreen">1 M<span class="hidden-xs">es</span></button></div>
-	 <div class="col-xs-4 col-sm-2" style="padding-top:10px;">
-	<button ng-click="estadistica.generarGrafica('3meses')" class="btn  btn-outlineGreen">3 M<span class="hidden-xs">eses</span></button></div>
-	 <div class="col-xs-4 col-sm-2" style="padding-top:10px;">
-	<button ng-click="estadistica.generarGrafica('6meses')" class="btn  btn-outlineGreen">6 M<span class="hidden-xs">eses</span></button></div>
+	 <c:choose>
+    <c:when test="${sessionScope.planProSession == 'SI' }">
+    	<div class="col-xs-4 col-sm-2" style="padding-top:10px;">
+        <button ng-click="estadistica.generarGrafica('1mes')" class="btn  btn-outlineGreen">1 M<span class="hidden-xs">es</span></button></div>
+		 <div class="col-xs-4 col-sm-2" style="padding-top:10px;">
+		<button ng-click="estadistica.generarGrafica('3meses')" class="btn  btn-outlineGreen">3 M<span class="hidden-xs">eses</span></button></div>
+		 <div class="col-xs-4 col-sm-2" style="padding-top:10px;">
+		<button ng-click="estadistica.generarGrafica('6meses')" class="btn  btn-outlineGreen">6 M<span class="hidden-xs">eses</span></button></div>
+    </c:when>    
+    <c:otherwise>
+       <div class="col-xs-4 col-sm-2" style="padding-top:10px;">
+        <button ng-click="estadistica.generarGrafica('sinplanpro')" class="btn  btn-outlineGreen" >1 M<span class="hidden-xs">es</span></button></div>
+		 <div class="col-xs-4 col-sm-2" style="padding-top:10px;">
+		<button ng-click="estadistica.generarGrafica('sinplanpro')" class="btn  btn-outlineGreen" >3 M<span class="hidden-xs">eses</span></button></div>
+		 <div class="col-xs-4 col-sm-2" style="padding-top:10px;">
+		<button ng-click="estadistica.generarGrafica('sinplanpro')" class="btn  btn-outlineGreen" >6 M<span class="hidden-xs">eses</span></button></div>
+    </c:otherwise>
+</c:choose>
+	 
+	
 	 <div class="col-xs-4 col-sm-2" style="padding-top:10px;">
 	<button ng-click="estadistica.generarGrafica('1anio')" class="btn  btn-outlineGreen">1 A<span class="hidden-xs">ño</span></button>
 	</div>
