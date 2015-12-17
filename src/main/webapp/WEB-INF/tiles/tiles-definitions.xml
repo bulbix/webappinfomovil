@@ -5,6 +5,8 @@
 <tiles-definitions>
 <definition name="head" template="/WEB-INF/fragments/head.jsp" />
 	<definition name="navGen" template="/WEB-INF/fragments/navGen.jsp" />
+	<definition name="navLogin" template="/WEB-INF/fragments/navLogin.jsp" />
+	<definition name="navReg" template="/WEB-INF/fragments/navReg.jsp" />
 	<definition name="jsCore" template="/WEB-INF/fragments/jsCore.jsp" />
 	<definition name="jsScripts" template="/WEB-INF/fragments/jsScripts.jsp" />
 	<definition name="footer" template="/WEB-INF/fragments/footer.jsp" />

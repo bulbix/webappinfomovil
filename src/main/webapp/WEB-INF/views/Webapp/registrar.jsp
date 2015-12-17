@@ -8,7 +8,7 @@
 <body role="document" data-spy="scroll" data-target=".navbar" data-offset="75" id="page-top">
 
 <!-- Fixed navbar -->
-<tiles:insertDefinition name="navGen"></tiles:insertDefinition>
+<tiles:insertDefinition name="navReg"></tiles:insertDefinition>
 <!-- / Fixed navbar --> 
 
 <!--Theme showcase -->
