@@ -583,6 +583,7 @@
 		value="${ galeriaImagenes }">
 	<input type="hidden" id="planPro" name="planPro" value="${ planPro }">
 
+	<c:set var="planProSession" value="${ planPro }" scope="session"/>
 	<c:set var="plantillaUsuario" value="${ template }" scope="session"/>
 	<c:set var="canalUsuario" value="${ canalUsuario }" scope="session"/>
 	<c:set var="claseCss" value="${ claseCss }" scope="session"/>

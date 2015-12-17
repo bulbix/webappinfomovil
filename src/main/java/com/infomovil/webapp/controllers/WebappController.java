@@ -750,6 +750,7 @@ public class WebappController
 				model.put("contacto", contacto);
 				model.put("infoAdicional", infoAdicional);
 
+				 Util.getCurrentSession().setAttribute("planPro", planPro);
 			    Util.getCurrentSession().setAttribute("canal", canal);
 			    Util.getCurrentSession().setAttribute("template", template);
 			    Util.getCurrentSession().setAttribute("statusCta", status);
