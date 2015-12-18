@@ -118,12 +118,12 @@
 								<img width="20" height="20" alt="Infomovil" src="<c:url value="/resources/webapp/images/successWhite.png"/>"/>
 								<span class="hidden-xs">Publicar</span>
 							</button>
-							<button type="button" class="btn btn-outlineGreen pull-right textWhite navEditorLato"  ng-click="volantesCtrl.vistaPrevia()" style="margin: 5px 8px 0 0;">
+							<button type="button" class="btn btn-outlineGreen pull-right textWhite navEditorLato" ng-click="volantesCtrl.vistaPrevia()" style="margin: 5px 8px 0 0;">
 								<img width="20" height="20" alt="Infomovil"	src="<c:url value="/resources/webapp/images/fa-eye.png"/>"/> 
 								<span class="hidden-xs">Vista Previa</span>
 							</button>
 					
-							<button type="button" class="btn btn-outlineGreen pull-right textWhite navEditorLato" id="btnEstiloTemplates" onClick="muestraTemplatePromo()" style="margin: 5px 8px 0 0;">
+							<button type="button" class="btn btn-outlineGreen pull-right textWhite navEditorLato" style="margin: 5px 8px 0 0;" data-toggle="modal" data-target="#myModalTempPromo">
 								<img width="20" height="20" alt="Infomovil"	src="<c:url value="/resources/webapp/images/fa-templates.png"/>"/> 
 								<span class="hidden-xs">Estilo</span>
 							</button>
@@ -132,7 +132,7 @@
 				<div class="clear"></div>
 					
 					<div ng-show="volantesCtrl.muestraPromoPublicada">	  
-					<button type="button" class="btn btn-outlineGreen pull-right textWhite navEditorLato"  id="btnGuardar" style="margin: 5px 0 0 0;">
+					<button type="button" class="btn btn-outlineGreen pull-right textWhite navEditorLato" ng-click="volantesCtrl.guardarPromocion()" style="margin: 5px 0 0 0;">
 						<img width="20" height="20" alt="Infomovil" src="<c:url value="/resources/webapp/images/successWhite.png"/>"/> 
 						<span class="hidden-xs">Guardar</span>
 					</button>		 
@@ -140,15 +140,15 @@
 						<img width="20" height="20" alt="Infomovil" src="<c:url value="/resources/webapp/images/trash.png"/>"/> 
 						<span class="hidden-xs">Eliminar</span>
 					</button> 
-					<button type="button" class="btn btn-outlineGreen pull-right textWhite navEditorLato"  id="btnVerPromo" style="margin: 5px 5px 0 0;">
+					<button type="button" class="btn btn-outlineGreen pull-right textWhite navEditorLato" ng-click="volantesCtrl.verPromoActiva()" style="margin: 5px 5px 0 0;">
 						<img width="20" height="20" alt="Infomovil" src="<c:url value="/resources/webapp/images/fa-eye.png"/>"/> 
 						<span class="hidden-xs">Ver</span>
 					</button>		 
-					<button type="button" class="btn btn-outlineGreen pull-right textWhite navEditorLato"  id="btnCompartir" style="margin: 5px 5px 0 0;">
+					<button type="button" class="btn btn-outlineGreen pull-right textWhite navEditorLato" ng-click="volantesCtrl.compartirPromo()" style="margin: 5px 5px 0 0;">
 						<img width="20" height="20" alt="Infomovil" src="<c:url value="/resources/webapp/images/fa-compartir.png"/>" /> 
 						<span class="hidden-xs">Compartir</span>
 					</button>					
-					<button type="button" class="btn btn-outlineGreen pull-right textWhite navEditorLato"  id="btnEstiloTemplates" data-toggle="modal"
+					<button type="button" class="btn btn-outlineGreen pull-right textWhite navEditorLato" id="btnEstiloTemplates" data-toggle="modal"
 						data-target="#myModalTempPromo" style="margin: 5px 8px 0 0;">
 						<img width="20" height="20" alt="Infomovil"	src="<c:url value="/resources/webapp/images/fa-templates.png"/>"/> 
 						<span class="hidden-xs">Estilo</span>
@@ -197,7 +197,7 @@
 							<div class="divider hidden-md hidden-lg"></div>
 								<div class="form-group text-left textBlack">
 					    			<label for="exampleInputEmail1" class="text-left">Vigencia al:</label>
-					    			<input type="text" class="form-control3" id="datepicker" value="">
+					    			<input type="text" class="form-control3 datepicker" id="datepicker" value="">
 					  			</div>
 					  			<div class="clearfix"></div>
 					  			<div class="divider"></div>
@@ -205,16 +205,16 @@
 					  				<label class="text-left">¿Cómo redimir?:</label>
 					   				<div class="radio">
 										<div class="clear"></div>
-						  				<label><input type="radio" name="radioPromo" id="r1" value="No especificado" class="radioPromo" ng-checked="volantesCtrl.noEspecificado">No especificado</label>
+						  				<label><input type="radio" name="radioPromo" id="r1" value="No especificado" class="radioPromo" ng-checked="1==1">No especificado</label>
 									</div>
 									<div class="radio">
-						  				<label><input type="radio" name="radioPromo" id="r2" value="Llámanos" class="radioPromo" ng-checked="volantesCtrl.llamanos">Llámanos</label>
+						  				<label><input type="radio" name="radioPromo" id="r2" value="Llámanos" class="radioPromo">Llámanos</label>
 									</div>		  
 						  			<div class="radio">
-						  				<label><input type="radio" name="radioPromo" id="r3" value="Envíanos un e-mail" class="radioPromo" ng-checked="volantesCtrl.enviaEmail">Envíanos un e-mail</label>
+						  				<label><input type="radio" name="radioPromo" id="r3" value="Envíanos un e-mail" class="radioPromo">Envíanos un e-mail</label>
 									</div>		
 						  			<div class="radio">
-						  				<label><input type="radio" name="radioPromo" id="r4" value="Visítanos" class="radioPromo" ng-checked="volantesCtrl.visitanos">Visítanos</label>
+						  				<label><input type="radio" name="radioPromo" id="r4" value="Visítanos" class="radioPromo">Visítanos</label>
 									</div>	    
 					  			</div>	
 							</div>
@@ -226,6 +226,7 @@
 					<div id="volante">
 						<div ng-hide="true" id="idPromocion">{{item.idOffer}}</div>
 						<div ng-hide="true" id="urlPromocion">{{item.urlPromocion}}</div>
+						<div ng-hide="true" id="tempPromocion">{{item.template}}</div>
 								
 						<div class="col-xs-12 col-sm-12 col-md-6">
 							<div class="form-group text-left textBlack">
@@ -250,31 +251,30 @@
 							<div class="divider hidden-md hidden-lg"></div>
 								<div class="form-group text-left textBlack">
 					    			<label for="exampleInputEmail1" class="text-left">Vigencia al:</label>
-					    			<input type="text" class="form-control3" id="datepicker" value="{{item.endDateOffer}}">
+					    			<input type="text" class="form-control3 datepicker" id="datepicker" value="{{item.endDateOffer}}">
 					  			</div>
 					  			<div class="clearfix"></div>
 					  			<div class="divider"></div>
 								<div class="form-group text-left textBlack">
-					  				<label class="text-left">¿Cómo redimir?:</label>
+					  				<label class="text-left">¿Cómo redimir?: {{item.redeemOffer}}</label>
 					   				<div class="radio">
 										<div class="clear"></div>
-						  				<label><input type="radio" name="radioPromo" id="r1" value="No especificado" class="radioPromo" ng-checked="volantesCtrl.noEspecificado">No especificado</label>
+						  				<label><input type="radio" name="radioPromo" id="r1" value="No especificado" class="radioPromo" ng-checked="item.redeemOffer == 'No especificado'">No especificado</label>
 									</div>
 									<div class="radio">
-						  				<label><input type="radio" name="radioPromo" id="r2" value="Llámanos" class="radioPromo" ng-checked="volantesCtrl.llamanos">Llámanos</label>
+						  				<label><input type="radio" name="radioPromo" id="r2" value="Llámanos" class="radioPromo" ng-checked="item.redeemOffer == 'Llámanos'">Llámanos</label>
 									</div>		  
 						  			<div class="radio">
-						  				<label><input type="radio" name="radioPromo" id="r3" value="Envíanos un e-mail" class="radioPromo" ng-checked="volantesCtrl.enviaEmail">Envíanos un e-mail</label>
+						  				<label><input type="radio" name="radioPromo" id="r3" value="Envíanos un e-mail" class="radioPromo" ng-checked="item.redeemOffer == 'Envíanos un e-mail'">Envíanos un e-mail</label>
 									</div>		
 						  			<div class="radio">
-						  				<label><input type="radio" name="radioPromo" id="r4" value="Visítanos" class="radioPromo" ng-checked="volantesCtrl.visitanos">Visítanos</label>
+						  				<label><input type="radio" name="radioPromo" id="r4" value="Visítanos" class="radioPromo" ng-checked="item.redeemOffer == 'Visítanos'">Visítanos</label>
 									</div>	    
 					  			</div>	
 							</div>
 						</div>
 						
 						<div ng-hide="true" id="valRadio">{{item.redeemOffer}}</div>
-						<div ng-hide="true" id="tempPromocion">{{item.idOffer}}</div>
 						<div ng-hide="true" id="tempNombrePromo">{{item.idOffer}}</div>
 						<div ng-hide="true" id="tempBanderaPromo">{{item.idOffer}}</div>
 
@@ -282,10 +282,25 @@
 	 	 		<div class="clear"></div>
 				<div id="divError" ng-show="volantesCtrl.muestraDivError" style="color:red;"></div>			
 				</div>
-						
-						
+
 						<!-- /page header -->
 						<br /> <br />
+						<div id='myModalTempPromo' class='modal fade' tabindex='-1' role='dialog' aria-labelledby='myModalLabel' aria-hidden='true'>
+							<div class='modal-dialog modal-md'>
+								<div class='modal-content'>
+									<div class='modal-header'>
+										<button type='button' class='close textBlack pull-left' data-dismiss='modal' aria-label='Close'>
+											<span aria-hidden='true'>&times;</span>
+										</button> 
+										<button type='button' class='btn btn-purple pull-right txtBtnEditor' 
+											ng-click="volantesCtrl.actualizaPlantillaVolante()">Aplicar estilo
+										</button>
+									</div>
+									<div class='modal-body contenidoSlider'></div>
+									<div class='modal-footer'></div>
+								</div>
+							</div>
+						</div>
 					</div>
 				</div>
 				<!--/Theme showcase -->
@@ -293,7 +308,9 @@
 		</div>
 		<!-- /Formulario Promociones -->
 		<!--MODAL TEMPLATES-->
-	<div id="modalTempPromo"></div>
+<!-- 	<div id="modalTempPromo"></div> -->
+
+
 	<!--/MODAL TEMPLATES-->
 		
 		<!-- Bootstrap core JavaScript
@@ -314,15 +331,11 @@
 				 
 		<script src="<c:url value="/resources/webapp/js/datepicker/jquery.ui.core.js"/>"></script>
 		<script src="<c:url value="/resources/webapp/js/datepicker/jquery.ui.datepicker.js"/>"></script>
-		<script src="<c:url value="/resources/js/webapp/promociones.js"/>"></script>
+<%-- 		<script src="<c:url value="/resources/js/webapp/promociones.js"/>"></script> --%>
 		<script src="<c:url value="/resources/js/webapp/volantes.js"/>"></script>
+		<script src="<c:url value="/resources/js/webapp/InfomovilServices/volantesService.js"/>"></script>
 		<script src="<c:url value="/resources/js/webapp/InfomovilServices/mensajesService.js"/>"></script>
 
-		<script>
-			$(document).ready(function(){
-				generarSliderPromo();
-				});
-		</script>
 		<c:choose>
 			   		<c:when test="${idOffer > 0}">
 			   				<script>$(document).ready(function() {	$("#divPublicarPromo").hide(); $("#divPromoPublicada").show(); $activaRadio($("#valRadio").text()); }); </script>

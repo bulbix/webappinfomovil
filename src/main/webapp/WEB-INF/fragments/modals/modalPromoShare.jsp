@@ -20,7 +20,7 @@
 		
 		
 		<div class="divider"></div>
-			<div class="textGreen text-center">${sessionScope.urlPromo} <span id="urlPromo"></span></div>
+			<div class="textGreen text-center">${sessionScope.urlPromo} <div id="urlPromo">{{urlPromoShare}}</div></div>
 			<div class="divider"></div>
 			<div class="col-xs-12">
 			<div class="col-xs-1 hidden-xs">&nbsp;</div>

@@ -26,7 +26,7 @@ var oldstr = "";
 var pathPDF =  "";
 var pathJPG = "";
 var $urlVPPromoImprimir = $("#urlVistaPreviaPromoImprimir");
-$(function() {
+/*$(function() {
 	$("#datepicker").datepicker({ dateFormat: 'dd/mm/yy' });
 	console.log("$datepickerPromo");
 });
@@ -34,7 +34,7 @@ $(function() {
 $("#datepicker").click(function() {
 	var date = $datepickerPromo.datepicker({ dateFormat: 'dd/mm/yy' }).val();
 	console.log("click $datepickerPromo");
-});
+});*/
 
 var $getPromociones = function() {
 	
@@ -262,7 +262,7 @@ var $eliminarPromocion = function() {
 };
 
 var $compartirPromocion = function() {	
-	$('#myModalPromoShare').modal();		
+	//$('#myModalPromoShare').modal();		
 };
 
 var $verPromocionActiva = function() {
@@ -437,7 +437,7 @@ $(document).ready(function() {
 				
 });
 
-function generarSliderPromo()
+/*function generarSliderPromo()
 {
 	var urlRecurso = "";
 	var slider = "";
@@ -486,7 +486,7 @@ function generarSliderPromo()
 	$(document).on('click','.bx-pager-link', function() {
 		indicePromocion = slider.getCurrentSlide();
 		});	
-}
+}*/
 
 function actualizaEstiloPromo() {
 
@@ -559,9 +559,9 @@ function guardarEventoGA(nombreEvento) {
 	ga('send', 'event', 'promo', nombreEvento, nombreSitio, banderaCanal);
 }
 
-function muestraTemplatePromo() {
+/*function muestraTemplatePromo() {
 	$("#myModalTempPromo").modal();
-};
+};*/
 
 
 var $vistaPreviaImprimir = function() {
@@ -583,8 +583,6 @@ var $vistaPreviaImprimir = function() {
 		$.unblockUI();
 		$("#myModalPromoImprimir").modal();
     };
-	
-		
 };
 
 var imprimirPromocionWeb = function(){	
@@ -647,12 +645,7 @@ var descargarPDF = function(){
     link.href = pathPDF;
     link.click();
     ga('send', 'event', 'promo', 'promo-guardarPDF', $("#tempNombrePromo").val(), $("#tempBanderaPromo").val());
-	
-	
-	    
-
    
-    
 };
 
 var descargarJPG = function(){
