@@ -58,7 +58,7 @@ app.factory('HorarioService', function($http, MensajesService) {
     				$('#Sabado1').empty().append('<option selected="selected">'+ response.data.listaHorario[5].inicio +'</option><option value="00:00">00:00</option>' + resphoras);
     				$('#Sabado2').empty().append('<option selected="selected">'+ response.data.listaHorario[5].cierre +'</option><option value="00:00">00:00</option>' + resphoras);
     				$('#Domingo1').empty().append('<option selected="selected">'+ response.data.listaHorario[6].inicio +'</option><option value="00:00">00:00</option>' + resphoras);
-    				$('#Domingo2').empty().append('<option selected="selected">'+ response.data.listaHorario[6].cierre +'</option><option value="00:00">00:00</option>' + resphoras);
+    				$('#Domingo2').empty().append('<option selected="selected">'+ response.data.listaHorario[6].cierre +'</option>' + resphoras);
     				
     			}else if(response.data.codeError == "-100"){
     				console.log("Esta en el -100 de getHorarios: " +  response.data.codeError);
