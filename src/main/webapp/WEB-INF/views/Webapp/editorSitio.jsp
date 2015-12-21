@@ -490,13 +490,13 @@
 	</tiles:insertDefinition>
 	<!-- 		<!--/MODAL HORARIO-->
 
-	<!-- 		<!--MODAL MULTIPRODUCTO-->
+	<!-- 		<!--MODAL MULTIPRODUCTO
 	<tiles:insertDefinition name="modalGen">
 		<tiles:putAttribute name="idModal" value="myModalMultiproducto" />
 		<tiles:putAttribute name="tamanioModal" value='"modal-dialog modal-md"'/>
 		<c:set var="fragmentName" value="modalMultiproducto" scope="request" />
 	</tiles:insertDefinition>
-	<!-- 		<!--/MODAL MULTIPRODUCTO-->
+	 		<!--/MODAL MULTIPRODUCTO-->
 		
 	<!-- Scroll to Top Button (Only visible on small and extra-small screen sizes) -->
 	<div class="scroll-top page-scroll visible-xs visble-sm">
