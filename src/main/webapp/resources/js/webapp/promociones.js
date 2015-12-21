@@ -637,6 +637,7 @@ var imprimirPromocionEnPantalla = function(datahtml){
 var descargarPDF = function(){
 	
 	pathPDF = $("#urlVistaPreviaPromoImprimir").attr('src');
+	console.log("pathPDF: " + pathPDF);
 	pathPDF = pathPDF.replace("html", "pdf");
 	//window.open(pathPDF, '_blank', 'fullscreen=yes');
 //	console.log("guardarEventoGA: " + nombreEvento + ", nombreSitio: " + nombreSitio + ", banderaCanal: " + banderaCanal);
@@ -651,6 +652,7 @@ var descargarPDF = function(){
 var descargarJPG = function(){
 	
 	pathJPG = $("#urlVistaPreviaPromoImprimir").attr('src');
+	console.log("pathJPG: " + pathJPG);
 	pathJPG = pathJPG.replace("html", "jpg");
 	//window.open(pathJPG, '_blank', 'fullscreen=yes');
 //	console.log("guardarEventoGA: " + nombreEvento + ", nombreSitio: " + nombreSitio + ", banderaCanal: " + banderaCanal);
