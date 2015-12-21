@@ -13,7 +13,7 @@
 <!-- / Fixed navbar --> 
 
 <!--Theme showcase -->
-<div class="theme-showcaseApp" role="main" id="intro"> 
+<div class="theme-showcaseInicio" role="main" id="intro"> 
       
       <!-- Main jumbotron for a primary marketing message or call to action -->
 	<div class=" text-center">
@@ -24,7 +24,7 @@
     
 		<c:if test="${not empty mensaje}">
 			<div class="errorblock col-xs-12 text-center textBlack">
-				<h5><img src="<c:url value="/resources/webapp/images/fa-informacion.png"/>" width="40" height="40" alt="${mensaje}" /> ${mensaje} </h5>
+				<p><img src="<c:url value="/resources/webapp/images/fa-informacion.png"/>" width="20" height="20" alt="${mensaje}" /> ${mensaje} </p>
 	        </div>
 		</c:if>
 	    

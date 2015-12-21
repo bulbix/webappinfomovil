@@ -36,14 +36,25 @@
 					<span class="navbar-brand" id="logoGral" style="display: none;">
 						<img src="<c:url value="/resources/webapp/images/apple-touch-icon-57x57.png"/>" width="50" height="50" alt="Infomovil" />
 					</span> 
-					<span class="marLeft navEditor ${colorTexto}">Modo edición</span>
+					<span class="marLeft navEditor ${colorTexto}">Mis Volantes</span>
 					<!-- /LOGO INFOMOVIL - REGISTRO GENERAL-->
 				</div>
 				<div id="navbar" class="navbar-collapse collapse text-right">
 					<ul class="nav navbar-nav navbar-right">							
+						
 						<li>
-							<a href="<c:url value="/infomovil/editarSitio"></c:url>" class="smoothScroll ${colorTexto}">
-								<img width="20" height="20" alt="Infomovil" src="<c:url value="/resources/webapp/images/fa-back${ extensionImg }.png"/>"/>Editor								 
+							<a href="" class="smoothScroll ${colorTexto}">
+								<img width="20" height="20" alt="Infomovil" src="<c:url value="/resources/webapp/images/fa-user${ extensionImg }.png"/>"/>Mi Cuenta								 
+							</a>
+						</li>
+						<li>
+							<a href="" class="smoothScroll ${colorTexto}">
+								<img width="20" height="20" alt="Infomovil" src="<c:url value="/resources/webapp/images/fa-pencil${ extensionImg }.png"/>"/>Mi Contenido								 
+							</a>
+						</li>
+						<li>
+							<a href="" class="smoothScroll ${colorTexto}">
+								<img width="20" height="20" alt="Infomovil" src="<c:url value="/resources/webapp/images/fa-back${ extensionImg }.png"/>"/>Mi Página Web								 
 							</a>
 						</li>
 						<li>
