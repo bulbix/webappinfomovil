@@ -6,7 +6,7 @@ var indice = 0;
 	
 $(document).ready(function() {
 	$("#txtTelefono").numeric({negative : false});
-	$('#myModalMultiproducto').removeData("modal").modal({ backdrop: 'static', keyboard: false })
+	//$('#myModalMultiproducto').removeData("modal").modal({ backdrop: 'static', keyboard: false })
 });
 
 $("#btnVolante").on('click', function() {

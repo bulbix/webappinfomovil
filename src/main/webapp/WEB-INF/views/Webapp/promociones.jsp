@@ -285,10 +285,13 @@
 							</div>
 						</div>
 						
-						<div ng-hide="true" id="valRadio">{{item.redeemOffer}}</div>
-						<div ng-hide="true" id="tempNombrePromo">{{item.idOffer}}</div>
-						<div ng-hide="true" id="tempBanderaPromo">{{item.idOffer}}</div>
-
+						<tiles:insertDefinition name="modalGen">
+							<tiles:putAttribute name="idModal" value="myModalPromoShare" />
+							<tiles:putAttribute name="tamanioModal"
+								value='"modal-dialog modal-md"' />
+							<c:set var="fragmentName" value="modalPromoShare" scope="request" />
+							<c:set var="urlPromo" value="{{item.urlPromocion}}" scope="session"/>
+						</tiles:insertDefinition>
 	 	 		</div>		
 	 	 		<div class="clear"></div>
 				<div id="divError" ng-show="volantesCtrl.muestraDivError" style="color:red;"></div>			
@@ -318,11 +321,6 @@
 			</div>
 		</div>
 		<!-- /Formulario Promociones -->
-		<!--MODAL TEMPLATES-->
-<!-- 	<div id="modalTempPromo"></div> -->
-
-
-	<!--/MODAL TEMPLATES-->
 		
 		<!-- Bootstrap core JavaScript
 		    ================================================== -->
@@ -342,7 +340,7 @@
 				 
 		<script src="<c:url value="/resources/webapp/js/datepicker/jquery.ui.core.js"/>"></script>
 		<script src="<c:url value="/resources/webapp/js/datepicker/jquery.ui.datepicker.js"/>"></script>
-<%-- 		<script src="<c:url value="/resources/js/webapp/promociones.js"/>"></script> --%>
+		<script src="<c:url value="/resources/js/webapp/promociones.js"/>"></script>
 		<script src="<c:url value="/resources/js/webapp/volantes.js"/>"></script>
 		<script src="<c:url value="/resources/js/webapp/InfomovilServices/volantesService.js"/>"></script>
 		<script src="<c:url value="/resources/js/webapp/InfomovilServices/mensajesService.js"/>"></script>
@@ -367,15 +365,7 @@
 			<tiles:putAttribute name="tamanioModal"
 				value='"modal-dialog modal-lg"' />
 			<c:set var="fragmentName" value="modalPromoVPI" scope="request" />
-		</tiles:insertDefinition>
-		<tiles:insertDefinition name="modalGen">
-			<tiles:putAttribute name="idModal" value="myModalPromoShare" />
-			<tiles:putAttribute name="tamanioModal"
-				value='"modal-dialog modal-md"' />
-			<c:set var="fragmentName" value="modalPromoShare" scope="request" />
-			<c:set var="urlPromo" value="${urlPromocion}" scope="session"/>
-		</tiles:insertDefinition>
-		
+		</tiles:insertDefinition>		
 		<tiles:insertDefinition name="modalGen">
 			<tiles:putAttribute name="idModal" value="myModalPromoExito" />
 			<tiles:putAttribute name="tamanioModal"

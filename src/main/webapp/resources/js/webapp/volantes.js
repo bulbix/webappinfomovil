@@ -1,4 +1,7 @@
-$(".datepicker").datepicker({ dateFormat: 'dd/mm/yy' });
+$(function() {
+	$(".datepicker").datepicker({ dateFormat: 'dd/mm/yy' });
+	console.log("$datepickerPromo");
+});
 
 var app = angular.module('InfomovilVolantes', []);
 
