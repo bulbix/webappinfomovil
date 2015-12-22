@@ -12,7 +12,7 @@
 <!-- / Fixed navbar --> 
 
 <!--Theme showcase -->
-<div class="theme-showcaseApp" role="main" id="intro"> 
+<div class="theme-showcaseReg" role="main" id="intro"> 
       
       <!-- Main jumbotron for a primary marketing message or call to action -->
     <div class=" text-center">
@@ -22,9 +22,9 @@
     <div class="container">
     
 		<form id="formRegistro" action="registrar" method="post">
-        
+        <div class="col-xs-12 col-sm-12 col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3">
 	        <!--email-->
-	        <div class="form-group col-xs-12 col-sm-12 col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3" >
+	        <div class="form-group " >
 	        	<div class="control-group">
 	            	<label class="control-label hidden-xs"></label>
 	            	<div class="controls">
@@ -34,9 +34,9 @@
 	          	</div>
 	        </div>
 	        <!--email--> 
-        
+        <p class="help-block text-left hidden-sm hidden-md hidden-lg" style="max-width:280px; margin:10px auto;"></p>
 	        <!--password-->
-	        <div class="form-group col-xs-12 col-sm-12 col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3" >
+	        <div class="form-group " >
 	        	<div class="control-group">
 	            	<label class="control-label hidden-xs"></label>
 		            <div class="controls">
@@ -48,9 +48,9 @@
 	          </div>
 	       </div>
 	        <!--password-->
-        
+        <p class="help-block text-left hidden-sm hidden-md hidden-lg" style="max-width:280px; margin:10px auto;"></p>
 	         <!--confirm password-->
-	       <div class="form-group col-xs-12 col-sm-12 col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3">
+	       <div class="form-group">
 	       		<div class="control-group">
 	            	<label class="control-label hidden-xs"></label>
 	            	<div class="controls">
@@ -61,8 +61,9 @@
 	          	</div>
 	       </div>
 	        <!--confirm password-->
+	        <p class="help-block text-left hidden-sm hidden-md hidden-lg" style="max-width:280px; margin:10px auto;"></p>
 	         <!--codigo-->
-	        <div class="form-group col-xs-12 col-sm-12 col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3">
+	        <div class="form-group">
 	        	<div class="control-group">
 	            	<label class="control-label hidden-xs"></label>
 	            	<div class="controls">
@@ -72,10 +73,11 @@
 	          	</div>
 	        </div>
 	        <!--codigo--> 
-               
-	        <div class="form-group col-xs-12 col-sm-12 col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3">
+               <p class="help-block text-left hidden-sm hidden-md hidden-lg" style="max-width:280px; margin:10px auto;"></p>
+	        <div class="form-group">
 	        	<div class="divider"></div>
 	            	<input type="submit" value="&iexcl;Reg&iacute;strame!" class="btn btn-default btn-outlineGreen  text-center textWhite" style="max-width:280px; min-width:280px; margin:0 auto"/>
+	        </div>
 	        </div>
 	        <div class="clear"></div>
 	        

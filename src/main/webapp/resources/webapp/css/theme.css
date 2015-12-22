@@ -10,6 +10,8 @@ p { font-size: 1.3em; line-height: 200%; }
 theme-showcaseApp > p > .btn { margin: 5px 0; }
 .theme-showcaseApp .navbar .container { width: auto; }
 .theme-showcaseApp { /*margin: -10px -5px 0 0;*/  padding: 2% 0 15% 0; }
+.theme-showcaseInicio { /*margin: -10px -5px 0 0;*/  padding: 15% 0 15% 0; }
+.theme-showcaseReg { /*margin: -10px -5px 0 0;*/  padding: 5% 0 15% 0; }
 .theme-showcaseError > p > .btn { margin: 5px 0; }
 .theme-showcaseError .navbar .container { width: auto; }
 .theme-showcaseError { margin: -10px -5px 0 0; padding: 2% 0 10% 0; }
@@ -68,7 +70,7 @@ p { font-size: 110%; }
 }
 .btn-outlineGreen{ background:#2fa399 !important; height:44px;}
 .btn-outlineGreen a{ color:#fff}
-.form-control{ background:url(../images/lineWht.png) repeat; border:2px solid #fff;border-radius:8px; font-size:16px !important; padding:10px 0;}
+.form-control{ background:url(../images/lineWht.png) repeat; border:2px solid #fff;border-radius:8px; font-size:16px !important; padding:10px;}
 
 ::-webkit-input-placeholder {
    color: #555 !important;
