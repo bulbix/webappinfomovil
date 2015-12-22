@@ -31,7 +31,7 @@ app.controller('MapCtrl', function($http, ubicacionFactory) {
 	var hashUser = null;
 	var tipoProducto = null;
 	var locId = 0;
-	var offerId = null;
+	var offerId = 0;
 
 	console.debug("Inciando MapaCtrl");
 	//google.maps.event.addDomListener(window, 'load', initialize);
@@ -50,9 +50,9 @@ app.controller('MapCtrl', function($http, ubicacionFactory) {
 		}
 		else{
 			var resp = requestServer("POST",contextPath + "/infomovil/getPromociones",{});
-			
-			if (resp != undefined)
+			if (resp[0] != undefined){
 				offerId = resp[0].idOffer;
+			}
 			
 			console.debug("OfferId " + offerId)
 			params = {offerId:offerId,hashUser:hashUser};
@@ -204,9 +204,6 @@ app.controller('MapCtrl', function($http, ubicacionFactory) {
 			data={locId:locId,offerId:offerId,hashUser:hashUser,latitude:latitud,
 				longitude:longitud,direccion:direccion}
 		}
-		
-		console.debug(url)
-		console.debug(data)
 
 		$http({
 			method: 'POST',
