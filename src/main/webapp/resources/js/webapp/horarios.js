@@ -1,6 +1,11 @@
 app.controller('HorariosControllerLlamarModal', function($scope, $http, HorarioService,MensajesService) {
 	
 	var llamarModalhorarios = this;
+	
+	llamarModalhorarios.producto = "volante";
+	llamarModalhorarios.vista = "misVolantes";
+	llamarModalhorarios.tabla = "multiproducto_dev";
+	
 	var resphoras = HorarioService.getHoras();
 	$("#Lunes1").append( resphoras );
 	$("#Lunes2").append( resphoras );
@@ -19,6 +24,32 @@ app.controller('HorariosControllerLlamarModal', function($scope, $http, HorarioS
 	
 	llamarModalhorarios.abrirModalHorarios = function(){
 		HorarioService.abrirModalHorarios();
+	};
+	
+	llamarModalhorarios.actualizaProducto = function() {
+		console.log("actualiza producto");
+		llamarModalhorarios.mensaje = "Actualizando producto...";
+    	MensajesService.abrirBlockUIGeneral(llamarModalhorarios.mensaje);
+    	
+    	$http({
+    		method: 'POST',
+    		url: contextPath + "/infomovil/actualizaProducto",
+    		params: {
+    			tableName: llamarModalhorarios.tabla,
+    			producto: llamarModalhorarios.producto
+    		}		  
+    	}).then(function successCallback(response) {
+    		
+    		llamarModalhorarios.mensaje = "";
+    		MensajesService.cerrarBlockUIGeneral("Volantes", llamarModalhorarios.mensaje);
+    		window.location = contextPath + "/infomovil/" + llamarModalhorarios.vista;
+    		
+    	}, function errorCallback(response) {
+    		
+    		volantesCtrl.mensaje = "No se ha podido actualizar el producto";
+    		MensajesService.cerrarBlockUIGeneral("Editor sitio", llamarModalhorarios.mensaje);
+    		
+    	});
 	};
 	
 });
