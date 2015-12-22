@@ -437,7 +437,7 @@ $(document).ready(function() {
 				
 });
 
-/*function generarSliderPromo()
+function generarSliderPromo()
 {
 	var urlRecurso = "";
 	var slider = "";
@@ -486,7 +486,7 @@ $(document).ready(function() {
 	$(document).on('click','.bx-pager-link', function() {
 		indicePromocion = slider.getCurrentSlide();
 		});	
-}*/
+}
 
 function actualizaEstiloPromo() {
 
