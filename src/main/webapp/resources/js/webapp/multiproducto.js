@@ -1,23 +1,49 @@
 var app = angular.module('InfomovilAppMultiproducto', []);
 
 app.controller("MultiproductoController", function ($scope, $http, MensajesService) {
-	var multiproductoCtrl = this;
 	
-
+	var multiproductoCtrl = this;
+	multiproductoCtrl.producto = "web";
+	multiproductoCtrl.vista = "editarSitio";
+	multiproductoCtrl.tabla = "multiproducto_dev";
+	multiproductoCtrl.mensaje = "";
+	
 	multiproductoCtrl.paginaWeb = function() {
-		console.log("Entro en pagina WEb: ", contextPath);
-		window.location = contextPath + '/infomovil/editarSitio';
+
+		multiproductoCtrl.producto = "web";
+		multiproductoCtrl.vista = "editarSitio";
+		multiproductoCtrl.actualizaProducto();
 	};
 		
 	multiproductoCtrl.volanteWeb = function() {
-		console.log("Entro a volante web: ", contextPath);
-		window.location = contextPath + '/infomovil/misVolantes';
+
+		multiproductoCtrl.producto = "volante";
+		multiproductoCtrl.vista = "misVolantes";
+		multiproductoCtrl.actualizaProducto();
 	};
-	
-	
-	
-	
-	
-	
+
+	multiproductoCtrl.actualizaProducto = function() {
+		
+    	$http({
+    		method: 'POST',
+    		url: contextPath + "/infomovil/actualizaProducto",
+    		params: {
+    			tableName: multiproductoCtrl.tabla,
+    			producto: multiproductoCtrl.producto
+    		}		  
+    	}).then(function successCallback(response) {
+    		
+    		multiproductoCtrl.mensaje = "";
+    		MensajesService.cerrarBlockUIGeneral("Multiproducto", multiproductoCtrl.mensaje);
+    		window.location = contextPath + "/infomovil/" + multiproductoCtrl.vista;
+    		
+    	}, function errorCallback(response) {
+    		
+    		multiproductoCtrl.mensaje = "No se ha podido actualizar el contacto";
+    		MensajesService.cerrarBlockUIGeneral("Multiproducto", multiproductoCtrl.mensaje);
+    		
+    	});
+    	
+	};
 	
 });
