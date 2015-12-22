@@ -169,13 +169,16 @@ public class Util {
 			return true;
 		}
 		catch(Exception e){
-			logger.error(e);
+			logger.error("", e);
 			return false;
 		}
 	}
 	
-	public static Map<String,Object> getItemsDynamo(String tableName, String email){
-		try{
+	public static Map<String,Object> getItemsDynamo(String tableName, String email) {
+		
+		try
+		{
+			Item item = null;
 			AmazonDynamoDBClient client = new AmazonDynamoDBClient(
 					new BasicAWSCredentials(KEY_AMAZON_S3,SECRET_AMAZON_S3));
 			Region usWest2 = Region.getRegion(Regions.US_WEST_2);
@@ -192,7 +195,8 @@ public class Util {
 	            .withValueMap(valueMap);
 
 	        ItemCollection<QueryOutcome> items = table.query(querySpec);
-	        Item item = items.iterator().next();
+	        item = items.iterator().next();
+	        
 	        return item.asMap();
 		}
         catch(Exception e){

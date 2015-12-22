@@ -25,6 +25,7 @@
 			<div class="col-xs-12 textBlack text-left ">
 			<ul class="col-xs-6 col-xs-offset-3 text-left textBlack"><li>Más Fotos</li>
 			<li>Video</li>
+			<li>Reportes completos</li>
 			<li>Sin publicidad</li>
 			</ul></div>
 
@@ -42,6 +43,7 @@
 <ul class="text-left textBlack"><li>Más Fotos</li>
 <li>
 Video</li>
+<li>Reportes completos</li>
 <li>
 Sin publicidad</li>
 <li>

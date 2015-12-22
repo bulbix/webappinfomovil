@@ -8,10 +8,6 @@
 			<span aria-hidden="true">&times;</span>
 		</button>
 		<p class="modal-title textBlack"><strong>Compartir</strong></p>
-		
-<!-- 		<button type="button" class="btn btn-purple text-center col-xs-12 col-sm-12 col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3" data-dismiss="modal"> -->
-<!-- 			<strong>Regresar</strong> -->
-<!-- 		</button> -->
 	</div>
 	<div class="modal-body ">
 		<div class="col-xs-12">
@@ -20,7 +16,7 @@
 		
 		
 		<div class="divider"></div>
-			<div class="textGreen text-center">${sessionScope.urlPromo} <span id="urlPromo"></span></div>
+			<div class="textGreen text-center">${sessionScope.urlPromo} <div id="urlPromo">{{urlPromoShare}}</div></div>
 			<div class="divider"></div>
 			<div class="col-xs-12">
 			<div class="col-xs-1 hidden-xs">&nbsp;</div>

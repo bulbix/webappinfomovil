@@ -277,7 +277,10 @@ a.textBlack {
 .borderFin {
 	border: none
 }
-
+.notesTime{
+	font-size:.8em;
+	
+}
 .borderInicial {
 	border: none
 }
@@ -671,10 +674,14 @@ li.ui-state-default{
 .btn-outlineDisable {
 	background: #cccccc !important;
 	height: 44px;
+	color:#fff;
 }
 
 .btn-outlineDisable a {
 	color: #fff
+}
+button.btn-outlineDisable {
+	color: #fff!important;
 }
 
 .form-control {
@@ -1090,7 +1097,11 @@ textarea {
 	height: auto;
 	display: block;
 }
-
+.bgDarkTrans{
+	background: url(../images/lineDarkBold.png) repeat;
+	background-size: auto;
+	
+}
 #publicarSitio {
 	height: 240px;
 }

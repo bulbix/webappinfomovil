@@ -9,9 +9,11 @@ import java.util.Map;
 
 import org.apache.commons.collections4.CollectionUtils;
 import org.apache.commons.collections4.Transformer;
+import org.apache.commons.validator.routines.EmailValidator;
 import org.apache.log4j.Logger;
 import org.joda.time.LocalDate;
 import org.json.simple.JSONArray;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -19,22 +21,37 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
+
 import com.infomovil.webapp.clientWsInfomovil.ClientWsInfomovil;
 import com.infomovil.webapp.clientWsInfomovil.RespuestaVO;
 import com.infomovil.webapp.clientWsInfomovil.VisitasVO;
+import com.infomovil.webapp.model.ModeloWebApp;
 import com.infomovil.webapp.util.Util;
 
 @Controller
 public class EstadisticasController {
-	
 	private ClientWsInfomovil wsCliente = new ClientWsInfomovil();
 	private static final Logger log = Logger.getLogger(EstadisticasController.class);
 	
 	@RequestMapping(value = "/infomovil/estadisticas", method = {RequestMethod.GET})
-	public String estadisticas(Model model){
-		model.addAttribute("fechaInicial", LocalDate.now().minusWeeks(1).toString("dd/MM/yyyy"));
-		model.addAttribute("fechaFinal", LocalDate.now().toString("dd/MM/yyyy"));
-		return  "Webapp/estadisticas";
+	public ModelAndView estadisticas(Model model){
+		HashMap<String, Object> models = new HashMap<String, Object>();
+		String nombreUsuario = "";
+		
+	
+		if (Util.getCurrentSession().getAttribute("nombreUsuario") != null)
+     	{
+     		if (!(EmailValidator.getInstance().isValid(Util.getCurrentSession().getAttribute("nombreUsuario").toString())))
+     			nombreUsuario = Util.getCurrentSession().getAttribute("nombreUsuario").toString();
+     	}
+		//model.addAttribute("fechaInicial", LocalDate.now().minusWeeks(1).toString("dd/MM/yyyy"));
+		//model.addAttribute("fechaFinal", LocalDate.now().toString("dd/MM/yyyy"));
+		
+		models.put("fechaInicial", LocalDate.now().minusWeeks(1).toString("dd/MM/yyyy"));
+		models.put("fechaFinal", LocalDate.now().toString("dd/MM/yyyy"));
+		models.put("nombreUsuario", nombreUsuario);
+		return new ModelAndView("Webapp/estadisticas", models);
 	}
 	
 	@RequestMapping(value = "/infomovil/insertMensaje", method = {RequestMethod.GET})

@@ -2,7 +2,7 @@
 .jqplot-target {
     position: relative;
     color: #666666;
-    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+   /* font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;*/
     font-size: 1em;
 /*    height: 300px;
     width: 400px;*/
@@ -23,6 +23,7 @@
 
 .jqplot-yaxis {
     margin-right: 10px;
+    color:#fff
 }
 
 .jqplot-y2axis, .jqplot-y3axis, .jqplot-y4axis, .jqplot-y5axis, .jqplot-y6axis, .jqplot-y7axis, .jqplot-y8axis, .jqplot-y9axis, .jqplot-yMidAxis {
@@ -190,6 +191,7 @@ div.jqplot-table-legend-swatch {
     left: 0px;
     padding-bottom: 0.5em;
     font-size: 1.2em;
+    color:#fff;
 }
 
 table.jqplot-cursor-tooltip {

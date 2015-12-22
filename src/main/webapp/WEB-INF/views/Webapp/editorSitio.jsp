@@ -48,19 +48,35 @@
 			
 			
 			<div id="navbar" class="navbar-collapse collapse text-right">
-				<ul class="nav navbar-nav navbar-right" ng-controller = "HorariosControllerLlamarModal as llamarModalhorarios"   >
-
-<li>
-<a href="#" data-toggle="modal" data-target="#myModalMsjPN"
- 								class="smoothScroll ${colorTexto}"><img
- 							width="20" height="20" alt="Infomovil"
- 							src="<c:url value="/resources/webapp/images/fa-messages${ extensionImg }.png"/>" />
- 							Mis mensajes  <span class="badge">4</span></a></li>
-					<li><a href="<c:url value="/infomovil/miCuenta"></c:url>" class="smoothScroll ${colorTexto}"><img
-							width="20" height="20" alt="Infomovil"
-							src="<c:url value="/resources/webapp/images/fa-user${ extensionImg }.png"/>" />
-							Mi Cuenta </a></li>
-					<li><a href="#" data-toggle="modal"
+				<ul class="nav navbar-nav navbar-right" ng-controller = "HorariosControllerLlamarModal as llamarModalhorarios">
+					<li class="dropdown">
+						<a href="<c:url value="/infomovil/miCuenta"></c:url>" 
+							class="dropdown-toggle smoothScroll ${colorTexto}" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+							<img width="20" height="20" alt="Infomovil"	src="<c:url value="/resources/webapp/images/fa-user${ extensionImg }.png"/>" />
+							Mi Cuenta <span class="caret"></span>
+						</a>	
+							<ul class="dropdown-menu navbar-${ claseCss } ${colorTexto} text-right">
+								<li><a href="<c:url value="/infomovil/miCuenta"></c:url>"
+ 									class="smoothScroll ${colorTexto}">Mis productos 
+ 									<img width="20" height="20" alt="Infomovil"
+ 										src="<c:url value="/resources/webapp/images/fa-products${ extensionImg }.png"/>" /></a>
+ 								</li>
+ 							
+ 								<c:if test="${sitioWeb != 'SIN_PUBLICAR'}">
+ 									<li><a href="<c:url value="/infomovil/estadisticas"></c:url>" 
+ 										class="smoothScroll ${colorTexto}">Mis reportes 
+ 										<img width="20" height="20" alt="Infomovil"
+ 											src="<c:url value="/resources/webapp/images/fa-reportes${ extensionImg }.png"/>"/></a>
+ 									</li>
+									<li><a href="#" data-toggle="modal" data-target="#myModalMsjPN"
+	 									class="smoothScroll ${colorTexto}">Mis mensajes
+	 									<img width="20" height="20" alt="Infomovil"
+	 									src="<c:url value="/resources/webapp/images/fa-messages${ extensionImg }.png"/>" /></a>
+	 								</li>
+ 								</c:if>
+							</ul>
+						</li>
+						<li><a href="#" data-toggle="modal"
 						data-target="#myModalTemplates" class="smoothScroll ${colorTexto}"><img
 							width="20" height="20" alt="Infomovil"
 							src="<c:url value="/resources/webapp/images/fa-templates${ extensionImg }.png"/>" />
@@ -96,12 +112,7 @@
 									Contactos <img
 									width="20" height="20" alt="Infomovil"
 									src="<c:url value="/resources/webapp/images/fa-contactos${ extensionImg }.png"/>" /> </a></li>
-							<li class="botonDesPublicar borderFin" id="btnContLi"
-								style="display: none;"><a href="<c:url value="/infomovil/estadisticas"></c:url>"  class="smoothScroll ${colorTexto}">
-
-									Estadisticas <img
-									width="15" height="15" alt="Infomovil"
-									src="<c:url value="/resources/webapp/images/fa-contactos${ extensionImg }.png"/>" /> </a></li>
+							
 							<li class="botonDesPublicar" id="btnImgLi" style="display: none;"><a
 								href="#" class="smoothScroll ${colorTexto}"
 								ng-click="llamarModalhorarios.abrirModalHorarios()"> Horarios<img width="20" height="20"
@@ -156,9 +167,6 @@
 		</div>
 	</nav>
 	<!-- / Fixed navbar -->
-
-
-
 
 	<!-- Botón Nuevo Estilo -->
 	<div class="seccTop bgBlack">
@@ -481,14 +489,6 @@
 		<c:set var="fragmentName" value="modalHorarios" scope="request" />
 	</tiles:insertDefinition>
 	<!-- 		<!--/MODAL HORARIO-->
-
-	<!-- 		<!--MODAL MULTIPRODUCTO-->
-	<tiles:insertDefinition name="modalGen">
-		<tiles:putAttribute name="idModal" value="myModalMultiproducto" />
-		<tiles:putAttribute name="tamanioModal" value='"modal-dialog modal-md"'/>
-		<c:set var="fragmentName" value="modalMultiproducto" scope="request" />
-	</tiles:insertDefinition>
-	<!-- 		<!--/MODAL MULTIPRODUCTO-->
 		
 	<!-- Scroll to Top Button (Only visible on small and extra-small screen sizes) -->
 	<div class="scroll-top page-scroll visible-xs visble-sm">
@@ -523,6 +523,7 @@
 		value="${ galeriaImagenes }">
 	<input type="hidden" id="planPro" name="planPro" value="${ planPro }">
 
+	<c:set var="planProSession" value="${ planPro }" scope="session"/>
 	<c:set var="plantillaUsuario" value="${ template }" scope="session"/>
 	<c:set var="canalUsuario" value="${ canalUsuario }" scope="session"/>
 	<c:set var="claseCss" value="${ claseCss }" scope="session"/>

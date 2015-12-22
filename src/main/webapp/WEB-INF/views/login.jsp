@@ -12,11 +12,11 @@
 <!-- / Fixed navbar --> 
 
 <!--Theme showcase -->
-<div class="theme-showcaseApp" role="main" id="intro"> 
+<div class="theme-showcaseInicio" role="main" id="intro"> 
 
 	<c:if test="${not empty errorCta}">
 		<div class="errorblock col-xs-12 text-center textBlack">
-			<h4><img src="<c:url value="/resources/webapp/images/fa-informacion.png"/>" width="40" height="40" alt="${errorCta}" /> ${errorCta} </h4>
+			<p><img src="<c:url value="/resources/webapp/images/fa-informacion.png"/>" width="20" height="20" alt="${errorCta}" /> ${errorCta} </p>
         </div>
 	</c:if>
 		     
@@ -30,8 +30,9 @@
     <div class="">
     
     <c:if test="${not empty error}">
-		<div class="errorblock col-xs-12 text-center textWhite">
-			<img src="<c:url value="/resources/webapp/images/fa-warning.png"/>" width="15" height="15" alt="Alerta" /> ${sessionScope["SPRING_SECURITY_LAST_EXCEPTION"].message}</div>
+		<div class="errorblock col-xs-12 text-center textBlack">
+			<img src="<c:url value="/resources/webapp/images/fa-warning-bk.png"/>" width="20" height="20" alt="Alerta" /> ${sessionScope["SPRING_SECURITY_LAST_EXCEPTION"].message}</div>
+			<div class="clear"></div><div class="dividerSmall"></div>
 	</c:if>
 			
     <form name='f' action="j_spring_security_check" method='POST'>

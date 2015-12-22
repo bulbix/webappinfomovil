@@ -15,7 +15,7 @@
 /* Component containers
 ----------------------------------*/
 .ui-widget {
-	font-family: 'Lato', Arial, sans-serif;
+	/*font-family: 'Lato', Arial, sans-serif;*/
 	font-size: 1.1em/*{fsDefault}*/;
 }
 .ui-widget .ui-widget {
@@ -25,7 +25,7 @@
 .ui-widget select,
 .ui-widget textarea,
 .ui-widget button {
-	font-family: 'Lato', Arial, sans-serif;
+	/*font-family: 'Lato', Arial, sans-serif;*/
 	font-size: 1em;
 }
 .ui-widget-content {
@@ -34,7 +34,7 @@
 	color: #222222/*{fcContent}*/;
 }
 .ui-widget-content a {
-	color: #222222/*{fcContent}*/;
+	color: #222222/*{fcContent}*/ !important;
 }
 .ui-widget-header {
 	border: 1px solid #aaaaaa/*{borderColorHeader}*/;

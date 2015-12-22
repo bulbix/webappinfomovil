@@ -379,7 +379,7 @@ public class WebappController
 				Util.loginUsuario(correo, passwordDefault);
 				remember.onLoginSuccess(request, response, SecurityContextHolder.getContext().getAuthentication());
 				
-				vista = "redirect:/infomovil/editarSitio";
+				vista = "redirect:/infomovil/multiproducto";
 				redirectAttributes.addFlashAttribute("registroExitoso", "SI");
 			}
 			else
@@ -425,7 +425,7 @@ public class WebappController
 		{			
 			Util.loginUsuario(correo, contrasenia);
 			remember.onLoginSuccess(request, response, SecurityContextHolder.getContext().getAuthentication());
-			vista = "redirect:/infomovil/editarSitio";
+			vista = "redirect:/infomovil/multiproducto";
 			redirectAttributes.addFlashAttribute("registroExitoso", "SI");
 		}
 		else
@@ -451,7 +451,7 @@ public class WebappController
 			return "Webapp/registrar";
 		}
 		else{
-			return "redirect:/infomovil/editarSitio";
+			return "redirect:/infomovil/multiproducto";
 		}
 		
 	}
@@ -753,6 +753,7 @@ public class WebappController
 				model.put("infoAdicional", infoAdicional);
 				model.put("tipoPlan", tipoPlan);
 
+				 Util.getCurrentSession().setAttribute("planPro", planPro);
 			    Util.getCurrentSession().setAttribute("canal", canal);
 			    Util.getCurrentSession().setAttribute("template", template);
 			    Util.getCurrentSession().setAttribute("statusCta", status);
@@ -850,14 +851,9 @@ public class WebappController
 	}
 	
 	@RequestMapping(value = "/", method = RequestMethod.GET)
-	public String index(){
-		logger.info("redirect:/infomovil/editarSitio");
-		return "redirect:/infomovil/editarSitio";
-	}	
-	
-	
-	
-	
+	public String index() {
+		return "redirect:/infomovil/multiproducto";
+	}
 	
 	final private String passwordDefault = "banco1";
 	private static final Logger logger = Logger.getLogger(WebappController.class);
