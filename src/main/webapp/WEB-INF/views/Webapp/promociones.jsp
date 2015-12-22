@@ -16,7 +16,7 @@
 	href="<c:url value="/resources/webapp/js/datepicker/datepicker.css"/>"
 	rel="stylesheet" />
 <body role="document" data-spy="scroll" data-target=".navbar"
-	data-offset="75" id="page-top">
+	data-offset="75" id="page-top" ng-controller="VolantesController as volantesCtrl">
 
 	<!-- Fixed navbar -->
 	<nav class="navbar navbar-${ claseCss } navbar-static-top">
@@ -58,7 +58,7 @@
 							src="<c:url value="/resources/webapp/images/fa-pencil${ extensionImg }.png"/>" />
 							Mi Contenido
 					</a></li>
-					<li><a href="" class="smoothScroll ${colorTexto}"> <img
+					<li><a href="" class="smoothScroll ${colorTexto}" ng-click="volantesCtrl.actualizaProducto()"> <img
 							width="20" height="20" alt="Infomovil"
 							src="<c:url value="/resources/webapp/images/fa-compu${ extensionImg }.png"/>" />
 							Mi Página Web
@@ -93,10 +93,8 @@
 	<!-- / Fixed navbar -->
 
 	<!-- Botón Nuevo Estilo -->
-	<div ng-controller="VolantesController as volantesCtrl">
+	<div>
 		<div class="seccTop bgBlack">
-
-
 
 			<div class="col-xs-12 col-sm-12">
 				<!-- Botones sin publicar -->

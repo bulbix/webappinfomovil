@@ -24,5 +24,5 @@ app.controller("PushNotificationCtrl", function($scope, $firebaseArray) {
 			mensaje:msg.mensaje
 		})
 	}
-	
+
 });

@@ -32,16 +32,8 @@ class VolanteController {
 		return hashUsuario
 	}
 
-  
-
-		@RequestMapping(value = "/infomovil/misVolantes", method = RequestMethod.GET, produces = "application/json")
-		@ResponseBody
-		def misVolantes() {
-			
-			
-			
-			return "Webapp/misPromociones"
-		}
-
-
+	@RequestMapping(value = "/infomovil/misVolantes", method = RequestMethod.GET, produces = "application/json")
+	def misVolantes() {		
+		return "redirect:/infomovil/misPromociones"
+	}
 }

@@ -20,8 +20,37 @@ app.controller("VolantesController", function ($scope, $http, VolanteService, Me
 	volantesCtrl.enviaEmail = false;
 	volantesCtrl.visitanos = false;
 	volantesCtrl.plantillaPromo = "promo1";
+	volantesCtrl.producto = "web";
+	volantesCtrl.vista = "editarSitio";
+	volantesCtrl.tabla = "multiproducto_dev";
 	volantesCtrl.indicePromocion = 0;
 	volantesCtrl.eventoPromocion = "";
+	
+	volantesCtrl.actualizaProducto = function() {
+
+		volantesCtrl.mensaje = "Actualizando producto...";
+    	MensajesService.abrirBlockUIGeneral(volantesCtrl.mensaje);
+    	
+    	$http({
+    		method: 'POST',
+    		url: contextPath + "/infomovil/actualizaProducto",
+    		params: {
+    			tableName: volantesCtrl.tabla,
+    			producto: volantesCtrl.producto
+    		}		  
+    	}).then(function successCallback(response) {
+    		
+    		volantesCtrl.mensaje = "";
+    		MensajesService.cerrarBlockUIGeneral("Volantes", volantesCtrl.mensaje);
+    		window.location = contextPath + "/infomovil/" + volantesCtrl.vista;
+    		
+    	}, function errorCallback(response) {
+    		
+    		volantesCtrl.mensaje = "No se ha podido actualizar el producto";
+    		MensajesService.cerrarBlockUIGeneral("Volantes", volantesCtrl.mensaje);
+    		
+    	});
+	};
 	
 	volantesCtrl.vistaPrevia = function() {
 

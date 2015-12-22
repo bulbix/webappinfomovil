@@ -47,8 +47,8 @@
 			</div>
 			
 			
-			<div id="navbar" class="navbar-collapse collapse text-right">
-				<ul class="nav navbar-nav navbar-right" ng-controller = "HorariosControllerLlamarModal as llamarModalhorarios">
+			<div id="navbar" class="navbar-collapse collapse text-right" ng-controller = "HorariosControllerLlamarModal as llamarModalhorarios">
+				<ul class="nav navbar-nav navbar-right">
 					<li class="dropdown">
 						<a href="<c:url value="/infomovil/miCuenta"></c:url>" 
 							class="dropdown-toggle smoothScroll ${colorTexto}" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
@@ -125,11 +125,9 @@
 									width="20" height="20" alt="Infomovil"
 									src="<c:url value="/resources/webapp/images/ico_mas_cont${ extensionImg }.png"/>" /> </a></li>
 									
-
 						</ul></li>
-						<li class="botonDesPublicar" id="btnPromoLi" style="display: none;"><a href="<c:url value="/infomovil/misPromociones"></c:url>" class="smoothScroll ${colorTexto}"><img
-							width="20" height="20" alt="Infomovil"
-							src="<c:url value="/resources/webapp/images/fa-promo${ extensionImg }.png"/>" />
+						<li class="botonDesPublicar" id="btnPromoLi" style="display: none;"><a href="#" class="smoothScroll ${colorTexto}" ng-click="llamarModalhorarios.actualizaProducto()">
+							<img width="20" height="20" alt="Infomovil" src="<c:url value="/resources/webapp/images/fa-promo${ extensionImg }.png"/>" />
 							Mis Volantes </a></li>	
 						
 						<li class="botonDesPublicar borderFin" id="btnContLi"
