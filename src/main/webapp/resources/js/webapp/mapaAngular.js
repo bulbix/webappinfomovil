@@ -50,7 +50,10 @@ app.controller('MapCtrl', function($http, ubicacionFactory) {
 		}
 		else{
 			var resp = requestServer("POST",contextPath + "/infomovil/getPromociones",{});
-			offerId = resp[0].idOffer;
+			
+			if (resp != undefined)
+				offerId = resp[0].idOffer;
+			
 			console.debug("OfferId " + offerId)
 			params = {offerId:offerId,hashUser:hashUser};
 		}

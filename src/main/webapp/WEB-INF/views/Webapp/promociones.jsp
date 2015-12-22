@@ -229,19 +229,10 @@
 				<!--Theme showcase -->
 				<div class=" navEditor" role="main" id="intro">
 					<!-- Main jumbotron for a primary marketing message or call to action -->
-					<div>
 						<!-- page header <input type="text" id="checkedRedimir" value=""/>-->
 						<div class=" text-center"
 							style="border-radius:15px; background:url(<c:url value="/resources/webapp/images/bgWhTra.png"/>); padding:10px;">
 
-
-
-							<div class="clear"></div>
-
-							
-							<div class="clear"></div>
-
-							
 							<div ng-if="volantesCtrl.volantes.length == 0">
 								<div>
 									<div ng-hide="true" id="idPromocion"></div>
@@ -305,10 +296,6 @@
 									</div>
 								</div>
 							</div>
-						</div>
-				</div>
-				
-			
 
 							<div ng-repeat="item in volantesCtrl.volantes"
 								style="margin-top: 10px;">
@@ -390,6 +377,9 @@
 									<c:set var="urlPromo" value="{{item.urlPromocion}}"
 										scope="session" />
 								</tiles:insertDefinition>
+							</div>
+							
+							<div class="clear"></div>
 							</div>
 							<div class="clear"></div>
 							<div id="divError" ng-show="volantesCtrl.muestraDivError"
