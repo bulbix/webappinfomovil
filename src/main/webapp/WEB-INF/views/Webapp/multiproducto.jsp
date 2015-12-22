@@ -12,37 +12,27 @@
 <body role="document" data-spy="scroll" data-target=".navbar"
 	data-offset="75" id="page-top"  ng-controller="MultiproductoController as multiproductoCtrl">
 
-<div ng-controller="MultiproductoController as multiproductoCtrl">
-		<div id="paginaWeb">
-		<h3>Crea una PÁGINA WEB</h3>
-		<button type="button" ng-click="multiproductoCtrl.paginaWeb()">Comienza</button>
-		</div>
-		
-		<div id="volante"> 
-		<h3>Crea un VOLANTE MÓVIL</h3>
-		<button type="button" ng-click="multiproductoCtrl.volanteWeb()">Comienza</button>
-		</div>
+	<div ng-controller="MultiproductoController as multiproductoCtrl">
+			<div id="paginaWeb">
+			<h3>Crea una PÁGINA WEB</h3>
+			<button type="button" ng-click="multiproductoCtrl.paginaWeb()">Comienza</button>
+			</div>
+			
+			<div id="volante"> 
+			<h3>Crea un VOLANTE MÓVIL</h3>
+			<button type="button" ng-click="multiproductoCtrl.volanteWeb()">Comienza</button>
+			</div>
+	
+	</div>
 
-</div>
-
-
-
-
-
-
-
-
-
-
-
-		<script src="<c:url value="/resources/webapp/js/jquery.min.js"/>"></script>
-		<script src="<c:url value="/resources/webapp/js/angular.min.js"/>"></script>
-		<script src="<c:url value="/resources/webapp/js/bootstrap.js"/>"></script>
-		<script	src="<c:url value="/resources/webapp/js/bootstrap-dialog.min.js"/>"></script>
-		<script src="<c:url value="/resources/webapp/js/jquery.numeric.js"/>"></script>
-		<script src="<c:url value="/resources/webapp/js/jquery.blockUI.js"/>"></script>
-		<script src="<c:url value="/resources/js/webapp/multiproducto.js"/>"></script>
-		<script src="<c:url value="/resources/js/webapp/InfomovilServices/mensajesService.js"/>"></script>
+	<script src="<c:url value="/resources/webapp/js/jquery.min.js"/>"></script>
+	<script src="<c:url value="/resources/webapp/js/angular.min.js"/>"></script>
+	<script src="<c:url value="/resources/webapp/js/bootstrap.js"/>"></script>
+	<script	src="<c:url value="/resources/webapp/js/bootstrap-dialog.min.js"/>"></script>
+	<script src="<c:url value="/resources/webapp/js/jquery.numeric.js"/>"></script>
+	<script src="<c:url value="/resources/webapp/js/jquery.blockUI.js"/>"></script>
+	<script src="<c:url value="/resources/js/webapp/multiproducto.js"/>"></script>
+	<script src="<c:url value="/resources/js/webapp/InfomovilServices/mensajesService.js"/>"></script>
 
 	<script>
 			<c:choose> 

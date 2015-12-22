@@ -22,7 +22,7 @@ public class LoginController {
 			return "login";
 		}
 		else{
-			return "redirect:/infomovil/editarSitio";
+			return "redirect:/infomovil/multiproducto";
 		}
 	}
 	
