@@ -13,15 +13,23 @@
 	data-offset="75" id="page-top"  ng-controller="MultiproductoController as multiproductoCtrl">
 
 	<div ng-controller="MultiproductoController as multiproductoCtrl">
-			<div id="paginaWeb">
-			<h3>Crea una PÁGINA WEB</h3>
-			<button type="button" ng-click="multiproductoCtrl.paginaWeb()">Comienza</button>
+			<div class="col-xs-12 col-sm-6 text-center " >
+			
+			<div id="paginaWeb" style="margin:30% 0 0 0; padding:30%;" class="bgDarkTrans">
+			<p class="textWhite">CREA UNA <br/><strong>PÁGINA WEB</strong></p>
+			<button type="button" ng-click="multiproductoCtrl.paginaWeb()" class="btn btn-outlineGreen textWhite navEditorLato">Comienza</button>
+			<div class="textWhite">Crea una página web que muestra tu idea elegantemente</div>
 			</div>
 			
-			<div id="volante"> 
-			<h3>Crea un VOLANTE MÓVIL</h3>
-			<button type="button" ng-click="multiproductoCtrl.volanteWeb()">Comienza</button>
 			</div>
+			
+			<div class="col-xs-12 col-sm-6 text-center ">
+			<div id="volante" style="margin:30% 0 0 0; padding:30%;" class="bgDarkTrans"> 
+			<p class="textWhite">CREA UN <br/><strong>VOLANTE MÓVIL</strong></p>
+			<button type="button" ng-click="multiproductoCtrl.volanteWeb()" class="btn btn-outlineGreen textWhite navEditorLato">Comienza</button>
+			<div class="textWhite">Crea un volante móvil para promover tus promociones</div>
+			
+			</div></div>
 	
 	</div>
 

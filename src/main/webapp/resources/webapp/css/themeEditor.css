@@ -1097,7 +1097,11 @@ textarea {
 	height: auto;
 	display: block;
 }
-
+.bgDarkTrans{
+	background: url(../images/lineDarkBold.png) repeat;
+	background-size: auto;
+	
+}
 #publicarSitio {
 	height: 240px;
 }
