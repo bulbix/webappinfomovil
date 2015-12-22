@@ -386,10 +386,10 @@
 	<!--/MODAL TEMPLATES-->
 
 	<!--MODAL MAPA-->
-	<tiles:insertDefinition name="modalGen">
+	<tiles:insertDefinition name="modalMapFragment">
 		<tiles:putAttribute name="idModal" value="myModalMaps" />
 		<tiles:putAttribute name="tamanioModal" value='"modal-dialog modal-lg"'/>
-		<c:set var="fragmentName" value="modalMapFragment" scope="request" />
+		<tiles:putAttribute name="tipo" value='pagina'/>
 	</tiles:insertDefinition>
 	<!--/MODAL MAPA-->
 	
@@ -559,13 +559,15 @@
 	<script src="<c:url value="/resources/webapp/js/jquery.blockUI.js"/>"></script>
 	<script src="<c:url value="/resources/js/webapp/validaciones.js"/>"></script>
 	<script src="<c:url value="/resources/js/webapp/moviliza.js"/>"></script>
-	<script src="<c:url value="/resources/js/webapp/mapa.js"/>"></script>
+<%-- 	<script src="<c:url value="/resources/js/webapp/mapa.js"/>"></script> --%>
 	<script src="<c:url value="/resources/js/webapp/videoYoutube.js"/>"></script>
 	<script src="<c:url value="/resources/js/webapp/imagenes.js"/>"></script>
+	<script src="<c:url value="/resources/js/webapp/util.js"/>"></script>
 	<script src="<c:url value="/resources/webapp/js/angular.min.js"/>"></script>
 	<script src="<c:url value="/resources/webapp/js/bower_components/firebase/firebase.js"/>"></script>
 	<script src="<c:url value="/resources/webapp/js/bower_components/angularfire/dist/angularfire.min.js"/>"></script>
 	<script src="<c:url value="/resources/js/webapp/pushNotification.js"/>"></script>
+	<script src="<c:url value="/resources/js/webapp/mapaAngular.js"/>"></script>
 	
 	<script src="<c:url value="/resources/js/webapp/horarios.js"/>"></script>
 	<script src="<c:url value="/resources/js/webapp/InfomovilServices/horariosService.js"/>"></script>
@@ -576,7 +578,7 @@
 	<script>
 			$(document).ready(function(){
 				generarSlider();
-				google.maps.event.addDomListener(window, 'load', initialize);
+				//google.maps.event.addDomListener(window, 'load', initialize);
 				});
 		</script>
 

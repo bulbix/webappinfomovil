@@ -224,7 +224,7 @@
 				<div ng-repeat="item in volantesCtrl.volantes" style="margin-top:10px;">
 				
 					<div id="volante">
-						<div ng-hide="true" id="idPromocion">{{item.idOffer}}</div>
+						<div ng-hide="false" id="idPromocion">{{item.idOffer}}</div>
 						<div ng-hide="true" id="urlPromocion">{{item.urlPromocion}}</div>
 								
 						<div class="col-xs-12 col-sm-12 col-md-6">
@@ -289,7 +289,26 @@
 					</div>
 				</div>
 				<!--/Theme showcase -->
-			</div>
+				
+				<!--Footer-->
+			<footer class="footer bgBlack">
+				<div class="dividerSmall"></div>
+				<div class="clearfix"></div>
+				<!-- /Botón MAPS -->
+
+				<div class="botonDesPublicar " >
+					<a href="#" data-toggle="modal" data-target="#myModalMaps"
+						class="col-xs-12 col-sm-6 col-sm-offset-3 col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3 btn btn-default btn-outline navEditor">
+						<img width="25" height="25" alt="Infomovil"
+						src="<c:url value="/resources/webapp/images/icn_marc_maps.png"/>" />
+						<span id="idOpcionUbicacion">Colocar mi ubicación</span> <br /> <span
+						id="direccionMap" class="directionMap"></span>
+					</a>
+				</div>
+			</footer>
+
+
+		</div>
 		</div>
 		<!-- /Formulario Promociones -->
 		<!--MODAL TEMPLATES-->
@@ -311,12 +330,13 @@
 		<script	src="<c:url value="/resources/webapp/js/bootstrap-dialog.min.js"/>"></script>
 		<script src="<c:url value="/resources/webapp/js/jquery.numeric.js"/>"></script>
 		<script src="<c:url value="/resources/webapp/js/jquery.blockUI.js"/>"></script>
-				 
+		<script src="<c:url value="/resources/js/webapp/util.js"/>"></script>		 
 		<script src="<c:url value="/resources/webapp/js/datepicker/jquery.ui.core.js"/>"></script>
 		<script src="<c:url value="/resources/webapp/js/datepicker/jquery.ui.datepicker.js"/>"></script>
 		<script src="<c:url value="/resources/js/webapp/promociones.js"/>"></script>
 		<script src="<c:url value="/resources/js/webapp/volantes.js"/>"></script>
 		<script src="<c:url value="/resources/js/webapp/InfomovilServices/mensajesService.js"/>"></script>
+		<script src="<c:url value="/resources/js/webapp/mapaAngular.js"/>" ></script>
 
 		<script>
 			$(document).ready(function(){
@@ -366,6 +386,14 @@
 			<c:set var="fragmentName" value="modalPromoFallo" scope="request" />
 		</tiles:insertDefinition>
 		<c:set var="urlPromo" value="${ urlPromocion }" scope="session"/>
+		
+		<!--MODAL MAPA-->
+	<tiles:insertDefinition name="modalMapFragment">
+		<tiles:putAttribute name="idModal" value="myModalMaps" />
+		<tiles:putAttribute name="tamanioModal" value='"modal-dialog modal-lg"'/>
+		<tiles:putAttribute name="tipo" value='volante'/>
+	</tiles:insertDefinition>
+	<!--/MODAL MAPA-->
 		
 		<script>
 			<c:choose> 

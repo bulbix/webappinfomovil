@@ -9,26 +9,33 @@ import com.infomovil.webapp.util.Codificacion;
 @Controller
 class VolanteController {
 
-	@RequestMapping(value = "/infomovil/borrarContacto", method = RequestMethod.GET, produces = "application/json")
+	/**
+	 * 
+	 * @return hashUser
+	 */
+	@RequestMapping(value = "/infomovil/getFecha", method = RequestMethod.POST, produces = "application/json")
 	@ResponseBody
-	def borraContacto() {
-		
-		String hashUsuario = "hola";
-		String correo = "";
-		String password = "";
-		
-		try
-		{
-			correo = Util.getUserLogged().getUsername();
-			password = Util.getUserLogged().getPassword();
-			hashUsuario = Codificacion.encrypt(correo + ";" + password);
-			[hashUsuario : hashUsuario]
+	def getFecha() {
+		try {
+			String correo = Util.getUserLogged().getUsername();
+			String password = Util.getUserLogged().getPassword();
+			String hashUsuario = Codificacion.encrypt(correo + ";" + password);
+			return ['hashUsuario' : hashUsuario]
 		}
-		catch(Exception e) 
-		{
-			
+		catch(Exception e)  {
+			return ['hashUsuario' : '']
 		}
-		
-		return hashUsuario
 	}
+	
+	@RequestMapping(value = "/infomovil/getPerfil", method = RequestMethod.POST, produces = "application/json")
+	@ResponseBody
+	def getPerfil(){
+		
+		def perfiles = 
+		[DEV:"http://localhost:8080/", QA:"http://infodev.mobileinfo.io/ServiceInfomovil/", PROD:"http://www.infomovil.com/ServiceInfomovil/"]
+		
+		[perfil: perfiles[Util.getProfile()]]
+		
+	}
+	
 }

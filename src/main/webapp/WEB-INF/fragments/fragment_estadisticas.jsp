@@ -45,6 +45,5 @@
 <script src="<c:url value="/resources/webapp/js/bower_components/jqplot/plugins/jqplot.cursor.min.js"/>"></script>
 
 
-<script src="<c:url value="/resources/js/webapp/util.js"/>"></script>
 <script src="<c:url value="/resources/js/webapp/estadisticas.js"/>"></script>
 
