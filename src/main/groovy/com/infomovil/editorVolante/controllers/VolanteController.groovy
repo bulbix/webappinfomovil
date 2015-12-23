@@ -45,6 +45,6 @@ class VolanteController {
 	
 	@RequestMapping(value = "/infomovil/estiloVolante", method = RequestMethod.GET, produces = "application/json")
 	def estiloVolante() {
-		return "redirect:/infomovil/estiloVolante"
+		return "WebApp/estiloVolante"
 	}
 }
