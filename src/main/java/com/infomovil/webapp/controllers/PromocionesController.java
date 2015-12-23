@@ -103,6 +103,7 @@ public class PromocionesController
 			return null;
 		}			
 		
+		logger.info("misPromociones.......");
 		return new ModelAndView("Webapp/promociones", model);
 	}
 
