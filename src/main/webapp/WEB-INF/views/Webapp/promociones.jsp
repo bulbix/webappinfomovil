@@ -42,7 +42,7 @@
 					<img
 					src="<c:url value="/resources/webapp/images/apple-touch-icon-57x57.png"/>"
 					width="50" height="50" alt="Infomovil" />
-				</span> <span class="marLeft navEditor ${colorTexto}" style="margin-top:12px;">MIS VOLANTES</span>
+				</span> <span class="marLeft navEditor ${colorTexto}" style="margin-top:15px;">MIS VOLANTES</span>
 				<!-- /LOGO INFOMOVIL - REGISTRO GENERAL-->
 			</div>
 			<div id="navbar" class="navbar-collapse collapse text-right">
@@ -61,7 +61,7 @@
 					<li><a href="" class="smoothScroll ${colorTexto}" ng-click="volantesCtrl.actualizaProducto()"> <img
 							width="20" height="20" alt="Infomovil"
 							src="<c:url value="/resources/webapp/images/fa-compu${ extensionImg }.png"/>" />
-							Mi Página Web
+							Mi Página <span class="hidden-sm">Web</span>
 					</a></li>
 					<li><a href="<c:url value="/logout"></c:url>"
 						class="smoothScroll ${colorTexto}"> <img width="20"
@@ -95,39 +95,39 @@
 	<!-- Botón Nuevo Estilo -->
 	<div>
 		<div class="seccTop bgBlack">
-<div class="col-xs-12 col-sm-8 col-sm-offset-2">
+<div class="containerExt">
 			<div class="">
 				<!-- Botones sin publicar -->
 				<div ng-show="volantesCtrl.muestraPublicarPromo">
 
-					<div class="col-xs-2 col-sm-2 text-center">
+					<div class="col-xs-2 col-sm-2 text-center reset">
 						<button type="button"
 							class=" btn btn-outlineGreen textWhite navEditorLato"
 							ng-click="volantesCtrl.vistaPrevia()"
 							style="margin: 5px 8px 0 0;">
 							<img width="20" height="20" alt="Infomovil"
 								src="<c:url value="/resources/webapp/images/fa-eye.png"/>" /> <span
-								class="hidden-xs">Vista Previa</span>
+								class="hidden-xs">Vista <span class="hidden-sm">Previa</span></span>
 						</button>
 					</div>
-					<div class="col-xs-2 col-sm-2 text-center">
+					<div class="col-xs-2 col-sm-2 text-center reset">
 						<a href="<c:url value="/infomovil/estiloVolante"></c:url>" 
 							class="btn btn-outlineGreen  textWhite navEditorLato"
 							style="margin: 5px 8px 0 0;" >
 							<img width="20" height="20" alt="Infomovil"
 								src="<c:url value="/resources/webapp/images/fa-templates.png"/>" />
-							<span class="hidden-xs">Estilo</span>
+							<span class="hidden-xs">E<span class="hidden-sm">lige E</span>stilo</span>
 						</a>
 					</div>
 
 					
 
-					<div class="col-xs-6 col-sm-6 ">
-						<div class=" form-group" style="padding:10px 0;">
+					<div class="col-xs-6 col-sm-6 reset">
+						<div class=" form-group" style="padding:6px 0;">
 							<div class="control-group">
-								<label class="control-label hidden-xs col-sm-4 navEditor"><div style="padding:5px 0;">promo.mobileinfo.io/</div></label>
-								<div class="controls col-xs-12 col-sm-8 reset">
-									<input type="text" class="form-control text-left"
+								<label class="control-label hidden-xs hidden-sm col-md-4 navEditor"><div style="padding:4px 0;">promo.mobileinfo.io/</div></label>
+								<div class="controls col-xs-12 col-sm-8  pull-right reset">
+									<input type="text" class="form-control text-left "
 										maxlength="128" placeholder="Nombre de tu volante"
 										onfocus="this.placeholder = ''"
 										onblur="this.placeholder = 'Nombre de tu volante'"
@@ -138,7 +138,7 @@
 						</div>
 					</div>
 
-					<div class="col-xs-2 col-sm-2 text-center">
+					<div class="col-xs-2 col-sm-2 text-center reset">
 						<button type="button"
 							class="btn btn-outlineGreen textWhite navEditorLato"
 							ng-click="volantesCtrl.publicarVolante()" style="margin: 5px 0;">
@@ -155,27 +155,27 @@
 				<!-- Botones publicados -->
 				<div ng-show="volantesCtrl.muestraPromoPublicada">
 				
-				<div class="col-xs-2 col-sm-2 text-center">
-						<a href="<c:url value="/estiloVolante"></c:url>" 
+				<div class="col-xs-2 col-sm-2 text-center reset">
+						<a href="<c:url value="/infomovil/estiloVolante"></c:url>" 
 							class="btn btn-outlineGreen  textWhite navEditorLato"
 							style="margin: 5px 8px 0 0;" >
 							<img width="20" height="20" alt="Infomovil"
 								src="<c:url value="/resources/webapp/images/fa-templates.png"/>" />
-							<span class="hidden-xs">Estilo</span>
+							<span class="hidden-xs">E<span class="hidden-sm">lige E</span>stilo</span>
 						</a>
 					</div>
 								
-								<div class="col-xs-2 col-sm-2 text-center">
+								<div class="col-xs-2 col-sm-2 text-center reset">
 								<button type="button"
 									class="btn btn-outlineGreen  textWhite navEditorLato"
 									ng-click="volantesCtrl.verPromoActiva()"
 									style="margin: 5px 5px 0 0;">
 									<img width="20" height="20" alt="Infomovil"
 										src="<c:url value="/resources/webapp/images/fa-eye.png"/>" />
-									<span class="hidden-xs">Ver</span>
+									<span class="hidden-xs">Ver <span class="hidden-xs hidden-sm">volante</span></span>
 								</button></div>
 								
-								<div class="col-xs-2 col-sm-2 text-center">
+								<div class="col-xs-2 col-sm-2 text-center reset">
 								<button type="button"
 									class="btn btn-outlineGreen  textWhite navEditorLato"
 									ng-click="volantesCtrl.compartirPromo()"
@@ -185,9 +185,9 @@
 									<span class="hidden-xs">Compartir</span>
 								</button></div>
 								
-								<div class="col-xs-2 col-sm-2 text-center">
+								<div class="hidden-xs hidden-sm col-xs-2 col-sm-2 text-center reset" >
 								<button type="button"
-									class="hidden-xs hidden-sm btn btn-outlineGreen  textWhite navEditorLato"
+									class=" btn btn-outlineGreen  textWhite navEditorLato"
 									ng-click="volantesCtrl.imprimirPromo()"
 									style="margin: 5px 8px 0 0;">
 									<span><img width="20" height="20" alt="Infomovil"
@@ -195,7 +195,17 @@
 										Imprimir</span>
 								</button></div>
 								
-								<div class="col-xs-2 col-sm-2 text-center">
+								<div class="hidden-md hidden-lg col-xs-2 col-sm-2 text-center reset">
+								<button type="button"
+									class=" btn btn-outlineGreen  textWhite navEditorLato"
+									ng-click="volantesCtrl.descargarPDF()" style="margin: 5px 0 0 0;">
+									<span><img width="20" height="20" alt="Infomovil"
+										src="<c:url value="/resources/webapp/images/fa-pdf.png"/>" />
+									</span> <span>PDF<span class="hidden-xs hidden-sm">/Imagen</span></span>
+
+								</button></div>
+								
+								<div class="col-xs-2 col-sm-2 text-center reset">
 								<button type="button"
 									class="btn btn-outlineGreen  textWhite navEditorLato"
 									ng-click="volantesCtrl.eliminarVolante()"
@@ -204,18 +214,8 @@
 										src="<c:url value="/resources/webapp/images/trash.png"/>" /> <span
 										class="hidden-xs">Eliminar</span>
 								</button></div>
-		
-								<div class="col-xs-2 col-sm-2 text-center">
-								<button type="button"
-									class="hidden-md hidden-lg btn btn-outlineGreen  textWhite navEditorLato"
-									ng-click="volantesCtrl.descargarPDF()" style="margin: 5px 0 0 0;">
-									<span><img width="20" height="20" alt="Infomovil"
-										src="<c:url value="/resources/webapp/images/fa-pdf.png"/>" />
-									</span> <span>PDF/Imagen</span>
-
-								</button></div>
 								
-								<div class="col-xs-2 col-sm-2 text-center">
+								<div class="col-xs-2 col-sm-2 text-center reset">
 								<button type="button"
 									class="btn btn-outlineGreen textWhite navEditorLato"
 									ng-click="volantesCtrl.guardarPromocion()"

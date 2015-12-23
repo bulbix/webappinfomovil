@@ -9,7 +9,7 @@
 <meta HTTP-EQUIV="PRAGMA" CONTENT="NO-CACHE">
 
 <tiles:insertDefinition name="headEditorSitio">
-	<tiles:putAttribute name="template" value="CoverpageMultiproducto" />
+	<tiles:putAttribute name="template" value="${ template }" />
 </tiles:insertDefinition>
 
 <link
