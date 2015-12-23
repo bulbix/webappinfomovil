@@ -107,6 +107,24 @@
 		<!-- /Botón Nuevo Estilo -->
 		<!-- Formulario Promociones -->
 		<div class="container">
+		
+		
+		<!-- Ficha template -->
+		<div class="col-xs-6 col-sm-2">
+		
+		<div><img class="img-responsive" alt="Infomovil"
+						src="https://s3-us-west-2.amazonaws.com/promo.mobileinfo.io/templates/promo8/promo8.png" /></div>
+		<div>
+		<div>Titulo 1</div>
+		<div><img width="30" height="30"
+							alt="Infomovil"
+							src="<c:url value="/resources/webapp/images/btn_active.png"/>" /></div>
+		</div>
+		
+		</div>
+		<!-- Ficha template -->
+		
+		
 			<div class="col-xs-12 reset">
 
 				<!--Theme showcase -->
@@ -115,6 +133,9 @@
 						<!-- page header <input type="text" id="checkedRedimir" value=""/>-->
 						<div class=" text-center"
 							style="border-radius:15px; background:url(<c:url value="/resources/webapp/images/bgWhTra.png"/>); padding:10px;">
+
+
+
 
 							<div ng-if="volantesCtrl.volantes.length == 0">
 								<div>
