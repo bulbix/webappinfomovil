@@ -5,10 +5,7 @@
 			<span aria-hidden="true">&times;</span>
 		</button>
 		<p class="modal-title textBlack"><strong><span class="hidden-xs hidden-sm">Imprime</span> <span class="hidden-md hidden-lg">Descarga</span> tu Volante digital</strong></p>
-		
-<!-- 		<button type="button" class="btn btn-purple text-center col-xs-12 col-sm-12 col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3" data-dismiss="modal"> -->
-<!-- 			<strong>Regresar</strong> -->
-<!-- 		</button> -->
+
 	</div>
 	<div class="modal-body" style="overflow-y:scroll; max-height:330px;">
 		<div class="col-xs-12 reset">
@@ -19,27 +16,27 @@
 	<div class="modal-footer textBlack">
 					<button type="button" class="hidden-xs hidden-sm btn btn-outlineGreen pull-right textWhite navEditorLato"  id="btnImprimirPromoPantalla" 
 						 style="margin: 5px 8px 0 0;" ng-click="volantesCtrl.imprimirPromocionWeb()">
-						<span><img width="20" height="20" alt="Infomovil"	src="<c:url value="/resources/webapp/images/fa-print.png"/>"/> 
+						<span><img width="20" height="20" alt="Infomovil" src="<c:url value="/resources/webapp/images/fa-print.png"/>"/> 
 						Imprimir</span>
 					</button>
-					  <button type="button" class="hidden-xs hidden-sm btn btn-outlineGreen pull-right textWhite navEditorLato"  id="btnImprimirPromoPantalla" 
-						 style="margin: 5px 8px 0 0;" onClick="descargarPDF()">
+					  <button type="button" class="hidden-xs hidden-sm btn btn-outlineGreen pull-right textWhite navEditorLato" 
+						 style="margin: 5px 8px 0 0;" ng-click="volantesCtrl.descargarArchivo('pdf')">
 						<span><img width="20" height="20" alt="Infomovil"	src="<c:url value="/resources/webapp/images/fa-print.png"/>"/> 
 						Descargar PDF</span> 
 					</button> 
-					<button type="button" class="hidden-xs hidden-sm btn btn-outlineGreen pull-right textWhite navEditorLato"  id="btnImprimirPromoPantalla" 
-						 style="margin: 5px 8px 0 0;" onClick="descargarJPG()">
+					<button type="button" class="hidden-xs hidden-sm btn btn-outlineGreen pull-right textWhite navEditorLato" 
+						 style="margin: 5px 8px 0 0;" ng-click="volantesCtrl.descargarArchivo('jpg')">
 						<span><img width="20" height="20" alt="Infomovil"	src="<c:url value="/resources/webapp/images/ico_pp_img.png"/>"/> 
 						Descargar Imagen</span>
 					</button>
-					 <button type="button" class="hidden-md hidden-lg btn btn-outlineGreen pull-right textWhite navEditorLato"  id="btnGuardarPDFPromo" 
-						 style="margin: 5px 8px 0 0;" onClick="descargarPDF()">
+					 <button type="button" class="hidden-md hidden-lg btn btn-outlineGreen pull-right textWhite navEditorLato"
+						 style="margin: 5px 8px 0 0;" ng-click="volantesCtrl.descargarArchivo('pdf')">
 						<span><img width="20" height="20" alt="Infomovil"	src="<c:url value="/resources/webapp/images/fa-pdf.png"/>"/> </span>
 						<span class="hidden-xs">Descargar</span> PDF
 						
 					</button> 
-					<button type="button" class="hidden-md hidden-lg btn btn-outlineGreen pull-right textWhite navEditorLato"  id="btnGuardarJPGPromo" 
-						 style="margin: 5px 8px 0 0;" onClick="descargarJPG()">
+					<button type="button" class="hidden-md hidden-lg btn btn-outlineGreen pull-right textWhite navEditorLato"
+						 style="margin: 5px 8px 0 0;" ng-click="volantesCtrl.descargarArchivo('jpg')">
 						<span><img width="20" height="20" alt="Infomovil"	src="<c:url value="/resources/webapp/images/ico_pp_img.png"/>"/> </span>
 						<span class="hidden-xs">Descargar</span> Imagen
 						

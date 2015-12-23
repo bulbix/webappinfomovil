@@ -204,17 +204,11 @@
 										src="<c:url value="/resources/webapp/images/trash.png"/>" /> <span
 										class="hidden-xs">Eliminar</span>
 								</button></div>
-								
-								
-								
-								
-								
-								
-								
+		
 								<div class="col-xs-2 col-sm-2 text-center">
 								<button type="button"
 									class="hidden-md hidden-lg btn btn-outlineGreen  textWhite navEditorLato"
-									id="btnImprimirPromoMovil" style="margin: 5px 0 0 0;">
+									ng-click="volantesCtrl.descargarPDF()" style="margin: 5px 0 0 0;">
 									<span><img width="20" height="20" alt="Infomovil"
 										src="<c:url value="/resources/webapp/images/fa-pdf.png"/>" />
 									</span> <span>PDF/Imagen</span>
@@ -311,7 +305,18 @@
 													value="Visítanos" class="radioPromo">Visítanos</label>
 											</div>
 										</div>
-				
+
+										<div class="botonDesPublicar">
+											<a href="#" data-toggle="modal" data-target="#myModalMaps"
+												class="col-xs-12 col-sm-12 btn btn-default btn-outlineGreen  navEditor">
+												<img width="25" height="25" alt="Infomovil"
+												src="<c:url value="/resources/webapp/images/icn_marc_maps.png"/>" />
+												<span id="idOpcionUbicacion">Colocar mi ubicación</span> <br /> <span
+												id="direccionMap" class="directionMap"></span>
+												<div class="clearfix"></div>
+											</a>
+										</div>
+												
 									</div>
 								</div>
 							</div>
@@ -321,7 +326,7 @@
 
 								<div id="volante">
 									<div ng-hide="true" id="idPromocion">{{item.idOffer}}</div>
-									<div ng-hide="false" id="urlPromocion">{{item.urlPromocion}}</div>
+									<div ng-hide="true" id="urlPromocion">{{item.urlPromocion}}</div>
 									<div ng-hide="true" id="tempPromocion">{{item.template}}</div>
 
 									<div class="col-xs-12 col-sm-12 col-md-6">
@@ -484,7 +489,8 @@
 
 
 		</div>
-		
+		<input type="hidden" id="tempBanderaPromo" value="${banderaCanal}">
+		<input type="hidden" id="tempNombrePromo" value="${nombreSitio}">
 	<!-- Bootstrap core JavaScript
 		    ================================================== -->
 		<!-- Placed at the end of the document so the pages load faster -->
@@ -503,7 +509,6 @@
 		<script src="<c:url value="/resources/js/webapp/util.js"/>"></script>		 
 		<script src="<c:url value="/resources/webapp/js/datepicker/jquery.ui.core.js"/>"></script>
 		<script src="<c:url value="/resources/webapp/js/datepicker/jquery.ui.datepicker.js"/>"></script>
-		<script src="<c:url value="/resources/js/webapp/promociones.js"/>"></script>
 		<script src="<c:url value="/resources/js/webapp/volantes.js"/>"></script>
 		<script src="<c:url value="/resources/js/webapp/InfomovilServices/mensajesService.js"/>"></script>
 		<script src="<c:url value="/resources/js/webapp/InfomovilServices/volantesService.js"/>"></script>

@@ -320,6 +320,7 @@ app.controller("VolantesController", function ($scope, $http, VolanteService, Me
 		
 		var urlPromo = $("#urlPromocion").text();
 		volantesCtrl.nombrePromo = urlPromo.substring(urlPromo.lastIndexOf("/") + 1);
+		volantesCtrl.eventoPromocion = 'promo-imprimir';
 		var oldstrInner = document.documentElement.innerHTML;
 		var oldstr = document.body.innerHTML;
 		
@@ -342,8 +343,9 @@ app.controller("VolantesController", function ($scope, $http, VolanteService, Me
 			    $(document.body).html(oldstr);
 			    $("#myModalPromoImprimir").modal();	
 				$.unblockUI();}, 2500);
-//				console.log("Nombre del evento: mi Evento,   nombreSitio: " + $("#tempNombrePromo").val() + ", banderaCanal: " + $("#tempBanderaPromo").val());
-//				ga('send', 'event', 'promo', 'promo-imprimir', $("#tempNombrePromo").val(), $("#tempBanderaPromo").val());
+				
+				VolanteService.guardarEventoGA(volantesCtrl.eventoPromocion, 
+						$("#tempNombrePromo").val(), $("#tempBanderaPromo").val());
 				
 			},
 			error : function(json) {
@@ -356,6 +358,24 @@ app.controller("VolantesController", function ($scope, $http, VolanteService, Me
 			}
 		});	
 	};
+	
+	volantesCtrl.descargarArchivo = function(tipo) {
+		
+		volantesCtrl.eventoPromocion = "promo-guardarPDF";
+		volantesCtrl.pathArchivo = $("#urlVistaPreviaPromoImprimir").attr('src');
+		volantesCtrl.pathArchivo = volantesCtrl.pathArchivo.replace("html", tipo);
+		volantesCtrl.link = document.createElement("a");
+		volantesCtrl.link.download = "promo." + tipo;
+		volantesCtrl.link.href = volantesCtrl.pathArchivo;
+		volantesCtrl.link.click();
+	    
+	    if (tipo == 'jpg')
+	    	volantesCtrl.eventoPromocion = "promo-guardarJPG";
+	    
+		VolanteService.guardarEventoGA(volantesCtrl.eventoPromocion, 
+				$("#tempNombrePromo").val(), $("#tempBanderaPromo").val());
+	};
+
 	
 	volantesCtrl.validarCampos = function() {
 		
