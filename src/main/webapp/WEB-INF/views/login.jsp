@@ -61,6 +61,20 @@
          </div>
       <!--password-->
       
+      
+        <!-- Opciones Volante/Web -->
+               
+             
+
+<div class="form-group"  style="max-width:280px; margin:10px auto;">
+      <label style="margin:10px;">¿Dónde deseas iniciar?</label>
+       <select class="form-control">
+  <option>Volante móvil</option>
+  <option>Página web</option>
+</select>
+    </div>
+
+               <!-- /Opciones Volante/Web -->
       	<input type='checkbox' style="display:none" name='_spring_security_remember_me' checked/>     
 
     	
