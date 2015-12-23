@@ -12,9 +12,8 @@
 	<tiles:putAttribute name="template" value="CoverpageMultiproducto" />
 </tiles:insertDefinition>
 
-<link
-	href="<c:url value="/resources/webapp/js/datepicker/datepicker.css"/>"
-	rel="stylesheet" />
+<link href="<c:url value="/resources/webapp/js/datepicker/datepicker.css"/>" rel="stylesheet" />
+
 <body role="document" data-spy="scroll" data-target=".navbar"
 	data-offset="75" id="page-top" ng-controller="VolantesController as volantesCtrl">
 
@@ -118,9 +117,7 @@
 								src="<c:url value="/resources/webapp/images/fa-templates.png"/>" />
 							<span class="hidden-xs">Estilo</span>
 						</a>
-					</div>
-
-					
+					</div>					
 
 					<div class="col-xs-6 col-sm-6 ">
 						<div class=" form-group" style="padding:10px 0;">
@@ -147,8 +144,6 @@
 							<span class="hidden-xs">Publicar</span>
 						</button>
 					</div>
-
-
 
 				</div>
 				<!-- /Botones sin publicar -->
@@ -274,12 +269,11 @@
 										</div>
 									</div>
 									<div class="col-xs-12 col-sm-6">
-
+<input type="text" class="datepicker">
 										<div class="divider hidden-md hidden-lg"></div>
 										<div class="form-group text-left textBlack">
 											<label for="exampleInputEmail1" class="text-left">Vigencia
-												al:</label> <input type="text" class="form-control3 datepicker"
-												id="datepicker" value="">
+												al:</label> 
 										</div>
 										<div class="clearfix"></div>
 										<div class="divider"></div>
@@ -353,25 +347,26 @@
 										</div>
 									</div>
 									<div class="col-xs-12 col-sm-6">
-
+<input type="text" class="datepicker">
 										<div class="divider hidden-md hidden-lg"></div>
 										<div class="form-group text-left textBlack">
 											<label for="exampleInputEmail1" class="text-left">Vigencia
-												al:</label> <input type="text" class="form-control3 datepicker"
-												id="datepicker" value="{{item.endDateOffer}}">
+												al:</label>
+<!-- 												<input type="text" class="form-control3 datepicker" -->
+<!-- 												id="datepicker" value="{{item.endDateOffer}}"> -->
 										</div>
 										<div class="clearfix"></div>
 										<div class="divider"></div>
 										<div class="form-group text-left textBlack">
-									<div class="col-xs-12 col-sm-6 reset">
-									<div class="col-xs-1 col-sm-2"></div>
-									<select class="col-xs-11 col-sm-10 form-control">
-  <option>Teléfono</option>
-  <option>Celular</option>
+											<div class="col-xs-12 col-sm-6 reset">
+												<div class="col-xs-1 col-sm-2"></div>
+												<select class="col-xs-11 col-sm-10 form-control">
+												  <option>Teléfono</option>
+												  <option>Celular</option>
+												</select>
+											</div>	
 
-</select></div>	
-
-											 <input type="text" class="col-xs-6 form-control">
+											<input type="text" class="col-xs-6 form-control">
 										</div>
 										<div class="clearfix"></div>
 										<div class="divider"></div>
@@ -489,6 +484,8 @@
 
 
 		</div>
+		
+		<input type="text" class="datepicker">
 		<input type="hidden" id="tempBanderaPromo" value="${banderaCanal}">
 		<input type="hidden" id="tempNombrePromo" value="${nombreSitio}">
 	<!-- Bootstrap core JavaScript
@@ -496,6 +493,8 @@
 		<!-- Placed at the end of the document so the pages load faster -->
 		<script src="<c:url value="/resources/webapp/js/datepicker/jquery-1.10.2.js"/>"></script>
 		<script src="<c:url value="/resources/webapp/js/jquery.min.js"/>"></script>
+		<script src="<c:url value="/resources/webapp/js/datepicker/jquery.ui.core.js"/>"></script>
+		<script src="<c:url value="/resources/webapp/js/datepicker/jquery.ui.datepicker.js"/>"></script>
 		<script src="<c:url value="/resources/webapp/js/angular.min.js"/>"></script>
 		<script src="<c:url value="/resources/webapp/js/bootstrap.js"/>"></script>
 		<script src="<c:url value="/resources/webapp/js/docs.min.js"/>"></script>
@@ -504,23 +503,13 @@
 		<!-- bxSlider Javascript file -->
 		<script	src="<c:url value="/resources/webapp/js/jquery.bxslider.min.js"/>"></script>
 		<script	src="<c:url value="/resources/webapp/js/bootstrap-dialog.min.js"/>"></script>
-		<script src="<c:url value="/resources/webapp/js/jquery.numeric.js"/>"></script>
 		<script src="<c:url value="/resources/webapp/js/jquery.blockUI.js"/>"></script>
-		<script src="<c:url value="/resources/js/webapp/util.js"/>"></script>		 
-		<script src="<c:url value="/resources/webapp/js/datepicker/jquery.ui.core.js"/>"></script>
-		<script src="<c:url value="/resources/webapp/js/datepicker/jquery.ui.datepicker.js"/>"></script>
+		<script src="<c:url value="/resources/js/webapp/util.js"/>"></script>
 		<script src="<c:url value="/resources/js/webapp/volantes.js"/>"></script>
 		<script src="<c:url value="/resources/js/webapp/InfomovilServices/mensajesService.js"/>"></script>
 		<script src="<c:url value="/resources/js/webapp/InfomovilServices/volantesService.js"/>"></script>
-		<script src="<c:url value="/resources/js/webapp/mapaAngular.js"/>" ></script>
+		<script src="<c:url value="/resources/js/webapp/mapaAngular.js"/>" ></script>	
 
-		<script>
-			$(document).ready(function(){
-				generarSliderPromo();
-			});
-		</script>
-	
-	 
 		<tiles:insertDefinition name="modalGen">
 			<tiles:putAttribute name="idModal" value="myModalPromo" />
 			<tiles:putAttribute name="tamanioModal"

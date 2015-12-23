@@ -3,7 +3,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!doctype html>
-<html lang="es" ng-app="InfomovilVolantes">
+<html lang="es" ng-app="InfomovilEstiloVolantes">
 
 <meta HTTP-EQUIV="CACHE-CONTROL" CONTENT="NO-CACHE">
 <meta HTTP-EQUIV="PRAGMA" CONTENT="NO-CACHE">
@@ -17,7 +17,7 @@
 	rel="stylesheet" />
 <body role="document" data-spy="scroll" data-target=".navbar"
 	data-offset="75" id="page-top"
-	ng-controller="VolantesController as volantesCtrl">
+	ng-controller="EstiloVolanteController as estiloVolanteCtrl">
 
 	<!-- Fixed navbar -->
 	<nav class="navbar navbar-${ claseCss } navbar-static-top">
@@ -102,15 +102,11 @@
 				<div class="textWhite">
 					<h3 class="text-left textWhite navEditor">Elige el estilo <span class="hidden-xs">de
 						tu volante</span></h3>
-						
-						
-	<a href="<c:url value="/infomovil/misPromociones"></c:url>"
-					class="btn-default btn-outline navEditor pull-right">
-
-					<span id="idOpcionMasCont"><img width="20" height="20"
-						alt="Infomovil"
-						src="<c:url value="/resources/webapp/images/fa-back.png"/>" /> Regresar </span>
-				</a>
+						<a href="<c:url value="/infomovil/misPromociones"></c:url>"
+							class="btn-default btn-outline navEditor pull-right">
+							<span id="idOpcionMasCont"><img width="20" height="20"
+							alt="Infomovil" src="<c:url value="/resources/webapp/images/fa-back.png"/>" /> Regresar </span>
+						</a>
 				</div>
 			</div>
 
@@ -119,31 +115,26 @@
 		<!-- /Botón Nuevo Estilo -->
 		<!-- Formulario Promociones -->
 		<div class="containerExt">
-<p>Haz clic en el estilo que te agrade</p>
+			<p>Haz clic en el estilo que te agrade</p>
 
-
-
-  
-  
 			<!-- Ficha template -->
 			<div class="col-xs-12 col-sm-4" style="margin-top:10px;">
-			<a href="#" class="ev_std" style="display:block">
-			<span class="ev_std_chk text-center"><img  alt="Infomovil"
-							src="<c:url value="/resources/webapp/images/fa-activeTemp.png"/>" />
-							Aplicar estilo
-							</span>
-			<span class="bgDarkTrans" style="display:block">
-				<span style="padding: 10px; display:block">
-					<img class="img-responsiveTemp img-thumbnail" alt="Infomovil"
-						src="https://s3-us-west-2.amazonaws.com/promo.mobileinfo.io/templates/promo8/promo8.png" />
-				</span>
-				<span class="display:block">
-					<span class="textWhite col-xs-12 col-sm-12 " style="padding: 10px; display:block">Titulo 1</span>
-					
-				</span>
-				<span class="clear " style="display:block"></span>
-				</span>
-				</a>
+				<a href="#" class="ev_std" style="display:block">
+				<span class="ev_std_chk text-center"><img alt="Infomovil"
+					src="<c:url value="/resources/webapp/images/fa-activeTemp.png"/>" />
+					Aplicar estilo</span>
+				<span class="bgDarkTrans" style="display:block">
+					<span style="padding: 10px; display:block">
+						<img class="img-responsiveTemp img-thumbnail" alt="Infomovil"
+							src="https://s3-us-west-2.amazonaws.com/promo.mobileinfo.io/templates/promo8/promo8.png" />
+					</span>
+					<span class="display:block">
+						<span class="textWhite col-xs-12 col-sm-12 " style="padding: 10px; display:block">Titulo 1</span>
+						
+					</span>
+					<span class="clear " style="display:block"></span>
+					</span>
+					</a>
 			</div>
 			<!-- Ficha template -->
 			

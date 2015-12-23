@@ -1,11 +1,27 @@
-$(function() {
-	$(".datepicker").datepicker({ dateFormat: 'dd/mm/yy' });
-	console.log("$datepickerPromo");
+/*$(document).ready(function() {
+
+	alert("hola");
+	$('.datepicker').datepicker({
+	    showOn: "button",
+	    dateFormat: "dd/mm/yy",
+	    disabled: false,
+	    buttonImageOnly: true
+	});
+	
+});*/
+
+$(".datepicker").click(function() {
+	var date = $(".datepicker").datepicker({ dateFormat: 'dd/mm/yy' }).val();
+	console.log("click $datepickerPromo");
 });
 
 var app = angular.module('InfomovilVolantes', []);
 
 app.controller("VolantesController", function ($scope, $http, VolanteService, MensajesService) {
+	
+	$( ".datepicker" ).datepicker({ dateFormat: 'dd/mm/yy' });
+	
+
 	
 	var templatesPromo = new Array("promo8", "promo6",  "promo1","promo5", "promo4", "promo7", "promo2", "promo3"); //, "promo6");
 	var nombresPromo = new Array("Navidad", "Cursos",  "Bares","Floral", "Tecnología 2", "Buen Fin", "Hipster", "Tecnología"); //, "ATT"); /*Cambiar nombres*/
@@ -375,7 +391,6 @@ app.controller("VolantesController", function ($scope, $http, VolanteService, Me
 		VolanteService.guardarEventoGA(volantesCtrl.eventoPromocion, 
 				$("#tempNombrePromo").val(), $("#tempBanderaPromo").val());
 	};
-
 	
 	volantesCtrl.validarCampos = function() {
 		
@@ -414,4 +429,3 @@ app.controller("VolantesController", function ($scope, $http, VolanteService, Me
     volantesCtrl.generarSliderPromo();
     VolanteService.getVolantes();
 });
-
