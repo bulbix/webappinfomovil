@@ -1,4 +1,4 @@
-@import url(http://fonts.googleapis.com/css?family=Lato:300,400,700,900)
+@import url(http://fonts.googleapis.com/css?family=Lato:100,300,400,700,900)
 	;
 
 body { /*padding-bottom: 30px;*/
@@ -13,7 +13,18 @@ body { /*padding-bottom: 30px;*/
 	-o-background-size: cover;
 	background-size: cover;
 }
-
+.fw100{
+	
+	font-weight: 100;
+}
+.fw400{
+	
+	font-weight: 400;
+}
+.fw700{
+	
+	font-weight: 700;
+}
 .bodyErr {
 	background: url(../images/bg.png) no-repeat center center !important;
 	-webkit-background-size: 100% auto !important;
@@ -22,7 +33,23 @@ body { /*padding-bottom: 30px;*/
 	-o-background-size: cover !important;
 	background-size: cover !important;
 }
+.mp_mar40tp{
+	
+	margin: 40px 0 0 0;
+}
+.mp_mar40pp30{
+	
+	margin: 40px 0 0 0; padding: 30% 0 0 0;
+}
+.mp_-m10{
+	margin: -10px 0 0 0;
+	
+}
+.mp_notes{line-height: 1.3em; font-size: .98em; padding: 0 10%;}
 
+.mp_notesPie{
+	padding: 30px 10% 40px 10%;
+}
 .onoffswitch {
     position: relative; width: 40px;
     -webkit-user-select:none; -moz-user-select:none; -ms-user-select: none;
@@ -670,6 +697,14 @@ li.ui-state-default{
 .btn-outlineGreen a {
 	color: #fff
 }
+.btn-outlineBlack {
+	background: #000 !important;
+	height: 44px;
+}
+
+.btn-outlineBlack a {
+	color: #fff
+}
 
 .btn-outlineDisable {
 	background: #cccccc !important;
@@ -1100,10 +1135,17 @@ textarea {
 .bgDarkTrans{
 	background: url(../images/lineDarkBold.png) repeat;
 	background-size: auto;
-	
+}
+.bgGreenTrans{
+	background: url(../images/bgGreenTrans.png) repeat;
+	background-size: auto;
+}
+.bgPurpleTrans{
+	background: url(../images/bgPurpleTrans.png) repeat;
+	background-size: auto;
 }
 #publicarSitio {
-	height: 240px;
+	/*height: 240px;*/
 }
 
 .textLoCase {

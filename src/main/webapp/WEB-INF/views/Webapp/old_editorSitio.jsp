@@ -126,8 +126,10 @@
 									src="<c:url value="/resources/webapp/images/ico_mas_cont${ extensionImg }.png"/>" /> </a></li>
 									
 						</ul></li>
+						<li class="botonDesPublicar" id="btnPromoLi" style="display: none;"><a href="#" class="smoothScroll ${colorTexto}" ng-click="llamarModalhorarios.actualizaProducto()">
+							<img width="20" height="20" alt="Infomovil" src="<c:url value="/resources/webapp/images/fa-promo${ extensionImg }.png"/>" />
+							Mis Volantes </a></li>	
 						
-							
 						<li class="botonDesPublicar borderFin" id="btnContLi"
 								style="display: none;"><a href="#" data-toggle="modal" onClick="ocultaNotaValidaPP()"
 								class="smoothScroll ${colorTexto}">
@@ -135,11 +137,6 @@
 							width="20" height="20" alt="Infomovil"
 							src="<c:url value="/resources/webapp/images/fa-moviliza${ extensionImg }.png"/>" />
  									Moviliza tu sitio</a></li> 
- 									
-						<li class="botonDesPublicar" id="btnPromoLi" style="display: none;"><a href="#" class="smoothScroll ${colorTexto}" ng-click="llamarModalhorarios.actualizaProducto()">
-							<img width="20" height="20" alt="Infomovil" src="<c:url value="/resources/webapp/images/fa-promo${ extensionImg }.png"/>" />
-							Mis Volantes </a></li>	
-					
 									
 					<li><a href="<c:url value="/logout"></c:url>"
 						class="smoothScroll ${colorTexto}"><img width="20" height="20"
@@ -276,22 +273,6 @@
 						<div class="divider"></div>
 					</form>
 				</div>
-				<c:if test="${sitioWeb =='SIN_PUBLICAR'}">
-
-			<tiles:insertDefinition name="formPublicar">
-				<tiles:putAttribute name="urlEjemploSitio"
-					value="${ urlEjemploSitio }" />
-				<tiles:putAttribute name="visibleRecurso"
-					value="${ visibleRecurso }" />
-				<tiles:putAttribute name="visibleTel" value="${ visibleTel }" />
-			</tiles:insertDefinition>
-		</c:if>
-
-<!--MODAL PUBLICACION-->
-	<div id="modalPublicacion"></div>
-	<!--MODAL PUBLICACION-->
-	<div class="clear"></div>
-	
 			</div>
 			<!-- /page header -->
 			<br /> <br />
@@ -392,7 +373,17 @@
 		<div class="clearfix"></div>
 		<div class="dividerSmallest"></div>
 
-		
+		<c:if test="${sitioWeb =='SIN_PUBLICAR'}">
+
+			<tiles:insertDefinition name="formPublicar">
+				<tiles:putAttribute name="urlEjemploSitio"
+					value="${ urlEjemploSitio }" />
+				<tiles:putAttribute name="visibleRecurso"
+					value="${ visibleRecurso }" />
+				<tiles:putAttribute name="visibleTel" value="${ visibleTel }" />
+			</tiles:insertDefinition>
+		</c:if>
+
 	</footer>
 	<!--/Footer-->
 
@@ -464,7 +455,9 @@
 		<c:set var="fragmentName" value="modalImagenes" scope="request" />
 	</tiles:insertDefinition>
 	<!-- 		<!--/MODAL IMAGENES-->
-	
+	<!--MODAL PUBLICACION-->
+	<div id="modalPublicacion"></div>
+	<!--MODAL PUBLICACION-->
 	
 	<!-- 		<!--MODAL MOVILIZA-->
 	<tiles:insertDefinition name="modalGen">
