@@ -111,7 +111,7 @@
 						</button>
 					</div>
 					<div class="col-xs-2 col-sm-2 text-center">
-						<a href="<c:url value="/estiloVolante"></c:url>" 
+						<a href="<c:url value="/infomovil/estiloVolante"></c:url>" 
 							class="btn btn-outlineGreen  textWhite navEditorLato"
 							style="margin: 5px 8px 0 0;" >
 							<img width="20" height="20" alt="Infomovil"
