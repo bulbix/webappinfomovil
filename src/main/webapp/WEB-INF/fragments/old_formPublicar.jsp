@@ -2,8 +2,8 @@
 <%@ taglib uri="http://tiles.apache.org/tags-tiles" prefix="tiles"%>
 
 <div id="publicarSitio"> 
-
-	<section class=" publicar btnsEditor">
+	<div class="bgDobleBlack "></div>
+	<section class="bgFondo publicar btnsEditor">
 		<div class="container whiteBg">
 			<div class="row">
 				<h3 class=" text-center textBlack ">&iexcl;Ponle un nombre a tu p&aacute;gina web! </h3> 

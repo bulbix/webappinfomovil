@@ -42,7 +42,7 @@
 					<img
 					src="<c:url value="/resources/webapp/images/apple-touch-icon-57x57.png"/>"
 					width="50" height="50" alt="Infomovil" />
-				</span> <span class="marLeft navEditor ${colorTexto}">Mis Volantes</span>
+				</span> <span class="marLeft navEditor ${colorTexto}" style="margin-top:12px;">MIS VOLANTES</span>
 				<!-- /LOGO INFOMOVIL - REGISTRO GENERAL-->
 			</div>
 			<div id="navbar" class="navbar-collapse collapse text-right">
