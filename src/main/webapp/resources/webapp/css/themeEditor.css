@@ -1146,6 +1146,7 @@ a.ev_std:hover{
 	height:100%;
 	width:100%;
 	z-index:99999;
+	
 }
 
 a.ev_std img:hover{
@@ -1153,13 +1154,15 @@ a.ev_std img:hover{
 }
 .ev_std_chk{
 	display:none;
-	opacity:0;
+	background:#000;
+	opacity:.3;
+	width:90%;
+	height:100%;
 }
 
 .ev_std_chkSel{
 	background:#000;
 	display:block;
-	opacity:1;
 	position:absolute; text-align:center !important; 
 	padding:100px 80px;
 	margin: 0 auto;
@@ -1172,7 +1175,7 @@ height: 100%;
 
 a.ev_std:hover .ev_std_chk{
 	display:block;
-	opacity:1;
+	
 	position:absolute; text-align:center !important; padding:80px;
 	margin: 0 auto;
 	

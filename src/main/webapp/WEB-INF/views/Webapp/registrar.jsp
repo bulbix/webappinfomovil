@@ -75,19 +75,7 @@
 	        <!--codigo--> 
                <p class="help-block text-left hidden-sm hidden-md hidden-lg" style="max-width:280px; margin:10px auto;"></p>
                
-               <!-- Opciones Volante/Web -->
-               
              
-
-<div class="form-group"  style="max-width:280px; margin:10px auto;">
-      <label style="margin:10px;">¿Qué deseas crear?</label>
-       <select class="form-control">
-  <option>Volante móvil</option>
-  <option>Página web</option>
-</select>
-    </div>
-
-               <!-- /Opciones Volante/Web -->
 	        <div class="form-group">
 	        	<div class="divider"></div>
 	            	<input type="submit" value="&iexcl;Reg&iacute;strame!" class="btn btn-default btn-outlineGreen  text-center textWhite" style="max-width:280px; min-width:280px; margin:0 auto"/>

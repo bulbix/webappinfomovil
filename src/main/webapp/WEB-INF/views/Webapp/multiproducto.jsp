@@ -19,15 +19,15 @@
 			<img width="" height="40" alt="Infomovil" class="" src="<c:url value="/resources/webapp/images/logotipoInfomovil.png"/>" />
 		</div>
 		<div class="col-xs-12 col-sm-6 text-center ">
-			<div id="volante" class="mp_mar40pp30 bgGreenTrans">
-				<div style="">
+			<div id="volante" class="mp_mar40tp bgGreenTrans">
+				<div class="hidden-xs">
 					<img alt="Infomovil" class="img-responsive" src="<c:url value="/resources/webapp/images/mp_volante.png"/>" />
 				</div>
 
 
 				<div class="col-xs-12">
-					<h2 class="textWhite fw100">CREA UN</h2>
-					<h2 class="textWhite fw700 mp_-m10">VOLANTE MÓVIL</h2>
+					<h3 class="textWhite fw100">CREA UN</h3>
+					<h3 class="textWhite fw700 mp_-m10">VOLANTE<span class=""> MÓVIL</span></h3>
 				</div>
 				<div class="divider"></div>
 				<img width="" height="" alt="Infomovil" src="<c:url value="/resources/webapp/images/mp_line.png"/>" />
@@ -46,18 +46,18 @@
 
 		<div class="col-xs-12 col-sm-6 text-center">
 
-			<div id="paginaWeb" class="mp_mar40pp30 bgPurpleTrans">
-				<div style="">
+			<div id="paginaWeb" class="mp_mar40tp bgPurpleTrans">
+				<div class="hidden-xs">
 					<img height="" alt="Infomovil" class="img-responsive" src="<c:url value="/resources/webapp/images/mp_web.png"/>" />
 				</div>
 				<div class="col-xs-12">
-					<h2 class="textWhite fw100" >CREA UNA</h2>
-					<h2 class="textWhite fw700 mp_-m10">PÁGINA WEB</h2>
+					<h3 class="textWhite fw100" >CREA UNA</h3>
+					<h3 class="textWhite fw700 mp_-m10">PÁGINA WEB</h3>
 				</div>
 				<div class="divider"></div>
 				<img width="" height="" alt="Infomovil" src="<c:url value="/resources/webapp/images/mp_line.png"/>" />
 				<div class="divider"></div>
-				<p class="textWhite mp_notes hidden-xs">Y obtén una presencia e identidad digital para tu negocio o proyecto</p>
+				<p class="textWhite mp_notes hidden-xs">Y obtén una presencia e identidad digital para tu negocio <span class="hidden-sm"> o proyecto</span></p>
 				<div class="clear"></div>
 				<div class="divider hidden-xs"></div>
 				<button type="button" ng-click="multiproductoCtrl.paginaWeb()" class="btn btn-outlineBlack textWhite navEditorLato">

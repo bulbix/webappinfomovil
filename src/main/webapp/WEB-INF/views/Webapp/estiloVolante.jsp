@@ -127,9 +127,11 @@
   
 			<!-- Ficha template -->
 			<div class="col-xs-12 col-sm-4" style="margin-top:10px;">
-			<a href="#" class="ev_std">
+			<a href="#" class="ev_std" style="display:block">
 			<span class="ev_std_chk text-center"><img  alt="Infomovil"
-							src="<c:url value="/resources/webapp/images/fa-activeTemp.png"/>" /></span>
+							src="<c:url value="/resources/webapp/images/fa-activeTemp.png"/>" />
+							Aplicar estilo
+							</span>
 			<span class="bgDarkTrans" style="display:block">
 				<span style="padding: 10px; display:block">
 					<img class="img-responsiveTemp img-thumbnail" alt="Infomovil"
