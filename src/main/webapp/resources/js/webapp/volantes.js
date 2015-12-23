@@ -298,6 +298,64 @@ app.controller("VolantesController", function ($scope, $http, VolanteService, Me
 			volantesCtrl.indicePromocion = sliderModal.getCurrentSlide();
 			});	
 	};
+
+	volantesCtrl.imprimirPromo = function() {
+
+		volantesCtrl.mensaje = "Obteniendo volante...";
+    	MensajesService.abrirBlockUIGeneral(volantesCtrl.mensaje);
+    	
+		$("#urlVistaPreviaPromoImprimir").attr("src", $("#urlPromocion").text() + "?vistaPrevia=1");
+
+		var iframe = document.getElementById("urlVistaPreviaPromoImprimir");
+		iframe.src = iframe.src + (new Date()).getTime() + Math.floor(Math.random() * 1000000);
+		iframe.src = iframe.src;
+		document.getElementById('urlVistaPreviaPromoImprimir').onload = function() {
+			$.unblockUI();
+			$("#myModalPromoImprimir").modal();
+	    };
+	    
+	};
+	
+	volantesCtrl.imprimirPromocionWeb = function() {
+		
+		var urlPromo = $("#urlPromocion").text();
+		volantesCtrl.nombrePromo = urlPromo.substring(urlPromo.lastIndexOf("/") + 1);
+		var oldstrInner = document.documentElement.innerHTML;
+		var oldstr = document.body.innerHTML;
+		
+		volantesCtrl.mensaje = "Generando impresión...";
+    	MensajesService.abrirBlockUIGeneral(volantesCtrl.mensaje);
+
+		$.ajax({
+			type : "POST",
+			url : contextPath + "/infomovil/getHTMLPromocion",
+			data : {nombrePromocion: volantesCtrl.nombrePromo},
+		
+			success : function(data) {
+				
+				$("#myModalPromoImprimir").modal('toggle');
+				document.documentElement.innerHTML = data.elHtmlDePromocion;
+				setTimeout(function () { window.print(); 
+				window.focus();
+				window.close();
+				document.documentElement.innerHTML = oldstrInner;
+			    $(document.body).html(oldstr);
+			    $("#myModalPromoImprimir").modal();	
+				$.unblockUI();}, 2500);
+//				console.log("Nombre del evento: mi Evento,   nombreSitio: " + $("#tempNombrePromo").val() + ", banderaCanal: " + $("#tempBanderaPromo").val());
+//				ga('send', 'event', 'promo', 'promo-imprimir', $("#tempNombrePromo").val(), $("#tempBanderaPromo").val());
+				
+			},
+			error : function(json) {
+				$.unblockUI();
+				BootstrapDialog.show({
+					title: "<span class='textBlack' style='font-size:1.15em;'><img alt='' src='../resources/webapp/images/fa-warning-bk.png'  title='Alerta' />No se ha generado la impresión</span>",
+					message: '<div style="display:block; min-height:150px;"><p class="textBlack text-center" style="font-size:1.15em;">Por favor intentalo más tarde.</p><br/>'
+				});
+										
+			}
+		});	
+	};
 	
 	volantesCtrl.validarCampos = function() {
 		

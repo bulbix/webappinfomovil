@@ -188,7 +188,8 @@
 								<div class="col-xs-2 col-sm-2 text-center">
 								<button type="button"
 									class="hidden-xs hidden-sm btn btn-outlineGreen  textWhite navEditorLato"
-									id="btnImprimirPromo" style="margin: 5px 8px 0 0;">
+									ng-click="volantesCtrl.imprimirPromo()"
+									style="margin: 5px 8px 0 0;">
 									<span><img width="20" height="20" alt="Infomovil"
 										src="<c:url value="/resources/webapp/images/fa-print.png"/>" />
 										Imprimir</span>
@@ -320,7 +321,7 @@
 
 								<div id="volante">
 									<div ng-hide="true" id="idPromocion">{{item.idOffer}}</div>
-									<div ng-hide="true" id="urlPromocion">{{item.urlPromocion}}</div>
+									<div ng-hide="false" id="urlPromocion">{{item.urlPromocion}}</div>
 									<div ng-hide="true" id="tempPromocion">{{item.template}}</div>
 
 									<div class="col-xs-12 col-sm-12 col-md-6">
