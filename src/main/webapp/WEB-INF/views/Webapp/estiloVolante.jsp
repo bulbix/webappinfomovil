@@ -9,14 +9,15 @@
 <meta HTTP-EQUIV="PRAGMA" CONTENT="NO-CACHE">
 
 <tiles:insertDefinition name="headEditorSitio">
-	<tiles:putAttribute name="template" value="${ template }" />
+	<tiles:putAttribute name="template" value="CoverpageMultiproducto" />
 </tiles:insertDefinition>
 
 <link
 	href="<c:url value="/resources/webapp/js/datepicker/datepicker.css"/>"
 	rel="stylesheet" />
 <body role="document" data-spy="scroll" data-target=".navbar"
-	data-offset="75" id="page-top" ng-controller="VolantesController as volantesCtrl">
+	data-offset="75" id="page-top"
+	ng-controller="VolantesController as volantesCtrl">
 
 	<!-- Fixed navbar -->
 	<nav class="navbar navbar-${ claseCss } navbar-static-top">
@@ -42,7 +43,8 @@
 					<img
 					src="<c:url value="/resources/webapp/images/apple-touch-icon-57x57.png"/>"
 					width="50" height="50" alt="Infomovil" />
-				</span> <span class="marLeft navEditor ${colorTexto}" style="margin-top:12px;">MIS VOLANTES</span>
+				</span> <span class="marLeft navEditor ${colorTexto}"
+					style="margin-top: 12px;">MIS VOLANTES</span>
 				<!-- /LOGO INFOMOVIL - REGISTRO GENERAL-->
 			</div>
 			<div id="navbar" class="navbar-collapse collapse text-right">
@@ -58,8 +60,9 @@
 							src="<c:url value="/resources/webapp/images/fa-pencil${ extensionImg }.png"/>" />
 							Mi Contenido
 					</a></li>
-					<li><a href="" class="smoothScroll ${colorTexto}" ng-click="volantesCtrl.actualizaProducto()"> <img
-							width="20" height="20" alt="Infomovil"
+					<li><a href="" class="smoothScroll ${colorTexto}"
+						ng-click="volantesCtrl.actualizaProducto()"> <img width="20"
+							height="20" alt="Infomovil"
 							src="<c:url value="/resources/webapp/images/fa-compu${ extensionImg }.png"/>" />
 							Mi Página Web
 					</a></li>
@@ -95,370 +98,192 @@
 	<!-- Botón Nuevo Estilo -->
 	<div>
 		<div class="seccTop bgBlack">
-<div class="col-xs-12 col-sm-8 col-sm-offset-2">
-			<div class="">
-				Estilo volante
+			<div class="containerExt">
+				<div class="textWhite">
+					<h3 class="text-left textWhite navEditor">Elige el estilo <span class="hidden-xs">de
+						tu volante</span></h3>
+						
+						
+	<a href="<c:url value="/infomovil/misPromociones"></c:url>"
+					class="btn-default btn-outline navEditor pull-right">
 
+					<span id="idOpcionMasCont"><img width="20" height="20"
+						alt="Infomovil"
+						src="<c:url value="/resources/webapp/images/fa-back.png"/>" /> Regresar </span>
+				</a>
+				</div>
 			</div>
-</div>
 
 		</div>
 
 		<!-- /Botón Nuevo Estilo -->
 		<!-- Formulario Promociones -->
-		<div class="container">
+		<div class="containerExt">
+<p>Haz clic en el estilo que te agrade</p>
+
+
+
+  
+  
+			<!-- Ficha template -->
+			<div class="col-xs-12 col-sm-4" style="margin-top:10px;">
+			<a href="#" class="ev_std">
+			<span class="ev_std_chk text-center"><img  alt="Infomovil"
+							src="<c:url value="/resources/webapp/images/fa-activeTemp.png"/>" /></span>
+			<span class="bgDarkTrans" style="display:block">
+				<span style="padding: 10px; display:block">
+					<img class="img-responsiveTemp img-thumbnail" alt="Infomovil"
+						src="https://s3-us-west-2.amazonaws.com/promo.mobileinfo.io/templates/promo8/promo8.png" />
+				</span>
+				<span class="display:block">
+					<span class="textWhite col-xs-12 col-sm-12 " style="padding: 10px; display:block">Titulo 1</span>
+					
+				</span>
+				<span class="clear " style="display:block"></span>
+				</span>
+				</a>
+			</div>
+			<!-- Ficha template -->
+			
+
+<!-- Ficha template -->
+			<div class="col-xs-12 col-sm-4" style="margin-top:10px;">
+			<a href="#" class="ev_std">
+			<span class="ev_std_chkSel text-center"><img  alt="Infomovil"
+							src="<c:url value="/resources/webapp/images/fa-activeTemp.png"/>" /></span>
+			<span class="bgDarkTrans" style="display:block">
+				<span style="padding: 10px; display:block">
+					<img class="img-responsiveTemp img-thumbnail ev_img_chkSel" alt="Infomovil"
+						src="https://s3-us-west-2.amazonaws.com/promo.mobileinfo.io/templates/promo8/promo8.png" />
+				</span>
+				<span class="display:block">
+					<span class="textWhite col-xs-12 col-sm-12 " style="padding: 10px; display:block">Titulo 1</span>
+					
+				</span>
+				<span class="clear " style="display:block"></span>
+				</span>
+				</a>
+			</div>
+			<!-- Ficha template -->
+			
+			
 		
-		
-		<!-- Ficha template -->
-		<div class="col-xs-6 col-sm-2">
-		
-		<div><img class="img-responsive" alt="Infomovil"
-						src="https://s3-us-west-2.amazonaws.com/promo.mobileinfo.io/templates/promo8/promo8.png" /></div>
-		<div>
-		<div>Titulo 1</div>
-		<div><img width="30" height="30"
-							alt="Infomovil"
-							src="<c:url value="/resources/webapp/images/btn_active.png"/>" /></div>
-		</div>
-		
-		</div>
-		<!-- Ficha template -->
-		
-		
-			<div class="col-xs-12 reset">
-
-				<!--Theme showcase -->
-				<div class=" navEditor" role="main" id="intro">
-					<!-- Main jumbotron for a primary marketing message or call to action -->
-						<!-- page header <input type="text" id="checkedRedimir" value=""/>-->
-						<div class=" text-center"
-							style="border-radius:15px; background:url(<c:url value="/resources/webapp/images/bgWhTra.png"/>); padding:10px;">
-
-
-
-
-							<div ng-if="volantesCtrl.volantes.length == 0">
-								<div>
-									<div ng-hide="true" id="idPromocion"></div>
-									<div ng-hide="true" id="urlPromocion"></div>
-
-									<div class="col-xs-12 col-sm-12 col-md-6">
-										<div class="form-group text-left textBlack ">
-											<label for="exampleInputEmail1">Nombre de la
-												promoción:</label> <input type="text" class="form-control"
-												id="nombrePromo" value="">
-										</div>
-										<div class="divider"></div>
-
-										<div class="form-group text-left textBlack">
-											<label for="exampleInputPassword1" class="text-left">Descripción
-												de la promoción:</label>
-											<textarea rows="4" cols="50" name="descPromo" id="descPromo"
-												class="form-control"></textarea>
-										</div>
-
-										<div class="divider"></div>
-										<div class="form-group text-left textBlack">
-											<label for="exampleInputEmail1" class="text-left">Información
-												adicional:</label>
-											<textarea rows="4" cols="50" class="form-control"
-												name="infoadiPromo" id="infoadiPromo"></textarea>
-										</div>
-									</div>
-									<div class="col-xs-12 col-sm-6">
-
-										<div class="divider hidden-md hidden-lg"></div>
-										<div class="form-group text-left textBlack">
-											<label for="exampleInputEmail1" class="text-left">Vigencia
-												al:</label> <input type="text" class="form-control3 datepicker"
-												id="datepicker" value="">
-										</div>
-										<div class="clearfix"></div>
-										<div class="divider"></div>
-										<div class="form-group text-left textBlack">
-											<label class="text-left">¿Cómo redimir?:</label>
-											<div class="radio">
-												<div class="clear"></div>
-												<label><input type="radio" name="radioPromo" id="r1"
-													value="No especificado" class="radioPromo"
-													ng-checked="1==1">No especificado</label>
-											</div>
-											<div class="radio">
-												<label><input type="radio" name="radioPromo" id="r2"
-													value="Llámanos" class="radioPromo">Llámanos</label>
-											</div>
-											<div class="radio">
-												<label><input type="radio" name="radioPromo" id="r3"
-													value="Envíanos un e-mail" class="radioPromo">Envíanos
-													un e-mail</label>
-											</div>
-											<div class="radio">
-												<label><input type="radio" name="radioPromo" id="r4"
-													value="Visítanos" class="radioPromo">Visítanos</label>
-											</div>
-										</div>
+			
+			
 				
-									</div>
-								</div>
-							</div>
-
-							<div ng-repeat="item in volantesCtrl.volantes"
-								style="margin-top: 10px;">
-
-								<div id="volante">
-									<div ng-hide="true" id="idPromocion">{{item.idOffer}}</div>
-									<div ng-hide="true" id="urlPromocion">{{item.urlPromocion}}</div>
-									<div ng-hide="true" id="tempPromocion">{{item.template}}</div>
-
-									<div class="col-xs-12 col-sm-12 col-md-6">
-										<div class="form-group text-left textBlack">
-											<label for="exampleInputEmail1">Nombre de la
-												promoción:</label> <input type="text" class="form-control"
-												id="nombrePromo" value="{{item.titleOffer}}">
-										</div>
-										<div class="divider"></div>
-
-										<div class="form-group text-left textBlack">
-											<label for="exampleInputPassword1" class="text-left">Descripción
-												de la promoción:</label>
-											<textarea rows="4" cols="50" name="descPromo" id="descPromo"
-												class="form-control">{{item.descOffer}}</textarea>
-										</div>
-
-										<div class="divider"></div>
-										<div class="form-group text-left textBlack">
-											<label for="exampleInputEmail1" class="text-left">Información
-												adicional:</label>
-											<textarea rows="4" cols="50" class="form-control"
-												name="infoadiPromo" id="infoadiPromo">{{item.termsOffer}}</textarea>
-										</div>
-									</div>
-									<div class="col-xs-12 col-sm-6">
-
-										<div class="divider hidden-md hidden-lg"></div>
-										<div class="form-group text-left textBlack">
-											<label for="exampleInputEmail1" class="text-left">Vigencia
-												al:</label> <input type="text" class="form-control3 datepicker"
-												id="datepicker" value="{{item.endDateOffer}}">
-										</div>
-										<div class="clearfix"></div>
-										<div class="divider"></div>
-										<div class="form-group text-left textBlack">
-									<div class="col-xs-12 col-sm-6 reset">
-									<div class="col-xs-1 col-sm-2"></div>
-									<select class="col-xs-11 col-sm-10 form-control">
-  <option>Teléfono</option>
-  <option>Celular</option>
-
-</select></div>	
-
-											 <input type="text" class="col-xs-6 form-control">
-										</div>
-										<div class="clearfix"></div>
-										<div class="divider"></div>
-										<div class="form-group text-left textBlack">
-											<label for="exampleInputEmail1" class="text-left">E-mail</label> <input type="text" class="form-control">
-										</div>
-										
-										
-										<div class="clearfix"></div>
-										<div class="divider"></div>
-										<div class="form-group text-left textBlack">
-											<label class="text-left">¿Cómo redimir?:
-												{{item.redeemOffer}}</label>
-											<div class="radio">
-												<div class="clear"></div>
-												<label><input type="radio" name="radioPromo" id="r1"
-													value="No especificado" class="radioPromo"
-													ng-checked="item.redeemOffer == 'No especificado'">No
-													especificado</label>
-											</div>
-											<div class="radio">
-												<label><input type="radio" name="radioPromo" id="r2"
-													value="Llámanos" class="radioPromo"
-													ng-checked="item.redeemOffer == 'Llámanos'">Llámanos</label>
-											</div>
-											<div class="radio">
-												<label><input type="radio" name="radioPromo" id="r3"
-													value="Envíanos un e-mail" class="radioPromo"
-													ng-checked="item.redeemOffer == 'Envíanos un e-mail'">Envíanos
-													un e-mail</label>
-											</div>
-											<div class="radio">
-												<label><input type="radio" name="radioPromo" id="r4"
-													value="Visítanos" class="radioPromo"
-													ng-checked="item.redeemOffer == 'Visítanos'">Visítanos</label>
-											</div>
-										</div>
-										<div class="clearfix"></div>
-										<div class="divider"></div>
-										
-											<!-- /Botón MAPS -->
-
-				<div class="botonDesPublicar " >
-					<a href="#" data-toggle="modal" data-target="#myModalMaps"
-						class="col-xs-12 col-sm-12 btn btn-default btn-outlineGreen  navEditor">
-						<img width="25" height="25" alt="Infomovil"
-						src="<c:url value="/resources/webapp/images/icn_marc_maps.png"/>" />
-						<span id="idOpcionUbicacion">Colocar mi ubicación</span> <br /> <span
-						id="direccionMap" class="directionMap"></span>
-						<div class="clearfix"></div>
-					</a>
-				</div>
-									</div>
-								</div>
-								
-														
-									
-
-								<tiles:insertDefinition name="modalGen">
-									<tiles:putAttribute name="idModal" value="myModalPromoShare" />
-									<tiles:putAttribute name="tamanioModal"
-										value='"modal-dialog modal-md"' />
-									<c:set var="fragmentName" value="modalPromoShare"
-										scope="request" />
-									<c:set var="urlPromo" value="{{item.urlPromocion}}"
-										scope="session" />
-								</tiles:insertDefinition>
-							</div>
-							
-							
-							
-							<div class="clear"></div>
-							</div>
-							<div class="clear"></div>
-							<div id="divError" ng-show="volantesCtrl.muestraDivError"
-								style="color: red;"></div>
-								
-								
-								
-						</div>
-						
-						
-
-						<!-- /page header -->
-						<br /> <br />
-						<div id='myModalTempPromo' class='modal fade' tabindex='-1'
-							role='dialog' aria-labelledby='myModalLabel' aria-hidden='true'>
-							<div class='modal-dialog modal-md'>
-								<div class='modal-content'>
-									<div class='modal-header'>
-										<button type='button' class='close textBlack pull-left'
-											data-dismiss='modal' aria-label='Close'>
-											<span aria-hidden='true'>&times;</span>
-										</button>
-										<button type='button'
-											class='btn btn-purple pull-right txtBtnEditor'
-											ng-click="volantesCtrl.actualizaPlantillaVolante()">Aplicar
-											estilo</button>
-									</div>
-									<div class='modal-body contenidoSlider'></div>
-									<div class='modal-footer'></div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-				<!--/Theme showcase -->
-				
-				<!--Footer-->
-			<footer class="footer bgBlack">
-				<div class="dividerSmall"></div>
-				<div class="clearfix"></div>
-				
-			</footer>
+			
 
 
 		</div>
-		
+		<!--/Theme showcase -->
+
+		<!--Footer-->
+		<footer class="footer bgBlack">
+			<div class="dividerSmall"></div>
+			<div class="clearfix"></div>
+
+		</footer>
+
+
+	</div>
+
 	<!-- Bootstrap core JavaScript
 		    ================================================== -->
-		<!-- Placed at the end of the document so the pages load faster -->
-		<script src="<c:url value="/resources/webapp/js/datepicker/jquery-1.10.2.js"/>"></script>
-		<script src="<c:url value="/resources/webapp/js/jquery.min.js"/>"></script>
-		<script src="<c:url value="/resources/webapp/js/angular.min.js"/>"></script>
-		<script src="<c:url value="/resources/webapp/js/bootstrap.js"/>"></script>
-		<script src="<c:url value="/resources/webapp/js/docs.min.js"/>"></script>
-		<script src="<c:url value="/resources/webapp/js/smoothscroll.js"/>"></script>
-		<script src="<c:url value="/resources/webapp/js/ie10-viewport-bug-workaround.js"/>"></script>
-		<!-- bxSlider Javascript file -->
-		<script	src="<c:url value="/resources/webapp/js/jquery.bxslider.min.js"/>"></script>
-		<script	src="<c:url value="/resources/webapp/js/bootstrap-dialog.min.js"/>"></script>
-		<script src="<c:url value="/resources/webapp/js/jquery.numeric.js"/>"></script>
-		<script src="<c:url value="/resources/webapp/js/jquery.blockUI.js"/>"></script>
-		<script src="<c:url value="/resources/js/webapp/util.js"/>"></script>		 
-		<script src="<c:url value="/resources/webapp/js/datepicker/jquery.ui.core.js"/>"></script>
-		<script src="<c:url value="/resources/webapp/js/datepicker/jquery.ui.datepicker.js"/>"></script>
-		<script src="<c:url value="/resources/js/webapp/promociones.js"/>"></script>
-		<script src="<c:url value="/resources/js/webapp/volantes.js"/>"></script>
-		<script src="<c:url value="/resources/js/webapp/InfomovilServices/mensajesService.js"/>"></script>
-		<script src="<c:url value="/resources/js/webapp/InfomovilServices/volantesService.js"/>"></script>
-		<script src="<c:url value="/resources/js/webapp/mapaAngular.js"/>" ></script>
+	<!-- Placed at the end of the document so the pages load faster -->
+	<script
+		src="<c:url value="/resources/webapp/js/datepicker/jquery-1.10.2.js"/>"></script>
+	<script src="<c:url value="/resources/webapp/js/jquery.min.js"/>"></script>
+	<script src="<c:url value="/resources/webapp/js/angular.min.js"/>"></script>
+	<script src="<c:url value="/resources/webapp/js/bootstrap.js"/>"></script>
+	<script src="<c:url value="/resources/webapp/js/docs.min.js"/>"></script>
+	<script src="<c:url value="/resources/webapp/js/smoothscroll.js"/>"></script>
+	<script
+		src="<c:url value="/resources/webapp/js/ie10-viewport-bug-workaround.js"/>"></script>
+	<!-- bxSlider Javascript file -->
+	<script
+		src="<c:url value="/resources/webapp/js/jquery.bxslider.min.js"/>"></script>
+	<script
+		src="<c:url value="/resources/webapp/js/bootstrap-dialog.min.js"/>"></script>
+	<script src="<c:url value="/resources/webapp/js/jquery.numeric.js"/>"></script>
+	<script src="<c:url value="/resources/webapp/js/jquery.blockUI.js"/>"></script>
+	<script src="<c:url value="/resources/js/webapp/util.js"/>"></script>
+	<script
+		src="<c:url value="/resources/webapp/js/datepicker/jquery.ui.core.js"/>"></script>
+	<script
+		src="<c:url value="/resources/webapp/js/datepicker/jquery.ui.datepicker.js"/>"></script>
+	<script src="<c:url value="/resources/js/webapp/promociones.js"/>"></script>
+	<script src="<c:url value="/resources/js/webapp/volantes.js"/>"></script>
+	<script
+		src="<c:url value="/resources/js/webapp/InfomovilServices/mensajesService.js"/>"></script>
+	<script
+		src="<c:url value="/resources/js/webapp/InfomovilServices/volantesService.js"/>"></script>
+	<script src="<c:url value="/resources/js/webapp/mapaAngular.js"/>"></script>
 
-		<script>
-			$(document).ready(function(){
-				generarSliderPromo();
-			});
-		</script>
-	
-	 
-		<tiles:insertDefinition name="modalGen">
-			<tiles:putAttribute name="idModal" value="myModalPromo" />
-			<tiles:putAttribute name="tamanioModal"
-				value='"modal-dialog modal-lg"' />
-			<c:set var="fragmentName" value="modalPromoVP" scope="request" />
-		</tiles:insertDefinition>
-		<tiles:insertDefinition name="modalGen">
-			<tiles:putAttribute name="idModal" value="myModalPromoImprimir" />
-			<tiles:putAttribute name="tamanioModal"
-				value='"modal-dialog modal-lg"' />
-			<c:set var="fragmentName" value="modalPromoVPI" scope="request" />
-		</tiles:insertDefinition>
-		<tiles:insertDefinition name="modalGen">
-			<tiles:putAttribute name="idModal" value="myModalPromoShare" />
-			<tiles:putAttribute name="tamanioModal"
-				value='"modal-dialog modal-md"' />
-			<c:set var="fragmentName" value="modalPromoShare" scope="request" />
-			<c:set var="urlPromo" value="${urlPromocion}" scope="session"/>
-		</tiles:insertDefinition>
-		
-		<tiles:insertDefinition name="modalGen">
-			<tiles:putAttribute name="idModal" value="myModalPromoExito" />
-			<tiles:putAttribute name="tamanioModal"
-				value='"modal-dialog modal-md"' />
-			<c:set var="fragmentName" value="modalPromoExito" scope="request" />
-		</tiles:insertDefinition>
-		
-		<tiles:insertDefinition name="modalGen">
-			<tiles:putAttribute name="idModal" value="myModalPromoFallo" />
-			<tiles:putAttribute name="tamanioModal"
-				value='"modal-dialog modal-md"' />
-			<c:set var="fragmentName" value="modalPromoFallo" scope="request" />
-		</tiles:insertDefinition>
-		<c:set var="urlPromo" value="${ urlPromocion }" scope="session"/>
-		
-		<!--MODAL MAPA-->
+	<script>
+		$(document).ready(function() {
+			generarSliderPromo();
+		});
+	</script>
+
+
+	<tiles:insertDefinition name="modalGen">
+		<tiles:putAttribute name="idModal" value="myModalPromo" />
+		<tiles:putAttribute name="tamanioModal"
+			value='"modal-dialog modal-lg"' />
+		<c:set var="fragmentName" value="modalPromoVP" scope="request" />
+	</tiles:insertDefinition>
+	<tiles:insertDefinition name="modalGen">
+		<tiles:putAttribute name="idModal" value="myModalPromoImprimir" />
+		<tiles:putAttribute name="tamanioModal"
+			value='"modal-dialog modal-lg"' />
+		<c:set var="fragmentName" value="modalPromoVPI" scope="request" />
+	</tiles:insertDefinition>
+	<tiles:insertDefinition name="modalGen">
+		<tiles:putAttribute name="idModal" value="myModalPromoShare" />
+		<tiles:putAttribute name="tamanioModal"
+			value='"modal-dialog modal-md"' />
+		<c:set var="fragmentName" value="modalPromoShare" scope="request" />
+		<c:set var="urlPromo" value="${urlPromocion}" scope="session" />
+	</tiles:insertDefinition>
+
+	<tiles:insertDefinition name="modalGen">
+		<tiles:putAttribute name="idModal" value="myModalPromoExito" />
+		<tiles:putAttribute name="tamanioModal"
+			value='"modal-dialog modal-md"' />
+		<c:set var="fragmentName" value="modalPromoExito" scope="request" />
+	</tiles:insertDefinition>
+
+	<tiles:insertDefinition name="modalGen">
+		<tiles:putAttribute name="idModal" value="myModalPromoFallo" />
+		<tiles:putAttribute name="tamanioModal"
+			value='"modal-dialog modal-md"' />
+		<c:set var="fragmentName" value="modalPromoFallo" scope="request" />
+	</tiles:insertDefinition>
+	<c:set var="urlPromo" value="${ urlPromocion }" scope="session" />
+
+	<!--MODAL MAPA-->
 	<tiles:insertDefinition name="modalMapFragment">
 		<tiles:putAttribute name="idModal" value="myModalMaps" />
-		<tiles:putAttribute name="tamanioModal" value='"modal-dialog modal-lg"'/>
-		<tiles:putAttribute name="tipo" value='volante'/>
+		<tiles:putAttribute name="tamanioModal"
+			value='"modal-dialog modal-lg"' />
+		<tiles:putAttribute name="tipo" value='volante' />
 	</tiles:insertDefinition>
 	<!--/MODAL MAPA-->
-		
-		<script>
-			<c:choose> 
-				<c:when test="${sessionScope.canalUsuario == 'BAZ'}">
-					$("#logoBAZ").css("display", "block");
-					$("#idRegBAZ").css("display", "block");			
-					$("#logoGral").css("display", "none");					
-				</c:when>
-				<c:otherwise>
-					$("#logoBAZ").css("display", "none");
-					$("#idRegBAZ").css("display", "none");	
-					$("#logoGral").css("display", "block");	
-				</c:otherwise>
-			</c:choose>
-		</script>
-	</body>
-	
+
+	<script>
+		<c:choose>
+		<c:when test="${sessionScope.canalUsuario == 'BAZ'}">
+		$("#logoBAZ").css("display", "block");
+		$("#idRegBAZ").css("display", "block");
+		$("#logoGral").css("display", "none");
+		</c:when>
+		<c:otherwise>
+		$("#logoBAZ").css("display", "none");
+		$("#idRegBAZ").css("display", "none");
+		$("#logoGral").css("display", "block");
+		</c:otherwise>
+		</c:choose>
+	</script>
+</body>
+
 </html>

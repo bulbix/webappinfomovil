@@ -1140,6 +1140,43 @@ textarea {
 	background: url(../images/lineDarkBold.png) repeat;
 	background-size: auto;
 }
+a.ev_std:hover{
+	background:#000;
+	display:block;
+	height:100%;
+	width:100%;
+	z-index:99999;
+}
+
+a.ev_std img:hover{
+	opacity:.7 !important;
+}
+.ev_std_chk{
+	display:none;
+	opacity:0;
+}
+
+.ev_std_chkSel{
+	background:#000;
+	display:block;
+	opacity:1;
+	position:absolute; text-align:center !important; 
+	padding:100px 80px;
+	margin: 0 auto;
+	width: 91%;
+height: 100%;
+}
+.ev_img_chkSel{
+	opacity:.7 !important;
+}
+
+a.ev_std:hover .ev_std_chk{
+	display:block;
+	opacity:1;
+	position:absolute; text-align:center !important; padding:80px;
+	margin: 0 auto;
+	
+}
 .bgGreenTrans{
 	background: url(../images/bgGreenTrans.png) repeat;
 	background-size: auto;
