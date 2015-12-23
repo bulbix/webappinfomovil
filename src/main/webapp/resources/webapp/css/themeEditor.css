@@ -25,6 +25,10 @@ body { /*padding-bottom: 30px;*/
 	
 	font-weight: 700;
 }
+.containerPromo{
+	width:100px;
+	margin:0 auto;
+}
 .bodyErr {
 	background: url(../images/bg.png) no-repeat center center !important;
 	-webkit-background-size: 100% auto !important;
@@ -691,7 +695,7 @@ li.ui-state-default{
 
 .btn-outlineGreen {
 	background: #2fa399 !important;
-	height: 44px;
+	/*height: 44px;*/
 }
 
 .btn-outlineGreen a {

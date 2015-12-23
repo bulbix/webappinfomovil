@@ -111,13 +111,14 @@
 						</button>
 					</div>
 					<div class="col-xs-2 col-sm-2 text-center">
-						<a href="<c:url value="/estiloVolante"></c:url>" 
+						<button type="button"
 							class="btn btn-outlineGreen  textWhite navEditorLato"
-							style="margin: 5px 8px 0 0;" >
+							style="margin: 5px 8px 0 0;" data-toggle="modal"
+							data-target="#myModalTempPromo">
 							<img width="20" height="20" alt="Infomovil"
 								src="<c:url value="/resources/webapp/images/fa-templates.png"/>" />
 							<span class="hidden-xs">Estilo</span>
-						</a>
+						</button>
 					</div>
 
 					
@@ -155,15 +156,14 @@
 				<!-- Botones publicados -->
 				<div ng-show="volantesCtrl.muestraPromoPublicada">
 				
-				<div class="col-xs-2 col-sm-2 text-center">
-						<a href="<c:url value="/estiloVolante"></c:url>" 
-							class="btn btn-outlineGreen  textWhite navEditorLato"
-							style="margin: 5px 8px 0 0;" >
-							<img width="20" height="20" alt="Infomovil"
-								src="<c:url value="/resources/webapp/images/fa-templates.png"/>" />
-							<span class="hidden-xs">Estilo</span>
-						</a>
-					</div>
+				<div class="col-xs-2 col-sm-2 text-center"><button type="button"
+									class="btn btn-outlineGreen textWhite navEditorLato"
+									id="btnEstiloTemplates" data-toggle="modal"
+									data-target="#myModalTempPromo" style="margin: 5px 8px 0 0;">
+									<img width="20" height="20" alt="Infomovil"
+										src="<c:url value="/resources/webapp/images/fa-templates.png"/>" />
+									<span class="hidden-xs">Estilo</span>
+								</button></div>
 								
 								<div class="col-xs-2 col-sm-2 text-center">
 								<button type="button"

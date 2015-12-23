@@ -42,4 +42,9 @@ class VolanteController {
 	def misVolantes() {		
 		return "redirect:/infomovil/misPromociones"
 	}
+	
+	@RequestMapping(value = "/infomovil/estiloVolante", method = RequestMethod.GET, produces = "application/json")
+	def estiloVolante() {
+		return "redirect:/infomovil/estiloVolante"
+	}
 }
