@@ -3,17 +3,21 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!doctype html>
-<html lang="es" ng-app="InfomovilEstiloVolantes">
+<html lang="es" ng-app="InfomovilVolantes">
 
 <meta HTTP-EQUIV="CACHE-CONTROL" CONTENT="NO-CACHE">
 <meta HTTP-EQUIV="PRAGMA" CONTENT="NO-CACHE">
 
 <tiles:insertDefinition name="headEditorSitio">
-	<tiles:putAttribute name="template" value="CoverpageMultiproducto" />
+	<tiles:putAttribute name="template" value="${ template }" />
 </tiles:insertDefinition>
 
+<link
+	href="<c:url value="/resources/webapp/js/datepicker/datepicker.css"/>"
+	rel="stylesheet" />
 <body role="document" data-spy="scroll" data-target=".navbar"
-	data-offset="75" id="page-top">
+	data-offset="75" id="page-top"
+	ng-controller="VolantesController as volantesCtrl">
 
 	<!-- Fixed navbar -->
 	<nav class="navbar navbar-${ claseCss } navbar-static-top">
@@ -98,11 +102,15 @@
 				<div class="textWhite">
 					<h3 class="text-left textWhite navEditor reset">Elige el estilo <span class="hidden-xs">de
 						tu volante</span></h3>
-						<a href="<c:url value="/infomovil/misPromociones"></c:url>"
-							class="btn-default btn-outline navEditor pull-right">
-							<span id="idOpcionMasCont"><img width="20" height="20"
-							alt="Infomovil" src="<c:url value="/resources/webapp/images/fa-back.png"/>" /> Regresar </span>
-						</a>
+						
+						
+	<a href="<c:url value="/infomovil/misPromociones"></c:url>"
+					class="btn-default btn-outline navEditor pull-right">
+
+					<span id="idOpcionMasCont"><img width="20" height="20"
+						alt="Infomovil"
+						src="<c:url value="/resources/webapp/images/fa-back.png"/>" /> Regresar </span>
+				</a>
 				</div>
 			</div>
 
@@ -110,36 +118,37 @@
 
 		<!-- /Botón Nuevo Estilo -->
 		<!-- Formulario Promociones -->
+		<div class="containerExt">
+<p style="line-height:.8em;">Haz clic en el estilo que te agrade</p>
 
-		<div class="containerExt" ng-controller="EstiloVolanteController as estiloVolanteCtrl">
 
-		<p style="line-height:.8em;">Haz clic en el estilo que te agrade</p>
 
-			<div ng-repeat="item in estiloVolanteCtrl.plantillas">
+  
+  
 			<!-- Ficha template -->
-				<div class="col-xs-12 col-sm-4" style="margin-top:10px;">
-					<a href="#" class="ev_std" style="display:block" ng-click="estiloVolanteCtrl.actulizaPlantilla(item)">
-					<span class="ev_std_chk text-center"><img alt="Infomovil"
-						src="<c:url value="/resources/webapp/images/fa-activeTemp.png"/>" />
-						Aplicar estilo</span>
-					<span class="bgDarkTrans" style="display:block">
-						<span style="padding: 10px; display:block">
-							<img class="img-responsiveTemp img-thumbnail" alt="Infomovil"
-								src="https://s3-us-west-2.amazonaws.com/promo.mobileinfo.io/templates/{{item}}/{{item}}.png" />
-						</span>
-						<span class="display:block">
-							<span class="textWhite col-xs-12 col-sm-12 " style="padding: 10px; display:block">{{estiloVolanteCtrl.noombrePlantillas[$index]}}</span>
-							
-						</span>
-						<span class="clear " style="display:block"></span>
-						</span>
-						</a>
-				</div>
+			<div class="col-xs-12 col-sm-4" style="margin-top:10px;">
+			<a href="#" class="ev_std" style="display:block">
+			<span class="ev_std_chk text-center"><img  alt="Infomovil" width="60"
+							src="<c:url value="/resources/webapp/images/fa-activeTemp.png"/>" />
+							Aplicar estilo
+							</span>
+			<span class="bgDarkTrans" style="display:block">
+				<span style="padding: 10px; display:block">
+					<img class="img-responsiveTemp img-thumbnail" alt="Infomovil"
+						src="https://s3-us-west-2.amazonaws.com/promo.mobileinfo.io/templates/promo8/promo8.png" />
+				</span>
+				<span class="display:block">
+					<span class="textWhite col-xs-12 col-sm-12 " style="padding: 10px; display:block">Titulo 1</span>
+					
+				</span>
+				<span class="clear " style="display:block"></span>
+				</span>
+				</a>
 			</div>
 			<!-- Ficha template -->
 			
 
-<!-- Ficha template 
+<!-- Ficha template -->
 			<div class="col-xs-12 col-sm-4" style="margin-top:10px;">
 			<a href="#" class="ev_std">
 			<span class="ev_std_chkSel text-center"><img  alt="Infomovil" width="60"
@@ -157,7 +166,12 @@
 				</span>
 				</a>
 			</div>
-			 Ficha template -->
+			<!-- Ficha template -->
+			
+			
+		
+			
+			
 				
 			<div class="clear"></div>
 <div style="height:20px; width:100%;"></div>
@@ -178,7 +192,8 @@
 	<!-- Bootstrap core JavaScript
 		    ================================================== -->
 	<!-- Placed at the end of the document so the pages load faster -->
-
+	<script
+		src="<c:url value="/resources/webapp/js/datepicker/jquery-1.10.2.js"/>"></script>
 	<script src="<c:url value="/resources/webapp/js/jquery.min.js"/>"></script>
 	<script src="<c:url value="/resources/webapp/js/angular.min.js"/>"></script>
 	<script src="<c:url value="/resources/webapp/js/bootstrap.js"/>"></script>
@@ -194,9 +209,68 @@
 	<script src="<c:url value="/resources/webapp/js/jquery.numeric.js"/>"></script>
 	<script src="<c:url value="/resources/webapp/js/jquery.blockUI.js"/>"></script>
 	<script src="<c:url value="/resources/js/webapp/util.js"/>"></script>
-	<script src="<c:url value="/resources/js/webapp/estiloVolante.js"/>"></script>
-	<script src="<c:url value="/resources/js/webapp/InfomovilServices/volantesService.js"/>"></script>
-	<script src="<c:url value="/resources/js/webapp/InfomovilServices/mensajesService.js"/>"></script>
+	<script
+		src="<c:url value="/resources/webapp/js/datepicker/jquery.ui.core.js"/>"></script>
+	<script
+		src="<c:url value="/resources/webapp/js/datepicker/jquery.ui.datepicker.js"/>"></script>
+	<script src="<c:url value="/resources/js/webapp/promociones.js"/>"></script>
+	<script src="<c:url value="/resources/js/webapp/volantes.js"/>"></script>
+	<script
+		src="<c:url value="/resources/js/webapp/InfomovilServices/mensajesService.js"/>"></script>
+	<script
+		src="<c:url value="/resources/js/webapp/InfomovilServices/volantesService.js"/>"></script>
+	<script src="<c:url value="/resources/js/webapp/mapaAngular.js"/>"></script>
+
+	<script>
+		$(document).ready(function() {
+			generarSliderPromo();
+		});
+	</script>
+
+
+	<tiles:insertDefinition name="modalGen">
+		<tiles:putAttribute name="idModal" value="myModalPromo" />
+		<tiles:putAttribute name="tamanioModal"
+			value='"modal-dialog modal-lg"' />
+		<c:set var="fragmentName" value="modalPromoVP" scope="request" />
+	</tiles:insertDefinition>
+	<tiles:insertDefinition name="modalGen">
+		<tiles:putAttribute name="idModal" value="myModalPromoImprimir" />
+		<tiles:putAttribute name="tamanioModal"
+			value='"modal-dialog modal-lg"' />
+		<c:set var="fragmentName" value="modalPromoVPI" scope="request" />
+	</tiles:insertDefinition>
+	<tiles:insertDefinition name="modalGen">
+		<tiles:putAttribute name="idModal" value="myModalPromoShare" />
+		<tiles:putAttribute name="tamanioModal"
+			value='"modal-dialog modal-md"' />
+		<c:set var="fragmentName" value="modalPromoShare" scope="request" />
+		<c:set var="urlPromo" value="${urlPromocion}" scope="session" />
+	</tiles:insertDefinition>
+
+	<tiles:insertDefinition name="modalGen">
+		<tiles:putAttribute name="idModal" value="myModalPromoExito" />
+		<tiles:putAttribute name="tamanioModal"
+			value='"modal-dialog modal-md"' />
+		<c:set var="fragmentName" value="modalPromoExito" scope="request" />
+	</tiles:insertDefinition>
+
+	<tiles:insertDefinition name="modalGen">
+		<tiles:putAttribute name="idModal" value="myModalPromoFallo" />
+		<tiles:putAttribute name="tamanioModal"
+			value='"modal-dialog modal-md"' />
+		<c:set var="fragmentName" value="modalPromoFallo" scope="request" />
+	</tiles:insertDefinition>
+	<c:set var="urlPromo" value="${ urlPromocion }" scope="session" />
+
+	<!--MODAL MAPA-->
+	<tiles:insertDefinition name="modalMapFragment">
+		<tiles:putAttribute name="idModal" value="myModalMaps" />
+		<tiles:putAttribute name="tamanioModal"
+			value='"modal-dialog modal-lg"' />
+		<tiles:putAttribute name="tipo" value='volante' />
+	</tiles:insertDefinition>
+	<!--/MODAL MAPA-->
 
 	<script>
 		<c:choose>
