@@ -12,12 +12,8 @@
 	<tiles:putAttribute name="template" value="CoverpageMultiproducto" />
 </tiles:insertDefinition>
 
-<link
-	href="<c:url value="/resources/webapp/js/datepicker/datepicker.css"/>"
-	rel="stylesheet" />
 <body role="document" data-spy="scroll" data-target=".navbar"
-	data-offset="75" id="page-top"
-	ng-controller="EstiloVolanteController as estiloVolanteCtrl">
+	data-offset="75" id="page-top">
 
 	<!-- Fixed navbar -->
 	<nav class="navbar navbar-${ claseCss } navbar-static-top">
@@ -114,32 +110,34 @@
 
 		<!-- /Botón Nuevo Estilo -->
 		<!-- Formulario Promociones -->
-		<div class="containerExt">
+		<div class="containerExt" ng-controller="EstiloVolanteController as estiloVolanteCtrl">
 			<p>Haz clic en el estilo que te agrade</p>
 
+			<div ng-repeat="item in estiloVolanteCtrl.plantillas">
 			<!-- Ficha template -->
-			<div class="col-xs-12 col-sm-4" style="margin-top:10px;">
-				<a href="#" class="ev_std" style="display:block">
-				<span class="ev_std_chk text-center"><img alt="Infomovil"
-					src="<c:url value="/resources/webapp/images/fa-activeTemp.png"/>" />
-					Aplicar estilo</span>
-				<span class="bgDarkTrans" style="display:block">
-					<span style="padding: 10px; display:block">
-						<img class="img-responsiveTemp img-thumbnail" alt="Infomovil"
-							src="https://s3-us-west-2.amazonaws.com/promo.mobileinfo.io/templates/promo8/promo8.png" />
-					</span>
-					<span class="display:block">
-						<span class="textWhite col-xs-12 col-sm-12 " style="padding: 10px; display:block">Titulo 1</span>
-						
-					</span>
-					<span class="clear " style="display:block"></span>
-					</span>
-					</a>
+				<div class="col-xs-12 col-sm-4" style="margin-top:10px;">
+					<a href="#" class="ev_std" style="display:block" ng-click="estiloVolanteCtrl.actulizaPlantilla(item)">
+					<span class="ev_std_chk text-center"><img alt="Infomovil"
+						src="<c:url value="/resources/webapp/images/fa-activeTemp.png"/>" />
+						Aplicar estilo</span>
+					<span class="bgDarkTrans" style="display:block">
+						<span style="padding: 10px; display:block">
+							<img class="img-responsiveTemp img-thumbnail" alt="Infomovil"
+								src="https://s3-us-west-2.amazonaws.com/promo.mobileinfo.io/templates/{{item}}/{{item}}.png" />
+						</span>
+						<span class="display:block">
+							<span class="textWhite col-xs-12 col-sm-12 " style="padding: 10px; display:block">{{estiloVolanteCtrl.noombrePlantillas[$index]}}</span>
+							
+						</span>
+						<span class="clear " style="display:block"></span>
+						</span>
+						</a>
+				</div>
 			</div>
 			<!-- Ficha template -->
 			
 
-<!-- Ficha template -->
+<!-- Ficha template 
 			<div class="col-xs-12 col-sm-4" style="margin-top:10px;">
 			<a href="#" class="ev_std">
 			<span class="ev_std_chkSel text-center"><img  alt="Infomovil"
@@ -158,14 +156,6 @@
 				</a>
 			</div>
 			<!-- Ficha template -->
-			
-			
-		
-			
-			
-				
-			
-
 
 		</div>
 		<!--/Theme showcase -->
@@ -183,8 +173,7 @@
 	<!-- Bootstrap core JavaScript
 		    ================================================== -->
 	<!-- Placed at the end of the document so the pages load faster -->
-	<script
-		src="<c:url value="/resources/webapp/js/datepicker/jquery-1.10.2.js"/>"></script>
+
 	<script src="<c:url value="/resources/webapp/js/jquery.min.js"/>"></script>
 	<script src="<c:url value="/resources/webapp/js/angular.min.js"/>"></script>
 	<script src="<c:url value="/resources/webapp/js/bootstrap.js"/>"></script>
@@ -200,68 +189,9 @@
 	<script src="<c:url value="/resources/webapp/js/jquery.numeric.js"/>"></script>
 	<script src="<c:url value="/resources/webapp/js/jquery.blockUI.js"/>"></script>
 	<script src="<c:url value="/resources/js/webapp/util.js"/>"></script>
-	<script
-		src="<c:url value="/resources/webapp/js/datepicker/jquery.ui.core.js"/>"></script>
-	<script
-		src="<c:url value="/resources/webapp/js/datepicker/jquery.ui.datepicker.js"/>"></script>
-	<script src="<c:url value="/resources/js/webapp/promociones.js"/>"></script>
-	<script src="<c:url value="/resources/js/webapp/volantes.js"/>"></script>
-	<script
-		src="<c:url value="/resources/js/webapp/InfomovilServices/mensajesService.js"/>"></script>
-	<script
-		src="<c:url value="/resources/js/webapp/InfomovilServices/volantesService.js"/>"></script>
-	<script src="<c:url value="/resources/js/webapp/mapaAngular.js"/>"></script>
-
-	<script>
-		$(document).ready(function() {
-			generarSliderPromo();
-		});
-	</script>
-
-
-	<tiles:insertDefinition name="modalGen">
-		<tiles:putAttribute name="idModal" value="myModalPromo" />
-		<tiles:putAttribute name="tamanioModal"
-			value='"modal-dialog modal-lg"' />
-		<c:set var="fragmentName" value="modalPromoVP" scope="request" />
-	</tiles:insertDefinition>
-	<tiles:insertDefinition name="modalGen">
-		<tiles:putAttribute name="idModal" value="myModalPromoImprimir" />
-		<tiles:putAttribute name="tamanioModal"
-			value='"modal-dialog modal-lg"' />
-		<c:set var="fragmentName" value="modalPromoVPI" scope="request" />
-	</tiles:insertDefinition>
-	<tiles:insertDefinition name="modalGen">
-		<tiles:putAttribute name="idModal" value="myModalPromoShare" />
-		<tiles:putAttribute name="tamanioModal"
-			value='"modal-dialog modal-md"' />
-		<c:set var="fragmentName" value="modalPromoShare" scope="request" />
-		<c:set var="urlPromo" value="${urlPromocion}" scope="session" />
-	</tiles:insertDefinition>
-
-	<tiles:insertDefinition name="modalGen">
-		<tiles:putAttribute name="idModal" value="myModalPromoExito" />
-		<tiles:putAttribute name="tamanioModal"
-			value='"modal-dialog modal-md"' />
-		<c:set var="fragmentName" value="modalPromoExito" scope="request" />
-	</tiles:insertDefinition>
-
-	<tiles:insertDefinition name="modalGen">
-		<tiles:putAttribute name="idModal" value="myModalPromoFallo" />
-		<tiles:putAttribute name="tamanioModal"
-			value='"modal-dialog modal-md"' />
-		<c:set var="fragmentName" value="modalPromoFallo" scope="request" />
-	</tiles:insertDefinition>
-	<c:set var="urlPromo" value="${ urlPromocion }" scope="session" />
-
-	<!--MODAL MAPA-->
-	<tiles:insertDefinition name="modalMapFragment">
-		<tiles:putAttribute name="idModal" value="myModalMaps" />
-		<tiles:putAttribute name="tamanioModal"
-			value='"modal-dialog modal-lg"' />
-		<tiles:putAttribute name="tipo" value='volante' />
-	</tiles:insertDefinition>
-	<!--/MODAL MAPA-->
+	<script src="<c:url value="/resources/js/webapp/estiloVolante.js"/>"></script>
+	<script src="<c:url value="/resources/js/webapp/InfomovilServices/volantesService.js"/>"></script>
+	<script src="<c:url value="/resources/js/webapp/InfomovilServices/mensajesService.js"/>"></script>
 
 	<script>
 		<c:choose>

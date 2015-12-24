@@ -269,7 +269,7 @@
 										</div>
 									</div>
 									<div class="col-xs-12 col-sm-6">
-<input type="text" class="datepicker">
+<input type="text" id="datepicker" class="datepicker">
 										<div class="divider hidden-md hidden-lg"></div>
 										<div class="form-group text-left textBlack">
 											<label for="exampleInputEmail1" class="text-left">Vigencia

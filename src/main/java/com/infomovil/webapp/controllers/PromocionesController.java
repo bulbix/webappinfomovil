@@ -140,8 +140,15 @@ public class PromocionesController
 			return null;
 		}			
 
-		resultado.put("nombreSitio", Util.getCurrentSession().getAttribute("nombreSitio").toString());
-		resultado.put("banderaCanal", Util.getCurrentSession().getAttribute("banderaCanal").toString());
+		try
+		{
+			resultado.put("nombreSitio", Util.getCurrentSession().getAttribute("nombreSitio").toString());
+			resultado.put("banderaCanal", Util.getCurrentSession().getAttribute("banderaCanal").toString());
+		}
+		catch(Exception e)
+		{
+			logger.error("guardarPromocion:::::", e);
+		}
 		
 		return resultado;
 	}
