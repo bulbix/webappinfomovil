@@ -1140,6 +1140,10 @@ textarea {
 	background: url(../images/lineDarkBold.png) repeat;
 	background-size: auto;
 }
+.borderRad{
+	border-radius:5px;
+	border:1px solid #dcdcdc;
+}
 a.ev_std:hover{
 	background:#000;
 	display:block;

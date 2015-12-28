@@ -57,7 +57,7 @@
 						</a>	
 							<ul class="dropdown-menu navbar-${ claseCss } ${colorTexto} text-right">
 								<li><a href="<c:url value="/infomovil/miCuenta"></c:url>"
- 									class="smoothScroll ${colorTexto}">Mis productos 
+ 									class="smoothScroll borderInicial ${colorTexto}">Mis productos 
  									<img width="20" height="20" alt="Infomovil"
  										src="<c:url value="/resources/webapp/images/fa-products${ extensionImg }.png"/>" /></a>
  								</li>
@@ -69,7 +69,7 @@
  											src="<c:url value="/resources/webapp/images/fa-reportes${ extensionImg }.png"/>"/></a>
  									</li>
 									<li><a href="#" data-toggle="modal" data-target="#myModalMsjPN"
-	 									class="smoothScroll ${colorTexto}">Mis mensajes
+	 									class="smoothScroll  borderFin ${colorTexto}">Mis mensajes
 	 									<img width="20" height="20" alt="Infomovil"
 	 									src="<c:url value="/resources/webapp/images/fa-messages${ extensionImg }.png"/>" /></a>
 	 								</li>
@@ -128,7 +128,7 @@
 						</ul></li>
 						
 							
-						<li class="botonDesPublicar borderFin" id="btnContLi"
+						<li class="botonDesPublicar" id="btnContLi"
 								style="display: none;"><a href="#" data-toggle="modal" onClick="ocultaNotaValidaPP()"
 								class="smoothScroll ${colorTexto}">
 								<img

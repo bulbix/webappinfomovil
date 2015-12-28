@@ -21,37 +21,37 @@
 			<ul style="list-style:none; margin:10px 0 0 0;" class="col-xs-12">
 				<li ng-click="datosTipoContacto.tipo('tel')" style="margin:10px 0; border-bottom:1px solid #d9d9d9; padding:5px"><img width="30" height="30"
 									alt="Infomovil"
-									src="<c:url value="/resources/webapp/images/fa-tel-bk.png"/>" />  Teléfono</li>
+									src="<c:url value="/resources/webapp/images/fa-tel-colour.png"/>" />  Teléfono</li>
 				<li ng-click="datosTipoContacto.tipo('movil')" style="margin:10px 0; border-bottom:1px solid #d9d9d9; padding:5px"> <img width="30" height="30"
 									alt="Infomovil"
-									src="<c:url value="/resources/webapp/images/fa-movil-bk.png"/>" /> Móvil</li>
+									src="<c:url value="/resources/webapp/images/fa-movil-colour.png"/>" /> Móvil</li>
 				<li ng-click="datosTipoContacto.tipo('telsms')" style="margin:10px 0; border-bottom:1px solid #d9d9d9; padding:5px"> <img width="30" height="30"
 									alt="Infomovil"
-									src="<c:url value="/resources/webapp/images/fa-sms-bk.png"/>" /> TeléfoSMS</li>
+									src="<c:url value="/resources/webapp/images/fa-sms-colour.png"/>" /> TeléfoSMS</li>
 				<li ng-click="datosTipoContacto.tipo('email')" style="margin:10px 0; border-bottom:1px solid #d9d9d9; padding:5px"> <img width="30" height="30"
 									alt="Infomovil"
-									src="<c:url value="/resources/webapp/images/fa-email-bk.png"/>" /> E-mail</li>
+									src="<c:url value="/resources/webapp/images/fa-email-colour.png"/>" /> E-mail</li>
 				<li ng-click="datosTipoContacto.tipo('fax')" style="margin:10px 0; border-bottom:1px solid #d9d9d9; padding:5px"> <img width="30" height="30"
 									alt="Infomovil"
-									src="<c:url value="/resources/webapp/images/fa-fax-bk.png"/>" /> Fax</li>
+									src="<c:url value="/resources/webapp/images/fa-fax-colour.png"/>" /> Fax</li>
 				<li ng-click="datosTipoContacto.tipo('facebook')" style="margin:10px 0; border-bottom:1px solid #d9d9d9; padding:5px"> <img width="30" height="30"
 									alt="Infomovil"
-									src="<c:url value="/resources/webapp/images/fa-fb-bk.png"/>" /> Facebook</li>
+									src="<c:url value="/resources/webapp/images/fa-fb-colour.png"/>" /> Facebook</li>
 				<li ng-click="datosTipoContacto.tipo('twitter')" style="margin:10px 0; border-bottom:1px solid #d9d9d9; padding:5px"> <img width="30" height="30"
 									alt="Infomovil"
-									src="<c:url value="/resources/webapp/images/fa-twitter-bk.png"/>" /> Twitter</li>
+									src="<c:url value="/resources/webapp/images/fa-twitter-colour.png"/>" /> Twitter</li>
 				<li ng-click="datosTipoContacto.tipo('google')" style="margin:10px 0; border-bottom:1px solid #d9d9d9; padding:5px"><img width="30" height="30"
 									alt="Infomovil"
-									src="<c:url value="/resources/webapp/images/fa-gplus-bk.png"/>" /> Google+</li>
+									src="<c:url value="/resources/webapp/images/fa-gplus-colour.png"/>" /> Google+</li>
 				<li ng-click="datosTipoContacto.tipo('skype')" style="margin:10px 0; border-bottom:1px solid #d9d9d9; padding:5px"><img width="30" height="30"
 									alt="Infomovil"
-									src="<c:url value="/resources/webapp/images/fa-skype-bk.png"/>" /> Skype</li>
+									src="<c:url value="/resources/webapp/images/fa-skype-colour.png"/>" /> Skype</li>
 				<li ng-click="datosTipoContacto.tipo('linkedin')" style="margin:10px 0; border-bottom:1px solid #d9d9d9; padding:5px"><img width="30" height="30"
 									alt="Infomovil"
-									src="<c:url value="/resources/webapp/images/fa-linkedin-bk.png"/>" /> LinkedIn</li>
+									src="<c:url value="/resources/webapp/images/fa-linkedin-colour.png"/>" /> LinkedIn</li>
 				<li ng-click="datosTipoContacto.tipo('securewebsite')" style="margin:10px 0; border-bottom:1px solid #d9d9d9; padding:5px"><img width="30" height="30"
 									alt="Infomovil"
-									src="<c:url value="/resources/webapp/images/fa-secweb-bk.png"/>" /> Secure website</li>
+									src="<c:url value="/resources/webapp/images/fa-secweb-colour.png"/>" /> Secure website</li>
 			</ul>
 		</div>
 		<div id="formGuardaContacto">
