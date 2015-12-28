@@ -227,7 +227,7 @@
 									ng-click="volantesCtrl.descargarPDF()" style="margin: 5px 0 0 0;">
 									<span><img width="20" height="20" alt="Infomovil"
 										src="<c:url value="/resources/webapp/images/fa-pdf.png"/>" />
-									</span> <span>PDF<span class="hidden-xs hidden-sm">/Imagen</span></span>
+									</span> <span class="hidden-xs">PDF<span class="hidden-xs hidden-sm">/Imagen</span></span>
 
 								</button></div>
 								
