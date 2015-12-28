@@ -5,7 +5,7 @@
 	    <div class="modal-content">
 		<div class="modal-content btnsEditor ">
 		<div class="modal-header">
-			<h5 class="textBlack pull-left reset">Tips</h5>
+			<h5 class="textBlack pull-left reset"><img width="30" height="30" alt="Tips" src="../../WebAppInfomovil/resources/webapp/images/fa-tips-bk.png" /> Tips</h5>
 				<button type="button" class="close textBlack" data-dismiss="modal" aria-label="Close">
 					<span aria-hidden="true">&times;</span>
 				</button>
@@ -15,10 +15,10 @@
 		<div class="textBlack col-xs-12 col-sm-12 col-md-8 col-md-offset-2 col-lg-8 col-lg-offset-2 text-left">
 			<span class="textBlack">&nbsp;</span>
 			
-			<ul style="margin: 0 0 0 -30px;">
-				<li class="textBlack"><strong>Se recomienda usar nombres cortos y fáciles de recordar</strong></li>
-				<li class="textBlack"><strong>Evita espacios y acentos</strong> </li>
-				<li class="textBlack"><strong>Mira algunos ejemplos:</strong></li>
+			<ul style=" margin: 0 0 0 -30px;">
+				<li class="textBlack" style="list-style:none;"><img width="16" height="16" alt="Tips" src="../../WebAppInfomovil/resources/webapp/images/btn_active.png" /><strong> Se recomienda usar nombres cortos y fáciles de recordar</strong></li>
+				<li class="textBlack" style="list-style:none;"><img width="16" height="16" alt="Tips" src="../../WebAppInfomovil/resources/webapp/images/btn_active.png" /> <strong> Evita espacios y acentos</strong> </li>
+				<li class="textBlack" style="margin:0 0 0 20px;">  <strong> Mira algunos ejemplos:</strong></li>
 			</ul>
 			
 			<div style=<tiles:getAsString name="visibleRecurso"/>>

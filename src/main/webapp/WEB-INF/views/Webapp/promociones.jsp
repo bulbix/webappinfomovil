@@ -13,6 +13,7 @@
 </tiles:insertDefinition>
 
 <link href="<c:url value="/resources/webapp/js/datepicker/datepicker.css"/>" rel="stylesheet" />
+<link href="<c:url value="/resources/webapp/js/bower_components/angular-material/angular-material.min.css"/>" rel="stylesheet" />
 
 <body role="document" data-spy="scroll" data-target=".navbar"
 	data-offset="75" id="page-top" ng-controller="VolantesController as volantesCtrl">
@@ -269,11 +270,14 @@
 										</div>
 									</div>
 									<div class="col-xs-12 col-sm-6">
-<input type="text" id="datepicker" class="datepicker">
 										<div class="divider hidden-md hidden-lg"></div>
 										<div class="form-group text-left textBlack">
-											<label for="exampleInputEmail1" class="text-left">Vigencia
-												al:</label> 
+											<label for="exampleInputEmail1" class="text-left">
+											Vigencia al:
+											<md-content>
+											<md-datepicker ng-model="volantesCtrl.fechaVigencia" md-placeholder="Enter date"/>
+											</md-content>
+											</label> 
 										</div>
 										<div class="clearfix"></div>
 										<div class="divider"></div>
@@ -347,13 +351,14 @@
 										</div>
 									</div>
 									<div class="col-xs-12 col-sm-6">
-<input type="text" class="datepicker">
 										<div class="divider hidden-md hidden-lg"></div>
 										<div class="form-group text-left textBlack">
 											<label for="exampleInputEmail1" class="text-left">Vigencia
 												al:</label>
-<!-- 												<input type="text" class="form-control3 datepicker" -->
-<!-- 												id="datepicker" value="{{item.endDateOffer}}"> -->
+											<md-content>
+												<md-datepicker ng-model="volantesCtrl.fechaVigencia" md-placeholder="Enter date"/>
+											</md-content>
+
 										</div>
 										<div class="clearfix"></div>
 										<div class="divider"></div>
@@ -485,7 +490,6 @@
 
 		</div>
 		
-		<input type="text" class="datepicker">
 		<input type="hidden" id="tempBanderaPromo" value="${banderaCanal}">
 		<input type="hidden" id="tempNombrePromo" value="${nombreSitio}">
 	<!-- Bootstrap core JavaScript
@@ -496,6 +500,16 @@
 		<script src="<c:url value="/resources/webapp/js/datepicker/jquery.ui.core.js"/>"></script>
 		<script src="<c:url value="/resources/webapp/js/datepicker/jquery.ui.datepicker.js"/>"></script>
 		<script src="<c:url value="/resources/webapp/js/angular.min.js"/>"></script>
+		
+		<script src="<c:url value="/resources/webapp/js/bower_components/angular-animate/angular-animate.min.js"/>"></script>
+		<script src="<c:url value="/resources/webapp/js/bower_components/angular-aria/angular-aria.min.js"/>"></script>
+		<script src="<c:url value="/resources/webapp/js/bower_components/angular-messages/angular-messages.min.js"/>"></script>
+		<script src="<c:url value="/resources/webapp/js/bower_components/angular-material/angular-material.min.js"/>"></script>
+		<script src="<c:url value="/resources/webapp/js/bower_components/moment/min/moment.min.js"/>"></script>
+		<script src="<c:url value="/resources/webapp/js/bower_components/angular-momentjs/angular-momentjs.min.js"/>"></script>
+		
+		
+		
 		<script src="<c:url value="/resources/webapp/js/bootstrap.js"/>"></script>
 		<script src="<c:url value="/resources/webapp/js/docs.min.js"/>"></script>
 		<script src="<c:url value="/resources/webapp/js/smoothscroll.js"/>"></script>
@@ -509,6 +523,8 @@
 		<script src="<c:url value="/resources/js/webapp/InfomovilServices/mensajesService.js"/>"></script>
 		<script src="<c:url value="/resources/js/webapp/InfomovilServices/volantesService.js"/>"></script>
 		<script src="<c:url value="/resources/js/webapp/mapaAngular.js"/>" ></script>	
+		
+		
 
 		<tiles:insertDefinition name="modalGen">
 			<tiles:putAttribute name="idModal" value="myModalPromo" />
