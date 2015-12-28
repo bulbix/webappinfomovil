@@ -78,7 +78,7 @@
              
 	        <div class="form-group">
 	        	<div class="divider"></div>
-	            	<input type="submit" value="&iexcl;Reg&iacute;strame!" class="btn btn-default btn-outlineGreen  text-center textWhite" style="max-width:280px; min-width:280px; margin:0 auto"/>
+	            	<input type="submit" value="&iexcl;Reg&iacute;strame!" class="btn btn-default btn-outlineGreen  text-center textWhite" style="max-width:280px; width:100%; margin:0 auto"/>
 	        </div>
 	        </div>
 	        <div class="clear"></div>

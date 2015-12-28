@@ -79,7 +79,7 @@
 							src="<c:url value="/resources/webapp/images/fa-pencil${ extensionImg }.png"/>" />Mi
 							Contenido <span class="caret"></span></a>
 						<ul class="dropdown-menu navbar-${ claseCss } ${colorTexto} text-right">
-							<li class=" borderInicial" ><a
+							<li class=" borderInicial borderFin" ><a
 								href="#" data-toggle="modal" data-target="#myModalMaps"
 								class="smoothScroll ${colorTexto}">
 									Ubicación <img width="20"
@@ -510,13 +510,7 @@
 				</div>
 				<!--/Theme showcase -->
 				
-				<!--Footer-->
-			<footer class="footer bgBlack">
-				<div class="dividerSmall"></div>
-				<div class="clearfix"></div>
-				
-			</footer>
-
+			
 
 		</div>
 		
@@ -599,11 +593,11 @@
 	</tiles:insertDefinition>
 	<!--/MODAL MAPA-->
 	<!--MODAL MENSAJES-->
-	<tiles:insertDefinition name="modalGen">
-		<tiles:putAttribute name="idModal" value="myModalMsjPN" />
-		<tiles:putAttribute name="tamanioModal" value='"modal-dialog modal-lg"'/>
-		<c:set var="fragmentName" value="modalMsjPN" scope="request" />
-	</tiles:insertDefinition>
+<%-- 	<tiles:insertDefinition name="modalGen"> --%>
+<%-- 		<tiles:putAttribute name="idModal" value="myModalMsjPN" /> --%>
+<%-- 		<tiles:putAttribute name="tamanioModal" value='"modal-dialog modal-lg"'/> --%>
+<%-- 		<c:set var="fragmentName" value="modalMsjPN" scope="request" /> --%>
+<%-- 	</tiles:insertDefinition> --%>
 	<!--/MODAL MENSAJES-->
 		
 		<script>
