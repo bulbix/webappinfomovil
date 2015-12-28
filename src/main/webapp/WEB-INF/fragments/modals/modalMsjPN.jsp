@@ -1,8 +1,9 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <div class="modal-header" >
-	<button type="button" class="close textBlack pull-left btnsEditor " data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button> 
-<p class="modal-title textBlack pull-right"><strong>Mis mensajes</strong></p>
+<p class="modal-title textBlack pull-left"><strong>Mis mensajes</strong></p>
+	<button type="button" class="close textBlack pull-right btnsEditor " data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button> 
+
 </div>
 <div class="modal-body">
 	<div class="dividerSmall"></div>
