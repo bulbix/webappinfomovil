@@ -386,7 +386,7 @@
 											<label for="exampleInputEmail1" class="text-left">Vigencia
 												al:</label>
 											<md-content>
-												<md-datepicker ng-model="volantesCtrl.fechaVigencia" md-placeholder="Enter date"/>
+												<md-datepicker ng-model="volantesCtrl.fechaVigencia" md-placeholder="Vigencia"/>
 											</md-content>
 
 										</div>
