@@ -1,32 +1,25 @@
-/*$(document).ready(function() {
+var app = angular.module('InfomovilVolantes', ['ngMaterial','ngMessages','angular-momentjs']);
 
-	alert("hola");
-	$('.datepicker').datepicker({
-	    showOn: "button",
-	    dateFormat: "dd/mm/yy",
-	    disabled: false,
-	    buttonImageOnly: true
-	});
-	
-});*/
-
-$(".datepicker").click(function() {
-	var date = $(".datepicker").datepicker({ dateFormat: 'dd/mm/yy' }).val();
-	console.log("click $datepickerPromo");
-});
-
-var app = angular.module('InfomovilVolantes', []);
-
-app.controller("VolantesController", function ($scope, $http, VolanteService, MensajesService) {
-	
-	$( ".datepicker" ).datepicker({ dateFormat: 'dd/mm/yy' });
-	
-
+app.controller("VolantesController", function ($scope, $http, VolanteService, MensajesService,  $moment, volanteMapaService) {
 	
 	var templatesPromo = new Array("promo8", "promo6",  "promo1","promo5", "promo4", "promo7", "promo2", "promo3"); //, "promo6");
 	var nombresPromo = new Array("Navidad", "Cursos",  "Bares","Floral", "Tecnología 2", "Buen Fin", "Hipster", "Tecnología"); //, "ATT"); /*Cambiar nombres*/
 	
 	var volantesCtrl = this;
+	console.debug("Volantes.js ngMaterial");
+	volantesCtrl.modfechaVigencia = "";
+	volantesCtrl.fechaVigencia = new Date();
+	
+	//Convertir date a string fecha
+	$scope.$watch('volantesCtrl.fechaVigencia', function(v){ 
+	    var d = new Date(v);
+	    var curr_date = d.getDate();
+	    var curr_month = d.getMonth() + 1; 
+	    var curr_year = d.getFullYear();
+	    volantesCtrl.modfechaVigencia = curr_date + "/" + curr_month + "/" + curr_year;
+	    console.log("Fecha Vigencia " + volantesCtrl.modfechaVigencia)
+	})
+	
 
 	volantesCtrl.muestraPublicarPromo = false;
 	volantesCtrl.muestraPromoPublicada = false;
@@ -81,7 +74,7 @@ app.controller("VolantesController", function ($scope, $http, VolanteService, Me
     			idDominio : 0,
     			titulo: $("#nombrePromo").val(),
     			descripcion: $("#descPromo").val(),
-    			fechaVigencia: $("#datepicker").val(),
+    			fechaVigencia: volantesCtrl.modfechaVigencia, //$("#datepicker").val(),
     			base64Imagen: "",
     			redimir: $('.radioPromo:checked').val(),
     			terminos: $("#infoadiPromo").val(),
@@ -120,6 +113,8 @@ app.controller("VolantesController", function ($scope, $http, VolanteService, Me
 
 		volantesCtrl.mensaje = "Publicando volante...";
     	MensajesService.abrirBlockUIGeneral(volantesCtrl.mensaje);
+    	
+    	console.debug("Fecha Vigencia: " + volantesCtrl.modfechaVigencia)
 
     	$http({
     		method: 'POST',
@@ -127,7 +122,7 @@ app.controller("VolantesController", function ($scope, $http, VolanteService, Me
     		params: { 
     			titulo: $("#nombrePromo").val(),
     			descripcion: $("#descPromo").val(),
-    			fechaVigencia:  $("#datepicker").val(),
+    			fechaVigencia:  volantesCtrl.modfechaVigencia,//$("#datepicker").val(),
     			base64Imagen: "",
     			redimir: $('.radioPromo:checked').val(),
     			terminos: $("#infoadiPromo").val(),
@@ -174,10 +169,16 @@ app.controller("VolantesController", function ($scope, $http, VolanteService, Me
 					volantesCtrl.muestraPublicarPromo = true;
 					volantesCtrl.muestraPromoPublicada = false;
 					volantesCtrl.indicePromocion = 0;
+					volantesCtrl.modfechaVigencia = "";
+					volantesCtrl.fechaVigencia = new Date();
+					
 					
 					VolanteService.guardarEventoGA(volantesCtrl.eventoPromocion, 
 							response.data.nombreSitio, response.data.banderaCanal);
 					VolanteService.getVolantes();
+					volanteMapaService.borrarDatos();
+					
+					
 					$.unblockUI();
 		    		
 		    	}, function errorCallback(response) {
@@ -211,7 +212,7 @@ app.controller("VolantesController", function ($scope, $http, VolanteService, Me
 		var volante = {
 				nombrePromo : $("#nombrePromo").val(),
 				descPromo : $("#descPromo").val(),
-				datepickerPromo : $("#datepicker").val(),
+				datepickerPromo : volantesCtrl.modfechaVigencia, //$("#datepicker").val(),
 				base64Imagen : "",
 				redimir : $('.radioPromo:checked').val(),
 				infoadiPromo : $("#infoadiPromo").val(),
@@ -254,7 +255,7 @@ app.controller("VolantesController", function ($scope, $http, VolanteService, Me
 			var volante = {
 					nombrePromo : $("#nombrePromo").val(),
 					descPromo : $("#descPromo").val(),
-					datepickerPromo : $("#datepicker").val(),
+					datepickerPromo : volantesCtrl.modfechaVigencia, //$("#datepicker").val(),
 					base64Imagen : "",
 					redimir : $('.radioPromo:checked').val(),
 					infoadiPromo : $("#infoadiPromo").val(),
@@ -396,7 +397,7 @@ app.controller("VolantesController", function ($scope, $http, VolanteService, Me
 		
 		var $nom = $("#nombrePromo").val().trim();
 		var $desc = $("#descPromo").val().trim();
-		var $dp = $("#datepicker").val();
+		var $dp = volantesCtrl.modfechaVigencia;//$("#datepicker").val();
 		var $rp = $('.radioPromo:checked').val();
 
 		if($nom.length <= 0)
@@ -422,6 +423,15 @@ app.controller("VolantesController", function ($scope, $http, VolanteService, Me
 		{
 			volantesCtrl.muestraPublicarPromo = false;
 			volantesCtrl.muestraPromoPublicada = true;
+			if(volantesCtrl.arr[0] != undefined){
+				volantesCtrl.modfechaVigencia = volantesCtrl.arr[0].endDateOffer;
+				console.debug("Promos: " + volantesCtrl.modfechaVigencia)
+				var fechaVigencia = $moment(volantesCtrl.arr[0].endDateOffer, "DD/MM/YYYY");
+				volantesCtrl.fechaVigencia = fechaVigencia.toDate();
+			}
+		}
+		else{
+			
 		}
     });
     
