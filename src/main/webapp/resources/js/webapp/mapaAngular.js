@@ -459,4 +459,18 @@ app.controller('MapCtrl', function($http, ubicacionFactory,volanteMapaService) {
 		}
 	}
 	
+})
+.factory('volanteMapaService', function($http, MensajesService) {
+	
+	var state = {offerId : 0, locId: 0 };
+	
+	return {
+		state : state,
+		borrarDatos : function(){
+			console.debug("Datos Mapa:" + state.offerId + "," + state.locId)
+			state.offerId = 0; state.locId = 0;
+			console.debug("Datos Mapa:" + state.offerId + "," + state.locId)
+		}
+	}
+	
 });
