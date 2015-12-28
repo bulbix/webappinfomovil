@@ -48,16 +48,46 @@
 			<div id="navbar" class="navbar-collapse collapse text-right">
 				<ul class="nav navbar-nav navbar-right">
 
-					<li><a href="" class="smoothScroll ${colorTexto}"> <img
-							width="20" height="20" alt="Infomovil"
-							src="<c:url value="/resources/webapp/images/fa-user${ extensionImg }.png"/>" />
-							Mi Cuenta
-					</a></li>
-					<li><a href="" class="smoothScroll ${colorTexto}"> <img
-							width="20" height="20" alt="Infomovil"
-							src="<c:url value="/resources/webapp/images/fa-pencil${ extensionImg }.png"/>" />
-							Mi Contenido
-					</a></li>
+					<li class="dropdown">
+						<a href="<c:url value="/infomovil/miCuenta"></c:url>" 
+							class="dropdown-toggle smoothScroll ${colorTexto}" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+							<img width="20" height="20" alt="Infomovil"	src="<c:url value="/resources/webapp/images/fa-user${ extensionImg }.png"/>" />
+							Mi Cuenta <span class="caret"></span>
+						</a>	
+							<ul class="dropdown-menu navbar-${ claseCss } ${colorTexto} text-right">
+								<li><a href="<c:url value="/infomovil/miCuenta"></c:url>"
+ 									class="smoothScroll borderInicial ${colorTexto}">Mis productos 
+ 									<img width="20" height="20" alt="Infomovil"
+ 										src="<c:url value="/resources/webapp/images/fa-products${ extensionImg }.png"/>" /></a>
+ 								</li>
+ 							
+ 								
+
+									<li><a href="#" data-toggle="modal" data-target="#myModalMsjPN"
+	 									class="smoothScroll  borderFin ${colorTexto}">Mis mensajes
+	 									<img width="20" height="20" alt="Infomovil"
+	 									src="<c:url value="/resources/webapp/images/fa-messages${ extensionImg }.png"/>" /></a>
+	 								</li>
+ 								
+							</ul>
+						</li>
+					<li class="dropdown "><a href="#" class="dropdown-toggle ${colorTexto}" 
+						data-toggle="dropdown" role="button" aria-haspopup="true"
+						aria-expanded="false">
+						<img width="20" height="20"
+							alt="Infomovil"
+							src="<c:url value="/resources/webapp/images/fa-pencil${ extensionImg }.png"/>" />Mi
+							Contenido <span class="caret"></span></a>
+						<ul class="dropdown-menu navbar-${ claseCss } ${colorTexto} text-right">
+							<li class=" borderInicial" ><a
+								href="#" data-toggle="modal" data-target="#myModalMaps"
+								class="smoothScroll ${colorTexto}">
+									Ubicación <img width="20"
+									height="20" alt="Infomovil"
+									src="<c:url value="/resources/webapp/images/icn_marc_maps${ extensionImg }.png"/>" /></a></li>
+									
+						</ul></li>
+						
 					<li><a href="" class="smoothScroll ${colorTexto}" ng-click="volantesCtrl.actualizaProducto()"> <img
 							width="20" height="20" alt="Infomovil"
 							src="<c:url value="/resources/webapp/images/fa-compu${ extensionImg }.png"/>" />
@@ -568,6 +598,13 @@
 		<tiles:putAttribute name="tipo" value='volante'/>
 	</tiles:insertDefinition>
 	<!--/MODAL MAPA-->
+	<!--MODAL MENSAJES-->
+	<tiles:insertDefinition name="modalGen">
+		<tiles:putAttribute name="idModal" value="myModalMsjPN" />
+		<tiles:putAttribute name="tamanioModal" value='"modal-dialog modal-lg"'/>
+		<c:set var="fragmentName" value="modalMsjPN" scope="request" />
+	</tiles:insertDefinition>
+	<!--/MODAL MENSAJES-->
 		
 		<script>
 			<c:choose> 

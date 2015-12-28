@@ -136,7 +136,7 @@
 							src="<c:url value="/resources/webapp/images/fa-moviliza${ extensionImg }.png"/>" />
  									Moviliza tu sitio</a></li> 
  									
-						<li class="botonDesPublicar" id="btnPromoLi" style="display: none;"><a href="#" class="smoothScroll ${colorTexto}" ng-click="llamarModalhorarios.actualizaProducto()">
+						<li class="" id="btnPromoLi" ><a href="#" class="smoothScroll ${colorTexto}" ng-click="llamarModalhorarios.actualizaProducto()">
 							<img width="20" height="20" alt="Infomovil" src="<c:url value="/resources/webapp/images/fa-promo${ extensionImg }.png"/>" />
 							Mis Volantes </a></li>	
 					
@@ -415,7 +415,7 @@
 		<tiles:putAttribute name="tamanioModal" value='"modal-dialog modal-lg"'/>
 		<c:set var="fragmentName" value="modalMsjPN" scope="request" />
 	</tiles:insertDefinition>
-	<!--/MODAL MAPA-->
+	<!--/MODAL MENSAJES-->
 
 	<!--MODAL VIDEO-->
 	<tiles:insertDefinition name="modalGen">
