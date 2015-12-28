@@ -142,8 +142,8 @@ public class PromocionesController
 
 		try
 		{
-			resultado.put("nombreSitio", Util.getCurrentSession().getAttribute("nombreSitio").toString());
-			resultado.put("banderaCanal", Util.getCurrentSession().getAttribute("banderaCanal").toString());
+//			resultado.put("nombreSitio", Util.getCurrentSession().getAttribute("nombreSitio").toString());
+//			resultado.put("banderaCanal", Util.getCurrentSession().getAttribute("banderaCanal").toString());
 		}
 		catch(Exception e)
 		{

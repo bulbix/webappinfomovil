@@ -116,19 +116,20 @@
 		<p style="line-height:.8em;">Haz clic en el estilo que te agrade</p>
 
 			<div ng-repeat="item in estiloVolanteCtrl.plantillas">
+			
+				<span style="display:none">{{estiloVolanteCtrl.getClasesPlantillas(item)}}</span>
 			<!-- Ficha template -->
-				<div class="col-xs-12 col-sm-4" style="margin-top:10px;">
+				<div class="col-xs-12 col-sm-4" style="margin-top:10px;"> 
 					<a href="#" class="ev_std" style="display:block" ng-click="estiloVolanteCtrl.actulizaPlantilla(item)">
-					<span class="ev_std_chk text-center"><img alt="Infomovil"
-						src="<c:url value="/resources/webapp/images/fa-activeTemp.png"/>" />
-						Aplicar estilo</span>
-					<span class="bgDarkTrans" style="display:block">
+						<span class="{{estiloVolanteCtrl.claseSpan}}"><img alt="Infomovil"
+							src="<c:url value="/resources/webapp/images/fa-activeTemp.png"/>"/>{{estiloVolanteCtrl.textoPlantilla}}</span>
+						<span class="bgDarkTrans" style="display:block">
 						<span style="padding: 10px; display:block">
-							<img class="img-responsiveTemp img-thumbnail" alt="Infomovil"
+							<img class="{{estiloVolanteCtrl.claseImg}}" alt="Infomovil"
 								src="https://s3-us-west-2.amazonaws.com/promo.mobileinfo.io/templates/{{item}}/{{item}}.png" />
 						</span>
 						<span class="display:block">
-							<span class="textWhite col-xs-12 col-sm-12 " style="padding: 10px; display:block">{{estiloVolanteCtrl.noombrePlantillas[$index]}}</span>
+							<span class="textWhite col-xs-12 col-sm-12 " style="padding: 10px; display:block">{{estiloVolanteCtrl.nombrePlantillas[$index]}}</span>
 							
 						</span>
 						<span class="clear " style="display:block"></span>
@@ -137,30 +138,9 @@
 				</div>
 			</div>
 			<!-- Ficha template -->
-			
-
-<!-- Ficha template 
-			<div class="col-xs-12 col-sm-4" style="margin-top:10px;">
-			<a href="#" class="ev_std">
-			<span class="ev_std_chkSel text-center"><img  alt="Infomovil" width="60"
-							src="<c:url value="/resources/webapp/images/fa-activeTemp.png"/>" /></span>
-			<span class="bgDarkTrans" style="display:block">
-				<span style="padding: 10px; display:block">
-					<img class="img-responsiveTemp img-thumbnail ev_img_chkSel" alt="Infomovil"
-						src="https://s3-us-west-2.amazonaws.com/promo.mobileinfo.io/templates/promo8/promo8.png" />
-				</span>
-				<span class="display:block">
-					<span class="textWhite col-xs-12 col-sm-12 " style="padding: 10px; display:block">Titulo 1</span>
-					
-				</span>
-				<span class="clear " style="display:block"></span>
-				</span>
-				</a>
-			</div>
-			 Ficha template -->
 				
 			<div class="clear"></div>
-<div style="height:20px; width:100%;"></div>
+			<div style="height:20px; width:100%;"></div>
 
 		</div>
 		<!--/Theme showcase -->

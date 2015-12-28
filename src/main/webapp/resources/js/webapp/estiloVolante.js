@@ -3,17 +3,36 @@ var app = angular.module('InfomovilEstiloVolantes', []);
 app.controller("EstiloVolanteController", function ($scope, $http, VolanteService, MensajesService) {
 	
 	var estiloVolanteCtrl = this;
-	VolanteService.getVolantes();
-	estiloVolanteCtrl.volante = VolanteService.volantes();
-	estiloVolanteCtrl.volante = null;
-	estiloVolanteCtrl.plantillas = new Array("promo8", "promo6",  "promo1","promo5", "promo4", "promo7", "promo2", "promo3");
-	estiloVolanteCtrl.noombrePlantillas = new Array("Navidad", "Cursos",  "Bares","Floral", "Tecnología 2", "Buen Fin", "Hipster", "Tecnología");
+	estiloVolanteCtrl.plantillas = new Array("promo8", "promo6",  "promo1", "promo5", "promo4", "promo7", "promo2", "promo3");
+	estiloVolanteCtrl.nombrePlantillas = new Array("Navidad", "Cursos",  "Bares","Floral", "Tecnología 2", "Buen Fin", "Hipster", "Tecnología");
+	
+	VolanteService.getVolantes(function() {
+		estiloVolanteCtrl.volante = VolanteService.volantes();	
+	});
+
+	estiloVolanteCtrl.getClasesPlantillas = function(item) {
+		console.log("getClasesPlantillas");
+		if (estiloVolanteCtrl.volante != undefined) 
+		{
+			if(item == estiloVolanteCtrl.volante[0].template) 
+			{
+				estiloVolanteCtrl.textoPlantilla = "Seleccionado";
+				estiloVolanteCtrl.claseSpan = "ev_std_chkSel text-center";
+				estiloVolanteCtrl.claseImg = "img-responsiveTemp img-thumbnail ev_img_chkSel";	
+			}
+			else
+			{
+				estiloVolanteCtrl.textoPlantilla = "Aplicar estilo";
+				estiloVolanteCtrl.claseSpan = "ev_std_chk text-center";
+				estiloVolanteCtrl.claseImg = "img-responsiveTemp img-thumbnail";				
+			}
+		}
+	};
 	
 	estiloVolanteCtrl.actulizaPlantilla = function(item) {
 	
 		estiloVolanteCtrl.volante = VolanteService.volantes();
-		console.log("item: " + item + ", idoffer: " + estiloVolanteCtrl.volante[0].idOffer);
-		console.log("volante: " + JSON.stringify(estiloVolanteCtrl.volante));
+		
 		estiloVolanteCtrl.eventoPromocion = "promo-plantilla";
 		var volante = {
 				nombrePromo : estiloVolanteCtrl.volante[0].titleOffer,
@@ -34,7 +53,6 @@ app.controller("EstiloVolanteController", function ($scope, $http, VolanteServic
 				" plantillaPromo : " + item +
 				" idPromocion : " + estiloVolanteCtrl.volante[0].idOffer);
 		VolanteService.actualizarVolante(volante, estiloVolanteCtrl.eventoPromocion);
-
 	};
 	
 });
