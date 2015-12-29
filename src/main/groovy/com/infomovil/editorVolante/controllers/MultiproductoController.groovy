@@ -54,7 +54,7 @@ class MultiproductoController
 		return [resultado : resultado]
 	}
 
-	@RequestMapping(value = "/infomovil/getProducto", method = RequestMethod.POST, produces="application/json")
+	@RequestMapping(value = "/infomovil/getProducto", method = RequestMethod.GET, produces="application/json")
 	@ResponseBody
 	def getProducto() {
 		

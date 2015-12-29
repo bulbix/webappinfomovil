@@ -116,14 +116,14 @@ function sessionBtnEditorMiCuenta() {
 	  .fail(function() {
 	    console.log( "error" );
 	  });*/
+	console.debug("una vez")
 	
 	$.ajax({
 		type : "GET",
-		url : contextPath + "/infomovil/multiproducto",
-		contentType : "text/plain",
+		url : contextPath + "/infomovil/getProducto",
 		success : function(data) {
 			console.log("Me regreso : " + JSON.stringify(data));
-		//	window.location = contextPath + "/infomovil/" + data.vista;
+			window.location = contextPath + '/infomovil/' + data.vista;
 		},
 		params : {},
 		error : function(json) {
