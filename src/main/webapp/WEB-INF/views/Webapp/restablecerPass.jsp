@@ -19,7 +19,7 @@
 	<div class=" text-center">
     <div class="divider hidden-xs hidden-sm"></div>
     <h1 class="textBlack text-center hidden">Restablece tu contraseña</h1>
-    <h5 class="textPurple text-center ">Restablece tu contraseña</h5>
+    <h5 class="textPurple text-center animated fadeIn">Restablece tu contraseña</h5>
     <div class="container">
     
 		<c:if test="${not empty mensaje}">
@@ -31,7 +31,7 @@
 	    <form name='f' action="<c:url value="/executeResetPassword"/>" method='POST' >
 	        
 	        <!--email-->
-	    	<div class="form-group col-xs-12">
+	    	<div class="form-group col-xs-12 animated fadeIn">
 	        	<div class="control-group">
 	            <label class="control-label" style="max-width:280px; margin:0 auto;">Ingresa tu e-mail y te enviaremos una liga para restablecer tu contraseña</label>
 	            <div class="dividerSmall"></div>
@@ -44,7 +44,7 @@
 	        </div>
 	        <!--email-->
 	        
-	        <div class="form-group col-xs-12">
+	        <div class="form-group col-xs-12 animated fadeIn">
 	        	<input type="submit" value="Enviar por correo" class="btn btn-default btn-outlineGreen text-center textWhite" style="min-width:280px; max-width:280px; margin:0 auto;">
 	        </div>	       
 	        <div class="divider"></div>
