@@ -141,18 +141,8 @@ app.controller("VolantesController", function ($scope, $http, VolanteService, Me
     				
     		}	  
     	}).then(function successCallback(response) {
-    		if($("#telefonoVolante").val().length > 0){
-    			console.log("Envio a guardar el Telefono");
-    			datosContacto = getContactoTel();
-    			upsertContactoVolantes(datosContacto);	
-    			 
-    		}
-    		if($("#emailContactoVolante").val().length > 0){
-    			console.log("Envio a guardar el Email");
-    			datosContacto = getContactoEmail();
-    			upsertContactoVolantes(datosContacto);
-    			
-    		}
+    		console.log("Hara las validaciones para mandar a guardar tel o mail");
+    		guardarContactos();
 		
 			VolanteService.guardarEventoGA(volantesCtrl.eventoPromocion, 
 					response.data.nombreSitio, response.data.banderaCanal);
@@ -252,6 +242,7 @@ app.controller("VolantesController", function ($scope, $http, VolanteService, Me
 		};
 		
 		VolanteService.actualizarVolante(volante, volantesCtrl.eventoPromocion);
+		guardarContactos();
 	};
 	
 	volantesCtrl.verPromoActiva = function() {
@@ -268,7 +259,7 @@ app.controller("VolantesController", function ($scope, $http, VolanteService, Me
 		console.log("$scope.urlPromoShare: " + $scope.urlPromoShare);
 		$('#myModalPromoShare').modal();
 	};
-	
+	/*
 	volantesCtrl.actualizaPlantillaVolante = function() {
 		
 		volantesCtrl.plantillaPromo = templatesPromo[volantesCtrl.indicePromocion];
@@ -295,11 +286,12 @@ app.controller("VolantesController", function ($scope, $http, VolanteService, Me
 			};
 
 			VolanteService.actualizarVolante(volante, volantesCtrl.eventoPromocion);
+			
 			//console.log("guardar");
 		}
 		//console.log("vista previa: " + volantesCtrl.indicePromocion);// + volantesCtrl.muestraPublicarPromo);
 	};
-
+	 */
 	volantesCtrl.generarSliderPromo = function()
 	{
 		var urlRecurso = "";
@@ -600,6 +592,18 @@ var eliminarContactoVolantes = function(contacto){
 			return contacto;
 	};
 
+	var guardarContactos = function(){
+		if($("#telefonoVolante").val().length > 0){
+			console.log("Envio a guardar el Telefono");
+			datosContacto = getContactoTel();
+			upsertContactoVolantes(datosContacto);		 
+		}
+		if($("#emailContactoVolante").val().length > 0){
+			console.log("Envio a guardar el Email");
+			datosContacto = getContactoEmail();
+			upsertContactoVolantes(datosContacto);	
+		}
+	};
 
 });
 
