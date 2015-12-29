@@ -10,6 +10,7 @@ app.controller("EstiloVolanteController", function ($scope, $http, VolanteServic
 	VolanteService.getVolantes(function() {
 		estiloVolanteCtrl.volante = VolanteService.volantes();	
 		estiloVolanteCtrl.template = estiloVolanteCtrl.volante[0].template;
+		console.log("volante: " + JSON.stringify(estiloVolanteCtrl.volante));
 	});
 
 	estiloVolanteCtrl.getClasesPlantillas = function(item) {
@@ -63,16 +64,18 @@ app.controller("EstiloVolanteController", function ($scope, $http, VolanteServic
 				redimir : estiloVolanteCtrl.volante[0].redeemOffer,
 				infoadiPromo : estiloVolanteCtrl.volante[0].termsOffer,
 				plantillaPromo : item,
-				idPromocion : estiloVolanteCtrl.volante[0].idOffer
+				idPromocion : estiloVolanteCtrl.volante[0].idOffer,
+				empresa : estiloVolanteCtrl.volante[0].empresa != null ? estiloVolanteCtrl.volante[0].empresa : "",
+				nombreVolante : estiloVolanteCtrl.volante[0].pagina != null ? estiloVolanteCtrl.volante[0].pagina : ""
 		};
 
-		console.log("nombrePromo :" + estiloVolanteCtrl.volante[0].titleOffer +
+		/*console.log("nombrePromo :" + estiloVolanteCtrl.volante[0].titleOffer +
 				" descPromo : " + estiloVolanteCtrl.volante[0].descOffer +
 				" datepickerPromo : " + estiloVolanteCtrl.volante[0].endDateOffer + 
 				" redimir : " + estiloVolanteCtrl.volante[0].redeemOffer +
 				" infoadiPromo : " + estiloVolanteCtrl.volante[0].termsOffer +
 				" plantillaPromo : " + item +
-				" idPromocion : " + estiloVolanteCtrl.volante[0].idOffer);
+				" idPromocion : " + estiloVolanteCtrl.volante[0].idOffer);*/
 		
 		VolanteService.actualizarVolante(volante, estiloVolanteCtrl.eventoPromocion, function() {
 			window.location = contextPath + "/infomovil/misPromociones";
