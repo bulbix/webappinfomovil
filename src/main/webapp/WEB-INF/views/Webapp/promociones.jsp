@@ -270,7 +270,11 @@
 						<!-- page header <input type="text" id="checkedRedimir" value=""/>-->
 						<div class=" text-center"
 							style="border-radius:15px; background:url(<c:url value="/resources/webapp/images/bgWhTra.png"/>); padding:10px 0;">
-
+							<div class="clear"></div>
+							
+							<div ng-show="volantesCtrl.muestraDivError" style="margin: 0 0 20px 0;"><img src="<c:url value="/resources/webapp/images/fa-warning-red.png"/>" width="20" height="20" alt="Alerta"  />
+							<div id="divError" 
+								style="color: red; display:inline; "></div></div>
 							<div ng-if="volantesCtrl.volantes.length == 0">
 								<div>
 									<div ng-hide="true" id="idPromocion"></div>
@@ -547,9 +551,7 @@
 							</div>
 							<div class="clear"></div>
 							</div>
-							<div class="clear"></div>
-							<div id="divError" ng-show="volantesCtrl.muestraDivError"
-								style="color: red;"></div>
+							
 						</div>
 						
 						
