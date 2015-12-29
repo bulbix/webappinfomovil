@@ -116,7 +116,7 @@ function sessionBtnEditorMiCuenta() {
 	  .fail(function() {
 	    console.log( "error" );
 	  });*/
-	console.debug("una vez")
+	console.debug("una vez");
 	
 	$.ajax({
 		type : "GET",
