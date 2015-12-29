@@ -141,7 +141,7 @@ app.factory('VolanteService', function($http, MensajesService) {
     	 },	
 
     	 actualizarVolante : actualizarVolante, 	  
-    	 getOfferId : getOfferId
+    	 getOfferId : getOfferId,
 
     	 nombreVolante : function() {
     		 return nombreVolante;
