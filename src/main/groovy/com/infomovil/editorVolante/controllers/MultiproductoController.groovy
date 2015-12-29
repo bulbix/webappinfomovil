@@ -76,5 +76,19 @@ class MultiproductoController
 		}
 
 		return [vista : vista]
-	}	
+	}
+	
+	@RequestMapping(value = "/registro", method = RequestMethod.GET)
+	def registro(String producto) {
+		
+		if (producto != null)
+		{
+			return vista = "redirect:/infomovil/editarSitio"
+		}
+			
+		if (Util.getCurrentSession().getAttribute("productoUsuario") == null)
+		{
+
+		}
+	}
 }

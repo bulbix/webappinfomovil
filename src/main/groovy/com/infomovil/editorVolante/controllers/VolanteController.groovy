@@ -55,6 +55,21 @@ class VolanteController {
 	
 	@RequestMapping(value = "/infomovil/estiloVolante", method = RequestMethod.GET)
 	def estiloVolante() {
-		return "Webapp/estiloVolante"
+		
+		def claseCss = "inverse";
+		def colorTexto = "textWhite";
+		def extensionImg = "";
+		
+		if (Util.getCurrentSession().getAttribute("canal") != null)
+		{
+			if (Util.getCurrentSession().getAttribute("canal").toString().startsWith("BAZ"))
+			{
+				claseCss = "default";
+				colorTexto = "textBlack";
+				extensionImg = "-bk";
+			}
+		}
+		
+		return new ModelAndView("Webapp/estiloVolante", [ claseCss : claseCss,  colorTexto : colorTexto, extensionImg : extensionImg])
 	}
 }
