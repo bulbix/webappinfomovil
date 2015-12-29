@@ -190,8 +190,12 @@ public class PromocionesController
 	public JSONArray getPromociones()throws UnsupportedEncodingException
 	{		
 		RespuestaVO respVO = new RespuestaVO();
+		RespuestaVO wsRpta = new RespuestaVO();
 		JSONArray list = new JSONArray();
-
+		String nombreSitio = "";
+		String banderaCanal = "0";
+		String sitioWeb = "";
+		
 		try
 		{		
 			String correo = Util.getUserLogged().getUsername();
@@ -199,7 +203,26 @@ public class PromocionesController
 			
 			respVO =  wsCliente.crearSitioGetPromociones(correo, password);
 			list.addAll(respVO.getListPromocion());
-			logger.info(list);
+
+         	if (Util.getCurrentSession().getAttribute("nombreSitio") == null ||
+         			Util.getCurrentSession().getAttribute("banderaCanal") == null)
+         	{
+         		wsRpta = wsCliente.crearSitioCargar(correo, password);
+      
+         		sitioWeb = wsRpta.getDominioCreaSitio().getSitioWeb();
+         		nombreSitio = Util.getNombreSitio(sitioWeb);
+         		
+         		if (wsRpta.getDominioCreaSitio().getCanal().startsWith("BAZ"))
+         			banderaCanal = "1";
+         		
+    		    Util.getCurrentSession().setAttribute("nombreSitio", nombreSitio);
+    		    Util.getCurrentSession().setAttribute("banderaCanal", banderaCanal);
+         	}
+         	else
+         	{
+         		nombreSitio = Util.getCurrentSession().getAttribute("nombreSitio").toString();
+         		banderaCanal = Util.getCurrentSession().getAttribute("banderaCanal").toString();
+         	}
 		}		
 		catch (Exception e) 
 		{

@@ -2,6 +2,8 @@ app.factory('VolanteService', function($http, MensajesService) {
 	
 	var volantes;
 	var datos = {};
+	var banderaCanal;
+	var nombreVolante;
 
     function getVolantes(callback) {
 
@@ -11,6 +13,8 @@ app.factory('VolanteService', function($http, MensajesService) {
 		}).then(function successCallback(response) {
 			
 			volantes = response.data;
+			nombreVolante = response.data.nombreSitio;
+			banderaCanal = response.data.banderaCanal;
 			console.log("getVolantes: " + response.data.length);
 			getContactosVolantes();
 			
@@ -135,7 +139,15 @@ app.factory('VolanteService', function($http, MensajesService) {
     	 volantes : function() {
 		   return volantes;
     	 },	
+
     	 actualizarVolante : actualizarVolante, 	  
     	 getOfferId : getOfferId
+
+    	 nombreVolante : function() {
+    		 return nombreVolante;
+    	 },
+    	 banderaCanal : function() {
+    		 return banderaCanal;
+    	 }
      }
 });
