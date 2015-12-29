@@ -1,12 +1,5 @@
 
-var server = requestServer("POST",contextPath + "/infomovil/getPerfil",{}).perfil; 
 var preferenceContVol = 0;
-var contactos = {
-		getUrl:server+'/api/editorVolante/getContacto',
-		delUrl:server + '/api/editorVolante/deleteContacto',
-		saveUrl: server + 'api/editorVolante/upsertContacto'
-}
-
 	$(".datepicker").datepicker({ dateFormat: 'dd/mm/yy' });
 	console.log("$datepickerPromo");
 
