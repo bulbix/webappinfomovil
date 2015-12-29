@@ -140,7 +140,7 @@
 								class="hidden-xs">Vista <span class="hidden-sm">Previa</span></span>
 						</button>
 					</div>
-					<div class="col-xs-2 col-sm-2 text-center reset">
+					<div class="col-xs-2 col-sm-2 text-center reset" ng-show="volantesCtrl.muestraPromoPublicada">
 						<a href="<c:url value="/infomovil/estiloVolante"></c:url>" 
 							class="btn btn-outlineGreen  textWhite navEditorLato"
 							style="margin: 5px 8px 0 0;" >

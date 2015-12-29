@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.*
 @Controller
 class MultiproductoController 
 {
-
 	@RequestMapping(value = "/infomovil/multiproducto", method = RequestMethod.GET)
 	def multiProducto() {
 		
@@ -32,7 +31,7 @@ class MultiproductoController
 				
 			vista = "redirect:/infomovil/" + vista
 		}
-	 print("ue3 p2 con esta cosa!!!");
+
 		return vista
 	}
 	
@@ -55,12 +54,11 @@ class MultiproductoController
 		return [resultado : resultado]
 	}
 
-	
-	@RequestMapping(value = "/infomovil/multiproductoMiCuenta", method = RequestMethod.GET)
+	@RequestMapping(value = "/infomovil/getProducto", method = RequestMethod.POST, produces="application/json")
 	@ResponseBody
-	def multiproductoMiCuenta() {
+	def getProducto() {
 		
-		def vista = "Webapp/multiproducto";
+		def vista = "multiproducto";
 		def tabla = "multiproducto_dev";
 		
 		if(Util.getProfile().equals("PROD"))
@@ -71,25 +69,12 @@ class MultiproductoController
 		
 		if(seleccion != null)
 		{
-			vista = "misPromociones"
+			vista = "misPromociones";
 			
 			if (seleccion["seleccion"] == "web")
-				vista = "editarSitio"
-				
-			vista = "redirect:/infomovil/" + vista
+				vista = "editarSitio";
 		}
-	
-		return vista
-	}
-	
-	
-	
+
+		return [vista : vista]
+	}	
 }
-
-
-
-
-
-
-
-
