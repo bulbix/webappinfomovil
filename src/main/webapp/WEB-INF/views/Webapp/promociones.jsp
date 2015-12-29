@@ -128,7 +128,7 @@
 <div class="containerExt">
 			<div class="">
 				<!-- Botones sin publicar -->
-				<div ng-show="volantesCtrl.muestraPublicarPromo">
+				<div ng-show="volantesCtrl.muestraPublicarPromo" class="animate-show">
 
 					<div class="col-xs-2 col-sm-2 text-center reset">
 						<button type="button"
@@ -179,7 +179,7 @@
 				</div>
 				<!-- /Botones sin publicar -->
 				<!-- Botones publicados -->
-				<div ng-show="volantesCtrl.muestraPromoPublicada">
+				<div ng-show="volantesCtrl.muestraPromoPublicada" class="animate-show">
 				
 				<div class="col-xs-2 col-sm-2 text-center reset">
 						<a href="<c:url value="/infomovil/estiloVolante"></c:url>" 
@@ -261,7 +261,7 @@
 
 		<!-- /Botón Nuevo Estilo -->
 		<!-- Formulario Promociones -->
-		<div class="container">
+		<div class="container animate-show" >
 			<div class="col-xs-12 reset">
 
 				<!--Theme showcase -->
