@@ -48,29 +48,29 @@
 			<div id="navbar" class="navbar-collapse collapse text-right">
 				<ul class="nav navbar-nav navbar-right">
 
-					<li class="dropdown">
-						<a href="<c:url value="/infomovil/miCuenta"></c:url>" 
-							class="dropdown-toggle smoothScroll ${colorTexto}" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-							<img width="20" height="20" alt="Infomovil"	src="<c:url value="/resources/webapp/images/fa-user${ extensionImg }.png"/>" />
-							Mi Cuenta <span class="caret"></span>
-						</a>	
-							<ul class="dropdown-menu navbar-${ claseCss } ${colorTexto} text-right">
-								<li><a href="<c:url value="/infomovil/miCuenta"></c:url>"
- 									class="smoothScroll borderInicial ${colorTexto}">Mis productos 
- 									<img width="20" height="20" alt="Infomovil"
- 										src="<c:url value="/resources/webapp/images/fa-products${ extensionImg }.png"/>" /></a>
- 								</li>
+<!-- 					<li class="dropdown"> -->
+<%-- 						<a href="<c:url value="/infomovil/miCuenta"></c:url>"  --%>
+<%-- 							class="dropdown-toggle smoothScroll ${colorTexto}" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> --%>
+<%-- 							<img width="20" height="20" alt="Infomovil"	src="<c:url value="/resources/webapp/images/fa-user${ extensionImg }.png"/>" /> --%>
+<!-- 							Mi Cuenta <span class="caret"></span> -->
+<!-- 						</a>	 -->
+<%-- 							<ul class="dropdown-menu navbar-${ claseCss } ${colorTexto} text-right"> --%>
+<%-- 								<li><a href="<c:url value="/infomovil/miCuenta"></c:url>" --%>
+<%--  									class="smoothScroll borderInicial ${colorTexto}">Mis productos  --%>
+<!--  									<img width="20" height="20" alt="Infomovil" -->
+<%--  										src="<c:url value="/resources/webapp/images/fa-products${ extensionImg }.png"/>" /></a> --%>
+<!--  								</li> -->
  							
  								
 
-									<li><a href="#" data-toggle="modal" data-target="#myModalMsjPN"
-	 									class="smoothScroll  borderFin ${colorTexto}">Mis mensajes
-	 									<img width="20" height="20" alt="Infomovil"
-	 									src="<c:url value="/resources/webapp/images/fa-messages${ extensionImg }.png"/>" /></a>
-	 								</li>
+<!-- 									<li><a href="#" data-toggle="modal" data-target="#myModalMsjPN" -->
+<%-- 	 									class="smoothScroll  borderFin ${colorTexto}">Mis mensajes --%>
+<!-- 	 									<img width="20" height="20" alt="Infomovil" -->
+<%-- 	 									src="<c:url value="/resources/webapp/images/fa-messages${ extensionImg }.png"/>" /></a> --%>
+<!-- 	 								</li> -->
  								
-							</ul>
-						</li>
+<!-- 							</ul> -->
+<!-- 						</li> -->
 					<li class="dropdown "><a href="#" class="dropdown-toggle ${colorTexto}" 
 						data-toggle="dropdown" role="button" aria-haspopup="true"
 						aria-expanded="false">
@@ -319,18 +319,24 @@
 										<div class="clearfix"></div>
 										<div class="divider"></div>
 										
-										
-											
-												<select name="tipoTelefonoVolante" class="textBlack" id="tipoTelefonoVolante">
+										<div class="form-group text-left textBlack">
+											<div class="col-xs-12 col-sm-6 reset">
+												<div class="col-xs-1 col-sm-2"></div>
+												<select class="col-xs-11 col-sm-10 form-control" name="tipoTelefonoVolante" class="textBlack" id="tipoTelefonoVolante">
 												  <option value="+52" selected>Teléfono</option>
 												  <option value="+52 1">Celular</option>
 												</select>
 												<input type="hidden" name="idContactoTelVolante" id="idTelContactoVolante"/>
 												<input type="hidden" name="idContactoEmailVolante" id="idEmailContactoVolante"/>
-												<input type="text" value="" class="textBlack" placeholder="10 digitos" id="telefonoVolante"/>
-												<div class="divider"></div>
-												<input type="text" id="emailContactoVolante" value="" class="textBlack" placeholder="mail@mail.com" />
-									
+												
+											</div>	
+<input type="text" value="" class="col-xs-6 form-control textBlack" placeholder="10 digitos" id="telefonoVolante"/>
+											
+										</div>
+										
+										
+											
+												
 										
 										<div class="divider"></div>
 										<div class="form-group text-left textBlack">
@@ -418,16 +424,20 @@
 										</div>
 										<div class="clearfix"></div>
 										<div class="divider"></div>
+										
 										<div class="form-group text-left textBlack">
 											<div class="col-xs-12 col-sm-6 reset">
 												<div class="col-xs-1 col-sm-2"></div>
-												<select class="col-xs-11 col-sm-10 form-control">
-												  <option>Teléfono</option>
-												  <option>Celular</option>
+												<select class="col-xs-11 col-sm-10 form-control" name="tipoTelefonoVolante" class="textBlack" id="tipoTelefonoVolante">
+												  <option value="+52" selected>Teléfono</option>
+												  <option value="+52 1">Celular</option>
 												</select>
+												<input type="hidden" name="idContactoTelVolante" id="idTelContactoVolante"/>
+												<input type="hidden" name="idContactoEmailVolante" id="idEmailContactoVolante"/>
+												
 											</div>	
-
-											<input type="text" class="col-xs-6 form-control">
+<input type="text" value="" class="col-xs-6 form-control textBlack" placeholder="10 digitos" id="telefonoVolante"/>
+											
 										</div>
 										<div class="clearfix"></div>
 										
@@ -435,20 +445,22 @@
 										
 										
 											
-												<select name="tipoTelefonoVolante" class="textBlack" id="tipoTelefonoVolante">
-												  <option value="+52" selected>Teléfono</option>
-												  <option value="+52 1">Celular</option>
-												</select>
-												<input type="hidden" name="idContactoVolante" id="idContactoVolante"/>
-												<input type="text" value="" class="textBlack" placeholder="10 digitos" id="telefonoVolante"/>
-												<div class="divider"></div>
-												<input type="text" id="emailContactoVolante" value="" class="textBlack" placeholder="mail@mail.com"/>
+<!-- 												<select name="tipoTelefonoVolante" class="textBlack" id="tipoTelefonoVolante"> -->
+<!-- 												  <option value="+52" selected>Teléfono</option> -->
+<!-- 												  <option value="+52 1">Celular</option> -->
+<!-- 												</select> -->
+<!-- 												<input type="hidden" name="idContactoVolante" id="idContactoVolante"/> -->
+<!-- 												<input type="text" value="" class="textBlack" placeholder="10 digitos" id="telefonoVolante"/> -->
+<!-- 												<div class="divider"></div> -->
+<!-- 												<input type="text" id="emailContactoVolante" value="" class="textBlack" placeholder="mail@mail.com"/> -->
 										
 										
 										
-										<div class="divider"></div>
+									
 										<div class="form-group text-left textBlack">
-											<label for="exampleInputEmail1" class="text-left">E-mail</label> <input type="text" class="form-control">
+											<label for="exampleInputEmail1" class="text-left">E-mail</label> 
+											<input type="text" id="emailContactoVolante" value="" class="textBlack form-control" placeholder="mail@mail.com"/>
+											
 										</div>
 										
 										

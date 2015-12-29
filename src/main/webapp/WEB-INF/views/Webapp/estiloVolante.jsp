@@ -46,22 +46,29 @@
 			<div id="navbar" class="navbar-collapse collapse text-right">
 				<ul class="nav navbar-nav navbar-right">
 
-					<li><a href="" class="smoothScroll ${colorTexto}"> <img
-							width="20" height="20" alt="Infomovil"
-							src="<c:url value="/resources/webapp/images/fa-user${ extensionImg }.png"/>" />
-							Mi Cuenta
-					</a></li>
-					<li><a href="" class="smoothScroll ${colorTexto}"> <img
-							width="20" height="20" alt="Infomovil"
-							src="<c:url value="/resources/webapp/images/fa-pencil${ extensionImg }.png"/>" />
-							Mi Contenido
-					</a></li>
-					<li><a href="" class="smoothScroll ${colorTexto}"
-						ng-click="volantesCtrl.actualizaProducto()"> <img width="20"
-							height="20" alt="Infomovil"
-							src="<c:url value="/resources/webapp/images/fa-compu${ extensionImg }.png"/>" />
-							Mi Página <span class="hidden-sm">Web</span>
-					</a></li>
+<%-- 					<li><a href="" class="smoothScroll ${colorTexto}"> <img --%>
+<!-- 							width="20" height="20" alt="Infomovil" -->
+<%-- 							src="<c:url value="/resources/webapp/images/fa-user${ extensionImg }.png"/>" /> --%>
+<!-- 							Mi Cuenta -->
+<!-- 					</a></li> -->
+<%-- 					<li><a href="" class="smoothScroll ${colorTexto}"> <img --%>
+<!-- 							width="20" height="20" alt="Infomovil" -->
+<%-- 							src="<c:url value="/resources/webapp/images/fa-pencil${ extensionImg }.png"/>" /> --%>
+<!-- 							Mi Contenido -->
+<!-- 					</a></li> -->
+<%-- 					<li><a href="" class="smoothScroll ${colorTexto}" --%>
+<!-- 						ng-click="volantesCtrl.actualizaProducto()"> <img width="20" -->
+<!-- 							height="20" alt="Infomovil" -->
+<%-- 							src="<c:url value="/resources/webapp/images/fa-compu${ extensionImg }.png"/>" /> --%>
+<!-- 							Mi Página <span class="hidden-sm">Web</span> -->
+<!-- 					</a></li> -->
+
+<li><a href="<c:url value="/infomovil/misPromociones"></c:url>" class="smoothScroll ${colorTexto}" 
+						ng-click="volantesCtrl.actualizaProducto()"> <img width="20" 
+							height="20" alt="Infomovil" 
+							src="<c:url value="/resources/webapp/images/fa-back${ extensionImg }.png"/>" />
+							Regresar <span class="hidden-sm"></span> 
+				</a></li>
 					<li><a href="<c:url value="/logout"></c:url>"
 						class="smoothScroll ${colorTexto}"> <img width="20"
 							height="20" alt="Infomovil"
@@ -96,17 +103,17 @@
 		<div class="seccTop bgBlack">
 			<div class="containerExt">
 				<div class="textWhite">
-				<div class="col-xs-9 reset"><h3 class="text-left textWhite navEditor reset">Elige el estilo <span class="hidden-xs">de
+				<div class="col-xs-12 reset"><h3 class="text-left textWhite navEditor reset">Elige el estilo <span class="hidden-xs">de
 						tu volante</span></h3>
 						<div class="clearfix"></div>
 						<p style="line-height:1em; font-size:.9em">Haz clic en el estilo que te agrade</p>
 						<div class="clearfix"></div><div class="dividerSmall"></div></div>
-					<div class="col-xs-3 reset"></div>
-						<a href="<c:url value="/infomovil/misPromociones"></c:url>"
-							class="btn-default btn-outline navEditor pull-right">
-							<span id="idOpcionMasCont"><img width="20" height="20"
-							alt="Infomovil" src="<c:url value="/resources/webapp/images/fa-back.png"/>" /><span class="hidden-xs"> Regresar</span> </span>
-						</a>
+<!-- 					<div class="col-xs-3 reset"> -->
+<%-- 						<a href="<c:url value="/infomovil/misPromociones"></c:url>" --%>
+<!-- 							class="btn-default btn-outline navEditor pull-right"> -->
+<!-- 							<span id="idOpcionMasCont"><img width="20" height="20" -->
+<%-- 							alt="Infomovil" src="<c:url value="/resources/webapp/images/fa-back.png"/>" /><span class="hidden-xs"> Regresar</span> </span> --%>
+<!-- 						</a></div> -->
 				</div>
 			</div>
 
