@@ -1,4 +1,3 @@
-
 var preferenceContVol = 0;
 	$(".datepicker").datepicker({ dateFormat: 'dd/mm/yy' });
 	console.log("$datepickerPromo");
