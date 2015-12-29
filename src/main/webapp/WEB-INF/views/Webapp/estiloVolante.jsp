@@ -116,16 +116,16 @@
 		<p style="line-height:.8em;">Haz clic en el estilo que te agrade</p>
 
 			<div ng-repeat="item in estiloVolanteCtrl.plantillas">
-			
+				
 				<span style="display:none">{{estiloVolanteCtrl.getClasesPlantillas(item)}}</span>
 			<!-- Ficha template -->
 				<div class="col-xs-12 col-sm-4" style="margin-top:10px;"> 
-					<a href="#" class="ev_std" style="display:block" ng-click="estiloVolanteCtrl.actulizaPlantilla(item)">
-						<span class="{{estiloVolanteCtrl.claseSpan}}"><img alt="Infomovil"
+					<a href="#" class="ev_std" style="display:block" onclick="void(0)" ng-click="estiloVolanteCtrl.actulizaPlantilla(item)">
+						<span class="{{estiloVolanteCtrl.claseSpan}}" id="{{estiloVolanteCtrl.plantillas[$index]}}Span"><img alt="Infomovil"
 							src="<c:url value="/resources/webapp/images/fa-activeTemp.png"/>"/>{{estiloVolanteCtrl.textoPlantilla}}</span>
 						<span class="bgDarkTrans" style="display:block">
 						<span style="padding: 10px; display:block">
-							<img class="{{estiloVolanteCtrl.claseImg}}" alt="Infomovil"
+							<img class="{{estiloVolanteCtrl.claseImg}}" alt="Infomovil" id="{{estiloVolanteCtrl.plantillas[$index]}}Img"
 								src="https://s3-us-west-2.amazonaws.com/promo.mobileinfo.io/templates/{{item}}/{{item}}.png" />
 						</span>
 						<span class="display:block">
