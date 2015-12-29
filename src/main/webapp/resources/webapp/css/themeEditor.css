@@ -7,11 +7,6 @@ body { /*padding-bottom: 30px;*/
 	font-weight: 300;
 	background: url(../images/coverpage1azul.jpg) no-repeat center center
 		fixed;
-	-webkit-background-size: 100% auto;
-	background-attachment: fixed;
-	-moz-background-size: cover;
-	-o-background-size: cover;
-	background-size: cover;
 }
 .fw100{
 	
@@ -47,7 +42,6 @@ body { /*padding-bottom: 30px;*/
 }
 .mp_-m10{
 	margin: -10px 0 0 0;
-	
 }
 .mp_notes{line-height: 1.3em; font-size: .98em; padding: 0 10%;}
 
@@ -780,35 +774,35 @@ button.btn-outlineDisable {
 }
 
 .form-control::-webkit-input-placeholder {
-	color: #000 !important;
+	color: #666666 !important;
 }
 
 .form-control:-moz-placeholder { /* Firefox 18- */
-	color: #000 !important;
+	color: #666666 !important;
 }
 
 .form-control::-moz-placeholder { /* Firefox 19+ */
-	color: #000 !important;
+	color: #666666 !important;
 }
 
 .form-control:-ms-input-placeholder {
-	color: #000 !important;
+	color: #666666 !important;
 }
 
 .form-control::-webkit-input-placeholder {
-	color: #000 !important;
+	color: #666666 !important;
 }
 
 .form-control:-moz-placeholder { /* Firefox 18- */
-	color: #000 !important;
+	color: #666666 !important;
 }
 
 .form-control::-moz-placeholder { /* Firefox 19+ */
-	color: #000 !important;
+	color: #666666!important;
 }
 
 .form-control:-ms-input-placeholder {
-	color: #000 !important;
+	color: #666666 !important;
 }
 
 textarea::-webkit-input-placeholder {

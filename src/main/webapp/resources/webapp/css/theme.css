@@ -11,7 +11,7 @@ theme-showcaseApp > p > .btn { margin: 5px 0; }
 .theme-showcaseApp .navbar .container { width: auto; }
 .theme-showcaseApp { /*margin: -10px -5px 0 0;*/  padding: 2% 0 15% 0; }
 .theme-showcaseInicio { /*margin: -10px -5px 0 0;*/  padding: 3% 0 15% 0; }
-.theme-showcaseReg { /*margin: -10px -5px 0 0;*/  padding: 5% 0 15% 0; }
+.theme-showcaseReg { /*margin: -10px -5px 0 0;*/  padding: 2% 0 5% 0; }
 .theme-showcaseError > p > .btn { margin: 5px 0; }
 .theme-showcaseError .navbar .container { width: auto; }
 .theme-showcaseError { margin: -10px -5px 0 0; padding: 2% 0 10% 0; }
