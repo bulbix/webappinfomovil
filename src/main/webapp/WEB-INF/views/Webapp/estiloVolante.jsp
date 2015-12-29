@@ -128,7 +128,7 @@
 							src="<c:url value="/resources/webapp/images/fa-activeTemp.png"/>"/>{{estiloVolanteCtrl.textoPlantilla}}</span>
 						<span class="bgDarkTrans" style="display:block">
 						<span style="padding: 10px; display:block">
-							<img class="{{estiloVolanteCtrl.claseImg}}" alt="Infomovil"
+							<img class="{{estiloVolanteCtrl.claseImg}}" alt="Infomovil" style="width:90%;
 								src="https://s3-us-west-2.amazonaws.com/promo.mobileinfo.io/templates/{{item}}/{{item}}.png" />
 						</span>
 						<span class="display:block">
