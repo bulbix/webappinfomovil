@@ -99,7 +99,8 @@
 				<div class="col-xs-9 reset"><h3 class="text-left textWhite navEditor reset">Elige el estilo <span class="hidden-xs">de
 						tu volante</span></h3>
 						<div class="clearfix"></div>
-						<p style="line-height:.8em;">Haz clic en el estilo que te agrade</p></div>
+						<p style="line-height:1em; font-size:.9em">Haz clic en el estilo que te agrade</p>
+						<div class="clearfix"></div><div class="dividerSmall"></div></div>
 					<div class="col-xs-3 reset"></div>
 						<a href="<c:url value="/infomovil/misPromociones"></c:url>"
 							class="btn-default btn-outline navEditor pull-right">
@@ -124,11 +125,11 @@
 			<!-- Ficha template -->
 				<div class="col-xs-12 col-sm-4" style="margin-top:10px;"> 
 					<a href="#" class="ev_std" style="display:block" ng-click="estiloVolanteCtrl.actulizaPlantilla(item)">
-						<span class="{{estiloVolanteCtrl.claseSpan}}"><img alt="Infomovil"
+						<span class="{{estiloVolanteCtrl.claseSpan}}"><img alt="Infomovil" style="width:90%;"
 							src="<c:url value="/resources/webapp/images/fa-activeTemp.png"/>"/>{{estiloVolanteCtrl.textoPlantilla}}</span>
 						<span class="bgDarkTrans" style="display:block">
 						<span style="padding: 10px; display:block">
-							<img class="{{estiloVolanteCtrl.claseImg}}" alt="Infomovil" style="width:90%;
+							<img class="{{estiloVolanteCtrl.claseImg}}" alt="Infomovil" 
 								src="https://s3-us-west-2.amazonaws.com/promo.mobileinfo.io/templates/{{item}}/{{item}}.png" />
 						</span>
 						<span class="display:block">
