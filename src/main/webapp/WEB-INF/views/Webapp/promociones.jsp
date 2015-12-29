@@ -492,8 +492,7 @@
 										<div class="clearfix"></div>
 										<div class="divider"></div>
 										<div class="form-group text-left textBlack">
-											<label class="text-left">¿Cómo redimir?:
-												{{item.redeemOffer}}</label>
+											<label class="text-left">¿Cómo redimir?: </label>
 											<div class="radio">
 												<div class="clear"></div>
 												<label><input type="radio" name="radioPromo" id="r1"
