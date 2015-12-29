@@ -61,6 +61,8 @@
          </div>
       <!--password-->
       
+      
+        
       	<input type='checkbox' style="display:none" name='_spring_security_remember_me' checked/>     
 
     	

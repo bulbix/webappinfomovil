@@ -2,7 +2,8 @@ app.factory('VolanteService', function($http, MensajesService) {
 	
 	var volantes;
 	var datos = {};
-    function getVolantes() {
+
+    function getVolantes(callback) {
 
 		$http({
 			method: 'GET',
@@ -13,6 +14,9 @@ app.factory('VolanteService', function($http, MensajesService) {
 			console.log("getVolantes: " + response.data.length);
 			getContactosVolantes();
 			
+			if (callback != null)
+				callback();
+			
 		}, function errorCallback(response) {
 			
 			var mensaje = "No se ha podido obtener la lista de volantes";
@@ -20,7 +24,7 @@ app.factory('VolanteService', function($http, MensajesService) {
 		});
 	}
     
-    function actualizarVolante(volante, evento) {
+    function actualizarVolante(volante, evento, callback) {
 
     	var mensaje = "Actualizando volante...";
     	MensajesService.abrirBlockUIGeneral(mensaje);
@@ -46,7 +50,10 @@ app.factory('VolanteService', function($http, MensajesService) {
     		
 			$('#myModalTempPromo').modal('hide');
     		getVolantes();    		
-    		guardarEventoGA(evento, response.data.nombreSitio, response.data.banderaCanal)
+    		guardarEventoGA(evento, response.data.nombreSitio, response.data.banderaCanal);
+    		
+    		if (callback != null)
+    			callback();
     		
     	}, function errorCallback(response) {
 

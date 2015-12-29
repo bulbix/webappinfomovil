@@ -45,13 +45,13 @@ class MultiproductoController
 		return [resultado : resultado]
 	}
 	
-	@RequestMapping(value = "/infomovil/getItemsDynamo", method = RequestMethod.POST, produces="application/json")
+	@RequestMapping(value = "/infomovil/getItemsDynamo", method = RequestMethod.GET, produces="application/json")
 	@ResponseBody
 	def getItemsDynamo(String tableName) {
 
 		def correo = Util.getUserLogged().getUsername();
 		def resultado = Util.getItemsDynamo(tableName, correo);
-		
+		print "tableName: " + tableName
 		return [resultado : resultado]
 	}
 

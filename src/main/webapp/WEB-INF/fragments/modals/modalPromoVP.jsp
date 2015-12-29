@@ -11,8 +11,8 @@
 <!-- 		</button> -->
 	</div>
 	<div class="modal-body ">
-		<div class="col-xs-12">
-			<iframe id="urlVistaPreviaPromo" src="" style="width:100%; min-height:500px; border:none; overflow-y:scroll" frame-border="0"></iframe>	
+		<div class="col-xs-12 reset" style="overflow-x:scroll; ">
+			<iframe id="urlVistaPreviaPromo" src="" style="width:100%; min-height:450px; border:none; overflow-y:scroll" frame-border="0"></iframe>	
 		</div>
 		<div class="clear divider"></div>
 	</div>

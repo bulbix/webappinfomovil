@@ -1,4 +1,4 @@
-app.controller('MapCtrl', function($http, ubicacionFactory) {
+app.controller('MapCtrl', function($http, ubicacionFactory,volanteMapaService) {
 
 	var mapaCtrl = this;
 
@@ -30,8 +30,8 @@ app.controller('MapCtrl', function($http, ubicacionFactory) {
 	var map = null;
 	var hashUser = null;
 	var tipoProducto = null;
-	var locId = 0;
-	var offerId = 0;
+	volanteMapaService.state.locId = 0;
+	volanteMapaService.state.offerId = 0;
 
 	console.debug("Inciando MapaCtrl");
 	//google.maps.event.addDomListener(window, 'load', initialize);
@@ -51,11 +51,11 @@ app.controller('MapCtrl', function($http, ubicacionFactory) {
 		else{
 			var resp = requestServer("POST",contextPath + "/infomovil/getPromociones",{});
 			if (resp[0] != undefined){
-				offerId = resp[0].idOffer;
+				volanteMapaService.state.offerId = resp[0].idOffer;
 			}
 			
-			console.debug("OfferId " + offerId)
-			params = {offerId:offerId,hashUser:hashUser};
+			console.debug("OfferId " + volanteMapaService.state.offerId)
+			params = {offerId:volanteMapaService.state.offerId,hashUser:hashUser};
 		}
 
 		$http({
@@ -69,10 +69,10 @@ app.controller('MapCtrl', function($http, ubicacionFactory) {
 				modeloMap.latitud = response.data.ubicacion[0].latitude;
 				
 				if(tipo == 'volante'){
-					locId = response.data.ubicacion[0].locId;
+					volanteMapaService.state.locId = response.data.ubicacion[0].locId;
 				}
 				else{
-					locId = 0;
+					volanteMapaService.state.locId = 0;
 				}
 				
 			}
@@ -127,7 +127,7 @@ app.controller('MapCtrl', function($http, ubicacionFactory) {
 			data={hashUser:hashUser};
 		}
 		else{
-			data={locId:locId,hashUser:hashUser}
+			data={locId:volanteMapaService.state.locId,hashUser:hashUser}
 		}
 
 		$http({
@@ -146,6 +146,10 @@ app.controller('MapCtrl', function($http, ubicacionFactory) {
 				map.setZoom(3);
 				$("#direccionMap").html("");
 				$("#idOpcionUbicacion").html("Coloca tu ubicación");
+				
+				//offerId = 0;
+				//locId = 0;
+				
 				$.unblockUI();
 			}
 		}, function errorCallback(response) {
@@ -200,10 +204,20 @@ app.controller('MapCtrl', function($http, ubicacionFactory) {
 			data={hashUser:hashUser,latitude:latitud,longitude:longitud,direccion:direccion};
 		}
 		else{
-			console.debug("OfferId " + offerId)
-			data={locId:locId,offerId:offerId,hashUser:hashUser,latitude:latitud,
+			if (volanteMapaService.state.offerId == 0){
+				var resp = requestServer("POST",contextPath + "/infomovil/getPromociones",{});
+				if (resp[0] != undefined){
+					volanteMapaService.state.offerId = resp[0].idOffer;
+				}
+			}
+			
+			data={locId:volanteMapaService.state.locId,offerId:volanteMapaService.state.offerId,
+				hashUser:hashUser,latitude:latitud,
 				longitude:longitud,direccion:direccion}
 		}
+		
+		console.debug("Data actualizar Mapa: " + JSON.stringify(data))
+		
 
 		$http({
 			method: 'POST',
@@ -214,7 +228,7 @@ app.controller('MapCtrl', function($http, ubicacionFactory) {
 				console.log("Ubicacion actualizada correctamente");	
 				
 				if(tipoProducto == "volante"){
-					locId = response.data.locId;
+					volanteMapaService.state.locId = response.data.locId;
 				}
 				
 				myLatlng = new google.maps.LatLng(latitud, longitud);
@@ -442,6 +456,20 @@ app.controller('MapCtrl', function($http, ubicacionFactory) {
 				return ubicacionPagina;
 			else
 				return ubicacionVolante;
+		}
+	}
+	
+})
+.factory('volanteMapaService', function($http, MensajesService) {
+	
+	var state = {offerId : 0, locId: 0 };
+	
+	return {
+		state : state,
+		borrarDatos : function(){
+			console.debug("Datos Mapa:" + state.offerId + "," + state.locId)
+			state.offerId = 0; state.locId = 0;
+			console.debug("Datos Mapa:" + state.offerId + "," + state.locId)
 		}
 	}
 	

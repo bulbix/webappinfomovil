@@ -41,7 +41,7 @@
 				<span class="navbar-brand" id="logoGral" style="display: none;"><img
 					src="<c:url value="/resources/webapp/images/apple-touch-icon-57x57.png"/>"
 					width="50" height="50" alt="Infomovil" /></span> <span
-					class="marLeft navEditor ${colorTexto}">Modo edición</span>
+					class="marLeft navEditor ${colorTexto}" style="margin-top:12px;">MI PÁGINA WEB</span>
 				<!-- /LOGO INFOMOVIL - REGISTRO GENERAL-->
 
 			</div>
@@ -57,7 +57,7 @@
 						</a>	
 							<ul class="dropdown-menu navbar-${ claseCss } ${colorTexto} text-right">
 								<li><a href="<c:url value="/infomovil/miCuenta"></c:url>"
- 									class="smoothScroll ${colorTexto}">Mis productos 
+ 									class="smoothScroll borderInicial ${colorTexto}">Mis productos 
  									<img width="20" height="20" alt="Infomovil"
  										src="<c:url value="/resources/webapp/images/fa-products${ extensionImg }.png"/>" /></a>
  								</li>
@@ -69,7 +69,7 @@
  											src="<c:url value="/resources/webapp/images/fa-reportes${ extensionImg }.png"/>"/></a>
  									</li>
 									<li><a href="#" data-toggle="modal" data-target="#myModalMsjPN"
-	 									class="smoothScroll ${colorTexto}">Mis mensajes
+	 									class="smoothScroll  borderFin ${colorTexto}">Mis mensajes
 	 									<img width="20" height="20" alt="Infomovil"
 	 									src="<c:url value="/resources/webapp/images/fa-messages${ extensionImg }.png"/>" /></a>
 	 								</li>
@@ -126,17 +126,20 @@
 									src="<c:url value="/resources/webapp/images/ico_mas_cont${ extensionImg }.png"/>" /> </a></li>
 									
 						</ul></li>
-						<li class="botonDesPublicar" id="btnPromoLi" style="display: none;"><a href="#" class="smoothScroll ${colorTexto}" ng-click="llamarModalhorarios.actualizaProducto()">
-							<img width="20" height="20" alt="Infomovil" src="<c:url value="/resources/webapp/images/fa-promo${ extensionImg }.png"/>" />
-							Mis Volantes </a></li>	
 						
-						<li class="botonDesPublicar borderFin" id="btnContLi"
+							
+						<li class="botonDesPublicar" id="btnContLi"
 								style="display: none;"><a href="#" data-toggle="modal" onClick="ocultaNotaValidaPP()"
 								class="smoothScroll ${colorTexto}">
 								<img
 							width="20" height="20" alt="Infomovil"
 							src="<c:url value="/resources/webapp/images/fa-moviliza${ extensionImg }.png"/>" />
  									Moviliza tu sitio</a></li> 
+ 									
+						<li class="" id="btnPromoLi" ><a href="#" class="smoothScroll ${colorTexto}" ng-click="llamarModalhorarios.actualizaProducto()">
+							<img width="20" height="20" alt="Infomovil" src="<c:url value="/resources/webapp/images/fa-promo${ extensionImg }.png"/>" />
+							Mis Volantes </a></li>	
+					
 									
 					<li><a href="<c:url value="/logout"></c:url>"
 						class="smoothScroll ${colorTexto}"><img width="20" height="20"
@@ -273,6 +276,22 @@
 						<div class="divider"></div>
 					</form>
 				</div>
+				<c:if test="${sitioWeb =='SIN_PUBLICAR'}">
+
+			<tiles:insertDefinition name="formPublicar">
+				<tiles:putAttribute name="urlEjemploSitio"
+					value="${ urlEjemploSitio }" />
+				<tiles:putAttribute name="visibleRecurso"
+					value="${ visibleRecurso }" />
+				<tiles:putAttribute name="visibleTel" value="${ visibleTel }" />
+			</tiles:insertDefinition>
+		</c:if>
+
+<!--MODAL PUBLICACION-->
+	<div id="modalPublicacion"></div>
+	<!--MODAL PUBLICACION-->
+	<div class="clear"></div>
+	
 			</div>
 			<!-- /page header -->
 			<br /> <br />
@@ -373,17 +392,7 @@
 		<div class="clearfix"></div>
 		<div class="dividerSmallest"></div>
 
-		<c:if test="${sitioWeb =='SIN_PUBLICAR'}">
-
-			<tiles:insertDefinition name="formPublicar">
-				<tiles:putAttribute name="urlEjemploSitio"
-					value="${ urlEjemploSitio }" />
-				<tiles:putAttribute name="visibleRecurso"
-					value="${ visibleRecurso }" />
-				<tiles:putAttribute name="visibleTel" value="${ visibleTel }" />
-			</tiles:insertDefinition>
-		</c:if>
-
+		
 	</footer>
 	<!--/Footer-->
 
@@ -406,7 +415,7 @@
 		<tiles:putAttribute name="tamanioModal" value='"modal-dialog modal-lg"'/>
 		<c:set var="fragmentName" value="modalMsjPN" scope="request" />
 	</tiles:insertDefinition>
-	<!--/MODAL MAPA-->
+	<!--/MODAL MENSAJES-->
 
 	<!--MODAL VIDEO-->
 	<tiles:insertDefinition name="modalGen">
@@ -455,9 +464,7 @@
 		<c:set var="fragmentName" value="modalImagenes" scope="request" />
 	</tiles:insertDefinition>
 	<!-- 		<!--/MODAL IMAGENES-->
-	<!--MODAL PUBLICACION-->
-	<div id="modalPublicacion"></div>
-	<!--MODAL PUBLICACION-->
+	
 	
 	<!-- 		<!--MODAL MOVILIZA-->
 	<tiles:insertDefinition name="modalGen">

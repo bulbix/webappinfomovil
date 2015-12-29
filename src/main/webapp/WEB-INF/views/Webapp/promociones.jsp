@@ -9,12 +9,12 @@
 <meta HTTP-EQUIV="PRAGMA" CONTENT="NO-CACHE">
 
 <tiles:insertDefinition name="headEditorSitio">
-	<tiles:putAttribute name="template" value="${ template }" />
+	<tiles:putAttribute name="template" value="CoverpageMultiproducto" />
 </tiles:insertDefinition>
 
-<link
-	href="<c:url value="/resources/webapp/js/datepicker/datepicker.css"/>"
-	rel="stylesheet" />
+<link href="<c:url value="/resources/webapp/js/datepicker/datepicker.css"/>" rel="stylesheet" />
+<link href="<c:url value="/resources/webapp/js/bower_components/angular-material/angular-material.min.css"/>" rel="stylesheet" />
+
 <body role="document" data-spy="scroll" data-target=".navbar"
 	data-offset="75" id="page-top" ng-controller="VolantesController as volantesCtrl">
 
@@ -42,26 +42,56 @@
 					<img
 					src="<c:url value="/resources/webapp/images/apple-touch-icon-57x57.png"/>"
 					width="50" height="50" alt="Infomovil" />
-				</span> <span class="marLeft navEditor ${colorTexto}">Mis Volantes</span>
+				</span> <span class="marLeft navEditor ${colorTexto}" style="margin-top:15px;">MIS VOLANTES</span>
 				<!-- /LOGO INFOMOVIL - REGISTRO GENERAL-->
 			</div>
 			<div id="navbar" class="navbar-collapse collapse text-right">
 				<ul class="nav navbar-nav navbar-right">
 
-					<li><a href="" class="smoothScroll ${colorTexto}"> <img
-							width="20" height="20" alt="Infomovil"
-							src="<c:url value="/resources/webapp/images/fa-user${ extensionImg }.png"/>" />
-							Mi Cuenta
-					</a></li>
-					<li><a href="" class="smoothScroll ${colorTexto}"> <img
-							width="20" height="20" alt="Infomovil"
-							src="<c:url value="/resources/webapp/images/fa-pencil${ extensionImg }.png"/>" />
-							Mi Contenido
-					</a></li>
+					<li class="dropdown">
+						<a href="<c:url value="/infomovil/miCuenta"></c:url>" 
+							class="dropdown-toggle smoothScroll ${colorTexto}" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+							<img width="20" height="20" alt="Infomovil"	src="<c:url value="/resources/webapp/images/fa-user${ extensionImg }.png"/>" />
+							Mi Cuenta <span class="caret"></span>
+						</a>	
+							<ul class="dropdown-menu navbar-${ claseCss } ${colorTexto} text-right">
+								<li><a href="<c:url value="/infomovil/miCuenta"></c:url>"
+ 									class="smoothScroll borderInicial ${colorTexto}">Mis productos 
+ 									<img width="20" height="20" alt="Infomovil"
+ 										src="<c:url value="/resources/webapp/images/fa-products${ extensionImg }.png"/>" /></a>
+ 								</li>
+ 							
+ 								
+
+									<li><a href="#" data-toggle="modal" data-target="#myModalMsjPN"
+	 									class="smoothScroll  borderFin ${colorTexto}">Mis mensajes
+	 									<img width="20" height="20" alt="Infomovil"
+	 									src="<c:url value="/resources/webapp/images/fa-messages${ extensionImg }.png"/>" /></a>
+	 								</li>
+ 								
+							</ul>
+						</li>
+					<li class="dropdown "><a href="#" class="dropdown-toggle ${colorTexto}" 
+						data-toggle="dropdown" role="button" aria-haspopup="true"
+						aria-expanded="false">
+						<img width="20" height="20"
+							alt="Infomovil"
+							src="<c:url value="/resources/webapp/images/fa-pencil${ extensionImg }.png"/>" />Mi
+							Contenido <span class="caret"></span></a>
+						<ul class="dropdown-menu navbar-${ claseCss } ${colorTexto} text-right">
+							<li class=" borderInicial borderFin" ><a
+								href="#" data-toggle="modal" data-target="#myModalMaps"
+								class="smoothScroll ${colorTexto}">
+									Ubicación <img width="20"
+									height="20" alt="Infomovil"
+									src="<c:url value="/resources/webapp/images/icn_marc_maps${ extensionImg }.png"/>" /></a></li>
+									
+						</ul></li>
+						
 					<li><a href="" class="smoothScroll ${colorTexto}" ng-click="volantesCtrl.actualizaProducto()"> <img
 							width="20" height="20" alt="Infomovil"
 							src="<c:url value="/resources/webapp/images/fa-compu${ extensionImg }.png"/>" />
-							Mi Página Web
+							Mi Página <span class="hidden-sm">Web</span>
 					</a></li>
 					<li><a href="<c:url value="/logout"></c:url>"
 						class="smoothScroll ${colorTexto}"> <img width="20"
@@ -95,40 +125,37 @@
 	<!-- Botón Nuevo Estilo -->
 	<div>
 		<div class="seccTop bgBlack">
-
-			<div class="col-xs-12 col-sm-12">
+<div class="containerExt">
+			<div class="">
 				<!-- Botones sin publicar -->
 				<div ng-show="volantesCtrl.muestraPublicarPromo">
 
-					<div class="col-xs-2 col-sm-2 text-center">
+					<div class="col-xs-2 col-sm-2 text-center reset">
 						<button type="button"
 							class=" btn btn-outlineGreen textWhite navEditorLato"
 							ng-click="volantesCtrl.vistaPrevia()"
 							style="margin: 5px 8px 0 0;">
 							<img width="20" height="20" alt="Infomovil"
 								src="<c:url value="/resources/webapp/images/fa-eye.png"/>" /> <span
-								class="hidden-xs">Vista Previa</span>
+								class="hidden-xs">Vista <span class="hidden-sm">Previa</span></span>
 						</button>
 					</div>
-					<div class="col-xs-2 col-sm-2 text-center">
-						<button type="button"
+					<div class="col-xs-2 col-sm-2 text-center reset">
+						<a href="<c:url value="/infomovil/estiloVolante"></c:url>" 
 							class="btn btn-outlineGreen  textWhite navEditorLato"
-							style="margin: 5px 8px 0 0;" data-toggle="modal"
-							data-target="#myModalTempPromo">
+							style="margin: 5px 8px 0 0;" >
 							<img width="20" height="20" alt="Infomovil"
 								src="<c:url value="/resources/webapp/images/fa-templates.png"/>" />
-							<span class="hidden-xs">Estilo</span>
-						</button>
-					</div>
+							<span class="hidden-xs">E<span class="hidden-sm">lige E</span>stilo</span>
+						</a>
+					</div>					
 
-					<div class="hidden-xs col-sm-1"></div>
-
-					<div class="col-xs-6 col-sm-5 ">
-						<div class=" form-group" style="padding:10px 0;">
+					<div class="col-xs-6 col-sm-6 reset">
+						<div class=" form-group" style="padding:6px 0;">
 							<div class="control-group">
-								<label class="control-label hidden-xs col-sm-5"><div style="padding:8px 0;">promo.mobileinfo.io/</div></label>
-								<div class="controls col-xs-12 col-sm-7 reset">
-									<input type="text" class="form-control text-left"
+								<label class="control-label hidden-xs hidden-sm col-md-4 navEditor"><div style="padding:4px 0;">promo.mobileinfo.io/</div></label>
+								<div class="controls col-xs-12 col-sm-8  pull-right reset">
+									<input type="text" class="form-control text-left "
 										maxlength="128" placeholder="Nombre de tu volante"
 										onfocus="this.placeholder = ''"
 										onblur="this.placeholder = 'Nombre de tu volante'"
@@ -139,7 +166,7 @@
 						</div>
 					</div>
 
-					<div class="col-xs-2 col-sm-2 text-center">
+					<div class="col-xs-2 col-sm-2 text-center reset">
 						<button type="button"
 							class="btn btn-outlineGreen textWhite navEditorLato"
 							ng-click="volantesCtrl.publicarVolante()" style="margin: 5px 0;" id="btnPublicar">
@@ -149,45 +176,32 @@
 						</button>
 					</div>
 
-
-
 				</div>
 				<!-- /Botones sin publicar -->
 				<!-- Botones publicados -->
 				<div ng-show="volantesCtrl.muestraPromoPublicada">
-				<button type="button"
-									class="btn btn-outlineGreen textWhite navEditorLato"
-									id="btnEstiloTemplates" data-toggle="modal"
-									data-target="#myModalTempPromo" style="margin: 5px 8px 0 0;">
-									<img width="20" height="20" alt="Infomovil"
-										src="<c:url value="/resources/webapp/images/fa-templates.png"/>" />
-									<span class="hidden-xs">Estilo</span>
-								</button>
+				
+				<div class="col-xs-2 col-sm-2 text-center reset">
+						<a href="<c:url value="/infomovil/estiloVolante"></c:url>" 
+							class="btn btn-outlineGreen  textWhite navEditorLato"
+							style="margin: 5px 8px 0 0;" >
+							<img width="20" height="20" alt="Infomovil"
+								src="<c:url value="/resources/webapp/images/fa-templates.png"/>" />
+							<span class="hidden-xs">E<span class="hidden-sm">lige E</span>stilo</span>
+						</a>
+					</div>
 								
-								<button type="button"
-									class="btn btn-outlineGreen textWhite navEditorLato"
-									ng-click="volantesCtrl.guardarPromocion()"
-									style="margin: 5px 0 0 0;">
-									<img width="20" height="20" alt="Infomovil"
-										src="<c:url value="/resources/webapp/images/successWhite.png"/>" />
-									<span class="hidden-xs">Guardar</span>
-								</button>
-								<button type="button"
-									class="btn btn-outlineGreen  textWhite navEditorLato"
-									ng-click="volantesCtrl.eliminarVolante()"
-									style="margin: 5px 5px 0 0;">
-									<img width="20" height="20" alt="Infomovil"
-										src="<c:url value="/resources/webapp/images/trash.png"/>" /> <span
-										class="hidden-xs">Eliminar</span>
-								</button>
+								<div class="col-xs-2 col-sm-2 text-center reset">
 								<button type="button"
 									class="btn btn-outlineGreen  textWhite navEditorLato"
 									ng-click="volantesCtrl.verPromoActiva()"
 									style="margin: 5px 5px 0 0;">
 									<img width="20" height="20" alt="Infomovil"
 										src="<c:url value="/resources/webapp/images/fa-eye.png"/>" />
-									<span class="hidden-xs">Ver</span>
-								</button>
+									<span class="hidden-xs">Ver <span class="hidden-xs hidden-sm">volante</span></span>
+								</button></div>
+								
+								<div class="col-xs-2 col-sm-2 text-center reset">
 								<button type="button"
 									class="btn btn-outlineGreen  textWhite navEditorLato"
 									ng-click="volantesCtrl.compartirPromo()"
@@ -195,29 +209,53 @@
 									<img width="20" height="20" alt="Infomovil"
 										src="<c:url value="/resources/webapp/images/fa-compartir.png"/>" />
 									<span class="hidden-xs">Compartir</span>
-								</button>
+								</button></div>
 								
+								<div class="hidden-xs hidden-sm col-xs-2 col-sm-2 text-center reset" >
 								<button type="button"
-									class="hidden-xs hidden-sm btn btn-outlineGreen  textWhite navEditorLato"
-									id="btnImprimirPromo" style="margin: 5px 8px 0 0;">
+									class=" btn btn-outlineGreen  textWhite navEditorLato"
+									ng-click="volantesCtrl.imprimirPromo()"
+									style="margin: 5px 8px 0 0;">
 									<span><img width="20" height="20" alt="Infomovil"
 										src="<c:url value="/resources/webapp/images/fa-print.png"/>" />
 										Imprimir</span>
-								</button>
+								</button></div>
+								
+								<div class="hidden-md hidden-lg col-xs-2 col-sm-2 text-center reset">
 								<button type="button"
-									class="hidden-md hidden-lg btn btn-outlineGreen  textWhite navEditorLato"
-									id="btnImprimirPromoMovil" style="margin: 5px 0 0 0;">
+									class=" btn btn-outlineGreen  textWhite navEditorLato"
+									ng-click="volantesCtrl.descargarPDF()" style="margin: 5px 0 0 0;">
 									<span><img width="20" height="20" alt="Infomovil"
 										src="<c:url value="/resources/webapp/images/fa-pdf.png"/>" />
-									</span> <span>PDF/Imagen</span>
+									</span> <span class="hidden-xs">PDF<span class="hidden-xs hidden-sm">/Imagen</span></span>
 
-								</button>
+								</button></div>
+								
+								<div class="col-xs-2 col-sm-2 text-center reset">
+								<button type="button"
+									class="btn btn-outlineGreen  textWhite navEditorLato"
+									ng-click="volantesCtrl.eliminarVolante()"
+									style="margin: 5px 5px 0 0;">
+									<img width="20" height="20" alt="Infomovil"
+										src="<c:url value="/resources/webapp/images/trash.png"/>" /> <span
+										class="hidden-xs">Eliminar</span>
+								</button></div>
+								
+								<div class="col-xs-2 col-sm-2 text-center reset">
+								<button type="button"
+									class="btn btn-outlineGreen textWhite navEditorLato"
+									ng-click="volantesCtrl.guardarPromocion()"
+									style="margin: 5px 0 0 0;">
+									<img width="20" height="20" alt="Infomovil"
+										src="<c:url value="/resources/webapp/images/successWhite.png"/>" />
+									<span class="hidden-xs">Guardar</span>
+								</button></div>
 
 							</div>
 				<!-- /Botones publicados -->
 
 			</div>
-
+</div>
 
 		</div>
 
@@ -231,7 +269,7 @@
 					<!-- Main jumbotron for a primary marketing message or call to action -->
 						<!-- page header <input type="text" id="checkedRedimir" value=""/>-->
 						<div class=" text-center"
-							style="border-radius:15px; background:url(<c:url value="/resources/webapp/images/bgWhTra.png"/>); padding:10px;">
+							style="border-radius:15px; background:url(<c:url value="/resources/webapp/images/bgWhTra.png"/>); padding:10px 0;">
 
 							<div ng-if="volantesCtrl.volantes.length == 0">
 								<div>
@@ -239,12 +277,14 @@
 									<div ng-hide="true" id="urlPromocion"></div>
 
 									<div class="col-xs-12 col-sm-12 col-md-6">
+
 										<div class="form-group text-left textBlack">
 											<label for="exampleInputEmpresa">Tu empresa:</label> <input type="text" class="form-control"
 												id="nombreEmpresaPromo" value="">
 										</div>
 										<div class="divider"></div>
 										<div class="form-group text-left textBlack">
+
 											<label for="exampleInputEmail1">Nombre de la
 												promoción:</label> <input type="text" class="form-control"
 												id="nombrePromo" value="">
@@ -267,12 +307,14 @@
 										</div>
 									</div>
 									<div class="col-xs-12 col-sm-6">
-
 										<div class="divider hidden-md hidden-lg"></div>
-										<div class="form-group text-left textBlack">
-											<label for="exampleInputEmail1" class="text-left">Vigencia
-												al:</label> <input type="text" class="form-control3 datepicker"
-												id="datepicker" value="">
+										<div class="form-group text-left textBlack col-xs-11 reset">
+											<label for="exampleInputEmail1" class="text-left">
+											Vigencia al:
+											<md-content>
+											<md-datepicker ng-model="volantesCtrl.fechaVigencia" md-placeholder="Vigencia" />
+											</md-content>
+											</label> 
 										</div>
 										<div class="clearfix"></div>
 										<div class="divider"></div>
@@ -313,6 +355,18 @@
 													value="Visítanos" class="radioPromo">Visítanos</label>
 											</div>
 										</div>
+
+										<div class="botonDesPublicar">
+											<a href="#" data-toggle="modal" data-target="#myModalMaps"
+												class="col-xs-12 col-sm-12 btn btn-default btn-outlineGreen  navEditor">
+												<img width="25" height="25" alt="Infomovil"
+												src="<c:url value="/resources/webapp/images/icn_marc_maps.png"/>" />
+												<span id="idOpcionUbicacion"><span class="hidden-xs">Colocar mi</span>Ubicación</span> <br /> <span
+												id="direccionMap" class="directionMap"></span>
+												<div class="clearfix"></div>
+											</a>
+										</div>
+												
 									</div>
 								</div>
 							</div>
@@ -353,12 +407,27 @@
 										</div>
 									</div>
 									<div class="col-xs-12 col-sm-6">
-
 										<div class="divider hidden-md hidden-lg"></div>
-										<div class="form-group text-left textBlack">
+										<div class="form-group text-left textBlack col-xs-11 reset">
 											<label for="exampleInputEmail1" class="text-left">Vigencia
-												al:</label> <input type="text" class="form-control3 datepicker"
-												id="datepicker" value="{{item.endDateOffer}}">
+												al:</label>
+											<md-content>
+												<md-datepicker ng-model="volantesCtrl.fechaVigencia" md-placeholder="Vigencia"/>
+											</md-content>
+
+										</div>
+										<div class="clearfix"></div>
+										<div class="divider"></div>
+										<div class="form-group text-left textBlack">
+											<div class="col-xs-12 col-sm-6 reset">
+												<div class="col-xs-1 col-sm-2"></div>
+												<select class="col-xs-11 col-sm-10 form-control">
+												  <option>Teléfono</option>
+												  <option>Celular</option>
+												</select>
+											</div>	
+
+											<input type="text" class="col-xs-6 form-control">
 										</div>
 										<div class="clearfix"></div>
 										
@@ -377,6 +446,13 @@
 										
 										
 										
+										<div class="divider"></div>
+										<div class="form-group text-left textBlack">
+											<label for="exampleInputEmail1" class="text-left">E-mail</label> <input type="text" class="form-control">
+										</div>
+										
+										
+										<div class="clearfix"></div>
 										<div class="divider"></div>
 										<div class="form-group text-left textBlack">
 											<label class="text-left">¿Cómo redimir?:
@@ -405,9 +481,24 @@
 													ng-checked="item.redeemOffer == 'Visítanos'">Visítanos</label>
 											</div>
 										</div>
+										<div class="clearfix"></div>
+										<div class="divider"></div>
+										
+											<!-- /Botón MAPS -->
+
+				<div class="botonDesPublicar " >
+					<a href="#" data-toggle="modal" data-target="#myModalMaps"
+						class="col-xs-12 col-sm-12 btn btn-default btn-outlineGreen  navEditor">
+						<img width="25" height="25" alt="Infomovil"
+						src="<c:url value="/resources/webapp/images/icn_marc_maps.png"/>" />
+						<span id="idOpcionUbicacion"><span class="hidden-xs">Colocar mi</span> Ubicación</span> <br /> <span
+						id="direccionMap" class="directionMap"></span>
+						<div class="clearfix"></div>
+					</a>
+				</div>
 									</div>
 								</div>
-								
+
 								<tiles:insertDefinition name="modalGen">
 									<tiles:putAttribute name="idModal" value="myModalPromoShare" />
 									<tiles:putAttribute name="tamanioModal"
@@ -418,13 +509,14 @@
 										scope="session" />
 								</tiles:insertDefinition>
 							</div>
-							
 							<div class="clear"></div>
 							</div>
 							<div class="clear"></div>
 							<div id="divError" ng-show="volantesCtrl.muestraDivError"
 								style="color: red;"></div>
 						</div>
+						
+						
 
 						<!-- /page header -->
 						<br /> <br />
@@ -451,32 +543,30 @@
 				</div>
 				<!--/Theme showcase -->
 				
-				<!--Footer-->
-			<footer class="footer bgBlack">
-				<div class="dividerSmall"></div>
-				<div class="clearfix"></div>
-				<!-- /Botón MAPS -->
-
-				<div class="botonDesPublicar " >
-					<a href="#" data-toggle="modal" data-target="#myModalMaps"
-						class="col-xs-12 col-sm-6 col-sm-offset-3 col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3 btn btn-default btn-outline navEditor">
-						<img width="25" height="25" alt="Infomovil"
-						src="<c:url value="/resources/webapp/images/icn_marc_maps.png"/>" />
-						<span id="idOpcionUbicacion">Colocar mi ubicación</span> <br /> <span
-						id="direccionMap" class="directionMap"></span>
-					</a>
-				</div>
-			</footer>
-
+			
 
 		</div>
 		
+		<input type="hidden" id="tempBanderaPromo" value="${banderaCanal}">
+		<input type="hidden" id="tempNombrePromo" value="${nombreSitio}">
 	<!-- Bootstrap core JavaScript
 		    ================================================== -->
 		<!-- Placed at the end of the document so the pages load faster -->
 		<script src="<c:url value="/resources/webapp/js/datepicker/jquery-1.10.2.js"/>"></script>
 		<script src="<c:url value="/resources/webapp/js/jquery.min.js"/>"></script>
+		<script src="<c:url value="/resources/webapp/js/datepicker/jquery.ui.core.js"/>"></script>
+		<script src="<c:url value="/resources/webapp/js/datepicker/jquery.ui.datepicker.js"/>"></script>
 		<script src="<c:url value="/resources/webapp/js/angular.min.js"/>"></script>
+		
+		<script src="<c:url value="/resources/webapp/js/bower_components/angular-animate/angular-animate.min.js"/>"></script>
+		<script src="<c:url value="/resources/webapp/js/bower_components/angular-aria/angular-aria.min.js"/>"></script>
+		<script src="<c:url value="/resources/webapp/js/bower_components/angular-messages/angular-messages.min.js"/>"></script>
+		<script src="<c:url value="/resources/webapp/js/bower_components/angular-material/angular-material.min.js"/>"></script>
+		<script src="<c:url value="/resources/webapp/js/bower_components/moment/min/moment.min.js"/>"></script>
+		<script src="<c:url value="/resources/webapp/js/bower_components/angular-momentjs/angular-momentjs.min.js"/>"></script>
+		
+		
+		
 		<script src="<c:url value="/resources/webapp/js/bootstrap.js"/>"></script>
 		<script src="<c:url value="/resources/webapp/js/docs.min.js"/>"></script>
 		<script src="<c:url value="/resources/webapp/js/smoothscroll.js"/>"></script>
@@ -484,24 +574,15 @@
 		<!-- bxSlider Javascript file -->
 		<script	src="<c:url value="/resources/webapp/js/jquery.bxslider.min.js"/>"></script>
 		<script	src="<c:url value="/resources/webapp/js/bootstrap-dialog.min.js"/>"></script>
-		<script src="<c:url value="/resources/webapp/js/jquery.numeric.js"/>"></script>
 		<script src="<c:url value="/resources/webapp/js/jquery.blockUI.js"/>"></script>
-		<script src="<c:url value="/resources/js/webapp/util.js"/>"></script>		 
-		<script src="<c:url value="/resources/webapp/js/datepicker/jquery.ui.core.js"/>"></script>
-		<script src="<c:url value="/resources/webapp/js/datepicker/jquery.ui.datepicker.js"/>"></script>
-		<script src="<c:url value="/resources/js/webapp/promociones.js"/>"></script>
+		<script src="<c:url value="/resources/js/webapp/util.js"/>"></script>
 		<script src="<c:url value="/resources/js/webapp/volantes.js"/>"></script>
 		<script src="<c:url value="/resources/js/webapp/InfomovilServices/mensajesService.js"/>"></script>
 		<script src="<c:url value="/resources/js/webapp/InfomovilServices/volantesService.js"/>"></script>
-		<script src="<c:url value="/resources/js/webapp/mapaAngular.js"/>" ></script>
+		<script src="<c:url value="/resources/js/webapp/mapaAngular.js"/>" ></script>	
+		
+		
 
-		<script>
-			$(document).ready(function(){
-				generarSliderPromo();
-			});
-		</script>
-	
-	 
 		<tiles:insertDefinition name="modalGen">
 			<tiles:putAttribute name="idModal" value="myModalPromo" />
 			<tiles:putAttribute name="tamanioModal"
@@ -544,6 +625,13 @@
 		<tiles:putAttribute name="tipo" value='volante'/>
 	</tiles:insertDefinition>
 	<!--/MODAL MAPA-->
+	<!--MODAL MENSAJES-->
+<%-- 	<tiles:insertDefinition name="modalGen"> --%>
+<%-- 		<tiles:putAttribute name="idModal" value="myModalMsjPN" /> --%>
+<%-- 		<tiles:putAttribute name="tamanioModal" value='"modal-dialog modal-lg"'/> --%>
+<%-- 		<c:set var="fragmentName" value="modalMsjPN" scope="request" /> --%>
+<%-- 	</tiles:insertDefinition> --%>
+	<!--/MODAL MENSAJES-->
 		
 		<script>
 			<c:choose> 

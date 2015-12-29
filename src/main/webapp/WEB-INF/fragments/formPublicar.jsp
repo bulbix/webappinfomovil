@@ -2,16 +2,17 @@
 <%@ taglib uri="http://tiles.apache.org/tags-tiles" prefix="tiles"%>
 
 <div id="publicarSitio"> 
-	<div class="bgDobleBlack "></div>
-	<section class="bgFondo publicar btnsEditor">
+
+	<section class=" publicar btnsEditor">
 		<div class="container whiteBg">
 			<div class="row">
 				<h3 class=" text-center textBlack ">&iexcl;Ponle un nombre a tu p&aacute;gina web! </h3> 
 				<a href="" data-toggle="modal" data-target="#myModalRecAyuda" class="textBlack col-xs-12 col-sm-12 col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3 text-center"> 
 				<strong>Ver tips</strong> <img src="<c:url value="/resources/webapp/images/help.png"/>" width="25" height="25" alt=""/></a> 
 					<br/>
+					<br/>
 				
-				<div id="divTel" class="form-group col-xs-12 col-sm-12 col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3" style=<tiles:getAsString name="visibleTel"/>>
+				<div id="divTel" class="form-group col-xs-12 col-sm-12 col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3 reset" style=<tiles:getAsString name="visibleTel"/>>
 
 		        <div class="col-xs-12 col-sm-12 text-center textBlack reset" >			
 					
@@ -54,11 +55,11 @@
 				</div>
 				
 				
-				  <div id="divRecurso" class="form-group col-xs-12 col-sm-12 col-md-12 col-lg-12" style=<tiles:getAsString name="visibleRecurso"/>>
+				  <div id="divRecurso" class="form-group col-xs-12 col-sm-12 col-md-12 col-lg-12 reset" style=<tiles:getAsString name="visibleRecurso"/>>
 		        
 		        <div class="col-xs-12 col-sm-12 text-center textBlack reset" >			
 					
-					<strong><span>www.infomovil.com/</span><span id="idCatTipoRecAutocompleta" style="text-transform:lowercase">mi-pagina</span></strong>  
+					<strong><span class="hidden-xs">www.</span><span>infomovil.com/</span><span id="idCatTipoRecAutocompleta" style="text-transform:lowercase">mi-pagina</span></strong>  
 		           </div>
 
 		          <div class="col-xs-12 col-sm-12 col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3">
