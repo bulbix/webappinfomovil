@@ -13,13 +13,13 @@
 
 	<div class="container" ng-controller="MultiproductoController as multiproductoCtrl">
 
-		<div class="col-xs-12 mp_mar40tp">
+		<div class="col-xs-12 mp_mar40tp animated fadeIn">
 			<img width="40" height="" alt="Infomovil" class="" src="<c:url value="/resources/webapp/images/apple-touch-icon-57x57.png"/>" />
 
 			<img width="" height="40" alt="Infomovil" class="" src="<c:url value="/resources/webapp/images/logotipoInfomovil.png"/>" />
 		</div>
 		<div class="col-xs-12 col-sm-6 text-center ">
-			<div id="volante" class="mp_mar40tp bgGreenTrans borderRad">
+			<div id="volante" class="mp_mar40tp bgGreenTrans borderRad animated fadeIn">
 				<div class="hidden-xs">
 					<img alt="Infomovil" class="img-responsive" src="<c:url value="/resources/webapp/images/mp_volante.png"/>" />
 				</div>
@@ -46,7 +46,7 @@
 
 		<div class="col-xs-12 col-sm-6 text-center">
 
-			<div id="paginaWeb" class="mp_mar40tp bgPurpleTrans borderRad">
+			<div id="paginaWeb" class="mp_mar40tp bgPurpleTrans borderRad animated fadeIn">
 				<div class="hidden-xs">
 					<img height="" alt="Infomovil" class="img-responsive" src="<c:url value="/resources/webapp/images/mp_web.png"/>" />
 				</div>

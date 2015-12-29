@@ -108,9 +108,15 @@ app.controller("VolantesController", function ($scope, $http, VolanteService, Me
 		
 		if (!(volantesCtrl.resultado == "datosCompletos"))
 		{
+			if(volantesCtrl.resultado == "email")
+				$("#divError").html("El formato de email es incorrecto");
+			else if(volantesCtrl.resultado == "telefono")
+				$("#divError").html("El formato de teléfono es incorrecto deben ser 10 digitos");
+			else
 			$("#divError").html("Falta llenar el campo " + volantesCtrl.resultado);
-			volantesCtrl.muestraDivError = true;
+			volantesCtrl.muestraDivError = true; 
 			return;
+			
 		}
 		
 		volantesCtrl.muestraDivError = false;
@@ -215,7 +221,12 @@ app.controller("VolantesController", function ($scope, $http, VolanteService, Me
 		volantesCtrl.eventoPromocion = "promo-guardar";
 		
 		if (!(volantesCtrl.resultado == "datosCompletos"))
-		{
+		{	
+			if(volantesCtrl.resultado == "email")
+				$("#divError").html("El formato de email es incorrecto");
+			else if(volantesCtrl.resultado == "telefono")
+				$("#divError").html("El formato de teléfono es incorrecto deben ser 10 digitos");
+			else
 			$("#divError").html("Falta llenar el campo " + volantesCtrl.resultado);
 			volantesCtrl.muestraDivError = true;
 			return;
@@ -417,12 +428,15 @@ app.controller("VolantesController", function ($scope, $http, VolanteService, Me
 	};
 	
 	volantesCtrl.validarCampos = function() {
-		
+		var regexTel = new RegExp("^\\d{10}$");
+		var regexEmail = new RegExp('^[_a-z0-9]+(\.[_a-z0-9]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,4})$');
 		var $nom = $("#nombrePromo").val().trim();
 		var $desc = $("#descPromo").val().trim();
 		var $dp = volantesCtrl.modfechaVigencia;//$("#datepicker").val();
 		var $rp = $('.radioPromo:checked').val();
-
+		var $tV = $("#telefonoVolante").val();
+		var $eCV = $("#emailContactoVolante").val();
+		
 		if($nom.length <= 0)
 			return "nombre de la promoción";
 		else if($desc.length <= 0)
@@ -431,6 +445,10 @@ app.controller("VolantesController", function ($scope, $http, VolanteService, Me
 			return "vigencia de la promoción";	
 		else if($rp.length <= 0)
 			return "cómo redimir";
+		else if($tV.length > 0 && !regexTel.test($tV)) 
+			 return "telefono"; 
+		else if($eCV.length > 0 && !regexEmail.test($eCV)) 
+			 return "email"; 
 		else
 			return "datosCompletos";
 	};

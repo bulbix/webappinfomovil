@@ -25,9 +25,9 @@
     <div class="divider hidden-xs hidden-sm"></div>
     <h1 class="textPurple hidden">Inicia sesión</h1>
     
-    <h5 class="textPurple">Inicia sesión</h5>
+    <h5 class="textPurple animated fadeIn">Inicia sesión</h5>
     <div class="dividerSmall"></div>
-    <div class="">
+    <div class="animated fadeIn">
     
     <c:if test="${not empty error}">
 		<div class="errorblock col-xs-12 text-center textBlack">
@@ -75,7 +75,7 @@
 	    <div class="text-center">
       
       	<img src="<c:url value="/resources/webapp/images/line.png"/>" class="lineWht" alt="Linea"/></div>
-      	<div class="form-group col-xs-12"> <span class="lineNotesLogin" style=" max-width:280px; margin:0 auto"><a href="<c:url value="/resetpassword"/>" class="linkWhite"><span>Si olvidaste o no tienes contraseña,</span> <br/><span class="textPurple textUnder"><strong>haz clic aquí</strong></span></a></span> </div>
+      	<div class="form-group col-xs-12 animated fadeIn"> <span class="lineNotesLogin" style=" max-width:280px; margin:0 auto"><a href="<c:url value="/resetpassword"/>" class="linkWhite"><span>Si olvidaste o no tienes contraseña,</span> <br/><span class="textPurple textUnder"><strong>haz clic aquí</strong></span></a></span> </div>
       	
       	
     </form>
