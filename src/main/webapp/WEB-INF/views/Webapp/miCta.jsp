@@ -38,7 +38,7 @@
 			</div>
 			<div id="navbar" class="navbar-collapse collapse text-right">
 				<ul class="nav navbar-nav navbar-right">							
-							<li><a href="" onClick="sessionBtnEditorMiCuenta()" class="smoothScroll ${colorTexto}"><img
+							<li><a href="<c:url value="/infomovil/editarSitio"/>"  class="smoothScroll ${colorTexto}"><img
 							width="20" height="20" alt="Infomovil"
 							src="<c:url value="/resources/webapp/images/fa-back${ extensionImg }.png"/>" />
 							Editor </a></li>

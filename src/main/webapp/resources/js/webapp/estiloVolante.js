@@ -5,12 +5,19 @@ app.controller("EstiloVolanteController", function ($scope, $http, VolanteServic
 	var estiloVolanteCtrl = this;
 	estiloVolanteCtrl.plantillas = new Array("promo8", "promo6",  "promo1", "promo5", "promo4", "promo7", "promo2", "promo3");
 	estiloVolanteCtrl.nombrePlantillas = new Array("Navidad", "Cursos",  "Bares","Floral", "Tecnología 2", "Buen Fin", "Hipster", "Tecnología");
+	estiloVolanteCtrl.textoPlantilla = "Aplicar estilo";
+	estiloVolanteCtrl.claseSpan = "ev_std_chk text-center";
+	estiloVolanteCtrl.claseImg = "img-responsiveTemp img-thumbnail";	
 	estiloVolanteCtrl.template = "";
 	
 	VolanteService.getVolantes(function() {
-		estiloVolanteCtrl.volante = VolanteService.volantes();	
-		estiloVolanteCtrl.template = estiloVolanteCtrl.volante[0].template;
-		console.log("volante: " + JSON.stringify(estiloVolanteCtrl.volante));
+		
+		if (estiloVolanteCtrl.volante != undefined)
+		{
+			estiloVolanteCtrl.volante = VolanteService.volantes();	
+			estiloVolanteCtrl.template = estiloVolanteCtrl.volante[0].template;
+			console.log("volante: " + JSON.stringify(estiloVolanteCtrl.volante));
+		}
 	});
 
 	estiloVolanteCtrl.getClasesPlantillas = function(item) {
@@ -53,6 +60,9 @@ app.controller("EstiloVolanteController", function ($scope, $http, VolanteServic
 	
 	estiloVolanteCtrl.actulizaPlantilla = function(item) {
 	
+		if (estiloVolanteCtrl.volante == undefined) 
+			return;
+		
 		estiloVolanteCtrl.volante = VolanteService.volantes();
 		estiloVolanteCtrl.eventoPromocion = "promo-plantilla";
 		
