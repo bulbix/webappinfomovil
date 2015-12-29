@@ -1,10 +1,17 @@
+var server = requestServer("POST",contextPath + "/infomovil/getPerfil",{}).perfil; 
+var contactos = {
+		getUrl:server+'/api/editorVolante/getContacto',
+		delUrl:server + '/api/editorVolante/deleteContacto',
+		saveUrl: server + 'api/editorVolante/upsertContacto'
+};
+
 app.factory('VolanteService', function($http, MensajesService) {
 	
 	var volantes;
 	var datos = {};
 	var banderaCanal;
 	var nombreVolante;
-
+	
     function getVolantes(callback) {
 
 		$http({
