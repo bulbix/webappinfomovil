@@ -276,7 +276,7 @@
 									<div ng-hide="true" id="idPromocion"></div>
 									<div ng-hide="true" id="urlPromocion"></div>
 
-									<div class="col-xs-12 col-sm-12 col-md-6">
+									<div class="col-xs-12 col-sm-6 col-md-6">
 
 										<div class="form-group text-left textBlack">
 											<label for="exampleInputEmpresa">Tu empresa:</label> <input type="text" class="form-control"
@@ -408,7 +408,7 @@
 									<div ng-hide="true" id="urlPromocion">{{item.urlPromocion}}</div>
 									<div ng-hide="true" id="tempPromocion">{{item.template}}</div>
 
-									<div class="col-xs-12 col-sm-12 col-md-6">
+									<div class="col-xs-12 col-sm-6 col-md-6">
 										<div class="form-group text-left textBlack">
 											<label for="exampleInputEmpresa">Tu empresa:</label> <input type="text" class="form-control"
 												id="nombreEmpresaPromo" value="">
