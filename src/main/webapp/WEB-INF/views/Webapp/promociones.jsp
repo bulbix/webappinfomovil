@@ -322,6 +322,7 @@
 										<div class="form-group text-left textBlack">
 											<div class="col-xs-12 col-sm-6 reset">
 												<div class="col-xs-1 col-sm-2"></div>
+												<input type="hidden" name="idContactoVolante" id="idContactoVolante"/>
 												<select class="col-xs-11 col-sm-10 form-control" name="tipoTelefonoVolante" class="textBlack" id="tipoTelefonoVolante">
 												  <option value="+52" selected>Teléfono</option>
 												  <option value="+52 1">Celular</option>
@@ -331,6 +332,29 @@
 												
 											</div>	
 <input type="text" value="" class="col-xs-6 form-control textBlack" placeholder="10 digitos" id="telefonoVolante"/>
+											
+										</div>
+										<div class="clearfix"></div>
+										
+										<div class="divider"></div>
+										
+										
+											
+<!-- 												<select name="tipoTelefonoVolante" class="textBlack" id="tipoTelefonoVolante"> -->
+<!-- 												  <option value="+52" selected>Teléfono</option> -->
+<!-- 												  <option value="+52 1">Celular</option> -->
+<!-- 												</select> -->
+<!-- 												<input type="hidden" name="idContactoVolante" id="idContactoVolante"/> -->
+<!-- 												<input type="text" value="" class="textBlack" placeholder="10 digitos" id="telefonoVolante"/> -->
+<!-- 												<div class="divider"></div> -->
+<!-- 												<input type="text" id="emailContactoVolante" value="" class="textBlack" placeholder="mail@mail.com"/> -->
+										
+										
+										
+									
+										<div class="form-group text-left textBlack">
+											<label for="exampleInputEmail1" class="text-left">E-mail</label> 
+											<input type="text" id="emailContactoVolante" value="" class="textBlack form-control" placeholder="mail@mail.com"/>
 											
 										</div>
 										
@@ -428,6 +452,7 @@
 										<div class="form-group text-left textBlack">
 											<div class="col-xs-12 col-sm-6 reset">
 												<div class="col-xs-1 col-sm-2"></div>
+												<input type="hidden" name="idContactoVolante" id="idContactoVolante"/>
 												<select class="col-xs-11 col-sm-10 form-control" name="tipoTelefonoVolante" class="textBlack" id="tipoTelefonoVolante">
 												  <option value="+52" selected>Teléfono</option>
 												  <option value="+52 1">Celular</option>

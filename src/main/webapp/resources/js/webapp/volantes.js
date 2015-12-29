@@ -250,8 +250,7 @@ app.controller("VolantesController", function ($scope, $http, VolanteService, Me
 				empresa: $("#nombreEmpresaPromo").val(),
     			nombreVolante: $("#txtNombreVolante").val(),
 		};
-		datosContacto = getContacto();
-		upsertContactoVolantes(datosContacto); 
+		
 		VolanteService.actualizarVolante(volante, volantesCtrl.eventoPromocion);
 	};
 	
