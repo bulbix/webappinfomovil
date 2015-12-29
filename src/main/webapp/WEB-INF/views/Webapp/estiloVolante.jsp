@@ -96,12 +96,16 @@
 		<div class="seccTop bgBlack">
 			<div class="containerExt">
 				<div class="textWhite">
-					<h3 class="text-left textWhite navEditor reset">Elige el estilo <span class="hidden-xs">de
+				<div class="col-xs-9 reset"><h3 class="text-left textWhite navEditor reset">Elige el estilo <span class="hidden-xs">de
 						tu volante</span></h3>
+						<div class="clearfix"></div>
+						<p style="line-height:1em; font-size:.9em">Haz clic en el estilo que te agrade</p>
+						<div class="clearfix"></div><div class="dividerSmall"></div></div>
+					<div class="col-xs-3 reset"></div>
 						<a href="<c:url value="/infomovil/misPromociones"></c:url>"
 							class="btn-default btn-outline navEditor pull-right">
 							<span id="idOpcionMasCont"><img width="20" height="20"
-							alt="Infomovil" src="<c:url value="/resources/webapp/images/fa-back.png"/>" /> Regresar </span>
+							alt="Infomovil" src="<c:url value="/resources/webapp/images/fa-back.png"/>" /><span class="hidden-xs"> Regresar</span> </span>
 						</a>
 				</div>
 			</div>
@@ -113,7 +117,7 @@
 
 		<div class="containerExt" ng-controller="EstiloVolanteController as estiloVolanteCtrl">
 
-		<p style="line-height:.8em;">Haz clic en el estilo que te agrade</p>
+		
 
 			<div ng-repeat="item in estiloVolanteCtrl.plantillas">
 				

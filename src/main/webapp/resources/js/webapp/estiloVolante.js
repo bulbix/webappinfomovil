@@ -18,7 +18,7 @@ app.controller("EstiloVolanteController", function ($scope, $http, VolanteServic
 		{
 			if(item == estiloVolanteCtrl.volante[0].template) 
 			{
-				estiloVolanteCtrl.textoPlantilla = "Seleccionado";
+				estiloVolanteCtrl.textoPlantilla = "Activo";
 				estiloVolanteCtrl.claseSpan = "ev_std_chkSel text-center";
 				estiloVolanteCtrl.claseImg = "img-responsiveTemp img-thumbnail ev_img_chkSel";	
 			}

@@ -227,7 +227,7 @@
 									ng-click="volantesCtrl.descargarPDF()" style="margin: 5px 0 0 0;">
 									<span><img width="20" height="20" alt="Infomovil"
 										src="<c:url value="/resources/webapp/images/fa-pdf.png"/>" />
-									</span> <span>PDF<span class="hidden-xs hidden-sm">/Imagen</span></span>
+									</span> <span class="hidden-xs">PDF<span class="hidden-xs hidden-sm">/Imagen</span></span>
 
 								</button></div>
 								
@@ -269,7 +269,7 @@
 					<!-- Main jumbotron for a primary marketing message or call to action -->
 						<!-- page header <input type="text" id="checkedRedimir" value=""/>-->
 						<div class=" text-center"
-							style="border-radius:15px; background:url(<c:url value="/resources/webapp/images/bgWhTra.png"/>); padding:10px;">
+							style="border-radius:15px; background:url(<c:url value="/resources/webapp/images/bgWhTra.png"/>); padding:10px 0;">
 
 							<div ng-if="volantesCtrl.volantes.length == 0">
 								<div>
@@ -301,11 +301,11 @@
 									</div>
 									<div class="col-xs-12 col-sm-6">
 										<div class="divider hidden-md hidden-lg"></div>
-										<div class="form-group text-left textBlack">
+										<div class="form-group text-left textBlack col-xs-11 reset">
 											<label for="exampleInputEmail1" class="text-left">
 											Vigencia al:
 											<md-content>
-											<md-datepicker ng-model="volantesCtrl.fechaVigencia" md-placeholder="Enter date"/>
+											<md-datepicker ng-model="volantesCtrl.fechaVigencia" md-placeholder="Vigencia" />
 											</md-content>
 											</label> 
 										</div>
@@ -339,7 +339,7 @@
 												class="col-xs-12 col-sm-12 btn btn-default btn-outlineGreen  navEditor">
 												<img width="25" height="25" alt="Infomovil"
 												src="<c:url value="/resources/webapp/images/icn_marc_maps.png"/>" />
-												<span id="idOpcionUbicacion">Colocar mi ubicación</span> <br /> <span
+												<span id="idOpcionUbicacion"><span class="hidden-xs">Colocar mi</span>Ubicación</span> <br /> <span
 												id="direccionMap" class="directionMap"></span>
 												<div class="clearfix"></div>
 											</a>
@@ -382,11 +382,11 @@
 									</div>
 									<div class="col-xs-12 col-sm-6">
 										<div class="divider hidden-md hidden-lg"></div>
-										<div class="form-group text-left textBlack">
+										<div class="form-group text-left textBlack col-xs-11 reset">
 											<label for="exampleInputEmail1" class="text-left">Vigencia
 												al:</label>
 											<md-content>
-												<md-datepicker ng-model="volantesCtrl.fechaVigencia" md-placeholder="Enter date"/>
+												<md-datepicker ng-model="volantesCtrl.fechaVigencia" md-placeholder="Vigencia"/>
 											</md-content>
 
 										</div>
@@ -449,17 +449,13 @@
 						class="col-xs-12 col-sm-12 btn btn-default btn-outlineGreen  navEditor">
 						<img width="25" height="25" alt="Infomovil"
 						src="<c:url value="/resources/webapp/images/icn_marc_maps.png"/>" />
-						<span id="idOpcionUbicacion">Colocar mi ubicación</span> <br /> <span
+						<span id="idOpcionUbicacion"><span class="hidden-xs">Colocar mi</span> Ubicación</span> <br /> <span
 						id="direccionMap" class="directionMap"></span>
 						<div class="clearfix"></div>
 					</a>
 				</div>
 									</div>
 								</div>
-								
-														
-									
-
 								<tiles:insertDefinition name="modalGen">
 									<tiles:putAttribute name="idModal" value="myModalPromoShare" />
 									<tiles:putAttribute name="tamanioModal"
@@ -470,17 +466,11 @@
 										scope="session" />
 								</tiles:insertDefinition>
 							</div>
-							
-							
-							
 							<div class="clear"></div>
 							</div>
 							<div class="clear"></div>
 							<div id="divError" ng-show="volantesCtrl.muestraDivError"
 								style="color: red;"></div>
-								
-								
-								
 						</div>
 						
 						

@@ -1144,6 +1144,9 @@ textarea {
 	border-radius:5px;
 	border:1px solid #dcdcdc;
 }
+.ev_std{
+	min-height:300px;
+}
 a.ev_std:hover{
 	background:#000;
 	display:block;

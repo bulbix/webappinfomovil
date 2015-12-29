@@ -38,7 +38,7 @@
 <div class="dividerSmall"></div>
 
 			<div class="col-xs-12 reset">
-				<span class="col-xs-3 reset">Lun<span class="hidden-xs">es</span></span> <span class="col-xs-9"><select
+				<span class="col-xs-2 reset">Lun<span class="hidden-xs">es</span></span> <span class="col-xs-10"><select
 					name="Lunes1" id="Lunes1" ng-change=""
 					ng-model="combosModalHorarios.Lunes1"></select> - <select
 					name="Lunes2" id="Lunes2" ng-change=""
@@ -47,7 +47,7 @@
 			<div class="clearfix"></div>
 			<div class="dividerSmall"></div>
 			<div class="col-xs-12 reset">
-				<span class="col-xs-3 reset">Mar<span class="hidden-xs">tes</span></span> <span class="col-xs-9"><select
+				<span class="col-xs-2 reset">Mar<span class="hidden-xs">tes</span></span> <span class="col-xs-10"><select
 					name="Martes1" id="Martes1" ng-change=""
 					ng-model="combosModalHorarios.Martes1"></select> - <select
 					name="Martes2" id="Martes2" ng-change=""
@@ -56,7 +56,7 @@
 			<div class="clearfix"></div>
 			<div class="dividerSmall"></div>
 			<div class="col-xs-12 reset">
-				<span class="col-xs-3 reset">Miér<span class="hidden-xs">coles</span></span> <span class="col-xs-9">
+				<span class="col-xs-2 reset">Miér<span class="hidden-xs">coles</span></span> <span class="col-xs-10">
 					<select name="Miercoles1" id="Miercoles1" ng-change=""
 					ng-model="combosModalHorarios.Miercoles1"></select> - <select
 					name="Miercoles2" id="Miercoles2" ng-change=""
@@ -66,7 +66,7 @@
 			<div class="clearfix"></div>
 			<div class="dividerSmall"></div>
 			<div class="col-xs-12 reset">
-				<span class="col-xs-3 reset">Jue<span class="hidden-xs">ves</span></span> <span class="col-xs-9"><select
+				<span class="col-xs-2 reset">Jue<span class="hidden-xs">ves</span></span> <span class="col-xs-10"><select
 					name="Jueves1" id="Jueves1" ng-change=""
 					ng-model="combosModalHorarios.Jueves1"></select> - <select
 					name="Jueves2" id="Jueves2" ng-change=""
@@ -75,7 +75,7 @@
 			<div class="clearfix"></div>
 			<div class="dividerSmall"></div>
 			<div class="col-xs-12 reset">
-				<span class="col-xs-3 reset">Vier<span class="hidden-xs">nes</span></span> <span class="col-xs-9"><select
+				<span class="col-xs-2 reset">Vier<span class="hidden-xs">nes</span></span> <span class="col-xs-10"><select
 					name="Viernes1" id="Viernes1" ng-change=""
 					ng-model="combosModalHorarios.Viernes1"></select> - <select
 					name="Viernes2" id="Viernes2" ng-change=""
@@ -84,7 +84,7 @@
 			<div class="clearfix"></div>
 			<div class="dividerSmall"></div>
 			<div class="col-xs-12 reset">
-				<span class="col-xs-3 reset">Sáb<span class="hidden-xs">ado</span></span> <span class="col-xs-9"><select
+				<span class="col-xs-2 reset">Sáb<span class="hidden-xs">ado</span></span> <span class="col-xs-10"><select
 					name="Sabado1" id="Sabado1" ng-change=""
 					ng-model="combosModalHorarios.Sabado1"></select> - <select
 					name="Sabado2" id="Sabado2" ng-change=""
@@ -93,7 +93,7 @@
 			<div class="clearfix"></div>
 			<div class="dividerSmall"></div>
 			<div class="col-xs-12 reset">
-				<span class="col-xs-3 reset">Dom<span class="hidden-xs">ingo</span></span> <span class="col-xs-9">
+				<span class="col-xs-2 reset">Dom<span class="hidden-xs">ingo</span></span> <span class="col-xs-10">
 					<select name="Domingo1" id="Domingo1" ng-change=""
 					ng-model="combosModalHorarios.Domingo1"></select> - <select
 					name="Domingo2" id="Domingo2" ng-change=""
