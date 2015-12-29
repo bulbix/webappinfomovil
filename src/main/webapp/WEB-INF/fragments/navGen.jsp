@@ -7,7 +7,7 @@
           	<span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> 
           </button>
           <a class="navbar-brand" href="http://infomovil.com">
-          	<span><img src="resources/webapp/images/apple-touch-icon-57x57.png" width="50" height="50" alt="Infomovil" /> </span><span class="marLeft">Infomovil</span></a> 
+          	<span><img src="resources/webapp/images/apple-touch-icon-57x57.png" width="50" height="50" alt="Infomovil" class="animated fadeIn"/> </span><span class="marLeft animated fadeIn">Infomovil</span></a> 
     </div>
     <div id="navbar" class="navbar-collapse collapse text-right">
           <ul class="nav navbar-nav navbar-right">

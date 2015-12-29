@@ -107,23 +107,30 @@ $("#enviarCorreoCio").click(function() {
 });
 
 function sessionBtnEditorMiCuenta() {
-	console.log("ue estoy viendo: " + contextPath +"/infomovil/multiproducto");
+	
+	/*$.getJSON(contextPath + "/infomovil/getProducto", function(data) {
+		console.log("Me regreso : " + JSON.stringify(data));
+	}).done(function() {
+	    console.log( "second success" );
+	  })
+	  .fail(function() {
+	    console.log( "error" );
+	  });*/
+	console.debug("una vez")
+	
 	$.ajax({
 		type : "GET",
-		url : contextPath + "/infomovil/multiproductoMiCuenta",
+		url : contextPath + "/infomovil/getProducto",
 		success : function(data) {
-			console.log("Me regreso : " + data.vista);
-			window.location = contextPath + "/infomovil/" + data.vista;
+			console.log("Me regreso : " + JSON.stringify(data));
+			window.location = contextPath + '/infomovil/' + data.vista;
 		},
+		params : {},
 		error : function(json) {
-			console.log("error: " + JSON.stringify(json)   );
-			console.log("ue estoy viendo: " + contextPath +"/infomovil/multiproducto");
-			$.unblockUI();
+			console.log("error: " + JSON.stringify(json));
 		}
-	});	
-	
-};
-
+	});		
+}
 
 function ocultaNotaValidaPP() {
 	

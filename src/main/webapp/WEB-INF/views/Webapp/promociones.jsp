@@ -140,7 +140,7 @@
 								class="hidden-xs">Vista <span class="hidden-sm">Previa</span></span>
 						</button>
 					</div>
-					<div class="col-xs-2 col-sm-2 text-center reset">
+					<div class="col-xs-2 col-sm-2 text-center reset" ng-show="volantesCtrl.muestraPromoPublicada">
 						<a href="<c:url value="/infomovil/estiloVolante"></c:url>" 
 							class="btn btn-outlineGreen  textWhite navEditorLato"
 							style="margin: 5px 8px 0 0;" >
@@ -391,7 +391,7 @@
 												class="col-xs-12 col-sm-12 btn btn-default btn-outlineGreen  navEditor">
 												<img width="25" height="25" alt="Infomovil"
 												src="<c:url value="/resources/webapp/images/icn_marc_maps.png"/>" />
-												<span id="idOpcionUbicacion"><span class="hidden-xs">Colocar mi</span>Ubicación</span> <br /> <span
+												<span id="idOpcionUbicacion"><span class="hidden-xs">Colocar mi</span> Ubicación</span> <br /> <span
 												id="direccionMap" class="directionMap"></span>
 												<div class="clearfix"></div>
 											</a>

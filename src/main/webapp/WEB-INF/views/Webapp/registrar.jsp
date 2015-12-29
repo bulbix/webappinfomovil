@@ -18,11 +18,11 @@
     <div class=" text-center">
     <div class="divider hidden-xs hidden-sm"></div>
     <h1 class="textBlack hidden">Registra tu cuenta</h1>
-    <h5 class="textPurple">Registra tu cuenta</h5>
+    <h5 class="textPurple animated fadeIn">Registra tu cuenta</h5>
     <div class="container">
     
 		<form id="formRegistro" action="registrar" method="post">
-        <div class="col-xs-12 col-sm-12 col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3">
+        <div class="col-xs-12 col-sm-12 col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3 animated fadeIn">
 	        <!--email-->
 	        <div class="form-group " >
 	        	<div class="control-group">
@@ -85,7 +85,7 @@
 	        
 	        <div class="divider"></div>
 	        <div class="text-center"><img src="resources/webapp/images/line.png" class="lineWht" alt=""/></div>
-	      <div class="col-xs-12 col-sm-6 col-sm-offset-3 " class="pad10_0"> <span class="textWhite text-center text-small" >Si continúas, aceptas las</span>
+	      <div class="col-xs-12 col-sm-6 col-sm-offset-3 animated fadeIn" class="pad10_0"> <span class="textWhite text-center text-small" >Si continúas, aceptas las</span>
       		<span> <a href="#" title="Condiciones del servicio" data-toggle="modal" data-target="#myModalTerminos" class="textPurple textUnder text-small"><strong>condiciones del servicio </strong></a></span>
       		<span class="textWhite">y las </span><span><a href="#" data-toggle="modal" data-target="#myModalAviso" class="textPurple textUnder text-small"><strong>pol&iacute;ticas de privacidad</strong></a></span>
       		<span class="textWhite"> de Infomovil.</span>

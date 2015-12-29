@@ -59,6 +59,8 @@
     <link href="resources/webapp/css/bootstrap.min.css" rel="stylesheet" />
     <!-- Bootstrap theme -->
     <link href="resources/webapp/css/bootstrap-theme.min.css" rel="stylesheet" />
+    <!-- Animate -->
+    <link  href="resources/webapp/css/animate.css" rel="stylesheet">
     <!-- /ESTILOS Bootstrap core CSS -->
     
     
