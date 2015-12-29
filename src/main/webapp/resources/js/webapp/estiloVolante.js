@@ -60,8 +60,8 @@ app.controller("EstiloVolanteController", function ($scope, $http, VolanteServic
 	
 	estiloVolanteCtrl.actulizaPlantilla = function(item) {
 	
-		if (estiloVolanteCtrl.volante == undefined) 
-			return;
+		//if (estiloVolanteCtrl.volante == undefined) 
+		//	return;
 		
 		estiloVolanteCtrl.volante = VolanteService.volantes();
 		estiloVolanteCtrl.eventoPromocion = "promo-plantilla";
@@ -79,13 +79,13 @@ app.controller("EstiloVolanteController", function ($scope, $http, VolanteServic
 				nombreVolante : estiloVolanteCtrl.volante[0].pagina != null ? estiloVolanteCtrl.volante[0].pagina : ""
 		};
 
-		/*console.log("nombrePromo :" + estiloVolanteCtrl.volante[0].titleOffer +
+		console.log("nombrePromo :" + estiloVolanteCtrl.volante[0].titleOffer +
 				" descPromo : " + estiloVolanteCtrl.volante[0].descOffer +
 				" datepickerPromo : " + estiloVolanteCtrl.volante[0].endDateOffer + 
 				" redimir : " + estiloVolanteCtrl.volante[0].redeemOffer +
 				" infoadiPromo : " + estiloVolanteCtrl.volante[0].termsOffer +
 				" plantillaPromo : " + item +
-				" idPromocion : " + estiloVolanteCtrl.volante[0].idOffer);*/
+				" idPromocion : " + estiloVolanteCtrl.volante[0].idOffer);
 		
 		VolanteService.actualizarVolante(volante, estiloVolanteCtrl.eventoPromocion, function() {
 			window.location = contextPath + "/infomovil/misPromociones";

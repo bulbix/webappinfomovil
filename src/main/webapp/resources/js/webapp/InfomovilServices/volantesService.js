@@ -112,9 +112,9 @@ app.factory('VolanteService', function($http, MensajesService) {
 			
 
 		}, function errorCallback(response) {
-			console.log("El error es: " + response);
-			var mensaje = "No se ha podido obtener la lista de contactos volantes";
-			MensajesService.cerrarBlockUIGeneral("Contactos", mensaje);
+			console.log("No se ha podido obtener la lista de contactos volantes " + response);
+			//var mensaje = "No se ha podido obtener la lista de contactos volantes";
+			//MensajesService.cerrarBlockUIGeneral("Contactos", mensaje);
 		});
 	};
     
