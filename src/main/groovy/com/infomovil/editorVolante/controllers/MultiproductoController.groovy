@@ -32,7 +32,7 @@ class MultiproductoController
 				
 			vista = "redirect:/infomovil/" + vista
 		}
-
+	 print("ue3 p2 con esta cosa!!!");
 		return vista
 	}
 	
@@ -54,4 +54,42 @@ class MultiproductoController
 		
 		return [resultado : resultado]
 	}
+
+	
+	@RequestMapping(value = "/infomovil/multiproductoMiCuenta", method = RequestMethod.GET)
+	@ResponseBody
+	def multiproductoMiCuenta() {
+		
+		def vista = "Webapp/multiproducto";
+		def tabla = "multiproducto_dev";
+		
+		if(Util.getProfile().equals("PROD"))
+			tabla = "multiproducto";
+		
+		def correo = Util.getUserLogged().getUsername();
+		def seleccion = Util.getItemsDynamo(tabla, correo);
+		
+		if(seleccion != null)
+		{
+			vista = "misPromociones"
+			
+			if (seleccion["seleccion"] == "web")
+				vista = "editarSitio"
+				
+			vista = "redirect:/infomovil/" + vista
+		}
+	
+		return vista
+	}
+	
+	
+	
 }
+
+
+
+
+
+
+
+

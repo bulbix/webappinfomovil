@@ -142,7 +142,7 @@
 					<div class="col-xs-2 col-sm-2 text-center">
 						<button type="button"
 							class="btn btn-outlineGreen textWhite navEditorLato"
-							ng-click="volantesCtrl.publicarVolante()" style="margin: 5px 0;">
+							ng-click="volantesCtrl.publicarVolante()" style="margin: 5px 0;" id="btnPublicar">
 							<img width="20" height="20" alt="Infomovil"
 								src="<c:url value="/resources/webapp/images/successWhite.png"/>" />
 							<span class="hidden-xs">Publicar</span>
@@ -240,6 +240,11 @@
 
 									<div class="col-xs-12 col-sm-12 col-md-6">
 										<div class="form-group text-left textBlack">
+											<label for="exampleInputEmpresa">Tu empresa:</label> <input type="text" class="form-control"
+												id="nombreEmpresaPromo" value="">
+										</div>
+										<div class="divider"></div>
+										<div class="form-group text-left textBlack">
 											<label for="exampleInputEmail1">Nombre de la
 												promoción:</label> <input type="text" class="form-control"
 												id="nombrePromo" value="">
@@ -271,6 +276,21 @@
 										</div>
 										<div class="clearfix"></div>
 										<div class="divider"></div>
+										
+										
+											
+												<select name="tipoTelefonoVolante" class="textBlack" id="tipoTelefonoVolante">
+												  <option value="+52" selected>Teléfono</option>
+												  <option value="+52 1">Celular</option>
+												</select>
+												<input type="hidden" name="idContactoTelVolante" id="idTelContactoVolante"/>
+												<input type="hidden" name="idContactoEmailVolante" id="idEmailContactoVolante"/>
+												<input type="text" value="" class="textBlack" placeholder="10 digitos" id="telefonoVolante"/>
+												<div class="divider"></div>
+												<input type="text" id="emailContactoVolante" value="" class="textBlack" placeholder="mail@mail.com" />
+									
+										
+										<div class="divider"></div>
 										<div class="form-group text-left textBlack">
 											<label class="text-left">¿Cómo redimir?:</label>
 											<div class="radio">
@@ -297,8 +317,7 @@
 								</div>
 							</div>
 
-							<div ng-repeat="item in volantesCtrl.volantes"
-								style="margin-top: 10px;">
+							<div ng-repeat="item in volantesCtrl.volantes" style="margin-top: 10px;">
 
 								<div id="volante">
 									<div ng-hide="true" id="idPromocion">{{item.idOffer}}</div>
@@ -306,6 +325,11 @@
 									<div ng-hide="true" id="tempPromocion">{{item.template}}</div>
 
 									<div class="col-xs-12 col-sm-12 col-md-6">
+										<div class="form-group text-left textBlack">
+											<label for="exampleInputEmpresa">Tu empresa:</label> <input type="text" class="form-control"
+												id="nombreEmpresaPromo" value="">
+										</div>
+										<div class="divider"></div>
 										<div class="form-group text-left textBlack">
 											<label for="exampleInputEmail1">Nombre de la
 												promoción:</label> <input type="text" class="form-control"
@@ -337,6 +361,22 @@
 												id="datepicker" value="{{item.endDateOffer}}">
 										</div>
 										<div class="clearfix"></div>
+										
+										<div class="divider"></div>
+										
+										
+											
+												<select name="tipoTelefonoVolante" class="textBlack" id="tipoTelefonoVolante">
+												  <option value="+52" selected>Teléfono</option>
+												  <option value="+52 1">Celular</option>
+												</select>
+												<input type="hidden" name="idContactoVolante" id="idContactoVolante"/>
+												<input type="text" value="" class="textBlack" placeholder="10 digitos" id="telefonoVolante"/>
+												<div class="divider"></div>
+												<input type="text" id="emailContactoVolante" value="" class="textBlack" placeholder="mail@mail.com"/>
+										
+										
+										
 										<div class="divider"></div>
 										<div class="form-group text-left textBlack">
 											<label class="text-left">¿Cómo redimir?:
@@ -367,7 +407,7 @@
 										</div>
 									</div>
 								</div>
-
+								
 								<tiles:insertDefinition name="modalGen">
 									<tiles:putAttribute name="idModal" value="myModalPromoShare" />
 									<tiles:putAttribute name="tamanioModal"

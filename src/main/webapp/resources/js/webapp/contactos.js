@@ -1,19 +1,3 @@
-var server = requestServer("POST",contextPath + "/infomovil/getPerfil",{}).perfil; 
-
-console.debug("Server " + server);
-
-var contactos = {
-		getUrl: server +'/api/editorPagina/getUbicacio',
-		delUrl: server + '/api/editorPagina/deleteUbicacion',
-		saveUrl: server + 'api/editorPagina/upsertUbicacion'
-}
-
-var ubicacionVolante = {
-		getUrl:server+'/api/editorVolante/getUbicacion',
-		delUrl:server + '/api/editorVolante/deleteUbicacion',
-		saveUrl: server + 'api/editorVolante/upsertUbicacion'
-}
-
 var app = angular.module('InfomovilApp', []);
 
 app.controller('ToolBarContactoController', function($scope, $http, ContactoService, MensajesService) {

@@ -240,7 +240,7 @@ public class ClientWsInfomovil {
 	}
 	
 	public RespuestaVO crearSitioGuardarPromocion(String email, String password, String descripcion, String fechaVigencia,
-			String redimir, String terminos, String titulo, String base64Imagen, Integer idPromocion, String template)
+			String redimir, String terminos, String titulo, String base64Imagen, Integer idPromocion, String template, String empresa, String nombreVolante)
 	{
 		log.info("Invoking crearSitioGuardarPromocion...");
         com.infomovil.webapp.clientWsInfomovil.CrearSitioGuardarPromocion _crearSitioGuardarPromocion_parameters = new CrearSitioGuardarPromocion();
@@ -254,6 +254,8 @@ public class ClientWsInfomovil {
         _crearSitioGuardarPromocion_parameters.base64Imagen = base64Imagen;
         _crearSitioGuardarPromocion_parameters.idPromocion = idPromocion;
         _crearSitioGuardarPromocion_parameters.template = template;
+        _crearSitioGuardarPromocion_parameters.empresa = empresa;
+        _crearSitioGuardarPromocion_parameters.nombreVolante = nombreVolante;
         com.infomovil.webapp.clientWsInfomovil.CrearSitioGuardarPromocionResponse _crearSitioGuardarPromocion__return = port.crearSitioGuardarPromocion(_crearSitioGuardarPromocion_parameters);
         log.info("crearSitioGuardarPromocion.result=" + _crearSitioGuardarPromocion__return);
 		return _crearSitioGuardarPromocion__return.respuestaVO;

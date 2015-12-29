@@ -106,6 +106,25 @@ $("#enviarCorreoCio").click(function() {
 	});			
 });
 
+function sessionBtnEditorMiCuenta() {
+	console.log("ue estoy viendo: " + contextPath +"/infomovil/multiproducto");
+	$.ajax({
+		type : "GET",
+		url : contextPath + "/infomovil/multiproductoMiCuenta",
+		success : function(data) {
+			console.log("Me regreso : " + data.vista);
+			window.location = contextPath + "/infomovil/" + data.vista;
+		},
+		error : function(json) {
+			console.log("error: " + JSON.stringify(json)   );
+			console.log("ue estoy viendo: " + contextPath +"/infomovil/multiproducto");
+			$.unblockUI();
+		}
+	});	
+	
+};
+
+
 function ocultaNotaValidaPP() {
 	
 	var tienePlanPro = $("#planPro").val();

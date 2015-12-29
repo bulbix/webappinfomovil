@@ -178,8 +178,8 @@ public class ClientWsInfomovilTest {
 	
 	@Test
 	public void testGuardarPromocion() {
-		RespuestaVO resp = clientWsInfomovil.crearSitioGuardarPromocion("pollo1@mail.com", 
-		"garbage1","desc","01/01/2015","redimir","terminos","tituloaaaaa","",0, "");
+		RespuestaVO resp = clientWsInfomovil.crearSitioGuardarPromocion("docker6@mail.com", 
+		"garbage1","desc","01/01/2015","redimir","terminos","tituloaaaaa","",0, "" , "La empresa de JOselito", "juniorgay");
 		assertNotNull(resp);
 		assertTrue(resp.getCodeError().equalsIgnoreCase("0"));
 	}
@@ -196,7 +196,7 @@ public class ClientWsInfomovilTest {
 	@Test
 	public void testBorrarPromocion() {
 		RespuestaVO resp = clientWsInfomovil.crearSitioGuardarPromocion("test@test.com", 
-		"rosas111","","","","","","",787, "");
+		"rosas111","","","","","","",787, "","","");
 		assertNotNull(resp);
 		assertTrue(resp.getCodeError().equalsIgnoreCase("0"));
 	}

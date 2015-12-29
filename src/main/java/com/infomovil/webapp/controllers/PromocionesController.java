@@ -110,7 +110,7 @@ public class PromocionesController
 	@ResponseBody
 	public Map<String, String> guardarPromocion(@RequestParam String titulo, @RequestParam String descripcion,
 			@RequestParam String fechaVigencia, String base64Imagen, @RequestParam String redimir,
-			@RequestParam String terminos, @RequestParam String templatePromo, @RequestParam String idPromocion, Model model) {	
+			@RequestParam String terminos, @RequestParam String templatePromo, @RequestParam String idPromocion,@RequestParam String empresa,@RequestParam String nombreVolante, Model model) {	
 		
 		int l_idPromocion = !StringUtils.isEmpty(idPromocion)?Integer.parseInt(idPromocion):0;
 		
@@ -120,7 +120,7 @@ public class PromocionesController
 		try {		
 			String correo = Util.getUserLogged().getUsername();
 			String password = Util.getUserLogged().getPassword();
-			respVO = wsCliente.crearSitioGuardarPromocion(correo, password, descripcion, fechaVigencia, redimir, terminos, titulo, base64Imagen, l_idPromocion, templatePromo);
+			respVO = wsCliente.crearSitioGuardarPromocion(correo, password, descripcion, fechaVigencia, redimir, terminos, titulo, base64Imagen, l_idPromocion, templatePromo, empresa, nombreVolante);
 			resultado.put("codeError", respVO.getCodeError());
 			resultado.put("descEror", respVO.getMsgError());
 			
@@ -156,7 +156,7 @@ public class PromocionesController
 		{		
 			String correo = Util.getUserLogged().getUsername();
 			String password = Util.getUserLogged().getPassword();
-			respVO = wsCliente.crearSitioGuardarPromocion(correo, password, "", "", "", "", "", "", idPromocion, "");
+			respVO = wsCliente.crearSitioGuardarPromocion(correo, password, "", "", "", "", "", "", idPromocion, "", "", "");
 			resultado.put("codeError", respVO.getCodeError());
 			resultado.put("descEror", respVO.getMsgError());
 		}		
@@ -205,7 +205,7 @@ public class PromocionesController
 	@RequestMapping(value = "/infomovil/verPromo", method = { RequestMethod.GET , RequestMethod.POST }, produces = "application/json")
 	@ResponseBody
 	public Map<String, String> verPromo(int idDominio, String titulo, String descripcion, String fechaVigencia, String base64Imagen, 
-			String redimir, String terminos, String templatePromo)
+			String redimir, String terminos, String templatePromo, String empresa)
 	{
 		RespuestaVO respVO = new RespuestaVO();
 		Map<String, String> resultado = new HashMap<String, String>();
@@ -218,7 +218,7 @@ public class PromocionesController
 			if (idDominio == 0) /*Vista previa*/
 				respVO = wsCliente.crearSitioPrevisualizarPromocion(correo, password, descripcion, fechaVigencia, redimir, terminos, titulo, base64Imagen, templatePromo);
 			else /*Ver promo guardada*/
-				respVO = wsCliente.crearSitioGuardarPromocion(correo, password, descripcion, fechaVigencia, redimir, terminos, titulo, base64Imagen, idDominio, templatePromo);
+				respVO = wsCliente.crearSitioGuardarPromocion(correo, password, descripcion, fechaVigencia, redimir, terminos, titulo, base64Imagen, idDominio, templatePromo, empresa, "");
 			
 			resultado.put("codeError", respVO.getCodeError());
 			resultado.put("descEror", respVO.getMsgError());

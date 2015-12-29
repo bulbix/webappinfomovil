@@ -294,104 +294,7 @@ app.factory('ContactoService', function($http, MensajesService) {
      };
    
      function getIcono(){};
-     
-     function getContactosVolantes(offerId, hashUser ) {
-
- 		$http({
- 			method: 'GET',
- 			url: "http://infodev.mobileinfo.io/ServiceInfomovil/api/editorVolante/getContacto?offerId="+offerId+"&hashUser="+hashUser,
- 			
- 		}).then(function successCallback(response) {
- 			console.log("Me respondio: "  + response.data);
- 			contactosVolantes = response.data;
- 			console.log(response.data.contactoId);
- 			console.log(response.data.offerId);
- 			console.log(response.data.descripcion);
- 			console.log(response.data.orderNaptr);
- 			console.log(response.data.preference);
- 			console.log(response.data.contenido);
- 			console.log(response.data.codigoPais);
- 			console.log(response.data.services);
- 			console.log(response.data.tipoContacto);
- 			console.log(response.data.activo);
- 			console.log(response.data.ultimaModificacion);
- 			console.log(response.data.usuarioModifico);
- 			console.log(response.data.hashUser);
-
- 		}, function errorCallback(response) {
- 			console.log("El error es: " + response);
- 			var mensaje = "No se ha podido obtener la lista de contactos";
- 			MensajesService.cerrarBlockUIGeneral("Contactos", mensaje);
- 		});
- 	}
-     
-     function upsertContactoVolantes(contacto ) {
-
-  		$http({
-  			method: 'POST',
-  			url: "http://infodev.mobileinfo.io/ServiceInfomovil/api/editorVolante/upsertContacto",
-  			params: {
-  				contactoId: contacto.id,
-  				offerId : contacto.offerId,
-  				descripcion : contacto.descripcion,
-  				orderNaptr : contacto.orderNaptr,
-  				preference : contacto.preference,
-  				contenido : contacto.contenido,
-  				codigoPais : contacto.codigoPais,
-  				services : contacto.services,
-  				tipoContacto : contacto.tipoContacto,
-  				activo : contacto.activo,
-  				ultimaModificacion : contacto.ultimaModificacion,
-  				usuarioModifico : contacto.usuarioModifico,
-  				hashUser : contacto.hashUser
-
-            },
-  		}).then(function successCallback(response) {
-  			console.log("Me respondio error: "  + response.data);
-  			var respContacto = response.data;
-  							 
-  		}, function errorCallback(response) {
-  			console.log("El error es: " + response);
-  			var mensaje = "No se ha podido obtener la lista de contactos";
-  			MensajesService.cerrarBlockUIGeneral("Contactos", mensaje);
-  		});
-  	};
-     
-  	 function eliminarContactoVolantes(contacto) {
-
-   		$http({
-   			method: 'POST',
-   			url: "http://infodev.mobileinfo.io/ServiceInfomovil/api/editorVolante/deleteContacto",
-   			params: {
-   				contactoId: contacto.id,
-  				offerId : contacto.offerId,
-  				descripcion : contacto.descripcion,
-  				orderNaptr : contacto.orderNaptr,
-  				preference : contacto.preference,
-  				contenido : contacto.contenido,
-  				codigoPais : contacto.codigoPais,
-  				services : contacto.services,
-  				tipoContacto : contacto.tipoContacto,
-  				activo : contacto.activo,
-  				ultimaModificacion : contacto.ultimaModificacion,
-  				usuarioModifico : contacto.usuarioModifico,
-  				hashUser : contacto.hashUser
-
-             },
-   		}).then(function successCallback(response) {
-   			console.log("Me respondio error: "  + response.data);
-   			var respContacto = response.data;
-   							 
-   		}, function errorCallback(response) {
-   			console.log("El error es: " + response);
-   			var mensaje = "No se ha podido obtener la lista de contactos";
-   			MensajesService.cerrarBlockUIGeneral("Contactos", mensaje);
-   		});
-   	};
-     
-     
-    
-     
+  
      
    return {
 	   
@@ -436,17 +339,11 @@ app.factory('ContactoService', function($http, MensajesService) {
 	   getItemGlobal : function() {
 		   return itemGlobal;
 	   },
-	   getContactosVolantes : getContactosVolantes,
-	   contactosVolantes: function() {
-		   return contactosVolantes;
-	   },
+	   
 	   getTipoContacto : getTipoContacto,
 	   actualizarContacto : actualizarContacto,
 	   getObjetoTipoContacto : getObjetoTipoContacto,
 	  
-	   getContactosVolantes : getContactosVolantes,
-	   upsertContactoVolantes : upsertContactoVolantes,
-	   eliminarContactoVolantes : eliminarContactoVolantes,
   }
    
    

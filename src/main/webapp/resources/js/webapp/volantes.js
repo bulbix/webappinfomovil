@@ -1,7 +1,14 @@
-$(function() {
+var server = requestServer("POST",contextPath + "/infomovil/getPerfil",{}).perfil; 
+var preferenceContVol = 0;
+var contactos = {
+		getUrl:server+'/api/editorVolante/getContacto',
+		delUrl:server + '/api/editorVolante/deleteContacto',
+		saveUrl: server + 'api/editorVolante/upsertContacto'
+}
+
 	$(".datepicker").datepicker({ dateFormat: 'dd/mm/yy' });
 	console.log("$datepickerPromo");
-});
+
 
 var app = angular.module('InfomovilVolantes', []);
 
@@ -11,7 +18,7 @@ app.controller("VolantesController", function ($scope, $http, VolanteService, Me
 	var nombresPromo = new Array("Navidad", "Cursos",  "Bares","Floral", "Tecnología 2", "Buen Fin", "Hipster", "Tecnología"); //, "ATT"); /*Cambiar nombres*/
 	
 	var volantesCtrl = this;
-
+	
 	volantesCtrl.muestraPublicarPromo = false;
 	volantesCtrl.muestraPromoPublicada = false;
 	volantesCtrl.muestraDivError = false;
@@ -29,7 +36,7 @@ app.controller("VolantesController", function ($scope, $http, VolanteService, Me
 	volantesCtrl.actualizaProducto = function() {
 
 		volantesCtrl.mensaje = "Actualizando producto...";
-    	MensajesService.abrirBlockUIGeneral(volantesCtrl.mensaje);
+    	MensajesService.abrirBlockUIGeneral(volantesCtrl.mensaje);      
     	
     	$http({
     		method: 'POST',
@@ -69,7 +76,8 @@ app.controller("VolantesController", function ($scope, $http, VolanteService, Me
     			base64Imagen: "",
     			redimir: $('.radioPromo:checked').val(),
     			terminos: $("#infoadiPromo").val(),
-    			templatePromo: volantesCtrl.plantillaPromo
+    			templatePromo: volantesCtrl.plantillaPromo,
+    			empresa: $("#nombreEmpresaPromo").val(),
     		}	  
     	}).then(function successCallback(response) {
 
@@ -116,13 +124,31 @@ app.controller("VolantesController", function ($scope, $http, VolanteService, Me
     			redimir: $('.radioPromo:checked').val(),
     			terminos: $("#infoadiPromo").val(),
     			templatePromo: $("#tempPromocion").text(),
-    			idPromocion: $("#idPromocion").text()
+    			idPromocion: $("#idPromocion").text(),
+    			empresa: $("#nombreEmpresaPromo").val(),
+    			nombreVolante: $("#txtNombreVolante").val(),
+    				
     		}	  
     	}).then(function successCallback(response) {
-
+    		if($("#telefonoVolante").val().length > 0){
+    			console.log("Envio a guardar el Telefono");
+    			datosContacto = getContactoTel();
+    			upsertContactoVolantes(datosContacto);	
+    			 
+    		}
+    		if($("#emailContactoVolante").val().length > 0){
+    			console.log("Envio a guardar el Email");
+    			datosContacto = getContactoEmail();
+    			upsertContactoVolantes(datosContacto);
+    			
+    		}
+		
 			VolanteService.guardarEventoGA(volantesCtrl.eventoPromocion, 
 					response.data.nombreSitio, response.data.banderaCanal);
 			VolanteService.getVolantes();
+			
+			
+			
 			$.unblockUI();
     		
     	}, function errorCallback(response) {
@@ -153,7 +179,10 @@ app.controller("VolantesController", function ($scope, $http, VolanteService, Me
 		    			idPromocion: $("#idPromocion").text()
 		    		}	  
 		    	}).then(function successCallback(response) {
-
+		    		$("#telefonoVolante").val("");
+		    		$("#nombreEmpresaPromo").val("");
+		    		$("#emailContactoVolante").val("");
+		    		$("#txtNombreVolante").val("");
 		    		$("#tempPromocion").text("promo1");
 					volantesCtrl.muestraPublicarPromo = true;
 					volantesCtrl.muestraPromoPublicada = false;
@@ -200,9 +229,12 @@ app.controller("VolantesController", function ($scope, $http, VolanteService, Me
 				redimir : $('.radioPromo:checked').val(),
 				infoadiPromo : $("#infoadiPromo").val(),
 				plantillaPromo : volantesCtrl.plantillaPromo,
-				idPromocion : $("#idPromocion").text()
+				idPromocion : $("#idPromocion").text(),
+				empresa: $("#nombreEmpresaPromo").val(),
+    			nombreVolante: $("#txtNombreVolante").val(),
 		};
-
+		datosContacto = getContacto();
+		upsertContactoVolantes(datosContacto); 
 		VolanteService.actualizarVolante(volante, volantesCtrl.eventoPromocion);
 	};
 	
@@ -330,10 +362,144 @@ app.controller("VolantesController", function ($scope, $http, VolanteService, Me
 			volantesCtrl.muestraPublicarPromo = false;
 			volantesCtrl.muestraPromoPublicada = true;
 		}
+	
     });
     
 	//$("#datepicker").datepicker({ dateFormat: 'dd/mm/yy' });
     volantesCtrl.generarSliderPromo();
     VolanteService.getVolantes();
-});
+  
+   
 
+ 
+var upsertContactoVolantes = function(contacto){
+	 var url = contactos.saveUrl;
+	 $http({	
+		 method: 'POST',
+		 url: url,
+		 data:contacto,
+		 async : true
+		}).then(function successCallback(response) {
+			console.log("Se guardo el contacto y me regreso: "  + response.data.codeError);
+			VolanteService.getContactosVolantes();			 
+		}, function errorCallback(response) {
+			console.log("El error es: " + response.data, response.data.code);
+			
+		});
+	};
+	
+	var upsertContactoEmpresa = function(contacto){
+		 	var url = contactos.saveEmpUrl;
+		 	var offerID = VolanteService.getOfferId();
+			var hash = hashUsuario();
+			var empresaInput = $("#nombreEmpresaPromo").val();
+			console.log("NombreEmpresa quedaría " + empresaInput );
+			dataEmp = {offerId:offerID.offerId,empresa: empresaInput, hashUser:hash};
+		 $http({	
+			 method: 'POST',
+			 url: url,
+			 data: dataEmp,
+			 async : true
+			}).then(function successCallback(response) {
+				console.log("Se guardo la empresa y me regreso: "  + response.data.codeError);
+				VolanteService.getContactosVolantes();			 
+			}, function errorCallback(response) {
+				console.log("El error es: " + response.data, response.data.code);
+				
+			});
+		};
+ 
+ 
+var eliminarContactoVolantes = function(contacto){
+		var url = contactos.delUrl;
+		console.log("La url de eliminar es: "+url);
+		$http({
+			method: 'DELETE',
+			headers: {'Content-Type': 'application/json' },
+			url: url,
+			data:contacto
+		}).then(function successCallback(response) {
+			console.log("Si me elimino el contacto: "  + response.data.codeError, response.data);
+							 
+		}, function errorCallback(response) {
+			console.log("El error es: " + response.data);
+			
+		});
+	};
+
+	function getOfferId(){
+		var datos = {};
+		var resp = requestServer("POST",contextPath + "/infomovil/getPromociones",{});
+		if (resp[0] != undefined){
+			datos = {
+				"offerId" : resp[0].idOffer,
+				"empresa" : resp[0].empresa,
+				"pagina" : resp[0].pagina,
+			};
+			$("#nombreEmpresaPromo").val(datos.empresa);
+			$("#txtNombreVolante").val(datos.pagina);
+			
+		}
+		console.debug("Server " + server + "y OfferId es: " + datos.offerId , datos.empresa, datos.pagina);
+		return datos;
+	};
+
+
+	
+	function getService(){
+		if($( "#tipoTelefonoVolante" ).val() == "+52"){
+			preferenceContVol = 0;
+			return "E2U+voice:tel";
+		}
+		else{
+			preferenceContVol = 1;
+			return "E2U+voice:tel+x-mobile";
+		}
+		
+	};
+	
+	var getContactoTel = function(){
+		var valContacto = 0;
+		if($("#idTelContactoVolante").val() > 0) valContacto = $("#idTelContactoVolante").val(); 
+			var offerID = VolanteService.getOfferId();
+			var contacto = {
+					contactoId: valContacto,
+					offerId : offerID.offerId,
+					descripcion : "",
+					orderNaptr : 0,
+					preference : 0,
+					contenido : $( "#telefonoVolante" ).val(),
+					codigoPais : $( "#tipoTelefonoVolante" ).val(),
+					services : getService(), 
+					tipoContacto : 'tel:',
+					activo : 1,
+					ultimaModificacion : "",
+					usuarioModifico : "",
+					hashUser : hashUsuario()
+				};
+			return contacto;
+	};
+	var getContactoEmail = function(){
+		var valContacto = 0;
+		if($("#idEmailContactoTelVolante").val() > 0) valContacto = $("#idEmailContactoVolante").val(); 
+		var offerID = VolanteService.getOfferId();
+			var contacto = {
+					contactoId: valContacto,
+					offerId : offerID.offerId,
+					descripcion : "",
+					orderNaptr : 0,
+					preference : 1,
+					contenido : $( "#emailContactoVolante" ).val(),
+					codigoPais : "",
+					services : "E2U+email:mailto", 
+					tipoContacto : 'mailto:',
+					activo : 1,
+					ultimaModificacion : "",
+					usuarioModifico : "",
+					hashUser : hashUsuario()
+				};
+			return contacto;
+	};
+
+
+});

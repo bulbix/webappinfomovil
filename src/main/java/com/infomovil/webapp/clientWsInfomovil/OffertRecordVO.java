@@ -55,6 +55,8 @@ import javax.xml.bind.annotation.XmlType;
     "urlSitio",
     "urlPromocion",
     "template",
+    "empresa",
+    "pagina",
     "dominioCreaSitio"
 })
 public class OffertRecordVO {
@@ -73,6 +75,8 @@ public class OffertRecordVO {
     protected String urlSitio;
     protected String urlPromocion;
     protected String template;
+    protected String empresa;
+    protected String pagina;
     protected DominioCreaSitio dominioCreaSitio;
 
     /**
@@ -410,8 +414,30 @@ public class OffertRecordVO {
     public void setTemplate(String value) {
         this.template = value;
     }
+    
+    
+    
 
-    /**
+    public String getEmpresa() {
+		return empresa;
+	}
+
+	public void setEmpresa(String empresa) {
+		this.empresa = empresa;
+	}
+
+	
+	
+	
+	public String getPagina() {
+		return pagina;
+	}
+
+	public void setPagina(String pagina) {
+		this.pagina = pagina;
+	}
+
+	/**
      * Obtiene el valor de la propiedad dominioCreaSitio.
      * 
      * @return

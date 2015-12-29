@@ -1,3 +1,5 @@
+
+
 var $nombrePromo =  $("#nombrePromo");
 var $descPromo =  $("#descPromo");
 var $datepickerPromo =  $("#datepicker");
@@ -83,7 +85,7 @@ var $getPromociones = function() {
 };
 
 var $publicarPromocion = function() {
-
+console.log("Entro a publicarpromocion");
 	var plantillaFinalPromo = $("#tempPromocion").val();
 	
 	if (plantillaFinalPromo.trim().length > 0 && plantillaFinalPromo != null)
@@ -111,7 +113,9 @@ var $publicarPromocion = function() {
 			redimir: $('.radioPromo:checked').val(),
 			terminos:$infoadiPromo.val(),
 			templatePromo: plantillaFinalPromo,
-			idPromocion:$idPromocion.val()
+			idPromocion:$idPromocion.val(),
+			empresa: "mi Empresa",
+			nombreVolante: "juniorMan"
 		},
 		success : function(data) {			
 			$divPublicarPromo.hide();
@@ -124,7 +128,11 @@ var $publicarPromocion = function() {
 			banderaCanal = data.banderaCanal; 
 			$("#tempNombrePromo").val(data.nombreSitio);
 			$("#tempBanderaPromo").val(data.banderaCanal);
-			
+			console.log("Va a ir a get Contacto");
+			datosContacto = getContacto();
+			console.log("ya regreso de getcontacto");
+			upsertContactoVolantes(datosContacto);
+			console.log("ya debio haber ido a upsertcontactovolante");
 			guardarEventoGA('promo-publicar');
 			$.unblockUI();
 		},
@@ -299,7 +307,8 @@ var $vistaPrevia = function() {
 			base64Imagen: "",
 			redimir: $('.radioPromo:checked').val(),
 			terminos:$infoadiPromo.val(),
-			templatePromo: plantillaPromo
+			templatePromo: plantillaPromo,
+			empresa: "mi Empresa"
 		},
 			success : function(data) {
 				$("#urlVistaPreviaPromo").attr('src', data.urlVistaPreviaPromo + '?vistaPrevia=1');
@@ -664,3 +673,145 @@ var descargarJPG = function(){
 	ga('send', 'event', 'promo', 'promo-guardarJPG', $("#tempNombrePromo").val(), $("#tempBanderaPromo").val());
 	
 };
+
+
+function getContactosVolantes(offerId, hashUser ) {
+		var url = contactos.getUrl;
+		console.log(url + "?offerId="+offerId+"&hashUser="+hashUser);
+		$http({
+			method: 'GET',
+			url: url + "?offerId="+offerId+"&hashUser="+hashUser,
+			
+		}).then(function successCallback(response) {
+			console.log("Me respondio: "  + response.data);
+			contactosVolantes = response.data;
+			console.log(response.data.contactoId);
+			console.log(response.data.offerId);
+			console.log(response.data.descripcion);
+			console.log(response.data.orderNaptr);
+			console.log(response.data.preference);
+			console.log(response.data.contenido);
+			console.log(response.data.codigoPais);
+			console.log(response.data.services);
+			console.log(response.data.tipoContacto);
+			console.log(response.data.activo);
+			console.log(response.data.ultimaModificacion);
+			console.log(response.data.usuarioModifico);
+			console.log(response.data.hashUser);
+
+		}, function errorCallback(response) {
+			console.log("El error es: " + response);
+			var mensaje = "No se ha podido obtener la lista de contactos";
+			MensajesService.cerrarBlockUIGeneral("Contactos", mensaje);
+		});
+	}
+ 
+var upsertContactoVolantes = function(contacto){
+	 console.log("Entro en upsertContacto!!!");
+	 	var url = contactos.saveUrl;
+	 	console.log(url);
+		$http({
+			method: 'POST',
+			url: url,
+			params: {
+				contactoId: contacto.id,
+				offerId : contacto.offerId,
+				descripcion : contacto.descripcion,
+				orderNaptr : contacto.orderNaptr,
+				preference : contacto.preference,
+				contenido : contacto.contenido,
+				codigoPais : contacto.codigoPais,
+				services : contacto.services,
+				tipoContacto : contacto.tipoContacto,
+				activo : contacto.activo,
+				ultimaModificacion : contacto.ultimaModificacion,
+				usuarioModifico : contacto.usuarioModifico,
+				hashUser : contacto.hashUser
+
+        },
+		}).then(function successCallback(response) {
+			console.log("Se guardo el contacto y me regreso: "  + response.data);
+			var respContacto = response.data;
+							 
+		}, function errorCallback(response) {
+			console.log("El error es: " + response);
+			var mensaje = "No se ha podido obtener la lista de contactos";
+			MensajesService.cerrarBlockUIGeneral("Contactos", mensaje);
+		});
+	};
+ 
+  function eliminarContactoVolantes(contacto) {
+		var url = contactos.delUrl;
+		console.log(url);
+		$http({
+			method: 'POST',
+			url: url,
+			params: {
+				contactoId: "",
+				offerId : contacto.offerId,
+				descripcion : contacto.descripcion,
+				orderNaptr : contacto.orderNaptr,
+				preference : contacto.preference,
+				contenido : contacto.contenido,
+				codigoPais : contacto.codigoPais,
+				services : contacto.services,
+				tipoContacto : contacto.tipoContacto,
+				activo : contacto.activo,
+				ultimaModificacion : contacto.ultimaModificacion,
+				usuarioModifico : contacto.usuarioModifico,
+				hashUser : hashUsuario()
+
+         },
+		}).then(function successCallback(response) {
+			console.log("Me respondio error: "  + response.data);
+			var respContacto = response.data;
+							 
+		}, function errorCallback(response) {
+			console.log("El error es: " + response);
+			var mensaje = "No se ha podido obtener la lista de contactos";
+			MensajesService.cerrarBlockUIGeneral("Contactos", mensaje);
+		});
+	};
+
+	function getOfferId(){
+		
+		var offerId = 0;
+		var resp = requestServer("POST",contextPath + "/infomovil/getPromociones",{});
+		if (resp[0] != undefined){
+			offerId = resp[0].idOffer;
+		}
+		console.debug("Server " + server + "y OfferId es: " + offerId);
+		return offerId;
+	};
+
+	function getService(){
+		if($( "#tipoTelefonoVolante option:selected" ).val() == "+52")
+			return "E2U+voice:tel";
+		else
+			return "E2U+voice:tel+x-mobile";
+		
+	};
+	
+	var getContacto = function(){
+	console.log("Entro a get Contacto");
+	console.log("lada:" + $( "#tipoTelefonoVolante option:selected" ).val() );
+	console.log("telefono:" + $( "#telefonoVolante" ).val() );
+		var contacto = {
+				contactoId: $("#idContactoVolante").val(),
+				offerId : getOfferId(),
+				descripcion : "",
+				orderNaptr : "",
+				preference : "0",
+				contenido : $( "#telefonoVolante" ).val(),
+				codigoPais : $( "#tipoTelefonoVolante option:selected" ).val(),
+				services : getService(), 
+				tipoContacto : 'tel:',
+				activo : "1",
+				ultimaModificacion : "",
+				usuarioModifico : "",
+				hashUser : hashUsuario()
+			};
+		//E2U+voice:tel
+		//E2U+voice:tel+x-mobile
+		return contacto;
+	};

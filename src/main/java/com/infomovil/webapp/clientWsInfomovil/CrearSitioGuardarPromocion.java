@@ -46,7 +46,9 @@ import javax.xml.bind.annotation.XmlType;
     "titulo",
     "base64Imagen",
     "idPromocion",
-    "template"
+    "template",
+    "empresa",
+    "nombreVolante"
 })
 public class CrearSitioGuardarPromocion {
 
@@ -61,6 +63,8 @@ public class CrearSitioGuardarPromocion {
     protected String base64Imagen;
     protected Integer idPromocion;
     protected String template;
+    protected String empresa;
+    protected String nombreVolante;
 
     /**
      * Obtiene el valor de la propiedad email.
@@ -302,4 +306,23 @@ public class CrearSitioGuardarPromocion {
         this.template = value;
     }
 
+	public String getEmpresa() {
+		return empresa;
+	}
+
+	public void setEmpresa(String empresa) {
+		this.empresa = empresa;
+	}
+
+	public String getNombreVolante() {
+		return nombreVolante;
+	}
+
+	public void setNombreVolante(String nombreVolante) {
+		this.nombreVolante = nombreVolante;
+	}
+
+    
+    
+    
 }

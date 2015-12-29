@@ -1,7 +1,7 @@
 app.factory('VolanteService', function($http, MensajesService) {
 	
 	var volantes;
-	
+	var datos = {};
     function getVolantes() {
 
 		$http({
@@ -11,6 +11,7 @@ app.factory('VolanteService', function($http, MensajesService) {
 			
 			volantes = response.data;
 			console.log("getVolantes: " + response.data.length);
+			getContactosVolantes();
 			
 		}, function errorCallback(response) {
 			
@@ -35,7 +36,9 @@ app.factory('VolanteService', function($http, MensajesService) {
     			redimir: volante.redimir,
     			terminos: volante.infoadiPromo,
     			templatePromo: volante.plantillaPromo,
-    			idPromocion: volante.idPromocion
+    			idPromocion: volante.idPromocion,
+    			empresa: volante.empresa,
+    			nombreVolante : volante.nombreVolante,
     		}		  
     	}).then(function successCallback(response) { 
 
@@ -56,15 +59,76 @@ app.factory('VolanteService', function($http, MensajesService) {
     function guardarEventoGA(nombreEvento, nombreSitio, banderaCanal) {
     	console.log("nombreEvento: " + nombreEvento + ", nombreSitio: " + nombreSitio + ", banderaCanal: " + banderaCanal);
     	//ga('send', 'event', 'promo', nombreEvento, nombreSitio, banderaCanal);
-    }
+    };
      
+    function getContactosVolantes() {
+		var url = contactos.getUrl;
+		var offerID = getOfferId();
+		var hash = hashUsuario();
+		console.log("La url quedaria así!! " + url + "?offerId="+offerID.offerId+"&hashUser="+hash);
+		edatos = {offerId:offerID.offerId,hashUser:hash};
+		$http({
+			method: 'GET',
+			url: url,
+			params: edatos,
+			async : true,
+		}).then(function successCallback(response) {
+			console.log("Me respondio con cuantos: "  + response.data.contacto.length);
+			for(i=0; i<response.data.contacto.length; i++){
+					console.log(response.data.contacto[i].contactoId);
+					console.log(response.data.contacto[i].offerId);
+					//console.log(response.data.contacto[i].preference);
+					//console.log(response.data.contacto[i].contenido);
+					//console.log(response.data.contacto[i].codigoPais);
+					console.log(response.data.contacto[i].services);
+					//console.log(response.data.contacto[i].tipoContacto);
+					//console.log(response.data.contacto[i].activo);
+					
+					if(response.data.contacto[i].services == "E2U+voice:tel" )
+						$("#telefonoVolante").val(response.data.contacto[i].contenido);
+					else if(response.data.contacto[i].services == "E2U+email:mailto")
+						$("#emailContactoVolante").val(response.data.contacto[i].contenido);
+			}
+			$("#nombreEmpresaPromo").val(datos.empresa);
+			
+			
+
+		}, function errorCallback(response) {
+			console.log("El error es: " + response);
+			var mensaje = "No se ha podido obtener la lista de contactos volantes";
+			MensajesService.cerrarBlockUIGeneral("Contactos", mensaje);
+		});
+	};
+    
+	function getOfferId(){
+		
+		var resp = requestServer("POST",contextPath + "/infomovil/getPromociones",{});
+		if (resp[0] != undefined){
+			datos = {
+				"offerId" : resp[0].idOffer,
+				"empresa" : resp[0].empresa,
+				"pagina" : resp[0].pagina,
+			};	
+		}else{
+			datos = {
+					"offerId" : "",
+					"empresa" : "",
+					"pagina" : "",
+				};
+		}
+		console.debug("Los valores de OfferId es: Server " + server + "y OfferId es: " + datos.offerId , datos.empresa, datos.pagina);
+		return datos;
+	};
+   
+	
      return {
-    	 
+    	 getContactosVolantes: getContactosVolantes,
     	 getVolantes : getVolantes,
     	 guardarEventoGA: guardarEventoGA,
     	 volantes : function() {
 		   return volantes;
     	 },	
-    	 actualizarVolante : actualizarVolante 	  
+    	 actualizarVolante : actualizarVolante, 	  
+    	 getOfferId : getOfferId
      }
 });
