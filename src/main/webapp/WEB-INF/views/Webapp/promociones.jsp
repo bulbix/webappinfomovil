@@ -339,30 +339,13 @@
 										<div class="clearfix"></div>
 										
 										<div class="divider"></div>
-										
-										
-											
-<!-- 												<select name="tipoTelefonoVolante" class="textBlack" id="tipoTelefonoVolante"> -->
-<!-- 												  <option value="+52" selected>Teléfono</option> -->
-<!-- 												  <option value="+52 1">Celular</option> -->
-<!-- 												</select> -->
-<!-- 												<input type="hidden" name="idContactoVolante" id="idContactoVolante"/> -->
-<!-- 												<input type="text" value="" class="textBlack" placeholder="10 digitos" id="telefonoVolante"/> -->
-<!-- 												<div class="divider"></div> -->
-<!-- 												<input type="text" id="emailContactoVolante" value="" class="textBlack" placeholder="mail@mail.com"/> -->
-										
-										
-										
+
 									
 										<div class="form-group text-left textBlack">
 											<label for="exampleInputEmail1" class="text-left">E-mail</label> 
 											<input type="text" id="emailContactoVolante" value="" class="textBlack form-control" placeholder="mail@mail.com"/>
 											
-										</div>
-										
-										
-											
-												
+										</div>		
 										
 										<div class="divider"></div>
 										<div class="form-group text-left textBlack">
@@ -387,17 +370,6 @@
 													value="Visítanos" class="radioPromo">Visítanos</label>
 											</div>
 										</div>
-
-<!-- 										<div class="botonDesPublicar"> -->
-<!-- 											<a href="#" data-toggle="modal" data-target="#myModalMaps" -->
-<!-- 												class="col-xs-12 col-sm-12 btn btn-default btn-outlineGreen  navEditor"> -->
-<!-- 												<img width="25" height="25" alt="Infomovil" -->
-<%-- 												src="<c:url value="/resources/webapp/images/icn_marc_maps.png"/>" /> --%>
-<!-- 												<span id="idOpcionUbicacion"><span class="hidden-xs">Colocar mi</span> Ubicación</span> <br /> <span -->
-<!-- 												id="direccionMap" class="directionMap"></span> -->
-<!-- 												<div class="clearfix"></div> -->
-<!-- 											</a> -->
-<!-- 										</div> -->
 												
 									</div>
 								</div>
@@ -469,21 +441,7 @@
 										<div class="clearfix"></div>
 										
 										<div class="divider"></div>
-										
-										
-											
-<!-- 												<select name="tipoTelefonoVolante" class="textBlack" id="tipoTelefonoVolante"> -->
-<!-- 												  <option value="+52" selected>Teléfono</option> -->
-<!-- 												  <option value="+52 1">Celular</option> -->
-<!-- 												</select> -->
-<!-- 												<input type="hidden" name="idContactoVolante" id="idContactoVolante"/> -->
-<!-- 												<input type="text" value="" class="textBlack" placeholder="10 digitos" id="telefonoVolante"/> -->
-<!-- 												<div class="divider"></div> -->
-<!-- 												<input type="text" id="emailContactoVolante" value="" class="textBlack" placeholder="mail@mail.com"/> -->
-										
-										
-										
-									
+
 										<div class="form-group text-left textBlack">
 											<label for="exampleInputEmail1" class="text-left">E-mail</label> 
 											<input type="text" id="emailContactoVolante" value="" class="textBlack form-control" placeholder="mail@mail.com"/>
@@ -538,7 +496,7 @@
 							</div>
 							
 								<!-- /Botón MAPS -->
-										<div class="botonDesPublicar " >
+										<div ng-show="volantesCtrl.muestraPromoPublicada">
 											<a href="#" data-toggle="modal" data-target="#myModalMaps"
 												class="col-xs-12 col-sm-12 btn btn-default btn-outlineGreen  navEditor">
 												<img width="25" height="25" alt="Infomovil"
