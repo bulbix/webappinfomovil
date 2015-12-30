@@ -154,14 +154,21 @@
 						<div class=" form-group" style="padding:6px 0;">
 							<div class="control-group">
 								<label class="control-label hidden-xs hidden-sm col-md-4 navEditor"><div style="padding:4px 0;">promo.mobileinfo.io/</div></label>
-								<div class="controls col-xs-12 col-sm-8  pull-right reset">
-									<input type="text" class="form-control text-left "
-										maxlength="128" placeholder="Nombre de tu volante"
-										onfocus="this.placeholder = ''"
-										onblur="this.placeholder = 'Nombre de tu volante'"
-										required="required" id="txtNombreVolante" />
-									<p class="help-block"></p>
-								</div>
+								
+								
+														
+										<div class="controls col-xs-12 col-sm-8  pull-right reset">
+											<input type="text" class="form-control text-left "
+												maxlength="128" placeholder="Nombre de tu volante"
+												onfocus="this.placeholder = ''"
+												onblur="this.placeholder = 'Nombre de tu volante'"
+												required="required" id="txtNombreVolante" />
+											<p class="help-block"></p>
+										</div>
+								
+								
+								
+								
 							</div>
 						</div>
 					</div>
