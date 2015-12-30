@@ -126,7 +126,7 @@
 <div class="containerExt">
 			<div class="">
 				<!-- Botones sin publicar -->
-				<div ng-show="volantesCtrl.muestraPublicarPromo" class="animate-show">
+				<div ng-show="volantesCtrl.muestraPublicarPromo" class="animated fadeIn">
 
 					<div class="col-xs-2 col-sm-2 text-center reset">
 						<button type="button"
@@ -152,21 +152,14 @@
 						<div class=" form-group" style="padding:6px 0;">
 							<div class="control-group">
 								<label class="control-label hidden-xs hidden-sm col-md-4 navEditor"><div style="padding:4px 0;">promo.mobileinfo.io/</div></label>
-								
-								
-														
-										<div class="controls col-xs-12 col-sm-8  pull-right reset">
-											<input type="text" class="form-control text-left "
-												maxlength="128" placeholder="Nombre de tu volante"
-												onfocus="this.placeholder = ''"
-												onblur="this.placeholder = 'Nombre de tu volante'"
-												required="required" id="txtNombreVolante" />
-											<p class="help-block"></p>
-										</div>
-								
-								
-								
-								
+								<div class="controls col-xs-12 col-sm-8  pull-right reset">
+									<input type="text" class="form-control text-left "
+										maxlength="128" placeholder="Nombre de tu volante"
+										onfocus="this.placeholder = ''"
+										onblur="this.placeholder = 'Nombre de tu volante'"
+										required="required" id="txtNombreVolante" />
+									<p class="help-block"></p>
+								</div>
 							</div>
 						</div>
 					</div>
@@ -184,7 +177,7 @@
 				</div>
 				<!-- /Botones sin publicar -->
 				<!-- Botones publicados -->
-				<div ng-show="volantesCtrl.muestraPromoPublicada" class="animate-show">
+				<div ng-show="volantesCtrl.muestraPromoPublicada" class="animated fadeIn">
 				
 				<div class="col-xs-2 col-sm-2 text-center reset">
 						<a href="<c:url value="/infomovil/estiloVolante"></c:url>" 
@@ -266,21 +259,21 @@
 
 		<!-- /Botón Nuevo Estilo -->
 		<!-- Formulario Promociones -->
-		<div class="container animate-show" >
+		<div class="container  " >
 			<div class="col-xs-12 reset">
 
 				<!--Theme showcase -->
 				<div class=" navEditor" role="main" id="intro">
 					<!-- Main jumbotron for a primary marketing message or call to action -->
 						<!-- page header <input type="text" id="checkedRedimir" value=""/>-->
-						<div class=" text-center"
-							style="border-radius:15px; background:url(<c:url value="/resources/webapp/images/bgWhTra.png"/>); padding:10px 0;">
-							<div class="clear"></div>
-							
+						<div class="clear"></div>
+						<div class=" text-center" style="border-radius:15px; background:url(<c:url value="/resources/webapp/images/bgWhTra.png"/>); padding:10px 0;">
+							<div class="clearfix"></div>
 							<div ng-show="volantesCtrl.muestraDivError" style="margin: 0 0 20px 0;"><img src="<c:url value="/resources/webapp/images/fa-warning-red.png"/>" width="20" height="20" alt="Alerta"  />
 							<div id="divError" 
 								style="color: red; display:inline; "></div></div>
-							<div ng-if="volantesCtrl.volantes.length == 0">
+								<div class="clear"></div>
+							<div ng-if="volantesCtrl.volantes.length == 0" class="animated fadeIn">
 								<div>
 									<div ng-hide="true" id="idPromocion"></div>
 									<div ng-hide="true" id="urlPromocion"></div>
@@ -410,7 +403,7 @@
 								</div>
 							</div>
 
-							<div ng-repeat="item in volantesCtrl.volantes" style="margin-top: 10px;">
+							<div ng-repeat="item in volantesCtrl.volantes" style="margin-top: 10px;" class="animated fadeIn">
 
 								<div id="volante">
 									<div ng-hide="true" id="idPromocion">{{item.idOffer}}</div>
