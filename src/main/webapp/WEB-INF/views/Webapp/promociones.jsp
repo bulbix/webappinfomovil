@@ -128,7 +128,7 @@
 <div class="containerExt">
 			<div class="">
 				<!-- Botones sin publicar -->
-				<div ng-show="volantesCtrl.muestraPublicarPromo">
+				<div ng-show="volantesCtrl.muestraPublicarPromo" class="animate-show">
 
 					<div class="col-xs-2 col-sm-2 text-center reset">
 						<button type="button"
@@ -186,7 +186,7 @@
 				</div>
 				<!-- /Botones sin publicar -->
 				<!-- Botones publicados -->
-				<div ng-show="volantesCtrl.muestraPromoPublicada">
+				<div ng-show="volantesCtrl.muestraPromoPublicada" class="animate-show">
 				
 				<div class="col-xs-2 col-sm-2 text-center reset">
 						<a href="<c:url value="/infomovil/estiloVolante"></c:url>" 
@@ -268,7 +268,7 @@
 
 		<!-- /Botón Nuevo Estilo -->
 		<!-- Formulario Promociones -->
-		<div class="container">
+		<div class="container animate-show" >
 			<div class="col-xs-12 reset">
 
 				<!--Theme showcase -->
@@ -277,7 +277,11 @@
 						<!-- page header <input type="text" id="checkedRedimir" value=""/>-->
 						<div class=" text-center"
 							style="border-radius:15px; background:url(<c:url value="/resources/webapp/images/bgWhTra.png"/>); padding:10px 0;">
-
+							<div class="clear"></div>
+							
+							<div ng-show="volantesCtrl.muestraDivError" style="margin: 0 0 20px 0;"><img src="<c:url value="/resources/webapp/images/fa-warning-red.png"/>" width="20" height="20" alt="Alerta"  />
+							<div id="divError" 
+								style="color: red; display:inline; "></div></div>
 							<div ng-if="volantesCtrl.volantes.length == 0">
 								<div>
 									<div ng-hide="true" id="idPromocion"></div>
@@ -499,8 +503,7 @@
 										<div class="clearfix"></div>
 										<div class="divider"></div>
 										<div class="form-group text-left textBlack">
-											<label class="text-left">¿Cómo redimir?:
-												{{item.redeemOffer}}</label>
+											<label class="text-left">¿Cómo redimir?: </label>
 											<div class="radio">
 												<div class="clear"></div>
 												<label><input type="radio" name="radioPromo" id="r1"
@@ -555,9 +558,7 @@
 							</div>
 							<div class="clear"></div>
 							</div>
-							<div class="clear"></div>
-							<div id="divError" ng-show="volantesCtrl.muestraDivError"
-								style="color: red;"></div>
+							
 						</div>
 						
 						
