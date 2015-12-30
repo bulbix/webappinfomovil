@@ -76,14 +76,14 @@ app.factory('VolanteService', function($http, MensajesService) {
 
     function guardarEventoGA(nombreEvento, nombreSitio, banderaCanal) {
     	console.log("nombreEvento: " + nombreEvento + ", nombreSitio: " + nombreSitio + ", banderaCanal: " + banderaCanal);
-    	//ga('send', 'event', 'promo', nombreEvento, nombreSitio, banderaCanal);
+    	ga('send', 'event', 'promo', nombreEvento, nombreSitio, banderaCanal);
     };
      
     function getContactosVolantes() {
 		var url = contactos.getUrl;
 		var offerID = getOfferId();
 		var hash = hashUsuario();
-		console.log("La url quedaria así!! " + url + "?offerId="+offerID.offerId+"&hashUser="+hash);
+		//console.log("La url quedaria así!! " + url + "?offerId="+offerID.offerId+"&hashUser="+hash);
 		edatos = {offerId:offerID.offerId,hashUser:hash};
 		$http({
 			method: 'GET',
