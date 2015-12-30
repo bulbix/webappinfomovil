@@ -78,17 +78,44 @@ class MultiproductoController
 		return [vista : vista]
 	}
 	
-	@RequestMapping(value = "/registro", method = RequestMethod.GET)
+	@RequestMapping(value = "/infomovil/registro", method = RequestMethod.GET)
 	def registro(String producto) {
-		
-		if (producto != null)
-		{
-			return vista = "redirect:/infomovil/editarSitio"
-		}
-			
-		if (Util.getCurrentSession().getAttribute("productoUsuario") == null)
-		{
 
+		def vista = "misPromociones"
+		def tabla = "multiproducto_dev"
+		def productos = ["web", "volante"]
+		def correo = Util.getUserLogged().getUsername();
+		def seleccion = Util.getItemsDynamo(tabla, correo);
+		
+		if(Util.getProfile().equals("PROD"))
+			tabla = "multiproducto";
+		
+		if (producto == null)
+			return "redirect:/infomovil/multiproducto"
+		
+		Util.getCurrentSession().setAttribute("productoUsuario", producto);
+			
+		if(seleccion != null)
+		{
+			def result = productos.find { it == producto }
+
+			if (result != null)
+			{				
+				if (seleccion != producto)
+				{
+					def actualiza = Util.guardarItemsTableDynamo(tabla, correo, [seleccion : producto]);
+					
+					if (actualiza)
+						if (result == "web")
+							vista = "editarSitio"
+				}
+			}
+			else
+			{
+				return "redirect:/registrar"
+			}
 		}
+		
+		return "redirect:/infomovil/" + vista
 	}
 }

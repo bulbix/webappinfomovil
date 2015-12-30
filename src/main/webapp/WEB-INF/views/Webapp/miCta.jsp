@@ -38,7 +38,7 @@
 			</div>
 			<div id="navbar" class="navbar-collapse collapse text-right">
 				<ul class="nav navbar-nav navbar-right">							
-							<li><a href="<c:url value="/infomovil/editarSitio"/>" class="smoothScroll ${colorTexto}"><img
+							<li onClick="sessionBtnEditorMiCuenta()"><a href="#" class="smoothScroll ${colorTexto}"><img
 							width="20" height="20" alt="Infomovil"
 							src="<c:url value="/resources/webapp/images/fa-back${ extensionImg }.png"/>" />
 							Editor </a></li>
@@ -273,6 +273,7 @@
 	<!-- 		<!--/MODAL MOVILIZA CODE-->
 	
 	<input type="hidden" id="planPro" name="planPro" value="${ planPro }">
+	<input type="hidden" id="productoDynamo" name="productoDynamo" value="${ productoDynamo }">
 	
 	<!-- Bootstrap core JavaScript
 	    ================================================== -->

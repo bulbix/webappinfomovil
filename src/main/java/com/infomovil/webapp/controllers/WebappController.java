@@ -484,6 +484,8 @@ public class WebappController
 		String nombreUsuario = "";
 		String status = "";
 		String planPro = "NO";
+		String tabla = "multiproducto_dev";
+		String producto = "multiproducto";
 		int totProductos = 0;
 
 		try
@@ -553,7 +555,15 @@ public class WebappController
 				if (modeloWebApp.getStatus(status))
 					planPro = "SI";
 			}
-		
+
+			if(Util.getProfile().equals("PROD"))
+				tabla = "multiproducto";
+			
+			Map<String,Object> seleccion = Util.getItemsDynamo(tabla, correo);
+			
+			if (seleccion != null) 
+				producto = seleccion.get("seleccion").toString();
+			
 			model.put("claseProductos", claseProductos);
 			model.put("claseCss", claseCss);
 			model.put("colorTexto", colorTexto);
@@ -567,6 +577,7 @@ public class WebappController
 			model.put("urlReturn", urlReturn);
 			model.put("planPro", planPro);
 			model.put("productosInfo", productos);
+			model.put("productoDynamo", producto);
 		}		
 		catch (Exception e) 
 		{
@@ -753,7 +764,7 @@ public class WebappController
 				model.put("infoAdicional", infoAdicional);
 				model.put("tipoPlan", tipoPlan);
 
-				 Util.getCurrentSession().setAttribute("planPro", planPro);
+				Util.getCurrentSession().setAttribute("planPro", planPro);
 			    Util.getCurrentSession().setAttribute("canal", canal);
 			    Util.getCurrentSession().setAttribute("template", template);
 			    Util.getCurrentSession().setAttribute("statusCta", status);

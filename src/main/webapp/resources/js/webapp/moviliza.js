@@ -108,28 +108,15 @@ $("#enviarCorreoCio").click(function() {
 
 function sessionBtnEditorMiCuenta() {
 	
-	/*$.getJSON(contextPath + "/infomovil/getProducto", function(data) {
-		console.log("Me regreso : " + JSON.stringify(data));
-	}).done(function() {
-	    console.log( "second success" );
-	  })
-	  .fail(function() {
-	    console.log( "error" );
-	  });*/
-	console.debug("una vez");
+	var vista = "multiproducto";
 	
-	$.ajax({
-		type : "GET",
-		url : contextPath + "/infomovil/getProducto",
-		success : function(data) {
-			console.log("Me regreso : " + JSON.stringify(data));
-			window.location = contextPath + '/infomovil/' + data.vista;
-		},
-		params : {},
-		error : function(json) {
-			console.log("error: " + JSON.stringify(json));
-		}
-	});		
+	if ($("#productoDynamo").val() == "web")
+		vista = "editarSitio";
+	else
+		vista = "misPromociones";
+	
+	console.log("producto: " + $("#productoDynamo").val() + ", vista: " + vista);
+	window.location = contextPath + '/infomovil/' + vista;
 }
 
 function ocultaNotaValidaPP() {
