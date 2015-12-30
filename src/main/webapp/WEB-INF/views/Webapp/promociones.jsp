@@ -496,9 +496,11 @@
 							</div>
 							
 								<!-- /Botón MAPS -->
-										<div ng-show="volantesCtrl.muestraPromoPublicada">
+								<div class="clear"></div>
+								<div class="divider"></div>
+										<div class="col-xs-12" ng-show="volantesCtrl.muestraPromoPublicada">
 											<a href="#" data-toggle="modal" data-target="#myModalMaps"
-												class="col-xs-12 col-sm-12 btn btn-default btn-outlineGreen  navEditor">
+												class="col-xs-12 col-sm-6 btn btn-default btn-outlineGreen navEditor">
 												<img width="25" height="25" alt="Infomovil"
 												src="<c:url value="/resources/webapp/images/icn_marc_maps.png"/>" />
 												<span id="idOpcionUbicacion"><span class="hidden-xs">Colocar mi</span> Ubicación</span> <br /> <span
@@ -506,6 +508,9 @@
 												<div class="clearfix"></div>
 											</a>
 										</div>
+										
+										</div>
+										<div class="col-xs-12 col-sm-6 col-md-6"></div>
 							
 							<div class="clear"></div>
 							</div>
