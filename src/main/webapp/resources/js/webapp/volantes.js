@@ -1,4 +1,3 @@
-
 var preferenceContVol = 0;
 	$(".datepicker").datepicker({ dateFormat: 'dd/mm/yy' });
 	console.log("$datepickerPromo");
@@ -183,7 +182,8 @@ app.controller("VolantesController", function ($scope, $http, VolanteService, Me
 		    		method: 'POST',
 		    		url: contextPath + "/infomovil/eliminarPromocion",
 		    		params: { 
-		    			idPromocion: $("#idPromocion").text()
+		    			idPromocion: $("#idPromocion").text(),
+		    			nombreVolante: $("#nombrePromocion").text()
 		    		}	  
 		    	}).then(function successCallback(response) {
 		    		$("#telefonoVolante").val("");

@@ -102,9 +102,16 @@ app.factory('VolanteService', function($http, MensajesService) {
 					//console.log(response.data.contacto[i].tipoContacto);
 					//console.log(response.data.contacto[i].activo);
 					
-					if(response.data.contacto[i].services == "E2U+voice:tel" )
+					if(response.data.contacto[i].services == "E2U+voice:tel" ){
 						$("#telefonoVolante").val(response.data.contacto[i].contenido);
-					else if(response.data.contacto[i].services == "E2U+email:mailto")
+						$("#tipoTelefonoVolante").prop("selectedIndex", 0);
+						
+						
+					}else if(response.data.contacto[i].services == "E2U+voice:tel+x-mobile"){
+						$("#telefonoVolante").val(response.data.contacto[i].contenido);
+						$("#tipoTelefonoVolante").prop("selectedIndex", 1);
+						
+					}else if(response.data.contacto[i].services == "E2U+email:mailto")
 						$("#emailContactoVolante").val(response.data.contacto[i].contenido);
 			}
 			$("#nombreEmpresaPromo").val(datos.empresa);

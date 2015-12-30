@@ -11,6 +11,7 @@ import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.validator.routines.EmailValidator;
 import org.apache.log4j.Logger;
 import org.json.simple.JSONArray;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -23,12 +24,16 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import com.amazonaws.util.IOUtils;
 import com.infomovil.webapp.clientWsInfomovil.ClientWsInfomovil;
 import com.infomovil.webapp.clientWsInfomovil.OffertRecordVO;
+import com.infomovil.webapp.clientWsInfomovil.ProductoUsuarioVO;
 import com.infomovil.webapp.clientWsInfomovil.RespuestaVO;
+import com.infomovil.webapp.model.ModeloWebApp;
 import com.infomovil.webapp.util.Util;
 
 @Controller
 public class PromocionesController
 {
+	
+	
 	@RequestMapping(value = "/infomovil/misPromociones", method = {RequestMethod.GET, RequestMethod.POST})
 	public ModelAndView misPromociones(HttpServletRequest request, HttpServletResponse response, RedirectAttributes redirectAttributes)
 	{		
@@ -44,10 +49,12 @@ public class PromocionesController
 		String banderaCanal = "0";
 		String sitioWeb = "";
 		
+		
 		try
 		{		
 			String correo = Util.getUserLogged().getUsername();
 			String password = Util.getUserLogged().getPassword();
+		
 			
 			if (Util.getCurrentSession().getAttribute("canal") != null)
 			{
@@ -88,6 +95,7 @@ public class PromocionesController
          		banderaCanal = Util.getCurrentSession().getAttribute("banderaCanal").toString();
          	}
          	
+         
 			model.put("claseCss", claseCss);
 			model.put("colorTexto", colorTexto);
 			model.put("extensionImg", extensionImg);
@@ -155,7 +163,7 @@ public class PromocionesController
 	
 	@RequestMapping(value = "/infomovil/eliminarPromocion", method = {RequestMethod.GET, RequestMethod.POST}, produces = "application/json")
 	@ResponseBody
-	public Map<String, String> eliminarPromocion(@RequestParam int idPromocion)
+	public Map<String, String> eliminarPromocion(@RequestParam int idPromocion, String nombreVolante)
 	{		
 		RespuestaVO respVO = new RespuestaVO();
 		Map<String, String> resultado = new HashMap<String, String>();
@@ -164,7 +172,7 @@ public class PromocionesController
 		{		
 			String correo = Util.getUserLogged().getUsername();
 			String password = Util.getUserLogged().getPassword();
-			respVO = wsCliente.crearSitioGuardarPromocion(correo, password, "", "", "", "", "", "", idPromocion, "", "", "");
+			respVO = wsCliente.crearSitioGuardarPromocion(correo, password, "", "", "", "", "", "", idPromocion, "", "", nombreVolante);
 			resultado.put("codeError", respVO.getCodeError());
 			resultado.put("descEror", respVO.getMsgError());
 		}		
@@ -247,7 +255,7 @@ public class PromocionesController
 			String password = Util.getUserLogged().getPassword();
 			
 			if (idDominio == 0) /*Vista previa*/
-				respVO = wsCliente.crearSitioPrevisualizarPromocion(correo, password, descripcion, fechaVigencia, redimir, terminos, titulo, base64Imagen, templatePromo);
+				respVO = wsCliente.crearSitioPrevisualizarPromocion(correo, password, descripcion, fechaVigencia, redimir, terminos, titulo, base64Imagen, templatePromo, empresa);
 			else /*Ver promo guardada*/
 				respVO = wsCliente.crearSitioGuardarPromocion(correo, password, descripcion, fechaVigencia, redimir, terminos, titulo, base64Imagen, idDominio, templatePromo, empresa, "");
 			
