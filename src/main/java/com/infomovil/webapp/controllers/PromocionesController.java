@@ -163,7 +163,7 @@ public class PromocionesController
 	
 	@RequestMapping(value = "/infomovil/eliminarPromocion", method = {RequestMethod.GET, RequestMethod.POST}, produces = "application/json")
 	@ResponseBody
-	public Map<String, String> eliminarPromocion(@RequestParam int idPromocion)
+	public Map<String, String> eliminarPromocion(@RequestParam int idPromocion, String nombreVolante)
 	{		
 		RespuestaVO respVO = new RespuestaVO();
 		Map<String, String> resultado = new HashMap<String, String>();
@@ -172,7 +172,7 @@ public class PromocionesController
 		{		
 			String correo = Util.getUserLogged().getUsername();
 			String password = Util.getUserLogged().getPassword();
-			respVO = wsCliente.crearSitioGuardarPromocion(correo, password, "", "", "", "", "", "", idPromocion, "", "", "");
+			respVO = wsCliente.crearSitioGuardarPromocion(correo, password, "", "", "", "", "", "", idPromocion, "", "", nombreVolante);
 			resultado.put("codeError", respVO.getCodeError());
 			resultado.put("descEror", respVO.getMsgError());
 		}		
@@ -255,7 +255,7 @@ public class PromocionesController
 			String password = Util.getUserLogged().getPassword();
 			
 			if (idDominio == 0) /*Vista previa*/
-				respVO = wsCliente.crearSitioPrevisualizarPromocion(correo, password, descripcion, fechaVigencia, redimir, terminos, titulo, base64Imagen, templatePromo);
+				respVO = wsCliente.crearSitioPrevisualizarPromocion(correo, password, descripcion, fechaVigencia, redimir, terminos, titulo, base64Imagen, templatePromo, empresa);
 			else /*Ver promo guardada*/
 				respVO = wsCliente.crearSitioGuardarPromocion(correo, password, descripcion, fechaVigencia, redimir, terminos, titulo, base64Imagen, idDominio, templatePromo, empresa, "");
 			

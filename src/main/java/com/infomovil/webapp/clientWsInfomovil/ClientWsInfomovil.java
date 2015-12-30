@@ -274,7 +274,7 @@ public class ClientWsInfomovil {
 	}
 	
 	public RespuestaVO crearSitioPrevisualizarPromocion(String email, String password, String descripcion, String fechaVigencia,
-			String redimir, String terminos, String titulo, String base64Imagen, String template)
+			String redimir, String terminos, String titulo, String base64Imagen, String template, String empresa)
 	{
 		log.info("Invoking crearSitioPrevisualizarPromocion...");
         com.infomovil.webapp.clientWsInfomovil.CrearSitioPrevisualizarPromocion _crearSitioPrevisualizarPromocion_parameters = new CrearSitioPrevisualizarPromocion();
@@ -287,6 +287,7 @@ public class ClientWsInfomovil {
         _crearSitioPrevisualizarPromocion_parameters.titulo = titulo;
         _crearSitioPrevisualizarPromocion_parameters.base64Imagen = base64Imagen;
         _crearSitioPrevisualizarPromocion_parameters.template = template;
+        _crearSitioPrevisualizarPromocion_parameters.empresa = empresa;
         com.infomovil.webapp.clientWsInfomovil.CrearSitioPrevisualizarPromocionResponse _crearSitioPrevisualizarPromocion__return = port.crearSitioPrevisualizarPromocion(_crearSitioPrevisualizarPromocion_parameters);
         log.info("crearSitioPrevisualizarPromocion.result=" + _crearSitioPrevisualizarPromocion__return);
 		return _crearSitioPrevisualizarPromocion__return.respuestaVO;

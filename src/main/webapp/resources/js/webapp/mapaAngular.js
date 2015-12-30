@@ -470,6 +470,8 @@ app.controller('MapCtrl', function($http, ubicacionFactory,volanteMapaService) {
 			console.debug("Datos Mapa:" + state.offerId + "," + state.locId)
 			state.offerId = 0; state.locId = 0;
 			console.debug("Datos Mapa:" + state.offerId + "," + state.locId)
+			$("#direccionMap").html("");
+			$("#idOpcionUbicacion").html("Coloca tu ubicación");
 		}
 	}
 	
