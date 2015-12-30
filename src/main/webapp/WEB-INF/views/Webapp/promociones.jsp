@@ -390,16 +390,16 @@
 											</div>
 										</div>
 
-										<div class="botonDesPublicar">
-											<a href="#" data-toggle="modal" data-target="#myModalMaps"
-												class="col-xs-12 col-sm-12 btn btn-default btn-outlineGreen  navEditor">
-												<img width="25" height="25" alt="Infomovil"
-												src="<c:url value="/resources/webapp/images/icn_marc_maps.png"/>" />
-												<span id="idOpcionUbicacion"><span class="hidden-xs">Colocar mi</span> Ubicación</span> <br /> <span
-												id="direccionMap" class="directionMap"></span>
-												<div class="clearfix"></div>
-											</a>
-										</div>
+<!-- 										<div class="botonDesPublicar"> -->
+<!-- 											<a href="#" data-toggle="modal" data-target="#myModalMaps" -->
+<!-- 												class="col-xs-12 col-sm-12 btn btn-default btn-outlineGreen  navEditor"> -->
+<!-- 												<img width="25" height="25" alt="Infomovil" -->
+<%-- 												src="<c:url value="/resources/webapp/images/icn_marc_maps.png"/>" /> --%>
+<!-- 												<span id="idOpcionUbicacion"><span class="hidden-xs">Colocar mi</span> Ubicación</span> <br /> <span -->
+<!-- 												id="direccionMap" class="directionMap"></span> -->
+<!-- 												<div class="clearfix"></div> -->
+<!-- 											</a> -->
+<!-- 										</div> -->
 												
 									</div>
 								</div>
@@ -524,18 +524,7 @@
 										<div class="clearfix"></div>
 										<div class="divider"></div>
 										
-											<!-- /Botón MAPS -->
-
-				<div class="botonDesPublicar " >
-					<a href="#" data-toggle="modal" data-target="#myModalMaps"
-						class="col-xs-12 col-sm-12 btn btn-default btn-outlineGreen  navEditor">
-						<img width="25" height="25" alt="Infomovil"
-						src="<c:url value="/resources/webapp/images/icn_marc_maps.png"/>" />
-						<span id="idOpcionUbicacion"><span class="hidden-xs">Colocar mi</span> Ubicación</span> <br /> <span
-						id="direccionMap" class="directionMap"></span>
-						<div class="clearfix"></div>
-					</a>
-				</div>
+										
 									</div>
 								</div>
 
@@ -549,6 +538,19 @@
 										scope="session" />
 								</tiles:insertDefinition>
 							</div>
+							
+								<!-- /Botón MAPS -->
+										<div class="botonDesPublicar " >
+											<a href="#" data-toggle="modal" data-target="#myModalMaps"
+												class="col-xs-12 col-sm-12 btn btn-default btn-outlineGreen  navEditor">
+												<img width="25" height="25" alt="Infomovil"
+												src="<c:url value="/resources/webapp/images/icn_marc_maps.png"/>" />
+												<span id="idOpcionUbicacion"><span class="hidden-xs">Colocar mi</span> Ubicación</span> <br /> <span
+												id="direccionMap" class="directionMap"></span>
+												<div class="clearfix"></div>
+											</a>
+										</div>
+							
 							<div class="clear"></div>
 							</div>
 							

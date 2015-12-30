@@ -205,7 +205,7 @@ public class ClientWsInfomovilTest {
 	@Test
 	public void testPrevisualizarPromocion() {
 		RespuestaVO resp = clientWsInfomovil.crearSitioPrevisualizarPromocion("pollo1@mail.com", 
-		"garbage1","desc","01/01/2015","redimir","terminos","titulozzzzzzz","", "");
+		"garbage1","desc","01/01/2015","redimir","terminos","titulozzzzzzz","", "","");
 		assertNotNull(resp);
 		assertTrue(resp.getCodeError().equalsIgnoreCase("0"));
 		System.out.println(resp.getUrlPromocion());
