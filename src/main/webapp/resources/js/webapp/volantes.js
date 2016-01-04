@@ -151,8 +151,10 @@ app.controller("VolantesController", function ($scope, $http, VolanteService, Me
 		
 			VolanteService.guardarEventoGA(volantesCtrl.eventoPromocion, 
 					response.data.nombreSitio, response.data.banderaCanal);
-			VolanteService.getVolantes();
 			
+			//VolanteService.getVolantes();
+			volantesCtrl.muestraPublicarPromo = false;
+			volantesCtrl.muestraPromoPublicada = true;
 			
 			
 			$.unblockUI();
@@ -182,8 +184,7 @@ app.controller("VolantesController", function ($scope, $http, VolanteService, Me
 		    		method: 'POST',
 		    		url: contextPath + "/infomovil/eliminarPromocion",
 		    		params: { 
-		    			idPromocion: $("#idPromocion").text(),
-		    			nombreVolante: $("#nombrePromocion").text()
+		    			idPromocion: $("#idPromocion").text()
 		    		}	  
 		    	}).then(function successCallback(response) {
 		    		$("#telefonoVolante").val("");
@@ -470,6 +471,7 @@ app.controller("VolantesController", function ($scope, $http, VolanteService, Me
 				var fechaVigencia = $moment(volantesCtrl.arr[0].endDateOffer, "DD/MM/YYYY");
 				volantesCtrl.fechaVigencia = fechaVigencia.toDate();
 			}
+			
 		}
 		else{
 			
@@ -480,6 +482,7 @@ app.controller("VolantesController", function ($scope, $http, VolanteService, Me
 	//$("#datepicker").datepicker({ dateFormat: 'dd/mm/yy' });
     volantesCtrl.generarSliderPromo();
     VolanteService.getVolantes();
+ 
 
 var upsertContactoVolantes = function(contacto){
 	 var url = contactos.saveUrl;
@@ -490,7 +493,7 @@ var upsertContactoVolantes = function(contacto){
 		 async : true
 		}).then(function successCallback(response) {
 			console.log("Se guardo el contacto y me regreso: "  + response.data.codeError);
-			VolanteService.getContactosVolantes();			 
+						 
 		}, function errorCallback(response) {
 			console.log("El error es: " + response.data, response.data.code);
 			

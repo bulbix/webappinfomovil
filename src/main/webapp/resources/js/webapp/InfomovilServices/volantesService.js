@@ -60,7 +60,7 @@ app.factory('VolanteService', function($http, MensajesService) {
     		MensajesService.cerrarBlockUIGeneral("Volantes", "");
     		
 			$('#myModalTempPromo').modal('hide');
-    		getVolantes();    		
+    		//getVolantes();    		
     		guardarEventoGA(evento, response.data.nombreSitio, response.data.banderaCanal);
     		
     		if (callback != null)
@@ -76,53 +76,55 @@ app.factory('VolanteService', function($http, MensajesService) {
 
     function guardarEventoGA(nombreEvento, nombreSitio, banderaCanal) {
     	console.log("nombreEvento: " + nombreEvento + ", nombreSitio: " + nombreSitio + ", banderaCanal: " + banderaCanal);
-    	ga('send', 'event', 'promo', nombreEvento, nombreSitio, banderaCanal);
+    	//ga('send', 'event', 'promo', nombreEvento, nombreSitio, banderaCanal);
     };
      
     function getContactosVolantes() {
 		var url = contactos.getUrl;
 		var offerID = getOfferId();
 		var hash = hashUsuario();
-		//console.log("La url quedaria así!! " + url + "?offerId="+offerID.offerId+"&hashUser="+hash);
-		edatos = {offerId:offerID.offerId,hashUser:hash};
-		$http({
-			method: 'GET',
-			url: url,
-			params: edatos,
-			async : true,
-		}).then(function successCallback(response) {
-			console.log("Me respondio con cuantos: "  + response.data.contacto.length);
-			for(i=0; i<response.data.contacto.length; i++){
-					console.log(response.data.contacto[i].contactoId);
-					console.log(response.data.contacto[i].offerId);
-					//console.log(response.data.contacto[i].preference);
-					//console.log(response.data.contacto[i].contenido);
-					//console.log(response.data.contacto[i].codigoPais);
-					console.log(response.data.contacto[i].services);
-					//console.log(response.data.contacto[i].tipoContacto);
-					//console.log(response.data.contacto[i].activo);
-					
-					if(response.data.contacto[i].services == "E2U+voice:tel" ){
-						$("#telefonoVolante").val(response.data.contacto[i].contenido);
-						$("#tipoTelefonoVolante").prop("selectedIndex", 0);
+		console.log("La url quedaria así!! " + url + "?offerId="+offerID.offerId+"&hashUser="+hash);
+		if(offerID.offerId > 0){
+			edatos = {offerId:offerID.offerId,hashUser:hash};
+			$http({
+				method: 'GET',
+				url: url,
+				params: edatos,
+				async : true,
+			}).then(function successCallback(response) {
+				console.log("Me respondio con cuantos: "  + response.data.contacto.length);
+				for(i=0; i<response.data.contacto.length; i++){
+						console.log(response.data.contacto[i].contactoId);
+						console.log(response.data.contacto[i].offerId);
+						//console.log(response.data.contacto[i].preference);
+						//console.log(response.data.contacto[i].contenido);
+						//console.log(response.data.contacto[i].codigoPais);
+						console.log(response.data.contacto[i].services);
+						//console.log(response.data.contacto[i].tipoContacto);
+						//console.log(response.data.contacto[i].activo);
 						
-						
-					}else if(response.data.contacto[i].services == "E2U+voice:tel+x-mobile"){
-						$("#telefonoVolante").val(response.data.contacto[i].contenido);
-						$("#tipoTelefonoVolante").prop("selectedIndex", 1);
-						
-					}else if(response.data.contacto[i].services == "E2U+email:mailto")
-						$("#emailContactoVolante").val(response.data.contacto[i].contenido);
-			}
-			$("#nombreEmpresaPromo").val(datos.empresa);
-			
-			
-
-		}, function errorCallback(response) {
-			console.log("No se ha podido obtener la lista de contactos volantes " + response);
-			//var mensaje = "No se ha podido obtener la lista de contactos volantes";
-			//MensajesService.cerrarBlockUIGeneral("Contactos", mensaje);
-		});
+						if(response.data.contacto[i].services == "E2U+voice:tel" ){
+							$("#telefonoVolante").val(response.data.contacto[i].contenido);
+							$("#tipoTelefonoVolante").prop("selectedIndex", 0);
+							
+							
+						}else if(response.data.contacto[i].services == "E2U+voice:tel+x-mobile"){
+							$("#telefonoVolante").val(response.data.contacto[i].contenido);
+							$("#tipoTelefonoVolante").prop("selectedIndex", 1);
+							
+						}else if(response.data.contacto[i].services == "E2U+email:mailto")
+							$("#emailContactoVolante").val(response.data.contacto[i].contenido);
+				}
+				$("#nombreEmpresaPromo").val(datos.empresa);
+				
+				
+	
+			}, function errorCallback(response) {
+				console.log("No se ha podido obtener la lista de contactos volantes " + response);
+				//var mensaje = "No se ha podido obtener la lista de contactos volantes";
+				//MensajesService.cerrarBlockUIGeneral("Contactos", mensaje);
+			});
+		}
 	};
     
 	function getOfferId(){
