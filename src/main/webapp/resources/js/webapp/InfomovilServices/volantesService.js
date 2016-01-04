@@ -104,21 +104,14 @@ app.factory('VolanteService', function($http, MensajesService) {
 						//console.log(response.data.contacto[i].activo);
 						
 						if(response.data.contacto[i].services == "E2U+voice:tel" ){
-							$("#telefonoVolante").val(response.data.contacto[i].contenido);
-							$("#tipoTelefonoVolante").prop("selectedIndex", 0);
-							
-							
+							$("#telContactoVolante").val(response.data.contacto[i].contenido);
 						}else if(response.data.contacto[i].services == "E2U+voice:tel+x-mobile"){
-							$("#telefonoVolante").val(response.data.contacto[i].contenido);
-							$("#tipoTelefonoVolante").prop("selectedIndex", 1);
-							
+							$("#celContactoVolante").val(response.data.contacto[i].contenido);
 						}else if(response.data.contacto[i].services == "E2U+email:mailto")
 							$("#emailContactoVolante").val(response.data.contacto[i].contenido);
 				}
 				$("#nombreEmpresaPromo").val(datos.empresa);
 				
-				
-	
 			}, function errorCallback(response) {
 				console.log("No se ha podido obtener la lista de contactos volantes " + response);
 				//var mensaje = "No se ha podido obtener la lista de contactos volantes";
@@ -146,12 +139,40 @@ app.factory('VolanteService', function($http, MensajesService) {
 		console.debug("Los valores de OfferId es: Server " + server + "y OfferId es: " + datos.offerId , datos.empresa, datos.pagina);
 		return datos;
 	};
+	
+	var eliminarContactoVolante = function(tipoContacto){
+		var url = contactos.delUrl;
+		var valContacto = 0;
+		
+		if(tipoContacto == "tel" && ( $("#idTelContactoVolante").val() > 0) )
+			valContacto = $("#idTelContactoVolante").val(); 
+		else if(tipoContacto == "cel" && ( $("#idCelContactoVolante").val() > 0) )
+			valContacto = $("#idCelContactoVolante").val(); 
+		else if(tipoContacto == "email" && ( $("#idEmailContactoVolante").val() > 0) )
+			valContacto = $("#idEmailContactoVolante").val(); 
+			
+		
+		console.log("La url de eliminar es: "+url +" y el idContacto es: "+valContacto);
+		$http({
+			method: 'DELETE',
+			headers: {'Content-Type': 'application/json' },
+			url : url,
+			data : valContacto
+		}).then(function successCallback(response) {
+			console.log("Si me elimino el contacto: "  + response.data.codeError, response.data);
+							 
+		}, function errorCallback(response) {
+			console.log("El error es: " + response.data);
+			
+		});
+	};
    
 	
      return {
     	 getContactosVolantes: getContactosVolantes,
     	 getVolantes : getVolantes,
     	 guardarEventoGA: guardarEventoGA,
+    	 eliminarContactoVolante : eliminarContactoVolante,
     	 volantes : function() {
 		   return volantes;
     	 },	
@@ -165,5 +186,6 @@ app.factory('VolanteService', function($http, MensajesService) {
     	 banderaCanal : function() {
     		 return banderaCanal;
     	 }
+    	 
      }
 });
