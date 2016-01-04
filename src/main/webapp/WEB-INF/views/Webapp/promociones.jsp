@@ -322,31 +322,30 @@
 										<div class="divider"></div>
 										
 										<div class="form-group text-left textBlack">
-											<div class="col-xs-12 col-sm-6 reset">
-												<div class="col-xs-1 col-sm-2"></div>
+											
+												<div class="form-group text-left textBlack">
+													<label for="exampleInputEmail1" class="text-left">Teléfono</label> 
+													<input type="text" id="telContactoVolante" value="" class="textBlack form-control" placeholder="10 digitos"/>
+												</div>
+												<div class="clearfix"></div>
+												<div class="divider"></div>
+												<div class="form-group text-left textBlack">
+													<label for="exampleInputEmail1" class="text-left">Celular</label> 
+													<input type="text" id="celContactoVolante" value="" class="textBlack form-control" placeholder="10 digitos"/>
+												</div>
+												<div class="clearfix"></div>
+												<div class="divider"></div>
+												<div class="form-group text-left textBlack">
+													<label for="exampleInputEmail1" class="text-left">E-mail</label> 
+													<input type="text" id="emailContactoVolante" value="" class="textBlack form-control" placeholder="mail@mail.com"/>
+												</div>
+											
 												<input type="hidden" name="idContactoVolante" id="idContactoVolante"/>
-												<select class="col-xs-11 col-sm-10 form-control" name="tipoTelefonoVolante" class="textBlack" id="tipoTelefonoVolante">
-												  <option value="+52" selected>Teléfono</option>
-												  <option value="+52 1">Celular</option>
-												</select>
-												<input type="hidden" name="idContactoTelVolante" id="idTelContactoVolante"/>
-												<input type="hidden" name="idContactoEmailVolante" id="idEmailContactoVolante"/>
-												
-											</div>	
-<input type="text" value="" class="col-xs-6 form-control textBlack" placeholder="10 digitos" id="telefonoVolante"/>
-											
-										</div>
-										<div class="clearfix"></div>
-										
-										<div class="divider"></div>
-
-									
-										<div class="form-group text-left textBlack">
-											<label for="exampleInputEmail1" class="text-left">E-mail</label> 
-											<input type="text" id="emailContactoVolante" value="" class="textBlack form-control" placeholder="mail@mail.com"/>
-											
+												<input type="hidden" name="idTelContactoVolante" id="idTelContactoVolante"/>
+												<input type="hidden" name="idEmailContactoVolante" id="idEmailContactoVolante"/>
+												<input type="hidden" name="idCelContactoVolante" id="idCelContactoVolante"/>
 										</div>		
-										
+										<div class="clearfix"></div>
 										<div class="divider"></div>
 										<div class="form-group text-left textBlack">
 											<label class="text-left">¿Cómo redimir?:</label>
@@ -424,30 +423,30 @@
 										<div class="divider"></div>
 										
 										<div class="form-group text-left textBlack">
-											<div class="col-xs-12 col-sm-6 reset">
-												<div class="col-xs-1 col-sm-2"></div>
+											
+												<div class="form-group text-left textBlack">
+													<label for="exampleInputEmail1" class="text-left">Teléfono</label> 
+													<input type="text" id="telContactoVolante" value="" class="textBlack form-control" placeholder="10 digitos"/>
+												</div>
+												<div class="clearfix"></div>
+												<div class="divider"></div>
+												<div class="form-group text-left textBlack">
+													<label for="exampleInputEmail1" class="text-left">Celular</label> 
+													<input type="text" id="celContactoVolante" value="" class="textBlack form-control" placeholder="10 digitos"/>
+												</div>
+												<div class="clearfix"></div>
+												<div class="divider"></div>
+												<div class="form-group text-left textBlack">
+													<label for="exampleInputEmail1" class="text-left">E-mail</label> 
+													<input type="text" id="emailContactoVolante" value="" class="textBlack form-control" placeholder="mail@mail.com"/>
+												</div>
+											
 												<input type="hidden" name="idContactoVolante" id="idContactoVolante"/>
-												<select class="col-xs-11 col-sm-10 form-control" name="tipoTelefonoVolante" class="textBlack" id="tipoTelefonoVolante">
-												  <option value="+52" selected>Teléfono</option>
-												  <option value="+52 1">Celular</option>
-												</select>
-												<input type="hidden" name="idContactoTelVolante" id="idTelContactoVolante"/>
-												<input type="hidden" name="idContactoEmailVolante" id="idEmailContactoVolante"/>
+												<input type="hidden" name="idTelContactoVolante" id="idTelContactoVolante"/>
+												<input type="hidden" name="idEmailContactoVolante" id="idEmailContactoVolante"/>
+												<input type="hidden" name="idCelContactoVolante" id="idCelContactoVolante"/>
 												
-											</div>	
-<input type="text" value="" class="col-xs-6 form-control textBlack" placeholder="10 digitos" id="telefonoVolante"/>
-											
-										</div>
-										<div class="clearfix"></div>
-										
-										<div class="divider"></div>
-
-										<div class="form-group text-left textBlack">
-											<label for="exampleInputEmail1" class="text-left">E-mail</label> 
-											<input type="text" id="emailContactoVolante" value="" class="textBlack form-control" placeholder="mail@mail.com"/>
-											
-										</div>
-										
+										</div>		
 										
 										<div class="clearfix"></div>
 										<div class="divider"></div>
