@@ -146,14 +146,18 @@ app.controller("VolantesController", function ($scope, $http, VolanteService, Me
     				
     		}	  
     	}).then(function successCallback(response) {
-    		console.log("Hara las validaciones para mandar a guardar tel o mail");
-    		guardarContactos();
-		
-			VolanteService.guardarEventoGA(volantesCtrl.eventoPromocion, 
-					response.data.nombreSitio, response.data.banderaCanal);
-			VolanteService.getVolantes();
-			
-			
+    		if(response.data.codeError == "0"){
+    			console.log("Hara las validaciones para mandar a guardar tel o mail");
+        		guardarContactos();
+    			VolanteService.guardarEventoGA(volantesCtrl.eventoPromocion, 
+    					response.data.nombreSitio, response.data.banderaCanal);
+    			VolanteService.getVolantes();
+    		}
+    		else{
+    			volantesCtrl.mensaje = "El nombre elegido ya existe	";
+        		MensajesService.cerrarBlockUIGeneral("Volantes", volantesCtrl.mensaje);
+    		}
+    	
 			
 			$.unblockUI();
     		
@@ -251,6 +255,8 @@ app.controller("VolantesController", function ($scope, $http, VolanteService, Me
 				empresa: $("#nombreEmpresaPromo").val(),
     			nombreVolante: $("#txtNombreVolante").val(),
 		};
+		
+		console.debug("volante: " + JSON.stringify(volante))
 		
 		VolanteService.actualizarVolante(volante, volantesCtrl.eventoPromocion);
 		guardarContactos();
@@ -469,6 +475,7 @@ app.controller("VolantesController", function ($scope, $http, VolanteService, Me
 				console.debug("Promos: " + volantesCtrl.modfechaVigencia)
 				var fechaVigencia = $moment(volantesCtrl.arr[0].endDateOffer, "DD/MM/YYYY");
 				volantesCtrl.fechaVigencia = fechaVigencia.toDate();
+				$("#txtNombreVolante").val(volantesCtrl.arr[0].pagina)
 			}
 		}
 		else{
