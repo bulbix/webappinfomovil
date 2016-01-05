@@ -11,6 +11,7 @@ import java.util.Properties;
 import javax.servlet.http.HttpSession;
 
 import org.apache.log4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
@@ -35,7 +36,11 @@ import com.amazonaws.services.s3.AmazonS3;
 import com.amazonaws.services.s3.AmazonS3Client;
 import com.amazonaws.services.s3.model.GetObjectRequest;
 import com.amazonaws.services.s3.model.S3Object;
+import com.infomovil.webapp.clientWsInfomovil.ClientWsInfomovil;
+import com.infomovil.webapp.clientWsInfomovil.ProductoUsuarioVO;
+import com.infomovil.webapp.clientWsInfomovil.RespuestaVO;
 import com.infomovil.webapp.controllers.WebappController;
+import com.infomovil.webapp.model.ModeloWebApp;
 
 public class Util {
 	
@@ -205,18 +210,65 @@ public class Util {
 		}
 		
 	}
+
+	
+	public static String esPlanPro()
+	{
+		ClientWsInfomovil wsCliente = new ClientWsInfomovil();
+		RespuestaVO wsRespuesta = new RespuestaVO();
+		
+		ModeloWebApp modeloWebApp = new ModeloWebApp();
+		
+		String planPro = "NO";
+		String downgrade = "";
+		String tipoPlan = "";
+		String status = "";
+		String esquemaProducto = "";
+		
+		String correo = Util.getUserLogged().getUsername();
+		String password = Util.getUserLogged().getPassword();
+
+	    wsRespuesta = wsCliente.crearSitioCargar(correo, password);
+
+		downgrade = wsRespuesta.getDowngrade();
+		
+		if (downgrade.equals("DOWNGRADE"))
+			return "NO";
+		
+		tipoPlan = wsRespuesta.getDominioCreaSitio().getTipoCuenta();
+
+		esquemaProducto = wsRespuesta.getEsquemaProducto();
+		modeloWebApp.setListaProductos(wsRespuesta.getListProductoUsuarioVO());
+		
+		if (esquemaProducto.equals("NEW"))
+		{
+			ProductoUsuarioVO productoVO = null;
+			
+			planPro = "NO";
+			productoVO = modeloWebApp.getProducto("pp", "pi");
+			
+			if (productoVO != null)
+				planPro = "SI";
+		}
+	
+		if (planPro.equals("NO"))
+		{
+			status = wsRespuesta.getDominioCreaSitio().getEstatusCuenta();
+			if (modeloWebApp.getStatus(status))
+				planPro = "SI";
+		}
+		
+		logger.info("downgrade: " + downgrade + ", tipoPlan: " + tipoPlan + ", planPro: " + planPro);
+		return planPro;
+	}
 	
 	public static void main(String[] args) {
 		//Map<String,Object> items = new HashMap<String,Object>();
 		//items.put("seleccion", "web");
 		//System.out.println(guardarItemsTableDynamo("multiproducto_dev", "luis560@mail.com", items));
 		System.out.println(getItemsDynamo("multiproducto_dev", "luis560@mail.com"));
-		
-		
-		
+	
 	}
-	
-	
 
 	public static final String KEY_AMAZON_S3 = "AKIAJFSG7G2SQDTWMMYA";
 	public static final String SECRET_AMAZON_S3 = "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";

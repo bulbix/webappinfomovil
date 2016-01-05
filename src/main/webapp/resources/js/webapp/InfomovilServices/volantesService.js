@@ -91,7 +91,7 @@ app.factory('VolanteService', function($http, MensajesService) {
 			params: edatos,
 			async : true,
 		}).then(function successCallback(response) {
-			console.log("Me respondio con cuantos: "  + response.data.contacto.length);
+
 			for(i=0; i<response.data.contacto.length; i++){
 					console.log(response.data.contacto[i].contactoId);
 					console.log(response.data.contacto[i].offerId);
@@ -141,7 +141,7 @@ app.factory('VolanteService', function($http, MensajesService) {
 					"pagina" : "",
 				};
 		}
-		console.debug("Los valores de OfferId es: Server " + server + "y OfferId es: " + datos.offerId , datos.empresa, datos.pagina);
+
 		return datos;
 	};
    

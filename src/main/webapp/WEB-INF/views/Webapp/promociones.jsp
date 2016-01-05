@@ -18,6 +18,10 @@
 <body role="document" data-spy="scroll" data-target=".navbar"
 	data-offset="75" id="page-top" ng-controller="VolantesController as volantesCtrl">
 
+	<div ng-init="planPro = '${planPro}'">
+		<div>{{volantesCtrl.init(planPro)}}</div>
+	</div>
+	
 	<!-- Fixed navbar -->
 	<nav class="navbar navbar-${ claseCss } navbar-static-top">
 		<div class="container-fluid">
@@ -333,7 +337,7 @@
 												<input type="hidden" name="idContactoEmailVolante" id="idEmailContactoVolante"/>
 												
 											</div>	
-<input type="text" value="" class="col-xs-6 form-control textBlack" placeholder="10 digitos" id="telefonoVolante"/>
+											<input type="text" value="" class="col-xs-6 form-control textBlack" placeholder="10 digitos" id="telefonoVolante"/>
 											
 										</div>
 										<div class="clearfix"></div>
@@ -435,7 +439,7 @@
 												<input type="hidden" name="idContactoEmailVolante" id="idEmailContactoVolante"/>
 												
 											</div>	
-<input type="text" value="" class="col-xs-6 form-control textBlack" placeholder="10 digitos" id="telefonoVolante"/>
+										<input type="text" value="" class="col-xs-6 form-control textBlack" placeholder="10 digitos" id="telefonoVolante"/>
 											
 										</div>
 										<div class="clearfix"></div>
@@ -544,10 +548,6 @@
 				</div>
 				<!--/Theme showcase -->
 				
-			
-
-		</div>
-		
 		<input type="hidden" id="tempBanderaPromo" value="${banderaCanal}">
 		<input type="hidden" id="tempNombrePromo" value="${nombreSitio}">
 	<!-- Bootstrap core JavaScript
