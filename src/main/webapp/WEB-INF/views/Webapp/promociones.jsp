@@ -273,11 +273,16 @@
 							<div id="divError" 
 								style="color: red; display:inline; "></div></div>
 								<div class="clear"></div>
+												
+												<div ng-hide="true" id="idTelContactoVolante"></div>
+												<div ng-hide="true" id="idCelContactoVolante"></div>
+												<div ng-hide="true" id="idEmailContactoVolante"></div>	
+								
 							<div ng-if="volantesCtrl.volantes.length == 0" class="animated fadeIn">
 								<div>
 									<div ng-hide="true" id="idPromocion"></div>
 									<div ng-hide="true" id="urlPromocion"></div>
-
+									<div  ng-hide="true" id="tempPromocion"></div>
 									<div class="col-xs-12 col-sm-6 col-md-6">
 
 										<div class="form-group text-left textBlack">
@@ -340,10 +345,7 @@
 													<input type="text" id="emailContactoVolante" value="" class="textBlack form-control" placeholder="mail@mail.com"/>
 												</div>
 											
-												<input type="hidden" name="idContactoVolante" id="idContactoVolante"/>
-												<input type="hidden" name="idTelContactoVolante" id="idTelContactoVolante"/>
-												<input type="hidden" name="idEmailContactoVolante" id="idEmailContactoVolante"/>
-												<input type="hidden" name="idCelContactoVolante" id="idCelContactoVolante"/>
+												
 										</div>		
 										<div class="clearfix"></div>
 										<div class="divider"></div>
@@ -377,9 +379,9 @@
 							<div ng-repeat="item in volantesCtrl.volantes" style="margin-top: 10px;" class="animated fadeIn">
 
 								<div id="volante">
-									<div ng-hide="true" id="idPromocion">{{item.idOffer}}</div>
-									<div ng-hide="true" id="urlPromocion">{{item.urlPromocion}}</div>
-									<div ng-hide="true" id="tempPromocion">{{item.template}}</div>
+									<div  ng-hide="true" id="idPromocion">{{item.idOffer}}</div>
+									<div  ng-hide="true" id="urlPromocion">{{item.urlPromocion}}</div>
+									<div  ng-hide="true" id="tempPromocion">{{item.template}}</div>
 
 									<div class="col-xs-12 col-sm-6 col-md-6">
 										<div class="form-group text-left textBlack">
@@ -441,13 +443,8 @@
 													<input type="text" id="emailContactoVolante" value="" class="textBlack form-control" placeholder="mail@mail.com"/>
 												</div>
 											
-												<input type="hidden" name="idContactoVolante" id="idContactoVolante"/>
-												<input type="hidden" name="idTelContactoVolante" id="idTelContactoVolante"/>
-												<input type="hidden" name="idEmailContactoVolante" id="idEmailContactoVolante"/>
-												<input type="hidden" name="idCelContactoVolante" id="idCelContactoVolante"/>
 												
 										</div>		
-										
 										<div class="clearfix"></div>
 										<div class="divider"></div>
 										<div class="form-group text-left textBlack">

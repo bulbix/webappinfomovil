@@ -109,7 +109,7 @@ app.controller("VolantesController", function ($scope, $http, VolanteService, Me
 		{
 			if(volantesCtrl.resultado == "email")
 				$("#divError").html("El formato de email es incorrecto");
-			else if(volantesCtrl.resultado == "telefono" || volantesCtrl.resultado == "celular")
+			else if(volantesCtrl.resultado == "teléfono" || volantesCtrl.resultado == "celular")
 				$("#divError").html("El formato de "+volantesCtrl.resultado+" es incorrecto deben ser 10 digitos");
 			else
 			$("#divError").html("Falta llenar el campo " + volantesCtrl.resultado);
@@ -147,15 +147,16 @@ app.controller("VolantesController", function ($scope, $http, VolanteService, Me
     		}	  
     	}).then(function successCallback(response) {
     		console.log("Hara las validaciones para mandar a guardar tel o mail");
+    		JSON.stringify(response.data);
+    		
     		guardarContactos();
 		
 			VolanteService.guardarEventoGA(volantesCtrl.eventoPromocion, 
 					response.data.nombreSitio, response.data.banderaCanal);
 			
-			//VolanteService.getVolantes();
+			VolanteService.getVolantesPublicar();
 			volantesCtrl.muestraPublicarPromo = false;
 			volantesCtrl.muestraPromoPublicada = true;
-			
 			
 			$.unblockUI();
     		
@@ -187,6 +188,9 @@ app.controller("VolantesController", function ($scope, $http, VolanteService, Me
 		    			idPromocion: $("#idPromocion").text()
 		    		}	  
 		    	}).then(function successCallback(response) {
+		    		$("#idEmailContactoVolante").text("");
+		    		$("#idCelContactoVolante").text("");
+		    		$("#idTelContactoVolante").text("");
 		    		$("#telContactoVolante").val("");
 		    		$("#celContactoVolante").val("");
 		    		$("#nombreEmpresaPromo").val("");
@@ -226,8 +230,8 @@ app.controller("VolantesController", function ($scope, $http, VolanteService, Me
 		{	
 			if(volantesCtrl.resultado == "email")
 				$("#divError").html("El formato de email es incorrecto");
-			else if(volantesCtrl.resultado == "telefono")
-				$("#divError").html("El formato de teléfono es incorrecto deben ser 10 digitos");
+			else if(volantesCtrl.resultado == "teléfono" || volantesCtrl.resultado == "celular")
+				$("#divError").html("El formato de "+ volantesCtrl.resultado +" es incorrecto deben ser 10 digitos");
 			else
 			$("#divError").html("Falta llenar el campo " + volantesCtrl.resultado);
 			volantesCtrl.muestraDivError = true;
@@ -449,7 +453,7 @@ app.controller("VolantesController", function ($scope, $http, VolanteService, Me
 		else if($rp.length <= 0)
 			return "cómo redimir";
 		else if($tV.length > 0 && !regexTel.test($tV)) 
-			 return "telefono"; 
+			 return "teléfono"; 
 		else if($cV.length > 0 && !regexTel.test($cV)) 
 			 return "celular"; 
 		else if($eCV.length > 0 && !regexEmail.test($eCV)) 
@@ -525,7 +529,7 @@ var upsertContactoVolantes = function(contacto){
 
 	var getContactoTel = function(){
 		var valContacto = 0;
-		if($("#idTelContactoVolante").val() > 0) valContacto = $("#idTelContactoVolante").val(); 
+		if($("#idTelContactoVolante").text() > 0) valContacto = $("#idTelContactoVolante").text(); 
 			var offerID = VolanteService.getOfferId();
 			var contacto = {
 					contactoId: valContacto,
@@ -547,7 +551,7 @@ var upsertContactoVolantes = function(contacto){
 	
 	var getContactoCel = function(){
 		var valContacto = 0;
-		if($("#idCelContactoVolante").val() > 0) valContacto = $("#idCelContactoVolante").val(); 
+		if($("#idCelContactoVolante").text() > 0) valContacto = $("#idCelContactoVolante").text(); 
 			var offerID = VolanteService.getOfferId();
 			var contacto = {
 					contactoId: valContacto,
@@ -568,7 +572,7 @@ var upsertContactoVolantes = function(contacto){
 	};
 	var getContactoEmail = function(){
 		var valContacto = 0;
-		if($("#idEmailContactoVolante").val() > 0) valContacto = $("#idEmailContactoVolante").val(); 
+		if($("#idEmailContactoVolante").text() > 0) valContacto = $("#idEmailContactoVolante").text(); 
 		var offerID = VolanteService.getOfferId();
 			var contacto = {
 					contactoId: valContacto,
