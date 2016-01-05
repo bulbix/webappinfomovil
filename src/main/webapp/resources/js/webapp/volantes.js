@@ -147,14 +147,7 @@ app.controller("VolantesController", function ($scope, $http, VolanteService, Me
     			nombreVolante: volantesCtrl.planPro == "SI" ? $("#txtNombreVolante").val() : ""    				
     		}	  
     	}).then(function successCallback(response) {
-<<<<<<< HEAD
 
-    		guardarContactos();		
-			VolanteService.guardarEventoGA(volantesCtrl.eventoPromocion, 
-					response.data.nombreSitio, response.data.banderaCanal);
-			VolanteService.getVolantes();
-	
-=======
     		if(response.data.codeError == "0"){
     			console.log("Hara las validaciones para mandar a guardar tel o mail");
         		guardarContactos();
@@ -168,8 +161,7 @@ app.controller("VolantesController", function ($scope, $http, VolanteService, Me
     			volantesCtrl.mensaje = "El nombre elegido ya existe	";
         		MensajesService.cerrarBlockUIGeneral("Volantes", volantesCtrl.mensaje);
     		}
-			
->>>>>>> 2fda7a491f06288e1b437886b78bba26edb3fc95
+
 			$.unblockUI();
     		
     	}, function errorCallback(response) {
@@ -200,14 +192,11 @@ app.controller("VolantesController", function ($scope, $http, VolanteService, Me
 		    			idPromocion: $("#idPromocion").text()
 		    		}	  
 		    	}).then(function successCallback(response) {
-<<<<<<< HEAD
 		    		
 		    		volantesCtrl.indicePromocion = 2;
 		    		$("#telefonoVolante").val("");
-=======
 		    		$("#telContactoVolante").val("");
 		    		$("#celContactoVolante").val("");
->>>>>>> 2fda7a491f06288e1b437886b78bba26edb3fc95
 		    		$("#nombreEmpresaPromo").val("");
 		    		$("#emailContactoVolante").val("");
 		    		$("#txtNombreVolante").val("");
@@ -512,7 +501,6 @@ app.controller("VolantesController", function ($scope, $http, VolanteService, Me
 		console.debug("Este nunca se ejecuta! Server " + server + "y OfferId es: " + datos.offerId , datos.empresa, datos.pagina);
 		return datos;
 	};
-<<<<<<< HEAD
 	
 	function getService() {
 		
