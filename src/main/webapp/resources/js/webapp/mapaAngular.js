@@ -32,15 +32,11 @@ app.controller('MapCtrl', function($http, ubicacionFactory,volanteMapaService) {
 	var tipoProducto = null;
 	volanteMapaService.state.locId = 0;
 	volanteMapaService.state.offerId = 0;
-
-	console.debug("Inciando MapaCtrl");
-	//google.maps.event.addDomListener(window, 'load', initialize);
 	
-	mapaCtrl.init = function(tipo){	 
+	mapaCtrl.init = function(tipo) {
+		
 		tipoProducto = tipo;
-		console.debug("Iniciando Mapa Init " + tipo );
 		hashUser = hashUsuario();
-		console.debug("HashUsuario: " + hashUser);
 		
 		var url = ubicacionFactory.ubicacion(tipo).getUrl;
 		var params;
@@ -54,7 +50,6 @@ app.controller('MapCtrl', function($http, ubicacionFactory,volanteMapaService) {
 				volanteMapaService.state.offerId = resp[0].idOffer;
 			}
 			
-			console.debug("OfferId " + volanteMapaService.state.offerId)
 			params = {offerId:volanteMapaService.state.offerId,hashUser:hashUser};
 		}
 
@@ -214,18 +209,14 @@ app.controller('MapCtrl', function($http, ubicacionFactory,volanteMapaService) {
 			data={locId:volanteMapaService.state.locId,offerId:volanteMapaService.state.offerId,
 				hashUser:hashUser,latitude:latitud,
 				longitude:longitud,direccion:direccion}
-		}
-		
-		console.debug("Data actualizar Mapa: " + JSON.stringify(data))
-		
+		}		
 
 		$http({
 			method: 'POST',
 			url: url,
 			data:data
 		}).then(function successCallback(response) {
-			if(response.data.codeError == 0 ){
-				console.log("Ubicacion actualizada correctamente");	
+			if(response.data.codeError == 0 ) {
 				
 				if(tipoProducto == "volante"){
 					volanteMapaService.state.locId = response.data.locId;
@@ -258,7 +249,6 @@ app.controller('MapCtrl', function($http, ubicacionFactory,volanteMapaService) {
 			modeloMap.longitud = modeloMap.mapCenter.lng(); 	
 		}
 
-		console.log("ultimas a guardar: lat-> " + modeloMap.latitud + ", lon-> " +  modeloMap.longitud);
 		latLng = new google.maps.LatLng(modeloMap.latitud, modeloMap.longitud);	
 		getLocationData(latLng);	
 	}
@@ -436,7 +426,6 @@ app.controller('MapCtrl', function($http, ubicacionFactory,volanteMapaService) {
 .factory("ubicacionFactory", function(){
 	
 	var server = requestServer("POST",contextPath + "/infomovil/getPerfil",{}).perfil; 
-	console.debug("Server " + server);
 	
 	var ubicacionPagina = {
 			getUrl: server +'/api/editorPagina/getUbicacion',

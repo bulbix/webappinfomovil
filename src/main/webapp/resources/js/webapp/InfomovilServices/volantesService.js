@@ -18,11 +18,9 @@ app.factory('VolanteService', function($http, MensajesService) {
 			method: 'GET',
 			url: contextPath + "/infomovil/getPromociones",
 		}).then(function successCallback(response) {
-			
 			volantes = response.data;
 			nombreVolante = response.data.nombreSitio;
 			banderaCanal = response.data.banderaCanal;
-			console.log("getVolantes: " + response.data.length);
 			getContactosVolantes();
 			
 			if (callback != null)
@@ -40,8 +38,6 @@ app.factory('VolanteService', function($http, MensajesService) {
 			method: 'GET',
 			url: contextPath + "/infomovil/getPromociones",
 		}).then(function successCallback(response) {
-			console.log("Ahi ta tu json: " + JSON.stringify( response.data));
-		
 			$("#idPromocion").text(response.data[0].idOffer);
 			$("#urlPromocion").text(response.data[0].urlPromocion);
 			$("#tempPromocion").text(response.data[0].template);
@@ -93,15 +89,14 @@ app.factory('VolanteService', function($http, MensajesService) {
      };
 
     function guardarEventoGA(nombreEvento, nombreSitio, banderaCanal) {
-    	console.log("nombreEvento: " + nombreEvento + ", nombreSitio: " + nombreSitio + ", banderaCanal: " + banderaCanal);
-    	//ga('send', 'event', 'promo', nombreEvento, nombreSitio, banderaCanal);
+    	ga('send', 'event', 'promo', nombreEvento, nombreSitio, banderaCanal);
     };
      
     function getContactosVolantes() {
 		var url = contactos.getUrl;
 		var offerID = getOfferId();
 		var hash = hashUsuario();
-		console.log("La url quedaria así!! " + url + "?offerId="+offerID.offerId+"&hashUser="+hash);
+        
 		if(offerID.offerId > 0){
 			edatos = {offerId:offerID.offerId,hashUser:hash};
 			$http({
@@ -110,8 +105,7 @@ app.factory('VolanteService', function($http, MensajesService) {
 				params: edatos,
 				async : true,
 			}).then(function successCallback(response) {
-				console.log("Me respondio con cuantos: "  + response.data.contacto.length);
-				console.log(JSON.stringify(response.data.contacto));
+			
 				for(i=0; i<response.data.contacto.length; i++){
 						if(response.data.contacto[i].services == "E2U+voice:tel" ){
 							$("#telContactoVolante").val(response.data.contacto[i].contenido);
@@ -148,7 +142,7 @@ app.factory('VolanteService', function($http, MensajesService) {
 					"pagina" : "",
 				};
 		}
-		console.debug("Los valores de OfferId es: Server " + server + "y OfferId es: " + datos.offerId , datos.empresa, datos.pagina);
+
 		return datos;
 	};
 	

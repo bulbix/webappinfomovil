@@ -1,20 +1,14 @@
-var preferenceContVol = 0;
-	$(".datepicker").datepicker({ dateFormat: 'dd/mm/yy' });
-	console.log("$datepickerPromo");
-
-
 var app = angular.module('InfomovilVolantes', ['ngMaterial','ngMessages','angular-momentjs']);
-
+var preferenceContVol = 0;
 
 app.controller("VolantesController", function ($scope, $http, VolanteService, MensajesService,  $moment, volanteMapaService) {
 	
-	var templatesPromo = new Array("promo8", "promo6",  "promo1","promo5", "promo4", "promo7", "promo2", "promo3"); //, "promo6");
-	var nombresPromo = new Array("Navidad", "Cursos",  "Bares","Floral", "Tecnología 2", "Buen Fin", "Hipster", "Tecnología"); //, "ATT"); /*Cambiar nombres*/
+	var templatesPromo = new Array("promo8", "promo6",  "promo1", "promo5", "promo4", "promo7", "promo2", "promo3");
+	var nombresPromo = new Array("Navidad", "Cursos",  "Bares","Floral", "Tecnología 2", "Buen Fin", "Hipster", "Tecnología");
 	
 	var volantesCtrl = this;
-
-	console.debug("Volantes.js ngMaterial");
 	volantesCtrl.modfechaVigencia = "";
+	volantesCtrl.planPro = "";
 	volantesCtrl.fechaVigencia = new Date();
 	
 	//Convertir date a string fecha
@@ -24,7 +18,6 @@ app.controller("VolantesController", function ($scope, $http, VolanteService, Me
 	    var curr_month = d.getMonth() + 1; 
 	    var curr_year = d.getFullYear();
 	    volantesCtrl.modfechaVigencia = curr_date + "/" + curr_month + "/" + curr_year;
-	    console.log("Fecha Vigencia " + volantesCtrl.modfechaVigencia)
 	})
 	
 	volantesCtrl.muestraPublicarPromo = false;
@@ -38,8 +31,18 @@ app.controller("VolantesController", function ($scope, $http, VolanteService, Me
 	volantesCtrl.producto = "web";
 	volantesCtrl.vista = "editarSitio";
 	volantesCtrl.tabla = "multiproducto_dev";
-	volantesCtrl.indicePromocion = 0;
+	volantesCtrl.indicePromocion = 2;
+	volantesCtrl.maxLength = 30;
 	volantesCtrl.eventoPromocion = "";
+
+	volantesCtrl.init = function(planPro) {
+
+		volantesCtrl.planPro = planPro;
+		
+		if (volantesCtrl.planPro == "NO")
+			$("#txtNombreVolante").prop("disabled", true);
+			
+	};
 	
 	volantesCtrl.actualizaProducto = function() {
 
@@ -68,7 +71,8 @@ app.controller("VolantesController", function ($scope, $http, VolanteService, Me
 	};
 	
 	volantesCtrl.vistaPrevia = function() {
-
+		
+		volantesCtrl.indicePromocion = 2;
 		volantesCtrl.plantillaPromo = templatesPromo[volantesCtrl.indicePromocion];
     	var mensaje = "Generando vista previa...";
     	MensajesService.abrirBlockUIGeneral(mensaje);
@@ -112,12 +116,12 @@ app.controller("VolantesController", function ($scope, $http, VolanteService, Me
 			else if(volantesCtrl.resultado == "teléfono" || volantesCtrl.resultado == "celular")
 				$("#divError").html("El formato de "+volantesCtrl.resultado+" es incorrecto deben ser 10 digitos");
 			else
-			$("#divError").html("Falta llenar el campo " + volantesCtrl.resultado);
+			$("#divError").html(volantesCtrl.resultado);
 			volantesCtrl.muestraDivError = true; 
 			return;
 			
 		}
-		
+
 		volantesCtrl.muestraDivError = false;
 		volantesCtrl.plantillaFinalPromo = "promo1";
 		
@@ -126,8 +130,6 @@ app.controller("VolantesController", function ($scope, $http, VolanteService, Me
 
 		volantesCtrl.mensaje = "Publicando volante...";
     	MensajesService.abrirBlockUIGeneral(volantesCtrl.mensaje);
-    	
-    	console.debug("Fecha Vigencia: " + volantesCtrl.modfechaVigencia)
 
     	$http({
     		method: 'POST',
@@ -142,22 +144,25 @@ app.controller("VolantesController", function ($scope, $http, VolanteService, Me
     			templatePromo: $("#tempPromocion").text(),
     			idPromocion: $("#idPromocion").text(),
     			empresa: $("#nombreEmpresaPromo").val(),
-    			nombreVolante: $("#txtNombreVolante").val(),
-    				
+    			nombreVolante: volantesCtrl.planPro == "SI" ? $("#txtNombreVolante").val() : ""    				
     		}	  
     	}).then(function successCallback(response) {
-    		console.log("Hara las validaciones para mandar a guardar tel o mail");
-    		JSON.stringify(response.data);
-    		
-    		guardarContactos();
+
+
+    		if(response.data.codeError == "0"){
+        		guardarContactos();
 		
-			VolanteService.guardarEventoGA(volantesCtrl.eventoPromocion, 
-					response.data.nombreSitio, response.data.banderaCanal);
-			
-			VolanteService.getVolantesPublicar();
-			volantesCtrl.muestraPublicarPromo = false;
-			volantesCtrl.muestraPromoPublicada = true;
-			
+				VolanteService.guardarEventoGA(volantesCtrl.eventoPromocion, 
+						response.data.nombreSitio, response.data.banderaCanal);
+				
+				VolanteService.getVolantesPublicar();
+				volantesCtrl.muestraPublicarPromo = false;
+				volantesCtrl.muestraPromoPublicada = true;
+    		}
+    		else{
+    			volantesCtrl.mensaje = "El nombre elegido ya existe	";
+        		MensajesService.cerrarBlockUIGeneral("Volantes", volantesCtrl.mensaje);
+    		}
 			$.unblockUI();
     		
     	}, function errorCallback(response) {
@@ -191,12 +196,14 @@ app.controller("VolantesController", function ($scope, $http, VolanteService, Me
 		    		$("#idEmailContactoVolante").text("");
 		    		$("#idCelContactoVolante").text("");
 		    		$("#idTelContactoVolante").text("");
+		    		$("#telefonoVolante").val("");
 		    		$("#telContactoVolante").val("");
 		    		$("#celContactoVolante").val("");
 		    		$("#nombreEmpresaPromo").val("");
 		    		$("#emailContactoVolante").val("");
 		    		$("#txtNombreVolante").val("");
 		    		$("#tempPromocion").text("promo1");
+		    		volantesCtrl.indicePromocion = 2;
 					volantesCtrl.muestraPublicarPromo = true;
 					volantesCtrl.muestraPromoPublicada = false;
 					volantesCtrl.indicePromocion = 0;
@@ -208,7 +215,6 @@ app.controller("VolantesController", function ($scope, $http, VolanteService, Me
 							response.data.nombreSitio, response.data.banderaCanal);
 					VolanteService.getVolantes();
 					volanteMapaService.borrarDatos();
-					
 					
 					$.unblockUI();
 		    		
@@ -248,15 +254,17 @@ app.controller("VolantesController", function ($scope, $http, VolanteService, Me
 		var volante = {
 				nombrePromo : $("#nombrePromo").val(),
 				descPromo : $("#descPromo").val(),
-				datepickerPromo : volantesCtrl.modfechaVigencia, //$("#datepicker").val(),
+				datepickerPromo : volantesCtrl.modfechaVigencia,
 				base64Imagen : "",
 				redimir : $('.radioPromo:checked').val(),
 				infoadiPromo : $("#infoadiPromo").val(),
 				plantillaPromo : volantesCtrl.plantillaPromo,
 				idPromocion : $("#idPromocion").text(),
 				empresa: $("#nombreEmpresaPromo").val(),
-    			nombreVolante: $("#txtNombreVolante").val(),
+    			nombreVolante: volantesCtrl.planPro == "SI" ? $("#txtNombreVolante").val() : "",
 		};
+		
+		console.debug("volante: " + JSON.stringify(volante))
 		
 		VolanteService.actualizarVolante(volante, volantesCtrl.eventoPromocion);
 		guardarContactos();
@@ -275,85 +283,6 @@ app.controller("VolantesController", function ($scope, $http, VolanteService, Me
 		$scope.urlPromoShare = $("#urlPromocion").text();
 		console.log("$scope.urlPromoShare: " + $scope.urlPromoShare);
 		$('#myModalPromoShare').modal();
-	};
-	/*
-	volantesCtrl.actualizaPlantillaVolante = function() {
-		
-		volantesCtrl.plantillaPromo = templatesPromo[volantesCtrl.indicePromocion];
-		volantesCtrl.eventoPromocion = "promo-plantilla";
-		
-		if (volantesCtrl.muestraPublicarPromo)
-		{
-			volantesCtrl.mensaje = "Actualizando plantilla volante...";
-	    	MensajesService.abrirBlockUIGeneral(volantesCtrl.mensaje);
-			$('#myModalTempPromo').modal('hide');			
-			setTimeout($.unblockUI, 1000);
-		}
-		else
-		{
-			var volante = {
-					nombrePromo : $("#nombrePromo").val(),
-					descPromo : $("#descPromo").val(),
-					datepickerPromo : volantesCtrl.modfechaVigencia, //$("#datepicker").val(),
-					base64Imagen : "",
-					redimir : $('.radioPromo:checked').val(),
-					infoadiPromo : $("#infoadiPromo").val(),
-					plantillaPromo : volantesCtrl.plantillaPromo,
-					idPromocion : $("#idPromocion").text()
-			};
-
-			VolanteService.actualizarVolante(volante, volantesCtrl.eventoPromocion);
-			
-			//console.log("guardar");
-		}
-		//console.log("vista previa: " + volantesCtrl.indicePromocion);// + volantesCtrl.muestraPublicarPromo);
-	};
-	 */
-	volantesCtrl.generarSliderPromo = function()
-	{
-		var urlRecurso = "";
-		var slider = "";
-		var span = "";
-		var li = "";
-		var bandera = 0;
-		
-		slider = "<ul class='bxslider'>";
-		
-		for (i = 0; i < templatesPromo.length; i = i + 1) 
-		{	
-			urlRecurso = "https://s3-us-west-2.amazonaws.com/promo.mobileinfo.io/templates/" + templatesPromo[i] + "/" + templatesPromo[i] + ".png";
-			li = "<li class='text-center'><img style='width:100%; height:auto; min-width:280px!important; max-width:600px !important; max-height:661px!important;min-height:265px!important; display:block;' src='" + urlRecurso + "' title='" + nombresPromo[i] + "'' /></li>";
-			slider = slider + li;
-			urlRecurso = "";
-		}	
-		
-		slider + "</div><div class='modal-footer'></div></div></div></div>";
-		$(slider).insertAfter(".contenidoSlider");
-		
-		var sliderModal = $('.bxslider').bxSlider({
-			 moveSlides: 1,
-			    displaySlideQty: 2,
-			    responsive: false,
-			adaptiveHeight: true,
-			mode: 'fade',
-			captions: true,
-			pager: true,
-			touchEnabled : true,
-			useCSS:false,
-			onSlideAfter: function() { indicePromocion = sliderModal.getCurrentSlide(); },
-			});
-		
-		$(document).on('click','.bx-next', function() {
-			volantesCtrl.indicePromocion = sliderModal.getCurrentSlide();		
-			});
-		
-		$(document).on('click','.bx-prev', function() {
-			volantesCtrl.indicePromocion = sliderModal.getCurrentSlide();
-			});
-
-		$(document).on('click','.bx-pager-link', function() {
-			volantesCtrl.indicePromocion = sliderModal.getCurrentSlide();
-			});	
 	};
 
 	volantesCtrl.imprimirPromo = function() {
@@ -434,26 +363,36 @@ app.controller("VolantesController", function ($scope, $http, VolanteService, Me
 	};
 	
 	volantesCtrl.validarCampos = function() {
+		
 		var regexTel = new RegExp("^\\d{10}$");
 		var regexEmail = new RegExp('^[_a-z0-9]+(\.[_a-z0-9]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,4})$');
+		var regExpNombreVolante = new RegExp('^\\w{0,30}$');
 		var $nom = $("#nombrePromo").val().trim();
 		var $desc = $("#descPromo").val().trim();
-		var $dp = volantesCtrl.modfechaVigencia;//$("#datepicker").val();
+		var $dp = volantesCtrl.modfechaVigencia;
 		var $rp = $('.radioPromo:checked').val();
 		var $tV = $("#telContactoVolante").val();
 		var $cV = $("#celContactoVolante").val();
 		var $eCV = $("#emailContactoVolante").val();
+		var nombreVolante = $("#txtNombreVolante").val().trim();
 		
-		if($nom.length <= 0)
-			return "nombre de la promoción";
-		else if($desc.length <= 0)
-			return "descripción de la promoción";			
-		else if($dp.length <= 0)
-			return "vigencia de la promoción";	
-		else if($rp.length <= 0)
-			return "cómo redimir";
-		else if($tV.length > 0 && !regexTel.test($tV)) 
-			 return "teléfono"; 
+		if (volantesCtrl.planPro == "SI" && nombreVolante.length > 0)
+		{
+			if (!regExpNombreVolante.test(nombreVolante))
+				return "El nombre del volante no debe ser mayor a 30 caracteres ni debe contener caracteres especiales ni espacios en blanco";
+		}
+		
+
+		if ($nom.length <= 0)
+			return "Falta llenar el campo nombre de la promoción";
+		else if ($desc.length <= 0)
+			return "Falta llenar el campo descripción de la promoción";			
+		else if ($dp.length <= 0)
+			return "Falta llenar el campo vigencia de la promoción";	
+		else if ($rp.length <= 0)
+			return "Falta llenar el campo cómo redimir";
+		else if ($tV.length > 0 && !regexTel.test($tV)) 
+			 return "telefono"; 
 		else if($cV.length > 0 && !regexTel.test($cV)) 
 			 return "celular"; 
 		else if($eCV.length > 0 && !regexEmail.test($eCV)) 
@@ -478,46 +417,83 @@ app.controller("VolantesController", function ($scope, $http, VolanteService, Me
 				console.debug("Promos: " + volantesCtrl.modfechaVigencia)
 				var fechaVigencia = $moment(volantesCtrl.arr[0].endDateOffer, "DD/MM/YYYY");
 				volantesCtrl.fechaVigencia = fechaVigencia.toDate();
+				$("#txtNombreVolante").val(volantesCtrl.arr[0].pagina)
 			}
 			
 		}
-		else{
-			
-		}
-	
     });
-    
-	//$("#datepicker").datepicker({ dateFormat: 'dd/mm/yy' });
-    volantesCtrl.generarSliderPromo();
+
     VolanteService.getVolantes();
  
-
-var upsertContactoVolantes = function(contacto){
-	 var url = contactos.saveUrl;
-	 $http({	
-		 method: 'POST',
-		 url: url,
-		 data:contacto,
-		 async : true
+    var upsertContactoVolantes = function(contacto) {
+	
+    	var url = contactos.saveUrl;
+    	
+    	$http({	
+    		method: 'POST',
+    		url: url,
+    		data:contacto,
+    		async : true
 		}).then(function successCallback(response) {
 			console.log("Se guardo el contacto y me regreso: "  + response.data.codeError);
 						 
 		}, function errorCallback(response) {
-			console.log("El error es: " + response.data, response.data.code);
-			
+			console.log("El error es: " + response.data, response.data.code);	
 		});
 	};
 	
+	var upsertContactoEmpresa = function(contacto) {
+		
+		var url = contactos.saveEmpUrl;
+		var offerID = VolanteService.getOfferId();
+		var hash = hashUsuario();
+		var empresaInput = $("#nombreEmpresaPromo").val();
+		console.log("NombreEmpresa quedaría " + empresaInput );
+		dataEmp = {offerId:offerID.offerId,empresa: empresaInput, hashUser:hash};
+		$http({	
+			method: 'POST',
+			url: url,
+			data: dataEmp,
+			async : true
+		}).then(function successCallback(response) {
+			console.log("Se guardo la empresa y me regreso: "  + response.data.codeError);
+			VolanteService.getContactosVolantes();			 
+		}, function errorCallback(response) {
+			console.log("El error es: " + response.data, response.data.code);
+		});
+	};
+ 
+	var eliminarContactoVolantes = function(contacto) {
+			
+		var url = contactos.delUrl;
+			
+		$http({
+			method: 'DELETE',
+			headers: {'Content-Type': 'application/json' },
+			url: url,
+			data:contacto
+		}).then(function successCallback(response) {
+				console.log("Si me elimino el contacto: "  + response.data.codeError, response.data);
+							 
+		}, function errorCallback(response) {
+			console.log("El error es: " + response.data);
+			
+		});
+	};
 
-	function getOfferId(){
+	function getOfferId() {
+		
 		var datos = {};
 		var resp = requestServer("POST",contextPath + "/infomovil/getPromociones",{});
-		if (resp[0] != undefined){
+		
+		if (resp[0] != undefined) {
+			
 			datos = {
 				"offerId" : resp[0].idOffer,
 				"empresa" : resp[0].empresa,
 				"pagina" : resp[0].pagina,
 			};
+			
 			$("#nombreEmpresaPromo").val(datos.empresa);
 			$("#txtNombreVolante").val(datos.pagina);
 			
@@ -525,7 +501,21 @@ var upsertContactoVolantes = function(contacto){
 		console.debug("Este nunca se ejecuta! Server " + server + "y OfferId es: " + datos.offerId , datos.empresa, datos.pagina);
 		return datos;
 	};
-
+	
+	function getService() {
+		
+		if($( "#tipoTelefonoVolante" ).val() == "+52")
+		{
+			preferenceContVol = 0;
+			return "E2U+voice:tel";
+		}
+		else
+		{
+			preferenceContVol = 1;
+			return "E2U+voice:tel+x-mobile";
+		}
+		
+	};
 
 	var getContactoTel = function(){
 		var valContacto = 0;
@@ -570,30 +560,35 @@ var upsertContactoVolantes = function(contacto){
 				};
 			return contacto;
 	};
-	var getContactoEmail = function(){
+	
+	var getContactoEmail = function() {
 		var valContacto = 0;
-		if($("#idEmailContactoVolante").text() > 0) valContacto = $("#idEmailContactoVolante").text(); 
+		if($("#idEmailContactoVolante").text() > 0) 
+			valContacto = $("#idEmailContactoVolante").text(); 
+		
 		var offerID = VolanteService.getOfferId();
-			var contacto = {
-					contactoId: valContacto,
-					offerId : offerID.offerId,
-					descripcion : "",
-					orderNaptr : 0,
-					preference : 2,
-					contenido : $( "#emailContactoVolante" ).val(),
-					codigoPais : "",
-					services : "E2U+email:mailto", 
-					tipoContacto : 'mailto:',
-					activo : 1,
-					ultimaModificacion : "",
-					usuarioModifico : "",
-					hashUser : hashUsuario()
-				};
-			return contacto;
+		var contacto = {
+				contactoId: valContacto,
+				offerId : offerID.offerId,
+				descripcion : "",
+				orderNaptr : 0,
+				preference : 1,
+				contenido : $( "#emailContactoVolante" ).val(),
+				codigoPais : "",
+				services : "E2U+email:mailto", 
+				tipoContacto : 'mailto:',
+				activo : 1,
+				ultimaModificacion : "",
+				usuarioModifico : "",
+				hashUser : hashUsuario()
+			};
+			
+		return contacto;
 	};
 
-	var guardarContactos = function(){
-		if($("#telContactoVolante").val().length > 0){
+	var guardarContactos = function() {
+        
+		if($("#telContactoVolante").val().length > 0) {
 			console.log("Envio a guardar el Telefono");
 			datosContacto = getContactoTel();
 			upsertContactoVolantes(datosContacto);		 
@@ -609,7 +604,9 @@ var upsertContactoVolantes = function(contacto){
 			// Elimianar el contacto porque esta vacio
 			VolanteService.eliminarContactoVolante("cel");
 		}
-		if($("#emailContactoVolante").val().length > 0){
+		
+		if($("#emailContactoVolante").val().length > 0) 
+		{
 			console.log("Envio a guardar el Email");
 			datosContacto = getContactoEmail();
 			upsertContactoVolantes(datosContacto);	
@@ -621,4 +618,3 @@ var upsertContactoVolantes = function(contacto){
 	};
 
 });
-

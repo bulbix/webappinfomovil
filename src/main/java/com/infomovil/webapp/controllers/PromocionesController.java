@@ -38,7 +38,6 @@ public class PromocionesController
 	public ModelAndView misPromociones(HttpServletRequest request, HttpServletResponse response, RedirectAttributes redirectAttributes)
 	{		
 		HashMap<String, Object> model = new HashMap<String, Object>();
-		RespuestaVO wsRespuesta = new RespuestaVO();
 		RespuestaVO wsRpta = new RespuestaVO();
 		String nombreUsuario = "";
 		String template = "Coverpage1azul";
@@ -48,14 +47,13 @@ public class PromocionesController
 		String nombreSitio = "";
 		String banderaCanal = "0";
 		String sitioWeb = "";
-		
+		String planPro = "";
 		
 		try
 		{		
 			String correo = Util.getUserLogged().getUsername();
 			String password = Util.getUserLogged().getPassword();
 		
-			
 			if (Util.getCurrentSession().getAttribute("canal") != null)
 			{
 				if (Util.getCurrentSession().getAttribute("canal").toString().startsWith("BAZ"))
@@ -95,7 +93,8 @@ public class PromocionesController
          		banderaCanal = Util.getCurrentSession().getAttribute("banderaCanal").toString();
          	}
          	
-         
+         	planPro = Util.esPlanPro();
+         	
 			model.put("claseCss", claseCss);
 			model.put("colorTexto", colorTexto);
 			model.put("extensionImg", extensionImg);
@@ -104,6 +103,7 @@ public class PromocionesController
 			model.put("correoElectronico", correo);
 			model.put("nombreSitio", nombreSitio);
 			model.put("banderaCanal", banderaCanal);
+			model.put("planPro", planPro);
 		}		
 		catch (Exception e) 
 		{
@@ -307,8 +307,8 @@ public class PromocionesController
 		}	
 		
 		return resultMap;
-	}  	
-
+	}
+	
 	private ClientWsInfomovil wsCliente = new ClientWsInfomovil();
 	private static final Logger logger = Logger.getLogger(WebappController.class);
 }

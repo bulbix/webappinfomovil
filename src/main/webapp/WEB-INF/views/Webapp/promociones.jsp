@@ -18,6 +18,10 @@
 <body role="document" data-spy="scroll" data-target=".navbar"
 	data-offset="75" id="page-top" ng-controller="VolantesController as volantesCtrl">
 
+	<div ng-init="planPro = '${planPro}'">
+		<div>{{volantesCtrl.init(planPro)}}</div>
+	</div>
+	
 	<!-- Fixed navbar -->
 	<nav class="navbar navbar-${ claseCss } navbar-static-top">
 		<div class="container-fluid">
@@ -540,10 +544,6 @@
 				</div>
 				<!--/Theme showcase -->
 				
-			
-
-		</div>
-		
 		<input type="hidden" id="tempBanderaPromo" value="${banderaCanal}">
 		<input type="hidden" id="tempNombrePromo" value="${nombreSitio}">
 	<!-- Bootstrap core JavaScript
