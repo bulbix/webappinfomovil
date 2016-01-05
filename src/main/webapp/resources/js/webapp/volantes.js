@@ -113,8 +113,8 @@ app.controller("VolantesController", function ($scope, $http, VolanteService, Me
 		{
 			if(volantesCtrl.resultado == "email")
 				$("#divError").html("El formato de email es incorrecto");
-			else if(volantesCtrl.resultado == "telefono")
-				$("#divError").html("El formato de teléfono es incorrecto deben ser 10 digitos");
+			else if(volantesCtrl.resultado == "telefono" || volantesCtrl.resultado == "celular")
+				$("#divError").html("El formato de "+volantesCtrl.resultado+" es incorrecto deben ser 10 digitos");
 			else
 			$("#divError").html(volantesCtrl.resultado);
 			volantesCtrl.muestraDivError = true; 
@@ -147,12 +147,29 @@ app.controller("VolantesController", function ($scope, $http, VolanteService, Me
     			nombreVolante: volantesCtrl.planPro == "SI" ? $("#txtNombreVolante").val() : ""    				
     		}	  
     	}).then(function successCallback(response) {
+<<<<<<< HEAD
 
     		guardarContactos();		
 			VolanteService.guardarEventoGA(volantesCtrl.eventoPromocion, 
 					response.data.nombreSitio, response.data.banderaCanal);
 			VolanteService.getVolantes();
 	
+=======
+    		if(response.data.codeError == "0"){
+    			console.log("Hara las validaciones para mandar a guardar tel o mail");
+        		guardarContactos();
+    			VolanteService.guardarEventoGA(volantesCtrl.eventoPromocion, 
+    					response.data.nombreSitio, response.data.banderaCanal);
+    			//VolanteService.getVolantes();
+    			volantesCtrl.muestraPublicarPromo = false;
+    			volantesCtrl.muestraPromoPublicada = true;
+    		}
+    		else{
+    			volantesCtrl.mensaje = "El nombre elegido ya existe	";
+        		MensajesService.cerrarBlockUIGeneral("Volantes", volantesCtrl.mensaje);
+    		}
+			
+>>>>>>> 2fda7a491f06288e1b437886b78bba26edb3fc95
 			$.unblockUI();
     		
     	}, function errorCallback(response) {
@@ -180,13 +197,17 @@ app.controller("VolantesController", function ($scope, $http, VolanteService, Me
 		    		method: 'POST',
 		    		url: contextPath + "/infomovil/eliminarPromocion",
 		    		params: { 
-		    			idPromocion: $("#idPromocion").text(),
-		    			nombreVolante: $("#nombrePromocion").text()
+		    			idPromocion: $("#idPromocion").text()
 		    		}	  
 		    	}).then(function successCallback(response) {
+<<<<<<< HEAD
 		    		
 		    		volantesCtrl.indicePromocion = 2;
 		    		$("#telefonoVolante").val("");
+=======
+		    		$("#telContactoVolante").val("");
+		    		$("#celContactoVolante").val("");
+>>>>>>> 2fda7a491f06288e1b437886b78bba26edb3fc95
 		    		$("#nombreEmpresaPromo").val("");
 		    		$("#emailContactoVolante").val("");
 		    		$("#txtNombreVolante").val("");
@@ -250,6 +271,8 @@ app.controller("VolantesController", function ($scope, $http, VolanteService, Me
 				empresa: $("#nombreEmpresaPromo").val(),
     			nombreVolante: volantesCtrl.planPro == "SI" ? $("#txtNombreVolante").val() : "",
 		};
+		
+		console.debug("volante: " + JSON.stringify(volante))
 		
 		VolanteService.actualizarVolante(volante, volantesCtrl.eventoPromocion);
 		guardarContactos();
@@ -356,7 +379,8 @@ app.controller("VolantesController", function ($scope, $http, VolanteService, Me
 		var $desc = $("#descPromo").val().trim();
 		var $dp = volantesCtrl.modfechaVigencia;
 		var $rp = $('.radioPromo:checked').val();
-		var $tV = $("#telefonoVolante").val();
+		var $tV = $("#telContactoVolante").val();
+		var $cV = $("#celContactoVolante").val();
 		var $eCV = $("#emailContactoVolante").val();
 		var nombreVolante = $("#txtNombreVolante").val().trim();
 		
@@ -376,7 +400,9 @@ app.controller("VolantesController", function ($scope, $http, VolanteService, Me
 			return "Falta llenar el campo cómo redimir";
 		else if ($tV.length > 0 && !regexTel.test($tV)) 
 			 return "telefono"; 
-		else if ($eCV.length > 0 && !regexEmail.test($eCV)) 
+		else if($cV.length > 0 && !regexTel.test($cV)) 
+			 return "celular"; 
+		else if($eCV.length > 0 && !regexEmail.test($eCV)) 
 			 return "email"; 
 		else
 			return "datosCompletos";
@@ -398,7 +424,9 @@ app.controller("VolantesController", function ($scope, $http, VolanteService, Me
 				console.debug("Promos: " + volantesCtrl.modfechaVigencia)
 				var fechaVigencia = $moment(volantesCtrl.arr[0].endDateOffer, "DD/MM/YYYY");
 				volantesCtrl.fechaVigencia = fechaVigencia.toDate();
+				$("#txtNombreVolante").val(volantesCtrl.arr[0].pagina)
 			}
+			
 		}
 		else{
 			
@@ -407,7 +435,7 @@ app.controller("VolantesController", function ($scope, $http, VolanteService, Me
     });
 
     VolanteService.getVolantes();
-
+ 
     var upsertContactoVolantes = function(contacto) {
 	
     	var url = contactos.saveUrl;
@@ -419,7 +447,7 @@ app.controller("VolantesController", function ($scope, $http, VolanteService, Me
     		async : true
 		}).then(function successCallback(response) {
 			console.log("Se guardo el contacto y me regreso: "  + response.data.codeError);
-			VolanteService.getContactosVolantes();			 
+						 
 		}, function errorCallback(response) {
 			console.log("El error es: " + response.data, response.data.code);	
 		});
@@ -481,9 +509,10 @@ app.controller("VolantesController", function ($scope, $http, VolanteService, Me
 			$("#txtNombreVolante").val(datos.pagina);
 			
 		}
-		console.debug("Server " + server + "y OfferId es: " + datos.offerId , datos.empresa, datos.pagina);
+		console.debug("Este nunca se ejecuta! Server " + server + "y OfferId es: " + datos.offerId , datos.empresa, datos.pagina);
 		return datos;
 	};
+<<<<<<< HEAD
 	
 	function getService() {
 		
@@ -499,32 +528,49 @@ app.controller("VolantesController", function ($scope, $http, VolanteService, Me
 		}
 		
 	};
-	
-	var getContactoTel = function() {
-		
+
+	var getContactoTel = function(){
 		var valContacto = 0;
-		
-		if($("#idTelContactoVolante").val() > 0) 
-			valContacto = $("#idTelContactoVolante").val(); 
-			
-		var offerID = VolanteService.getOfferId();
-		var contacto = {
-				contactoId: valContacto,
-				offerId : offerID.offerId,
-				descripcion : "",
-				orderNaptr : 0,
-				preference : 0,
-				contenido : $( "#telefonoVolante" ).val(),
-				codigoPais : $( "#tipoTelefonoVolante" ).val(),
-				services : getService(), 
-				tipoContacto : 'tel:',
-				activo : 1,
-				ultimaModificacion : "",
-				usuarioModifico : "",
-				hashUser : hashUsuario()
-			};
-			
-		return contacto;
+		if($("#idTelContactoVolante").val() > 0) valContacto = $("#idTelContactoVolante").val(); 
+			var offerID = VolanteService.getOfferId();
+			var contacto = {
+					contactoId: valContacto,
+					offerId : offerID.offerId,
+					descripcion : "",
+					orderNaptr : 0,
+					preference : 0,
+					contenido : $( "#telContactoVolante" ).val(),
+					codigoPais : "+52",
+					services : "E2U+voice:tel", 
+					tipoContacto : 'tel:',
+					activo : 1,
+					ultimaModificacion : "",
+					usuarioModifico : "",
+					hashUser : hashUsuario()
+				};
+			return contacto;
+	};
+	
+	var getContactoCel = function(){
+		var valContacto = 0;
+		if($("#idCelContactoVolante").val() > 0) valContacto = $("#idCelContactoVolante").val(); 
+			var offerID = VolanteService.getOfferId();
+			var contacto = {
+					contactoId: valContacto,
+					offerId : offerID.offerId,
+					descripcion : "",
+					orderNaptr : 0,
+					preference : 1,
+					contenido : $( "#celContactoVolante" ).val(),
+					codigoPais : "+52 1",
+					services : "E2U+voice:tel+x-mobile", 
+					tipoContacto : 'tel:',
+					activo : 1,
+					ultimaModificacion : "",
+					usuarioModifico : "",
+					hashUser : hashUsuario()
+				};
+			return contacto;
 	};
 	
 	var getContactoEmail = function() {
@@ -555,12 +601,22 @@ app.controller("VolantesController", function ($scope, $http, VolanteService, Me
 	};
 
 	var guardarContactos = function() {
-		
-		if($("#telefonoVolante").val().length > 0)
-		{
+        
+		if($("#telContactoVolante").val().length > 0) {
 			console.log("Envio a guardar el Telefono");
 			datosContacto = getContactoTel();
 			upsertContactoVolantes(datosContacto);		 
+		}else{
+			// Elimianar el contacto porque esta vacio
+			VolanteService.eliminarContactoVolante("tel");
+		}
+		if($("#celContactoVolante").val().length > 0){
+			console.log("Envio a guardar el celular");
+			datosContacto = getContactoCel();
+			upsertContactoVolantes(datosContacto);		 
+		}else{
+			// Elimianar el contacto porque esta vacio
+			VolanteService.eliminarContactoVolante("cel");
 		}
 		
 		if($("#emailContactoVolante").val().length > 0) 
@@ -568,7 +624,11 @@ app.controller("VolantesController", function ($scope, $http, VolanteService, Me
 			console.log("Envio a guardar el Email");
 			datosContacto = getContactoEmail();
 			upsertContactoVolantes(datosContacto);	
+		}else{
+			//Elininar el contacto porque esta vacio
+			VolanteService.eliminarContactoVolante("email");
 		}
+		
 	};
 
 });
