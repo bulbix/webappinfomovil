@@ -12,13 +12,15 @@ app.controller("VolantesController", function ($scope, $http, VolanteService, Me
 	volantesCtrl.fechaVigencia = new Date();
 	
 	//Convertir date a string fecha
-	$scope.$watch('volantesCtrl.fechaVigencia', function(v){ 
+	$scope.$watch('volantesCtrl.fechaVigencia', function(v) {
+
 	    var d = new Date(v);
 	    var curr_date = d.getDate();
 	    var curr_month = d.getMonth() + 1; 
 	    var curr_year = d.getFullYear();
 	    volantesCtrl.modfechaVigencia = curr_date + "/" + curr_month + "/" + curr_year;
-	})
+
+	});
 	
 	volantesCtrl.muestraPublicarPromo = false;
 	volantesCtrl.muestraPromoPublicada = false;
@@ -116,10 +118,10 @@ app.controller("VolantesController", function ($scope, $http, VolanteService, Me
 			else if(volantesCtrl.resultado == "teléfono" || volantesCtrl.resultado == "celular")
 				$("#divError").html("El formato de "+volantesCtrl.resultado+" es incorrecto deben ser 10 digitos");
 			else
-			$("#divError").html(volantesCtrl.resultado);
-			volantesCtrl.muestraDivError = true; 
-			return;
+				$("#divError").html(volantesCtrl.resultado);
 			
+			volantesCtrl.muestraDivError = true; 
+			return;			
 		}
 
 		volantesCtrl.muestraDivError = false;
@@ -228,7 +230,7 @@ app.controller("VolantesController", function ($scope, $http, VolanteService, Me
 	};
 	
 	volantesCtrl.guardarPromocion = function() {
-		
+
 		volantesCtrl.resultado = volantesCtrl.validarCampos(); 
 		volantesCtrl.eventoPromocion = "promo-guardar";
 		

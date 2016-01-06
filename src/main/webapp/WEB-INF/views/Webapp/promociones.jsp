@@ -170,7 +170,7 @@
 
 					<div class="col-xs-2 col-sm-2 text-center reset">
 						<button type="button"
-							class="btn btn-outlineGreen textWhite navEditorLato"
+							class="btn btn-purple textWhite navEditorLato"
 							ng-click="volantesCtrl.publicarVolante()" style="margin: 5px 0;" id="btnPublicar">
 							<img width="20" height="20" alt="Infomovil"
 								src="<c:url value="/resources/webapp/images/successWhite.png"/>" />
@@ -245,12 +245,12 @@
 								
 								<div class="col-xs-2 col-sm-2 text-center reset">
 								<button type="button"
-									class="btn btn-outlineGreen textWhite navEditorLato"
+									class="btn btn-purple textWhite navEditorLato"
 									ng-click="volantesCtrl.guardarPromocion()"
 									style="margin: 5px 0 0 0;">
 									<img width="20" height="20" alt="Infomovil"
 										src="<c:url value="/resources/webapp/images/successWhite.png"/>" />
-									<span class="hidden-xs">Guardar</span>
+									<span class="hidden-xs">Actualizar</span>
 								</button></div>
 
 							</div>

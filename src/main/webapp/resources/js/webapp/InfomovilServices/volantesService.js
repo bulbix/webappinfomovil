@@ -14,6 +14,7 @@ app.factory('VolanteService', function($http, MensajesService) {
 	
     function getVolantes(callback) {
 
+    	console.log("getVolantes");
 		$http({
 			method: 'GET',
 			url: contextPath + "/infomovil/getPromociones",
@@ -34,6 +35,7 @@ app.factory('VolanteService', function($http, MensajesService) {
 	}
     function getVolantesPublicar(callback) {
 
+    	console.log("getVolantesPublicar");
 		$http({
 			method: 'GET',
 			url: contextPath + "/infomovil/getPromociones",
