@@ -376,12 +376,14 @@ app.controller("VolantesController", function ($scope, $http, VolanteService, Me
 		var $eCV = $("#emailContactoVolante").val();
 		var nombreVolante = $("#txtNombreVolante").val().trim();
 		
-		if (volantesCtrl.planPro == "SI" && nombreVolante.length > 0)
+		if (!volantesCtrl.muestraPromoPublicada) 
 		{
-			if (!regExpNombreVolante.test(nombreVolante))
-				return "El nombre del volante no debe ser mayor a 30 caracteres ni debe contener caracteres especiales ni espacios en blanco";
+			if (volantesCtrl.planPro == "SI" && nombreVolante.length > 0)
+			{
+				if (!regExpNombreVolante.test(nombreVolante))
+					return "El nombre del volante no debe ser mayor a 30 caracteres ni debe contener caracteres especiales ni espacios en blanco";
+			}
 		}
-		
 
 		if ($nom.length <= 0)
 			return "Falta llenar el campo nombre de la promoción";
@@ -392,7 +394,7 @@ app.controller("VolantesController", function ($scope, $http, VolanteService, Me
 		else if ($rp.length <= 0)
 			return "Falta llenar el campo cómo redimir";
 		else if ($tV.length > 0 && !regexTel.test($tV)) 
-			 return "telefono"; 
+			 return "teléfono"; 
 		else if($cV.length > 0 && !regexTel.test($cV)) 
 			 return "celular"; 
 		else if($eCV.length > 0 && !regexEmail.test($eCV)) 
