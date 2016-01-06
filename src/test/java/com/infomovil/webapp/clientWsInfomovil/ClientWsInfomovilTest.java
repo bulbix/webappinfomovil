@@ -342,5 +342,11 @@ public class ClientWsInfomovilTest {
 		}
 	}
 	
+	@Test
+	public void testCrearSitioRefrescarPromocion() {
+		RespuestaVO resp = clientWsInfomovil.crearSitioRefrescarPromocion("docker6@mail.com", "garbage1");
+		System.out.println(resp.getCodeError());
+	}
+	
 	
 }

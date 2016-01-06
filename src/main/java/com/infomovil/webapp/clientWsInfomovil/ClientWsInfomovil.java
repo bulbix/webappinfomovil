@@ -273,6 +273,18 @@ public class ClientWsInfomovil {
 		return _crearSitioGetPromociones__return.respuestaVO;
 	}
 	
+	public RespuestaVO crearSitioRefrescarPromocion(String email, String password)
+	{
+		log.info("Invoking crearSitioRefrescarPromocion...");
+		com.infomovil.webapp.clientWsInfomovil.CrearSitioRefrescarPromocion _crearSitioGetPromociones_parameters = new CrearSitioRefrescarPromocion();
+		_crearSitioGetPromociones_parameters.email = email;
+		_crearSitioGetPromociones_parameters.password = password;
+		com.infomovil.webapp.clientWsInfomovil.CrearSitioRefrescarPromocionResponse _crearSitioGetPromociones__return = port
+				.crearSitioRefrescarPromocion(_crearSitioGetPromociones_parameters);
+		log.info("crearSitioRefrescarPromocion.result=" + _crearSitioGetPromociones__return);
+		return _crearSitioGetPromociones__return.respuestaVO;
+	}
+	
 	public RespuestaVO crearSitioPrevisualizarPromocion(String email, String password, String descripcion, String fechaVigencia,
 			String redimir, String terminos, String titulo, String base64Imagen, String template, String empresa)
 	{
