@@ -141,9 +141,10 @@ app.controller('MapCtrl', function($http, ubicacionFactory,volanteMapaService) {
 				map.setZoom(3);
 				$("#direccionMap").html("");
 				$("#idOpcionUbicacion").html("Coloca tu ubicación");
+				$("#myModalMaps").css("display", "none");
 				
-				//offerId = 0;
-				//locId = 0;
+				requestServer("GET",contextPath + "/infomovil/refrescarPromocion",{});
+				console.debug("Refrescando la promocion")
 				
 				$.unblockUI();
 			}
@@ -226,6 +227,9 @@ app.controller('MapCtrl', function($http, ubicacionFactory,volanteMapaService) {
 				modeloMap.tieneMapa = true;
 				obtenerDireccion(myLatlng);
 				modeloMap.marker.setPosition(myLatlng);
+				
+				requestServer("GET",contextPath + "/infomovil/refrescarPromocion",{});
+				console.debug("Refrescando la promocion")
 				
 				$.unblockUI();
 			}

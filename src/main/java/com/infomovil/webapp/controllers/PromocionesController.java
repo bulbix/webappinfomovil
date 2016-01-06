@@ -191,6 +191,17 @@ public class PromocionesController
 		
 		return resultado;
 	}	
+	
+	@RequestMapping(value = "/infomovil/refrescarPromocion", method = RequestMethod.GET, produces = "application/json")
+	@ResponseBody
+	public Map<String, String> refrescarPromocion() {	
+		String correo = Util.getUserLogged().getUsername();
+		String password = Util.getUserLogged().getPassword();
+		wsCliente.crearSitioRefrescarPromocion(correo, password);
+		Map<String, String> resultado = new HashMap<String, String>();
+		resultado.put("codeError", "0");
+		return resultado;
+	}
 		
 	@SuppressWarnings("unchecked")
 	@RequestMapping(value = "/infomovil/getPromociones", method = {RequestMethod.GET, RequestMethod.POST}, produces = "application/json")

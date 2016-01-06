@@ -177,6 +177,11 @@ app.factory('VolanteService', function($http, MensajesService) {
 				valContacto = $("#idCelContactoVolante").text(""); 
 			else if(tipoContacto == "email" && ( $("#idEmailContactoVolante").text().length > 0) )
 				valContacto = $("#idEmailContactoVolante").text(""); 
+			
+			requestServer("GET",contextPath + "/infomovil/refrescarPromocion",{});
+			console.debug("Refrescando la promocion")
+			
+			
 		}, function errorCallback(response) {
 			console.log("El error de eliminar es: " + response.data.codeError);
 			

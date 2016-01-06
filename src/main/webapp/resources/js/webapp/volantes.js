@@ -440,6 +440,8 @@ app.controller("VolantesController", function ($scope, $http, VolanteService, Me
     		async : true
 		}).then(function successCallback(response) {
 			console.log("Se guardo el contacto y me regreso: "  + response.data.codeError);
+			requestServer("GET",contextPath + "/infomovil/refrescarPromocion",{});
+			console.debug("Refrescando la promocion")
 						 
 		}, function errorCallback(response) {
 			console.log("El error es: " + response.data, response.data.code);	
