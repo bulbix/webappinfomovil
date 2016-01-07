@@ -1,7 +1,14 @@
 var app = angular.module('InfomovilVolantes', ['ngMaterial','ngMessages','angular-momentjs']);
 var preferenceContVol = 0;
 
-app.controller("VolantesController", function ($scope, $http, VolanteService, MensajesService,  $moment, volanteMapaService) {
+app
+.config(function($mdDateLocaleProvider) {
+	  $mdDateLocaleProvider.formatDate = function(date) {
+	    return moment(date).format('DD/MM/YYYY');
+	  };
+})
+
+.controller("VolantesController", function ($scope, $http, VolanteService, MensajesService,  $moment, volanteMapaService) {
 	
 	var templatesPromo = new Array("promo8", "promo6",  "promo1", "promo5", "promo4", "promo7", "promo2", "promo3");
 	var nombresPromo = new Array("Navidad", "Cursos",  "Bares","Floral", "Tecnología 2", "Buen Fin", "Hipster", "Tecnología");
@@ -12,15 +19,13 @@ app.controller("VolantesController", function ($scope, $http, VolanteService, Me
 	volantesCtrl.fechaVigencia = new Date();
 	
 	//Convertir date a string fecha
-	$scope.$watch('volantesCtrl.fechaVigencia', function(v) {
-
+	$scope.$watch('volantesCtrl.fechaVigencia', function(v){ 
 	    var d = new Date(v);
 	    var curr_date = d.getDate();
 	    var curr_month = d.getMonth() + 1; 
 	    var curr_year = d.getFullYear();
 	    volantesCtrl.modfechaVigencia = curr_date + "/" + curr_month + "/" + curr_year;
-
-	});
+	})
 	
 	volantesCtrl.muestraPublicarPromo = false;
 	volantesCtrl.muestraPromoPublicada = false;
@@ -118,10 +123,10 @@ app.controller("VolantesController", function ($scope, $http, VolanteService, Me
 			else if(volantesCtrl.resultado == "teléfono" || volantesCtrl.resultado == "celular")
 				$("#divError").html("El formato de "+volantesCtrl.resultado+" es incorrecto deben ser 10 digitos");
 			else
-				$("#divError").html(volantesCtrl.resultado);
-			
+			$("#divError").html(volantesCtrl.resultado);
 			volantesCtrl.muestraDivError = true; 
-			return;			
+			return;
+			
 		}
 
 		volantesCtrl.muestraDivError = false;
@@ -231,7 +236,7 @@ app.controller("VolantesController", function ($scope, $http, VolanteService, Me
 	};
 	
 	volantesCtrl.guardarPromocion = function() {
-
+		
 		volantesCtrl.resultado = volantesCtrl.validarCampos(); 
 		volantesCtrl.eventoPromocion = "promo-guardar";
 		
@@ -383,7 +388,7 @@ app.controller("VolantesController", function ($scope, $http, VolanteService, Me
 	};
 	
 	volantesCtrl.validarCampos = function() {
-		
+		var regexFecha = new RegExp("^(0?[1-9]|[12][0-9]|3[01])[\/](0?[1-9]|1[012])[/\\/](19|20)\d{2}$");
 		var regexTel = new RegExp("^\\d{10}$");
 		var regexEmail = new RegExp('^[_a-z0-9]+(\.[_a-z0-9]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,4})$');
 		var regExpNombreVolante = new RegExp('^\\w{0,30}$');
@@ -394,6 +399,11 @@ app.controller("VolantesController", function ($scope, $http, VolanteService, Me
 		var $tV = $("#telContactoVolante").val();
 		var $cV = $("#celContactoVolante").val();
 		var $eCV = $("#emailContactoVolante").val();
+		
+		
+		var $fV = volantesCtrl.modfechaVigencia;
+		
+		
 		var nombreVolante = $("#txtNombreVolante").val().trim();
 		
 		if (!volantesCtrl.muestraPromoPublicada) 
@@ -419,6 +429,8 @@ app.controller("VolantesController", function ($scope, $http, VolanteService, Me
 			 return "celular"; 
 		else if($eCV.length > 0 && !regexEmail.test($eCV)) 
 			 return "email"; 
+		else if($fV.length > 0 && !regexFecha.test($fV)) 
+			 return "Fecha"; 
 		else
 			return "datosCompletos";
 	};
@@ -530,21 +542,6 @@ app.controller("VolantesController", function ($scope, $http, VolanteService, Me
 		}
 		console.debug("Este nunca se ejecuta! Server " + server + "y OfferId es: " + datos.offerId , datos.empresa, datos.pagina);
 		return datos;
-	};
-	
-	function getService() {
-		
-		if($( "#tipoTelefonoVolante" ).val() == "+52")
-		{
-			preferenceContVol = 0;
-			return "E2U+voice:tel";
-		}
-		else
-		{
-			preferenceContVol = 1;
-			return "E2U+voice:tel+x-mobile";
-		}
-		
 	};
 
 	var getContactoTel = function(){
