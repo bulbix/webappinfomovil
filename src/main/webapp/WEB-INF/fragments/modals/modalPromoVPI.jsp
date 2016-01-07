@@ -21,7 +21,7 @@
 					</button>
 					  <button type="button" class="hidden-xs hidden-sm btn btn-outlineGreen pull-right textWhite navEditorLato" 
 						 style="margin: 5px 8px 0 0;" ng-click="volantesCtrl.descargarArchivo('pdf')">
-						<span><img width="20" height="20" alt="Infomovil"	src="<c:url value="/resources/webapp/images/fa-print.png"/>"/> 
+						<span><img width="20" height="20" alt="Infomovil"	src="<c:url value="/resources/webapp/images/fa-pdf.png"/>"/> 
 						Descargar PDF</span> 
 					</button> 
 					<button type="button" class="hidden-xs hidden-sm btn btn-outlineGreen pull-right textWhite navEditorLato" 
