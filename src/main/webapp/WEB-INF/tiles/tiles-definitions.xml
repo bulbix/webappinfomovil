@@ -3,7 +3,7 @@
        "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"
        "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
 <tiles-definitions>
-<definition name="head" template="/WEB-INF/fragments/head.jsp" />
+	<definition name="head" template="/WEB-INF/fragments/head.jsp" />
 	<definition name="navGen" template="/WEB-INF/fragments/navGen.jsp" />
 	<definition name="navLogin" template="/WEB-INF/fragments/navLogin.jsp" />
 	<definition name="navReg" template="/WEB-INF/fragments/navReg.jsp" />
@@ -12,6 +12,7 @@
 	<definition name="footer" template="/WEB-INF/fragments/footer.jsp" />
 	<definition name="headEditorSitio" template="/WEB-INF/fragments/headEditorSitio.jsp" />
 	<definition name="formPublicar" template="/WEB-INF/fragments/formPublicar.jsp" />
+	<definition name="formVolante" template="/WEB-INF/fragments/formVolante.jsp" />
 	<definition name="modalTerminos" template="/WEB-INF/fragments/modals/modalTermCond.jsp" />
 	<definition name="modalGen" template="/WEB-INF/fragments/modals/modalGen.jsp" />
 	<definition name="modalMapFragment" template="/WEB-INF/fragments/modals/modalMapFragment.jsp" />

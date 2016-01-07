@@ -46,41 +46,22 @@
 			<div id="navbar" class="navbar-collapse collapse text-right">
 				<ul class="nav navbar-nav navbar-right">
 
-<%-- 					<li><a href="" class="smoothScroll ${colorTexto}"> <img --%>
-<!-- 							width="20" height="20" alt="Infomovil" -->
-<%-- 							src="<c:url value="/resources/webapp/images/fa-user${ extensionImg }.png"/>" /> --%>
-<!-- 							Mi Cuenta -->
-<!-- 					</a></li> -->
-<%-- 					<li><a href="" class="smoothScroll ${colorTexto}"> <img --%>
-<!-- 							width="20" height="20" alt="Infomovil" -->
-<%-- 							src="<c:url value="/resources/webapp/images/fa-pencil${ extensionImg }.png"/>" /> --%>
-<!-- 							Mi Contenido -->
-<!-- 					</a></li> -->
-<%-- 					<li><a href="" class="smoothScroll ${colorTexto}" --%>
-<!-- 						ng-click="volantesCtrl.actualizaProducto()"> <img width="20" -->
-<!-- 							height="20" alt="Infomovil" -->
-<%-- 							src="<c:url value="/resources/webapp/images/fa-compu${ extensionImg }.png"/>" /> --%>
-<!-- 							Mi Página <span class="hidden-sm">Web</span> -->
-<!-- 					</a></li> -->
-
-<li><a href="<c:url value="/infomovil/misPromociones"></c:url>" class="smoothScroll ${colorTexto}" 
+					<li><a href="<c:url value="/infomovil/misPromociones"></c:url>" class="smoothScroll ${colorTexto}" 
 						ng-click="volantesCtrl.actualizaProducto()"> <img width="20" 
 							height="20" alt="Infomovil" 
 							src="<c:url value="/resources/webapp/images/fa-back${ extensionImg }.png"/>" />
-							Regresar <span class="hidden-sm"></span> 
-				</a></li>
-					<li><a href="<c:url value="/logout"></c:url>"
-						class="smoothScroll ${colorTexto}"> <img width="20"
-							height="20" alt="Infomovil"
-							src="<c:url value="/resources/webapp/images/fa-sign-out${ extensionImg }.png"/>" />
-							Cerrar <span class="hidden-sm hidden-md">sesión</span>
-					</a></li>
+							Regresar <span class="hidden-sm"></span></a>
+					</li>
+					<li><a href="<c:url value="/logout"></c:url>" class="smoothScroll ${colorTexto}"> 
+							<img width="20" height="20" alt="Infomovil" src="<c:url value="/resources/webapp/images/fa-sign-out${ extensionImg }.png"/>" />
+							Cerrar <span class="hidden-sm hidden-md">sesión</span></a>
+					</li>
 
 					<!--  Mostrar para BAZ -->
 					<li class="hidden-xs" id="idRegBAZ" style="display: none;"><a
 						href="#" class="smoothScroll"><img width="30" height="30"
-							alt="Infomovil"
-							src="<c:url value="/resources/webapp/images/apple-touch-icon-57x57.png"/>" /></a>
+						alt="Infomovil"
+						src="<c:url value="/resources/webapp/images/apple-touch-icon-57x57.png"/>" /></a>
 					</li>
 					<!--  /Mostrar para BAZ -->
 
@@ -108,12 +89,6 @@
 						<div class="clearfix"></div>
 						<p style="line-height:1em; font-size:.9em">Haz clic en el estilo que te agrade</p>
 						<div class="clearfix"></div><div class="dividerSmall"></div></div>
-<!-- 					<div class="col-xs-3 reset"> -->
-<%-- 						<a href="<c:url value="/infomovil/misPromociones"></c:url>" --%>
-<!-- 							class="btn-default btn-outline navEditor pull-right"> -->
-<!-- 							<span id="idOpcionMasCont"><img width="20" height="20" -->
-<%-- 							alt="Infomovil" src="<c:url value="/resources/webapp/images/fa-back.png"/>" /><span class="hidden-xs"> Regresar</span> </span> --%>
-<!-- 						</a></div> -->
 				</div>
 			</div>
 
@@ -122,9 +97,7 @@
 		<!-- /Botón Nuevo Estilo -->
 		<!-- Formulario Promociones -->
 
-		<div class="containerExt" ng-controller="EstiloVolanteController as estiloVolanteCtrl">
-
-		
+		<div class="containerExt" ng-controller="EstiloVolanteController as estiloVolanteCtrl">		
 
 			<div ng-repeat="item in estiloVolanteCtrl.plantillas">
 				
@@ -175,34 +148,13 @@
 	<script src="<c:url value="/resources/webapp/js/bootstrap.js"/>"></script>
 	<script src="<c:url value="/resources/webapp/js/docs.min.js"/>"></script>
 	<script src="<c:url value="/resources/webapp/js/smoothscroll.js"/>"></script>
-	<script
-		src="<c:url value="/resources/webapp/js/ie10-viewport-bug-workaround.js"/>"></script>
-	<!-- bxSlider Javascript file -->
-	<script
-		src="<c:url value="/resources/webapp/js/jquery.bxslider.min.js"/>"></script>
-	<script
-		src="<c:url value="/resources/webapp/js/bootstrap-dialog.min.js"/>"></script>
-	<script src="<c:url value="/resources/webapp/js/jquery.numeric.js"/>"></script>
+	<script src="<c:url value="/resources/webapp/js/ie10-viewport-bug-workaround.js"/>"></script>
 	<script src="<c:url value="/resources/webapp/js/jquery.blockUI.js"/>"></script>
 	<script src="<c:url value="/resources/js/webapp/util.js"/>"></script>
 	<script src="<c:url value="/resources/js/webapp/estiloVolante.js"/>"></script>
 	<script src="<c:url value="/resources/js/webapp/InfomovilServices/volantesService.js"/>"></script>
 	<script src="<c:url value="/resources/js/webapp/InfomovilServices/mensajesService.js"/>"></script>
 
-	<script>
-		<c:choose>
-		<c:when test="${sessionScope.canalUsuario == 'BAZ'}">
-		$("#logoBAZ").css("display", "block");
-		$("#idRegBAZ").css("display", "block");
-		$("#logoGral").css("display", "none");
-		</c:when>
-		<c:otherwise>
-		$("#logoBAZ").css("display", "none");
-		$("#idRegBAZ").css("display", "none");
-		$("#logoGral").css("display", "block");
-		</c:otherwise>
-		</c:choose>
-	</script>
 </body>
 
 </html>
