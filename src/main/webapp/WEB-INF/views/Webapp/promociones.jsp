@@ -327,7 +327,7 @@
 										<div class="form-group text-left textBlack col-xs-11 reset">
 											<label for="exampleInputEmail1" class="text-left">Vigencia
 												al:</label>
-											<md-content>
+											<md-content style="margin:0 0 0 -17px;">
 												<md-datepicker ng-model="volantesCtrl.fechaVigencia" md-placeholder="Vigencia"/>
 											</md-content>
 
