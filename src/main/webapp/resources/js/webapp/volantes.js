@@ -616,7 +616,6 @@ app
 	var guardarContactos = function() {
         
 		if($("#telContactoVolante").val().length > 0) {
-			console.log("Envio a guardar el Telefono");
 			datosContacto = getContactoTel();
 			upsertContactoVolantes(datosContacto);		 
 		}else{
@@ -624,7 +623,6 @@ app
 			VolanteService.eliminarContactoVolante("tel");
 		}
 		if($("#celContactoVolante").val().length > 0){
-			console.log("Envio a guardar el celular");
 			datosContacto = getContactoCel();
 			upsertContactoVolantes(datosContacto);		 
 		}else{
@@ -634,7 +632,6 @@ app
 		
 		if($("#emailContactoVolante").val().length > 0) 
 		{
-			console.log("Envio a guardar el Email");
 			datosContacto = getContactoEmail();
 			upsertContactoVolantes(datosContacto);	
 		}else{
