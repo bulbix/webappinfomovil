@@ -127,20 +127,20 @@
 	<!-- Botón Nuevo Estilo -->
 	<div>
 		<div class="seccTop bgBlack">
-<div class="containerExt">
+<div class="container">
 			<div class="">
 				<!-- Botones sin publicar -->
 				<div ng-show="volantesCtrl.muestraPublicarPromo" class="animated fadeIn">
 
 					<div class="col-xs-2 col-sm-2 text-center reset">
-						<button type="button"
-							class=" btn btn-outlineGreen textWhite navEditorLato"
-							ng-click="volantesCtrl.vistaPrevia()"
-							style="margin: 5px 8px 0 0;">
-							<img width="20" height="20" alt="Infomovil"
-								src="<c:url value="/resources/webapp/images/fa-eye.png"/>" /> <span
-								class="hidden-xs">Vista <span class="hidden-sm">Previa</span></span>
-						</button>
+<!-- 						<button type="button" -->
+<!-- 							class=" btn btn-outlineGreen textWhite navEditorLato" -->
+<!-- 							ng-click="volantesCtrl.vistaPrevia()" -->
+<!-- 							style="margin: 5px 8px 0 0;"> -->
+<!-- 							<img width="20" height="20" alt="Infomovil" -->
+<%-- 								src="<c:url value="/resources/webapp/images/fa-eye.png"/>" /> <span --%>
+<!-- 								class="hidden-xs">Vista <span class="hidden-sm">Previa</span></span> -->
+<!-- 						</button> -->
 					</div>
 					<div class="col-xs-2 col-sm-2 text-center reset" ng-show="volantesCtrl.muestraPromoPublicada">
 						<a href="<c:url value="/infomovil/estiloVolante"></c:url>" 
@@ -152,10 +152,10 @@
 						</a>
 					</div>					
 
-					<div class="col-xs-6 col-sm-6 reset">
+					<div class="col-xs-8 col-sm-8 reset">
 						<div class=" form-group" style="padding:6px 0;">
 							<div class="control-group">
-								<label class="control-label hidden-xs hidden-sm col-md-4 navEditor"><div style="padding:4px 0;">promo.mobileinfo.io/</div></label>
+								<label class="control-label hidden-xs hidden-sm col-md-4 navEditor"><div style="padding:4px 0; text-align:right">promo.mobileinfo.io/</div></label>
 								<div class="controls col-xs-12 col-sm-8  pull-right reset">
 									<input type="text" class="form-control text-left "
 										maxlength="128" placeholder="Nombre de tu volante"
@@ -267,11 +267,11 @@
 			<div class="col-xs-12 reset">
 
 				<!--Theme showcase -->
-				<div class=" navEditor" role="main" id="intro">
+				<div class="page-header text-center" role="main" id="intro">
 					<!-- Main jumbotron for a primary marketing message or call to action -->
 						<!-- page header <input type="text" id="checkedRedimir" value=""/>-->
 						<div class="clear"></div>
-						<div class=" text-center" style="border-radius:15px; background:url(<c:url value="/resources/webapp/images/bgWhTra.png"/>); padding:10px 0;">
+						<div class=" text-center" >
 							<div class="clearfix"></div>
 							<div ng-show="volantesCtrl.muestraDivError" style="margin: 0 0 20px 0;"><img src="<c:url value="/resources/webapp/images/fa-warning-red.png"/>" width="20" height="20" alt="Alerta"  />
 							<div id="divError" 
@@ -283,7 +283,7 @@
 												<div ng-hide="true" id="idEmailContactoVolante"></div>	
 								
 							<div ng-if="volantesCtrl.volantes.length == 0" class="animated fadeIn">
-								<div>
+								<div class="navEditorLato">
 									<div ng-hide="true" id="idPromocion"></div>
 									<div ng-hide="true" id="urlPromocion"></div>
 									<div  ng-hide="true" id="tempPromocion"></div>
@@ -382,7 +382,7 @@
 
 							<div ng-repeat="item in volantesCtrl.volantes" style="margin-top: 10px;" class="animated fadeIn">
 
-								<div id="volante">
+								<div id="volante" class="navEditorLato">
 									<div  ng-hide="true" id="idPromocion">{{item.idOffer}}</div>
 									<div  ng-hide="true" id="urlPromocion">{{item.urlPromocion}}</div>
 									<div  ng-hide="true" id="tempPromocion">{{item.template}}</div>
@@ -484,25 +484,17 @@
 									</div>
 								</div>
 
-								<tiles:insertDefinition name="modalGen">
-									<tiles:putAttribute name="idModal" value="myModalPromoShare" />
-									<tiles:putAttribute name="tamanioModal"
-										value='"modal-dialog modal-md"' />
-									<c:set var="fragmentName" value="modalPromoShare"
-										scope="request" />
-									<c:set var="urlPromo" value="{{item.urlPromocion}}"
-										scope="session" />
-								</tiles:insertDefinition>
+								
 							</div>
 							
 								<!-- /Botón MAPS -->
 								<div class="clear"></div>
-								<div class="divider"></div>
+								
 										<div class="col-xs-12" ng-show="volantesCtrl.muestraPromoPublicada">
 											<a href="#" data-toggle="modal" data-target="#myModalMaps"
-												class="col-xs-12 col-sm-6 btn btn-default btn-outlineGreen navEditor">
+												class="col-xs-12 col-sm-6 btn btn-default btn-outline navEditor text-left textBlack">
 												<img width="25" height="25" alt="Infomovil"
-												src="<c:url value="/resources/webapp/images/icn_marc_maps.png"/>" />
+												src="<c:url value="/resources/webapp/images/icn_marc_maps-bk.png"/>" />
 												<span id="idOpcionUbicacion"><span class="hidden-xs">Colocar mi</span> Ubicación</span> <br /> <span
 												id="direccionMap" class="directionMap"></span>
 												<div class="clearfix"></div>
@@ -521,6 +513,17 @@
 
 						<!-- /page header -->
 						<br /> <br />
+						
+						<tiles:insertDefinition name="modalGen">
+									<tiles:putAttribute name="idModal" value="myModalPromoShare" />
+									<tiles:putAttribute name="tamanioModal"
+										value='"modal-dialog modal-md"' />
+									<c:set var="fragmentName" value="modalPromoShare"
+										scope="request" />
+									<c:set var="urlPromo" value="{{item.urlPromocion}}"
+										scope="session" />
+								</tiles:insertDefinition>
+								
 						<div id='myModalTempPromo' class='modal fade' tabindex='-1'
 							role='dialog' aria-labelledby='myModalLabel' aria-hidden='true'>
 							<div class='modal-dialog modal-md'>
