@@ -1,7 +1,14 @@
 var app = angular.module('InfomovilVolantes', ['ngMaterial','ngMessages','angular-momentjs']);
 var preferenceContVol = 0;
 
-app.controller("VolantesController", function ($scope, $http, VolanteService, MensajesService,  $moment, volanteMapaService) {
+app
+.config(function($mdDateLocaleProvider) {
+	  $mdDateLocaleProvider.formatDate = function(date) {
+	    return moment(date).format('DD/MM/YYYY');
+	  };
+})
+
+.controller("VolantesController", function ($scope, $http, VolanteService, MensajesService,  $moment, volanteMapaService) {
 	
 	var templatesPromo = new Array("promo8", "promo6",  "promo1", "promo5", "promo4", "promo7", "promo2", "promo3");
 	var nombresPromo = new Array("Navidad", "Cursos",  "Bares","Floral", "Tecnología 2", "Buen Fin", "Hipster", "Tecnología");
