@@ -22,10 +22,8 @@ app
 	$scope.$watch('volantesCtrl.fechaVigencia', function(v) {
 
 	    var d = new Date(v);
-	    var curr_date = d.getDate();
-	    var curr_month = d.getMonth() + 1; 
-	    var curr_year = d.getFullYear();
-	    volantesCtrl.modfechaVigencia = curr_date + "/" + curr_month + "/" + curr_year;
+	    volantesCtrl.modfechaVigencia = moment(d).format('DD/MM/YYYY');
+	    console.debug("modfechaVigencia " + volantesCtrl.modfechaVigencia);
 
 	});
 	
