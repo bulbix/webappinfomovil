@@ -257,8 +257,7 @@ public class Util {
 			if (modeloWebApp.getStatus(status))
 				planPro = "SI";
 		}
-		
-		logger.info("downgrade: " + downgrade + ", tipoPlan: " + tipoPlan + ", planPro: " + planPro);
+
 		return planPro;
 	}
 	
