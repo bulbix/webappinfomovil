@@ -249,7 +249,7 @@
 									ng-click="volantesCtrl.guardarPromocion()"
 									style="margin: 5px 0 0 0;">
 									<img width="20" height="20" alt="Infomovil"
-										src="<c:url value="/resources/webapp/images/successWhite.png"/>" />
+										src="<c:url value="/resources/webapp/images/ico_actualizar.png"/>" />
 									<span class="hidden-xs">Actualizar</span>
 								</button></div>
 
