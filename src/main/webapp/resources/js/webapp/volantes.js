@@ -19,12 +19,10 @@ app
 	volantesCtrl.fechaVigencia = new Date();
 	
 	//Convertir date a string fecha
-	$scope.$watch('volantesCtrl.fechaVigencia', function(v) {
-
+	$scope.$watch('volantesCtrl.fechaVigencia', function(v){ 
 	    var d = new Date(v);
 	    volantesCtrl.modfechaVigencia = moment(d).format('DD/MM/YYYY');
 	    console.debug("modfechaVigencia " + volantesCtrl.modfechaVigencia);
-
 	});
 	
 	volantesCtrl.muestraPublicarPromo = false;
@@ -123,10 +121,10 @@ app
 			else if(volantesCtrl.resultado == "teléfono" || volantesCtrl.resultado == "celular")
 				$("#divError").html("El formato de "+volantesCtrl.resultado+" es incorrecto deben ser 10 digitos");
 			else
-				$("#divError").html(volantesCtrl.resultado);
-			
+			$("#divError").html(volantesCtrl.resultado);
 			volantesCtrl.muestraDivError = true; 
-			return;			
+			return;
+			
 		}
 
 		volantesCtrl.muestraDivError = false;
@@ -236,7 +234,7 @@ app
 	};
 	
 	volantesCtrl.guardarPromocion = function() {
-
+		
 		volantesCtrl.resultado = volantesCtrl.validarCampos(); 
 		volantesCtrl.eventoPromocion = "promo-guardar";
 		
@@ -287,7 +285,22 @@ app
 	volantesCtrl.compartirPromo = function() {
 		
 		$scope.urlPromoShare = $("#urlPromocion").text();
-		console.log("$scope.urlPromoShare: " + $scope.urlPromoShare);
+		var lWhatsapp = "javascript:alert('Esta acción no se puede completar en este dispositivo')";
+		
+		var lFace = "http://www.facebook.com/sharer/sharer.php?u=" + $scope.urlPromoShare + "&t=Checa%20esta%20promo%20"; 
+		var lGoogle = "https://plus.google.com/share?url=" + $scope.urlPromoShare; 	
+		var lEmail = "mailto:?subject="+ $scope.urlPromoShare + "%20Checa%20esta%20promo!&body=Checa%20esta%20promo:%20"+ $scope.urlPromoShare + "%0A%0ACrea%20un%20volante%20digital%20asi%20con%20www.infomovil.com%0A%0A"; 
+		var lTwitt = "http://www.twitter.com/intent/tweet?text="+ $scope.urlPromoShare +"%20%0A%0ACheca%20esta%20promo:%20"+ $scope.urlPromoShare; 
+		
+		if(navigator.userAgent.match(/Android|BlackBerry|iPhone|iPad|iPod|Opera Mini|IEMobile/i))
+			var lWhatsapp = "whatsapp://send?text=Checa%20esta%20promo:%20" + $scope.urlPromoShare;
+		
+		$('#Facebook').attr('href', lFace);
+		$('#Google').attr('href', lGoogle);
+		$('#Email').attr('href', lEmail);
+		$('#Twitter').attr('href', lTwitt);
+		$('#WhatsApp').attr('href', lWhatsapp);
+	
 		$('#myModalPromoShare').modal();
 	};
 
@@ -355,6 +368,10 @@ app
 		
 		volantesCtrl.eventoPromocion = "promo-guardarPDF";
 		volantesCtrl.pathArchivo = $("#urlVistaPreviaPromoImprimir").attr('src');
+		
+		if (volantesCtrl.pathArchivo == undefined)
+			volantesCtrl.pathArchivo = $("#urlPromocion").text() + "?vistaPrevia=1";
+		
 		volantesCtrl.pathArchivo = volantesCtrl.pathArchivo.replace("html", tipo);
 		volantesCtrl.link = document.createElement("a");
 		volantesCtrl.link.download = "promo." + tipo;
@@ -369,7 +386,7 @@ app
 	};
 	
 	volantesCtrl.validarCampos = function() {
-		
+		var regexFecha = new RegExp("^(0?[1-9]|[12][0-9]|3[01])[\/](0?[1-9]|1[012])[/\\/](19|20)\d{2}$");
 		var regexTel = new RegExp("^\\d{10}$");
 		var regexEmail = new RegExp('^[_a-z0-9]+(\.[_a-z0-9]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,4})$');
 		var regExpNombreVolante = new RegExp('^\\w{0,30}$');
@@ -380,6 +397,11 @@ app
 		var $tV = $("#telContactoVolante").val();
 		var $cV = $("#celContactoVolante").val();
 		var $eCV = $("#emailContactoVolante").val();
+		
+		
+		var $fV = volantesCtrl.modfechaVigencia;
+		
+		
 		var nombreVolante = $("#txtNombreVolante").val().trim();
 		
 		if (!volantesCtrl.muestraPromoPublicada) 
@@ -405,6 +427,8 @@ app
 			 return "celular"; 
 		else if($eCV.length > 0 && !regexEmail.test($eCV)) 
 			 return "email"; 
+		else if($fV.length > 0 && !regexFecha.test($fV)) 
+			 return "Fecha"; 
 		else
 			return "datosCompletos";
 	};
@@ -516,21 +540,6 @@ app
 		}
 		console.debug("Este nunca se ejecuta! Server " + server + "y OfferId es: " + datos.offerId , datos.empresa, datos.pagina);
 		return datos;
-	};
-	
-	function getService() {
-		
-		if($( "#tipoTelefonoVolante" ).val() == "+52")
-		{
-			preferenceContVol = 0;
-			return "E2U+voice:tel";
-		}
-		else
-		{
-			preferenceContVol = 1;
-			return "E2U+voice:tel+x-mobile";
-		}
-		
 	};
 
 	var getContactoTel = function(){

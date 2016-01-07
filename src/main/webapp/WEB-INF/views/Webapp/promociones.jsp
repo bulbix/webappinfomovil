@@ -226,7 +226,7 @@
 								<div class="hidden-md hidden-lg col-xs-2 col-sm-2 text-center reset">
 								<button type="button"
 									class=" btn btn-outlineGreen  textWhite navEditorLato"
-									ng-click="volantesCtrl.descargarPDF()" style="margin: 5px 0 0 0;">
+									ng-click="volantesCtrl.descargarArchivo('pdf')" style="margin: 5px 0 0 0;">
 									<span><img width="20" height="20" alt="Infomovil"
 										src="<c:url value="/resources/webapp/images/fa-pdf.png"/>" />
 									</span> <span class="hidden-xs">PDF<span class="hidden-xs hidden-sm">/Imagen</span></span>
