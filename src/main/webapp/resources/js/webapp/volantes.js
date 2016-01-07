@@ -120,6 +120,8 @@ app
 				$("#divError").html("El formato de email es incorrecto");
 			else if(volantesCtrl.resultado == "teléfono" || volantesCtrl.resultado == "celular")
 				$("#divError").html("El formato de "+volantesCtrl.resultado+" es incorrecto deben ser 10 digitos");
+			else if(volantesCtrl.resultado == "fecha")
+				$("#divError").html("El formato de "+volantesCtrl.resultado+" es incorrecto");
 			else
 			$("#divError").html(volantesCtrl.resultado);
 			volantesCtrl.muestraDivError = true; 
@@ -244,9 +246,12 @@ app
 				$("#divError").html("El formato de email es incorrecto");
 			else if(volantesCtrl.resultado == "teléfono" || volantesCtrl.resultado == "celular")
 				$("#divError").html("El formato de "+ volantesCtrl.resultado +" es incorrecto deben ser 10 digitos");
+			else if(volantesCtrl.resultado == "fecha")
+				$("#divError").html("El formato de "+volantesCtrl.resultado+" es incorrecto");
 			else
-			$("#divError").html("Falta llenar el campo " + volantesCtrl.resultado);
-			volantesCtrl.muestraDivError = true;
+				$("#divError").html("Falta llenar el campo " + volantesCtrl.resultado);
+			
+				volantesCtrl.muestraDivError = true;
 			return;
 		}
 		
@@ -386,7 +391,7 @@ app
 	};
 	
 	volantesCtrl.validarCampos = function() {
-		var regexFecha = new RegExp("^(?:(?:31(\/|-|\.)(?:0?[13578]|1[02]))\1|(?:(?:29|30)(\/|-|\.)(?:0?[1,3-9]|1[0-2])\2))(?:(?:1[6-9]|[2-9]\d)?\d{2})$|^(?:29(\/|-|\.)0?2\3(?:(?:(?:1[6-9]|[2-9]\d)?(?:0[48]|[2468][048]|[13579][26])|(?:(?:16|[2468][048]|[3579][26])00))))$|^(?:0?[1-9]|1\d|2[0-8])(\/|-|\.)(?:(?:0?[1-9])|(?:1[0-2]))\4(?:(?:1[6-9]|[2-9]\d)?\d{2})$");
+		var regexFecha = new RegExp(/^(((0[1-9]|[12]\d|3[01])\/(0[13578]|1[02])\/((19|[2-9]\d)\d{2}))|((0[1-9]|[12]\d|30)\/(0[13456789]|1[012])\/((19|[2-9]\d)\d{2}))|((0[1-9]|1\d|2[0-8])\/02\/((19|[2-9]\d)\d{2}))|(29\/02\/((1[6-9]|[2-9]\d)(0[48]|[2468][048]|[13579][26])|((16|[2468][048]|[3579][26])00))))$/g);
 		var regexTel = new RegExp("^\\d{10}$");
 		var regexEmail = new RegExp('^[_a-z0-9]+(\.[_a-z0-9]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,4})$');
 		var regExpNombreVolante = new RegExp('^\\w{0,30}$');
@@ -397,12 +402,9 @@ app
 		var $tV = $("#telContactoVolante").val();
 		var $cV = $("#celContactoVolante").val();
 		var $eCV = $("#emailContactoVolante").val();
-		
-		
-		var $fV = volantesCtrl.modfechaVigencia;
-		
-		
 		var nombreVolante = $("#txtNombreVolante").val().trim();
+		var $fV = $(".md-datepicker-input").val();
+		var bolFecha = regexFecha.test($fV);
 		
 		if (!volantesCtrl.muestraPromoPublicada) 
 		{
@@ -413,8 +415,6 @@ app
 			}
 		}
 
-		console.log("Me duele el abdomen!!!: "+$fV);
-		
 		if ($nom.length <= 0)
 			return "Falta llenar el campo nombre de la promoción";
 		else if ($desc.length <= 0)
@@ -429,8 +429,8 @@ app
 			 return "celular"; 
 		else if($eCV.length > 0 && !regexEmail.test($eCV)) 
 			 return "email"; 
-		else if($fV.length > 0 && !regexFecha.test($fV)) 
-			 return "Fecha"; 
+		else if(!bolFecha )
+			 return "fecha"; 
 		else
 			return "datosCompletos";
 	};
