@@ -391,6 +391,7 @@ app
 	};
 	
 	volantesCtrl.validarCampos = function() {
+		
 		var regexFecha = new RegExp(/^(((0[1-9]|[12]\d|3[01])\/(0[13578]|1[02])\/((19|[2-9]\d)\d{2}))|((0[1-9]|[12]\d|30)\/(0[13456789]|1[012])\/((19|[2-9]\d)\d{2}))|((0[1-9]|1\d|2[0-8])\/02\/((19|[2-9]\d)\d{2}))|(29\/02\/((1[6-9]|[2-9]\d)(0[48]|[2468][048]|[13579][26])|((16|[2468][048]|[3579][26])00))))$/g);
 		var regexTel = new RegExp("^\\d{10}$");
 		var regexEmail = new RegExp('^[_a-z0-9]+(\.[_a-z0-9]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,4})$');
@@ -616,7 +617,6 @@ app
 	var guardarContactos = function() {
         
 		if($("#telContactoVolante").val().length > 0) {
-			console.log("Envio a guardar el Telefono");
 			datosContacto = getContactoTel();
 			upsertContactoVolantes(datosContacto);		 
 		}else{
@@ -624,7 +624,6 @@ app
 			VolanteService.eliminarContactoVolante("tel");
 		}
 		if($("#celContactoVolante").val().length > 0){
-			console.log("Envio a guardar el celular");
 			datosContacto = getContactoCel();
 			upsertContactoVolantes(datosContacto);		 
 		}else{
@@ -634,7 +633,6 @@ app
 		
 		if($("#emailContactoVolante").val().length > 0) 
 		{
-			console.log("Envio a guardar el Email");
 			datosContacto = getContactoEmail();
 			upsertContactoVolantes(datosContacto);	
 		}else{
