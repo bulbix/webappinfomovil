@@ -185,6 +185,7 @@ app.controller("VolantesController", function ($scope, $http, VolanteService, Me
 			
 			if (confirmarBorrar) {
 
+				console.log("id promo: " +  $("#idPromocion").text());
 				volantesCtrl.mensaje = "Eliminando volante...";
 		    	MensajesService.abrirBlockUIGeneral(volantesCtrl.mensaje);
 	    		

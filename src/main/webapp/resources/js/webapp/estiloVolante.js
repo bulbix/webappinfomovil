@@ -60,8 +60,8 @@ app.controller("EstiloVolanteController", function ($scope, $http, VolanteServic
 	
 	estiloVolanteCtrl.actulizaPlantilla = function(item) {
 	
-		//if (estiloVolanteCtrl.volante == undefined) 
-		//	return;
+		if (estiloVolanteCtrl.volante == undefined) 
+			return;
 		
 		estiloVolanteCtrl.volante = VolanteService.volantes();
 		estiloVolanteCtrl.eventoPromocion = "promo-plantilla";

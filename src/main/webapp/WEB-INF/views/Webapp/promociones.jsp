@@ -282,21 +282,22 @@
 								<div ng-hide="true" id="idCelContactoVolante"></div>
 								<div ng-hide="true" id="idEmailContactoVolante"></div>	
 
-							<div id="formVolanteVacio" style="display:none;">
+							<div ng-if="volantesCtrl.volantes.length == 0" id="formVolanteVacio">
 								<tiles:insertDefinition name="formVolante"></tiles:insertDefinition>							
 							</div>
 
 							<div ng-repeat="item in volantesCtrl.volantes" style="margin-top: 10px;">
 
+								<div ng-hide="true" id="idPromocion">{{item.idOffer}}</div>
+								<div ng-hide="true" id="urlPromocion">{{item.urlPromocion}}</div>
+								<div ng-hide="true" id="tempPromocion">{{item.template}}</div>
+									
 								<div id="volante" class="navEditorLato">
-									<div  ng-hide="true" id="idPromocion">{{item.idOffer}}</div>
-									<div  ng-hide="true" id="urlPromocion">{{item.urlPromocion}}</div>
-									<div  ng-hide="true" id="tempPromocion">{{item.template}}</div>
 
 									<div class="col-xs-12 col-sm-6 col-md-6">
 										<div class="form-group text-left textBlack">
 											<label for="exampleInputEmpresa">Tu empresa:</label> <input type="text" class="form-control"
-												id="nombreEmpresaPromo" value="">
+												id="nombreEmpresaPromo" value="{{item.empresa}}">
 										</div>
 										<div class="divider"></div>
 										<div class="form-group text-left textBlack">
