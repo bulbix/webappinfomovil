@@ -1,7 +1,14 @@
 var app = angular.module('InfomovilVolantes', ['ngMaterial','ngMessages','angular-momentjs']);
 var preferenceContVol = 0;
 
-app.controller("VolantesController", function ($scope, $http, VolanteService, MensajesService,  $moment, volanteMapaService) {
+app
+.config(function($mdDateLocaleProvider) {
+	  $mdDateLocaleProvider.formatDate = function(date) {
+	    return moment(date).format('DD/MM/YYYY');
+	  };
+})
+
+.controller("VolantesController", function ($scope, $http, VolanteService, MensajesService,  $moment, volanteMapaService) {
 	
 	var templatesPromo = new Array("promo8", "promo6",  "promo1", "promo5", "promo4", "promo7", "promo2", "promo3");
 	var nombresPromo = new Array("Navidad", "Cursos",  "Bares","Floral", "Tecnología 2", "Buen Fin", "Hipster", "Tecnología");
@@ -183,6 +190,7 @@ app.controller("VolantesController", function ($scope, $http, VolanteService, Me
 			
 			if (confirmarBorrar) {
 
+				console.log("id promo: " +  $("#idPromocion").text());
 				volantesCtrl.mensaje = "Eliminando volante...";
 		    	MensajesService.abrirBlockUIGeneral(volantesCtrl.mensaje);
 	    		
@@ -193,6 +201,7 @@ app.controller("VolantesController", function ($scope, $http, VolanteService, Me
 		    			idPromocion: $("#idPromocion").text()
 		    		}	  
 		    	}).then(function successCallback(response) {
+		    		
 		    		$("#idEmailContactoVolante").text("");
 		    		$("#idCelContactoVolante").text("");
 		    		$("#idTelContactoVolante").text("");
@@ -209,8 +218,7 @@ app.controller("VolantesController", function ($scope, $http, VolanteService, Me
 					volantesCtrl.indicePromocion = 0;
 					volantesCtrl.modfechaVigencia = "";
 					volantesCtrl.fechaVigencia = new Date();
-					
-					
+										
 					VolanteService.guardarEventoGA(volantesCtrl.eventoPromocion, 
 							response.data.nombreSitio, response.data.banderaCanal);
 					VolanteService.getVolantes();
@@ -263,8 +271,6 @@ app.controller("VolantesController", function ($scope, $http, VolanteService, Me
 				empresa: $("#nombreEmpresaPromo").val(),
     			nombreVolante: volantesCtrl.planPro == "SI" ? $("#txtNombreVolante").val() : "",
 		};
-		
-		console.debug("volante: " + JSON.stringify(volante))
 		
 		VolanteService.actualizarVolante(volante, volantesCtrl.eventoPromocion);
 		guardarContactos();
@@ -411,7 +417,7 @@ app.controller("VolantesController", function ($scope, $http, VolanteService, Me
 	};
 
     $scope.$watch(function () { return VolanteService.volantes(); }, function (value) {
-
+    	
     	volantesCtrl.volantes = value;
     	volantesCtrl.arr = value instanceof Array ? value : [value]; 
 		volantesCtrl.muestraPublicarPromo = true;
@@ -419,11 +425,17 @@ app.controller("VolantesController", function ($scope, $http, VolanteService, Me
 		
 		if (volantesCtrl.arr.length > 0)
 		{
+	    	/*$("#btnsMuestraPublicarPromo").css("display", "none");
+	    	$("#btnsMuestraPromoPublicada").css("display", "block");
+	    	$("#formVolanteVacio").css("display", "none");
+	    	$("#formVolanteDatos").css("display", "block");*/
+	    	
 			volantesCtrl.muestraPublicarPromo = false;
 			volantesCtrl.muestraPromoPublicada = true;
-			if(volantesCtrl.arr[0] != undefined){
+			
+			if(volantesCtrl.arr[0] != undefined) {
+				
 				volantesCtrl.modfechaVigencia = volantesCtrl.arr[0].endDateOffer;
-				console.debug("Promos: " + volantesCtrl.modfechaVigencia)
 				var fechaVigencia = $moment(volantesCtrl.arr[0].endDateOffer, "DD/MM/YYYY");
 				volantesCtrl.fechaVigencia = fechaVigencia.toDate();
 				$("#txtNombreVolante").val(volantesCtrl.arr[0].pagina)
