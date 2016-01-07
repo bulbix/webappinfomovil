@@ -141,10 +141,9 @@ app.controller('MapCtrl', function($http, ubicacionFactory,volanteMapaService) {
 				map.setZoom(3);
 				$("#direccionMap").html("");
 				$("#idOpcionUbicacion").html("Coloca tu ubicación");
-				$("#myModalMaps").css("display", "none");
-				
+				$("#myModalMaps").modal('toggle');
 				requestServer("GET",contextPath + "/infomovil/refrescarPromocion",{});
-				console.debug("Refrescando la promocion")
+				
 				
 				$.unblockUI();
 			}
@@ -189,8 +188,7 @@ app.controller('MapCtrl', function($http, ubicacionFactory,volanteMapaService) {
 	}
 
 	function actualizarUbicacion(latitud, longitud, direccion) {
-		$("#myModalMaps").css("display", "none");
-
+		$("#myModalMaps").modal('toggle');
 		mensajeActualizacion("Actualizando ubicación...");
 		
 		var url = ubicacionFactory.ubicacion(tipoProducto).saveUrl;
@@ -229,7 +227,7 @@ app.controller('MapCtrl', function($http, ubicacionFactory,volanteMapaService) {
 				modeloMap.marker.setPosition(myLatlng);
 				
 				requestServer("GET",contextPath + "/infomovil/refrescarPromocion",{});
-				console.debug("Refrescando la promocion")
+				console.debug("Refrescando la promocion en mapaAngular")
 				
 				$.unblockUI();
 			}
