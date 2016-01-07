@@ -282,7 +282,22 @@ app.controller("VolantesController", function ($scope, $http, VolanteService, Me
 	volantesCtrl.compartirPromo = function() {
 		
 		$scope.urlPromoShare = $("#urlPromocion").text();
-		console.log("$scope.urlPromoShare: " + $scope.urlPromoShare);
+		var lWhatsapp = "javascript:alert('Esta acción no se puede completar en este dispositivo')";
+		
+		var lFace = "http://www.facebook.com/sharer/sharer.php?u=" + $scope.urlPromoShare + "&t=Checa%20esta%20promo%20"; 
+		var lGoogle = "https://plus.google.com/share?url=" + $scope.urlPromoShare; 	
+		var lEmail = "mailto:?subject="+ $scope.urlPromoShare + "%20Checa%20esta%20promo!&body=Checa%20esta%20promo:%20"+ $scope.urlPromoShare + "%0A%0ACrea%20un%20volante%20digital%20asi%20con%20www.infomovil.com%0A%0A"; 
+		var lTwitt = "http://www.twitter.com/intent/tweet?text="+ $scope.urlPromoShare +"%20%0A%0ACheca%20esta%20promo:%20"+ $scope.urlPromoShare; 
+		
+		if(navigator.userAgent.match(/Android|BlackBerry|iPhone|iPad|iPod|Opera Mini|IEMobile/i))
+			var lWhatsapp = "whatsapp://send?text=Checa%20esta%20promo:%20" + $scope.urlPromoShare;
+		
+		$('#Facebook').attr('href', lFace);
+		$('#Google').attr('href', lGoogle);
+		$('#Email').attr('href', lEmail);
+		$('#Twitter').attr('href', lTwitt);
+		$('#WhatsApp').attr('href', lWhatsapp);
+	
 		$('#myModalPromoShare').modal();
 	};
 
@@ -350,6 +365,10 @@ app.controller("VolantesController", function ($scope, $http, VolanteService, Me
 		
 		volantesCtrl.eventoPromocion = "promo-guardarPDF";
 		volantesCtrl.pathArchivo = $("#urlVistaPreviaPromoImprimir").attr('src');
+		
+		if (volantesCtrl.pathArchivo == undefined)
+			volantesCtrl.pathArchivo = $("#urlPromocion").text() + "?vistaPrevia=1";
+		
 		volantesCtrl.pathArchivo = volantesCtrl.pathArchivo.replace("html", tipo);
 		volantesCtrl.link = document.createElement("a");
 		volantesCtrl.link.download = "promo." + tipo;
