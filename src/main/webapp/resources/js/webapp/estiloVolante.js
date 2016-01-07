@@ -3,8 +3,8 @@ var app = angular.module('InfomovilEstiloVolantes', []);
 app.controller("EstiloVolanteController", function ($scope, $http, VolanteService, MensajesService) {
 	
 	var estiloVolanteCtrl = this;
-	estiloVolanteCtrl.plantillas = new Array("promo8", "promo6",  "promo1", "promo5", "promo4", "promo7", "promo2", "promo3");
-	estiloVolanteCtrl.nombrePlantillas = new Array("Navidad", "Cursos",  "Bares","Floral", "Tecnología 2", "Buen Fin", "Hipster", "Tecnología");
+	estiloVolanteCtrl.plantillas = new Array( "promo6",  "promo1", "promo5", "promo4",  "promo2", "promo3");/*"promo8","promo7",*/
+	estiloVolanteCtrl.nombrePlantillas = new Array( "Cursos",  "Bares","Floral", "Tecnología 2",  "Hipster", "Tecnología");/*"Navidad","Buen Fin",*/
 	estiloVolanteCtrl.textoPlantilla = "Aplicar estilo";
 	estiloVolanteCtrl.claseSpan = "ev_std_chk text-center";
 	estiloVolanteCtrl.claseImg = "img-responsiveTemp img-thumbnail";	

@@ -410,6 +410,18 @@
 										<div class="divider"></div>
 										</div>
 										<div class="col-xs-12 col-sm-6 col-md-6"></div>
+										
+										
+<!-- 										<div class="col-xs-12 col-sm-12 text-center reset"> -->
+<!-- 										<div class="dividerSmall"></div> -->
+<!-- 								<button type="button" -->
+<!-- 									class="btn btn-purple textWhite navEditorLato" -->
+<!-- 									ng-click="volantesCtrl.guardarPromocion()" -->
+<!-- 									style="margin: 5px 0 0 0;"> -->
+<!-- 									<img width="20" height="20" alt="Infomovil" -->
+<%-- 										src="<c:url value="/resources/webapp/images/successWhite.png"/>" /> --%>
+<!-- 									<span class="">Actualizar</span> -->
+<!-- 								</button></div> -->
 							
 							<div class="clear"></div>
 							</div>
