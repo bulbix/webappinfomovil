@@ -21,11 +21,9 @@ app
 	//Convertir date a string fecha
 	$scope.$watch('volantesCtrl.fechaVigencia', function(v){ 
 	    var d = new Date(v);
-	    var curr_date = d.getDate();
-	    var curr_month = d.getMonth() + 1; 
-	    var curr_year = d.getFullYear();
-	    volantesCtrl.modfechaVigencia = curr_date + "/" + curr_month + "/" + curr_year;
-	})
+	    volantesCtrl.modfechaVigencia = moment(d).format('DD/MM/YYYY');
+	    console.debug("modfechaVigencia " + volantesCtrl.modfechaVigencia);
+	});
 	
 	volantesCtrl.muestraPublicarPromo = false;
 	volantesCtrl.muestraPromoPublicada = false;
@@ -287,7 +285,22 @@ app
 	volantesCtrl.compartirPromo = function() {
 		
 		$scope.urlPromoShare = $("#urlPromocion").text();
-		console.log("$scope.urlPromoShare: " + $scope.urlPromoShare);
+		var lWhatsapp = "javascript:alert('Esta acción no se puede completar en este dispositivo')";
+		
+		var lFace = "http://www.facebook.com/sharer/sharer.php?u=" + $scope.urlPromoShare + "&t=Checa%20esta%20promo%20"; 
+		var lGoogle = "https://plus.google.com/share?url=" + $scope.urlPromoShare; 	
+		var lEmail = "mailto:?subject="+ $scope.urlPromoShare + "%20Checa%20esta%20promo!&body=Checa%20esta%20promo:%20"+ $scope.urlPromoShare + "%0A%0ACrea%20un%20volante%20digital%20asi%20con%20www.infomovil.com%0A%0A"; 
+		var lTwitt = "http://www.twitter.com/intent/tweet?text="+ $scope.urlPromoShare +"%20%0A%0ACheca%20esta%20promo:%20"+ $scope.urlPromoShare; 
+		
+		if(navigator.userAgent.match(/Android|BlackBerry|iPhone|iPad|iPod|Opera Mini|IEMobile/i))
+			var lWhatsapp = "whatsapp://send?text=Checa%20esta%20promo:%20" + $scope.urlPromoShare;
+		
+		$('#Facebook').attr('href', lFace);
+		$('#Google').attr('href', lGoogle);
+		$('#Email').attr('href', lEmail);
+		$('#Twitter').attr('href', lTwitt);
+		$('#WhatsApp').attr('href', lWhatsapp);
+	
 		$('#myModalPromoShare').modal();
 	};
 
@@ -355,6 +368,10 @@ app
 		
 		volantesCtrl.eventoPromocion = "promo-guardarPDF";
 		volantesCtrl.pathArchivo = $("#urlVistaPreviaPromoImprimir").attr('src');
+		
+		if (volantesCtrl.pathArchivo == undefined)
+			volantesCtrl.pathArchivo = $("#urlPromocion").text() + "?vistaPrevia=1";
+		
 		volantesCtrl.pathArchivo = volantesCtrl.pathArchivo.replace("html", tipo);
 		volantesCtrl.link = document.createElement("a");
 		volantesCtrl.link.download = "promo." + tipo;
