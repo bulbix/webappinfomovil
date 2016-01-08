@@ -327,7 +327,7 @@ app
 	};
 	
 	volantesCtrl.imprimirPromocionWeb = function() {
-		
+
 		var urlPromo = $("#urlPromocion").text();
 		volantesCtrl.nombrePromo = urlPromo.substring(urlPromo.lastIndexOf("/") + 1);
 		volantesCtrl.eventoPromocion = 'promo-imprimir';
@@ -370,10 +370,10 @@ app
 	};
 	
 	volantesCtrl.descargarArchivo = function(tipo) {
-		
+
 		volantesCtrl.eventoPromocion = "promo-guardarPDF";
 		volantesCtrl.pathArchivo = $("#urlVistaPreviaPromoImprimir").attr('src');
-		
+
 		if (volantesCtrl.pathArchivo == undefined)
 			volantesCtrl.pathArchivo = $("#urlPromocion").text() + "?vistaPrevia=1";
 		
@@ -382,12 +382,13 @@ app
 		volantesCtrl.link.download = "promo." + tipo;
 		volantesCtrl.link.href = volantesCtrl.pathArchivo;
 		volantesCtrl.link.click();
-	    
+
 	    if (tipo == 'jpg')
 	    	volantesCtrl.eventoPromocion = "promo-guardarJPG";
 	    
 		VolanteService.guardarEventoGA(volantesCtrl.eventoPromocion, 
 				$("#tempNombrePromo").val(), $("#tempBanderaPromo").val());
+
 	};
 	
 	volantesCtrl.validarCampos = function() {
