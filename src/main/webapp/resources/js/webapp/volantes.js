@@ -379,6 +379,8 @@ app
 		
 		volantesCtrl.pathArchivo = volantesCtrl.pathArchivo.replace("html", tipo);
 		volantesCtrl.link = document.createElement("a");
+		document.body.appendChild(volantesCtrl.link);
+		volantesCtrl.link.target="_self";
 		volantesCtrl.link.download = "promo." + tipo;
 		volantesCtrl.link.href = volantesCtrl.pathArchivo;
 		volantesCtrl.link.click();

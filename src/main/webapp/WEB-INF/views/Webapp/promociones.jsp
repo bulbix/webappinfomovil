@@ -80,7 +80,7 @@
 							alt="Infomovil"
 							src="<c:url value="/resources/webapp/images/fa-pencil${ extensionImg }.png"/>" />Mi
 							Contenido <span class="caret"></span></a>
-						<ul class="dropdown-menu navbar-${ claseCss } ${colorTexto} text-right">
+						<ul class="dropdown-menu navbar-${ claseCss } ${colorTexto} text-right" ng-show="volantesCtrl.muestraPromoPublicada">
 							<li class=" borderInicial borderFin" ><a
 								href="#" data-toggle="modal" data-target="#myModalMaps"
 								class="smoothScroll ${colorTexto}">
