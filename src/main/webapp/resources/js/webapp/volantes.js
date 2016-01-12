@@ -326,72 +326,10 @@ app
 	    
 	};
 	
-	volantesCtrl.imprimirPromocionWeb = function() {
-
-		var urlPromo = $("#urlPromocion").text();
-		volantesCtrl.nombrePromo = urlPromo.substring(urlPromo.lastIndexOf("/") + 1);
-		volantesCtrl.eventoPromocion = 'promo-imprimir';
-		var oldstrInner = document.documentElement.innerHTML;
-		var oldstr = document.body.innerHTML;
-		
-		volantesCtrl.mensaje = "Generando impresión...";
-    	MensajesService.abrirBlockUIGeneral(volantesCtrl.mensaje);
-
-		$.ajax({
-			type : "POST",
-			url : contextPath + "/infomovil/getHTMLPromocion",
-			data : {nombrePromocion: volantesCtrl.nombrePromo},
-		
-			success : function(data) {
-				
-				$("#myModalPromoImprimir").modal('toggle');
-				document.documentElement.innerHTML = data.elHtmlDePromocion;
-				setTimeout(function () { window.print(); 
-				window.focus();
-				window.close();
-				document.documentElement.innerHTML = oldstrInner;
-			    $(document.body).html(oldstr);
-			    $("#myModalPromoImprimir").modal();	
-				$.unblockUI();}, 2500);
-				
-				VolanteService.guardarEventoGA(volantesCtrl.eventoPromocion, 
-						$("#tempNombrePromo").val(), $("#tempBanderaPromo").val());
-				
-			},
-			error : function(json) {
-				$.unblockUI();
-				BootstrapDialog.show({
-					title: "<span class='textBlack' style='font-size:1.15em;'><img alt='' src='../resources/webapp/images/fa-warning-bk.png'  title='Alerta' />No se ha generado la impresión</span>",
-					message: '<div style="display:block; min-height:150px;"><p class="textBlack text-center" style="font-size:1.15em;">Por favor intentalo más tarde.</p><br/>'
-				});
-										
-			}
-		});	
-	};
 	
-	volantesCtrl.descargarArchivo = function(tipo) {
+	
 
-		volantesCtrl.eventoPromocion = "promo-guardarPDF";
-		volantesCtrl.pathArchivo = $("#urlVistaPreviaPromoImprimir").attr('src');
-
-		if (volantesCtrl.pathArchivo == undefined)
-			volantesCtrl.pathArchivo = $("#urlPromocion").text() + "?vistaPrevia=1";
-		
-		volantesCtrl.pathArchivo = volantesCtrl.pathArchivo.replace("html", tipo);
-		volantesCtrl.link = document.createElement("a");
-		document.body.appendChild(volantesCtrl.link);
-		volantesCtrl.link.target="_self";
-		volantesCtrl.link.download = "promo." + tipo;
-		volantesCtrl.link.href = volantesCtrl.pathArchivo;
-		volantesCtrl.link.click();
-
-	    if (tipo == 'jpg')
-	    	volantesCtrl.eventoPromocion = "promo-guardarJPG";
-	    
-		VolanteService.guardarEventoGA(volantesCtrl.eventoPromocion, 
-				$("#tempNombrePromo").val(), $("#tempBanderaPromo").val());
-
-	};
+ 
 	
 	volantesCtrl.validarCampos = function() {
 		
@@ -616,7 +554,7 @@ app
 			
 		return contacto;
 	};
-
+	
 	var guardarContactos = function() {
         
 		if($("#telContactoVolante").val().length > 0) {
@@ -646,3 +584,87 @@ app
 	};
 
 });
+
+
+
+function descargarArchivo(tipo) {
+	console.log("Entro a descargar el archivo con el tipo: " + tipo);
+	var eventoPromocion = "promo-guardarPDF";
+	var pathArchivo = $("#urlVistaPreviaPromoImprimir").attr('src');
+
+	if (pathArchivo == undefined)
+		pathArchivo = $("#urlPromocion").text() + "?vistaPrevia=1";
+	
+	pathArchivo = pathArchivo.replace("html", tipo);
+	var link = document.createElement("a");
+	document.body.appendChild(link);
+	link.target="_self";
+	link.download = "promo." + tipo;
+	link.href = pathArchivo;
+	link.click();
+
+    if (tipo == 'jpg')
+    	eventoPromocion = "promo-guardarJPG";
+	
+    ga('send', 'event', 'promo', eventoPromocion, $("#tempNombrePromo").val(), $("#tempBanderaPromo").val());
+};
+
+
+function imprimirPromocionWeb() {
+
+	var urlPromo = $("#urlPromocion").text();
+	var nombrePromo = urlPromo.substring(urlPromo.lastIndexOf("/") + 1);
+	var eventoPromocion = 'promo-imprimir';
+	var oldstrInner = document.documentElement.innerHTML;
+	var oldstr = document.body.innerHTML;
+	var html = document.html;
+	$.blockUI.defaults.baseZ = 9000;
+	$.blockUI({
+		message : "Generando impresión...",
+		css : {
+			class : "alertaUI",
+			top : ($(window).height() - 400) / 2 + 'px',
+			left : ($(window).width() - 400) / 2 + 'px',
+			width : '400px'
+		}
+	});
+
+	$.ajax({
+		type : "POST",
+		url : contextPath + "/infomovil/getHTMLPromocion",
+		data : {nombrePromocion: nombrePromo},
+	
+		success : function(data) {
+			
+			$("#myModalPromoImprimir").modal('toggle');
+			document.documentElement.innerHTML = data.elHtmlDePromocion;
+			setTimeout(function () { window.print(); 
+			window.focus();
+			window.close();
+			document.documentElement.innerHTML = oldstrInner;
+		    $(document.body).html(oldstr);
+		    banderaImprimir = true;
+
+		    $("#myModalPromoImprimir").modal();	
+			$.unblockUI();}, 2500);
+			
+			ga('send', 'event', 'promo', eventoPromocion, $("#tempNombrePromo").val(), $("#tempBanderaPromo").val());
+			
+		},
+		error : function(json) {
+			$.unblockUI();
+			banderaImprimir = false;
+			BootstrapDialog.show({
+				title: "<span class='textBlack' style='font-size:1.15em;'><img alt='' src='../resources/webapp/images/fa-warning-bk.png'  title='Alerta' />No se ha generado la impresión</span>",
+				message: '<div style="display:block; min-height:150px;"><p class="textBlack text-center" style="font-size:1.15em;">Por favor intentalo más tarde.</p><br/>'
+			});
+									
+		}
+	});	
+};
+
+var banderaImprimir=false;
+function cerrarModalImprimir(){
+	if(banderaImprimir == true)
+		location.reload();
+};
