@@ -1,3 +1,7 @@
+window.initPlantillas = function () {
+	console.log("initPlantilals");
+}
+
 var app = angular.module('InfomovilEstiloVolantes', []);
 
 app.controller("EstiloVolanteController", function ($scope, $http, VolanteService, MensajesService) {

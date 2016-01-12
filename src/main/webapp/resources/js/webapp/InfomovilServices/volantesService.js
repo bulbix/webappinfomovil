@@ -8,6 +8,7 @@ var contactos = {
 app.factory('VolanteService', function($http, MensajesService) {
 	
 	var volantes;
+	var totVolantes;
 	var datos = {};
 	var banderaCanal;
 	var nombreVolante;
@@ -19,9 +20,24 @@ app.factory('VolanteService', function($http, MensajesService) {
 			method: 'GET',
 			url: contextPath + "/infomovil/getPromociones",
 		}).then(function successCallback(response) {
+			
 			volantes = response.data;
+			totVolantes = volantes.length;
+			console.log("volante service tot volantes: " + totVolantes);
 			nombreVolante = response.data.nombreSitio;
 			banderaCanal = response.data.banderaCanal;
+			
+			if (totVolantes > 0 && totVolantes != undefined)
+			{
+				$(".muestraPromoPublicada").css("display", "block");
+				$(".muestraPublicarPromo").css("display", "none");
+			}
+			else
+			{
+				$(".muestraPublicarPromo").css("display", "block");
+				$(".muestraPromoPublicada").css("display", "none");
+			}
+			
 			getContactosVolantes();
 			
 			if (callback != null)
@@ -207,7 +223,9 @@ app.factory('VolanteService', function($http, MensajesService) {
     	 },
     	 banderaCanal : function() {
     		 return banderaCanal;
+    	 },
+    	 getTotVolantes : function() {
+    		 return totVolantes;
     	 }
-    	 
      }
 });

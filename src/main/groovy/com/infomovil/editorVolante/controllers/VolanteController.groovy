@@ -42,7 +42,7 @@ class VolanteController {
 	def getPerfil(){
 		
 		def perfiles = 
-		[DEV:"http://localhost:8080/", QA:"http://qa.mobileinfo.io:8080/ServiceInfomovil/", PROD:"http://www.infomovil.com/ServiceInfomovil/"]
+		[DEV:"http://localhost:8080/", QA:"http://infodev.mobileinfo.io/ServiceInfomovil/", PROD:"http://www.infomovil.com/ServiceInfomovil/"]
 
 		[perfil: perfiles[Util.getProfile()]]
 		
