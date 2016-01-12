@@ -2,6 +2,7 @@ package com.infomovil.webapp.controllers;
 
 import java.io.UnsupportedEncodingException;
 import java.util.HashMap;
+import java.util.Locale;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
@@ -12,6 +13,7 @@ import org.apache.commons.validator.routines.EmailValidator;
 import org.apache.log4j.Logger;
 import org.json.simple.JSONArray;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.MessageSource;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -33,10 +35,17 @@ import com.infomovil.webapp.util.Util;
 public class PromocionesController
 {
 	
+	@Autowired
+	private MessageSource messageSource;
+	
 	
 	@RequestMapping(value = "/infomovil/misPromociones", method = {RequestMethod.GET, RequestMethod.POST})
-	public ModelAndView misPromociones(HttpServletRequest request, HttpServletResponse response, RedirectAttributes redirectAttributes)
-	{		
+	public ModelAndView misPromociones(HttpServletRequest request, HttpServletResponse response, RedirectAttributes redirectAttributes , Locale locale)
+	{
+		
+		System.out.println("Mensaje desde controller*****" + messageSource.getMessage("error.loginServer", null, locale) + "*****");
+		
+		
 		HashMap<String, Object> model = new HashMap<String, Object>();
 		RespuestaVO wsRpta = new RespuestaVO();
 		String nombreUsuario = "";

@@ -1,5 +1,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib uri="http://tiles.apache.org/tags-tiles" prefix="tiles"%>
+<%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
+
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!doctype html>
@@ -17,6 +19,8 @@
 
 <body role="document" data-spy="scroll" data-target=".navbar"
 	data-offset="75" id="page-top" ng-controller="VolantesController as volantesCtrl">
+	
+	
 
 	<div ng-init="planPro = '${planPro}'">
 		<div>{{volantesCtrl.init(planPro)}}</div>
@@ -538,6 +542,9 @@
 	<!-- Bootstrap core JavaScript
 		    ================================================== -->
 		<!-- Placed at the end of the document so the pages load faster -->
+		
+		<script src="<c:url value="/mensajes/stringsIdioma.js"/>"></script>
+		
 		<script src="<c:url value="/resources/webapp/js/datepicker/jquery-1.10.2.js"/>"></script>
 		<script src="<c:url value="/resources/webapp/js/jquery.min.js"/>"></script>
 		<script src="<c:url value="/resources/webapp/js/datepicker/jquery.ui.core.js"/>"></script>
@@ -622,6 +629,8 @@
 				</c:otherwise>
 			</c:choose>
 		</script>
+		
+		<h1><spring:message code="error.loginFailed" /></h1>
 	</body>
 	
 </html>

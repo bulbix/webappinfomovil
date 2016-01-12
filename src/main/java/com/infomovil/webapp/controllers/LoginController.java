@@ -1,13 +1,20 @@
 package com.infomovil.webapp.controllers;
 
+import java.util.Locale;
+import java.util.ResourceBundle;
+
+import javax.servlet.http.HttpServletRequest;
+
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.CookieValue;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+import org.springframework.web.servlet.support.RequestContextUtils;
 
 import com.infomovil.webapp.clientWsInfomovil.ClientWsInfomovil;
 import com.infomovil.webapp.clientWsInfomovil.RespuestaVO;
@@ -70,7 +77,17 @@ public class LoginController {
 			redirectAttributes.addFlashAttribute("mensaje", mensaje);
 			return "redirect:/resetpassword"; 
 		}
-		
+	}
+	
+	@RequestMapping(value="/mensajes/stringsIdioma.js")
+	public String strings(Model model, HttpServletRequest request) {
+	    // Retrieve the locale of the User
+	    Locale locale = RequestContextUtils.getLocale(request);
+	    // Use the path to your bundle
+	    ResourceBundle bundle = ResourceBundle.getBundle("messages_es", locale);  
+	    // Call the string.jsp view
+	    model.addAttribute("keys", bundle.getKeys());
+	    return "Webapp/stringsIdioma";
 	}
 
 }
