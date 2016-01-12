@@ -19,10 +19,10 @@ app
 	volantesCtrl.fechaVigencia = new Date();
 	
 	//Convertir date a string fecha
-	$scope.$watch('volantesCtrl.fechaVigencia', function(v){ 
+	$scope.$watch('volantesCtrl.fechaVigencia', function(v) {
+		
 	    var d = new Date(v);
 	    volantesCtrl.modfechaVigencia = moment(d).format('DD/MM/YYYY');
-	    console.debug("modfechaVigencia " + volantesCtrl.modfechaVigencia);
 	});
 	
 	volantesCtrl.muestraPublicarPromo = false;
@@ -110,7 +110,8 @@ app
 	};
 	
 	volantesCtrl.publicarVolante = function() {
-
+		
+		console.log("publicarVolante");
 		volantesCtrl.resultado = volantesCtrl.validarCampos();
 		volantesCtrl.eventoPromocion = "promo-publicar";
 		
@@ -123,12 +124,16 @@ app
 			else if(volantesCtrl.resultado == "fecha")
 				$("#divError").html("El formato de "+volantesCtrl.resultado+" es incorrecto");
 			else
-			$("#divError").html(volantesCtrl.resultado);
+				$("#divError").html(volantesCtrl.resultado);
+			
+			$("#divError").css("display", "block");
+			console.log("error: " + $("#divError").html());
 			volantesCtrl.muestraDivError = true; 
 			return;
 			
 		}
 
+		$("#divError").css("display", "none");
 		volantesCtrl.muestraDivError = false;
 		volantesCtrl.plantillaFinalPromo = "promo1";
 		
@@ -162,12 +167,13 @@ app
 				VolanteService.guardarEventoGA(volantesCtrl.eventoPromocion, 
 						response.data.nombreSitio, response.data.banderaCanal);
 				
-				VolanteService.getVolantesPublicar();
+				//VolanteService.getVolantesPublicar();
+				VolanteService.getVolantes();
 				volantesCtrl.muestraPublicarPromo = false;
 				volantesCtrl.muestraPromoPublicada = true;
     		}
     		else{
-    			volantesCtrl.mensaje = "El nombre elegido ya existe	";
+    			volantesCtrl.mensaje = "El nombre elegido ya existe";
         		MensajesService.cerrarBlockUIGeneral("Volantes", volantesCtrl.mensaje);
     		}
 			$.unblockUI();
@@ -381,19 +387,13 @@ app
     	
     	volantesCtrl.volantes = value;
     	volantesCtrl.arr = value instanceof Array ? value : [value]; 
-		volantesCtrl.muestraPublicarPromo = true;
-		volantesCtrl.muestraPromoPublicada = false;
 		
-		if (volantesCtrl.arr.length > 0)
-		{
-	    	/*$("#btnsMuestraPublicarPromo").css("display", "none");
-	    	$("#btnsMuestraPromoPublicada").css("display", "block");
-	    	$("#formVolanteVacio").css("display", "none");
-	    	$("#formVolanteDatos").css("display", "block");*/
-	    	
+    	console.log("volantes total: " + VolanteService.getTotVolantes() + ", volantesCtrl.arr.length: " + volantesCtrl.arr.length);
+		if (volantesCtrl.arr.length > 0 && VolanteService.getTotVolantes() != undefined)
+		{	    	
 			volantesCtrl.muestraPublicarPromo = false;
 			volantesCtrl.muestraPromoPublicada = true;
-			
+			console.log("si hay promo");
 			if(volantesCtrl.arr[0] != undefined) {
 				
 				volantesCtrl.modfechaVigencia = volantesCtrl.arr[0].endDateOffer;
