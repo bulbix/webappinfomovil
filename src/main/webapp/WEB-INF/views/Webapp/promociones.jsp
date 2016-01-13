@@ -145,7 +145,7 @@
 							style="margin: 5px 8px 0 0;" >
 							<img width="20" height="20" alt="Infomovil"
 								src="<c:url value="/resources/webapp/images/fa-templates.png"/>" />
-							<span class="hidden-xs">E<span class="hidden-sm">lige E</span>stilo</span>
+							<span class="hidden-xs">Elige Estilo</span>
 						</a>
 					</div>					
 
@@ -186,7 +186,7 @@
 							style="margin: 5px 8px 0 0;" >
 							<img width="20" height="20" alt="Infomovil"
 								src="<c:url value="/resources/webapp/images/fa-templates.png"/>" />
-							<span class="hidden-xs">E<span class="hidden-sm">lige E</span>stilo</span>
+							<span class="hidden-xs">Elige Estilo</span>
 						</a>
 					</div>
 								
@@ -197,7 +197,7 @@
 							style="margin: 5px 5px 0 0;">
 							<img width="20" height="20" alt="Infomovil"
 								src="<c:url value="/resources/webapp/images/fa-eye.png"/>" />
-							<span class="hidden-xs">Ver <span class="hidden-xs hidden-sm">volante</span></span>
+							<span class="hidden-xs">Ver volante</span></span>
 						</button>
 					</div>
 								
@@ -229,7 +229,7 @@
 							ng-click="volantesCtrl.descargarArchivo('pdf')" style="margin: 5px 0 0 0;">
 							<span><img width="20" height="20" alt="Infomovil"
 								src="<c:url value="/resources/webapp/images/fa-pdf.png"/>" />
-							</span> <span class="hidden-xs">PDF<span class="hidden-xs hidden-sm">/Imagen</span></span>
+							</span> <span class="hidden-xs">PDF/Imagen</span></span>
 	
 						</button>
 					</div>
@@ -491,7 +491,7 @@
 												class="col-xs-12 col-sm-6 btn btn-default btn-outline navEditor text-left textBlack">
 												<img width="25" height="25" alt="Infomovil"
 												src="<c:url value="/resources/webapp/images/icn_marc_maps-bk.png"/>" />
-												<span id="idOpcionUbicacion"><span class="hidden-xs">Colocar mi</span> Ubicación</span> <br /> <span
+												<span id="idOpcionUbicacion">Colocar mi Ubicación</span> <br /> <span
 												id="direccionMap" class="directionMap"></span>
 												<div class="clearfix"></div>
 											</a>
@@ -516,26 +516,6 @@
 									<c:set var="urlPromo" value="{{item.urlPromocion}}"
 										scope="session" />
 								</tiles:insertDefinition>
-								
-						<div id='myModalTempPromo' class='modal fade' tabindex='-1'
-							role='dialog' aria-labelledby='myModalLabel' aria-hidden='true'>
-							<div class='modal-dialog modal-md'>
-								<div class='modal-content'>
-									<div class='modal-header'>
-										<button type='button' class='close textBlack pull-left'
-											data-dismiss='modal' aria-label='Close'>
-											<span aria-hidden='true'>&times;</span>
-										</button>
-										<button type='button'
-											class='btn btn-purple pull-right txtBtnEditor'
-											ng-click="volantesCtrl.actualizaPlantillaVolante()">Aplicar
-											estilo</button>
-									</div>
-									<div class='modal-body contenidoSlider'></div>
-									<div class='modal-footer'></div>
-								</div>
-							</div>
-						</div>
 					</div>
 				</div>
 				<!--/Theme showcase -->
