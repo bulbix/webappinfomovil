@@ -420,7 +420,7 @@ public class WebappController
 		wsRespuesta = wsCliente.crearSitioRegistrar(correo, contrasenia, correo, codigo.toLowerCase(), "formulario");
 		codigoError = wsRespuesta.getCodeError();
 		descripcionError = wsRespuesta.getMsgError();
-		
+		logger.info("codigoError registro: " + codigoError);
 		if (codigoError.equals("0"))
 		{			
 			Util.loginUsuario(correo, contrasenia);
