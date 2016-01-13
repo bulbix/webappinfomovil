@@ -14,6 +14,7 @@
         <li><a href="http://infomovil.com" class="smoothScroll">Inicio</a></li>
         <li><a href="<c:url value="/registrar"/>" class="smoothScroll">Regístrate</a></li>
         <li><a href="<c:url value="/login"/>" class="smoothScroll">Inicia sesión</a></li>
+         <li> <a href="">English <img src="resources/webapp/images/fa-lang.png" width="20" height="20" alt="Infomovil" class="animated fadeIn"/></a></li>
       </ul>
     </div>
   </div>

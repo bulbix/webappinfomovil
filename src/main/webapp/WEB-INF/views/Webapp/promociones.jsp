@@ -55,6 +55,7 @@
 			</div>
 			<div id="navbar" class="navbar-collapse collapse text-right">
 				<ul class="nav navbar-nav navbar-right">
+<li> <a href=""><img src=<c:url value="/resources/webapp/images/fa-lang${ extensionImg }.png"/> width="20" height="20" alt="Infomovil" class="animated fadeIn"/> English</a></li>
 
 					<li class="dropdown">
 						<a href="<c:url value="/infomovil/miCuenta"></c:url>" 
@@ -119,6 +120,8 @@
 							alt="Infomovil"
 							src="<c:url value="/resources/webapp/images/apple-touch-icon-57x57.png"/>" /></a>
 					</li>
+					
+					
 					<!--/ OCULTAR CUÁNDO SEA - REGISTRO GENERAL-->
 
 				</ul>
