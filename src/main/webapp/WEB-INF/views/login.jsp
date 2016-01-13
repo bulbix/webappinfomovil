@@ -93,5 +93,32 @@
 <tiles:insertDefinition name="jsCore"></tiles:insertDefinition> 
 <tiles:insertDefinition name="jsScripts"></tiles:insertDefinition>
 
+<script type="text/javascript">
+var getUrlParameter = function getUrlParameter(sParam) {
+    var sPageURL = decodeURIComponent(window.location.search.substring(1)),
+        sURLVariables = sPageURL.split('&'),
+        sParameterName,
+        i;
+
+    for (i = 0; i < sURLVariables.length; i++) {
+        sParameterName = sURLVariables[i].split('=');
+
+        if (sParameterName[0] === sParam) {
+            return sParameterName[1] === undefined ? true : sParameterName[1];
+        }
+    }
+};
+var getParam = getUrlParameter('leng');
+var ext = location.search.split('leng=')[1];
+var ln = window.navigator.language||navigator.browserLanguage;
+var getLeng = ln.toLowerCase();
+var url =  window.location.href;
+var x = $(location).attr('<search>');
+console.log('Debe ser: ' + url +"?leng=en");
+if(getLeng == 'en-us' && getParam != 'en')
+	window.location.href = url +"?leng=en";
+console.log("El valor del idioma es: " + getLeng + " y el leng="+ getParam);
+</script>
+
 </body>
 </html>
