@@ -611,13 +611,11 @@ function descargarArchivo(tipo) {
 
 
 function imprimirPromocionWeb() {
-
 	var urlPromo = $("#urlPromocion").text();
 	var nombrePromo = urlPromo.substring(urlPromo.lastIndexOf("/") + 1);
 	var eventoPromocion = 'promo-imprimir';
 	var oldstrInner = document.documentElement.innerHTML;
 	var oldstr = document.body.innerHTML;
-	var html = document.html;
 	$.blockUI.defaults.baseZ = 9000;
 	$.blockUI({
 		message : "Generando impresión...",
@@ -628,39 +626,27 @@ function imprimirPromocionWeb() {
 			width : '400px'
 		}
 	});
-
-	$.ajax({
-		type : "POST",
-		url : contextPath + "/infomovil/getHTMLPromocion",
-		data : {nombrePromocion: nombrePromo},
+	var pathArchivo = $("#urlVistaPreviaPromoImprimir").attr('src');
+	if (pathArchivo == undefined)
+		pathArchivo = $("#urlPromocion").text() + "?vistaPrevia=1";
 	
-		success : function(data) {
-			
-			$("#myModalPromoImprimir").modal('toggle');
-			document.documentElement.innerHTML = data.elHtmlDePromocion;
-			setTimeout(function () { window.print(); 
-			window.focus();
-			window.close();
-			document.documentElement.innerHTML = oldstrInner;
-		    $(document.body).html(oldstr);
-		    banderaImprimir = true;
+	pathArchivo = pathArchivo.replace("html", "jpg");
+	var htmlImagen = "<HTML><HEAD><TITLE>Infomovil</TITLE></HEAD><BODY  style='margin: 0 auto; text-align: center;'><img src='"+pathArchivo+"' alt='Infomovil' style=“width:100%; min-width:600px; height:auto; min-height:600px; margin:0 auto;”></BODY></HTML>";
+	document.documentElement.innerHTML = htmlImagen;
+	setTimeout(function () { window.print(); 
+	window.focus();
+	window.close();
+	document.documentElement.innerHTML = oldstrInner;
+    $(document.body).html(oldstr);
+    banderaImprimir = true;
 
-		    $("#myModalPromoImprimir").modal();	
-			$.unblockUI();}, 2500);
-			
-			ga('send', 'event', 'promo', eventoPromocion, $("#tempNombrePromo").val(), $("#tempBanderaPromo").val());
-			
-		},
-		error : function(json) {
-			$.unblockUI();
-			banderaImprimir = false;
-			BootstrapDialog.show({
-				title: "<span class='textBlack' style='font-size:1.15em;'><img alt='' src='../resources/webapp/images/fa-warning-bk.png'  title='Alerta' />No se ha generado la impresión</span>",
-				message: '<div style="display:block; min-height:150px;"><p class="textBlack text-center" style="font-size:1.15em;">Por favor intentalo más tarde.</p><br/>'
-			});
-									
-		}
-	});	
+    $("#myModalPromoImprimir").modal();	
+	$.unblockUI();}, 2500);	
+	ga('send', 'event', 'promo', eventoPromocion, $("#tempNombrePromo").val(), $("#tempBanderaPromo").val());
+	
+	
+	
+		
 };
 
 var banderaImprimir=false;
