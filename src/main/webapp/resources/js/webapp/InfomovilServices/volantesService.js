@@ -34,6 +34,7 @@ app.factory('VolanteService', function($http, MensajesService) {
 			}
 			else
 			{
+				console.log("else get volantes");
 				$(".muestraPublicarPromo").css("display", "block");
 				$(".muestraPromoPublicada").css("display", "none");
 			}
