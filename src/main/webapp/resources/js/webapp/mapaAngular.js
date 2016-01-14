@@ -227,7 +227,6 @@ app.controller('MapCtrl', function($http, ubicacionFactory,volanteMapaService) {
 				modeloMap.marker.setPosition(myLatlng);
 				
 				requestServer("GET",contextPath + "/infomovil/refrescarPromocion",{});
-				console.debug("Refrescando la promocion en mapaAngular")
 				
 				$.unblockUI();
 			}
@@ -458,9 +457,8 @@ app.controller('MapCtrl', function($http, ubicacionFactory,volanteMapaService) {
 	return {
 		state : state,
 		borrarDatos : function(){
-			console.debug("Datos Mapa:" + state.offerId + "," + state.locId)
+
 			state.offerId = 0; state.locId = 0;
-			console.debug("Datos Mapa:" + state.offerId + "," + state.locId)
 			$("#direccionMap").html("");
 			$("#idOpcionUbicacion").html("Coloca tu ubicación");
 		}
