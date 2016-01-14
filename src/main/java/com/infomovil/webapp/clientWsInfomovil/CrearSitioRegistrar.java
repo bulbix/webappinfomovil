@@ -36,7 +36,8 @@ import javax.xml.bind.annotation.XmlType;
     "password",
     "codigo",
     "nombreUsuario",
-    "tipoRegistro"
+    "tipoRegistro",
+    "lang"
 })
 public class CrearSitioRegistrar {
 
@@ -46,6 +47,7 @@ public class CrearSitioRegistrar {
     protected String codigo;
     protected String nombreUsuario;
     protected String tipoRegistro;
+    protected String lang;
 
     /**
      * Obtiene el valor de la propiedad email.
@@ -166,5 +168,13 @@ public class CrearSitioRegistrar {
     public void setTipoRegistro(String value) {
         this.tipoRegistro = value;
     }
+
+	public String getLang() {
+		return lang;
+	}
+
+	public void setLang(String lang) {
+		this.lang = lang;
+	}
 
 }

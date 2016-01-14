@@ -48,7 +48,8 @@ import javax.xml.bind.annotation.XmlType;
     "idPromocion",
     "template",
     "empresa",
-    "nombreVolante"
+    "nombreVolante",
+    "lang"
 })
 public class CrearSitioGuardarPromocion {
 
@@ -65,6 +66,7 @@ public class CrearSitioGuardarPromocion {
     protected String template;
     protected String empresa;
     protected String nombreVolante;
+    protected String lang;
 
     /**
      * Obtiene el valor de la propiedad email.
@@ -320,6 +322,14 @@ public class CrearSitioGuardarPromocion {
 
 	public void setNombreVolante(String nombreVolante) {
 		this.nombreVolante = nombreVolante;
+	}
+
+	public String getLang() {
+		return lang;
+	}
+
+	public void setLang(String lang) {
+		this.lang = lang;
 	}
 
     

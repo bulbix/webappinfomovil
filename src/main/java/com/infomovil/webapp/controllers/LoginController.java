@@ -46,14 +46,14 @@ public class LoginController {
 
 	
 	@RequestMapping(value="/executeResetPassword", method = RequestMethod.POST)
-	public String resetPasswordSubmit(@RequestParam String email, ModelMap model, RedirectAttributes redirectAttributes) {	
+	public String resetPasswordSubmit(@RequestParam String email, ModelMap model, RedirectAttributes redirectAttributes, Locale locale) {	
 		
 		String mensaje;
 		String correo = email.toLowerCase();
 		
 		if (!email.isEmpty()) {
 			ClientWsInfomovil ws = new ClientWsInfomovil();
-			RespuestaVO resp = ws.crearSitioResetPassword(correo);	
+			RespuestaVO resp = ws.crearSitioResetPassword(correo, locale.getLanguage());	
 			
 			if(resp.getCodeError().equals("0")){
 				mensaje = "Se envió un correo a %s para restablecer tu contraseña.";

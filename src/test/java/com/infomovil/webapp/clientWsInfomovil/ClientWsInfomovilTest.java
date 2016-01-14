@@ -44,7 +44,7 @@ public class ClientWsInfomovilTest {
 	
 	@Test
 	public void testCrearSitioRegistrar() {
-		RespuestaVO resp = clientWsInfomovil.crearSitioRegistrar(correoPrueba, "garbage1", nombrePrueba, "", "formulario");
+		RespuestaVO resp = clientWsInfomovil.crearSitioRegistrar(correoPrueba, "garbage1", nombrePrueba, "", "formulario","es");
 		assertNotNull(resp);
 	}
 	
@@ -116,7 +116,7 @@ public class ClientWsInfomovilTest {
 
 	@Test
 	public void testCrearSitioResetPassword() {
-		RespuestaVO resp = clientWsInfomovil.crearSitioResetPassword("lfpradof@gmail.com");
+		RespuestaVO resp = clientWsInfomovil.crearSitioResetPassword("lfpradof@gmail.com","es");
 		assertNotNull(resp);
 	}
 
@@ -179,7 +179,7 @@ public class ClientWsInfomovilTest {
 	@Test
 	public void testGuardarPromocion() {
 		RespuestaVO resp = clientWsInfomovil.crearSitioGuardarPromocion("docker6@mail.com", 
-		"garbage1","desc","01/01/2015","redimir","terminos","tituloaaaaa","",0, "" , "La empresa de JOselito", "juniorgay");
+		"garbage1","desc","01/01/2015","redimir","terminos","tituloaaaaa","",0, "" , "La empresa de JOselito", "juniorgay","es");
 		assertNotNull(resp);
 		assertTrue(resp.getCodeError().equalsIgnoreCase("0"));
 	}
@@ -196,7 +196,7 @@ public class ClientWsInfomovilTest {
 	@Test
 	public void testBorrarPromocion() {
 		RespuestaVO resp = clientWsInfomovil.crearSitioGuardarPromocion("test@test.com", 
-		"rosas111","","","","","","",787, "","","");
+		"rosas111","","","","","","",787, "","","","");
 		assertNotNull(resp);
 		assertTrue(resp.getCodeError().equalsIgnoreCase("0"));
 	}
@@ -205,7 +205,7 @@ public class ClientWsInfomovilTest {
 	@Test
 	public void testPrevisualizarPromocion() {
 		RespuestaVO resp = clientWsInfomovil.crearSitioPrevisualizarPromocion("pollo1@mail.com", 
-		"garbage1","desc","01/01/2015","redimir","terminos","titulozzzzzzz","", "","");
+		"garbage1","desc","01/01/2015","redimir","terminos","titulozzzzzzz","", "","","es");
 		assertNotNull(resp);
 		assertTrue(resp.getCodeError().equalsIgnoreCase("0"));
 		System.out.println(resp.getUrlPromocion());
@@ -344,7 +344,7 @@ public class ClientWsInfomovilTest {
 	
 	@Test
 	public void testCrearSitioRefrescarPromocion() {
-		RespuestaVO resp = clientWsInfomovil.crearSitioRefrescarPromocion("docker6@mail.com", "garbage1");
+		RespuestaVO resp = clientWsInfomovil.crearSitioRefrescarPromocion("docker6@mail.com", "garbage1","es");
 		System.out.println(resp.getCodeError());
 	}
 	

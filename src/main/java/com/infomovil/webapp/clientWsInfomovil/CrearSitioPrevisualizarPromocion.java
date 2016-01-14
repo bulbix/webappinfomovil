@@ -45,7 +45,8 @@ import javax.xml.bind.annotation.XmlType;
     "titulo",
     "base64Imagen",
     "template",
-    "empresa"
+    "empresa",
+    "lang"
 })
 public class CrearSitioPrevisualizarPromocion {
 
@@ -60,6 +61,7 @@ public class CrearSitioPrevisualizarPromocion {
     protected String base64Imagen;
     protected String template;
     protected String empresa;
+    protected String lang;
 
     /**
      * Obtiene el valor de la propiedad email.
@@ -283,6 +285,14 @@ public class CrearSitioPrevisualizarPromocion {
 
 	public void setEmpresa(String empresa) {
 		this.empresa = empresa;
+	}
+
+	public String getLang() {
+		return lang;
+	}
+
+	public void setLang(String lang) {
+		this.lang = lang;
 	}
 
 }
