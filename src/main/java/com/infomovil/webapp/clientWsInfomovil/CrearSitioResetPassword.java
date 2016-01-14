@@ -28,12 +28,14 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "crearSitio_resetPassword", propOrder = {
-    "email"
+    "email",
+    "lang"
 })
 public class CrearSitioResetPassword {
 
     @XmlElement(required = true)
     protected String email;
+    protected String lang;
 
     /**
      * Obtiene el valor de la propiedad email.
@@ -58,5 +60,13 @@ public class CrearSitioResetPassword {
     public void setEmail(String value) {
         this.email = value;
     }
+
+	public String getLang() {
+		return lang;
+	}
+
+	public void setLang(String lang) {
+		this.lang = lang;
+	}
 
 }

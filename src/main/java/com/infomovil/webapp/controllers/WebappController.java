@@ -5,6 +5,7 @@ import java.io.UnsupportedEncodingException;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.List;
+import java.util.Locale;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -357,7 +358,7 @@ public class WebappController
 
 	@RequestMapping(value = "/registrarUsuario", method = RequestMethod.GET)
 	public ModelAndView registrarUsuario(String nombre, String codigo, String correo, HttpServletRequest request,
-			HttpServletResponse response, RedirectAttributes redirectAttributes) 
+			HttpServletResponse response, RedirectAttributes redirectAttributes, Locale locale) 
 	{
 		HashMap<String, Object> model = new HashMap<String, Object>();
 		RespuestaVO wsRespuesta = new RespuestaVO();
@@ -370,7 +371,7 @@ public class WebappController
 		{
 			logoutInfomovil(request, response);
 			correo = correo.toLowerCase();
-			wsRespuesta = wsCliente.crearSitioRegistrar(correo, passwordDefault, nombre, codigo.toLowerCase(), "automatico");
+			wsRespuesta = wsCliente.crearSitioRegistrar(correo, passwordDefault, nombre, codigo.toLowerCase(), "automatico", locale.getLanguage());
 			codigoError = wsRespuesta.getCodeError();
 			descripcionError = wsRespuesta.getMsgError();
 			
@@ -411,16 +412,17 @@ public class WebappController
 
 	@RequestMapping(value = "/registrar", method = RequestMethod.POST)
 	public ModelAndView registrar(String codigo, String correo, String contrasenia, HttpServletRequest request, 
-			HttpServletResponse response, RedirectAttributes redirectAttributes) 
+			HttpServletResponse response, RedirectAttributes redirectAttributes, Locale locale) 
 	{
 		HashMap<String, Object> model = new HashMap<String, Object>();
 		RespuestaVO wsRespuesta = new RespuestaVO();
 		String codigoError = "", descripcionError = "", vista="";
 		correo = correo.toLowerCase();
-		wsRespuesta = wsCliente.crearSitioRegistrar(correo, contrasenia, correo, codigo.toLowerCase(), "formulario");
+		wsRespuesta = wsCliente.crearSitioRegistrar(correo, contrasenia, correo, codigo.toLowerCase(), "formulario", locale.getLanguage());
 		codigoError = wsRespuesta.getCodeError();
 		descripcionError = wsRespuesta.getMsgError();
 		logger.info("codigoError registro: " + codigoError);
+		logger.info("descripcionError registro: " + descripcionError);
 		if (codigoError.equals("0"))
 		{			
 			Util.loginUsuario(correo, contrasenia);
