@@ -1,5 +1,6 @@
 var app = angular.module('InfomovilVolantes', ['ngMaterial','ngMessages','angular-momentjs']);
 var preferenceContVol = 0;
+var banderaImprimir = false;
 
 app
 .config(function($mdDateLocaleProvider) {
@@ -10,7 +11,7 @@ app
 
 .controller("VolantesController", function ($scope, $http, VolanteService, MensajesService,  $moment, volanteMapaService) {
 	
-	console.debug("Consulta javascript " + stringsIdioma['error.loginFailed'])
+	console.debug("Consulta javascript " + stringsIdioma['VOEDLA0051']);
 	
 	var templatesPromo = new Array("promo8", "promo6",  "promo1", "promo5", "promo4", "promo7", "promo2", "promo3");
 	var nombresPromo = new Array("Navidad", "Cursos",  "Bares","Floral", "Tecnología 2", "Buen Fin", "Hipster", "Tecnología");
@@ -20,8 +21,7 @@ app
 	volantesCtrl.modfechaVigencia = "";
 	volantesCtrl.planPro = "";
 	volantesCtrl.fechaVigencia = new Date();
-	
-	//Convertir date a string fecha
+
 	$scope.$watch('volantesCtrl.fechaVigencia', function(v) {
 		
 	    var d = new Date(v);
@@ -48,13 +48,12 @@ app
 		volantesCtrl.planPro = planPro;
 		 
 		if (volantesCtrl.planPro == "NO")
-			$("#txtNombreVolante").prop("disabled", true);
-			
+			$("#txtNombreVolante").prop("disabled", true);			
 	};
 	
 	volantesCtrl.actualizaProducto = function() {
 
-		volantesCtrl.mensaje = "Actualizando producto...";
+		volantesCtrl.mensaje = stringsIdioma['VOEDLA0032'];
     	MensajesService.abrirBlockUIGeneral(volantesCtrl.mensaje);      
     	
     	$http({
@@ -72,7 +71,7 @@ app
     		
     	}, function errorCallback(response) {
     		
-    		volantesCtrl.mensaje = "No se ha podido actualizar el producto";
+    		volantesCtrl.mensaje = stringsIdioma['VOEDER0033'];
     		MensajesService.cerrarBlockUIGeneral("Volantes", volantesCtrl.mensaje);
     		
     	});
@@ -82,7 +81,7 @@ app
 		
 		volantesCtrl.indicePromocion = 2;
 		volantesCtrl.plantillaPromo = templatesPromo[volantesCtrl.indicePromocion];
-    	var mensaje = "Generando vista previa...";
+    	var mensaje = stringsIdioma['VOEDLA0034'];
     	MensajesService.abrirBlockUIGeneral(mensaje);
     	
     	$http({
@@ -92,7 +91,7 @@ app
     			idDominio : 0,
     			titulo: $("#nombrePromo").val(),
     			descripcion: $("#descPromo").val(),
-    			fechaVigencia: volantesCtrl.modfechaVigencia, //$("#datepicker").val(),
+    			fechaVigencia: volantesCtrl.modfechaVigencia,
     			base64Imagen: "",
     			redimir: $('.radioPromo:checked').val(),
     			terminos: $("#infoadiPromo").val(),
@@ -106,7 +105,7 @@ app
 			$.unblockUI();
     		
     	}, function errorCallback(response) {
-    		volantesCtrl.mensaje = "No se ha podido generar la vista previa";
+    		volantesCtrl.mensaje = stringsIdioma['VOEDER0035'];
     		MensajesService.cerrarBlockUIGeneral("Volantes", volantesCtrl.mensaje);
     	});
     	
@@ -116,21 +115,13 @@ app
 
 		volantesCtrl.resultado = volantesCtrl.validarCampos();
 		volantesCtrl.eventoPromocion = "promo-publicar";
-		
-		if (!(volantesCtrl.resultado == "datosCompletos"))
-		{
-			if(volantesCtrl.resultado == "email")
-				$("#divError").html("El formato de email es incorrecto");
-			else if(volantesCtrl.resultado == "teléfono" || volantesCtrl.resultado == "celular")
-				$("#divError").html("El formato de "+volantesCtrl.resultado+" es incorrecto deben ser 10 digitos");
-			else if(volantesCtrl.resultado == "fecha")
-				$("#divError").html("El formato de "+volantesCtrl.resultado+" es incorrecto");
-			else
-				$("#divError").html(volantesCtrl.resultado);
 
+		if (!(volantesCtrl.resultado == "datosCompletos"))
+		{	
+			$("#divError").html(volantesCtrl.resultado);
 			$("#divErrorImg").css("display", "inline");
-			volantesCtrl.muestraDivError = true; 
-			return;			
+			volantesCtrl.muestraDivError = true;
+			return;
 		}
 
 		$("#divErrorImg").css("display", "none");
@@ -140,7 +131,7 @@ app
 		if (volantesCtrl.plantillaFinalPromo.length > 0 && volantesCtrl.plantillaFinalPromo != null)
 			volantesCtrl.plantillaPromo = volantesCtrl.plantillaFinalPromo;
 
-		volantesCtrl.mensaje = "Publicando volante...";
+		volantesCtrl.mensaje = stringsIdioma['VOEDLA0036'];
     	MensajesService.abrirBlockUIGeneral(volantesCtrl.mensaje);
 
     	$http({
@@ -149,7 +140,7 @@ app
     		params: { 
     			titulo: $("#nombrePromo").val(),
     			descripcion: $("#descPromo").val(),
-    			fechaVigencia:  volantesCtrl.modfechaVigencia,//$("#datepicker").val(),
+    			fechaVigencia:  volantesCtrl.modfechaVigencia,
     			base64Imagen: "",
     			redimir: $('.radioPromo:checked').val(),
     			terminos: $("#infoadiPromo").val(),
@@ -166,8 +157,7 @@ app
         			
     				VolanteService.guardarEventoGA(volantesCtrl.eventoPromocion, 
     						response.data.nombreSitio, response.data.banderaCanal);
-    				
-    				//VolanteService.getVolantesPublicar();
+
     				VolanteService.getVolantes();
     				volantesCtrl.muestraPublicarPromo = false;
     				volantesCtrl.muestraPromoPublicada = true;
@@ -175,13 +165,13 @@ app
         		});
     		}
     		else{
-    			volantesCtrl.mensaje = "El nombre elegido ya existe";
+    			volantesCtrl.mensaje = stringsIdioma['VOEDER0037'];
         		MensajesService.cerrarBlockUIGeneral("Volantes", volantesCtrl.mensaje);
     		}
-			//$.unblockUI();
+
     		
     	}, function errorCallback(response) {
-    		volantesCtrl.mensaje = "No se ha podido publicar el volante";
+    		volantesCtrl.mensaje = stringsIdioma['VOEDER0038'];
     		MensajesService.cerrarBlockUIGeneral("Volantes", volantesCtrl.mensaje);
     	});
 	};
@@ -190,15 +180,15 @@ app
 		
 		volantesCtrl.eventoPromocion = "promo-eliminar";
 		var textos = {
-				titulo : "Borrar Volante",
-				mensaje : "¿Seguro que deseas borrar el volante?"
+				titulo : stringsIdioma['VOEDLA0058'],
+				mensaje : stringsIdioma['VOEDLA0039']
 			};
 		
 		MensajesService.obtenerConfirmacion(textos, function(confirmarBorrar) {
 			
 			if (confirmarBorrar) {
 
-				volantesCtrl.mensaje = "Eliminando volante...";
+				volantesCtrl.mensaje = stringsIdioma['VOEDLA0040'];
 		    	MensajesService.abrirBlockUIGeneral(volantesCtrl.mensaje);
 	    		
 		    	$http({
@@ -234,7 +224,7 @@ app
 					$.unblockUI();
 		    		
 		    	}, function errorCallback(response) {
-		    		volantesCtrl.mensaje = "No se ha podido eliminar el volante";
+		    		volantesCtrl.mensaje = stringsIdioma['VOEDER0038'];
 		    		MensajesService.cerrarBlockUIGeneral("Volantes", volantesCtrl.mensaje);
 		    	});
 			}
@@ -249,17 +239,9 @@ app
 		
 		if (!(volantesCtrl.resultado == "datosCompletos"))
 		{	
-			if(volantesCtrl.resultado == "email")
-				$("#divError").html("El formato de email es incorrecto");
-			else if(volantesCtrl.resultado == "teléfono" || volantesCtrl.resultado == "celular")
-				$("#divError").html("El formato de "+ volantesCtrl.resultado +" es incorrecto deben ser 10 digitos");
-			else if(volantesCtrl.resultado == "fecha")
-				$("#divError").html("El formato de "+volantesCtrl.resultado+" es incorrecto");
-			else
-				$("#divError").html("Falta llenar el campo " + volantesCtrl.resultado);
-			
-			volantesCtrl.muestraDivError = true;
+			$("#divError").html(volantesCtrl.resultado);
 			$("#divErrorImg").css("display", "inline");
+			volantesCtrl.muestraDivError = true;
 			return;
 		}
 		
@@ -299,15 +281,15 @@ app
 	volantesCtrl.compartirPromo = function() {
 		
 		$scope.urlPromoShare = $("#urlPromocion").text();
-		var lWhatsapp = "javascript:alert('Esta acción no se puede completar en este dispositivo')";
+		var lWhatsapp = "javascript:alert('" + stringsIdioma['VOEDLA0055'] + "')";
 		
-		var lFace = "http://www.facebook.com/sharer/sharer.php?u=" + $scope.urlPromoShare + "&t=Checa%20esta%20promo%20"; 
+		var lFace = "http://www.facebook.com/sharer/sharer.php?u=" + $scope.urlPromoShare + "&t=" + stringsIdioma['VOEDLA0056']; 
 		var lGoogle = "https://plus.google.com/share?url=" + $scope.urlPromoShare; 	
-		var lEmail = "mailto:?subject="+ $scope.urlPromoShare + "%20Checa%20esta%20promo!&body=Checa%20esta%20promo:%20"+ $scope.urlPromoShare + "%0A%0ACrea%20un%20volante%20digital%20asi%20con%20www.infomovil.com%0A%0A"; 
-		var lTwitt = "http://www.twitter.com/intent/tweet?text="+ $scope.urlPromoShare +"%20%0A%0ACheca%20esta%20promo:%20"+ $scope.urlPromoShare; 
+		var lEmail = "mailto:?subject="+ $scope.urlPromoShare + "%20" + stringsIdioma['VOEDLA0056'] + "!&body=" + stringsIdioma['VOEDLA0056'] + ":%20"+ $scope.urlPromoShare + "%20%0A%0A"+ stringsIdioma['VOEDLA0057']; 
+		var lTwitt = "http://www.twitter.com/intent/tweet?text="+ $scope.urlPromoShare +"%20%0A%0A" + stringsIdioma['VOEDLA0056'] + ":%20" + $scope.urlPromoShare; 
 		
 		if(navigator.userAgent.match(/Android|BlackBerry|iPhone|iPad|iPod|Opera Mini|IEMobile/i))
-			var lWhatsapp = "whatsapp://send?text=Checa%20esta%20promo:%20" + $scope.urlPromoShare;
+			var lWhatsapp = "whatsapp://send?text=" + stringsIdioma['VOEDLA0056'] + $scope.urlPromoShare;
 		
 		$('#Facebook').attr('href', lFace);
 		$('#Google').attr('href', lGoogle);
@@ -360,23 +342,23 @@ app
 					return "El nombre del volante no debe ser mayor a 30 caracteres ni debe contener caracteres especiales ni espacios en blanco";
 			}
 		}
-
+		
 		if ($nom.length <= 0)
-			return "Falta llenar el campo nombre de la promoción";
+			return stringsIdioma['VOEDLA0047'];
 		else if ($desc.length <= 0)
-			return "Falta llenar el campo descripción de la promoción";			
+			return stringsIdioma['VOEDLA0048'];			
 		else if ($dp.length <= 0)
-			return "Falta llenar el campo vigencia de la promoción";	
+			return stringsIdioma['VOEDLA0049'];	
 		else if ($rp == undefined || $rp.length <= 0)
-			return "Falta llenar el campo cómo redimir";
+			return stringsIdioma['VOEDLA0050'];
 		else if ($tV.length > 0 && !regexTel.test($tV)) 
-			 return "teléfono"; 
+			 return stringsIdioma['VOEDLA0052']; 
 		else if($cV.length > 0 && !regexTel.test($cV)) 
-			 return "celular"; 
+			 return stringsIdioma['VOEDLA0053']; 
 		else if($eCV.length > 0 && !regexEmail.test($eCV)) 
-			 return "email"; 
+			 return stringsIdioma['VOEDLA0051']; 
 		else if(!bolFecha )
-			 return "fecha"; 
+			 return stringsIdioma['VOEDLA0054']; 
 		else
 			return "datosCompletos";
 	};
@@ -446,7 +428,6 @@ app
 			data: dataEmp,
 			async : true
 		}).then(function successCallback(response) {
-			console.log("Se guardo la empresa y me regreso: "  + response.data.codeError);
 			VolanteService.getContactosVolantes();			 
 		}, function errorCallback(response) {
 			console.log("El error es: " + response.data, response.data.code);
@@ -583,14 +564,13 @@ app
 			datosContacto = getContactoTel();
 			upsertContactoVolantes(datosContacto);		 
 		}else{
-			// Elimianar el contacto porque esta vacio
 			VolanteService.eliminarContactoVolante("tel");
 		}
+		
 		if($("#celContactoVolante").val().length > 0){
 			datosContacto = getContactoCel();
 			upsertContactoVolantes(datosContacto);		 
 		}else{
-			// Elimianar el contacto porque esta vacio
 			VolanteService.eliminarContactoVolante("cel");
 		}
 		
@@ -599,7 +579,6 @@ app
 			datosContacto = getContactoEmail();
 			upsertContactoVolantes(datosContacto);	
 		}else{
-			//Elininar el contacto porque esta vacio
 			VolanteService.eliminarContactoVolante("email");
 		}
 		
@@ -608,8 +587,6 @@ app
 	};
 
 });
-
-
 
 function descargarArchivo(tipo) {
 	
@@ -632,7 +609,6 @@ function descargarArchivo(tipo) {
 	
     ga('send', 'event', 'promo', eventoPromocion, $("#tempNombrePromo").val(), $("#tempBanderaPromo").val());
 };
-
 
 function imprimirPromocionWeb() {
 	
@@ -672,8 +648,8 @@ function imprimirPromocionWeb() {
 		
 };
 
-var banderaImprimir=false;
-function cerrarModalImprimir(){
-	if(banderaImprimir == true)
+function cerrarModalImprimir() {
+	
+	if (banderaImprimir)
 		location.reload();
 };

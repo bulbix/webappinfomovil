@@ -33,14 +33,14 @@ app.factory('MensajesService', function($http) {
 			message : "<div style='display:block; padding: 10px;'>" + textos.mensaje + "</div>",
 			buttons : [
 					{
-						label : 'Cancelar',
+						label : stringsIdioma['VOEDLA0060'],
 						action : function(dialog) {
 							callback(false);
 							dialog.close();
 						}
 					},
 					{
-						label : 'Aceptar',
+						label : stringsIdioma['VOEDLA0059'],
 						action : function(dialog) {
 							callback(true);
 							dialog.close();

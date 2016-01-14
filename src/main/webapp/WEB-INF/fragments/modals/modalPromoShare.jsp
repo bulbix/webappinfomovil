@@ -1,5 +1,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib uri="http://tiles.apache.org/tags-tiles" prefix="tiles"%>
+<%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <div class="modal-content btnsEditor">
@@ -7,12 +8,12 @@
 		<button type="button" class="close textBlack" data-dismiss="modal" aria-label="Close">
 			<span aria-hidden="true">&times;</span>
 		</button>
-		<p class="modal-title textBlack text-left"><strong>Compartir</strong></p>
+		<p class="modal-title textBlack text-left"><strong><spring:message code="VOEDLA0013"/></strong></p>
 	</div>
 	<div class="modal-body ">
 		<div class="col-xs-12">
 		<div class="divider"></div>
-		<div class="textBlack">Comparte tu promoción</div>
+		<div class="textBlack"><spring:message code="VOEDLA0061"/></div>
 		
 		
 		<div class="divider"></div>
