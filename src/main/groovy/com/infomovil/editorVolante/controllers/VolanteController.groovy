@@ -1,6 +1,7 @@
 package com.infomovil.editorVolante.controllers
 
-import java.util.HashMap;
+import java.util.HashMap
+import java.util.Locale;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -72,4 +73,14 @@ class VolanteController {
 		
 		return new ModelAndView("Webapp/estiloVolante", [ claseCss : claseCss,  colorTexto : colorTexto, extensionImg : extensionImg])
 	}
+	
+	@RequestMapping(value = "/infomovil/getIdioma", method = RequestMethod.POST)
+	@ResponseBody
+	def getIdioma(Locale locale) {
+		System.out.println ("el idioma que viene en volante: :: . : : : : : " + locale);
+		String lc = locale;
+		return lc;
+	}
+	
+	
 }

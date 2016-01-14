@@ -75,6 +75,15 @@
     <link href="resources/webapp/css/jquery.bxslider.css" rel="stylesheet" />
     <!-- /ESTILOS GALERIA bxSlider CSS -->
     <!-- CODIGO SEGUIMIENTO ANALYTICS -->
+     <script type="text/javascript">
+	console.log("MI CONSOLE!!!!!!:::::::");		
+     var contextPath='<%=request.getContextPath()%>';
+				if(contextPath == "/")
+					contextPath = "";
+				console.log("ContextPath: " + contextPath);
+		</script>
+    
+    
     <script>
   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
   (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
@@ -85,5 +94,6 @@
  ga('send', 'pageview'); 
     </script>
      <!-- / CODIGO SEGUIMIENTO ANALYTICS -->
+    
 <!--  /HEAD HTML 5 -->
  </head>

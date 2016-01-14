@@ -92,34 +92,9 @@
 <!-- Placed at the end of the document so the pages load faster --> 
 <tiles:insertDefinition name="jsCore"></tiles:insertDefinition> 
 <tiles:insertDefinition name="jsScripts"></tiles:insertDefinition>
-
-<script type="text/javascript">
-var getUrlParameter = function getUrlParameter(sParam) {
-    var sPageURL = decodeURIComponent(window.location.search.substring(1)),
-        sURLVariables = sPageURL.split('&'),
-        sParameterName,
-        i;
-
-    for (i = 0; i < sURLVariables.length; i++) {
-        sParameterName = sURLVariables[i].split('=');
-
-        if (sParameterName[0] === sParam) {
-            return sParameterName[1] === undefined ? true : sParameterName[1];
-        }
-    }
-};
-var getParam = getUrlParameter('lang');
-var ext = location.search.split('lang=')[1];
-var ln = window.navigator.language||navigator.browserLanguage;
-var getLeng = ln.toLowerCase();
-var url =  window.location.href;
-
-console.log('Debe ser: ' + url +"?lang=en");
-if(getLeng == 'en-us' && getParam != 'en')
-	window.location.href = url +"?lang=en";
-else if(getLeng == 'es-mx' && getParam != 'es')
-	window.location.href = url +"?lang=es";
-console.log("El valor del idioma es: " + getLeng + " y el lang="+ getParam);
+ <script src="<c:url value="/resources/js/webapp/idioma.js"/>" ></script>
+<script type="text/javascript"><!-- Esta llamada esta en jsIdioma --> 
+	detectarIdioma();
 </script>
 
 </body>

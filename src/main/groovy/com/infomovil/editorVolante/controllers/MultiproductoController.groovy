@@ -18,12 +18,10 @@ class MultiproductoController
 	@RequestMapping(value = "/infomovil/multiproducto", method = RequestMethod.GET)
 		
 		def multiProducto(HttpServletRequest request, HttpServletResponse response,Locale locale) {
-			//Locale locale = RequestContextUtils.getLocale(request);
-			System.out.println ("el locale reviene: :: . : : : : :" + locale);
+			System.out.println ("El idioma locale viene: :: . : : : : : " + locale);
 			String lc = locale;
 			String ln = "en";
 			if (lc.compareTo(ln) == 0){
-				System.out.println ("Ehh yupix a festejar: :: . : : : : :" + locale);
 				return "redirect:/infomovil/misPromociones";
 			}
 			def vista = "Webapp/multiproducto";
