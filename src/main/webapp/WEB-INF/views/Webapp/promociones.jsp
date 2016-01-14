@@ -50,27 +50,28 @@
 					<img
 					src="<c:url value="/resources/webapp/images/apple-touch-icon-57x57.png"/>"
 					width="50" height="50" alt="Infomovil" />
-				</span> <span class="marLeft navEditor ${colorTexto}" style="margin-top:15px;">MIS VOLANTES</span>
+				</span> <span class="marLeft navEditor ${colorTexto}" style="margin-top:15px;"><spring:message code="VOEDLA0001"/></span>
 				<!-- /LOGO INFOMOVIL - REGISTRO GENERAL-->
 			</div>
 			<div id="navbar" class="navbar-collapse collapse text-right">
 				<ul class="nav navbar-nav navbar-right">
+<li> <a href=""><img src=<c:url value="/resources/webapp/images/fa-lang${ extensionImg }.png"/> width="20" height="20" alt="Infomovil" class="animated fadeIn ${colorTexto}"/><spring:message code="VOEDLA0002"/></a></li>
 
 					<li class="dropdown">
 						<a href="<c:url value="/infomovil/miCuenta"></c:url>" 
 							class="dropdown-toggle smoothScroll ${colorTexto}" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
 							<img width="20" height="20" alt="Infomovil"	src="<c:url value="/resources/webapp/images/fa-user${ extensionImg }.png"/>" />
-							Mi Cuenta <span class="caret"></span>
+							<spring:message code="VOEDLA0003"/><span class="caret"></span>
 						</a>	
 							<ul class="dropdown-menu navbar-${ claseCss } ${colorTexto} text-right">
 								<li><a href="<c:url value="/infomovil/miCuenta"></c:url>"
- 									class="smoothScroll borderInicial ${colorTexto}">Mis productos 
+ 									class="smoothScroll borderInicial ${colorTexto}"><spring:message code="VOEDLA0004"/>
  									<img width="20" height="20" alt="Infomovil"
  										src="<c:url value="/resources/webapp/images/fa-products${ extensionImg }.png"/>" /></a>
  								</li>
 
 									<li><a href="#" data-toggle="modal" data-target="#myModalMsjPN"
-	 									class="smoothScroll  borderFin ${colorTexto}">Mis mensajes
+	 									class="smoothScroll  borderFin ${colorTexto}"><spring:message code="VOEDLA0005"/>
 	 									<img width="20" height="20" alt="Infomovil"
 	 									src="<c:url value="/resources/webapp/images/fa-messages${ extensionImg }.png"/>" /></a>
 	 								</li>
@@ -82,13 +83,12 @@
 						aria-expanded="false">
 						<img width="20" height="20"
 							alt="Infomovil"
-							src="<c:url value="/resources/webapp/images/fa-pencil${ extensionImg }.png"/>" />Mi
-							Contenido <span class="caret"></span></a>
+							src="<c:url value="/resources/webapp/images/fa-pencil${ extensionImg }.png"/>" /><spring:message code="VOEDLA0006"/><span class="caret"></span></a>
 						<ul class="dropdown-menu navbar-${ claseCss } ${colorTexto} text-right" ng-show="volantesCtrl.muestraPromoPublicada">
 							<li class=" borderInicial borderFin" ><a
 								href="#" data-toggle="modal" data-target="#myModalMaps"
 								class="smoothScroll ${colorTexto}">
-									Ubicación <img width="20"
+									<spring:message code="VOEDLA0007"/><img width="20"
 									height="20" alt="Infomovil"
 									src="<c:url value="/resources/webapp/images/icn_marc_maps${ extensionImg }.png"/>" /></a></li>
 									
@@ -97,13 +97,13 @@
 					<li><a href="" class="smoothScroll ${colorTexto}" ng-click="volantesCtrl.actualizaProducto()"> <img
 							width="20" height="20" alt="Infomovil"
 							src="<c:url value="/resources/webapp/images/fa-compu${ extensionImg }.png"/>" />
-							Mi Página <span class="hidden-sm">Web</span>
+							<spring:message code="VOEDLA0008"/>
 					</a></li>
 					<li><a href="<c:url value="/logout"></c:url>"
 						class="smoothScroll ${colorTexto}"> <img width="20"
 							height="20" alt="Infomovil"
 							src="<c:url value="/resources/webapp/images/fa-sign-out${ extensionImg }.png"/>" />
-							Cerrar <span class="hidden-sm hidden-md">sesión</span>
+							<spring:message code="VOEDLA0009"/>
 					</a></li>
 
 					<!--  Mostrar para BAZ -->
@@ -119,6 +119,8 @@
 							alt="Infomovil"
 							src="<c:url value="/resources/webapp/images/apple-touch-icon-57x57.png"/>" /></a>
 					</li>
+					
+					
 					<!--/ OCULTAR CUÁNDO SEA - REGISTRO GENERAL-->
 
 				</ul>
@@ -142,7 +144,7 @@
 							style="margin: 5px 8px 0 0;" >
 							<img width="20" height="20" alt="Infomovil"
 								src="<c:url value="/resources/webapp/images/fa-templates.png"/>" />
-							<span class="hidden-xs">E<span class="hidden-sm">lige E</span>stilo</span>
+							<span class="hidden-xs"><spring:message code="VOEDLA0010"/></span>
 						</a>
 					</div>					
 
@@ -168,7 +170,7 @@
 							ng-click="volantesCtrl.publicarVolante()" style="margin: 5px 0;" id="btnPublicar">
 							<img width="20" height="20" alt="Infomovil"
 								src="<c:url value="/resources/webapp/images/successWhite.png"/>" />
-							<span class="hidden-xs">Publicar</span>
+							<span class="hidden-xs"><spring:message code="VOEDLA0011"/></span>
 						</button>
 					</div>
 
@@ -183,7 +185,7 @@
 							style="margin: 5px 8px 0 0;" >
 							<img width="20" height="20" alt="Infomovil"
 								src="<c:url value="/resources/webapp/images/fa-templates.png"/>" />
-							<span class="hidden-xs">E<span class="hidden-sm">lige E</span>stilo</span>
+							<span class="hidden-xs"><spring:message code="VOEDLA0010"/></span>
 						</a>
 					</div>
 								
@@ -194,7 +196,7 @@
 							style="margin: 5px 5px 0 0;">
 							<img width="20" height="20" alt="Infomovil"
 								src="<c:url value="/resources/webapp/images/fa-eye.png"/>" />
-							<span class="hidden-xs">Ver <span class="hidden-xs hidden-sm">volante</span></span>
+							<span class="hidden-xs"><spring:message code="VOEDLA0012"/></span></span>
 						</button>
 					</div>
 								
@@ -205,7 +207,7 @@
 							style="margin: 5px 5px 0 0;">
 							<img width="20" height="20" alt="Infomovil"
 								src="<c:url value="/resources/webapp/images/fa-compartir.png"/>" />
-							<span class="hidden-xs">Compartir</span>
+							<span class="hidden-xs"><spring:message code="VOEDLA0013"/></span>
 						</button>
 					</div>
 								
@@ -216,17 +218,17 @@
 							style="margin: 5px 8px 0 0;">
 							<span><img width="20" height="20" alt="Infomovil"
 								src="<c:url value="/resources/webapp/images/fa-print.png"/>" />
-								Imprimir</span>
+								<spring:message code="VOEDLA0014"/></span>
 						</button>
 					</div>
 								
 					<div class="hidden-md hidden-lg col-xs-2 col-sm-2 text-center reset">
 						<button type="button"
 							class=" btn btn-outlineGreen  textWhite navEditorLato"
-							ng-click="volantesCtrl.descargarArchivo('pdf')" style="margin: 5px 0 0 0;">
+							onclick="descargarArchivo('pdf')" style="margin: 5px 0 0 0;">
 							<span><img width="20" height="20" alt="Infomovil"
 								src="<c:url value="/resources/webapp/images/fa-pdf.png"/>" />
-							</span> <span class="hidden-xs">PDF<span class="hidden-xs hidden-sm">/Imagen</span></span>
+							</span> <span class="hidden-xs"><spring:message code="VOEDLA0015"/></span></span>
 	
 						</button>
 					</div>
@@ -238,7 +240,7 @@
 							style="margin: 5px 5px 0 0;">
 							<img width="20" height="20" alt="Infomovil"
 								src="<c:url value="/resources/webapp/images/trash.png"/>" /> <span
-								class="hidden-xs">Eliminar</span>
+								class="hidden-xs"><spring:message code="VOEDLA0016"/></span>
 						</button>
 					</div>
 								
@@ -249,7 +251,7 @@
 							style="margin: 5px 0 0 0;">
 							<img width="20" height="20" alt="Infomovil"
 								src="<c:url value="/resources/webapp/images/ico_actualizar.png"/>" />
-							<span class="hidden-xs">Actualizar</span>
+							<span class="hidden-xs"><spring:message code="VOEDLA0017"/></span>
 						</button>
 					</div>
 
@@ -270,7 +272,7 @@
 						<div class="clear"></div>
 						<div class=" text-center" >
 							<div class="clearfix"></div>
-							<div style="display:none;" style="margin: 0 0 20px 0;"><img src="<c:url value="/resources/webapp/images/fa-warning-red.png"/>" width="20" height="20" alt="Alerta"  />
+							<div id="divErrorImg" style="display:none;" style="margin: 0 0 20px 0;"><img src="<c:url value="/resources/webapp/images/fa-warning-red.png"/>" width="20" height="20" alt="Alerta"  />
 							<div id="divError" style="color: red;"></div></div>
 							
 							<div class="clear"></div>
@@ -279,100 +281,7 @@
 							<div ng-hide="true" id="idCelContactoVolante"></div>
 							<div ng-hide="true" id="idEmailContactoVolante"></div>	
 
-							<div ng-if="volantesCtrl.volantes.length == 0">
-							
-								<div class="muestraPublicarPromo">
-								<div ng-hide="true" id="idPromocion"></div>
-								<div ng-hide="true" id="urlPromocion"></div>
-								<div  ng-hide="true" id="tempPromocion"></div>
-								
-								<div class="col-xs-12 col-sm-6 col-md-6">
-									<div class="form-group text-left textBlack">
-										<label for="exampleInputEmpresa">Tu empresa:</label> <input type="text" class="form-control" id="nombreEmpresaPromo" value="">
-									</div>
-									<div class="divider"></div>
-									<div class="form-group text-left textBlack">
-										<label for="exampleInputEmail1">Nombre de la promoción:</label> <input type="text" class="form-control"	id="nombrePromo" value="">
-									</div>
-									<div class="divider"></div>
-									<div class="form-group text-left textBlack">
-										<label for="exampleInputPassword1" class="text-left">Descripción de la promoción:</label>
-											<textarea rows="4" cols="50" name="descPromo" id="descPromo" class="form-control"></textarea>
-									</div>
-									<div class="divider"></div>
-									<div class="form-group text-left textBlack">
-										<label for="exampleInputEmail1" class="text-left">Información adicional:</label>
-											<textarea rows="4" cols="50" class="form-control" name="infoadiPromo" id="infoadiPromo"></textarea>
-									</div>
-								</div>
-								
-								<div class="col-xs-12 col-sm-6">
-									<div class="divider hidden-md hidden-lg"></div>
-									<div class="form-group text-left textBlack col-xs-11 reset">
-										<label for="exampleInputEmail1" class="text-left">Vigencia al:
-											<md-content>
-												<md-datepicker ng-model="volantesCtrl.fechaVigencia" md-placeholder="Vigencia" />
-											</md-content>
-										</label> 
-									</div>
-									
-									<div class="clearfix"></div>
-									<div class="divider"></div>
-											
-									<div class="form-group text-left textBlack">
-										<div class="form-group text-left textBlack">
-											<label for="exampleInputEmail1" class="text-left">Teléfono</label> 
-											<input type="text" id="telContactoVolante" value="" class="textBlack form-control" placeholder="10 digitos"/>
-										</div>
-										<div class="clearfix"></div>
-										<div class="divider"></div>
-										<div class="form-group text-left textBlack">
-											<label for="exampleInputEmail1" class="text-left">Celular</label> 
-											<input type="text" id="celContactoVolante" value="" class="textBlack form-control" placeholder="10 digitos"/>
-										</div>
-										<div class="clearfix"></div>
-										<div class="divider"></div>
-										<div class="form-group text-left textBlack">
-											<label for="exampleInputEmail1" class="text-left">E-mail</label> 
-											<input type="text" id="emailContactoVolante" value="" class="textBlack form-control" placeholder="mail@mail.com"/>
-										</div>		
-									</div>		
-									<div class="clearfix"></div>
-									<div class="divider"></div>
-									<div class="form-group text-left textBlack">
-										<label class="text-left">¿Cómo redimir?:</label>
-										<div class="radio">
-											<div class="clear"></div>
-											<label>
-												<input type="radio" name="radioPromo" id="r1"
-													value="No especificado" class="radioPromo"
-													ng-checked="1==1">No especificado
-											</label>
-										</div>
-										<div class="radio">
-											<label>
-												<input type="radio" name="radioPromo" id="r2" 
-													value="Llámanos" class="radioPromo">Llámanos
-											</label>
-										</div>
-										<div class="radio">
-											<label>
-												<input type="radio" name="radioPromo" id="r3"
-													value="Envíanos un e-mail" class="radioPromo">Envíanos un e-mail
-											</label>
-										</div>
-										<div class="radio">
-											<label>
-												<input type="radio" name="radioPromo" id="r4"
-													value="Visítanos" class="radioPromo">Visítanos
-											</label>
-										</div>
-									</div>					
-								</div>
-							 </div>
-							</div>
-
-							<div ng-repeat="item in volantesCtrl.volantes" style="margin-top: 10px;" class="muestraPromoPublicada" style="display:none;">
+							<div ng-repeat="item in volantesCtrl.volantes" style="margin-top: 10px;" style="display:none;">
 
 								<div ng-hide="true" id="idPromocion">{{item.idOffer}}</div>
 								<div ng-hide="true" id="urlPromocion">{{item.urlPromocion}}</div>
@@ -382,28 +291,25 @@
 
 									<div class="col-xs-12 col-sm-6 col-md-6">
 										<div class="form-group text-left textBlack">
-											<label for="exampleInputEmpresa">Tu empresa:</label> <input type="text" class="form-control"
+											<label for="exampleInputEmpresa"><spring:message code="VOEDLA0018"/>:</label> <input type="text" class="form-control"
 												id="nombreEmpresaPromo" value="{{item.empresa}}">
 										</div>
 										<div class="divider"></div>
 										<div class="form-group text-left textBlack">
-											<label for="exampleInputEmail1">Nombre de la
-												promoción:</label> <input type="text" class="form-control"
+											<label for="exampleInputEmail1"><spring:message code="VOEDLA0019"/>:</label> <input type="text" class="form-control"
 												id="nombrePromo" value="{{item.titleOffer}}">
 										</div>
 										<div class="divider"></div>
 
 										<div class="form-group text-left textBlack">
-											<label for="exampleInputPassword1" class="text-left">Descripción
-												de la promoción:</label>
+											<label for="exampleInputPassword1" class="text-left"><spring:message code="VOEDLA0020"/>:</label>
 											<textarea rows="4" cols="50" name="descPromo" id="descPromo"
 												class="form-control">{{item.descOffer}}</textarea>
 										</div>
 
 										<div class="divider"></div>
 										<div class="form-group text-left textBlack">
-											<label for="exampleInputEmail1" class="text-left">Información
-												adicional:</label>
+											<label for="exampleInputEmail1" class="text-left"><spring:message code="VOEDLA0021"/>:</label>
 											<textarea rows="4" cols="50" class="form-control"
 												name="infoadiPromo" id="infoadiPromo">{{item.termsOffer}}</textarea>
 										</div>
@@ -411,8 +317,7 @@
 									<div class="col-xs-12 col-sm-6">
 										<div class="divider hidden-md hidden-lg"></div>
 										<div class="form-group text-left textBlack col-xs-11 reset">
-											<label for="exampleInputEmail1" class="text-left">Vigencia
-												al:</label>
+											<label for="exampleInputEmail1" class="text-left"><spring:message code="VOEDLA0022"/>:</label>
 											<md-content style="margin:0 0 0 -17px;">
 												<md-datepicker ng-model="volantesCtrl.fechaVigencia" md-placeholder="Vigencia"/>
 											</md-content>
@@ -424,20 +329,20 @@
 										<div class="form-group text-left textBlack">
 											
 												<div class="form-group text-left textBlack">
-													<label for="exampleInputEmail1" class="text-left">Teléfono</label> 
+													<label for="exampleInputEmail1" class="text-left"><spring:message code="VOEDLA0023"/></label> 
 													<input type="text" id="telContactoVolante" value="" class="textBlack form-control" placeholder="10 digitos"/>
 												</div>
 												<div class="clearfix"></div>
 												<div class="divider"></div>
 												<div class="form-group text-left textBlack">
-													<label for="exampleInputEmail1" class="text-left">Celular</label> 
+													<label for="exampleInputEmail1" class="text-left"><spring:message code="VOEDLA0024"/></label> 
 													<input type="text" id="celContactoVolante" value="" class="textBlack form-control" placeholder="10 digitos"/>
 												</div>
 												<div class="clearfix"></div>
 												<div class="divider"></div>
 												<div class="form-group text-left textBlack">
-													<label for="exampleInputEmail1" class="text-left">E-mail</label> 
-													<input type="text" id="emailContactoVolante" value="" class="textBlack form-control" placeholder="mail@mail.com"/>
+													<label for="exampleInputEmail1" class="text-left lowCase"><spring:message code="VOEDLA0025"/></label> 
+													<input type="text" id="emailContactoVolante" value="" class="textBlack form-control lowCase" placeholder="mail@mail.com"/>
 												</div>
 											
 												
@@ -445,29 +350,27 @@
 										<div class="clearfix"></div>
 										<div class="divider"></div>
 										<div class="form-group text-left textBlack">
-											<label class="text-left">¿Cómo redimir?: </label>
+											<label class="text-left"><spring:message code="VOEDLA0026"/>: </label>
 											<div class="radio">
 												<div class="clear"></div>
 												<label><input type="radio" name="radioPromo" id="r1"
 													value="No especificado" class="radioPromo"
-													ng-checked="item.redeemOffer == 'No especificado'">No
-													especificado</label>
+													ng-checked="item.redeemOffer == 'No especificado'"><spring:message code="VOEDLA0027"/></label>
 											</div>
 											<div class="radio">
 												<label><input type="radio" name="radioPromo" id="r2"
 													value="Llámanos" class="radioPromo"
-													ng-checked="item.redeemOffer == 'Llámanos'">Llámanos</label>
+													ng-checked="item.redeemOffer == 'Llámanos'"><spring:message code="VOEDLA0028"/></label>
 											</div>
 											<div class="radio">
 												<label><input type="radio" name="radioPromo" id="r3"
 													value="Envíanos un e-mail" class="radioPromo"
-													ng-checked="item.redeemOffer == 'Envíanos un e-mail'">Envíanos
-													un e-mail</label>
+													ng-checked="item.redeemOffer == 'Envíanos un e-mail'"><spring:message code="VOEDLA0029"/></label>
 											</div>
 											<div class="radio">
 												<label><input type="radio" name="radioPromo" id="r4"
 													value="Visítanos" class="radioPromo"
-													ng-checked="item.redeemOffer == 'Visítanos'">Visítanos</label>
+													ng-checked="item.redeemOffer == 'Visítanos'"><spring:message code="VOEDLA0030"/></label>
 											</div>
 										</div>
 										<div class="clearfix"></div>
@@ -488,7 +391,7 @@
 												class="col-xs-12 col-sm-6 btn btn-default btn-outline navEditor text-left textBlack">
 												<img width="25" height="25" alt="Infomovil"
 												src="<c:url value="/resources/webapp/images/icn_marc_maps-bk.png"/>" />
-												<span id="idOpcionUbicacion"><span class="hidden-xs">Colocar mi</span> Ubicación</span> <br /> <span
+												<span id="idOpcionUbicacion"><spring:message code="VOEDLA0031"/></span> <br /> <span
 												id="direccionMap" class="directionMap"></span>
 												<div class="clearfix"></div>
 											</a>
@@ -513,26 +416,6 @@
 									<c:set var="urlPromo" value="{{item.urlPromocion}}"
 										scope="session" />
 								</tiles:insertDefinition>
-								
-						<div id='myModalTempPromo' class='modal fade' tabindex='-1'
-							role='dialog' aria-labelledby='myModalLabel' aria-hidden='true'>
-							<div class='modal-dialog modal-md'>
-								<div class='modal-content'>
-									<div class='modal-header'>
-										<button type='button' class='close textBlack pull-left'
-											data-dismiss='modal' aria-label='Close'>
-											<span aria-hidden='true'>&times;</span>
-										</button>
-										<button type='button'
-											class='btn btn-purple pull-right txtBtnEditor'
-											ng-click="volantesCtrl.actualizaPlantillaVolante()">Aplicar
-											estilo</button>
-									</div>
-									<div class='modal-body contenidoSlider'></div>
-									<div class='modal-footer'></div>
-								</div>
-							</div>
-						</div>
 					</div>
 				</div>
 				<!--/Theme showcase -->
@@ -629,8 +512,7 @@
 				</c:otherwise>
 			</c:choose>
 		</script>
-		
-		<h1><spring:message code="error.loginFailed" /></h1>
+
 	</body>
 	
 </html>

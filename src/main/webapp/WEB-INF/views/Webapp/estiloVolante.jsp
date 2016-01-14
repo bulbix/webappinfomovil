@@ -116,10 +116,11 @@
 							<span class="textWhite col-xs-12 col-sm-12 " style="padding: 10px; display:block">{{estiloVolanteCtrl.nombrePlantillas[$index]}}</span>
 							
 						</span>
-						<span class="clear " style="display:block"></span>
+						<span class="clear" style="display:block"></span>
 						</span>
 						</a>
 				</div>
+				
 			</div>
 			<!-- Ficha template -->
 				

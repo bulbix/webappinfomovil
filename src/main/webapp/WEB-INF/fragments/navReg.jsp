@@ -13,7 +13,8 @@
           <ul class="nav navbar-nav navbar-right">
         <li><a href="http://infomovil.com" class="smoothScroll">Inicio</a></li>
         
-         <li><a href="<c:url value="/login"/>" class="smoothScroll">¿Ya tienes cuenta? <span style="text-decoration:underline">Inicia sesión</span></a></li> 
+         <li><a href="<c:url value="/login"/>" class="smoothScroll">¿Ya tienes cuenta? <span style="text-decoration:underline">Inicia sesión</span></a></li>
+          <li> <a href="">English <img src="resources/webapp/images/fa-lang.png" width="20" height="20" alt="Infomovil" class="animated fadeIn"/></a></li> 
       </ul>
     </div>
   </div>

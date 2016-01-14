@@ -16,6 +16,7 @@ app
 	var nombresPromo = new Array("Navidad", "Cursos",  "Bares","Floral", "Tecnología 2", "Buen Fin", "Hipster", "Tecnología");
 	
 	var volantesCtrl = this;
+	volantesCtrl.volantes = null;
 	volantesCtrl.modfechaVigencia = "";
 	volantesCtrl.planPro = "";
 	volantesCtrl.fechaVigencia = new Date();
@@ -37,7 +38,7 @@ app
 	volantesCtrl.plantillaPromo = "promo1";
 	volantesCtrl.producto = "web";
 	volantesCtrl.vista = "editarSitio";
-	volantesCtrl.tabla = "multiproducto_dev";
+	volantesCtrl.tabla = "multiproducto";
 	volantesCtrl.indicePromocion = 2;
 	volantesCtrl.maxLength = 30;
 	volantesCtrl.eventoPromocion = "";
@@ -45,7 +46,7 @@ app
 	volantesCtrl.init = function(planPro) {
 
 		volantesCtrl.planPro = planPro;
-		
+		 
 		if (volantesCtrl.planPro == "NO")
 			$("#txtNombreVolante").prop("disabled", true);
 			
@@ -112,8 +113,7 @@ app
 	};
 	
 	volantesCtrl.publicarVolante = function() {
-		
-		console.log("publicarVolante");
+
 		volantesCtrl.resultado = volantesCtrl.validarCampos();
 		volantesCtrl.eventoPromocion = "promo-publicar";
 		
@@ -127,15 +127,13 @@ app
 				$("#divError").html("El formato de "+volantesCtrl.resultado+" es incorrecto");
 			else
 				$("#divError").html(volantesCtrl.resultado);
-			
-			$("#divError").css("display", "block");
-			console.log("error: " + $("#divError").html());
+
+			$("#divErrorImg").css("display", "inline");
 			volantesCtrl.muestraDivError = true; 
-			return;
-			
+			return;			
 		}
 
-		$("#divError").css("display", "none");
+		$("#divErrorImg").css("display", "none");
 		volantesCtrl.muestraDivError = false;
 		volantesCtrl.plantillaFinalPromo = "promo1";
 		
@@ -162,23 +160,25 @@ app
     		}	  
     	}).then(function successCallback(response) {
 
-
-    		if(response.data.codeError == "0"){
-        		guardarContactos();
-		
-				VolanteService.guardarEventoGA(volantesCtrl.eventoPromocion, 
-						response.data.nombreSitio, response.data.banderaCanal);
-				
-				//VolanteService.getVolantesPublicar();
-				VolanteService.getVolantes();
-				volantesCtrl.muestraPublicarPromo = false;
-				volantesCtrl.muestraPromoPublicada = true;
+    		if(response.data.codeError == "0") {
+    			
+        		guardarContactos(function() {
+        			
+    				VolanteService.guardarEventoGA(volantesCtrl.eventoPromocion, 
+    						response.data.nombreSitio, response.data.banderaCanal);
+    				
+    				//VolanteService.getVolantesPublicar();
+    				VolanteService.getVolantes();
+    				volantesCtrl.muestraPublicarPromo = false;
+    				volantesCtrl.muestraPromoPublicada = true;
+    				
+        		});
     		}
     		else{
     			volantesCtrl.mensaje = "El nombre elegido ya existe";
         		MensajesService.cerrarBlockUIGeneral("Volantes", volantesCtrl.mensaje);
     		}
-			$.unblockUI();
+			//$.unblockUI();
     		
     	}, function errorCallback(response) {
     		volantesCtrl.mensaje = "No se ha podido publicar el volante";
@@ -198,7 +198,6 @@ app
 			
 			if (confirmarBorrar) {
 
-				console.log("id promo: " +  $("#idPromocion").text());
 				volantesCtrl.mensaje = "Eliminando volante...";
 		    	MensajesService.abrirBlockUIGeneral(volantesCtrl.mensaje);
 	    		
@@ -259,12 +258,14 @@ app
 			else
 				$("#divError").html("Falta llenar el campo " + volantesCtrl.resultado);
 			
-				volantesCtrl.muestraDivError = true;
+			volantesCtrl.muestraDivError = true;
+			$("#divErrorImg").css("display", "inline");
 			return;
 		}
 		
 		volantesCtrl.muestraDivError = false;
-
+		$("#divErrorImg").css("display", "none");
+		
 		var plantillaFinalPromo = $("#tempPromocion").text();		
 		
 		if (plantillaFinalPromo.trim().length > 0 && plantillaFinalPromo != null)
@@ -334,11 +335,6 @@ app
 	    
 	};
 	
-	
-	
-
- 
-	
 	volantesCtrl.validarCampos = function() {
 		
 		var regexFecha = new RegExp(/^(((0[1-9]|[12]\d|3[01])\/(0[13578]|1[02])\/((19|[2-9]\d)\d{2}))|((0[1-9]|[12]\d|30)\/(0[13456789]|1[012])\/((19|[2-9]\d)\d{2}))|((0[1-9]|1\d|2[0-8])\/02\/((19|[2-9]\d)\d{2}))|(29\/02\/((1[6-9]|[2-9]\d)(0[48]|[2468][048]|[13579][26])|((16|[2468][048]|[3579][26])00))))$/g);
@@ -351,7 +347,7 @@ app
 		var $rp = $('.radioPromo:checked').val();
 		var $tV = $("#telContactoVolante").val();
 		var $cV = $("#celContactoVolante").val();
-		var $eCV = $("#emailContactoVolante").val();
+		var $eCV = $("#emailContactoVolante").val().toLowerCase().trim();
 		var nombreVolante = $("#txtNombreVolante").val().trim();
 		var $fV = $(".md-datepicker-input").val();
 		var bolFecha = regexFecha.test($fV);
@@ -371,7 +367,7 @@ app
 			return "Falta llenar el campo descripción de la promoción";			
 		else if ($dp.length <= 0)
 			return "Falta llenar el campo vigencia de la promoción";	
-		else if ($rp.length <= 0)
+		else if ($rp == undefined || $rp.length <= 0)
 			return "Falta llenar el campo cómo redimir";
 		else if ($tV.length > 0 && !regexTel.test($tV)) 
 			 return "teléfono"; 
@@ -387,15 +383,14 @@ app
 
     $scope.$watch(function () { return VolanteService.volantes(); }, function (value) {
     	
-    	volantesCtrl.volantes = value;
     	volantesCtrl.arr = value instanceof Array ? value : [value]; 
-		
-    	console.log("volantes total: " + VolanteService.getTotVolantes() + ", volantesCtrl.arr.length: " + volantesCtrl.arr.length);
+
 		if (volantesCtrl.arr.length > 0 && VolanteService.getTotVolantes() != undefined)
 		{	    	
+			volantesCtrl.volantes = value;
 			volantesCtrl.muestraPublicarPromo = false;
 			volantesCtrl.muestraPromoPublicada = true;
-			console.log("si hay promo");
+
 			if(volantesCtrl.arr[0] != undefined) {
 				
 				volantesCtrl.modfechaVigencia = volantesCtrl.arr[0].endDateOffer;
@@ -403,7 +398,17 @@ app
 				volantesCtrl.fechaVigencia = fechaVigencia.toDate();
 				$("#txtNombreVolante").val(volantesCtrl.arr[0].pagina)
 			}
-			
+		}
+		else
+		{
+			volantesCtrl.volantes = new Array("");
+			volantesCtrl.volantes.idOffer = 0;
+			volantesCtrl.volantes.urlPromocion = "";
+			volantesCtrl.volantes.template = "promo1";
+			volantesCtrl.volantes.empresa = "";
+			volantesCtrl.volantes.titleOffer = "";
+			volantesCtrl.volantes.descOffer = "";
+			volantesCtrl.volantes.termsOffer = "";
 		}
     });
 
@@ -419,9 +424,8 @@ app
     		data:contacto,
     		async : true
 		}).then(function successCallback(response) {
-			console.log("Se guardo el contacto y me regreso: "  + response.data.codeError);
-			requestServer("GET",contextPath + "/infomovil/refrescarPromocion",{});
-			console.debug("Refrescando la promocion")
+
+			requestServer("GET", contextPath + "/infomovil/refrescarPromocion",{});
 						 
 		}, function errorCallback(response) {
 			console.log("El error es: " + response.data, response.data.code);	
@@ -434,7 +438,7 @@ app
 		var offerID = VolanteService.getOfferId();
 		var hash = hashUsuario();
 		var empresaInput = $("#nombreEmpresaPromo").val();
-		console.log("NombreEmpresa quedaría " + empresaInput );
+		
 		dataEmp = {offerId:offerID.offerId,empresa: empresaInput, hashUser:hash};
 		$http({	
 			method: 'POST',
@@ -447,6 +451,8 @@ app
 		}, function errorCallback(response) {
 			console.log("El error es: " + response.data, response.data.code);
 		});
+		
+		$.unblockUI();
 	};
  
 	var eliminarContactoVolantes = function(contacto) {
@@ -465,6 +471,8 @@ app
 			console.log("El error es: " + response.data);
 			
 		});
+		
+		$.unblockUI();
 	};
 
 	function getOfferId() {
@@ -488,11 +496,15 @@ app
 		return datos;
 	};
 
-	var getContactoTel = function(){
+	var getContactoTel = function() {
+		
 		var valContacto = 0;
-		if($("#idTelContactoVolante").text() > 0) valContacto = $("#idTelContactoVolante").text(); 
-			var offerID = VolanteService.getOfferId();
-			var contacto = {
+		
+		if($("#idTelContactoVolante").text() > 0) 
+			valContacto = $("#idTelContactoVolante").text(); 
+			
+		var offerID = VolanteService.getOfferId();
+		var contacto = {
 					contactoId: valContacto,
 					offerId : offerID.offerId,
 					descripcion : "",
@@ -507,14 +519,19 @@ app
 					usuarioModifico : "",
 					hashUser : hashUsuario()
 				};
-			return contacto;
+		
+		return contacto;
 	};
 	
-	var getContactoCel = function(){
+	var getContactoCel = function() {
+		
 		var valContacto = 0;
-		if($("#idCelContactoVolante").text() > 0) valContacto = $("#idCelContactoVolante").text(); 
-			var offerID = VolanteService.getOfferId();
-			var contacto = {
+		
+		if($("#idCelContactoVolante").text() > 0) 
+			valContacto = $("#idCelContactoVolante").text(); 
+		
+		var offerID = VolanteService.getOfferId();
+		var contacto = {
 					contactoId: valContacto,
 					offerId : offerID.offerId,
 					descripcion : "",
@@ -529,11 +546,14 @@ app
 					usuarioModifico : "",
 					hashUser : hashUsuario()
 				};
-			return contacto;
+		
+		return contacto;
 	};
 	
 	var getContactoEmail = function() {
+		
 		var valContacto = 0;
+		
 		if($("#idEmailContactoVolante").text() > 0) 
 			valContacto = $("#idEmailContactoVolante").text(); 
 		
@@ -544,7 +564,7 @@ app
 				descripcion : "",
 				orderNaptr : 0,
 				preference : 1,
-				contenido : $( "#emailContactoVolante" ).val(),
+				contenido : $( "#emailContactoVolante" ).val().toLowerCase().trim(),
 				codigoPais : "",
 				services : "E2U+email:mailto", 
 				tipoContacto : 'mailto:',
@@ -557,7 +577,7 @@ app
 		return contacto;
 	};
 	
-	var guardarContactos = function() {
+	var guardarContactos = function(callback) {
         
 		if($("#telContactoVolante").val().length > 0) {
 			datosContacto = getContactoTel();
@@ -583,6 +603,8 @@ app
 			VolanteService.eliminarContactoVolante("email");
 		}
 		
+		if (callback != null)
+			callback();
 	};
 
 });
@@ -590,7 +612,7 @@ app
 
 
 function descargarArchivo(tipo) {
-	console.log("Entro a descargar el archivo con el tipo: " + tipo);
+	
 	var eventoPromocion = "promo-guardarPDF";
 	var pathArchivo = $("#urlVistaPreviaPromoImprimir").attr('src');
 
@@ -613,12 +635,13 @@ function descargarArchivo(tipo) {
 
 
 function imprimirPromocionWeb() {
-
+	
 	var urlPromo = $("#urlPromocion").text();
 	var nombrePromo = urlPromo.substring(urlPromo.lastIndexOf("/") + 1);
 	var eventoPromocion = 'promo-imprimir';
 	var oldstrInner = document.documentElement.innerHTML;
 	var oldstr = document.body.innerHTML;
+
 	$.blockUI.defaults.baseZ = 9000;
 	$.blockUI({
 		message : "Generando impresión...",
@@ -634,7 +657,7 @@ function imprimirPromocionWeb() {
 		pathArchivo = $("#urlPromocion").text() + "?vistaPrevia=1";
 	
 	pathArchivo = pathArchivo.replace("html", "jpg");
-	var htmlImagen = "<HTML><HEAD><TITLE>Infomovil</TITLE></HEAD><BODY><img src='"+pathArchivo+"' alt='Infomovil' height='100%' width='100%' ></BODY></HTML>";
+	var htmlImagen = "<HTML><HEAD><TITLE>Infomovil</TITLE></HEAD><BODY  style='margin: 0 auto; text-align: center;'><img src='"+pathArchivo+"' alt='Infomovil' style=“width:100%; min-width:600px; height:auto; min-height:600px; margin:0 auto;”></BODY></HTML>";
 	document.documentElement.innerHTML = htmlImagen;
 	setTimeout(function () { window.print(); 
 	window.focus();
@@ -642,9 +665,9 @@ function imprimirPromocionWeb() {
 	document.documentElement.innerHTML = oldstrInner;
     $(document.body).html(oldstr);
     banderaImprimir = true;
-
     $("#myModalPromoImprimir").modal();	
 	$.unblockUI();}, 2500);	
+	ga('send', 'event', 'promo', eventoPromocion, $("#tempNombrePromo").val(), $("#tempBanderaPromo").val());
 };
 
 var banderaImprimir=false;
