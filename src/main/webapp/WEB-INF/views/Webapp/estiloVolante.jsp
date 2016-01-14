@@ -1,5 +1,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib uri="http://tiles.apache.org/tags-tiles" prefix="tiles"%>
+<%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!doctype html>
@@ -40,7 +41,7 @@
 					src="<c:url value="/resources/webapp/images/apple-touch-icon-57x57.png"/>"
 					width="50" height="50" alt="Infomovil" />
 				</span> <span class="marLeft navEditor ${colorTexto}"
-					style="margin-top: 12px;">MIS VOLANTES</span>
+					style="margin-top: 12px;"><spring:message code="VOEDLA0001"/></span>
 				<!-- /LOGO INFOMOVIL - REGISTRO GENERAL-->
 			</div>
 			<div id="navbar" class="navbar-collapse collapse text-right">
@@ -50,11 +51,11 @@
 						ng-click="volantesCtrl.actualizaProducto()"> <img width="20" 
 							height="20" alt="Infomovil" 
 							src="<c:url value="/resources/webapp/images/fa-back${ extensionImg }.png"/>" />
-							Regresar <span class="hidden-sm"></span></a>
+							<spring:message code="VOESTLA0001"/><span class="hidden-sm"></span></a>
 					</li>
 					<li><a href="<c:url value="/logout"></c:url>" class="smoothScroll ${colorTexto}"> 
 							<img width="20" height="20" alt="Infomovil" src="<c:url value="/resources/webapp/images/fa-sign-out${ extensionImg }.png"/>" />
-							Cerrar <span class="hidden-sm hidden-md">sesión</span></a>
+							<spring:message code="VOESTLA0002"/></a>
 					</li>
 
 					<!--  Mostrar para BAZ -->
@@ -84,10 +85,10 @@
 		<div class="seccTop bgBlack">
 			<div class="containerExt">
 				<div class="textWhite">
-				<div class="col-xs-12 reset"><h3 class="text-left textWhite navEditor reset">Elige el estilo <span class="hidden-xs">de
-						tu volante</span></h3>
+				<div class="col-xs-12 reset"><h3 class="text-left textWhite navEditor reset"><spring:message code="VOESTLA0003"/> 
+					<span class="hidden-xs"> <spring:message code="VOESTLA0004"/></span></h3>
 						<div class="clearfix"></div>
-						<p style="line-height:1em; font-size:.9em">Haz clic en el estilo que te agrade</p>
+						<p style="line-height:1em; font-size:.9em"><spring:message code="VOESTLA0005"/></p>
 						<div class="clearfix"></div><div class="dividerSmall"></div></div>
 				</div>
 			</div>
