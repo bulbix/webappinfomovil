@@ -110,7 +110,10 @@
 		  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 		  ga('create', 'UA-53077061-1', 'auto');
 		  ga('set', 'dimension1', 'WebApp');
-		 ga('send', 'pageview'); 
+		  ga('set', 'dimension2', canal);
+		  ga('set', 'dimension3', userID);
+          
+		  ga('send', 'pageview'); 
 		</script>
 		<script type="text/javascript">
 setTimeout(function(){var a=document.createElement("script");
@@ -124,5 +127,7 @@ a.async=true;a.type="text/javascript";b.parentNode.insertBefore(a,b)}, 1);
 					contextPath = "";
 				console.log("ContextPath: " + contextPath);
 		</script>
+		
+		<script src="<c:url value="/mensajes/stringsIdioma.js"/>"></script>
 		
 	</head>

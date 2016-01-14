@@ -1,38 +1,51 @@
 package com.infomovil.editorVolante.controllers
 
-import java.util.Map;
+import java.util.Locale;
+import java.util.Map
+
+import javax.servlet.http.HttpServletRequest
+import javax.servlet.http.HttpServletResponse;
 
 import com.infomovil.webapp.util.Util;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*
+import org.springframework.web.servlet.support.*;
 
 @Controller
-class MultiproductoController 
+class MultiproductoController
 {
 	@RequestMapping(value = "/infomovil/multiproducto", method = RequestMethod.GET)
-	def multiProducto() {
 		
-		def vista = "Webapp/multiproducto";
-		def tabla = "multiproducto_dev";
-		
-		if(Util.getProfile().equals("PROD"))
-			tabla = "multiproducto";
-		
-		def correo = Util.getUserLogged().getUsername();
-		def seleccion = Util.getItemsDynamo(tabla, correo);
-		
-		if(seleccion != null)
-		{
-			vista = "misPromociones"
+		def multiProducto(HttpServletRequest request, HttpServletResponse response,Locale locale) {
+			//Locale locale = RequestContextUtils.getLocale(request);
+			System.out.println ("el locale reviene: :: . : : : : :" + locale);
+			String lc = locale;
+			String ln = "en";
+			if (lc.compareTo(ln) == 0){
+				System.out.println ("Ehh yupix a festejar: :: . : : : : :" + locale);
+				return "redirect:/infomovil/misPromociones";
+			}
+			def vista = "Webapp/multiproducto";
+			def tabla = "multiproducto_dev";
 			
-			if (seleccion["seleccion"] == "web")
-				vista = "editarSitio"
+			if(Util.getProfile().equals("PROD"))
+				tabla = "multiproducto";
+			
+			def correo = Util.getUserLogged().getUsername();
+			def seleccion = Util.getItemsDynamo(tabla, correo);
+			
+			if(seleccion != null)
+			{
+				vista = "misPromociones"
 				
-			vista = "redirect:/infomovil/" + vista
-		}
+				if (seleccion["seleccion"] == "web")
+					vista = "editarSitio"
+					
+				vista = "redirect:/infomovil/" + vista
+			}
 
-		return vista
+		return vista;
 	}
 	
 	@RequestMapping(value = "/infomovil/actualizaProducto", method = RequestMethod.POST, produces="application/json")
@@ -100,7 +113,7 @@ class MultiproductoController
 			def result = productos.find { it == producto }
 
 			if (result != null)
-			{				
+			{
 				if (seleccion != producto)
 				{
 					def actualiza = Util.guardarItemsTableDynamo(tabla, correo, [seleccion : producto]);

@@ -617,7 +617,7 @@ function imprimirPromocionWeb() {
 	var eventoPromocion = 'promo-imprimir';
 	var oldstrInner = document.documentElement.innerHTML;
 	var oldstr = document.body.innerHTML;
-	
+
 	$.blockUI.defaults.baseZ = 9000;
 	$.blockUI({
 		message : "Generando impresión...",
@@ -641,11 +641,9 @@ function imprimirPromocionWeb() {
 	document.documentElement.innerHTML = oldstrInner;
     $(document.body).html(oldstr);
     banderaImprimir = true;
-
     $("#myModalPromoImprimir").modal();	
 	$.unblockUI();}, 2500);	
 	ga('send', 'event', 'promo', eventoPromocion, $("#tempNombrePromo").val(), $("#tempBanderaPromo").val());
-		
 };
 
 function cerrarModalImprimir() {
