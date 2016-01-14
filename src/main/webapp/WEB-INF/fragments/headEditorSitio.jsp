@@ -110,7 +110,10 @@
 		  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 		  ga('create', 'UA-53077061-1', 'auto');
 		  ga('set', 'dimension1', 'WebApp');
-		 ga('send', 'pageview'); 
+		  ga('set', 'dimension2', canal);
+		  ga('set', 'dimension3', userID);
+          
+		  ga('send', 'pageview'); 
 		</script>
 		<script type="text/javascript">
 setTimeout(function(){var a=document.createElement("script");
