@@ -108,16 +108,18 @@ var getUrlParameter = function getUrlParameter(sParam) {
         }
     }
 };
-var getParam = getUrlParameter('leng');
-var ext = location.search.split('leng=')[1];
+var getParam = getUrlParameter('lang');
+var ext = location.search.split('lang=')[1];
 var ln = window.navigator.language||navigator.browserLanguage;
 var getLeng = ln.toLowerCase();
 var url =  window.location.href;
-var x = $(location).attr('<search>');
-console.log('Debe ser: ' + url +"?leng=en");
+
+console.log('Debe ser: ' + url +"?lang=en");
 if(getLeng == 'en-us' && getParam != 'en')
-	window.location.href = url +"?leng=en";
-console.log("El valor del idioma es: " + getLeng + " y el leng="+ getParam);
+	window.location.href = url +"?lang=en";
+else if(getLeng == 'es-mx' && getParam != 'es')
+	window.location.href = url +"?lang=es";
+console.log("El valor del idioma es: " + getLeng + " y el lang="+ getParam);
 </script>
 
 </body>
