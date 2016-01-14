@@ -1,4 +1,5 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 
 <nav class="navbar navbar-inverse navbar-static-top">
       <div class="container">
@@ -11,9 +12,11 @@
     </div>
     <div id="navbar" class="navbar-collapse collapse text-right">
           <ul class="nav navbar-nav navbar-right">
-        <li><a href="http://infomovil.com" class="smoothScroll">Inicio </a> </li>
-        <li> <a href="<c:url value="/registrar"/>" class="smoothScroll">¿Aún no tienes cuenta? <span style="text-decoration:underline">Regístrate</span></a></li>
-        <li> <a href="" onclick="cambiarIdioma()">English <img src="resources/webapp/images/fa-lang.png" width="20" height="20" alt="Infomovil" class="animated fadeIn"/></a></li>
+
+        <li><a href="http://infomovil.com" class="smoothScroll"><spring:message code="LOGINLA0010"/> </a> </li>
+        <li> <a href="<c:url value="/registrar"/>" class="smoothScroll"><spring:message code="LOGINLA0006"/> <span style="text-decoration:underline"><spring:message code="LOGINLA0007"/></span></a></li>
+        <li> <a href="" onclick="cambiarIdioma()"><spring:message code="idioma"/><img src="resources/webapp/images/fa-lang.png" width="20" height="20" alt="Infomovil" class="animated fadeIn"/></a></li>
+
         <!-- <li><a href="<c:url value="/login"/>" class="smoothScroll">Inicia sesión</a></li> -->
       </ul>
     </div>

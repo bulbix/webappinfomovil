@@ -1,6 +1,7 @@
 <%@ taglib uri="http://tiles.apache.org/tags-tiles" prefix="tiles"%>
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
 <!-- HEAD HTML 5 -->
 <!doctype html>
 <html lang="es">
@@ -91,9 +92,14 @@
   })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
   ga('create', 'UA-53077061-1', 'auto');
   ga('set', 'dimension1', 'WebApp');
- ga('send', 'pageview'); 
+  ga('set', 'dimension2', canal);
+  ga('set', 'dimension3', userID);
+  ga('send', 'pageview'); 
     </script>
      <!-- / CODIGO SEGUIMIENTO ANALYTICS -->
     
 <!--  /HEAD HTML 5 -->
+	<script src="<c:url value="/mensajes/stringsIdioma.js"/>"></script>
+
+
  </head>
