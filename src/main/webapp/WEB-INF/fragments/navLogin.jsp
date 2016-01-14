@@ -12,9 +12,11 @@
     </div>
     <div id="navbar" class="navbar-collapse collapse text-right">
           <ul class="nav navbar-nav navbar-right">
+
         <li><a href="http://infomovil.com" class="smoothScroll"><spring:message code="LOGINLA0010"/> </a> </li>
         <li> <a href="<c:url value="/registrar"/>" class="smoothScroll"><spring:message code="LOGINLA0006"/> <span style="text-decoration:underline"><spring:message code="LOGINLA0007"/></span></a></li>
-        <li> <a href=""><spring:message code="idioma"/><img src="resources/webapp/images/fa-lang.png" width="20" height="20" alt="Infomovil" class="animated fadeIn"/></a></li>
+        <li > <a  href="#" onclick="cambiarIdiomaLogin();return false;"><spring:message code="idioma"/><img src="resources/webapp/images/fa-lang.png" width="20" height="20" alt="Infomovil" class="animated fadeIn"/></a></li>
+
         <!-- <li><a href="<c:url value="/login"/>" class="smoothScroll">Inicia sesión</a></li> -->
       </ul>
     </div>

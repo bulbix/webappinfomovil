@@ -76,6 +76,9 @@
     <link href="resources/webapp/css/jquery.bxslider.css" rel="stylesheet" />
     <!-- /ESTILOS GALERIA bxSlider CSS -->
     <!-- CODIGO SEGUIMIENTO ANALYTICS -->
+    <script src="<c:url value="/resources/js/webapp/idioma.js"/>" ></script>
+    
+    
     <script>
   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
   (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
@@ -88,6 +91,7 @@
   ga('send', 'pageview'); 
     </script>
      <!-- / CODIGO SEGUIMIENTO ANALYTICS -->
+    
 <!--  /HEAD HTML 5 -->
 	<script src="<c:url value="/mensajes/stringsIdioma.js"/>"></script>
 
