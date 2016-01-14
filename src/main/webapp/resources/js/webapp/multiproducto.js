@@ -5,7 +5,7 @@ app.controller("MultiproductoController", function ($scope, $http, MensajesServi
 	var multiproductoCtrl = this;
 	multiproductoCtrl.producto = "web";
 	multiproductoCtrl.vista = "editarSitio";
-	multiproductoCtrl.tabla = "multiproducto_dev";
+	multiproductoCtrl.tabla = "multiproducto";
 	multiproductoCtrl.mensaje = "";
 	
 	multiproductoCtrl.paginaWeb = function() {
