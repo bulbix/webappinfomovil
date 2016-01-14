@@ -456,11 +456,11 @@
 		<script	src="<c:url value="/resources/webapp/js/jquery.bxslider.min.js"/>"></script>
 		<script	src="<c:url value="/resources/webapp/js/bootstrap-dialog.min.js"/>"></script>
 		<script src="<c:url value="/resources/webapp/js/jquery.blockUI.js"/>"></script>
-		<script src="<c:url value="/resources/js/webapp_min/util.js"/>"></script>
-		<script src="<c:url value="/resources/js/webapp_min/volantes.js"/>"></script>
-		<script src="<c:url value="/resources/js/webapp_min/InfomovilServices/mensajesService.js"/>"></script>
-		<script src="<c:url value="/resources/js/webapp_min/InfomovilServices/volantesService.js"/>"></script>
-		<script src="<c:url value="/resources/js/webapp_min/mapaAngular.js"/>" ></script>	
+		<script src="<c:url value="/resources/js/webapp/util.js"/>"></script>
+		<script src="<c:url value="/resources/js/webapp/volantes.js"/>"></script>
+		<script src="<c:url value="/resources/js/webapp/InfomovilServices/mensajesService.js"/>"></script>
+		<script src="<c:url value="/resources/js/webapp/InfomovilServices/volantesService.js"/>"></script>
+		<script src="<c:url value="/resources/js/webapp/mapaAngular.js"/>" ></script>	
 		
 		<tiles:insertDefinition name="modalGen">
 			<tiles:putAttribute name="idModal" value="myModalPromo" />
