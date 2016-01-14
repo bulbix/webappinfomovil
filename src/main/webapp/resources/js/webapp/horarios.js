@@ -4,7 +4,7 @@ app.controller('HorariosControllerLlamarModal', function($scope, $http, HorarioS
 	
 	llamarModalhorarios.producto = "volante";
 	llamarModalhorarios.vista = "misVolantes";
-	llamarModalhorarios.tabla = "multiproducto_dev";
+	llamarModalhorarios.tabla = "multiproducto";
 	
 	var resphoras = HorarioService.getHoras();
 	$("#Lunes1").append( resphoras );

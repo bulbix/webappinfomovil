@@ -15,7 +15,6 @@ app.factory('VolanteService', function($http, MensajesService) {
 	
     function getVolantes(callback) {
 
-    	console.log("getVolantes");
 		$http({
 			method: 'GET',
 			url: contextPath + "/infomovil/getPromociones",
@@ -23,7 +22,6 @@ app.factory('VolanteService', function($http, MensajesService) {
 			
 			volantes = response.data;
 			totVolantes = volantes.length;
-			console.log("volante service tot volantes: " + totVolantes);
 			nombreVolante = response.data.nombreSitio;
 			banderaCanal = response.data.banderaCanal;
 			
@@ -34,12 +32,12 @@ app.factory('VolanteService', function($http, MensajesService) {
 			}
 			else
 			{
-				console.log("else get volantes");
 				$(".muestraPublicarPromo").css("display", "block");
 				$(".muestraPromoPublicada").css("display", "none");
 			}
 			
 			getContactosVolantes();
+			$.unblockUI();
 			
 			if (callback != null)
 				callback();
@@ -50,9 +48,9 @@ app.factory('VolanteService', function($http, MensajesService) {
 			MensajesService.cerrarBlockUIGeneral("Contactos", mensaje);
 		});
 	}
+    
     function getVolantesPublicar(callback) {
 
-    	console.log("getVolantesPublicar");
 		$http({
 			method: 'GET',
 			url: contextPath + "/infomovil/getPromociones",
@@ -112,6 +110,7 @@ app.factory('VolanteService', function($http, MensajesService) {
     };
      
     function getContactosVolantes() {
+    	
 		var url = contactos.getUrl;
 		var offerID = getOfferId();
 		var hash = hashUsuario();
@@ -166,7 +165,7 @@ app.factory('VolanteService', function($http, MensajesService) {
 	};
 	
 	var eliminarContactoVolante = function(tipoContacto){
-		console.log("Entro a eliminar el contacto");
+
 		var url = contactos.delUrl;
 		var valContacto = 0;
 		
@@ -176,18 +175,17 @@ app.factory('VolanteService', function($http, MensajesService) {
 			valContacto = $("#idCelContactoVolante").text(); 
 		else if(tipoContacto == "email" && ( $("#idEmailContactoVolante").text().length > 0) )
 			valContacto = $("#idEmailContactoVolante").text(); 
-			
-		
-		console.log("La url de eliminar es: "+url +" y el idContacto es: "+valContacto);
+
 		var hasha = hashUsuario();
 		var delContacto = {"contactoId":valContacto, "hashUser":hasha};
+		
 		$http({
 			method: 'DELETE',
 			headers: {'Content-Type': 'application/json' },
 			url : url,
 			data : delContacto
 		}).then(function successCallback(response) {
-			console.log("Si me elimino el contacto: "  + response.data.codeError, response.data);
+
 			if(tipoContacto == "tel" && ( $("#idTelContactoVolante").text().length > 0) )
 				valContacto = $("#idTelContactoVolante").text(""); 
 			else if(tipoContacto == "cel" && ( $("#idCelContactoVolante").text().length > 0) )
@@ -195,17 +193,14 @@ app.factory('VolanteService', function($http, MensajesService) {
 			else if(tipoContacto == "email" && ( $("#idEmailContactoVolante").text().length > 0) )
 				valContacto = $("#idEmailContactoVolante").text(""); 
 			
-			requestServer("GET",contextPath + "/infomovil/refrescarPromocion",{});
-			console.debug("Refrescando la promocion")
-			
+			requestServer("GET", contextPath + "/infomovil/refrescarPromocion", {});			
 			
 		}, function errorCallback(response) {
 			console.log("El error de eliminar es: " + response.data.codeError);
 			
 		});
 	};
-   
-	
+   	
      return {
     	 getContactosVolantes: getContactosVolantes,
     	 getVolantes : getVolantes,

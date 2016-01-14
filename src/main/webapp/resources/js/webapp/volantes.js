@@ -44,7 +44,7 @@ app
 	volantesCtrl.init = function(planPro) {
 
 		volantesCtrl.planPro = planPro;
-		
+		 
 		if (volantesCtrl.planPro == "NO")
 			$("#txtNombreVolante").prop("disabled", true);
 			
@@ -111,8 +111,7 @@ app
 	};
 	
 	volantesCtrl.publicarVolante = function() {
-		
-		console.log("publicarVolante");
+
 		volantesCtrl.resultado = volantesCtrl.validarCampos();
 		volantesCtrl.eventoPromocion = "promo-publicar";
 		
@@ -126,13 +125,10 @@ app
 				$("#divError").html("El formato de "+volantesCtrl.resultado+" es incorrecto");
 			else
 				$("#divError").html(volantesCtrl.resultado);
-			
-			//$("#divError").css("display", "block");
+
 			$("#divErrorImg").css("display", "inline");
-			console.log("error: " + $("#divError").html());
 			volantesCtrl.muestraDivError = true; 
-			return;
-			
+			return;			
 		}
 
 		$("#divErrorImg").css("display", "none");
@@ -162,23 +158,25 @@ app
     		}	  
     	}).then(function successCallback(response) {
 
-
-    		if(response.data.codeError == "0"){
-        		guardarContactos();
-		
-				VolanteService.guardarEventoGA(volantesCtrl.eventoPromocion, 
-						response.data.nombreSitio, response.data.banderaCanal);
-				
-				//VolanteService.getVolantesPublicar();
-				VolanteService.getVolantes();
-				volantesCtrl.muestraPublicarPromo = false;
-				volantesCtrl.muestraPromoPublicada = true;
+    		if(response.data.codeError == "0") {
+    			
+        		guardarContactos(function() {
+        			
+    				VolanteService.guardarEventoGA(volantesCtrl.eventoPromocion, 
+    						response.data.nombreSitio, response.data.banderaCanal);
+    				
+    				//VolanteService.getVolantesPublicar();
+    				VolanteService.getVolantes();
+    				volantesCtrl.muestraPublicarPromo = false;
+    				volantesCtrl.muestraPromoPublicada = true;
+    				
+        		});
     		}
     		else{
     			volantesCtrl.mensaje = "El nombre elegido ya existe";
         		MensajesService.cerrarBlockUIGeneral("Volantes", volantesCtrl.mensaje);
     		}
-			$.unblockUI();
+			//$.unblockUI();
     		
     	}, function errorCallback(response) {
     		volantesCtrl.mensaje = "No se ha podido publicar el volante";
@@ -198,7 +196,6 @@ app
 			
 			if (confirmarBorrar) {
 
-				console.log("id promo: " +  $("#idPromocion").text());
 				volantesCtrl.mensaje = "Eliminando volante...";
 		    	MensajesService.abrirBlockUIGeneral(volantesCtrl.mensaje);
 	    		
@@ -385,14 +382,13 @@ app
     $scope.$watch(function () { return VolanteService.volantes(); }, function (value) {
     	
     	volantesCtrl.arr = value instanceof Array ? value : [value]; 
-		
-    	console.log("volantes total: " + VolanteService.getTotVolantes() + ", volantesCtrl.arr.length: " + volantesCtrl.arr.length);
+
 		if (volantesCtrl.arr.length > 0 && VolanteService.getTotVolantes() != undefined)
 		{	    	
 			volantesCtrl.volantes = value;
 			volantesCtrl.muestraPublicarPromo = false;
 			volantesCtrl.muestraPromoPublicada = true;
-			console.log("si hay promo");
+
 			if(volantesCtrl.arr[0] != undefined) {
 				
 				volantesCtrl.modfechaVigencia = volantesCtrl.arr[0].endDateOffer;
@@ -426,9 +422,8 @@ app
     		data:contacto,
     		async : true
 		}).then(function successCallback(response) {
-			console.log("Se guardo el contacto y me regreso: "  + response.data.codeError);
-			requestServer("GET",contextPath + "/infomovil/refrescarPromocion",{});
-			console.debug("Refrescando la promocion")
+
+			requestServer("GET", contextPath + "/infomovil/refrescarPromocion",{});
 						 
 		}, function errorCallback(response) {
 			console.log("El error es: " + response.data, response.data.code);	
@@ -441,7 +436,7 @@ app
 		var offerID = VolanteService.getOfferId();
 		var hash = hashUsuario();
 		var empresaInput = $("#nombreEmpresaPromo").val();
-		console.log("NombreEmpresa quedaría " + empresaInput );
+		
 		dataEmp = {offerId:offerID.offerId,empresa: empresaInput, hashUser:hash};
 		$http({	
 			method: 'POST',
@@ -454,6 +449,8 @@ app
 		}, function errorCallback(response) {
 			console.log("El error es: " + response.data, response.data.code);
 		});
+		
+		$.unblockUI();
 	};
  
 	var eliminarContactoVolantes = function(contacto) {
@@ -472,6 +469,8 @@ app
 			console.log("El error es: " + response.data);
 			
 		});
+		
+		$.unblockUI();
 	};
 
 	function getOfferId() {
@@ -495,11 +494,15 @@ app
 		return datos;
 	};
 
-	var getContactoTel = function(){
+	var getContactoTel = function() {
+		
 		var valContacto = 0;
-		if($("#idTelContactoVolante").text() > 0) valContacto = $("#idTelContactoVolante").text(); 
-			var offerID = VolanteService.getOfferId();
-			var contacto = {
+		
+		if($("#idTelContactoVolante").text() > 0) 
+			valContacto = $("#idTelContactoVolante").text(); 
+			
+		var offerID = VolanteService.getOfferId();
+		var contacto = {
 					contactoId: valContacto,
 					offerId : offerID.offerId,
 					descripcion : "",
@@ -514,14 +517,19 @@ app
 					usuarioModifico : "",
 					hashUser : hashUsuario()
 				};
-			return contacto;
+		
+		return contacto;
 	};
 	
-	var getContactoCel = function(){
+	var getContactoCel = function() {
+		
 		var valContacto = 0;
-		if($("#idCelContactoVolante").text() > 0) valContacto = $("#idCelContactoVolante").text(); 
-			var offerID = VolanteService.getOfferId();
-			var contacto = {
+		
+		if($("#idCelContactoVolante").text() > 0) 
+			valContacto = $("#idCelContactoVolante").text(); 
+		
+		var offerID = VolanteService.getOfferId();
+		var contacto = {
 					contactoId: valContacto,
 					offerId : offerID.offerId,
 					descripcion : "",
@@ -536,12 +544,14 @@ app
 					usuarioModifico : "",
 					hashUser : hashUsuario()
 				};
-			return contacto;
+		
+		return contacto;
 	};
 	
 	var getContactoEmail = function() {
 		
 		var valContacto = 0;
+		
 		if($("#idEmailContactoVolante").text() > 0) 
 			valContacto = $("#idEmailContactoVolante").text(); 
 		
@@ -565,7 +575,7 @@ app
 		return contacto;
 	};
 	
-	var guardarContactos = function() {
+	var guardarContactos = function(callback) {
         
 		if($("#telContactoVolante").val().length > 0) {
 			datosContacto = getContactoTel();
@@ -591,6 +601,8 @@ app
 			VolanteService.eliminarContactoVolante("email");
 		}
 		
+		if (callback != null)
+			callback();
 	};
 
 });
@@ -598,7 +610,7 @@ app
 
 
 function descargarArchivo(tipo) {
-	console.log("Entro a descargar el archivo con el tipo: " + tipo);
+	
 	var eventoPromocion = "promo-guardarPDF";
 	var pathArchivo = $("#urlVistaPreviaPromoImprimir").attr('src');
 
