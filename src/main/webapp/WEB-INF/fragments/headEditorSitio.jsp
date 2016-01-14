@@ -125,4 +125,6 @@ a.async=true;a.type="text/javascript";b.parentNode.insertBefore(a,b)}, 1);
 				console.log("ContextPath: " + contextPath);
 		</script>
 		
+		<script src="<c:url value="/mensajes/stringsIdioma.js"/>"></script>
+		
 	</head>
