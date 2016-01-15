@@ -83,8 +83,12 @@ function cambiarIdioma(){
 
 };
 
+
+
 function cambiarIdiomaLogin(){
-	console.log("Entro en cambiar idioma Login");
+	console.log("Entro en cambiar idioma Loginxxx");
+	var idiomaCookie = leerCookie("org.springframework.web.servlet.i18n.CookieLocaleResolver.LOCALE");
+	console.log("La cook es::::: " + idiomaCookie);
 	var getParam = getUrlParameter('lang');
 	var ln = window.navigator.language||navigator.browserLanguage;
 	var getLeng = ln.toLowerCase();
@@ -92,20 +96,33 @@ function cambiarIdiomaLogin(){
 		 if(getParam == 'en' || getParam == 'es') {
 		       if(getParam == "es"){
 		    	   var urlLocalrep = urlLocal.replace("?lang=es", "?lang=en");
+		    	   console.log("La urlx: " + urlLocal.replace("?lang=es", "?lang=en"));
 		    	   window.location.href = urlLocalrep;
-		       		console.log("La urlx: " + urlLocal.replace("?lang=es", "?lang=en"));
-		    	   }
-		       else if(getParam == "en"){
+		       }else if(getParam == "en"){
 		    	   var urlLocalrep = urlLocal.replace("?lang=en", "?lang=es");
-		       
+		    	   console.log("La urlx: " + urlLocal.replace("?lang=en", "?lang=es"));
 		    	   	window.location.href = urlLocalrep;
-		       		console.log("La urlx: " + urlLocal.replace("?lang=en", "?lang=es"));
-					}
+				}
+		  }else if(idiomaCookie.length > 0){
+			  if(idiomaCookie == 'en')
+					window.location.href = urlLocal +"?lang=es";
+				else if(idiomaCookie == 'es')
+					window.location.href = urlLocal +"?lang=en";
 		  }else{
 			  if(getLeng == 'en-us' && getParam != 'en')
 					window.location.href = urlLocal +"?lang=en";
 				else if(getLeng == 'es-mx' && getParam != 'es')
-					window.location.href = urlLocal +"?lang=es"; 
+					window.location.href = urlLocal +"?lang=es";
 		  }
 		
+};
+function leerCookie(nombre) {
+    var lista = document.cookie.split(";");
+    for (i in lista) {
+        var busca = lista[i].search(nombre);
+        if (busca > -1) {micookie=lista[i]}
+        }
+    var igual = micookie.indexOf("=");
+    var valor = micookie.substring(igual+1);
+    return valor;
 };

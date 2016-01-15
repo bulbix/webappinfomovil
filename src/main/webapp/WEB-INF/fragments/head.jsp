@@ -77,7 +77,7 @@
     <!-- /ESTILOS GALERIA bxSlider CSS -->
     <!-- CODIGO SEGUIMIENTO ANALYTICS -->
     <script src="<c:url value="/resources/js/webapp/idioma.js"/>" ></script>
-    <script src="<c:url value="/resources/js/webapp/jquery.cookie.js"/>" ></script>
+ 
    
     
     <script>
