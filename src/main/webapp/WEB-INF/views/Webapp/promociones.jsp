@@ -150,7 +150,7 @@
 						</a>
 					</div>					
 
-					<div class="col-xs-8 col-sm-8 reset">
+					<div class="col-xs-8 col-sm-8 reset" id="nombreVolanteIngles">
 						<div class=" form-group" style="padding:6px 0;">
 							<div class="control-group">
 								<label class="control-label hidden-xs hidden-sm col-md-4 navEditor"><div style="padding:4px 0; text-align:right">promo.mobileinfo.io/</div></label>
@@ -166,7 +166,7 @@
 						</div>
 					</div>
 
-					<div class="col-xs-2 col-sm-2 text-center reset">
+					<div class="col-xs-2 col-sm-2 text-center reset" id="publicarVolanteIngles">
 						<button type="button"
 							class="btn btn-purple textWhite navEditorLato"
 							ng-click="volantesCtrl.publicarVolante()" style="margin: 5px 0;" id="btnPublicar">
