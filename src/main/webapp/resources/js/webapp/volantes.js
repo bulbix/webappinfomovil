@@ -49,7 +49,13 @@ app
 		volantesCtrl.planPro = planPro;
 		 
 		if (volantesCtrl.planPro == "NO")
-			$("#txtNombreVolante").prop("disabled", true);			
+			$("#txtNombreVolante").prop("disabled", true);
+		
+		console.log("El idioma seleccionado es: " +idiomaSeleccionado);
+		if(idiomaSeleccionado == 'en'){
+			$("#nombreVolanteIngles").hide();
+			$("#publicarVolanteIngles").attr("class", "col-xs-12 col-sm-12 text-right reset");
+		}
 	};
 	
 	volantesCtrl.actualizaProducto = function() {
