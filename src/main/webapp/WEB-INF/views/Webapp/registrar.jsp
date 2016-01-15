@@ -97,7 +97,9 @@
   </div>
 </div>
 <!--/Theme showcase --> 
-
+<script type="text/javascript"><!-- Esta llamada esta en jsIdioma --> 
+	detectarIdioma('Login');
+</script>
 <!--Footer-->
 <tiles:insertDefinition name="footer"></tiles:insertDefinition>
 <!-- Bootstrap core JavaScript--> 
