@@ -94,9 +94,9 @@
 <!-- Placed at the end of the document so the pages load faster --> 
 <tiles:insertDefinition name="jsCore"></tiles:insertDefinition> 
 <tiles:insertDefinition name="jsScripts"></tiles:insertDefinition>
- <script src="<c:url value="/resources/js/webapp/idioma.js"/>" ></script>
+ 
 <script type="text/javascript"><!-- Esta llamada esta en jsIdioma --> 
-	detectarIdioma();
+	detectarIdioma('Login');
 </script>
 
 </body>

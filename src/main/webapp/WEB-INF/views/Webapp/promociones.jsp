@@ -456,7 +456,7 @@
 		<script src="<c:url value="/resources/js/webapp/mapaAngular.js"/>" ></script>	
 		<script src="<c:url value="/resources/js/webapp/idioma.js"/>" ></script>	
 		<script type="text/javascript"><!-- Esta llamada esta en el head --> 
-			detectarIdioma();
+			detectarIdioma('normal');
 		</script>
 		<tiles:insertDefinition name="modalGen">
 			<tiles:putAttribute name="idModal" value="myModalPromo" />

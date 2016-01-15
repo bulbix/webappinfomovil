@@ -76,13 +76,7 @@
     <link href="resources/webapp/css/jquery.bxslider.css" rel="stylesheet" />
     <!-- /ESTILOS GALERIA bxSlider CSS -->
     <!-- CODIGO SEGUIMIENTO ANALYTICS -->
-     <script type="text/javascript">
-	console.log("MI CONSOLE!!!!!!:::::::");		
-     var contextPath='<%=request.getContextPath()%>';
-				if(contextPath == "/")
-					contextPath = "";
-				console.log("ContextPath: " + contextPath);
-		</script>
+    <script src="<c:url value="/resources/js/webapp/idioma.js"/>" ></script>
     
     
     <script>
