@@ -8,9 +8,13 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.infomovil.webapp.util.Util;
 
+import org.json.JSONObject
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*
 import org.springframework.web.servlet.support.*;
+import com.mashape.unirest.http.HttpResponse;
+import com.mashape.unirest.http.JsonNode;
+import com.mashape.unirest.http.Unirest;
 
 @Controller
 class MultiproductoController
@@ -122,11 +126,33 @@ class MultiproductoController
 				}
 			}
 			else
-			{
+			{	
 				return "redirect:/registrar"
 			}
 		}
 		
 		return "redirect:/infomovil/" + vista
 	}
+	
+	@RequestMapping(value = "/infomovil/getUserCanal", method = RequestMethod.GET, produces="application/json")
+	@ResponseBody
+	def getUserCanal() {
+		
+		def url = "http://www.infomovil.com/PreReg/consultaUsuarioBasica";
+		def qs = "correoRegistro";
+		def correo = Util.getUserLogged().getUsername();
+
+		if(!Util.getProfile().equals("PROD"))
+			url = "http://infodev.mobileinfo.io/PreReg/consultaUsuarioBasica";
+		
+		HttpResponse<JsonNode> jsonResponseDatos = Unirest.get(url)
+		.queryString(qs, correo)
+		.asJson();
+		
+		JSONObject jsonObject = jsonResponseDatos.getBody().getObject();
+		
+		print "getUserCanal";
+		return [user_plan: jsonObject.getString("USER_PLAN"), canal: jsonObject.getString("CANAL"), user_id: jsonObject.getInt("USERID")];
+	}
+	
 }

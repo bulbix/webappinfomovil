@@ -68,7 +68,7 @@ app.factory('VolanteService', function($http, MensajesService) {
     
     function actualizarVolante(volante, evento, callback) {
 
-    	var mensaje = "Actualizando volante...";
+    	var mensaje = stringsIdioma['VOEDLA0065'];
     	MensajesService.abrirBlockUIGeneral(mensaje);
     	 
     	$http({

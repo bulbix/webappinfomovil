@@ -540,7 +540,6 @@
 	<!-- Bootstrap core JavaScript
 	    ================================================== -->
 	<!-- Placed at the end of the document so the pages load faster -->
-	<script src="<c:url value="/resources/webapp/js/jquery.min.js"/>"></script>
 	<script src="<c:url value="/resources/webapp/js/bootstrap.js"/>"></script>
 	<script src="<c:url value="/resources/webapp/js/docs.min.js"/>"></script>
 	<script src="<c:url value="/resources/webapp/js/smoothscroll.js"/>"></script>

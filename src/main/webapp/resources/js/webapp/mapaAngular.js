@@ -105,15 +105,16 @@ app.controller('MapCtrl', function($http, ubicacionFactory,volanteMapaService) {
 
 	}
 
-	mapaCtrl.guardar = function(){
+	mapaCtrl.guardar = function() {
 		guardarUbicacion(modeloMap.mapAuxiliar);
 	}
 
-	mapaCtrl.borrar = function(){
+	mapaCtrl.borrar = function() {
+		
 		if(!modeloMap.tieneMapa)
 			return;
 		
-		mensajeActualizacion("Eliminando ubicación...");
+		mensajeActualizacion(stringsIdioma['VOEDLA0070']);
 		
 		var url = ubicacionFactory.ubicacion(tipoProducto).delUrl;
 		var data;
@@ -140,7 +141,7 @@ app.controller('MapCtrl', function($http, ubicacionFactory,volanteMapaService) {
 				map.panTo(myLatlng);
 				map.setZoom(3);
 				$("#direccionMap").html("");
-				$("#idOpcionUbicacion").html("Coloca tu ubicación");
+				$("#idOpcionUbicacion").html(stringsIdioma['VOEDLA0031']);
 				$("#myModalMaps").modal('toggle');
 				requestServer("GET",contextPath + "/infomovil/refrescarPromocion",{});
 				
@@ -168,7 +169,8 @@ app.controller('MapCtrl', function($http, ubicacionFactory,volanteMapaService) {
 		});
 	}
 	
-	function mensajeActualizacion(msg){
+	function mensajeActualizacion(msg) {
+		
 		$.blockUI.defaults.baseZ = 9000;
 		$.blockUI({ 
 			message: msg, 
@@ -188,8 +190,9 @@ app.controller('MapCtrl', function($http, ubicacionFactory,volanteMapaService) {
 	}
 
 	function actualizarUbicacion(latitud, longitud, direccion) {
+		
 		$("#myModalMaps").modal('toggle');
-		mensajeActualizacion("Actualizando ubicación...");
+		mensajeActualizacion(stringsIdioma['VOEDLA0069']);
 		
 		var url = ubicacionFactory.ubicacion(tipoProducto).saveUrl;
 		var data;
@@ -261,12 +264,12 @@ app.controller('MapCtrl', function($http, ubicacionFactory,volanteMapaService) {
 
 		if (!modeloMap.geolocalizacion)
 		{
-			mostrarError("Este buscador, no soporta la geolocalización");
-			console.log("Este buscador, no soporta la geolocalización");
+			mostrarError(stringsIdioma['VOEDLA0071']);
+			//console.log("Este buscador, no soporta la geolocalización");
 			return;
 		}
 		
-		mensajeActualizacion("Obteniendo tu ubicación actual...");
+		mensajeActualizacion(stringsIdioma['VOEDLA0076']);
 
 		navigator.geolocation.getCurrentPosition(function (position) {
 
@@ -344,17 +347,14 @@ app.controller('MapCtrl', function($http, ubicacionFactory,volanteMapaService) {
 					modeloMap.place.formatted_address);
 			modeloMap.mapAuxiliar = map;
 			infowindow.open(map, modeloMap.marker);
-			console.log("evento changed: " + modeloMap.place.formatted_address + ", coordenadas: " + modeloMap.place.geometry.location);
 			modeloMap.guardaPorEvento = true;
 			modeloMap.latAux = modeloMap.place.geometry.location.lat();
 			modeloMap.lngAux = modeloMap.place.geometry.location.lng();
-			console.log("coordenadas finales: lat: " + modeloMap.latAux + ", lon: "  + modeloMap.lngAux);
 		});
 
 		google.maps.event.addListener(map, 'dragend', function() {
 			modeloMap.mapAuxiliar = map;
 			modeloMap.guardaPorEvento = false;
-			console.log("dragend");
 		});
 
 	}
@@ -366,7 +366,7 @@ app.controller('MapCtrl', function($http, ubicacionFactory,volanteMapaService) {
 			if (status == google.maps.GeocoderStatus.OK)
 			{
 				$("#direccionMap").html(results[0].formatted_address);
-				$("#idOpcionUbicacion").html("Editar ubicación actual:");
+				$("#idOpcionUbicacion").html(stringsIdioma['VOEDLA0068']);
 			}
 		});
 	}
@@ -379,22 +379,18 @@ app.controller('MapCtrl', function($http, ubicacionFactory,volanteMapaService) {
 
 		switch(error.code)
 		{
-		case error.PERMISSION_DENIED:
-			modeloMap.msjValidacion = "Necesitas habilitar la función de geolocalización. Favor de cambiar tu configuración o de buscar manualmente tu ubicación."
-				console.log("User denied the request for Geolocation.");
-			break;
-		case error.POSITION_UNAVAILABLE:
-			modeloMap.msjValidacion = "La información de geolocalización no está disponible.";
-			console.log("Location information is unavailable.");
-			break;
-		case error.TIMEOUT:
-			modeloMap.msjValidacion = "Tiempo de espera agotado para obtener tu geolocalización. Intenta de nuevo.";
-			console.log("The request to get user location timed out.");
-			break;
-		case error.UNKNOWN_ERROR:
-			modeloMap.msjValidacion = "Error al intentar obtener tu geolocalización. Intenta de nuevo.";
-			console.log("An unknown error occurred.");
-			break;
+			case error.PERMISSION_DENIED:
+				modeloMap.msjValidacion = stringsIdioma['VOEDLA0072'];
+				break;
+			case error.POSITION_UNAVAILABLE:
+				modeloMap.msjValidacion = stringsIdioma['VOEDLA0073'];
+				break;
+			case error.TIMEOUT:
+				modeloMap.msjValidacion = stringsIdioma['VOEDLA0074'];
+				break;
+			case error.UNKNOWN_ERROR:
+				modeloMap.msjValidacion = stringsIdioma['VOEDLA0075'];
+				break;
 		}        
 
 		mostrarError(modeloMap.msjValidacion);
@@ -460,7 +456,7 @@ app.controller('MapCtrl', function($http, ubicacionFactory,volanteMapaService) {
 
 			state.offerId = 0; state.locId = 0;
 			$("#direccionMap").html("");
-			$("#idOpcionUbicacion").html("Coloca tu ubicación");
+			$("#idOpcionUbicacion").html(stringsIdioma['VOEDLA0031']);
 		}
 	}
 	
