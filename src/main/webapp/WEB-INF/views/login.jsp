@@ -18,7 +18,8 @@
 
 	<c:if test="${not empty errorCta}">
 		<div class="errorblock col-xs-12 text-center textBlack">
-			<p><img src="<c:url value="/resources/webapp/images/fa-informacion.png"/>" width="20" height="20" alt="${errorCta}" /> ${errorCta} </p>
+			<p><img src="<c:url value="/resources/webapp/images/fa-informacion.png"/>" width="20" height="20" alt="${errorCta}"/>
+			${errorCta}</p>
         </div>
 	</c:if>
 		     
@@ -69,7 +70,7 @@
 
     	
       	<div class="form-group col-xs-12">
-      		<input type="submit" value="Inicia sesi&oacute;n" class="btn btn-default btn-outlineGreen text-center textWhite" style="min-width:280px; max-width:280px; margin:15px auto;">
+      		<input type="submit" value="<spring:message code="LOGINLA0003"/>" class="btn btn-default btn-outlineGreen text-center textWhite" style="min-width:280px; max-width:280px; margin:15px auto;">
       	</div>
       
 	
@@ -95,9 +96,7 @@
 <tiles:insertDefinition name="jsCore"></tiles:insertDefinition> 
 <tiles:insertDefinition name="jsScripts"></tiles:insertDefinition>
  
-<script type="text/javascript"><!-- Esta llamada esta en jsIdioma --> 
-	detectarIdioma('Login');
-</script>
+
 
 </body>
 </html>

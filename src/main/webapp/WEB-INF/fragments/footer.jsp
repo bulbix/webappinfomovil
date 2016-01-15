@@ -1,5 +1,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib uri="http://tiles.apache.org/tags-tiles" prefix="tiles"%>
+<%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
+
 <footer class="footer bgBlack ">
       <section class="">
     <div class="container">
@@ -14,12 +16,12 @@
       </div>
       <div class="dividerSmall"></div>
        <div class="col-xs-12 col-sm-12 col-md-6 col-md-offset-3 ">
-              <p class="text-small txtWhite reset text-center"><em>Ayudando a construir una economía digital.</em></p>
+              <p class="text-small txtWhite reset text-center"><em><spring:message code="FOOTERLA0001"/></em></p>
             </div>
             <div class="clear"></div>
           <div class="dividerSmall"></div>
           <div class="col-xs-12 col-sm-12">
-        <p  class="text-center text-small reset">Consulta las <a href="#" title="Condiciones del servicio" data-toggle="modal" data-target="#myModalTerminos">condiciones del servicio </a>y las <a href="#" data-toggle="modal" data-target="#myModalAviso">pol&iacute;ticas de privacidad</a> de Infomovil.</p>
+        <p  class="text-center text-small reset"><spring:message code="FOOTERLA0002"/><a href="#" title="Condiciones del servicio" data-toggle="modal" data-target="#myModalTerminos"><spring:message code="FOOTERLA0003"/></a><spring:message code="FOOTERLA0004"/><a href="#" data-toggle="modal" data-target="#myModalAviso"><spring:message code="FOOTERLA0005"/></a><spring:message code="FOOTERLA0006"/></p>
       </div>
       <div class="clear"></div>
           <div class="dividerSmall"></div>

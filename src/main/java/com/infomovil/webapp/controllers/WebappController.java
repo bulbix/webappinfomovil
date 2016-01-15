@@ -16,6 +16,7 @@ import org.apache.log4j.Logger;
 import org.json.simple.JSONArray;
 import org.springframework.stereotype.Controller;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.MessageSource;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler;
@@ -43,8 +44,13 @@ public class WebappController
 {
 	@Autowired
 	TokenBasedRememberMeServices remember;
+	
 	@Autowired
 	ModeloWebApp modeloWebApp;
+	
+	@Autowired
+	MessageSource messageSource;
+	
 	
 	@RequestMapping(value = "/infomovil/guardarInformacion", method = RequestMethod.GET, produces = "application/json")
 	@ResponseBody
@@ -387,11 +393,14 @@ public class WebappController
 			{
 				logoutInfomovil(request, response);
 				
+				String errorCta = messageSource.
+				getMessage(modeloWebApp.codeErrorRegistro(descripcionError), new Object[]{correo},locale);
+				
 				model.put("ctaCorreo", correo);
-				model.put("errorCta", descripcionError);
+				model.put("errorCta", errorCta);
 				ModelAndView modelAndView =  new ModelAndView("redirect:/login");
 				redirectAttributes.addFlashAttribute("ctaCorreo", correo);
-				redirectAttributes.addFlashAttribute("errorCta", descripcionError);
+				redirectAttributes.addFlashAttribute("errorCta", errorCta);
 				redirectAttributes.addFlashAttribute("registroExitoso", "NO");
 				
 				return modelAndView;
@@ -432,11 +441,13 @@ public class WebappController
 		}
 		else
 		{
+			String errorCta = messageSource.
+					getMessage(modeloWebApp.codeErrorRegistro(descripcionError), new Object[]{correo},locale);
 			model.put("ctaCorreo", correo);
-			model.put("errorCta", descripcionError);
+			model.put("errorCta", errorCta);
 			ModelAndView modelAndView =  new ModelAndView("redirect:/login");
 			redirectAttributes.addFlashAttribute("ctaCorreo", correo);
-			redirectAttributes.addFlashAttribute("errorCta", descripcionError);
+			redirectAttributes.addFlashAttribute("errorCta", errorCta);
 			redirectAttributes.addFlashAttribute("registroExitoso", "NO");
 			
 			return modelAndView;
