@@ -11,10 +11,7 @@ app
 
 .controller("VolantesController", function ($scope, $http, VolanteService, MensajesService,  $moment, volanteMapaService) {
 	
-	console.debug("Consulta javascript " + stringsIdioma['VOEDLA0051']);
-	
 	var templatesPromo = new Array("promo8", "promo6",  "promo1", "promo5", "promo4", "promo7", "promo2", "promo3");
-	var nombresPromo = new Array("Navidad", "Cursos",  "Bares","Floral", "Tecnología 2", "Buen Fin", "Hipster", "Tecnología");
 	
 	var volantesCtrl = this;
 	volantesCtrl.volantes = null;

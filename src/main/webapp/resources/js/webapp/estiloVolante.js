@@ -8,7 +8,9 @@ app.controller("EstiloVolanteController", function ($scope, $http, VolanteServic
 	
 	var estiloVolanteCtrl = this;
 	estiloVolanteCtrl.plantillas = new Array( "promo6",  "promo1", "promo5", "promo4",  "promo2", "promo3");
-	estiloVolanteCtrl.nombrePlantillas = new Array( "Cursos", "Bares", "Floral", "Innovación", "Hipster", "Tecnología");
+	estiloVolanteCtrl.nombrePlantillas = new Array(stringsIdioma['VOESTLA0006'], stringsIdioma['VOESTLA0007'], stringsIdioma['VOESTLA0008'], 
+			stringsIdioma['VOESTLA0009'], stringsIdioma['VOESTLA0010'], stringsIdioma['VOESTLA0011']);
+
 	estiloVolanteCtrl.textoPlantilla = "Aplicar estilo";
 	estiloVolanteCtrl.claseSpan = "ev_std_chk text-center";
 	estiloVolanteCtrl.claseImg = "img-responsiveTemp img-thumbnail";	
