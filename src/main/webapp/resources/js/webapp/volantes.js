@@ -48,7 +48,7 @@ app
 		if (volantesCtrl.planPro == "NO")
 			$("#txtNombreVolante").prop("disabled", true);
 		
-		console.log("El idioma seleccionado es: " +idiomaSeleccionado);
+		//console.log("El idioma seleccionado es: " +idiomaSeleccionado);
 		if(idiomaSeleccionado == 'en'){
 			$("#nombreVolanteIngles").hide();
 			$("#publicarVolanteIngles").attr("class", "col-xs-12 col-sm-12 text-right reset");
@@ -306,7 +306,7 @@ app
 
 	volantesCtrl.imprimirPromo = function() {
 
-		volantesCtrl.mensaje = "Obteniendo volante...";
+		volantesCtrl.mensaje = stringsIdioma['VOEDLA0077'];
     	MensajesService.abrirBlockUIGeneral(volantesCtrl.mensaje);
     	
 		$("#urlVistaPreviaPromoImprimir").attr("src", $("#urlPromocion").text() + "?vistaPrevia=1");
