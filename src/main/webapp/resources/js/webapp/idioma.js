@@ -1,3 +1,5 @@
+var idiomaSeleccionado = "";
+
 function getUrlParameter(sParam) {
     var sPageURL = decodeURIComponent(window.location.search.substring(1)),
         sURLVariables = sPageURL.split('&'),
@@ -33,6 +35,7 @@ function detectarIdioma(tipo){
 		    success: function(data)
 		    {
 		       console.log("El idioma regresado es: "+ data);
+		       idiomaSeleccionado = data;
 		       var getParam = getUrlParameter('lang');
 		       if(getParam != 'en' && getParam != 'es') {
 		    	   if(data == "es")

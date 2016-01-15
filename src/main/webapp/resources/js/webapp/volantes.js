@@ -21,6 +21,7 @@ app
 	volantesCtrl.modfechaVigencia = "";
 	volantesCtrl.planPro = "";
 	volantesCtrl.fechaVigencia = new Date();
+	volantesCtrl.isSpanish = idiomaSeleccionado == 'es';
 
 	$scope.$watch('volantesCtrl.fechaVigencia', function(v) {
 		

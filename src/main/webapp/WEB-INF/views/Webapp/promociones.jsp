@@ -55,7 +55,7 @@
 			</div>
 			<div id="navbar" class="navbar-collapse collapse text-right">
 				<ul class="nav navbar-nav navbar-right">
-<li> <a href="" onclick="cambiarIdioma()"><img src=<c:url value="/resources/webapp/images/fa-lang${ extensionImg }.png"/> width="20" height="20" alt="Infomovil" class="animated fadeIn ${colorTexto}"/><spring:message code="VOEDLA0002"/></a></li>
+<li> <a href="" onclick="cambiarIdioma()"><img src=<c:url value="/resources/webapp/images/fa-lang${ extensionImg }.png"/> width="20" height="20" alt="Infomovil" class="animated fadeIn ${colorTexto}"/><spring:message code="idioma"/></a></li>
 
 					<li class="dropdown">
 						<a href="<c:url value="/infomovil/miCuenta"></c:url>" 
@@ -93,12 +93,14 @@
 									src="<c:url value="/resources/webapp/images/icn_marc_maps${ extensionImg }.png"/>" /></a></li>
 									
 						</ul></li>
-						
-					<li><a href="" class="smoothScroll ${colorTexto}" ng-click="volantesCtrl.actualizaProducto()"> <img
-							width="20" height="20" alt="Infomovil"
-							src="<c:url value="/resources/webapp/images/fa-compu${ extensionImg }.png"/>" />
+					
+				
+					<li ng-show="volantesCtrl.isSpanish"><a href="" class="smoothScroll ${colorTexto}" ng-click="volantesCtrl.actualizaProducto()"> <img
+						width="20" height="20" alt="Infomovil"
+						src="<c:url value="/resources/webapp/images/fa-compu${ extensionImg }.png"/>" />
 							<spring:message code="VOEDLA0008"/>
 					</a></li>
+					
 					<li><a href="<c:url value="/logout"></c:url>"
 						class="smoothScroll ${colorTexto}"> <img width="20"
 							height="20" alt="Infomovil"
