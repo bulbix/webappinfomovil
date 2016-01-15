@@ -20,8 +20,6 @@
 <body role="document" data-spy="scroll" data-target=".navbar"
 	data-offset="75" id="page-top" ng-controller="VolantesController as volantesCtrl">
 	
-	
-
 	<div ng-init="planPro = '${planPro}'">
 		<div>{{volantesCtrl.init(planPro)}}</div>
 	</div>
@@ -57,7 +55,7 @@
 				<ul class="nav navbar-nav navbar-right">
 <li> <a href="" onclick="cambiarIdioma()"><img src=<c:url value="/resources/webapp/images/fa-lang${ extensionImg }.png"/> width="20" height="20" alt="Infomovil" class="animated fadeIn ${colorTexto}"/><spring:message code="idioma"/></a></li>
 
-					<li class="dropdown">
+					<li class="dropdown" id="miCtaEs">
 						<a href="<c:url value="/infomovil/miCuenta"></c:url>" 
 							class="dropdown-toggle smoothScroll ${colorTexto}" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
 							<img width="20" height="20" alt="Infomovil"	src="<c:url value="/resources/webapp/images/fa-user${ extensionImg }.png"/>" />
@@ -215,7 +213,7 @@
 								
 					<div class="hidden-xs hidden-sm col-xs-2 col-sm-2 text-center reset" >
 						<button type="button"
-							class=" btn btn-outlineGreen  textWhite navEditorLato"
+							class="btn btn-outlineGreen  textWhite navEditorLato"
 							ng-click="volantesCtrl.imprimirPromo()"
 							style="margin: 5px 8px 0 0;">
 							<span><img width="20" height="20" alt="Infomovil"
@@ -226,7 +224,7 @@
 								
 					<div class="hidden-md hidden-lg col-xs-2 col-sm-2 text-center reset">
 						<button type="button"
-							class=" btn btn-outlineGreen  textWhite navEditorLato"
+							class="btn btn-outlineGreen  textWhite navEditorLato"
 							onclick="descargarArchivo('pdf')" style="margin: 5px 0 0 0;">
 							<span><img width="20" height="20" alt="Infomovil"
 								src="<c:url value="/resources/webapp/images/fa-pdf.png"/>" />
@@ -331,19 +329,19 @@
 										<div class="form-group text-left textBlack">
 											
 												<div class="form-group text-left textBlack">
-													<label for="exampleInputEmail1" class="text-left"><spring:message code="VOEDLA0023"/></label> 
+													<label for="exampleInputEmail1" class="text-left"><spring:message code="VOEDLA0023"/>:</label> 
 													<input type="text" id="telContactoVolante" value="" class="textBlack form-control" placeholder="10 digitos"/>
 												</div>
 												<div class="clearfix"></div>
 												<div class="divider"></div>
 												<div class="form-group text-left textBlack">
-													<label for="exampleInputEmail1" class="text-left"><spring:message code="VOEDLA0024"/></label> 
+													<label for="exampleInputEmail1" class="text-left"><spring:message code="VOEDLA0024"/>:</label> 
 													<input type="text" id="celContactoVolante" value="" class="textBlack form-control" placeholder="10 digitos"/>
 												</div>
 												<div class="clearfix"></div>
 												<div class="divider"></div>
 												<div class="form-group text-left textBlack">
-													<label for="exampleInputEmail1" class="text-left lowCase"><spring:message code="VOEDLA0025"/></label> 
+													<label for="exampleInputEmail1" class="text-left"><spring:message code="VOEDLA0025"/>:</label> 
 													<input type="text" id="emailContactoVolante" value="" class="textBlack form-control lowCase" placeholder="mail@mail.com"/>
 												</div>
 											

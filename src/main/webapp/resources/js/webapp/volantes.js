@@ -49,8 +49,9 @@ app
 			$("#txtNombreVolante").prop("disabled", true);
 		
 		//console.log("El idioma seleccionado es: " +idiomaSeleccionado);
-		if(idiomaSeleccionado == 'en'){
+		if(idiomaSeleccionado == 'en') {
 			$("#nombreVolanteIngles").hide();
+			$("#miCtaEs").hide();
 			$("#publicarVolanteIngles").attr("class", "col-xs-12 col-sm-12 text-right reset");
 		}
 	};
