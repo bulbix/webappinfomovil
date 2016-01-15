@@ -127,7 +127,8 @@ public class PromocionesController
 	@ResponseBody
 	public Map<String, String> guardarPromocion(@RequestParam String titulo, @RequestParam String descripcion,
 			@RequestParam String fechaVigencia, String base64Imagen, @RequestParam String redimir,
-			@RequestParam String terminos, @RequestParam String templatePromo, @RequestParam String idPromocion,@RequestParam String empresa,@RequestParam String nombreVolante, Model model) {	
+			@RequestParam String terminos, @RequestParam String templatePromo, @RequestParam String idPromocion,
+			@RequestParam String empresa,@RequestParam String nombreVolante, Model model, Locale locale) {	
 		
 		int l_idPromocion = !StringUtils.isEmpty(idPromocion)?Integer.parseInt(idPromocion):0;
 		
@@ -137,7 +138,8 @@ public class PromocionesController
 		try {		
 			String correo = Util.getUserLogged().getUsername();
 			String password = Util.getUserLogged().getPassword();
-			respVO = wsCliente.crearSitioGuardarPromocion(correo, password, descripcion, fechaVigencia, redimir, terminos, titulo, base64Imagen, l_idPromocion, templatePromo, empresa, nombreVolante);
+			respVO = wsCliente.crearSitioGuardarPromocion(correo, password, descripcion, fechaVigencia, redimir, terminos, titulo,
+					base64Imagen, l_idPromocion, templatePromo, empresa, nombreVolante, locale.getLanguage());
 			resultado.put("codeError", respVO.getCodeError());
 			resultado.put("descEror", respVO.getMsgError());
 			
@@ -180,7 +182,7 @@ public class PromocionesController
 		{		
 			String correo = Util.getUserLogged().getUsername();
 			String password = Util.getUserLogged().getPassword();
-			respVO = wsCliente.crearSitioGuardarPromocion(correo, password, "", "", "", "", "", "", idPromocion, "", "", nombreVolante);
+			respVO = wsCliente.crearSitioGuardarPromocion(correo, password, "", "", "", "", "", "", idPromocion, "", "", nombreVolante, "");
 			resultado.put("codeError", respVO.getCodeError());
 			resultado.put("descEror", respVO.getMsgError());
 		}		
@@ -202,10 +204,10 @@ public class PromocionesController
 	
 	@RequestMapping(value = "/infomovil/refrescarPromocion", method = RequestMethod.GET, produces = "application/json")
 	@ResponseBody
-	public Map<String, String> refrescarPromocion() {	
+	public Map<String, String> refrescarPromocion(Locale locale) {	
 		String correo = Util.getUserLogged().getUsername();
 		String password = Util.getUserLogged().getPassword();
-		wsCliente.crearSitioRefrescarPromocion(correo, password);
+		wsCliente.crearSitioRefrescarPromocion(correo, password, locale.getLanguage());
 		Map<String, String> resultado = new HashMap<String, String>();
 		resultado.put("codeError", "0");
 		return resultado;
@@ -263,7 +265,7 @@ public class PromocionesController
 	@RequestMapping(value = "/infomovil/verPromo", method = { RequestMethod.GET , RequestMethod.POST }, produces = "application/json")
 	@ResponseBody
 	public Map<String, String> verPromo(int idDominio, String titulo, String descripcion, String fechaVigencia, String base64Imagen, 
-			String redimir, String terminos, String templatePromo, String empresa)
+			String redimir, String terminos, String templatePromo, String empresa, Locale locale )
 	{
 		RespuestaVO respVO = new RespuestaVO();
 		Map<String, String> resultado = new HashMap<String, String>();
@@ -274,9 +276,11 @@ public class PromocionesController
 			String password = Util.getUserLogged().getPassword();
 			
 			if (idDominio == 0) /*Vista previa*/
-				respVO = wsCliente.crearSitioPrevisualizarPromocion(correo, password, descripcion, fechaVigencia, redimir, terminos, titulo, base64Imagen, templatePromo, empresa);
+				respVO = wsCliente.crearSitioPrevisualizarPromocion(correo, password, descripcion, fechaVigencia, redimir, 
+						terminos, titulo, base64Imagen, templatePromo, empresa, locale.getLanguage());
 			else /*Ver promo guardada*/
-				respVO = wsCliente.crearSitioGuardarPromocion(correo, password, descripcion, fechaVigencia, redimir, terminos, titulo, base64Imagen, idDominio, templatePromo, empresa, "");
+				respVO = wsCliente.crearSitioGuardarPromocion(correo, password, descripcion, fechaVigencia, redimir, 
+						terminos, titulo, base64Imagen, idDominio, templatePromo, empresa, "", locale.getLanguage());
 			
 			resultado.put("codeError", respVO.getCodeError());
 			resultado.put("descEror", respVO.getMsgError());
