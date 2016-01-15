@@ -18,7 +18,8 @@
 
 	<c:if test="${not empty errorCta}">
 		<div class="errorblock col-xs-12 text-center textBlack">
-			<p><img src="<c:url value="/resources/webapp/images/fa-informacion.png"/>" width="20" height="20" alt="${errorCta}" /> ${errorCta} </p>
+			<p><img src="<c:url value="/resources/webapp/images/fa-informacion.png"/>" width="20" height="20" alt="${errorCta}"/>
+			${errorCta}</p>
         </div>
 	</c:if>
 		     

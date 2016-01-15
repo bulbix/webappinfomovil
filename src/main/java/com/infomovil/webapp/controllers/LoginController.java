@@ -6,6 +6,8 @@ import java.util.ResourceBundle;
 import javax.servlet.http.HttpServletRequest;
 
 import org.apache.commons.lang3.StringUtils;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.MessageSource;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
@@ -21,6 +23,9 @@ import com.infomovil.webapp.clientWsInfomovil.RespuestaVO;
 
 @Controller
 public class LoginController {
+	
+	@Autowired
+	MessageSource messageSource;
 
 	@RequestMapping(value="/login", method = RequestMethod.GET)
 	public String login(@CookieValue(value = "editarSitioInfomovil", defaultValue = "") String editarSitioInfomovil) 
@@ -56,24 +61,24 @@ public class LoginController {
 			RespuestaVO resp = ws.crearSitioResetPassword(correo, locale.getLanguage());	
 			
 			if(resp.getCodeError().equals("0")){
-				mensaje = "Se envió un correo a %s para restablecer tu contraseña.";
+				mensaje = messageSource.getMessage("RESETER0003", new Object[]{correo},locale);
 				redirectAttributes.addFlashAttribute("ctaCorreo", email);
-				redirectAttributes.addFlashAttribute("errorCta", String.format(mensaje, correo));
+				redirectAttributes.addFlashAttribute("errorCta", mensaje);
 				return "redirect:/login"; 
 			}
 			else if(resp.getCodeError().equals("-1000")){
-				mensaje = "El correo %s no existe en Infomovil.";
-				redirectAttributes.addFlashAttribute("mensaje", String.format(mensaje, correo));
+				mensaje = messageSource.getMessage("RESETER0004", new Object[]{correo},locale);
+				redirectAttributes.addFlashAttribute("mensaje", mensaje);
 				return "redirect:/resetpassword"; 
 			}
 			else{
-				mensaje = "Ocurrio un error al enviar el correo, Intente más tarde.";
+				mensaje = messageSource.getMessage("RESETER0005", null,locale);
 				redirectAttributes.addFlashAttribute("mensaje", mensaje);
 				return "redirect:/resetpassword"; 
 			}
 		}
 		else{
-			mensaje = "El correo esta vacio";
+			mensaje = messageSource.getMessage("RESETER0006", null,locale);
 			redirectAttributes.addFlashAttribute("mensaje", mensaje);
 			return "redirect:/resetpassword"; 
 		}
