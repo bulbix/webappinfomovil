@@ -3,7 +3,9 @@ package com.infomovil.webapp.model;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.apache.commons.collections4.CollectionUtils;
 import org.apache.commons.collections4.Predicate;
@@ -17,6 +19,21 @@ public class ModeloWebApp
 	private List<ProductoUsuarioVO> listaProductos;
 	private List<StatusDomainVO> itemsUsuario;
 	private String esquemaProducto;
+	
+	private def erroresRegistro = [:]
+	
+	public ModeloWebApp(){
+		erroresRegistro["El código ingresado no esta asociado a ninguna campaña."] = "REGISTROER0016"
+		erroresRegistro["El código ingresado ya caducó. La fecha límite para su activación fue:"] = "REGISTROER0017"
+		erroresRegistro["La campaña que utiliza el código "] = "REGISTROER0018"
+		erroresRegistro["El código proporcionado está disponible a partir de la fecha "] = "REGISTROER0019"
+		erroresRegistro["Este correo ya cuenta con un Plan Pro"] = "REGISTROER0022"
+		erroresRegistro["El ID del producto asociado a la campaña, no existe o se encuentra dado de baja."] = "REGISTROER0023";
+		erroresRegistro["Esta cuenta ya activó un código"] = "REGISTROER0021";
+		erroresRegistro["El total de cuentas disponibles que tiene el patrocinador"] = "REGISTROER0024";
+		erroresRegistro["EL USUARIO: '"] = "REGISTROER0026"
+	}
+	
 	
 	public List<ProductoUsuarioVO> getListaProductos() {
 		return listaProductos;
@@ -76,7 +93,7 @@ public class ModeloWebApp
 	
 	public boolean getStatus(final String status)
 	{
-		String statusPP [] = {"4", "14", "18", "19"};
+		String statusPP  = ["4", "14", "18", "19"];
 		boolean busqueda = false;
 		
 		for (String s : statusPP)
@@ -88,4 +105,12 @@ public class ModeloWebApp
 		
 		return busqueda;
 	}
+	
+	public String codeErrorRegistro(String descError){
+		def result = erroresRegistro.find{ descError.startsWith(it.key)}.value
+		println result
+		return result
+	}
+	
+	
 }
