@@ -51,7 +51,6 @@ app
 		if (volantesCtrl.planPro == "NO")
 			$("#txtNombreVolante").prop("disabled", true);
 		
-		console.log("El idioma seleccionado es: " +idiomaSeleccionado);
 		if(idiomaSeleccionado == 'en'){
 			$("#nombreVolanteIngles").hide();
 			$("#publicarVolanteIngles").attr("class", "col-xs-12 col-sm-12 text-right reset");
@@ -480,7 +479,6 @@ app
 			$("#txtNombreVolante").val(datos.pagina);
 			
 		}
-		console.debug("Este nunca se ejecuta! Server " + server + "y OfferId es: " + datos.offerId , datos.empresa, datos.pagina);
 		return datos;
 	};
 
@@ -618,12 +616,11 @@ function descargarArchivo(tipo) {
 };
 
 function imprimirPromocionWeb() {
-	
+	console.log("Imprimir promocion");
 	var urlPromo = $("#urlPromocion").text();
 	var nombrePromo = urlPromo.substring(urlPromo.lastIndexOf("/") + 1);
 	var eventoPromocion = 'promo-imprimir';
 	var oldstrInner = document.documentElement.innerHTML;
-	var oldstr = document.body.innerHTML;
 
 	$.blockUI.defaults.baseZ = 9000;
 	$.blockUI({
@@ -646,7 +643,6 @@ function imprimirPromocionWeb() {
 	window.focus();
 	window.close();
 	document.documentElement.innerHTML = oldstrInner;
-    $(document.body).html(oldstr);
     banderaImprimir = true;
     $("#myModalPromoImprimir").modal();	
 	$.unblockUI();}, 2500);	
