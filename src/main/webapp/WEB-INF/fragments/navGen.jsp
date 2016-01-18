@@ -15,7 +15,7 @@
         <li><a href="http://infomovil.com" class="smoothScroll"><spring:message code="LOGINLA0010"/></a></li>
         <li><a href="<c:url value="/registrar"/>" class="smoothScroll"><spring:message code="LOGINLA0007"/></a></li>
         <li><a href="<c:url value="/login"/>" class="smoothScroll"><spring:message code="LOGINLA0003"/></a></li>
-         <li> <a href="" onclick="cambiarIdioma()"><spring:message code="idioma"/> <img src="resources/webapp/images/fa-lang.png" width="20" height="20" alt="Infomovil" class="animated fadeIn"/></a></li>
+         <li> <a href="#" onclick="cambiarIdioma();return false;"><spring:message code="idioma"/> <img src="resources/webapp/images/fa-lang.png" width="20" height="20" alt="Infomovil" class="animated fadeIn"/></a></li>
       </ul>
     </div>
   </div>

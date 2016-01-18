@@ -34,7 +34,6 @@ function detectarIdioma(tipo){
 		    dataType: "text",
 		    success: function(data)
 		    {
-		       console.log("El idioma regresado es: "+ data);
 		       idiomaSeleccionado = data;
 		       var getParam = getUrlParameter('lang');
 		       if(getParam != 'en' && getParam != 'es') {
@@ -53,7 +52,6 @@ function detectarIdioma(tipo){
 		
 	}
 };
-
 function cambiarIdioma(){
 	console.log("Entro en cambiar idioma de todos los demas");
 	var urlLocal =  window.location.href;
@@ -85,13 +83,8 @@ function cambiarIdioma(){
 	});
 
 };
-
-
-
 function cambiarIdiomaLogin(){
-	console.log("Entro en cambiar idioma Loginxxx");
 	var idiomaCookie = leerCookie("org.springframework.web.servlet.i18n.CookieLocaleResolver.LOCALE");
-	console.log("La cook es::::: " + idiomaCookie);
 	var getParam = getUrlParameter('lang');
 	var ln = window.navigator.language||navigator.browserLanguage;
 	var getLeng = ln.toLowerCase();
@@ -121,6 +114,7 @@ function cambiarIdiomaLogin(){
 };
 function leerCookie(nombre) {
     var lista = document.cookie.split(";");
+    var micookie = "";
     for (i in lista) {
         var busca = lista[i].search(nombre);
         if (busca > -1) {micookie=lista[i]}

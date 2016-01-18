@@ -53,7 +53,7 @@
 			</div>
 			<div id="navbar" class="navbar-collapse collapse text-right">
 				<ul class="nav navbar-nav navbar-right">
-<li> <a href="" onclick="cambiarIdioma()"><img src=<c:url value="/resources/webapp/images/fa-lang${ extensionImg }.png"/> width="20" height="20" alt="Infomovil" class="animated fadeIn ${colorTexto}"/><spring:message code="idioma"/></a></li>
+<li> <a href="#" onclick="cambiarIdioma();return false;"><img src=<c:url value="/resources/webapp/images/fa-lang${ extensionImg }.png"/> width="20" height="20" alt="Infomovil" class="animated fadeIn ${colorTexto}"/><spring:message code="idioma"/></a></li>
 
 					<li class="dropdown" id="miCtaEs">
 						<a href="<c:url value="/infomovil/miCuenta"></c:url>" 
@@ -455,9 +455,7 @@
 		<script src="<c:url value="/resources/js/webapp/InfomovilServices/volantesService.js"/>"></script>
 		<script src="<c:url value="/resources/js/webapp/mapaAngular.js"/>" ></script>	
 		<script src="<c:url value="/resources/js/webapp/idioma.js"/>" ></script>	
-		<script type="text/javascript"><!-- Esta llamada esta en el head --> 
-			detectarIdioma('normal');
-		</script>
+		
 		<tiles:insertDefinition name="modalGen">
 			<tiles:putAttribute name="idModal" value="myModalPromo" />
 			<tiles:putAttribute name="tamanioModal"
