@@ -11,10 +11,7 @@ app
 
 .controller("VolantesController", function ($scope, $http, VolanteService, MensajesService,  $moment, volanteMapaService) {
 	
-	console.debug("Consulta javascript " + stringsIdioma['VOEDLA0051']);
-	
 	var templatesPromo = new Array("promo8", "promo6",  "promo1", "promo5", "promo4", "promo7", "promo2", "promo3");
-	var nombresPromo = new Array("Navidad", "Cursos",  "Bares","Floral", "Tecnología 2", "Buen Fin", "Hipster", "Tecnología");
 	
 	var volantesCtrl = this;
 	volantesCtrl.volantes = null;
@@ -53,6 +50,7 @@ app
 		
 		if(idiomaSeleccionado == 'en'){
 			$("#nombreVolanteIngles").hide();
+			$("#miCtaEs").hide();
 			$("#publicarVolanteIngles").attr("class", "col-xs-12 col-sm-12 text-right reset");
 		}
 	};
@@ -308,7 +306,7 @@ app
 
 	volantesCtrl.imprimirPromo = function() {
 
-		volantesCtrl.mensaje = "Obteniendo volante...";
+		volantesCtrl.mensaje = stringsIdioma['VOEDLA0077'];
     	MensajesService.abrirBlockUIGeneral(volantesCtrl.mensaje);
     	
 		$("#urlVistaPreviaPromoImprimir").attr("src", $("#urlPromocion").text() + "?vistaPrevia=1");
